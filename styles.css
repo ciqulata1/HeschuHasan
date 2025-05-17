@@ -1,47 +1,31 @@
-/* FDP-Farben: Blau, Gelb, Magenta */
 :root {
   --fdp-blue: #005ea8;
   --fdp-yellow: #ffd500;
   --fdp-magenta: #e6007e;
   --bg-color: #f9f9f9;
   --text-color: #333;
-  --button-bg: var(--fdp-yellow);
-  --button-text: var(--fdp-blue);
-  --accent-color: var(--fdp-magenta);
 }
 
-/* Gesamtbreite der Seite */
+/* Grundstil */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: #fff;
-  color: #222;
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: 1.7;
 }
 
-/* Hauptcontainer breiter machen */
-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
-  box-sizing: border-box;
-}
-
-/* Responsive Bilddarstellung */
-profilbild {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-
+/* Header & Navigation */
 header {
   background: var(--fdp-blue);
   color: white;
   padding: 1rem 2rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -50,120 +34,100 @@ header {
   letter-spacing: 1px;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 1.5rem;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: var(--fdp-yellow);
-}
-
 .menu-toggle {
   display: none;
   font-size: 2rem;
   cursor: pointer;
 }
 
-main {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
 
-/* Kasten für den Intro */
-#intro {
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav ul li a:hover {
+  color: var(--fdp-yellow);
+}
+
+/* Responsive Menü */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul.menu {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+    background-color: var(--fdp-blue);
+  }
+
+  nav ul.menu.active {
+    display: flex;
+  }
+}
+
+/* Hauptinhalt */
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+section {
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   padding: 2rem;
   margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-#intro h1 {
-  font-weight: 900;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+h1, h2 {
   color: var(--fdp-blue);
+  font-weight: 800;
 }
 
-#intro p {
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-profilbild {
+/* Profilbild */
+.profilbild {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 1rem auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-#intro ul {
-  margin: 1rem 0 1.5rem 1.5rem;
-  color: var(--accent-color);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-/* Button für Email */
+/* Email Button */
 .email-button {
   display: inline-block;
-  padding: 0.7rem 1.8rem;
+  padding: 0.8rem 1.8rem;
   background: var(--fdp-magenta);
   color: white;
   font-weight: 700;
-  font-size: 1.1rem;
-  border: none;
   border-radius: 30px;
-  cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 4px 8px rgba(230,0,126,0.5);
-  transition: background 0.3s ease;
   margin-top: 1rem;
+  box-shadow: 0 4px 8px rgba(230, 0, 126, 0.5);
+  transition: background 0.3s ease;
 }
 
 .email-button:hover {
   background: #b50065;
 }
 
-/* Akkordeon */
-.accordion {
-  background-color: var(--fdp-yellow);
-  color: var(--fdp-blue);
-  cursor: pointer;
-  padding: 1rem 1.5rem;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease;
-}
-
-.accordion:hover {
-  background-color: #ffe44d;
-}
-
-
+/* Fancy Download Button */
 .fancy-download-button {
   display: inline-block;
-  background: linear-gradient(135deg, #ffed00, #ff0080); /* FDP-Gelb zu Magenta */
+  background: linear-gradient(135deg, #ffed00, #e6007e);
   color: #000;
   padding: 15px 25px;
   border-radius: 50px;
@@ -172,59 +136,37 @@ profilbild {
   text-decoration: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  text-align: center;
-  margin-top: 1rem;
 }
 
 .fancy-download-button:hover {
-  background: linear-gradient(135deg, #ff0080, #005bac); /* Magenta zu FDP-Blau */
+  background: linear-gradient(135deg, #e6007e, #005ea8);
   color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
+
+/* Akkordeon */
+.accordion {
+  background: var(--fdp-yellow);
+  color: var(--fdp-blue);
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 0.5rem;
+}
+
 .accordion.active {
   background-color: var(--fdp-magenta);
   color: white;
 }
 
 .panel {
-  padding: 0 1.5rem 1rem 1.5rem;
   background-color: white;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  color: var(--text-color);
+  padding: 0 1rem 1rem;
 }
-
-.email-button {
-  display: inline-block;
-  padding: 0.7rem 1.8rem;
-  background: #e6007e; /* Magenta (FDP-Farbe) */
-  color: white;
-  font-weight: 700;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 4px 8px rgba(230, 0, 126, 0.5);
-  transition: background 0.3s ease;
-  margin-top: 1rem;
-}
-
-.email-button:hover {
-  background: #b50065;
-}
-
-/* Weitere Sektionen Styling */
-section {
-  background: white;
-  padding: 1.5rem 2rem;
-  margin-bottom: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,
