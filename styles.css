@@ -1,0 +1,86 @@
+/* Allgemeine Stile */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Header und Navigation */
+header {
+  background-color: #FFD600;
+  padding: 10px 20px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #004775;
+}
+.menu {
+  list-style: none;
+  display: flex;
+}
+.menu li {
+  margin-left: 20px;
+}
+.menu a {
+  text-decoration: none;
+  color: #004775;
+  font-weight: bold;
+}
+.menu-toggle {
+  display: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* Main Content */
+main {
+  padding: 20px;
+}
+section {
+  margin-bottom: 20px;
+}
+section h2 {
+  color: #004775;
+}
+
+/* Footer */
+footer {
+  background-color: #004775;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #FFD600;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+  .menu.active {
+    display: flex;
+  }
+  .menu li {
+    margin: 10px 0;
+    text-align: center;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
