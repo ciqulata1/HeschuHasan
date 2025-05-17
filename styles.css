@@ -28,7 +28,7 @@ main {
 }
 
 /* Responsive Bilddarstellung */
-img {
+profilbild {
   max-width: 100%;
   height: auto;
   display: block;
