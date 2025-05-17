@@ -1,102 +1,379 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heschu Hasan – Direktkandidatin</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="logo">Heschu Hasan</div>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-      <ul id="menu" class="menu">
-        <li><a href="#umwelt">Umwelt</a></li>
-        <li><a href="#bildung">Bildung</a></li>
-        <li><a href="#biografie">Biografie</a></li>
-        <li><a href="#wahl">Wahlprogramm</a></li>
-      </ul>
-    </nav>
-  </header>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Heschu Hasan – Direktkandidatin</title>
 
-  <main>
-    <section id="intro">
-      <h1>Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h1>
-      <p>
-        Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.
-      </p>
-      <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
+<!-- Google Fonts für Graffiti-Style -->
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
 
-      <button class="accordion">Meine Forderungen</button>
-      <div class="panel">
-        <ul>
-          <li>🔹 Konsequenzen bei systematischer Behördenwillkür</li>
-          <li>🔹 Schutz vor ungerechtfertigter Kriminalisierung</li>
-          <li>🔹 Das Recht darf nicht an Fristen und Formularen scheitern</li>
-        </ul>
-      </div>
+<style>
+  /* === Farben FDP === */
+  :root {
+    --fdp-blue: #005ea8;
+    --fdp-yellow: #ffd500;
+    --fdp-magenta: #e6007e;
+    --bg-color: #f5f7fa;
+    --text-color: #222;
+    --button-bg: var(--fdp-yellow);
+    --button-text: var(--fdp-blue);
+    --accent-color: var(--fdp-magenta);
+  }
 
-      <p>
-        Besonders im Bereich Umwelt und Bildung wird sichtbar, wie oft Politik nicht daran scheitert, dass es keine Ideen gibt – sondern daran, dass das System diese Ideen blockiert.
-      </p>
-      <ul>
-        <li>🔸 Energiewende? Verzögert durch überlastete Verfahren.</li>
-        <li>🔸 Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
-      </ul>
-      <p>
-        Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.
-      </p>
-      
-      <a href="mailto:heschuhasan@gmail.com" class="email-button">✉️ Kontakt per E-Mail</a>
-    </section>
+  /* === Grundlegendes Styling === */
+  * {
+    box-sizing: border-box;
+  }
 
-    <section id="umwelt">
-      <h2>Umweltpolitik</h2>
-      <p>Text zur Umweltpolitik...</p>
-    </section>
-    <section id="bildung">
-      <h2>Bildungspolitik</h2>
-      <p>Text zur Bildungspolitik...</p>
-    </section>
-    <section id="biografie">
-      <h2>Biografie</h2>
-      <p>Mein Name ist Heschu Hasan und ich bin studierte Wirtschaftswissenschaftlerin.
-      Ich bin in der Autonomen Region Kurdistan geboren
-      und in Deutschland aufgewachsen.</p>
-      <img src="IMG_1604.jpeg" alt="Heschu Hasan" class="profilbild" />
-    </section>
-    <section id="wahl">
-      <h2>Wahlprogramm</h2>
-      <p>Hier können Sie das vollständige Wahlprogramm der FDP als PDF herunterladen:</p>
-      <a href="fdp-wahlprogramm_2025.pdf" download class="fancy-download-button">
-        📄 Wahlprogramm der FDP herunterladen
-      </a>
-    </section>
-  </main>
+  body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
 
-  <footer>
-    <p>&copy; 2025 Heschu Hasan – Direktkandidatin</p>
-  </footer>
+  header {
+    background: var(--fdp-blue);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('active');
+  /* Logo mit Graffiti-Style */
+  .logo {
+    font-family: 'Permanent Marker', cursive;
+    font-weight: 900;
+    font-size: 2.2rem;
+    letter-spacing: 1.2px;
+    cursor: default;
+  }
+
+  /* Navigation */
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: var(--fdp-yellow);
+  }
+
+  /* Burger Menü (mobile) */
+  .menu-toggle {
+    display: none;
+    font-size: 2.2rem;
+    cursor: pointer;
+  }
+
+  /* Hauptcontainer */
+  main {
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+  }
+
+  /* Intro Box */
+  #intro {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+  }
+
+  #intro h1 {
+    font-weight: 900;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--fdp-blue);
+  }
+
+  #intro p {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Accordion */
+  .accordion {
+    background-color: var(--fdp-yellow);
+    color: var(--fdp-blue);
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: left;
+  }
+
+  .accordion:hover,
+  .accordion.active {
+    background-color: var(--fdp-magenta);
+    color: white;
+  }
+
+  .panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    background: white;
+    padding: 0 1.5rem 1rem 1.5rem;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+
+  .panel ul {
+    margin-left: 1.3rem;
+    list-style: disc;
+  }
+
+  /* Profilbild */
+  .profilbild {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    margin-top: 1rem;
+  }
+
+  /* Abschnitte */
+  section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+  }
+
+  section h2 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2rem;
+    color: var(--fdp-blue);
+    margin-bottom: 1rem;
+  }
+
+  /* Fancy Download Button */
+  .fancy-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--fdp-yellow), var(--fdp-magenta));
+    color: var(--fdp-blue);
+    padding: 16px 32px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(230, 0, 126, 0.6);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    margin-top: 1rem;
+  }
+
+  .fancy-button:hover {
+    background: linear-gradient(135deg, var(--fdp-magenta), var(--fdp-blue));
+    color: white;
+    box-shadow: 0 12px 30px rgba(0, 94, 168, 0.8);
+    transform: translateY(-4px);
+  }
+
+  .fancy-button .wave {
+    display: inline-block;
+    animation: wave 2s infinite;
+    font-size: 1.4rem;
+    transform-origin: 70% 70%;
+    user-select: none;
+  }
+
+  @keyframes wave {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(15deg); }
+    40% { transform: rotate(-10deg); }
+  }
+
+  /* E-Mail Button */
+  .email-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--fdp-magenta);
+    color: white;
+    font-weight: 700;
+    font-size: 1.15rem;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 6px 14px rgba(230,0,126,0.7);
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .email-button:hover {
+    background-color: #b50065;
+  }
+
+  /* Responsive Anpassungen */
+  @media (max-width: 768px) {
+    nav ul {
+      display: none;
+      flex-direction: column;
+      background: var(--fdp-blue);
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      padding: 1rem 0;
+      border-radius: 0 0 0 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      z-index: 100;
     }
 
-    const accordions = document.querySelectorAll('.accordion');
-    accordions.forEach(acc => {
-      acc.addEventListener('click', () => {
-        acc.classList.toggle('active');
-        const panel = acc.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
-      });
+    nav ul.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+      color: white;
+    }
+
+    nav ul li {
+      padding: 0.7rem 1.5rem;
+    }
+
+    nav ul li a {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Heschu Hasan</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul id="menu" class="menu">
+      <li><a href="#umwelt">Umwelt</a></li>
+      <li><a href="#bildung">Bildung</a></li>
+      <li><a href="#biografie">Biografie</a></li>
+      <li><a href="#wahl">Wahlprogramm</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="intro">
+    <h1>Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h1>
+    <p>Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.</p>
+    <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
+
+    <button class="accordion">Meine Forderungen</button>
+    <div class="panel">
+      <ul>
+        <li>🔹 Konsequenzen bei systematischer Behördenwillkür</li>
+        <li>🔹 Schutz vor ungerechtfertigter Kriminalisierung</li>
+        <li>🔹 Das Recht darf nicht an Fristen und Formularen scheitern</li>
+      </ul>
+    </div>
+
+    <p>Besonders im Bereich Umwelt und Bildung wird sichtbar, wie oft Politik nicht daran scheitert, dass es keine Ideen gibt – sondern daran, dass das System diese Ideen blockiert.</p>
+    <ul>
+      <li>🔸 Energiewende? Verzögert durch überlastete Verfahren.</li>
+      <li>🔸 Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
+    </ul>
+    <p>Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.</p>
+    
+    <!-- Fancy Download Button -->
+    <a href="wahlprogramm.pdf" class="fancy-button" download>
+      <span class="wave">⬇️</span> Wahlprogramm runterladen
+    </a>
+  </section>
+
+  <section id="umwelt">
+    <h2>Umwelt</h2>
+    <p>Unsere Umwelt steht im Fokus: Nachhaltigkeit und Verantwortung für zukünftige Generationen sind keine leeren Worte, sondern mein Versprechen.</p>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Natur" class="profilbild" />
+  </section>
+
+  <section id="bildung">
+    <h2>Bildung</h2>
+    <p>Bildungsgerechtigkeit bedeutet für mich gleiche Chancen für alle, unabhängig von Herkunft oder Status.</p>
+    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80" alt="Bildung" class="profilbild" />
+  </section>
+
+  <section id="biografie">
+    <h2>Biografie</h2>
+    <p>Ich bin Heschu Hasan, Direktkandidatin für die FDP Freiburg. Mit Herz, Verstand und Engagement kämpfe ich für eine liberale und faire Gesellschaft.</p>
+    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Heschu Hasan" class="profilbild" />
+    <a href="mailto:heschu.hasan@example.com" class="email-button">Jetzt Kontakt aufnehmen</a>
+  </section>
+
+  <section id="wahl">
+    <h2>Wahlprogramm</h2>
+    <p>Hier findest Du alle wichtigen Themen, die ich für Dich in Freiburg anpacke.</p>
+    <a href="wahlprogramm.pdf" class="fancy-button" download>
+      <span class="wave">⬇️</span> Wahlprogramm runterladen
+    </a>
+  </section>
+</main>
+
+<script>
+  // Burger Menü Toggle
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('active');
+  }
+
+  // Accordion Funktionalität
+  const acc = document.getElementsByClassName("accordion");
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
     });
-  </script>
+  }fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    const panel = document.querySelector('.panel ul');
+    panel.innerHTML = '';
+    data.forderungen.forEach(forderung => {
+      const li = document.createElement('li');
+      li.textContent = '🔹 ' + forderung;
+      panel.appendChild(li);
+    });
+  });
+</script>
 </body>
 </html>
