@@ -31,10 +31,9 @@ main {
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
   display: block;
-  margin: 1rem auto;
 }
+
 
 header {
   background: var(--fdp-blue);
