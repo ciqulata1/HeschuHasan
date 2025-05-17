@@ -26,13 +26,24 @@ header {
   padding: 1rem 0;
   margin-bottom: 2rem;
 }
-
+nav a.active {
+  background-color: #ffcc00;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
 .nav-list {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+nav a:hover {
+  background-color: #ffe066;
+  color: black;
 }
 
 .nav-list a {
