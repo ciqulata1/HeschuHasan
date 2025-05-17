@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heschu Hasan – Direktkandidatin</title>
-  <li> Seite in Bearbeitung, ich bitte um Nachsicht.</li>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -46,41 +46,38 @@
         <li>🔸 Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
       </ul>
       <p>
-        Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.
+        Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen.
       </p>
       
-      <a href="heschuhasan@gmail.com" class="email-button">✉️ Kontakt per E-Mail</a>
+      <a href="mailto:heschuhasan@gmail.com" class="email-button">✉️ Kontakt per E-Mail</a>
     </section>
 
     <section id="umwelt">
       <h2>Umweltpolitik</h2>
       <p>Text zur Umweltpolitik...</p>
     </section>
+
     <section id="bildung">
       <h2>Bildungspolitik</h2>
       <p>Text zur Bildungspolitik...</p>
     </section>
+
     <section id="biografie">
       <h2>Biografie</h2>
-      <p>Mein Name ist Heschu Hasan und ich bin studierte Wirtschaftswissenschaftlerin.
-      Ich bin in der Autonomen Region Kurdistan geboren
-      und in Deutschland aufgewachsen. 
-        <img src="IMG_1604.jpeg" alt="Heschu Hasan" class="profilbild">
-      
+      <p>
+        Mein Name ist Heschu Hasan und ich bin studierte Wirtschaftswissenschaftlerin.
+        Ich bin in der Autonomen Region Kurdistan geboren und in Deutschland aufgewachsen.
       </p>
-    </section>
-    <section id="wahl">
-      <h2>Wahlprogramm</h2>
-      <section id="wahl">
-  <h2>Wahlprogramm</h2>
-  <p>Hier können Sie das vollständige Wahlprogramm der FDP als PDF herunterladen:</p>
-  <a href="fdp-wahlprogramm_2025.pdf" download class="fancy-download-button">
-    📄 Wahlprogramm der FDP herunterladen
-  </a>
-</section>
+      <img src="IMG_1604.jpeg" alt="Heschu Hasan" class="profilbild">
     </section>
 
-    <a href="mailto:heschuhasan@gmail.com" class="email-button">Kontaktieren Sie mich</a>
+    <section id="wahl">
+      <h2>Wahlprogramm</h2>
+      <p>Hier können Sie das vollständige Wahlprogramm der FDP als PDF herunterladen:</p>
+      <a href="fdp-wahlprogramm_2025.pdf" download class="fancy-download-button">
+        📄 Wahlprogramm der FDP herunterladen
+      </a>
+    </section>
   </main>
 
   <footer>
@@ -89,8 +86,7 @@
 
   <script>
     function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('active');
+      document.getElementById('menu').classList.toggle('active');
     }
 
     const accordions = document.querySelectorAll('.accordion');
@@ -98,11 +94,7 @@
       acc.addEventListener('click', () => {
         acc.classList.toggle('active');
         const panel = acc.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        }
+        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + 'px';
       });
     });
   </script>
