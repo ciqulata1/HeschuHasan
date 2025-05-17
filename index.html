@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Startseite – Heschu Hasan</title>
+  <title>Heschu Hasan – Direktkandidatin</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <nav>
-      <ul>
+      <ul class="nav-list">
         <li><a href="index.html" class="active">Startseite</a></li>
         <li><a href="umwelt.html">Umwelt</a></li>
         <li><a href="bildung.html">Bildung</a></li>
@@ -20,13 +20,42 @@
   </header>
 
   <main>
-    <h1>Willkommen auf meiner Webseite</h1>
-    <p>Hier findest du alles zu meiner Kandidatur.</p>
-    <!-- Weitere Inhalte hier -->
+    <section class="intro">
+      <h1> Willkommen auf meiner Website. Hier finden Sie alles zu meiner Kandidatur.</h1>
+      <h2>  Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h1>   </h2>
+      <p>
+        Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.
+      </p>
+      <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
+
+      <button class="accordion">Meine Forderungen</button>
+      <div class="panel">
+        <ul>
+          <li>🔹 Konsequenzen bei systematischer Behördenwillkür</li>
+          <li>🔹 Schutz vor ungerechtfertigter Kriminalisierung</li>
+          <li>🔹 Das Recht darf nicht an Fristen und Formularen scheitern</li>
+        </ul>
+      </div>
+
+      <p>
+        Besonders im Bereich Umwelt und Bildung wird sichtbar, wie oft Politik nicht daran scheitert, dass es keine Ideen gibt – sondern daran, dass das System diese Ideen blockiert.
+      </p>
+      <ul>
+        <li>🔸 Energiewende? Verzögert durch überlastete Verfahren.</li>
+        <li>🔸 Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
+      </ul>
+      <p>
+        Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.
+      </p>
+      
+      <a href="mailto:heschuhasan@gmail.com" class="email-button">✉️ Kontakt per E-Mail</a>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2025 Heschu Hasan</p>
   </footer>
+
+  <script src="accordion.js"></script>
 </body>
 </html>
