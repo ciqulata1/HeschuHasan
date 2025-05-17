@@ -143,6 +143,28 @@ profilbild {
   background-color: #ffe44d;
 }
 
+
+.fancy-download-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffed00, #ff0080); /* FDP-Gelb zu Magenta */
+  color: #000;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.fancy-download-button:hover {
+  background: linear-gradient(135deg, #ff0080, #005bac); /* Magenta zu FDP-Blau */
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
 .accordion.active {
   background-color: var(--fdp-magenta);
   color: white;
