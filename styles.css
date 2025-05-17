@@ -1,7 +1,7 @@
 /* Reset & Grundstil */
 * {
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -13,6 +13,14 @@ body {
   padding: 20px;
 }
 
+/* Container max-width */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header + Navigation */
 header {
   background-color: #003366; /* Dunkelblau FDP */
   padding: 1rem 0;
@@ -24,6 +32,7 @@ header {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .nav-list a {
@@ -41,21 +50,17 @@ header {
   color: #003366;
 }
 
-main {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
+/* Headings & Text */
 h1 {
   margin-bottom: 1rem;
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: #003366;
 }
 
 p {
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
 }
 
 ul {
@@ -64,6 +69,7 @@ ul {
   list-style: inside disc;
 }
 
+/* Buttons */
 .email-button {
   display: inline-block;
   background-color: #ffcc00;
@@ -140,14 +146,54 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Responsive Anpassungen */
+
+/* Für kleine Handys */
+@media (max-width: 480px) {
+  body {
+    padding: 15px 10px;
+  }
+
   .nav-list {
     flex-direction: column;
     gap: 0.5rem;
+    align-items: center;
+  }
+
+  .nav-list a {
+    padding: 0.75rem 1.25rem;
+    font-size: 1.1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  main {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Für Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .nav-list {
+    justify-content: space-around;
+  }
+
+  main {
+    padding: 0 1rem;
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: clamp(2rem, 5vw, 2.3rem);
+  }
+
+  p {
+    font-size: clamp(1rem, 2.5vw, 1.05rem);
+  }
+}
+
+/* Größere Desktops */
+@media (min-width: 1200px) {
+  main {
+    max-width: 1100px;
   }
 }
