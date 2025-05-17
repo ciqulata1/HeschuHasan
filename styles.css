@@ -2,36 +2,31 @@
   --fdp-blue: #005ea8;
   --fdp-yellow: #ffd500;
   --fdp-magenta: #e6007e;
-  --bg-color: #f9f9f9;
+  --bg-color: #f5f5f5;
   --text-color: #333;
 }
 
-/* Grundstil */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-color);
   color: var(--text-color);
-  font-size: 18px;
-  line-height: 1.7;
 }
 
-/* Header & Navigation */
+/* Header */
 header {
   background: var(--fdp-blue);
   color: white;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .logo {
   font-weight: 900;
   font-size: 1.5rem;
-  letter-spacing: 1px;
 }
 
 .menu-toggle {
@@ -41,121 +36,51 @@ header {
 }
 
 nav ul {
-  display: flex;
   list-style: none;
+  display: flex;
   gap: 1.5rem;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 nav ul li a:hover {
   color: var(--fdp-yellow);
 }
 
-/* Responsive Menü */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  nav ul.menu {
-    flex-direction: column;
-    display: none;
-    width: 100%;
-    background-color: var(--fdp-blue);
-  }
-
-  nav ul.menu.active {
-    display: flex;
-  }
-}
-
-/* Hauptinhalt */
+/* Main content */
 main {
   max-width: 1000px;
-  margin: 2rem auto;
-  padding: 1rem;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 section {
   background: white;
+  border-radius: 10px;
   padding: 2rem;
   margin-bottom: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-h1, h2 {
-  color: var(--fdp-blue);
-  font-weight: 800;
-}
-
-/* Profilbild */
-.profilbild {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  display: block;
-  margin: 1rem auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-/* Email Button */
-.email-button {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  background: var(--fdp-magenta);
-  color: white;
-  font-weight: 700;
-  border-radius: 30px;
-  text-decoration: none;
-  margin-top: 1rem;
-  box-shadow: 0 4px 8px rgba(230, 0, 126, 0.5);
-  transition: background 0.3s ease;
-}
-
-.email-button:hover {
-  background: #b50065;
-}
-
-/* Fancy Download Button */
-.fancy-download-button {
-  display: inline-block;
-  background: linear-gradient(135deg, #ffed00, #e6007e);
-  color: #000;
-  padding: 15px 25px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.fancy-download-button:hover {
-  background: linear-gradient(135deg, #e6007e, #005ea8);
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-/* Akkordeon */
+/* Accordion */
 .accordion {
-  background: var(--fdp-yellow);
+  background-color: var(--fdp-yellow);
   color: var(--fdp-blue);
-  padding: 1rem 1.5rem;
+  font-weight: bold;
+  padding: 1rem;
   border: none;
   border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-bottom: 0.5rem;
+  width: 100%;
+  text-align: left;
+  margin-top: 1rem;
 }
 
 .accordion.active {
@@ -164,9 +89,78 @@ h1, h2 {
 }
 
 .panel {
-  background-color: white;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  padding: 0 1rem 1rem;
+  margin-top: 1rem;
+}
+
+/* Buttons */
+.email-button, .download-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.email-button {
+  background: var(--fdp-magenta);
+  color: white;
+  box-shadow: 0 4px 8px rgba(230, 0, 126, 0.4);
+}
+
+.email-button:hover {
+  background: #b50065;
+}
+
+.download-button {
+  background: linear-gradient(135deg, var(--fdp-yellow), var(--fdp-magenta));
+  color: black;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.download-button:hover {
+  background: linear-gradient(135deg, var(--fdp-magenta), var(--fdp-blue));
+  color: white;
+}
+
+/* Image */
+.profilbild {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--fdp-blue);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  main {
+    padding: 1rem;
+  }
 }
