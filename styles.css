@@ -1,86 +1,165 @@
-/* Allgemeine Stile */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  color: #333;
+/* FDP-Farben: Blau, Gelb, Magenta */
+:root {
+  --fdp-blue: #005ea8;
+  --fdp-yellow: #ffd500;
+  --fdp-magenta: #e6007e;
+  --bg-color: #f9f9f9;
+  --text-color: #333;
+  --button-bg: var(--fdp-yellow);
+  --button-text: var(--fdp-blue);
+  --accent-color: var(--fdp-magenta);
 }
 
-/* Header und Navigation */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
 header {
-  background-color: #FFD600;
-  padding: 10px 20px;
-}
-nav {
+  background: var(--fdp-blue);
+  color: white;
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
+
 .logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #004775;
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
-.menu {
+
+nav ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
+  gap: 1.5rem;
 }
-.menu li {
-  margin-left: 20px;
-}
-.menu a {
+
+nav ul li a {
+  color: white;
   text-decoration: none;
-  color: #004775;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
+
+nav ul li a:hover {
+  color: var(--fdp-yellow);
+}
+
 .menu-toggle {
   display: none;
-  font-size: 1.5em;
+  font-size: 2rem;
   cursor: pointer;
 }
 
-/* Main Content */
 main {
-  padding: 20px;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
+
+/* Kasten für den Intro */
+#intro {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+#intro h1 {
+  font-weight: 900;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--fdp-blue);
+}
+
+#intro p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+#intro ul {
+  margin: 1rem 0 1.5rem 1.5rem;
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Button für Email */
+.email-button {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  background: var(--fdp-magenta);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(230,0,126,0.5);
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.email-button:hover {
+  background: #b50065;
+}
+
+/* Akkordeon */
+.accordion {
+  background-color: var(--fdp-yellow);
+  color: var(--fdp-blue);
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.accordion:hover {
+  background-color: #ffe44d;
+}
+
+.accordion.active {
+  background-color: var(--fdp-magenta);
+  color: white;
+}
+
+.panel {
+  padding: 0 1.5rem 1rem 1.5rem;
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Weitere Sektionen Styling */
 section {
-  margin-bottom: 20px;
-}
-section h2 {
-  color: #004775;
-}
-
-/* Footer */
-footer {
-  background-color: #004775;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: #FFD600;
-    position: absolute;
-    top: 60px;
-    left: 0;
-  }
-  .menu.active {
-    display: flex;
-  }
-  .menu li {
-    margin: 10px 0;
-    text-align: center;
-  }
-  .menu-toggle {
-    display: block;
-  }
-}
+  background: white;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,
