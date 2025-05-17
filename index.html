@@ -1,116 +1,165 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heschu Hasan – Direktkandidatin</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="logo">Heschu Hasan</div>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-      <ul id="menu" class="menu">
-        <li><a href="#umwelt">Umwelt</a></li>
-        <li><a href="#bildung">Bildung</a></li>
-        <li><a href="#biografie">Biografie</a></li>
-        <li><a href="#wahl">Wahlprogramm</a></li>
-      </ul>
-    </nav>
-  </header>
+/* FDP-Farben: Blau, Gelb, Magenta */
+:root {
+  --fdp-blue: #005ea8;
+  --fdp-yellow: #ffd500;
+  --fdp-magenta: #e6007e;
+  --bg-color: #f9f9f9;
+  --text-color: #333;
+  --button-bg: var(--fdp-yellow);
+  --button-text: var(--fdp-blue);
+  --accent-color: var(--fdp-magenta);
+}
 
-  <main>
-    <section id="intro">
-      <h1>Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h1>
-      <p>
-        Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.
-      </p>
-      <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
-      <h2>Ich fordere:</h2>
-      <ul>
-        <li>🔹 Konsequenzen bei systematischer Behördenwillkür</li>
-        <li>🔹 Schutz vor ungerechtfertigter Kriminalisierung</li>
-        <li>🔹 Das Recht darf nicht an Fristen und Formularen scheitern</li>
-      </ul>
-      <p>
-        Besonders im Bereich Umwelt und Bildung wird sichtbar, wie oft Politik nicht daran scheitert, dass es keine Ideen gibt – sondern daran, dass das System diese Ideen blockiert.
-      </p>
-      <ul>
-        <li>🔸 Energiewende? Verzögert durch überlastete Verfahren.</li>
-        <li>🔸 Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
-      </ul>
-      <p>
-        Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.
-      </p>
-      <p>
-        Ich stehe für einen Staat, der nicht bevormundet – sondern schützt. Der nicht unterdrückt – sondern zuhört.
-      </p>
-      <p>
-        Ich will, dass der Staat die beste Version seiner selbst wird: effizient, gerecht, transparent. Dafür kandidiere ich.
-      </p>
-      <p>
-        #ServusGerechtigkeitSinn #FDP #Verwaltungsreform #Bürgerrechte #Wahl2025 #RechtsstaatJetzt #Umweltpolitik #Bildungspolitik #ModernerStaat #Behördenwillkür
-      </p>
-    </section>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
 
-    <section id="umwelt">
-      <h2>Umweltpolitik</h2>
-      <p>
-        Besonders im Bereich Umwelt zeigt sich, wie unser System oft blockiert: Die Energiewende wird durch überlastete und langsame Genehmigungsverfahren gebremst – statt dass wir vorankommen, verlieren wir Zeit und Chancen.
-      </p>
-    </section>
+header {
+  background: var(--fdp-blue);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-    <section id="bildung">
-      <h2>Bildungspolitik</h2>
-      <p>
-        Bildungsgerechtigkeit wird ausgebremst, weil starre Strukturen und langsame Verwaltungsprozesse innovative Ideen nicht zulassen oder umsetzen. Diese systematischen Hürden verhindern, dass gute Politik tatsächlich ankommt und wirkt.
-      </p>
-    </section>
+.logo {
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
 
-    <section id="biografie">
-      <h2>Biografie</h2>
-      <p>
-        Hier kannst du deine persönliche Geschichte erzählen, deinen Werdegang, deine Motivation zur Kandidatur und deine Visionen.
-      </p>
-    </section>
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+}
 
-    <section id="wahl">
-      <h2>Wahlprogramm</h2>
-      <p>
-        Ich fordere klare Konsequenzen bei systematischer Behördenwillkür und verbesserten Schutz vor ungerechtfertigter Kriminalisierung. Recht darf nicht an Fristen oder Formularen scheitern! Ein Fehler in der Form darf nicht bedeuten, dass Gerechtigkeit unmöglich wird. Recht muss Vorrang haben vor Bürokratie.
-      </p>
-      <p>
-        Ich kandidiere als Direktkandidatin und stehe auf Listenplatz 12.
-      </p>
-      <p>
-        Für einen modernen Staat, der effizient, gerecht und transparent ist.
-      </p>
-    </section>
-  </main>
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
 
-  <footer>
-    <p>&copy; 2025 Heschu Hasan – Direktkandidatin</p>
-  </footer>
+nav ul li a:hover {
+  color: var(--fdp-yellow);
+}
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('active');
-    }
-  </script>
-</body>
-</html>
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
 
-<section>
-  <h2>Zur FDP</h2>
-  <p>Besuchen Sie auch die Website der <a href="https://www.fdp-freiburg.de" target="_blank">FDP Freiburg</a>.</p>
-</section>
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
 
-<footer>
-  <p>© 2025 Heschu Hasan – FDP Breisgau-Hochschwarzwald</p>
-  <p><a href="#">Impressum</a> | <a href="#">Datenschutzerklärung</a></p>
-</footer>
+/* Kasten für den Intro */
+#intro {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
 
-</body>
-</html>
+#intro h1 {
+  font-weight: 900;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--fdp-blue);
+}
+
+#intro p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+#intro ul {
+  margin: 1rem 0 1.5rem 1.5rem;
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Button für Email */
+.email-button {
+  display: inline-block;
+  padding: 0.7rem 1.8rem;
+  background: var(--fdp-magenta);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(230,0,126,0.5);
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.email-button:hover {
+  background: #b50065;
+}
+
+/* Akkordeon */
+.accordion {
+  background-color: var(--fdp-yellow);
+  color: var(--fdp-blue);
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.accordion:hover {
+  background-color: #ffe44d;
+}
+
+.accordion.active {
+  background-color: var(--fdp-magenta);
+  color: white;
+}
+
+.panel {
+  padding: 0 1.5rem 1rem 1.5rem;
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Weitere Sektionen Styling */
+section {
+  background: white;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,
