@@ -1,208 +1,153 @@
-/* Farben der FDP */
-:root {
-  --fdp-blue: #005ea8;
-  --fdp-yellow: #ffd500;
-  --fdp-magenta: #e6007e;
-  --bg-color: #f5f7fa;
-  --text-color: #222;
-  --button-bg: var(--fdp-yellow);
-  --button-text: var(--fdp-blue);
-  --accent-color: var(--fdp-magenta);
-}
-
-/* Reset & Grundstile */
+/* Reset & Grundstil */
 * {
+  margin: 0; 
+  padding: 0; 
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f9fc;
+  color: #1a1a1a;
   line-height: 1.6;
-  font-size: 18px;
+  padding: 20px;
 }
 
-/* Header & Navigation */
 header {
-  background: var(--fdp-blue);
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  background-color: #003366; /* Dunkelblau FDP */
+  padding: 1rem 0;
+  margin-bottom: 2rem;
 }
 
-.logo {
-  font-weight: 900;
-  font-size: 1.8rem;
-  letter-spacing: 2px;
-  user-select: none;
-}
-
-nav ul {
+.nav-list {
   list-style: none;
   display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-nav ul li a {
+.nav-list a {
   color: white;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a:focus {
-  color: var(--fdp-yellow);
-  outline: none;
+.nav-list a:hover,
+.nav-list a.active {
+  background-color: #ffcc00; /* FDP Gelb */
+  color: #003366;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 2.4rem;
-  cursor: pointer;
-}
-
-/* Responsive Navigation */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    background: var(--fdp-blue);
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    display: none;
-    border-radius: 0 0 0 8px;
-    box-shadow: -3px 3px 10px rgba(0,0,0,0.15);
-  }
-
-  nav ul.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-    color: white;
-  }
-}
-
-/* Hauptbereich */
 main {
   max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  margin: 0 auto;
 }
 
-/* Intro Section */
-#intro {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  padding: 2.5rem 3rem;
-  margin-bottom: 3rem;
-}
-
-#intro h1 {
-  font-weight: 900;
-  font-size: 2.4rem;
+h1 {
   margin-bottom: 1rem;
-  color: var(--fdp-blue);
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #003366;
 }
 
-#intro p {
-  font-size: 1.15rem;
+p {
   margin-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
-/* Akkordeon */
+ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  list-style: inside disc;
+}
+
+.email-button {
+  display: inline-block;
+  background-color: #ffcc00;
+  color: #003366;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.email-button:hover {
+  background-color: #e6b800;
+  color: #001a33;
+}
+
+/* Accordion */
 .accordion {
-  background-color: var(--fdp-yellow);
-  color: var(--fdp-blue);
+  background-color: #003366;
+  color: #fff;
   cursor: pointer;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.25rem;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 1.3rem;
-  font-weight: 700;
-  border-radius: 8px;
-  box-shadow: 0 3px 7px rgba(0,0,0,0.12);
-  margin: 1.5rem 0 1rem 0;
+  font-size: 1.25rem;
+  border-radius: 5px;
   transition: background-color 0.3s ease;
+  margin: 1rem 0;
 }
 
 .accordion:hover,
-.accordion:focus {
-  background-color: #ffe44d;
-}
-
 .accordion.active {
-  background-color: var(--fdp-magenta);
-  color: white;
+  background-color: #ffcc00;
+  color: #003366;
 }
 
 .panel {
-  padding: 0 1.5rem 1.5rem 1.5rem;
-  background-color: white;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 0 1.25rem;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--text-color);
+  background-color: #e9f0f8;
+  border-radius: 0 0 5px 5px;
+  margin-bottom: 1rem;
 }
 
-/* Bilder */
-.profilbild {
-  max-width: 100%;
-  height: auto;
-  margin-top: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  display: block;
-}
-
-/* Download Button */
-.fancy-download-button {
+/* Fancy Download Button */
+.fancy-button {
   display: inline-block;
-  background: linear-gradient(135deg, var(--fdp-yellow), var(--fdp-magenta));
-  color: #000;
-  padding: 15px 30px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-decoration: none;
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.12);
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-  user-select: none;
-}
-
-.fancy-download-button:hover,
-.fancy-download-button:focus {
-  background: linear-gradient(135deg, var(--fdp-magenta), var(--fdp-blue));
+  background: linear-gradient(45deg, #003366, #0066cc);
   color: white;
-  box-shadow: 0 9px 18px rgba(0, 0, 0, 0.25);
-  transform: translateY(-3px);
-  outline: none;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,102,204,0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Email Button */
-.email-button {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  background: var(--fdp
+.fancy-button:hover {
+  background: linear-gradient(45deg, #ffcc00, #ffdb4d);
+  color: #003366;
+  box-shadow: 0 6px 12px rgba(255,204,0,0.6);
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .nav-list {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
