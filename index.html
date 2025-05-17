@@ -4,239 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heschu Hasan – Direktkandidatin</title>
-
-  <!-- Google Fonts: Eleganter Sans Serif -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --fdp-blue: #005ea8;
-      --fdp-yellow: #ffd500;
-      --background: #f5f7fa;
-      --text-color: #222;
-      --accent: var(--fdp-yellow);
-      --button-bg: var(--fdp-blue);
-      --button-hover: #004080;
-    }
-
-    /* Reset & Basis */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--background);
-      color: var(--text-color);
-      line-height: 1.6;
-      font-size: 18px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      color: var(--fdp-blue);
-      text-decoration: none;
-      font-weight: 700;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: var(--fdp-yellow);
-    }
-
-    header {
-      background-color: var(--fdp-blue);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      user-select: none;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav ul li a {
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.3s ease;
-    }
-    nav ul li a:hover,
-    nav ul li a:focus {
-      border-color: var(--fdp-yellow);
-    }
-
-    main {
-      flex-grow: 1;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      width: 100%;
-    }
-
-    /* Hero Intro */
-    #intro {
-      background: white;
-      padding: 3rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      margin-bottom: 3rem;
-      text-align: center;
-    }
-
-    #intro h1 {
-      font-size: 2.8rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-      color: var(--fdp-blue);
-      letter-spacing: 1px;
-    }
-
-    #intro p {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      color: #444;
-    }
-
-    #intro p strong {
-      color: var(--fdp-blue);
-    }
-
-    /* Call to Action Button */
-    .email-button {
-      background-color: var(--button-bg);
-      color: white;
-      padding: 0.85rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,94,168,0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      display: inline-block;
-      user-select: none;
-    }
-    .email-button:hover,
-    .email-button:focus {
-      background-color: var(--button-hover);
-      box-shadow: 0 8px 25px rgba(0,94,168,0.9);
-      outline: none;
-    }
-
-    /* Sections */
-    section {
-      background: white;
-      padding: 2rem 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 2.5rem;
-    }
-
-    section h2 {
-      color: var(--fdp-blue);
-      font-weight: 900;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.5px;
-    }
-
-    section p {
-      font-size: 1.1rem;
-      color: #333;
-      margin-bottom: 1rem;
-    }
-
-    /* Profilbild */
-    .profilbild {
-      max-width: 100%;
-      border-radius: 15px;
-      margin-top: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Download Button Fancy */
-    .fancy-download-button {
-      background: linear-gradient(135deg, var(--fdp-yellow), var(--fdp-blue));
-      color: #fff;
-      padding: 1rem 2.5rem;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 50px;
-      text-align: center;
-      display: inline-block;
-      box-shadow: 0 6px 15px rgba(0, 94, 168, 0.6);
-      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
-      user-select: none;
-      margin-top: 1.5rem;
-      text-decoration: none;
-    }
-    .fancy-download-button:hover,
-    .fancy-download-button:focus {
-      background: linear-gradient(135deg, var(--fdp-blue), var(--fdp-yellow));
-      box-shadow: 0 10px 25px rgba(0, 94, 168, 0.9);
-      transform: translateY(-3px);
-      outline: none;
-      color: #fff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem 2rem;
-      color: #666;
-      font-size: 0.9rem;
-      user-select: none;
-      background: #fafafa;
-      border-top: 1px solid #ddd;
-    }
-
-    /* Responsive Navigation */
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: var(--fdp-blue);
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        border-radius: 8px;
-        width: 180px;
-        padding: 1rem 0;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-        font-size: 2.2rem;
-        color: white;
-        cursor: pointer;
-        user-select: none;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -250,4 +18,87 @@
         <li><a href="#wahl">Wahlprogramm</a></li>
       </ul>
     </nav>
-  </header
+  </header>
+
+  <main>
+    <section id="intro">
+      <h1>Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h1>
+      <p>
+        Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.
+      </p>
+      <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
+
+      <button class="accordion">Meine Forderungen</button>
+      <div class="panel">
+        <ul>
+          <li>🔹 Konsequenzen bei systematischer Behördenwillkür</li>
+          <li>🔹 Schutz vor ungerechtfertigter Kriminalisierung</li>
+          <li>🔹 Das Recht darf nicht an Fristen und Formularen scheitern</li>
+        </ul>
+      </div>
+
+      <p>
+        Besonders im Bereich Umwelt und Bildung wird sichtbar, wie oft Politik nicht daran scheitert, dass es keine Ideen gibt – sondern daran, dass das System diese Ideen blockiert.
+      </p>
+      <ul>
+        <li>🔸 Energiewende? Verzögert durch überlastete Verfahren.</li>
+        <li>🔸 Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
+      </ul>
+      <p>
+        Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.
+      </p>
+
+      <a href="mailto:heschuhasan@gmail.com" class="email-button">✉️ Kontakt per E-Mail</a>
+    </section>
+
+    <section id="umwelt">
+      <h2>Umweltpolitik</h2>
+      <p>Text zur Umweltpolitik...</p>
+    </section>
+
+    <section id="bildung">
+      <h2>Bildungspolitik</h2>
+      <p>Text zur Bildungspolitik...</p>
+    </section>
+
+    <section id="biografie">
+      <h2>Biografie</h2>
+      <p>Mein Name ist Heschu Hasan und ich bin studierte Wirtschaftswissenschaftlerin.
+      Ich bin in der Autonomen Region Kurdistan geboren und in Deutschland aufgewachsen.</p>
+      <img src="IMG_1604.jpeg" alt="Heschu Hasan" class="profilbild" />
+    </section>
+
+    <section id="wahl">
+      <h2>Wahlprogramm</h2>
+      <p>Hier können Sie das vollständige Wahlprogramm der FDP als PDF herunterladen:</p>
+      <a href="fdp-wahlprogramm_2025.pdf" download class="fancy-download-button">
+        📄 Wahlprogramm der FDP herunterladen
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Heschu Hasan – Direktkandidatin</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    }
+
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(acc => {
+      acc.addEventListener('click', () => {
+        acc.classList.toggle('active');
+        const panel = acc.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
