@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heschu Hasan – Direktkandidatin</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/jpeg" href="IMG_2046.jpeg" />
 </head>
 <body>
   <header>
@@ -21,8 +22,9 @@
 
   <main>
     <section class="intro">
-      <h1> Willkommen auf meiner Website. Hier finden Sie alles zu meiner Kandidatur.</h1>
-      <h2>  Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h1>   </h2>
+      <h1>Willkommen auf meiner Website. Hier finden Sie alles zu meiner Kandidatur.</h1>
+      <h2>Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h2>
+      
       <p>
         Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.
       </p>
@@ -56,5 +58,18 @@
     <p>&copy; 2025 Heschu Hasan</p>
   </footer>
 
+  <script>
+    // Accordion Script
+    const acc = document.querySelector(".accordion");
+    const panel = document.querySelector(".panel");
+    acc.addEventListener("click", function () {
+      this.classList.toggle("active");
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  </script>
 </body>
 </html>
