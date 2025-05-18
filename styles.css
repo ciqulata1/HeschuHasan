@@ -412,6 +412,26 @@ button, a {
   border-bottom: none;
 }
 
+.forderung-box {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #c1d9e8;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: #003348;
+}
+
+.forderung-box:last-child {
+  border-bottom: none;
+}
+
+.forderung-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+
 /* Intro Abschnitt */
 .intro p strong {
   color: #00334d;
