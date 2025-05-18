@@ -68,6 +68,14 @@ h1, h2, p, ul, li, button.accordion {
   list-style: none;
   gap: 25px;
 }
+@media (max-width: 768px) {
+  .nav-list {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+}
 
 /* Responsive */
 @media (max-width: 768px) {
