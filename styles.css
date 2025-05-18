@@ -272,6 +272,11 @@ a {
     0 0 40px 20px rgba(255, 199, 0, 0.3);
 }
 
+.accordion-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .accordion:hover {
   background-color: #FFD500; /* dunkler beim Hover */
   border-color: #003366;
