@@ -51,13 +51,11 @@
       </p>
       <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
 
-      <button class="accordion">Meine Forderungen</button>
+      <button class="accordion" aria-expanded="false">Meine Forderungen <span class="arrow">▼</span></button>
       <div class="panel">
-        <ul>
-          <li>🔹 Konsequenzen bei systematischer Behördenwillkür</li>
-          <li>🔹 Schutz vor ungerechtfertigter Kriminalisierung</li>
-          <li>🔹 Das Recht darf nicht an Fristen und Formularen scheitern</li>
-        </ul>
+        <div class="forderung-item">Konsequenzen bei systematischer Behördenwillkür</div>
+        <div class="forderung-item">Schutz vor ungerechtfertigter Kriminalisierung</div>
+        <div class="forderung-item">Das Recht darf nicht an Fristen und Formularen scheitern</div>
       </div>
 
       <p>
@@ -80,19 +78,28 @@
   </footer>
 
   <script>
-    // Accordion Script
     function initAccordion() {
       const acc = document.querySelector(".accordion");
       const panel = document.querySelector(".panel");
+
       if (acc && panel) {
         acc.addEventListener("click", function () {
-          this.classList.toggle("active");
-          panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+          const isOpen = panel.classList.toggle("open");
+          this.classList.toggle("active", isOpen);
+          this.setAttribute("aria-expanded", isOpen);
+
+          if (isOpen) {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          } else {
+            panel.style.maxHeight = null;
+          }
         });
+
+        panel.style.maxHeight = null; // Startzustand
       }
     }
 
-    // Dynamisches Nachladen
+    // Dynamisches Nachladen der Seiten (Navigation)
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -122,7 +129,7 @@
       });
     });
 
-    // Initialisiere Accordion beim ersten Laden
+    // Accordion initialisieren
     initAccordion();
   </script>
 </body>
