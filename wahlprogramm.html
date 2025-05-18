@@ -12,64 +12,118 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
   <!-- Externe CSS-Datei -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <a href="#" class="logo">Heschu Hasan</a>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
-      <button class="burger" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="nav-menu">
-        <span class="burger-bar"></span>
-        <span class="burger-bar"></span>
-        <span class="burger-bar"></span>
-      </button>
+        <!-- Desktop Menü -->
+        <ul class="nav-list">
+          <li><a href="#" data-page="index.html">Startseite</a></li>
+          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
+          <li><a href="#" data-page="bildung.html">Bildung</a></li>
+          <li><a href="#" data-page="biografie.html">Biografie</a></li>
+          <li><a href="#" data-page="wahlprogramm.html" class="active">Wahlprogramm</a></li>
+        </ul>
 
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="umwelt.html">Umwelt</a></li>
-        <li><a href="bildung.html">Bildung</a></li>
-        <li><a href="biografie.html">Biografie</a></li>
-        <li><a href="wahlprogramm.html" class="active">Wahlprogramm</a></li>
-      </ul>
-    </nav>
-  </header>
+        <!-- Mobile Menü -->
+        <ul class="nav-list-burger">
+          <li><a href="#" data-page="index.html">Startseite</a></li>
+          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
+          <li><a href="#" data-page="bildung.html">Bildung</a></li>
+          <li><a href="#" data-page="biografie.html">Biografie</a></li>
+          <li><a href="#" data-page="wahlprogramm.html" class="active">Wahlprogramm</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <main>
-    <h1>📄 Wahlprogramm 2025</h1>
-    <p>Erleben Sie unsere Vision für ein modernes, chancengerechtes und wirtschaftlich starkes Deutschland.</p>
+    <main id="content">
+      <section>
+        <h1>📄 Wahlprogramm 2025</h1>
+        <p>Erleben Sie unsere Vision für ein modernes, chancengerechtes und wirtschaftlich starkes Deutschland.</p>
 
-    <div class="download-container">
-      <a href="fdp-wahlprogramm_2025.pdf" class="fancy-download-button" download>
-        🚀 Jetzt PDF herunterladen – Zukunft gestalten!
-      </a>
-    </div>
+        <div class="download-container">
+          <a href="fdp-wahlprogramm_2025.pdf" class="fancy-download-button" download>
+            🚀 Jetzt PDF herunterladen – Zukunft gestalten!
+          </a>
+        </div>
 
-    <section>
-      <h2>🎯 Meine wichtigsten Ziele</h2>
-      <ul>
-        <li>🌱 <strong>Nachhaltige Umweltpolitik:</strong> Innovation statt Verbot</li>
-        <li>💡 <strong>Bildung & Digitalisierung:</strong> Für echten Aufstieg durch Bildung</li>
-        <li>📈 <strong>Starke Wirtschaft:</strong> Weniger Bürokratie, mehr Unternehmertum</li>
-        <li>⚖️ <strong>Rechtsstaat & Freiheit:</strong> Bürgerrechte schützen und stärken</li>
-      </ul>
-    </section>
-  </main>
+        <section>
+          <h2>🎯 Meine wichtigsten Ziele</h2>
+          <ul>
+            <li>🌱 <strong>Nachhaltige Umweltpolitik:</strong> Innovation statt Verbot</li>
+            <li>💡 <strong>Bildung & Digitalisierung:</strong> Für echten Aufstieg durch Bildung</li>
+            <li>📈 <strong>Starke Wirtschaft:</strong> Weniger Bürokratie, mehr Unternehmertum</li>
+            <li>⚖️ <strong>Rechtsstaat & Freiheit:</strong> Bürgerrechte schützen und stärken</li>
+          </ul>
+        </section>
+      </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Heschu Hasan</p>
-  </footer>
+    <footer>
+      <p>&copy; 2025 Heschu Hasan</p>
+    </footer>
 
-  <script>
-    const burger = document.querySelector('.burger');
-    const navMenu = document.querySelector('.nav-menu');
+    <script>
+      // Burger-Menü Toggle
+      const burger = document.querySelector('.burger');
+      const navBurger = document.querySelector('.nav-list-burger');
 
-    burger.addEventListener('click', () => {
-      const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
-      burger.setAttribute('aria-expanded', !expanded);
-      navMenu.classList.toggle('nav-menu-active');
-    });
-  </script>
+      burger.addEventListener('click', () => {
+        navBurger.classList.toggle('active');
+      });
+
+      // Dynamisches Nachladen der Seiten (Navigation)
+      function setupNavigation() {
+        const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
+        const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
+
+        function loadPage(e) {
+          e.preventDefault();
+          const page = this.getAttribute('data-page');
+          if (!page) return;
+
+          fetch(page)
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
+              document.getElementById('content').innerHTML = newContent;
+
+              // Menü schließen bei mobile
+              navBurger.classList.remove('active');
+
+              // Aktiven Menüpunkt synchron setzen
+              navLinksDesktop.forEach(a => a.classList.remove('active'));
+              navLinksMobile.forEach(a => a.classList.remove('active'));
+
+              navLinksDesktop.forEach(a => {
+                if (a.getAttribute('data-page') === page) a.classList.add('active');
+              });
+              navLinksMobile.forEach(a => {
+                if (a.getAttribute('data-page') === page) a.classList.add('active');
+              });
+            })
+            .catch(err => {
+              console.error('Fehler beim Laden:', err);
+              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
+            });
+        }
+
+        navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
+        navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
+      }
+
+      setupNavigation();
+    </script>
+  </div>
 </body>
 </html>
