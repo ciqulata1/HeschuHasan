@@ -1,18 +1,19 @@
 /* --- Grundlegendes Layout --- */
 body {
-  font-family: 'Dancing Script', cursive, Times New Roman, sans-serif;
+  font-family: 'Great Vibes', cursive, 'Times New Roman', serif;
+  font-weight: 400; /* default reicht, Great Vibes hat meist nur eine Schriftstärke */
   margin: 0;
-  padding: 0 20px;
-  font-weight: 300;
+  padding: 20px;
   background-color: #2f2f2f;
   color: white;
   line-height: 1.6;
-
+  
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  padding: 20px;
+  box-sizing: border-box;
 }
+
 
 *, *::before, *::after {
   box-sizing: border-box;
