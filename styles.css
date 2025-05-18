@@ -370,7 +370,7 @@ a {
 
 /* Panel */
  .panel {
-  max-height: 0;
+  max-height: 500px;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
   background: linear-gradient(135deg, #f39ac3, #e6007e);
