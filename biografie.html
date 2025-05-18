@@ -5,79 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Biografie – Heschu Hasan</title>
 
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-  <!-- Nur wenn du Styles brauchst, die überall gelten -->
+  <!-- Externe CSS -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Lokales Styling für Biografie – keine Button-Konflikte -->
-  <style>
-    .biografie-image-wrapper {
-      display: flex;
-      justify-content: center;
-      margin: 2em 0;
-    }
-
-    .biografie-image {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      border: 6px solid #FFD700;
-      box-shadow: 0 0 20px 6px #FFD700;
-      object-fit: cover;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .biografie-image:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px 10px #FFC300;
-    }
-
-    /* Navigation (optional, falls styles.css fehlt oder du lokal testen willst) */
-    .nav-list {
-      list-style: none;
-      display: flex;
-      gap: 1em;
-      padding: 1em;
-      background: #eee;
-      justify-content: center;
-    }
-
-    .nav-list a {
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-
-    .nav-list .active {
-      color: #FFD700;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 1em;
-      font-family: sans-serif;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3em;
-      padding: 1em;
-      background: #f1f1f1;
-      font-size: 0.9em;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <ul class="nav-list">
+    <nav class="navbar">
+      <a href="#" class="logo">Heschu Hasan</a>
+      
+      <button class="burger" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="nav-menu">
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
         <li><a href="index.html">Startseite</a></li>
         <li><a href="umwelt.html">Umwelt</a></li>
         <li><a href="bildung.html">Bildung</a></li>
@@ -96,7 +38,6 @@
       Seit vielen Jahren setze ich mich für eine gerechtere Gesellschaft ein, in der Respekt und Chancengleichheit für alle im Mittelpunkt stehen.
     </p>
 
-    <!-- Bild -->
     <div class="biografie-image-wrapper">
       <img src="IMG_1604.jpeg" alt="Portrait von Heschu Hasan" class="biografie-image" />
     </div>
@@ -109,5 +50,17 @@
   <footer>
     <p>&copy; 2025 Heschu Hasan</p>
   </footer>
+
+  <script>
+    // Burger-Menü Toggle
+    const burger = document.querySelector('.burger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    burger.addEventListener('click', () => {
+      const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
+      burger.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('nav-menu-active');
+    });
+  </script>
 </body>
 </html>
