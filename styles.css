@@ -440,15 +440,19 @@ button, a {
 }
 
 .forderung-box {
-  display: center;
-  align-items: center;
-  padding: 6px 0;
-  border-bottom: 1px solid #c1d9e8;
+ .forderung-box {
+  display: block; /* oder flex, wenn du Zentrierung brauchst */
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  padding: 10px 20px;
   font-family: 'Playfair Display', serif;
   font-size: 0.9rem;
   color: #003348;
-  max-width: 600px; 
-  margin: 0 auto 1rem;
+  border: 1px solid #c1d9e8;
+  border-radius: 8px;
+  background-color: #f0f8ff; /* optional für bessere Sichtbarkeit */
+}
+
 }
 
 .forderung-box:last-child {
