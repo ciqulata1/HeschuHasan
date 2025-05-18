@@ -50,6 +50,33 @@
       padding: 1.5em;
       border-radius: 8px;
     }
+
+    nav ul.nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1em;
+      background-color: #eee;
+      padding: 1em;
+    }
+
+    nav ul.nav-list li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    nav ul.nav-list li a.active {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    footer {
+      margin-top: 3em;
+      padding: 1em;
+      text-align: center;
+      background-color: #f1f1f1;
+    }
   </style>
 </head>
 <body>
@@ -69,8 +96,11 @@
     <h1>📄 Wahlprogramm 2025</h1>
     <p>Erleben Sie unsere Vision für ein modernes, chancengerechtes und wirtschaftlich starkes Deutschland.</p>
 
-    <a href="fdp-wahlprogramm_2025.pdf" class="download-button" download>Download Wahlprogramm
-  🚀 Jetzt PDF herunterladen – Zukunft gestalten!</a>
+    <div style="text-align: center;">
+      <a href="fdp-wahlprogramm_2025.pdf" class="fancy-download-button" download>
+        🚀 Jetzt PDF herunterladen – Zukunft gestalten!
+      </a>
+    </div>
 
     <section>
       <h2>🎯 Meine wichtigsten Ziele</h2>
