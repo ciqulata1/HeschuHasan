@@ -15,7 +15,7 @@ body {
 
 /* Navigation */
 header {
-  background-color: #004080; /* Dunkelblau FDP */
+  background-color: #004080;
   padding: 1rem 0;
   margin-bottom: 2rem;
 }
@@ -43,7 +43,6 @@ header {
   color: black;
 }
 
-/* Aktiver Link */
 .nav-list li a.active {
   background-color: #ffcc00;
   color: black;
@@ -73,7 +72,7 @@ header {
   outline: none;
 }
 
-/* Neuer moderner Stil für main-Content (z.B. Umweltpolitik) */
+/* Neuer moderner Stil für main-Content */
 main {
   max-width: 720px;
   margin: 0 auto 3rem;
@@ -84,7 +83,7 @@ main h1 {
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #CE0068; /* kräftiges Magenda */
+  color: #CE0068;
 }
 
 main p {
@@ -104,6 +103,12 @@ main a {
   border-bottom: 2px solid transparent;
   transition: border-color 0.3s ease;
 }
+
+main a:hover {
+  border-color: #CE0068;
+}
+
+/* Biografie-Bild Wrapper & Stil */
 .biografie-image-wrapper {
   display: flex;
   justify-content: center;
@@ -111,7 +116,8 @@ main a {
 }
 
 .biografie-image {
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   height: auto;
   border-radius: 50%;
   border: 5px solid #ffcc00;
@@ -128,8 +134,4 @@ main a {
     0 0 25px 10px rgba(255, 204, 0, 0.9),
     0 6px 15px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-}
-
-main a:hover {
-  border-color: #CE0068;
 }
