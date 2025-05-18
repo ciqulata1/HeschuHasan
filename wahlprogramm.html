@@ -14,75 +14,19 @@
 
   <!-- Externe CSS-Datei -->
   <link rel="stylesheet" href="styles.css" />
-
-  <style>
-    .fancy-download-button {
-      display: inline-block;
-      margin: 1em 0;
-      padding: 1em 2em;
-      background: linear-gradient(135deg, #FFD700, #ff4d00);
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-    }
-
-    .fancy-download-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.3);
-    }
-
-    main h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
-
-    main ul li {
-      margin: 0.5em 0;
-      font-size: 1.1em;
-    }
-
-    main section {
-      margin-top: 2em;
-      background: #f9f9f9;
-      padding: 1.5em;
-      border-radius: 8px;
-    }
-
-    nav ul.nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 1em;
-      background-color: #eee;
-      padding: 1em;
-    }
-
-    nav ul.nav-list li a {
-      text-decoration: none;
-      color: #333;
-    }
-
-    nav ul.nav-list li a.active {
-      font-weight: bold;
-      color: #007bff;
-    }
-
-    footer {
-      margin-top: 3em;
-      padding: 1em;
-      text-align: center;
-      background-color: #f1f1f1;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <nav>
-      <ul class="nav-list">
+    <nav class="navbar">
+      <a href="#" class="logo">Heschu Hasan</a>
+
+      <button class="burger" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="nav-menu">
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
         <li><a href="index.html">Startseite</a></li>
         <li><a href="umwelt.html">Umwelt</a></li>
         <li><a href="bildung.html">Bildung</a></li>
@@ -96,7 +40,7 @@
     <h1>📄 Wahlprogramm 2025</h1>
     <p>Erleben Sie unsere Vision für ein modernes, chancengerechtes und wirtschaftlich starkes Deutschland.</p>
 
-    <div style="text-align: center;">
+    <div class="download-container">
       <a href="fdp-wahlprogramm_2025.pdf" class="fancy-download-button" download>
         🚀 Jetzt PDF herunterladen – Zukunft gestalten!
       </a>
@@ -116,5 +60,16 @@
   <footer>
     <p>&copy; 2025 Heschu Hasan</p>
   </footer>
+
+  <script>
+    const burger = document.querySelector('.burger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    burger.addEventListener('click', () => {
+      const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
+      burger.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('nav-menu-active');
+    });
+  </script>
 </body>
 </html>
