@@ -252,6 +252,7 @@ a {
   border: 2px solid #004080; /* elegantes Blau */
   cursor: pointer;
   padding: 15px 20px;
+  font-family: 'Great Vibes', cursive;
   width: 100%;
   border-radius: 6px;
   display: flex;
@@ -261,7 +262,7 @@ a {
   font-weight: 600;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;;
   box-shadow:
     0 0 10px 3px rgba(255, 199, 0, 0.8),
     0 0 20px 7px rgba(255, 199, 0, 0.6),
@@ -372,11 +373,12 @@ a {
 /* Panel */
  .panel {
   max-height: 500px;
-  overflow: hidden;
+  overflow: visible !important;
   transition: max-height 0.4s ease, padding 0.4s ease;
   background: linear-gradient(135deg, #f39ac3, #e6007e);
   border-radius: 0 0 6px 6px;
   padding: 0 20px;
+  padding-bottom: 20px;
   margin-bottom: 40px;
   color: white; /* weiße Schrift für bessere Lesbarkeit */
 }
