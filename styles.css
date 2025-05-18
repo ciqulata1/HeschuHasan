@@ -374,3 +374,18 @@ footer {
   }
 }
 
+.biografie-image-wrapper {
+  max-width: 150px;    /* Bildcontainer begrenzen */
+  margin: 20px auto;   /* zentrieren */
+}
+
+.biografie-image {
+  width: 100%;           /* Bild passt sich dem Container an */
+  height: auto;          /* Höhe proportional */
+  border-radius: 50%;    /* macht es rund */
+  object-fit: cover;     /* Bild füllt den Kreis gut aus */
+  display: block;        /* entfernt kleine Inline-Abstände */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* leichter Schatten */
+}
+
+
