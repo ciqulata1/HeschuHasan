@@ -74,6 +74,11 @@ h1, h2, p, ul, li, button.accordion {
     max-height: 500px;
 }
 
+.nav-list-burger li {
+  margin-bottom: 12px; /* Abstand zwischen den Punkten */
+}
+
+
 .nav-list-burger li a {
   padding: 1rem;
   border-top: 1px solid #444;
@@ -473,11 +478,13 @@ footer {
 }
 
 :focus {
-  outline: 1px solid #ffde00;
-  outline-offset: 3px;
-  box-shadow: 0 0 6px 2px rgba(255, 222, 0, 0.7);
-  animation: pulseGlow 1s infinite;
-  border-radius: 4px; /* damit Schatten schön rund läuft */
+  outline: none; /* Outline aus */
+  box-shadow: 0 0 4px 2px rgba(255, 105, 180, 0.6); /* zartes Pink mit Glow */
+  outline-offset: 2px;
+  border-radius: 4px; /* runde Ecken */
+  transition: box-shadow 0.3s ease;
+}
+
 }
 
 @keyframes pulseGlow {
