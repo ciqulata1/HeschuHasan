@@ -46,10 +46,14 @@ h1, h2, p, ul, li, button.accordion {
 /* Mobile Menü */
 .nav-list-burger {
 
-    position: fixed;
+ transition: max-height 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+  position: fixed;
   top: 60px; /* Platz unter Burger */
   right: 10px;
   background-color: #e10074;
+   color: white;
   padding: 1rem;
   display: none;
   flex-direction: column;
@@ -67,6 +71,7 @@ h1, h2, p, ul, li, button.accordion {
 
 .nav-list-burger.active {
   display: flex;
+    max-height: 500px;
 }
 
 .nav-list-burger li a {
@@ -74,6 +79,10 @@ h1, h2, p, ul, li, button.accordion {
   border-top: 1px solid #444;
   color: white;
   text-decoration: none;
+}
+.nav-list-burger li a.active {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /* Desktop Menü (Beispiel) */
