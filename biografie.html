@@ -12,9 +12,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-  <!-- Externe CSS-Datei -->
+  <!-- Nur wenn du Styles brauchst, die überall gelten -->
   <link rel="stylesheet" href="styles.css" />
 
+  <!-- Lokales Styling für Biografie – keine Button-Konflikte -->
   <style>
     .biografie-image-wrapper {
       display: flex;
@@ -35,6 +36,41 @@
     .biografie-image:hover {
       transform: scale(1.05);
       box-shadow: 0 0 30px 10px #FFC300;
+    }
+
+    /* Navigation (optional, falls styles.css fehlt oder du lokal testen willst) */
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 1em;
+      padding: 1em;
+      background: #eee;
+      justify-content: center;
+    }
+
+    .nav-list a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .nav-list .active {
+      color: #FFD700;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1em;
+      font-family: sans-serif;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3em;
+      padding: 1em;
+      background: #f1f1f1;
+      font-size: 0.9em;
     }
   </style>
 </head>
@@ -60,7 +96,7 @@
       Seit vielen Jahren setze ich mich für eine gerechtere Gesellschaft ein, in der Respekt und Chancengleichheit für alle im Mittelpunkt stehen.
     </p>
 
-    <!-- Bild mit Stil -->
+    <!-- Bild -->
     <div class="biografie-image-wrapper">
       <img src="IMG_1604.jpeg" alt="Portrait von Heschu Hasan" class="biografie-image" />
     </div>
