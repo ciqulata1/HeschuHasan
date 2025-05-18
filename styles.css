@@ -119,6 +119,68 @@ a:hover {
     0 0 40px 20px rgba(255, 199, 0, 0.7),
     0 0 50px 30px rgba(255, 199, 0, 0.5);
 }
+.contact-box {
+  background-color: #f5c518; /* FDP-Gelb */
+  border: 2px solid #ddba00; /* dunkleres Gelb für Kontur */
+  border-radius: 10px;
+  padding: 25px 30px;
+  text-align: center;
+  box-shadow:
+    0 0 10px #f5c518,
+    0 0 20px #f5c518,
+    0 0 30px #f5c518,
+    0 0 40px #ddb100,
+    0 0 50px #ddb100,
+    0 0 60px #b38f00;
+  animation: glowing 2.5s ease-in-out infinite alternate;
+  max-width: 400px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  cursor: pointer;
+}
+
+.contact-box:hover {
+  box-shadow:
+    0 0 20px #ffeb3b,
+    0 0 30px #ffeb3b,
+    0 0 40px #ffeb3b,
+    0 0 50px #ffea00,
+    0 0 60px #ffd600,
+    0 0 70px #ffca28;
+  transform: scale(1.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-button {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #333;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow:
+      0 0 10px #f5c518,
+      0 0 20px #f5c518,
+      0 0 30px #f5c518,
+      0 0 40px #ddb100,
+      0 0 50px #ddb100,
+      0 0 60px #b38f00;
+  }
+  100% {
+    box-shadow:
+      0 0 20px #ffeb3b,
+      0 0 30px #ffeb3b,
+      0 0 40px #ffeb3b,
+      0 0 50px #ffea00,
+      0 0 60px #ffd600,
+      0 0 70px #ffca28;
+  }
+}
 
 /* Pfeil */
 .accordion .arrow {
