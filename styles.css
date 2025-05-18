@@ -274,3 +274,15 @@ footer {
   text-align: center;
   font-size: 0.9rem;
 }
+
+@media (max-width: 480px) {
+  body {
+    padding: 0 10px;
+  }
+  .nav-list {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+  }
+}
+
