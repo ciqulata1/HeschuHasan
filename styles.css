@@ -313,7 +313,7 @@ a {
   animation: glowing 2.5s ease-in-out infinite alternate;
   max-width: 600px;
   margin: 2rem auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Playfair Display', serif;
   color: white;
   cursor: pointer;
 }
