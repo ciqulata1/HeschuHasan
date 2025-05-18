@@ -43,12 +43,16 @@ h1, h2, p, ul, li, button.accordion {
 .nav-list-burger {
   display: none; /* Standard versteckt */
   flex-direction: column;
-  background: #111;
+  background: #ff00cc;
   position: absolute;
   top: 100%;
   right: 0;
   width: 200px;
   z-index: 9;
+}
+  .nav-list-burger li a {
+  color: white !important;
+  text-decoration: none !important;  /* Durchstreichen verhindern */
 }
 
 .nav-list-burger.active {
