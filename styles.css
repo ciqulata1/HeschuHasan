@@ -248,6 +248,8 @@ a {
 
 .accordion {
   max-width: 600px;
+  position: relative;
+  padding-right: 30px; 
   margin: 2rem auto;
   background-color: #FFC700; /* etwas dunkleres Gelb */
   color: #222;
@@ -371,7 +373,10 @@ a {
 
 /* Eleganter Pfeil */
 .accordion .arrow {
-  margin-left: auto;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   transition: transform 0.3s ease;
 }
 
