@@ -331,14 +331,15 @@ a {
 }
 
 .email-button {
-  font-weight: 700;
+  font-weight: bold;
   font-size: 1.4rem;
   color: #333;
   text-decoration: none;
   display: inline-block;
   margin-bottom: 10px;
   padding: 10px 20px;
-  
+  background-color: #FFD500;
+  transition: background-color 0.3s ease;
 }
 
 @keyframes glowing {
