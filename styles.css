@@ -114,6 +114,14 @@ a:hover {
 .accordion.active .arrow {
   transform: rotate(180deg);
 }
+.accordion {
+  color: #333; /* dein Text und Pfeil sind dann dunkel */
+}
+
+.accordion .arrow {
+  color: #FFC700; /* strahlendes Gelb für den Pfeil */
+}
+
 
 /* Panel */
 .panel {
