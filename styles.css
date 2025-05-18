@@ -398,7 +398,7 @@ button, a {
 .panel.open {
   padding: 15px 20px;
   opacity: 1; 
-  max-height: 1000px; /* groß genug für Inhalt */
+  max-height: none; /* groß genug für Inhalt */
 }
 
 /* Forderung-Items */
@@ -437,6 +437,7 @@ button, a {
 .intro p strong {
   color: #00334d;
   font-weight: 700;
+   padding-bottom: 50px;
 }
 
 /* --- Download Button fancy --- */
