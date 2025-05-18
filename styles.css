@@ -380,8 +380,11 @@ a {
 /* Eleganter Pfeil */
 .accordion .arrow {
   margin-left: auto;
-  color: #003348; /* z.B. dunkles Blau statt weiß */
+  fill: none;
+  stroke: #003348;
   transition: transform 0.3s ease;
+  width: 16px;
+  height: 16px;
 }
 
 
