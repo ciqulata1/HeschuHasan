@@ -24,7 +24,6 @@ h1, h2, p, ul, li, button.accordion {
   color: white;
 }
 
-
 /* Burger Button */
 .burger {
   font-size: 2.5rem;
@@ -63,21 +62,31 @@ h1, h2, p, ul, li, button.accordion {
   text-decoration: none;
 }
 
+/* Desktop Menü (Beispiel) */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-  /* Desktop-Menü verstecken, falls du eins hast */
-  /* Beispiel: nav ul.nav-list { display: none; } */
+  /* Desktop-Menü ausblenden */
+  .nav-list {
+    display: none;
+  }
 
   /* Burger Button anzeigen */
   .burger {
     display: block;
   }
 }
-  
+
 /* Positionierung des Navs für das Dropdown */
 nav {
   position: relative;
 }
+
 
 
 /* Wrapper-Stil */
