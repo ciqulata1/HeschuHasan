@@ -135,6 +135,11 @@ a:hover {
   flex: 1;
   text-align: center;
 }
+.nav-list-burger li a {
+  color: white !important;
+  text-decoration: none !important;
+}
+
 
 .nav-list a {
   display: block;
