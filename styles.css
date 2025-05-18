@@ -98,33 +98,23 @@ header {
   outline: none;
 }
 
-/* Neuer moderner Stil für main-Content */
-main {
-  max-width: 720px;
-  margin: 0 auto 3rem;
-  padding: 0 1rem;
-}
-
+/* Hauptüberschrift: Magenta (FDP) */
 main h1 {
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #CE0068;
+  color: #CE0068; /* Magenta */
 }
 
-main p {
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
-  color: #222;
-}
-
+/* Betonung im Text: FDP-Blau */
 main strong {
-  color: #00582a;
+  color: #004080;
   font-weight: 700;
 }
 
+/* Alle Links: Magenta */
 main a {
-  color: #CE0068;
+  color: #CE0068; /* Magenta */
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: border-color 0.3s ease;
@@ -133,6 +123,20 @@ main a {
 main a:hover {
   border-color: #CE0068;
 }
+
+/* Navigation: bleibt weiß/gold/gelb → perfekt */
+.nav-list li a {
+  color: white;
+}
+
+/* Aktiver Navigationspunkt: Gelb */
+.nav-list li a.active {
+  background-color: #ffcc00;
+  color: black;
+}
+
+/* Download-Button: Gelb + Schwarz → perfekt */
+
 
 /* Biografie-Bild Wrapper & Stil */
 .biografie-image-wrapper {
