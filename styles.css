@@ -299,7 +299,7 @@ a {
 }
 .contact-box {
   background-color: #FFD500; /* FDP-Gelb */
-  border: 1px solid #0077cc;
+  border: 2px solid #0077cc;
   border-radius: 8px;
   padding: 10px 20px;
   text-align: center;
@@ -333,7 +333,7 @@ a {
 .email-button {
   font-weight: bold;
   font-size: 1.4rem;
-  color: #333;
+  color: white;
   text-decoration: none;
   display: inline-block;
   margin-bottom: 10px;
