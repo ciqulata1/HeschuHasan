@@ -1,10 +1,10 @@
 /* --- Grundlegendes Layout --- */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Bangers', cursive, Arial, sans-serif;
   margin: 0;
   padding: 0 20px;
   background-color: #2f2f2f;
-  color: #00334d;
+  color: white;
   line-height: 1.6;
 
   display: flex;
@@ -12,6 +12,57 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   padding: 20px;
+}
+
+h1, h2, p, ul, li, button.accordion {
+  color: white;
+}
+
+/* Burger Button */
+.burger {
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+/* Mobile Menü */
+.nav-list-burger {
+  display: none;
+  flex-direction: column;
+  background: #111;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  z-index: 9;
+}
+
+.nav-list-burger.active {
+  display: flex;
+}
+
+.nav-list-burger li a {
+  padding: 1rem;
+  border-top: 1px solid #444;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul.nav-list {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
 }
 
 /* Wrapper-Stil */
