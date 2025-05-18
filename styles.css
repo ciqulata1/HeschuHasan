@@ -46,7 +46,7 @@ h1, h2, p, ul, li, button.accordion {
 .nav-list-burger {
   display: none; /* Standard versteckt */
   flex-direction: column;
-  background: #ff00cc;
+  background: #3a3a3a;
   position: absolute;
   top: 100%;
   right: 0;
