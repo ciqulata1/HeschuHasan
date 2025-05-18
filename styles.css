@@ -347,16 +347,17 @@ a {
 }
 
 /* Panel */
-.panel {
+ .panel {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
-  background-color: #E6007E; /* FDP Magenta */
+  background: linear-gradient(135deg, #f39ac3, #e6007e);
   border-radius: 0 0 6px 6px;
   padding: 0 20px;
   margin-bottom: 20px;
-  color: white; /* weiße Schrift, damit es gut lesbar ist */
+  color: white; /* weiße Schrift für bessere Lesbarkeit */
 }
+
 
 
 button, a {
