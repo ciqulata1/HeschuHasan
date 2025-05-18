@@ -299,7 +299,7 @@ a {
 }
 .contact-box {
   background-color: #FFD500; /* FDP-Gelb */
-  border: #003348;
+  border: 2px solid #003348;
   border-radius: 8px;
   padding: 10px 20px;
   text-align: center;
