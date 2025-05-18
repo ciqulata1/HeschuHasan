@@ -1,213 +1,203 @@
-/* ====== Grundlayout & Schrift ====== */
+/* Grundlayout */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 0 20px 40px;
+  padding: 0 20px;
   background-color: #ffffff;
-  color: #1a1a1a;
+  color: #00334d;
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ====== Links ====== */
+/* Links */
 a {
-  color: #0052cc;
+  color: #00334d;
   text-decoration: none;
   transition: color 0.3s ease;
 }
-a:hover,
-a:focus {
-  text-decoration: underline;
-  color: #003399;
-  outline: none;
+
+a:hover {
+  color: #c3007f; /* Magenta */
 }
 
-/* ====== Navigation Leiste oben (FDP-Gelb) ====== */
+/* Navigation */
 .nav-list {
   list-style: none;
-  padding: 10px 25px;
-  margin: 0 0 35px;
-  background-color: #ffed00; /* FDP Gelb */
-  border-radius: 0 0 12px 12px;
+  padding: 0 15px;
   display: flex;
   gap: 25px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(90deg, #ffdd00, #c3007f, #0033a0);
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #ffdd0040, 0 0 20px #c3007f60, 0 0 25px #0033a0a0;
+  padding: 12px 30px;
+  font-weight: 700;
   user-select: none;
 }
 
 .nav-list a {
   padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #1a1a1a;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 20px;
+  position: relative;
+  color: #00334d;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
+/* Leuchtende Animation für active & hover */
 .nav-list a.active,
-.nav-list a:hover,
-.nav-list a:focus {
-  background-color: #1a1a1a;
-  color: #ffed00;
-  outline: none;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+.nav-list a:hover {
+  color: #ffdd00;
+  background: #c3007f;
+  box-shadow:
+    0 0 8px #ffdd00,
+    0 0 12px #c3007f,
+    0 0 20px #0033a0;
+  animation: pulseGlow 2.5s infinite alternate;
+  transition: all 0.4s ease;
 }
 
-/* ====== Accordion Button (FDP-Stil) ====== */
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 0 5px #ffdd00,
+      0 0 10px #c3007f,
+      0 0 15px #0033a0;
+  }
+  100% {
+    box-shadow:
+      0 0 15px #ffdd00,
+      0 0 25px #c3007f,
+      0 0 40px #0033a0;
+  }
+}
+
+/* Accordion Button */
 .accordion {
-  background-color: #ffed00;
-  color: #1a1a1a;
+  background-color: #c3007f;
+  color: white;
   cursor: pointer;
-  padding: 18px 28px;
+  padding: 15px 20px;
   width: 100%;
   border: none;
   outline: none;
-  font-size: 1.3rem;
-  font-weight: 800;
-  border-radius: 12px;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 5px 15px rgba(255, 237, 0, 0.7);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
   margin-bottom: 0;
+  box-shadow: 0 0 8px #c3007f80;
 }
 
-.accordion:hover,
-.accordion:focus {
-  background-color: #f7e600;
-  outline: none;
-  box-shadow: 0 7px 22px rgba(255, 237, 0, 0.9);
+.accordion:hover {
+  background-color: #ffdd00;
+  color: #c3007f;
+  box-shadow: 0 0 15px #ffdd00;
 }
 
 .accordion.active {
-  background-color: #d5c600;
-  color: #121212;
-  box-shadow: 0 8px 28px rgba(213, 198, 0, 1);
+  background-color: #0033a0;
+  box-shadow: 0 0 20px #0033a0aa;
+  color: white;
 }
 
 /* Pfeil */
 .arrow {
-  font-size: 1.5rem;
-  margin-left: 14px;
+  display: inline-block;
   transition: transform 0.3s ease;
+  font-size: 1.3rem;
+  margin-left: 10px;
+  color: inherit;
 }
 .accordion.active .arrow {
   transform: rotate(180deg);
 }
 
-/* ====== Panel mit smooth open/close ====== */
+/* Panel mit smooth open/close */
 .panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.45s ease;
-  background-color: #fff9cc;
-  border-radius: 0 0 12px 12px;
-  padding: 0 28px;
-  margin-bottom: 28px;
-  box-shadow: inset 0 0 15px rgba(213, 198, 0, 0.15);
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background-color: #f0f8ff;
+  border-radius: 0 0 8px 8px;
+  padding: 0 20px;
+  margin-bottom: 20px;
 }
-
 .panel.open {
-  padding: 20px 28px;
-  max-height: 700px; /* genug Platz für Inhalt */
+  padding: 15px 20px;
+  max-height: 600px; /* genug Platz */
 }
 
-/* ====== Forderungen (Forderungs-Boxen) ====== */
-.forderung-box {
-  background-color: #fff9cc;
-  border-left: 6px solid #ffed00;
-  padding: 18px 22px;
-  margin-bottom: 18px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(255, 237, 0, 0.25);
+/* Forderung-Items */
+.forderung-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #c1d9e8;
+  font-size: 1rem;
+  color: #00334d;
   font-weight: 600;
-  font-size: 1.15rem;
-  color: #2b2b2b;
-  transition: background-color 0.3s ease;
-  cursor: default;
+}
+.forderung-item:last-child {
+  border-bottom: none;
 }
 
-.forderung-box:hover,
-.forderung-box:focus-within {
-  background-color: #fffddb;
-  outline: none;
-}
-
-/* ====== Intro Abschnitt ====== */
-.intro p strong {
-  color: #121212;
-  font-weight: 800;
-}
-
-/* ====== Download Button (im Stil FDP-Wahlprogramm) ====== */
-.download-button {
+/* E-Mail Button */
+.email-button {
   display: inline-block;
-  margin-top: 30px;
-  padding: 16px 40px;
-  background-color: #ffed00;
-  color: #121212;
-  font-weight: 800;
-  font-size: 1.25rem;
-  border-radius: 50px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #ffdd00, #c3007f);
+  color: #00334d;
+  border-radius: 25px;
+  font-weight: 700;
   text-decoration: none;
   box-shadow:
-    0 6px 8px -2px rgba(255, 237, 0, 0.6),
-    0 12px 20px -4px rgba(255, 237, 0, 0.4);
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
-  user-select: none;
-  text-align: center;
+    0 0 15px #ffdd0040,
+    0 0 20px #c3007f60;
+  transition: background 0.3s ease, color 0.3s ease;
 }
-
-.download-button:hover,
-.download-button:focus {
-  background-color: #f7e600;
+.email-button:hover {
+  background: linear-gradient(90deg, #c3007f, #ffdd00);
+  color: white;
   box-shadow:
-    0 10px 14px -2px rgba(255, 237, 0, 0.9),
-    0 18px 28px -6px rgba(255, 237, 0, 0.7);
-  outline: none;
+    0 0 25px #c3007f,
+    0 0 35px #ffdd00;
 }
 
-/* ====== Footer ====== */
+/* Footer */
 footer {
-  margin-top: 60px;
-  padding: 25px 0;
-  border-top: 1px solid #e4e4e4;
-  color: #444444;
+  margin-top: 50px;
+  padding: 20px 0;
+  border-top: 1px solid #c1d9e8;
+  color: #00334d;
   text-align: center;
-  font-size: 0.95rem;
-  user-select: none;
+  font-size: 0.9rem;
 }
 
-/* ====== Responsive ====== */
-@media (max-width: 600px) {
-  body {
-    padding: 0 15px 30px;
-  }
-  .nav-list {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px 20px;
-  }
-  .nav-list a {
-    padding: 14px 18px;
-    font-size: 1.1rem;
-  }
-  .accordion {
-    font-size: 1.15rem;
-    padding: 14px 22px;
-  }
-  .panel.open {
-    max-height: 900px;
-  }
-  .forderung-box {
-    padding: 16px 18px;
-    font-size: 1.05rem;
-  }
-  .download-button {
-    width: 100%;
-    padding: 16px 0;
-  }
+/* Download Button (wie FDP Wahlprogramm) */
+.download-button {
+  display: inline-block;
+  padding: 14px 32px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #ffdd00, #c3007f);
+  color: #00334d;
+  box-shadow:
+    0 0 15px #ffdd0040,
+    0 0 20px #c3007f60;
+  text-decoration: none;
+  user-select: none;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  margin-top: 20px;
+}
+.download-button:hover {
+  background: linear-gradient(90deg, #c3007f, #ffdd00);
+  color: white;
+  box-shadow:
+    0 0 25px #c3007f,
+    0 0 35px #ffdd00;
 }
