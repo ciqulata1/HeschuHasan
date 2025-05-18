@@ -5,67 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Umwelt – Heschu Hasan</title>
 
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <!-- Favicons (kannst du anpassen oder übernehmen) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/IMG_2073.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/IMG_2075.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/IMG_2077.png">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
   <!-- Externe CSS-Datei -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <a href="#" class="logo">Heschu Hasan</a>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
-      <button class="burger" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="nav-menu">
-        <span class="burger-bar"></span>
-        <span class="burger-bar"></span>
-        <span class="burger-bar"></span>
-      </button>
+        <!-- Desktop Menü -->
+        <ul class="nav-list">
+          <li><a href="#" data-page="index.html">Startseite</a></li>
+          <li><a href="#" data-page="umwelt.html" class="active">Umwelt</a></li>
+          <li><a href="#" data-page="bildung.html">Bildung</a></li>
+          <li><a href="#" data-page="biografie.html">Biografie</a></li>
+          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
+        </ul>
 
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="umwelt.html" class="active">Umwelt</a></li>
-        <li><a href="bildung.html">Bildung</a></li>
-        <li><a href="biografie.html">Biografie</a></li>
-        <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
-      </ul>
-    </nav>
-  </header>
+        <!-- Mobile Menü -->
+        <ul class="nav-list-burger">
+          <li><a href="#" data-page="index.html">Startseite</a></li>
+          <li><a href="#" data-page="umwelt.html" class="active">Umwelt</a></li>
+          <li><a href="#" data-page="bildung.html">Bildung</a></li>
+          <li><a href="#" data-page="biografie.html">Biografie</a></li>
+          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <main>
-    <h1>Umweltpolitik: Zukunft gestalten mit Power-to-X</h1>
+    <main id="content">
+      <section>
+        <h1>Umweltpolitik: Zukunft gestalten mit Power-to-X</h1>
 
-    <p>
-      Die Energiewende darf nicht zum Rückschritt werden. <strong>Power-to-X-Technologien</strong> sind der Schlüssel, um erneuerbare Energien effizient zu speichern und flexibel nutzbar zu machen. Sie ermöglichen die Transformation von überschüssigem Strom in Wasserstoff, synthetische Kraftstoffe oder Wärme – und das nachhaltig und skalierbar.
-    </p>
+        <p>
+          Die Energiewende darf nicht zum Rückschritt werden. <strong>Power-to-X-Technologien</strong> sind der Schlüssel, um erneuerbare Energien effizient zu speichern und flexibel nutzbar zu machen. Sie ermöglichen die Transformation von überschüssigem Strom in Wasserstoff, synthetische Kraftstoffe oder Wärme – und das nachhaltig und skalierbar.
+        </p>
 
-    <p>
-      Ich lehne Gaskraftwerke als Übergangslösung strikt ab. Sie sind eine Sackgasse, die uns an fossilen Mustern festhalten lässt, anstatt echten Fortschritt zu ermöglichen. <strong>Erneuerbar heißt auch: weg von alten Technologien und Investitionen, die unsere Zukunft blockieren.</strong>
-    </p>
+        <p>
+          Ich lehne Gaskraftwerke als Übergangslösung strikt ab. Sie sind eine Sackgasse, die uns an fossilen Mustern festhalten lässt, anstatt echten Fortschritt zu ermöglichen. <strong>Erneuerbar heißt auch: weg von alten Technologien und Investitionen, die unsere Zukunft blockieren.</strong>
+        </p>
 
-    <p>
-      Nur mit konsequenter Förderung und Investition in innovative Technologien schaffen wir eine stabile, saubere und wirtschaftlich starke Energieversorgung, die auch zukünftigen Generationen gerecht wird.
-    </p>
-  </main>
+        <p>
+          Nur mit konsequenter Förderung und Investition in innovative Technologien schaffen wir eine stabile, saubere und wirtschaftlich starke Energieversorgung, die auch zukünftigen Generationen gerecht wird.
+        </p>
+      </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Heschu Hasan</p>
-  </footer>
+    <footer>
+      <p>&copy; 2025 Heschu Hasan</p>
+    </footer>
 
-  <script>
-    // Burger-Menü Toggle
-    const burger = document.querySelector('.burger');
-    const navMenu = document.querySelector('.nav-menu');
+    <script>
+      // Accordion (falls gewünscht, hier leer)
 
-    burger.addEventListener('click', () => {
-      const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
-      burger.setAttribute('aria-expanded', !expanded);
-      navMenu.classList.toggle('nav-menu-active');
-    });
-  </script>
+      // Dynamisches Nachladen der Seiten (Navigation)
+      function setupNavigation() {
+        const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
+        const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
+        const navBurger = document.querySelector('.nav-list-burger');
+
+        function loadPage(e) {
+          e.preventDefault();
+          const page = this.getAttribute('data-page');
+          if (!page) return;
+
+          fetch(page)
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
+              document.getElementById('content').innerHTML = newContent;
+
+              // Menü schließen bei mobile
+              navBurger.classList.remove('active');
+
+              // Aktiven Menüpunkt synchron setzen
+              navLinksDesktop.forEach(a => a.classList.remove('active'));
+              navLinksMobile.forEach(a => a.classList.remove('active'));
+
+              navLinksDesktop.forEach(a => {
+                if (a.getAttribute('data-page') === page) a.classList.add('active');
+              });
+              navLinksMobile.forEach(a => {
+                if (a.getAttribute('data-page') === page) a.classList.add('active');
+              });
+            })
+            .catch(err => {
+              console.error('Fehler beim Laden:', err);
+              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
+            });
+        }
+
+        navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
+        navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
+      }
+
+      // Burger-Menü Toggle
+      const burger = document.querySelector('.burger');
+      const navBurger = document.querySelector('.nav-list-burger');
+
+      burger.addEventListener('click', () => {
+        navBurger.classList.toggle('active');
+      });
+
+      // Initialisierung
+      setupNavigation();
+    </script>
+  </div>
 </body>
 </html>
