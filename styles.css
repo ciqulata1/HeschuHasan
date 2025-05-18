@@ -1,169 +1,138 @@
-/* Reset & Grundstil */
-* {
+/* Allgemeines Grundlayout (optional, je nach Bedarf) */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  padding: 0 20px;
+  background-color: #ffffff;
+  color: #00334d;
+  line-height: 1.6;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f9fc;
-  color: #1a1a1a;
-  line-height: 1.6;
-  padding: 20px;
+a {
+  color: #005a87;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* Navigation */
-header {
-  background-color: #004080;
-  padding: 1rem 0;
-  margin-bottom: 2rem;
-}
-
 .nav-list {
   list-style: none;
+  padding: 0;
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #e7f1fa;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  padding: 10px 20px;
 }
 
-.nav-list li a {
-  color: white;
-  text-decoration: none;
+.nav-list a {
+  padding: 10px 15px;
+  border-radius: 6px;
   font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  display: inline-block;
 }
 
-.nav-list li a:hover {
-  background-color: #ffe066;
-  color: black;
-}
-
-.nav-list li a.active {
-  background-color: #ffcc00;
-  color: black;
-  font-weight: bold;
-  box-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px 10px rgba(255, 204, 0, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
-  }
-}
-
-/* Navigation – aktiver Link mit Animation */
-.nav-list li a.active {
-  background-color: #ffcc00;
-  color: black;
-  font-weight: bold;
-  box-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
-  animation: pulse 2.5s infinite ease-in-out;
-  transform-origin: center;
-}
-
-
-/* Fancy Download Button */
-.fancy-download-button {
-  display: inline-block;
-  background: linear-gradient(90deg, #ffcc00, #ffdd33);
-  color: #000;
-  font-weight: 700;
-  text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.6);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  margin-top: 1rem;
-  user-select: none;
-}
-
-.fancy-download-button:hover,
-.fancy-download-button:focus {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.9);
-  outline: none;
-}
-
-/* Hauptüberschrift: Magenta (FDP) */
-main h1 {
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: #CE0068; /* Magenta */
-}
-
-/* Betonung im Text: FDP-Blau */
-main strong {
-  color: #CE0068; /* kräftiges Magenta (FDP Style) */
-  font-weight: 700;
-}
-
-/* Alle Links: Magenta */
-main a {
-  color: #CE0068; /* Magenta */
-  text-decoration: none;
-  text-align: center;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-main a:hover {
-  border-color: #CE0068;
-}
-
-/* Navigation: bleibt weiß/gold/gelb → perfekt */
-.nav-list li a {
+.nav-list a.active,
+.nav-list a:hover {
+  background-color: #005a87;
   color: white;
 }
 
-/* Aktiver Navigationspunkt: Gelb */
-.nav-list li a.active {
-  background-color: #ffcc00;
-  color: black;
-}
-
-/* Download-Button: Gelb + Schwarz → perfekt */
-
-
-/* Biografie-Bild Wrapper & Stil */
-.biografie-image-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-}
-
-.biografie-image {
-  width: 100%;
-  max-width: 250px;
-  height: auto;
-  border-radius: 50%;
-  border: 5px solid #ffcc00;
-  box-shadow:
-    0 0 15px 5px rgba(255, 204, 0, 0.7),
-    0 4px 10px rgba(0, 0, 0, 0.2);
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
-  transition: transform 0.3s ease;
-}
-
-.biografie-image:hover {
-  transform: scale(1.05) rotate(1deg);
-  box-shadow:
-    0 0 25px 10px rgba(255, 204, 0, 0.9),
-    0 6px 15px rgba(0, 0, 0, 0.3);
+/* Accordion Button */
+.accordion {
+  background-color: #005a87;
+  color: white;
   cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  margin-bottom: 0;
+}
+.accordion:hover {
+  background-color: #004766;
+}
+.accordion.active {
+  background-color: #00334d;
+}
+
+/* Pfeil */
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+  margin-left: 10px;
+}
+.accordion.active .arrow {
+  transform: rotate(180deg);
+}
+
+/* Panel mit smooth open/close */
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background-color: #f0f8ff;
+  border-radius: 0 0 6px 6px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+.panel.open {
+  padding: 15px 20px;
+  max-height: 500px; /* groß genug für Inhalt */
+}
+
+/* Forderung-Items */
+.forderung-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #c1d9e8;
+  font-size: 1rem;
+  color: #004766;
+}
+.forderung-item:last-child {
+  border-bottom: none;
+}
+
+/* Intro Abschnitt */
+.intro p strong {
+  color: #00334d;
+  font-weight: 700;
+}
+
+/* E-Mail Button */
+.email-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #005a87;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.email-button:hover {
+  background-color: #00334d;
+}
+
+/* Footer */
+footer {
+  margin-top: 50px;
+  padding: 20px 0;
+  border-top: 1px solid #c1d9e8;
+  color: #004766;
+  text-align: center;
+  font-size: 0.9rem;
 }
