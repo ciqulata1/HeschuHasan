@@ -14,6 +14,29 @@
 
   <!-- Externe CSS-Datei -->
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .biografie-image-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 2em 0;
+    }
+
+    .biografie-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 6px solid #FFD700;
+      box-shadow: 0 0 20px 6px #FFD700;
+      object-fit: cover;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .biografie-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px 10px #FFC300;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -37,9 +60,9 @@
       Seit vielen Jahren setze ich mich für eine gerechtere Gesellschaft ein, in der Respekt und Chancengleichheit für alle im Mittelpunkt stehen.
     </p>
 
-    <!-- Bild -->
+    <!-- Bild mit Stil -->
     <div class="biografie-image-wrapper">
-      <img src="IMG_1604.jpeg" alt="Portrait von Heschu Hasan" class="biografie-image" width="250" height="250" />
+      <img src="IMG_1604.jpeg" alt="Portrait von Heschu Hasan" class="biografie-image" />
     </div>
 
     <p>
