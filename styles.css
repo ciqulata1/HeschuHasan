@@ -49,7 +49,7 @@ h1, h2, p, ul, li, button.accordion {
     position: fixed;
   top: 60px; /* Platz unter Burger */
   right: 10px;
-  background-color: white;
+  background-color: #e10074;
   padding: 1rem;
   display: none;
   flex-direction: column;
