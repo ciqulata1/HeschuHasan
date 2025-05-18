@@ -428,6 +428,8 @@ button, a {
   font-family: 'Playfair Display', serif;
   font-size: 0.9rem;
   color: #003348;
+  max-width: 600px; 
+  margin: 0 auto 1rem;
 }
 
 .forderung-box:last-child {
