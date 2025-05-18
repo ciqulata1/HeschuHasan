@@ -247,7 +247,8 @@ a {
 }
 
 .accordion {
-  max-width: 600px;
+  max-width: 100%;
+  width: fit-content;
   position: relative;
   padding-right: 30px; 
   margin: 2rem auto;
