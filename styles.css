@@ -1,138 +1,241 @@
-/* Allgemeines Grundlayout (optional, je nach Bedarf) */
+/* ===========================
+   Grundlayout & Schrift
+=========================== */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 20px 40px;
   background-color: #ffffff;
   color: #00334d;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   color: #005a87;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-a:hover {
+a:hover,
+a:focus {
   text-decoration: underline;
+  color: #00334d;
+  outline: none;
 }
 
-/* Navigation */
+/* ===========================
+   Navigation
+=========================== */
 .nav-list {
   list-style: none;
-  padding: 0;
+  padding: 10px 20px;
+  margin: 0 0 40px;
+  background-color: #e7f1fa;
+  border-radius: 8px;
   display: flex;
   gap: 20px;
-  background-color: #e7f1fa;
-  margin-bottom: 30px;
-  border-radius: 8px;
-  padding: 10px 20px;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0, 90, 135, 0.1);
 }
 
 .nav-list a {
-  padding: 10px 15px;
+  padding: 10px 18px;
   border-radius: 6px;
   font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-list a.active,
-.nav-list a:hover {
+.nav-list a:hover,
+.nav-list a:focus {
   background-color: #005a87;
-  color: white;
+  color: #ffffff;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 90, 135, 0.5);
 }
 
-/* Accordion Button */
+/* ===========================
+   Accordion Button
+=========================== */
 .accordion {
   background-color: #005a87;
   color: white;
   cursor: pointer;
-  padding: 15px 20px;
+  padding: 16px 24px;
   width: 100%;
   border: none;
   outline: none;
-  text-align: left;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 6px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
   margin-bottom: 0;
-}
-.accordion:hover {
-  background-color: #004766;
-}
-.accordion.active {
-  background-color: #00334d;
+  box-shadow: 0 2px 8px rgba(0, 90, 135, 0.3);
 }
 
-/* Pfeil */
-.arrow {
-  display: inline-block;
-  transition: transform 0.3s ease;
-  font-size: 1.2rem;
-  margin-left: 10px;
+.accordion:hover,
+.accordion:focus {
+  background-color: #004766;
+  outline: none;
+  box-shadow: 0 4px 14px rgba(0, 90, 135, 0.6);
 }
+
+.accordion.active {
+  background-color: #00334d;
+  box-shadow: 0 6px 20px rgba(0, 90, 135, 0.8);
+}
+
+/* Pfeil im Accordion */
+.arrow {
+  font-size: 1.4rem;
+  margin-left: 12px;
+  transition: transform 0.3s ease;
+}
+
 .accordion.active .arrow {
   transform: rotate(180deg);
 }
 
-/* Panel mit smooth open/close */
+/* ===========================
+   Panel mit Animation
+=========================== */
 .panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), padding 0.45s ease;
   background-color: #f0f8ff;
-  border-radius: 0 0 6px 6px;
-  padding: 0 20px;
-  margin-bottom: 20px;
+  border-radius: 0 0 8px 8px;
+  padding: 0 24px;
+  margin-bottom: 30px;
+  box-shadow: inset 0 1px 5px rgba(0, 83, 134, 0.1);
 }
+
 .panel.open {
-  padding: 15px 20px;
-  max-height: 500px; /* groß genug für Inhalt */
+  padding: 20px 24px;
+  max-height: 600px; /* reicht für 3 Boxen */
 }
 
-/* Forderung-Items */
-.forderung-item {
-  padding: 10px 0;
-  border-bottom: 1px solid #c1d9e8;
-  font-size: 1rem;
-  color: #004766;
-}
-.forderung-item:last-child {
-  border-bottom: none;
+/* ===========================
+   Forderungs-Boxen (modern) 
+=========================== */
+.forderung-box {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(0, 90, 135, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
 }
 
-/* Intro Abschnitt */
+.forderung-box:hover,
+.forderung-box:focus-within {
+  box-shadow: 0 8px 28px rgba(0, 90, 135, 0.25);
+  transform: translateY(-4px);
+  outline: none;
+}
+
+.forderung-icon {
+  font-size: 2rem;
+  margin-right: 20px;
+  color: #005a87;
+  flex-shrink: 0;
+}
+
+.forderung-text {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #00334d;
+  line-height: 1.4;
+}
+
+/* ===========================
+   Intro Abschnitt 
+=========================== */
 .intro p strong {
   color: #00334d;
   font-weight: 700;
 }
 
-/* E-Mail Button */
+/* ===========================
+   E-Mail Button
+=========================== */
 .email-button {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
+  margin-top: 30px;
+  padding: 14px 28px;
   background-color: #005a87;
-  color: white;
-  border-radius: 6px;
-  font-weight: 600;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
   text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-.email-button:hover {
-  background-color: #00334d;
+  box-shadow: 0 3px 12px rgba(0, 90, 135, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
 }
 
-/* Footer */
+.email-button:hover,
+.email-button:focus {
+  background-color: #00334d;
+  box-shadow: 0 5px 18px rgba(0, 90, 135, 0.7);
+  outline: none;
+}
+
+/* ===========================
+   Footer 
+=========================== */
 footer {
-  margin-top: 50px;
-  padding: 20px 0;
+  margin-top: 60px;
+  padding: 25px 0;
   border-top: 1px solid #c1d9e8;
   color: #004766;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  user-select: none;
+}
+
+/* ===========================
+   Responsive Anpassungen 
+=========================== */
+@media (max-width: 600px) {
+  body {
+    padding: 0 15px 30px;
+  }
+  .nav-list {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+  }
+  .nav-list a {
+    padding: 12px 15px;
+    font-size: 1rem;
+  }
+  .accordion {
+    font-size: 1.15rem;
+    padding: 14px 20px;
+  }
+  .panel.open {
+    max-height: 800px;
+  }
+  .forderung-box {
+    padding: 15px 20px;
+  }
+  .forderung-text {
+    font-size: 1rem;
+  }
+  .email-button {
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
+  }
 }
