@@ -337,6 +337,8 @@ a {
   text-decoration: none;
   display: inline-block;
   margin-bottom: 10px;
+  padding: 10px 20px;
+  
 }
 
 @keyframes glowing {
