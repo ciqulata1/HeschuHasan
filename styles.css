@@ -36,15 +36,17 @@ h1, h2, p, ul, li, button.accordion {
   cursor: pointer;
   display: none; /* Standard versteckt */
   padding: 1rem;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 10;
+  position: fixed;  /* <== hier ändern */
+  top: 10px;        /* Abstand vom oberen Rand */
+  right: 10px;      /* Abstand vom rechten Rand */
+  z-index: 1001;    /* Damit es immer oben liegt */
+}
+
 }
 
 /* Mobile Menü */
 .nav-list-burger {
-  display: none; /* Standard versteckt */
+  display: block; /* Standard versteckt */
   flex-direction: column;
   background: #3a3a3a;
   position: absolute;
