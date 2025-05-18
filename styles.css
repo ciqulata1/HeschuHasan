@@ -298,8 +298,8 @@ a {
     0 0 50px 30px rgba(255, 199, 0, 0.5);
 }
 .contact-box {
-  background-color: #f5c518; /* FDP-Gelb */
-  border: 1px solid #c1d9e8;
+  background-color: #e6f4ff; /* FDP-Gelb */
+  border: 1px solid #0077cc;
   border-radius: 8px;
   padding: 10px 20px;
   text-align: center;
@@ -366,17 +366,12 @@ a {
 
 .accordion.active .arrow {
   transform: rotate(180deg);
-  stroke: #002244;
 }
 
 /* Eleganter Pfeil */
 .accordion .arrow {
-  display: inline-block;
-  transition: transform 0.3s ease, stroke 0.3s ease;
-  font-size: 1.5rem;
-  margin-left: 10px;
-  stroke: #004080; /* elegantes Blau passend zum Rahmen */
-  stroke-width: 2;
+  margin-left: auto;
+  transition: transform 0.3s ease;
 }
 
 /* Panel */
