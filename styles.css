@@ -104,6 +104,31 @@ main a {
   border-bottom: 2px solid transparent;
   transition: border-color 0.3s ease;
 }
+.biografie-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.biografie-image {
+  width: 250px;
+  height: auto;
+  border-radius: 50%;
+  border: 5px solid #ffcc00;
+  box-shadow:
+    0 0 15px 5px rgba(255, 204, 0, 0.7),
+    0 4px 10px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+  transition: transform 0.3s ease;
+}
+
+.biografie-image:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow:
+    0 0 25px 10px rgba(255, 204, 0, 0.9),
+    0 6px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
 
 main a:hover {
   border-color: #CE0068;
