@@ -407,9 +407,10 @@ button, a {
 .forderung-item {
   font-family: 'Playfair Display', serif;
   font-size: 0.95rem; /* kleiner als vorher */
-  padding: 8px 0;
+  padding: 10px 0 20px 0;
   border-bottom: 1px solid #c1d9e8;
-  color: #003348; /* dunkler und edler als vorher */
+  color: #003348; 
+  border-bottom: none;
 }
 .forderung-item:last-child {
   border-bottom: none;
