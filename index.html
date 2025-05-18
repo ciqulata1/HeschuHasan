@@ -132,8 +132,8 @@
         if (acc && panel) {
           acc.addEventListener("click", function () {
             const isOpen = panel.classList.toggle("open");
-            this.classList.toggle("active", isOpen);
-            this.setAttribute("aria-expanded", isOpen);
+            acc.classList.toggle("active", isOpen);
+            acc.setAttribute("aria-expanded", isOpen);
             panel.setAttribute("aria-hidden", !isOpen);
 
             if (isOpen) {
