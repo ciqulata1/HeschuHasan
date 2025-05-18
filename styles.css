@@ -274,6 +274,12 @@ a {
     0 0 40px 20px rgba(255, 199, 0, 0.3);
 }
 
+.accordion .header {
+  display: flex;
+  align-items: center; /* Vertikal zentrieren */
+}
+
+
 .accordion-wrapper {
   display: flex;
   justify-content: center;
@@ -373,12 +379,11 @@ a {
 
 /* Eleganter Pfeil */
 .accordion .arrow {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-left: auto;
+  color: #003348; /* z.B. dunkles Blau statt weiß */
   transition: transform 0.3s ease;
 }
+
 
 /* Panel */
  .panel {
