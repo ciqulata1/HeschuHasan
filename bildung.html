@@ -3,125 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="/IMG_2065.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/IMG_2066.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/IMG_2067.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/IMG_2068.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/IMG_2069.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/IMG_2070.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/IMG_2071.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/IMG_2072.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/IMG_2073.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/IMG_2074.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/IMG_2075.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/IMG_2076.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/IMG_2077.png">
-  <link rel="manifest" href="/IMG_2078.png">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  
   <title>Bildung – Heschu Hasan</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/IMG_2073.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/IMG_2075.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/IMG_2077.png">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Externe CSS-Datei -->
   <link rel="stylesheet" href="styles.css" />
-
-  <style>
-    /* Burger-Menü Styling */
-    .burger {
-      font-size: 2rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: none;
-    }
-
-    .nav-list {
-      display: flex;
-      gap: 1rem;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    @media (max-width: 768px) {
-      .burger {
-        display: block;
-      }
-
-      .nav-list {
-        display: none;
-        flex-direction: column;
-        background-color: white;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        padding: 1rem;
-        z-index: 10;
-      }
-
-      .nav-list.show {
-        display: flex;
-      }
-
-      nav {
-        position: relative;
-      }
-    }
-
-    /* Aktiver Link */
-    .nav-list a.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <button class="burger" aria-label="Menü öffnen">&#9776;</button>
-      <ul class="nav-list">
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="umwelt.html">Umwelt</a></li>
-        <li><a href="bildung.html" class="active">Bildung</a></li>
-        <li><a href="biografie.html">Biografie</a></li>
-        <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
-  <main>
-    <h1>📚 Bildung für die Zukunft</h1>
-    <p>Bildung ist der Schlüssel zu Freiheit, Selbstverwirklichung und Fortschritt. Unsere Kinder verdienen ein System, das sie individuell fördert – unabhängig von Herkunft oder Geldbeutel.</p>
-    <ul>
-      <li>💡 <strong>Moderne Lehrpläne:</strong> Praxisnah, digital und zukunftsorientiert</li>
-      <li>💻 <strong>Digitale Ausstattung:</strong> Laptops, WLAN & Lernplattformen an allen Schulen</li>
-      <li>🎯 <strong>Individuelle Förderung:</strong> Stärken erkennen, Talente entfalten</li>
-      <li>🤝 <strong>Gemeinsam stark:</strong> Schulen, Eltern und Kommunen vernetzen</li>
-    </ul>
-    <p>🎓 <strong>Unser Ziel:</strong> Ein Bildungssystem, das nicht verwaltet, sondern befähigt. Bildung muss Chancen schaffen – für alle!</p>
-  </main>
+        <!-- Desktop Menü -->
+        <ul class="nav-list">
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="umwelt.html">Umwelt</a></li>
+          <li><a href="bildung.html" class="active">Bildung</a></li>
+          <li><a href="biografie.html">Biografie</a></li>
+          <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
+        </ul>
 
-  <footer>
-    <p>&copy; 2025 Heschu Hasan</p>
-  </footer>
+        <!-- Mobile Menü -->
+        <ul class="nav-list-burger">
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="umwelt.html">Umwelt</a></li>
+          <li><a href="bildung.html" class="active">Bildung</a></li>
+          <li><a href="biografie.html">Biografie</a></li>
+          <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section>
+        <h1>📚 Bildung für die Zukunft</h1>
+        <p>Bildung ist der Schlüssel zu Freiheit, Selbstverwirklichung und Fortschritt. Unsere Kinder verdienen ein System, das sie individuell fördert – unabhängig von Herkunft oder Geldbeutel.</p>
+        <ul>
+          <li>💡 <strong>Moderne Lehrpläne:</strong> Praxisnah, digital und zukunftsorientiert</li>
+          <li>💻 <strong>Digitale Ausstattung:</strong> Laptops, WLAN & Lernplattformen an allen Schulen</li>
+          <li>🎯 <strong>Individuelle Förderung:</strong> Stärken erkennen, Talente entfalten</li>
+          <li>🤝 <strong>Gemeinsam stark:</strong> Schulen, Eltern und Kommunen vernetzen</li>
+        </ul>
+        <p>🎓 <strong>Unser Ziel:</strong> Ein Bildungssystem, das nicht verwaltet, sondern befähigt. Bildung muss Chancen schaffen – für alle!</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Heschu Hasan</p>
+    </footer>
+  </div>
 
   <script>
-    // Burger-Menü Toggle
     const burger = document.querySelector('.burger');
-    const navList = document.querySelector('.nav-list');
+    const navBurger = document.querySelector('.nav-list-burger');
 
     burger.addEventListener('click', () => {
-      navList.classList.toggle('show');
-    });
-
-    // Aktiven Link automatisch hervorheben (für Fallback, falls JS Navigation)
-    const currentPage = location.pathname.split("/").pop();
-    document.querySelectorAll('.nav-list a').forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
+      navBurger.classList.toggle('active');
     });
   </script>
 </body>
