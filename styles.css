@@ -108,7 +108,7 @@ main h1 {
 
 /* Betonung im Text: FDP-Blau */
 main strong {
-  color: #004080;
+  color: #CE0068; /* kräftiges Magenta (FDP Style) */
   font-weight: 700;
 }
 
