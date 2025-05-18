@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="manifest" href="/IMG_2078.png">
- <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heschu Hasan – Direktkandidatin</title>
-
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="57x57" href="/IMG_2065.png">
@@ -33,108 +32,122 @@
 </head>
 <body>
   <div class="wrapper">
-  <header>
-    <nav>
-      <button class="burger" aria-label="Menü öffnen">&#9776;</button>
-      <ul class="nav-list">
-        <li><a href="#" data-page="index.html" class="active">Startseite</a></li>
-        <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-        <li><a href="#" data-page="bildung.html">Bildung</a></li>
-        <li><a href="#" data-page="biografie.html">Biografie</a></li>
-        <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+      <nav>
+        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
-  <main id="content">
-    <!-- Initialer Startinhalt -->
-    <section class="intro">
-      <h1>Willkommen auf meiner Website. Hier finden Sie alles zu meiner Kandidatur.</h1>
-      <h2>Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h2>
+        <!-- Desktop Menü -->
+        <ul class="nav-list">
+          <li><a href="#" data-page="index.html" class="active">Startseite</a></li>
+          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
+          <li><a href="#" data-page="bildung.html">Bildung</a></li>
+          <li><a href="#" data-page="biografie.html">Biografie</a></li>
+          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
+        </ul>
 
-      <p>
-        Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.
-      </p>
-      <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
+        <!-- Mobile Menü -->
+        <ul class="nav-list-burger">
+          <li><a href="#" data-page="index.html" class="active">Startseite</a></li>
+          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
+          <li><a href="#" data-page="bildung.html">Bildung</a></li>
+          <li><a href="#" data-page="biografie.html">Biografie</a></li>
+          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
+        </ul>
+      </nav>
+    </header>
 
-   <button class="accordion" aria-expanded="false">
-  Meine Forderungen 
-  <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
-    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/>
-  </svg>
-</button>
-<div id="panel1" class="panel" role="region" aria-labelledby="accordion1" aria-hidden="true">
-<div class="panel">
-  <div class="forderung-box">
-    <div class="forderung-icon">⚖️</div>
-    <div class="forderung-text">Konsequenzen bei systematischer Behördenwillkür</div>
-  </div>
-  <div class="forderung-box">
-    <div class="forderung-icon">🛡️</div>
-    <div class="forderung-text">Schutz vor ungerechtfertigter Kriminalisierung</div>
-  </div>
-  <div class="forderung-box">
-    <div class="forderung-icon">⏳</div>
-    <div class="forderung-text">Das Recht darf nicht an Fristen und Formularen scheitern</div>
-  </div>
-</div>
-</div>
+    <main id="content">
+      <!-- Initialer Startinhalt -->
+      <section class="intro">
+        <h1>Willkommen auf meiner Website. Hier finden Sie alles zu meiner Kandidatur.</h1>
+        <h2>Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h2>
 
+        <p>
+          Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.
+        </p>
+        <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
 
-      <p>
-        Besonders im Bereich Umwelt und Bildung wird sichtbar, wie oft Politik nicht daran scheitert, dass es keine Ideen gibt – sondern daran, dass das System diese Ideen blockiert.
-      </p>
-      <ul>
-        <li>🔸 Energiewende? Verzögert durch überlastete Verfahren.</li>
-        <li>🔸 Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
-      </ul>
-      <p>
-        Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.
-      </p>
+        <button class="accordion" aria-expanded="false" aria-controls="panel1" id="accordion1">
+          Meine Forderungen
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+        </button>
+        <div id="panel1" class="panel" role="region" aria-labelledby="accordion1" aria-hidden="true">
+          <div class="forderung-box">
+            <div class="forderung-icon">⚖️</div>
+            <div class="forderung-text">Konsequenzen bei systematischer Behördenwillkür</div>
+          </div>
+          <div class="forderung-box">
+            <div class="forderung-icon">🛡️</div>
+            <div class="forderung-text">Schutz vor ungerechtfertigter Kriminalisierung</div>
+          </div>
+          <div class="forderung-box">
+            <div class="forderung-icon">⏳</div>
+            <div class="forderung-text">Das Recht darf nicht an Fristen und Formularen scheitern</div>
+          </div>
+        </div>
 
-     <div class="contact-box">
-  <a href="mailto:heschuhasan@gmail.com" class="email-button">
-    ✉️ Kontakt per E-Mail
-  </a>
-  <p>Bei Fragen oder Anregungen zum Wahlkampf – gestalten Sie mit!</p>
-</div>
+        <p>
+          Besonders im Bereich Umwelt und Bildung wird sichtbar, wie oft Politik nicht daran scheitert, dass es keine Ideen gibt – sondern daran, dass das System diese Ideen blockiert.
+        </p>
+        <ul>
+          <li>🔸 Energiewende? Verzögert durch überlastete Verfahren.</li>
+          <li>🔸 Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
+        </ul>
+        <p>
+          Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.
+        </p>
 
-    </section>
-  </main>
+        <div class="contact-box">
+          <a href="mailto:heschuhasan@gmail.com" class="email-button">
+            ✉️ Kontakt per E-Mail
+          </a>
+          <p>Bei Fragen oder Anregungen zum Wahlkampf – gestalten Sie mit!</p>
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Heschu Hasan</p>
-  </footer>
+    <footer>
+      <p>&copy; 2025 Heschu Hasan</p>
+    </footer>
 
-  <script>
-    function initAccordion() {
-      const acc = document.querySelector(".accordion");
-      const panel = document.querySelector(".panel");
+    <script>
+      // Accordion Funktion
+      function initAccordion() {
+        const acc = document.querySelector(".accordion");
+        const panel = document.querySelector(".panel");
 
-      if (acc && panel) {
-        acc.addEventListener("click", function () {
-          const isOpen = panel.classList.toggle("open");
-          this.classList.toggle("active", isOpen);
-          this.setAttribute("aria-expanded", isOpen);
+        if (acc && panel) {
+          acc.addEventListener("click", function () {
+            const isOpen = panel.classList.toggle("open");
+            this.classList.toggle("active", isOpen);
+            this.setAttribute("aria-expanded", isOpen);
+            panel.setAttribute("aria-hidden", !isOpen);
 
-          if (isOpen) {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-          } else {
-            panel.style.maxHeight = null;
-          }
-        });
+            if (isOpen) {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            } else {
+              panel.style.maxHeight = null;
+            }
+          });
 
-        panel.style.maxHeight = null; // Startzustand
+          panel.style.maxHeight = null; // Startzustand
+          panel.setAttribute("aria-hidden", "true");
+          acc.setAttribute("aria-expanded", "false");
+        }
       }
-    }
 
-    // Dynamisches Nachladen der Seiten (Navigation)
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const page = this.getAttribute('data-page');
+      // Dynamisches Nachladen der Seiten (Navigation)
+      function setupNavigation() {
+        const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
+        const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
 
-        if (page) {
+        function loadPage(e) {
+          e.preventDefault();
+          const page = this.getAttribute('data-page');
+          if (!page) return;
+
           fetch(page)
             .then(res => res.text())
             .then(html => {
@@ -143,24 +156,45 @@
               const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
               document.getElementById('content').innerHTML = newContent;
 
-              // Aktiven Menüpunkt hervorheben
-              document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-              this.classList.add('active');
-
               // Accordion neu initialisieren (falls vorhanden)
               initAccordion();
+
+              // Menü schließen bei mobile
+              navBurger.classList.remove('active');
+
+              // Aktiven Menüpunkt synchron setzen in beiden Menüs
+              navLinksDesktop.forEach(a => a.classList.remove('active'));
+              navLinksMobile.forEach(a => a.classList.remove('active'));
+
+              navLinksDesktop.forEach(a => {
+                if (a.getAttribute('data-page') === page) a.classList.add('active');
+              });
+              navLinksMobile.forEach(a => {
+                if (a.getAttribute('data-page') === page) a.classList.add('active');
+              });
             })
             .catch(err => {
               console.error('Fehler beim Laden:', err);
               document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
             });
         }
-      });
-    });
 
-    // Accordion initialisieren
-    initAccordion();
-  </script>
+        navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
+        navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
+      }
+
+      // Burger-Menü Toggle
+      const burger = document.querySelector('.burger');
+      const navBurger = document.querySelector('.nav-list-burger');
+
+      burger.addEventListener('click', () => {
+        navBurger.classList.toggle('active');
+      });
+
+      // Initialisierungen
+      initAccordion();
+      setupNavigation();
+    </script>
   </div>
 </body>
 </html>
