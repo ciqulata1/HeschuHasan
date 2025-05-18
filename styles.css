@@ -50,6 +50,32 @@ header {
   box-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px 10px rgba(255, 204, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 204, 0, 0);
+  }
+}
+
+/* Navigation – aktiver Link mit Animation */
+.nav-list li a.active {
+  background-color: #ffcc00;
+  color: black;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
+  animation: pulse 2.5s infinite ease-in-out;
+  transform-origin: center;
+}
+
+
 /* Fancy Download Button */
 .fancy-download-button {
   display: inline-block;
