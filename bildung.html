@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="57x57" href="/IMG_2065.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/IMG_2066.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/IMG_2067.png">
@@ -18,10 +20,12 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/IMG_2077.png">
   <link rel="manifest" href="/IMG_2078.png">
   <meta name="msapplication-TileColor" content="#ffffff">
+  
   <title>Bildung – Heschu Hasan</title>
   <link rel="stylesheet" href="styles.css" />
+
   <style>
-    /* Burger-Menü-Styling */
+    /* Burger-Menü Styling */
     .burger {
       font-size: 2rem;
       background: none;
@@ -78,7 +82,7 @@
       <ul class="nav-list">
         <li><a href="index.html">Startseite</a></li>
         <li><a href="umwelt.html">Umwelt</a></li>
-        <li><a href="bildung.html">Bildung</a></li>
+        <li><a href="bildung.html" class="active">Bildung</a></li>
         <li><a href="biografie.html">Biografie</a></li>
         <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
       </ul>
@@ -102,7 +106,7 @@
   </footer>
 
   <script>
-    // Burger-Menü Funktion
+    // Burger-Menü Toggle
     const burger = document.querySelector('.burger');
     const navList = document.querySelector('.nav-list');
 
@@ -110,7 +114,7 @@
       navList.classList.toggle('show');
     });
 
-    // Aktiven Link automatisch hervorheben
+    // Aktiven Link automatisch hervorheben (für Fallback, falls JS Navigation)
     const currentPage = location.pathname.split("/").pop();
     document.querySelectorAll('.nav-list a').forEach(link => {
       if (link.getAttribute('href') === currentPage) {
