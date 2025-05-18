@@ -13,12 +13,20 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
   <!-- Externe CSS-Datei -->
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <nav>
-      <ul class="nav-list">
+    <nav class="navbar">
+      <a href="#" class="logo">Heschu Hasan</a>
+
+      <button class="burger" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="nav-menu">
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
         <li><a href="index.html">Startseite</a></li>
         <li><a href="umwelt.html" class="active">Umwelt</a></li>
         <li><a href="bildung.html">Bildung</a></li>
@@ -28,25 +36,36 @@
     </nav>
   </header>
 
- <main>
-  <h1>Umweltpolitik: Zukunft gestalten mit Power-to-X</h1>
+  <main>
+    <h1>Umweltpolitik: Zukunft gestalten mit Power-to-X</h1>
 
-  <p>
-    Die Energiewende darf nicht zum Rückschritt werden. <strong>Power-to-X-Technologien</strong> sind der Schlüssel, um erneuerbare Energien effizient zu speichern und flexibel nutzbar zu machen. Sie ermöglichen die Transformation von überschüssigem Strom in Wasserstoff, synthetische Kraftstoffe oder Wärme – und das nachhaltig und skalierbar.
-  </p>
+    <p>
+      Die Energiewende darf nicht zum Rückschritt werden. <strong>Power-to-X-Technologien</strong> sind der Schlüssel, um erneuerbare Energien effizient zu speichern und flexibel nutzbar zu machen. Sie ermöglichen die Transformation von überschüssigem Strom in Wasserstoff, synthetische Kraftstoffe oder Wärme – und das nachhaltig und skalierbar.
+    </p>
 
-  <p>
-    Ich lehne Gaskraftwerke als Übergangslösung strikt ab. Sie sind eine Sackgasse, die uns an fossilen Mustern festhalten lässt, anstatt echten Fortschritt zu ermöglichen. <strong>Erneuerbar heißt auch: weg von alten Technologien und Investitionen, die unsere Zukunft blockieren.</strong>
-  </p>
+    <p>
+      Ich lehne Gaskraftwerke als Übergangslösung strikt ab. Sie sind eine Sackgasse, die uns an fossilen Mustern festhalten lässt, anstatt echten Fortschritt zu ermöglichen. <strong>Erneuerbar heißt auch: weg von alten Technologien und Investitionen, die unsere Zukunft blockieren.</strong>
+    </p>
 
-  <p>
-    Nur mit konsequenter Förderung und Investition in innovative Technologien schaffen wir eine stabile, saubere und wirtschaftlich starke Energieversorgung, die auch zukünftigen Generationen gerecht wird.
-  </p>
-</main>
-
+    <p>
+      Nur mit konsequenter Förderung und Investition in innovative Technologien schaffen wir eine stabile, saubere und wirtschaftlich starke Energieversorgung, die auch zukünftigen Generationen gerecht wird.
+    </p>
+  </main>
 
   <footer>
     <p>&copy; 2025 Heschu Hasan</p>
   </footer>
+
+  <script>
+    // Burger-Menü Toggle
+    const burger = document.querySelector('.burger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    burger.addEventListener('click', () => {
+      const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
+      burger.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('nav-menu-active');
+    });
+  </script>
 </body>
 </html>
