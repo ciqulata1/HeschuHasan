@@ -84,7 +84,7 @@ main h1 {
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #CE0068; /* kräftiges Grün */
+  color: #CE0068; /* kräftiges Magenda */
 }
 
 main p {
@@ -99,12 +99,12 @@ main strong {
 }
 
 main a {
-  color: #007a33;
+  color: #CE0068;
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: border-color 0.3s ease;
 }
 
 main a:hover {
-  border-color: #007a33;
+  border-color: #CE0068;
 }
