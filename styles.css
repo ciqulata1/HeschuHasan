@@ -299,9 +299,9 @@ a {
 }
 .contact-box {
   background-color: #f5c518; /* FDP-Gelb */
-  border: 2px solid #ddba00; /* dunkleres Gelb für Kontur */
-  border-radius: 10px;
-  padding: 25px 30px;
+  border: 1px solid #c1d9e8;
+  border-radius: 8px;
+  padding: 10px 20px;
   text-align: center;
   box-shadow:
     0 0 10px #f5c518,
@@ -311,7 +311,7 @@ a {
     0 0 50px #ddb100,
     0 0 60px #b38f00;
   animation: glowing 2.5s ease-in-out infinite alternate;
-  max-width: 400px;
+  max-width: 600px;
   margin: 2rem auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
