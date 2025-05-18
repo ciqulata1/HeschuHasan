@@ -5,62 +5,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Biografie – Heschu Hasan</title>
 
-  <!-- Externe CSS -->
+  <!-- Favicons -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- Externe CSS-Datei -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <a href="#" class="logo">Heschu Hasan</a>
-      
-      <button class="burger" aria-label="Navigation umschalten" aria-expanded="false" aria-controls="nav-menu">
-        <span class="burger-bar"></span>
-        <span class="burger-bar"></span>
-        <span class="burger-bar"></span>
-      </button>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
-      <ul class="nav-menu" id="nav-menu">
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="umwelt.html">Umwelt</a></li>
-        <li><a href="bildung.html">Bildung</a></li>
-        <li><a href="biografie.html" class="active">Biografie</a></li>
-        <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
-      </ul>
-    </nav>
-  </header>
+        <!-- Desktop Menü -->
+        <ul class="nav-list">
+          <li><a href="#" data-page="index.html">Startseite</a></li>
+          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
+          <li><a href="#" data-page="bildung.html">Bildung</a></li>
+          <li><a href="#" data-page="biografie.html" class="active">Biografie</a></li>
+          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
+        </ul>
 
-  <main>
-    <h1>Biografie</h1>
-    <p>
-      Mein Name ist Heschu Hasan. Ich bin Wirtschaftswissenschaftlerin, geboren in der Autonomen Region Kurdistan und in Deutschland aufgewachsen.
-    </p>
-    <p>
-      Seit vielen Jahren setze ich mich für eine gerechtere Gesellschaft ein, in der Respekt und Chancengleichheit für alle im Mittelpunkt stehen.
-    </p>
+        <!-- Mobile Menü -->
+        <ul class="nav-list-burger">
+          <li><a href="#" data-page="index.html">Startseite</a></li>
+          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
+          <li><a href="#" data-page="bildung.html">Bildung</a></li>
+          <li><a href="#" data-page="biografie.html" class="active">Biografie</a></li>
+          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <div class="biografie-image-wrapper">
-      <img src="IMG_1604.jpeg" alt="Portrait von Heschu Hasan" class="biografie-image" />
-    </div>
+    <main id="content">
+      <section>
+        <h1>Biografie</h1>
+        <p>
+          Mein Name ist Heschu Hasan. Ich bin Wirtschaftswissenschaftlerin, geboren in der Autonomen Region Kurdistan und in Deutschland aufgewachsen.
+        </p>
+        <p>
+          Seit vielen Jahren setze ich mich für eine gerechtere Gesellschaft ein, in der Respekt und Chancengleichheit für alle im Mittelpunkt stehen.
+        </p>
 
-    <p>
-      Ich glaube an den Dialog, an Engagement und an die Kraft der Bürgerinnen und Bürger, um unser Land positiv zu lenken.
-    </p>
-  </main>
+        <div class="biografie-image-wrapper">
+          <img src="IMG_1604.jpeg" alt="Portrait von Heschu Hasan" class="biografie-image" />
+        </div>
 
-  <footer>
-    <p>&copy; 2025 Heschu Hasan</p>
-  </footer>
+        <p>
+          Ich glaube an den Dialog, an Engagement und an die Kraft der Bürgerinnen und Bürger, um unser Land positiv zu lenken.
+        </p>
+      </section>
+    </main>
 
-  <script>
-    // Burger-Menü Toggle
-    const burger = document.querySelector('.burger');
-    const navMenu = document.querySelector('.nav-menu');
+    <footer>
+      <p>&copy; 2025 Heschu Hasan</p>
+    </footer>
 
-    burger.addEventListener('click', () => {
-      const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
-      burger.setAttribute('aria-expanded', !expanded);
-      navMenu.classList.toggle('nav-menu-active');
-    });
-  </script>
+    <script>
+      // Burger-Menü Toggle
+      const burger = document.querySelector('.burger');
+      const navBurger = document.querySelector('.nav-list-burger');
+
+      burger.addEventListener('click', () => {
+        navBurger.classList.toggle('active');
+      });
+
+      // Dynamisches Nachladen der Seiten (Navigation)
+      function setupNavigation() {
+        const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
+        const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
+
+        function loadPage(e) {
+          e.preventDefault();
+          const page = this.getAttribute('data-page');
+          if (!page) return;
+
+          fetch(page)
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, 'text/html');
+              const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
+              document.getElementById('content').innerHTML = newContent;
+
+              // Menü schließen bei mobile
+              navBurger.classList.remove('active');
+
+              // Aktiven Menüpunkt synchron setzen
+              navLinksDesktop.forEach(a => a.classList.remove('active'));
+              navLinksMobile.forEach(a => a.classList.remove('active'));
+
+              navLinksDesktop.forEach(a => {
+                if (a.getAttribute('data-page') === page) a.classList.add('active');
+              });
+              navLinksMobile.forEach(a => {
+                if (a.getAttribute('data-page') === page) a.classList.add('active');
+              });
+            })
+            .catch(err => {
+              console.error('Fehler beim Laden:', err);
+              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
+            });
+        }
+
+        navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
+        navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
+      }
+
+      setupNavigation();
+    </script>
+  </div>
 </body>
 </html>
