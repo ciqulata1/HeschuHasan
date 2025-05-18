@@ -29,16 +29,16 @@ h1, h2, p, ul, li, button.accordion {
 
 /* Burger Button */
 .burger {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   background: none;
   border: none;
   color: white;
   cursor: pointer;
-  display: none; /* Standard versteckt */
+  display: none; !important; /* Standard versteckt */
   padding: 1rem;
   position: fixed;  /* <== hier ändern */
   top: 10px;        /* Abstand vom oberen Rand */
-  right: 10px;      /* Abstand vom rechten Rand */
+  left: 10px;      /* Abstand vom rechten Rand */
   z-index: 1001;    /* Damit es immer oben liegt */
 }
 
