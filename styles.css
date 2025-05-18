@@ -72,3 +72,39 @@ header {
   box-shadow: 0 6px 20px rgba(255, 204, 0, 0.9);
   outline: none;
 }
+
+/* Neuer moderner Stil für main-Content (z.B. Umweltpolitik) */
+main {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+main h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #007a33; /* kräftiges Grün */
+}
+
+main p {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  color: #222;
+}
+
+main strong {
+  color: #00582a;
+  font-weight: 700;
+}
+
+main a {
+  color: #007a33;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+main a:hover {
+  border-color: #007a33;
+}
