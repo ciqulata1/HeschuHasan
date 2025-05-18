@@ -440,7 +440,7 @@ button, a {
 }
 
 .forderung-box {
-  display: flex;
+  display: center;
   align-items: center;
   padding: 6px 0;
   border-bottom: 1px solid #c1d9e8;
