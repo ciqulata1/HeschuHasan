@@ -76,55 +76,51 @@ a:hover {
   }
 }
 
-/* --- Accordion Button (optional, falls du noch Akkordeon hast) --- */
 .accordion {
-  background-color: #f9f1c9; 
-  color: #333;
+  background-color: #FFDD00; /* echtes FDP-Gelb, leuchtend */
+  color: #222;
+  border: 2px solid #004080; /* elegantes, dunkles Blau als Rahmen */
   cursor: pointer;
   padding: 15px 20px;
   width: 100%;
-  border: 2px solid #7aa6c9;
-  outline: none;
-  text-align: left;
-  font-size: 1.2rem;
-  font-weight: 600;
   border-radius: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease; border-color 0.3s ease; 
-  user-select: none;
   font-size: 1.2rem;
   font-weight: 600;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
   margin-bottom: 0;
-}
-.accordion:hover {
-  background-color: #f1e8b8;
-  border-color: #5582b5;
-}
-.accordion.active {
-  background-color: #e7ddb0;
-  border-color: #345c8b;
-  color: #222;
+  box-shadow: 0 0 8px #FFDD0077; /* dezentes Leuchten */
 }
 
-/* Pfeil */
-.accordion.arrow {
-  display: inline-block;
-  transition: transform 0.3s ease;
-  font-size: 1.2rem;
-  margin-left: 10px;
-  stroke: #7aa6c9; /* hellblauer Pfeil */
+.accordion:hover {
+  background-color: #FFCC00; /* etwas dunkler beim Hover */
+  border-color: #003366; /* dunkleres Blau beim Hover */
+  box-shadow: 0 0 12px #FFCC0077; /* etwas stärkeres Leuchten */
 }
+
+.accordion.active {
+  background-color: #FFCC00;
+  border-color: #002244;
+  color: #111;
+  box-shadow: 0 0 15px #FFCC0099;
+}
+
+/* Eleganter Pfeil */
+.accordion .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease, stroke 0.3s ease;
+  font-size: 1.5rem;
+  margin-left: 10px;
+  stroke: #004080; /* elegantes Blau passend zum Rahmen */
+  stroke-width: 2;
+}
+
 .accordion.active .arrow {
   transform: rotate(180deg);
-}
-.accordion {
-  color: #333; /* dein Text und Pfeil sind dann dunkel */
-}
-
-.accordion .arrow {
-  color: #FFC700; /* strahlendes Gelb für den Pfeil */
+  stroke: #002244; /* noch dunkleres Blau wenn aktiv */
 }
 
 
