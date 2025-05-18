@@ -24,6 +24,7 @@ h1, h2, p, ul, li, button.accordion {
   color: white;
 }
 
+
 /* Burger Button */
 .burger {
   font-size: 2.5rem;
@@ -31,7 +32,7 @@ h1, h2, p, ul, li, button.accordion {
   border: none;
   color: white;
   cursor: pointer;
-  display: none;
+  display: none; /* Standard versteckt */
   padding: 1rem;
   position: absolute;
   right: 0;
@@ -41,7 +42,7 @@ h1, h2, p, ul, li, button.accordion {
 
 /* Mobile Menü */
 .nav-list-burger {
-  display: none;
+  display: none; /* Standard versteckt */
   flex-direction: column;
   background: #111;
   position: absolute;
@@ -59,17 +60,25 @@ h1, h2, p, ul, li, button.accordion {
   padding: 1rem;
   border-top: 1px solid #444;
   color: white;
+  text-decoration: none;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  nav ul.nav-list {
-    display: none;
-  }
+  /* Desktop-Menü verstecken, falls du eins hast */
+  /* Beispiel: nav ul.nav-list { display: none; } */
+
+  /* Burger Button anzeigen */
   .burger {
     display: block;
   }
 }
+  
+/* Positionierung des Navs für das Dropdown */
+nav {
+  position: relative;
+}
+
 
 /* Wrapper-Stil */
 .wrapper {
