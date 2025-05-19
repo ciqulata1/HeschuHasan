@@ -89,57 +89,56 @@
 
     <div id="ergebnis" aria-live="polite" style="margin-top: 20px;"></div>
 
-    <script>
-      const form = document.getElementById('wahlomatForm');
-      const ergebnisDiv = document.getElementById('ergebnis');
-      const anzahlFragen = 10;
-      const maxPunkte = anzahlFragen * 2;
+<script>
+  const form = document.getElementById('wahlomatForm');
+  const ergebnisDiv = document.getElementById('ergebnis');
+  const anzahlFragen = 10;
+  const maxPunkte = anzahlFragen * 2;
 
-      function auswertungAnzeigen(values) {
-        let total = 0;
-        for(let i = 1; i <= anzahlFragen; i++) {
-          total += Number(values['frage' + i]);
-        }
+  function auswertungAnzeigen(values) {
+    let total = 0;
+    for (let i = 1; i <= anzahlFragen; i++) {
+      total += Number(values['frage' + i]);
+    }
 
-        const percent = (total / maxPunkte) * 100;
-        let text = '';
-        let color = '';
+    const percent = (total / maxPunkte) * 100;
+    let text = '';
+    let color = '';
 
-        if(percent >= 85) {
-          text = '💛 Sie sind voll kompatibel mit der fdp!';
-          color = '#ffd700';
-        } else if(percent >= 65) {
-          text = '🔥 Sie sind der fdp schon sehr nah!';
-          color = '#c71585';
-        } else if(percent >= 45) {
-          text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
-          color = '#1e90ff';
-        } else {
-          text = '😶 Sie sind noch weit weg von der fdp.';
-          color = '#808080';
-        }
+    if (percent >= 85) {
+      text = '💛 Sie sind voll kompatibel mit der fdp!';
+      color = '#ffd700';
+    } else if (percent >= 65) {
+      text = '🔥 Sie sind der fdp schon sehr nah!';
+      color = '#c71585';
+    } else if (percent >= 45) {
+      text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
+      color = '#1e90ff';
+    } else {
+      text = '😶 Sie sind noch weit weg von der fdp.';
+      color = '#808080';
+    }
 
-        ergebnisDiv.innerHTML = `
-          <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
-          <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
-          <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}" style="background:#eee; border:1px solid #ccc; width: 100%; height: 20px; border-radius: 5px;">
-            <div style="width: ${percent}%; background-color: ${color}; height: 100%; border-radius: 5px;"></div>
-          </div>
-        `;
+    ergebnisDiv.innerHTML = `
+      <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
+      <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
+      <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}"
+           style="background:#eee; border:1px solid #ccc; width: 100%; height: 40px; border-radius: 20px;">
+        <div style="width: ${percent}%; background-color: ${color}; height: 100%; border-radius: 20px;"></div>
+      </div>
+    `;
 
-        ergebnisDiv.scrollIntoView({behavior: 'smooth'});
-      }
+    // Jetzt korrekt: kein Überschreiben von ergebnisDiv
+    ergebnisDiv.scrollIntoView({ behavior: 'smooth' });
+  }
 
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const values = {};
-        for(let i = 1; i <= anzahlFragen; i++) {
-          values['frage' + i] = formData.get('frage' + i);
-        }
-        auswertungAnzeigen(values);
-      });
-    </script>
-  </main>
-</body>
-</html>
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const values = {};
+    for (let i = 1; i <= anzahlFragen; i++) {
+      values['frage' + i] = formData.get('frage' + i);
+    }
+    auswertungAnzeigen(values);
+  });
+</script>
