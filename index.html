@@ -190,7 +190,8 @@
             })
             .catch(err => {
               console.error('Fehler beim Laden:', err);
-              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
+              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>"
+              <pre>${err.message}</pre>;
             });
         }
 
