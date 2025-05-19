@@ -1,121 +1,779 @@
+/* --- Grundlegendes Layout --- */
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 400; /* default reicht, Great Vibes hat meistnur eine Schriftstärke */
+margin: 0;
+font-size: clamp(1rem, 2vw, 1.2rem);
+padding: 20px;
+padding-top: 80px;
+background-color: #2f2f2f;
+color: white;
+line-height: 1.6;
+flex-wrap: wrap; 
+  
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+h1, h2, p, ul, li, button.accordion {
+  color: white;
+  font-family: 'Great Vibes', cursive;
+  list-style-type: none;
+}
+
+/* Burger Button */
+.burger {
+   position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1001; max-height: 500px;
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 1rem;
+  display: block;
+}
+
+/* Mobile Menü */
+.nav-list-burger {
+
+ transition: max-height 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+  position: fixed;
+  top: 60px; /* Platz unter Burger */
+  right: 10px;
+  background-color: #e10074;
+   color: white;
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+  width: 200px; /* Breite setzen, sonst evtl. unsichtbar */
+ 
+}
+  .nav-list-burger li a {
+  color: white !important;
+  text-decoration: none !important;  /* Durchstreichen verhindern */
+}
+
+.nav-list-burger.active {
+  display: flex;
+    max-height: 500px;
+}
+
+.nav-list-burger li {
+  margin-bottom: 12px; /* Abstand zwischen den Punkten */
+}
+
+
+.nav-list-burger li a {
+  padding: 1rem;
+  border-top: 1px solid #444;
+  color: white;
+  text-decoration: none;
+}
+.nav-list-burger li a.active {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-list-burger a {
+  text-decoration: none !important;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+/* Desktop Menü (Beispiel) */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+@media (max-width: 768px) {
+  .nav-list {
+    display: none;
+  }
+  .burger {
+    display: block;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  /* Desktop-Menü ausblenden */
+  .nav-list {
+    display: none;
+  }
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #2f2f2f; /* Hintergrund fixieren */
+  padding: 0.5rem 1rem;
+}
+
+  /* Burger Button anzeigen */
+  .burger {
+    display: block;
+  }
+  .nav-list-burger {
+    display: none;
+}
+  .nav-list-burger.active {
+    display: flex;
+  }
+}
+
+/* Positionierung des Navs für das Dropdown */
+nav {
+  position: relative;
+}
+
+
+
+/* Wrapper-Stil */
+.wrapper {
+  background-color: #3a3a3a; /* etwas helleres Anthrazit als Body */
+  max-width: 1200px;
+  width: 100%;
+
+  padding: 30px;
+  border-radius: 8px;
+
+  /* Schatten in grau-blau für die gesamte Seite */
+  box-shadow: 0 0 30px 5px rgba(100, 110, 140, 0.4);
+
+  box-sizing: border-box;
+}
+
+/* Für kleine Bildschirme */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+  .wrapper {
+    padding: 15px;
+  }
+}
+
+a {
+  color: #005a87;
+  text-decoration: none;
+}
+
+
+/* --- Navigation (farbig & animiert) --- */
+.nav-list {
+  list-style: none;
+  padding: 0 30px;
+  margin: 0 auto 30px auto;
+  display: flex;
+  gap: 25px;
+  background: linear-gradient(90deg, #ff00cc, #005a87, #ffde00);
+  border-radius: 10px;
+  box-shadow:
+    0 0 10px #ff00cc88,
+    0 0 15px #005a8788,
+    0 0 20px #ffde0088;
+  animation: pulseGlow 3s ease-in-out infinite;
+  max-width: 900px;
+}
+
+.nav-list li {
+  flex: 1;
+  text-align: center;
+}
+.nav-list-burger li a {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+
+.nav-list a {
+  display: block;
+  padding: 12px 20px;
+  font-weight: 700;
+  color: white;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  font-size: 1.1rem;
+}
+
+.nav-list a:hover,
+.nav-list a.active {
+  background: linear-gradient(45deg, #ffde00, #ff00cc);
+  color: #00334d;
+  box-shadow:
+    0 0 8px #ffde00cc,
+    0 0 15px #ff00cccc;
+  transform: scale(1.05);
+}
+
+/* Animation der Leuchtkraft */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px #ff00cc88,
+      0 0 15px #005a8788,
+      0 0 20px #ffde0088;
+  }
+  50% {
+    box-shadow:
+      0 0 20px #ff00cccc,
+      0 0 30px #fff,
+      0 0 40px #ffde00cc;
+  }
+}
+
+.accordion {
+  max-width: 100%;
+  width: fit-content;
+  position: relative;
+  padding-right: 30px; 
+  margin: 2rem auto;
+  background-color: #FFC700; /* etwas dunkleres Gelb */
+  color: #222;
+  border: 2px solid #004080;
+  cursor: pointer;
+  padding: 15px 20px;
+  font-family: 'Great Vibes', cursive;
+  width: 100%;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  margin-bottom: 20px !important;;
+  box-shadow:
+    0 0 10px 3px rgba(255, 199, 0, 0.8),
+    0 0 20px 7px rgba(255, 199, 0, 0.6),
+    0 0 30px 12px rgba(255, 199, 0, 0.4),
+    0 0 40px 20px rgba(255, 199, 0, 0.3);
+}
+
+.accordion .header {
+  display: flex;
+  align-items: center; /* Vertikal zentrieren */
+}
+
+
+.accordion-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.accordion:hover {
+  background-color: #FFD500; /* dunkler beim Hover */
+  border-color: #003366;
+  box-shadow:
+    0 0 20px 5px rgba(255, 215, 0, 1),
+    0 0 30px 15px rgba(255, 215, 0, 0.8),
+    0 0 40px 25px rgba(255, 215, 0, 0.6),
+    0 0 50px 30px rgba(255, 215, 0, 0.4);
+  cursor: pointer; 
+}
+
+.accordion.active {
+  background-color: #B38F00;
+  border-color: #002244;
+  color: white !important;
+  box-shadow:
+    0 0 25px 10px rgba(255, 199, 0, 0.9),
+    0 0 40px 20px rgba(255, 199, 0, 0.7),
+    0 0 50px 30px rgba(255, 199, 0, 0.5);
+}
+.contact-box {
+  background-color: #FFD500; /* FDP-Gelb */
+  border: 2px solid #003348;
+  border-radius: 8px;
+  padding: 10px 20px;
+  text-align: center;
+  box-shadow:
+    0 0 10px #f5c518,
+    0 0 20px #f5c518,
+    0 0 30px #f5c518,
+    0 0 40px #ddb100,
+    0 0 50px #ddb100,
+    0 0 60px #b38f00;
+  animation: glowing 2.5s ease-in-out infinite alternate;
+  max-width: 600px;
+  margin: 2rem auto;
+  font-family: 'Playfair Display', serif;
+  color: white;
+  cursor: pointer;
+}
+
+.contact-box:hover {
+  box-shadow:
+    0 0 20px #ffeb3b,
+    0 0 30px #ffeb3b,
+    0 0 40px #ffeb3b,
+    0 0 50px #ffea00,
+    0 0 60px #ffd600,
+    0 0 70px #ffca28;
+  transform: scale(1.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-button {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: #FFD500;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow:
+      0 0 10px #f5c518,
+      0 0 20px #f5c518,
+      0 0 30px #f5c518,
+      0 0 40px #ddb100,
+      0 0 50px #ddb100,
+      0 0 60px #b38f00;
+  }
+  100% {
+    box-shadow:
+      0 0 20px #ffeb3b,
+      0 0 30px #ffeb3b,
+      0 0 40px #ffeb3b,
+      0 0 50px #ffea00,
+      0 0 60px #ffd600,
+      0 0 70px #ffca28;
+  }
+}
+
+/* Pfeil */
+
+.accordion.active .arrow {
+  transform: rotate(180deg);
+}
+
+/* Eleganter Pfeil */
+.accordion .arrow {
+  margin-left: auto;
+  fill: none;
+  stroke: #003348;
+  transition: transform 0.3s ease;
+  width: 16px;
+  height: 16px;
+}
+
+
+/* Panel */
+ .panel {
+  max-height: 500px;
+  overflow: visible !important;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background: linear-gradient(135deg, #f39ac3, #e6007e);
+  border-radius: 0 0 6px 6px;
+  padding: 0 20px;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  color: white; 
+}
+
+
+
+button, a {
+  touch-action: manipulation;
+}
+
+.panel {
+  overflow: hidden;
+  max-height: 0;
+  max-width: 500px;
+  opacity:0; 
+  transition: max-height 0.3s ease out;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px auto;
+}
+
+.panel.open {
+  padding: 15px 20px;
+  opacity: 1; 
+  max-height: none; /* groß genug für Inhalt */
+}
+
+/* Forderung-Items */
+.forderung-item {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; /* kleiner als vorher */
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid #c1d9e8;
+  color: #003348; 
+  border-bottom: none;
+}
+.forderung-item:last-child {
+  border-bottom: none;
+}
+
+.forderung-box {
+  display: block; /* oder flex, wenn du Zentrierung brauchst */
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  padding: 10px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: #003348;
+  border: 1px solid #c1d9e8;
+  border-radius: 8px;
+  background-color: #ffd100; 
+}
+
+
+.forderung-box:last-child {
+  border-bottom: none;
+}
+
+.forderung-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+
+/* Intro Abschnitt */
+.intro p strong {
+  color: #ffffff;
+  font-weight: 700;
+  padding-bottom: 50px;
+}
+
+/* --- Download Button fancy --- */
+.fancy-download-button {
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 1em 2.5em;
+  background: linear-gradient(135deg, #ff00cc, #005a87, #ffde00);
+  color: #00334d;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 16px;
+  box-shadow:
+    0 8px 20px rgba(255, 0, 204, 0.5),
+    0 0 15px rgba(0, 90, 135, 0.7),
+    0 0 10px rgba(255, 222, 0, 0.6);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.fancy-download-button:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 12px 30px rgba(255, 0, 204, 0.8),
+    0 0 25px rgba(0, 90, 135, 1),
+    0 0 20px rgba(255, 222, 0, 0.9);
+}
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #c1d9e8;
+  color: #004766;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0 10px;
+  }
+  .nav-list {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+  }
+}
+
+.biografie-image-wrapper {
+  max-width: 150px;    /* Bildcontainer begrenzen */
+  margin: 20px auto;   /* zentrieren */
+}
+
+.biografie-image {
+  width: 100%;           /* Bild passt sich dem Container an */
+  height: auto;          /* Höhe proportional */
+  border-radius: 50%;    /* macht es rund */
+  object-fit: cover;     /* Bild füllt den Kreis gut aus */
+  display: block;        /* entfernt kleine Inline-Abstände */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* leichter Schatten */
+}
+
+:focus {
+  outline: none; /* Outline aus */
+  box-shadow: 0 0 4px 2px rgba(255, 105, 180, 0.6); /* zartes Pink mit Glow */
+  outline-offset: 2px;
+  border-radius: 4px; /* runde Ecken */
+  transition: box-shadow 0.3s ease;
+}
+
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 6px 2px rgba(255, 222, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 12px 4px rgba(255, 222, 0, 1);
+  }
+}
+
+/* Gelber Button wie bei Forderungen */
+button.auswerten-btn {
+  background-color: #FFD700; /* Goldgelb */
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.auswerten-btn:hover,
+.auswerten-btn:focus {
+  background-color: #FFC300;
+  box-shadow: 0 6px 12px rgba(255, 195, 0, 0.6);
+  outline: none;
+}
+
+/* Ergebnis-Box Styling */
+.ergebnis {
+  margin-top: 30px;
+  border: 3px solid transparent;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #fffbea;
+  transition: border-color 0.5s ease;
+}
+
+.balken {
+  width: 100%;
+  background: white;
+  height: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.balken-inner {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ffd700, #ffcc00, #ffaa00);
+  border-radius: 10px 0 0 10px;
+  box-shadow:
+    0 0 8px #ffd700,
+    0 0 15px #ffcc0080,
+    0 0 20px #ffaa0070;
+  transition: width 0.8s ease-in-out;
+  animation: glowingBar 2.5s ease-in-out infinite alternate;
+}
+.ergebnis-container {
+display: block; /* oder flex, wenn du Zentrierung brauchst */
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  padding: 10px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: #003348;
+  border: 1px solid #c1d9e8;
+  border-radius: 8px;
+  background-color: #ffd100; 
+}
+
+@keyframes glowingBar {
+  0% {
+    box-shadow:
+      0 0 10px #ffd700,
+      0 0 20px #ffcc00,
+      0 0 30px #ffaa00;
+  }
+  100% {
+    box-shadow:
+      0 0 20px #fff700,
+      0 0 30px #ffdd00,
+      0 0 40px #ffbb00;
+  }
+}
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suchfunktion</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 0;
-      background-color: #f9f9f9;
-    }
-
-    .search-container {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      width: 70%;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin-left: 10px;
-      font-size: 16px;
-      border: none;
-      background-color: #2d89ef;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #1b5faf;
-    }
-
-    .results {
-      margin-top: 20px;
-      text-align: left;
-    }
-
-    .result-item {
-      background: white;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    @media screen and (max-width: 600px) {
-      input[type="text"] {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-
-      button {
-        width: 100%;
-        margin-left: 0;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>fdp-Wahl-O-Mat - Erweiterte Version</title>
 </head>
 <body>
-  <div class="search-container">
-    <h1>Suche</h1>
-    <input type="text" id="searchInput" placeholder="Suchbegriff eingeben..." />
-    <button onclick="performSearch()">Suchen</button>
-    <div class="results" id="resultsContainer"></div>
-  </div>
+  <main>
+    <h1>🎯 fdp-Wahl-O-Mat</h1>
+    <form id="wahlomatForm">
 
-  <script>
-    const data = [
-      "Trinkwasseraufbereitung",
-      "Abwassertechnik",
-      "Pumpensysteme",
-      "Rohrleitungsbau",
-      "Wasseranalyse",
-      "Wasserzählerlösungen",
-      "Fernüberwachung",
-      "Filtrationssysteme"
-    ];
+      <h2>Bildung & Umwelt</h2>
 
-    function performSearch() {
-      const input = document.getElementById("searchInput").value.toLowerCase();
-      const resultsContainer = document.getElementById("resultsContainer");
+      <section>
+        <p>1. Soll der Bund stärker in Bildung investieren?</p>
+        <label><input type="radio" name="frage1" value="2" required> Ja – Bildung ist Zukunft und braucht Investitionen!</label><br>
+        <label><input type="radio" name="frage1" value="1"> Unentschieden – es kommt auf die genaue Umsetzung an.</label><br>
+        <label><input type="radio" name="frage1" value="0"> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
+      </section>
 
-      // Ergebnisse löschen
-      resultsContainer.innerHTML = "";
+      <section>
+        <p>2. Soll CO₂-neutrale Technologie stärker gefördert werden?</p>
+        <label><input type="radio" name="frage2" value="2" required> Ja – Innovation ist der Schlüssel zum Klimaschutz.</label><br>
+        <label><input type="radio" name="frage2" value="1"> Vielleicht – solange keine Bürokratiehürden entstehen.</label><br>
+        <label><input type="radio" name="frage2" value="0"> Nein – der Markt regelt das besser als Subventionen.</label>
+      </section>
 
-      if (!input) {
-        resultsContainer.innerHTML = "<p>Bitte einen Suchbegriff eingeben.</p>";
-        return;
-      }
+      <section>
+        <p>3. Soll mehr Geld in nachhaltigen Nahverkehr investiert werden?</p>
+        <label><input type="radio" name="frage3" value="2" required> Ja, dringend notwendig.</label><br>
+        <label><input type="radio" name="frage3" value="1"> Teilweise, aber nicht auf Kosten der Wirtschaft.</label><br>
+        <label><input type="radio" name="frage3" value="0"> Nein, der Individualverkehr soll Vorrang haben.</label>
+      </section>
 
-      const results = data.filter(item =>
-        item.toLowerCase().includes(input)
-      );
+      <section>
+        <p>4. Soll mehr für den Schutz von Natur und Umwelt getan werden?</p>
+        <label><input type="radio" name="frage4" value="2" required> Ja, das ist sehr wichtig.</label><br>
+        <label><input type="radio" name="frage4" value="1"> In Maßen, ohne Wirtschaft zu bremsen.</label><br>
+        <label><input type="radio" name="frage4" value="0"> Nein, die Wirtschaft hat Priorität.</label>
+      </section>
 
-      if (results.length === 0) {
-        resultsContainer.innerHTML = "<p>Keine Ergebnisse gefunden.</p>";
-        return;
-      }
+      <section>
+        <p>5. Soll der Staat mehr in Forschung für saubere Technologien investieren?</p>
+        <label><input type="radio" name="frage5" value="2" required> Ja, das sichert unsere Zukunft.</label><br>
+        <label><input type="radio" name="frage5" value="1"> Teilweise, aber mit Bedacht.</label><br>
+        <label><input type="radio" name="frage5" value="0"> Nein, das sollte der Markt regeln.</label>
+      </section>
 
-      // Ergebnisse anzeigen
-      results.forEach(result => {
-        const div = document.createElement("div");
-        div.className = "result-item";
-        div.textContent = result;
-        resultsContainer.appendChild(div);
-      });
+      <h2>Wirtschaft & Gesellschaft</h2>
+
+      <section>
+        <p>6. Soll es niedrigere Steuern für Unternehmen geben, um Innovationen zu fördern?</p>
+        <label><input type="radio" name="frage6" value="2" required> Ja, das stärkt die Wirtschaft.</label><br>
+        <label><input type="radio" name="frage6" value="1"> Teilweise, aber mit Auflagen.</label><br>
+        <label><input type="radio" name="frage6" value="0"> Nein, das benachteiligt die Allgemeinheit.</label>
+      </section>
+
+      <section>
+        <p>7. Soll mehr Flexibilität für Arbeitnehmer und Arbeitgeber geschaffen werden?</p>
+        <label><input type="radio" name="frage7" value="2" required> Ja, das fördert Chancen.</label><br>
+        <label><input type="radio" name="frage7" value="1"> Kommt auf die Details an.</label><br>
+        <label><input type="radio" name="frage7" value="0"> Nein, das schwächt die Arbeitnehmer.</label>
+      </section>
+
+      <section>
+        <p>8. Soll das Sozialsystem modernisiert und nachhaltiger gestaltet werden?</p>
+        <label><input type="radio" name="frage8" value="2" required> Ja, es braucht Reformen.</label><br>
+        <label><input type="radio" name="frage8" value="1"> Vielleicht, wenn es fair bleibt.</label><br>
+        <label><input type="radio" name="frage8" value="0"> Nein, das System funktioniert so gut.</label>
+      </section>
+
+      <section>
+        <p>9. Soll Deutschland mehr Verantwortung in der EU übernehmen?</p>
+        <label><input type="radio" name="frage9" value="2" required> Ja, für ein starkes Europa.</label><br>
+        <label><input type="radio" name="frage9" value="1"> Ja, aber mit Vorsicht.</label><br>
+        <label><input type="radio" name="frage9" value="0"> Nein, lieber national fokussiert bleiben.</label>
+      </section>
+
+      <section>
+        <p>10. Soll mehr Geld in Forschung und Entwicklung fließen?</p>
+        <label><input type="radio" name="frage10" value="2" required> Ja, das sichert Zukunft.</label><br>
+        <label><input type="radio" name="frage10" value="1"> Teilweise, gezielt eingesetzt.</label><br>
+        <label><input type="radio" name="frage10" value="0"> Nein, private Firmen sollen investieren.</label>
+      </section>
+
+      <button type="submit">Auswertung anzeigen</button>
+    </form>
+
+    <div id="ergebnis" aria-live="polite" style="margin-top: 20px;"></div>
+
+<script>
+  const form = document.getElementById('wahlomatForm');
+  const ergebnisDiv = document.getElementById('ergebnis');
+  const anzahlFragen = 10;
+  const maxPunkte = anzahlFragen * 2;
+
+  function auswertungAnzeigen(values) {
+    let total = 0;
+    for (let i = 1; i <= anzahlFragen; i++) {
+      total += Number(values['frage' + i]);
     }
-  </script>
-</body>
-</html>
+
+    const percent = (total / maxPunkte) * 100;
+    let text = '';
+    let color = '';
+
+    if (percent >= 85) {
+      text = '💛 Sie sind voll kompatibel mit der fdp!';
+      color = '#ffd700';
+    } else if (percent >= 65) {
+      text = '🔥 Sie sind der fdp schon sehr nah!';
+      color = '#c71585';
+    } else if (percent >= 45) {
+      text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
+      color = '#1e90ff';
+    } else {
+      text = '😶 Sie sind noch weit weg von der fdp.';
+      color = '#808080';
+    }
+
+    ergebnisDiv.innerHTML = 
+      <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
+      <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
+      <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}"
+           style="background:#eee; border:1px solid #ccc; width: 100%; height: 40px; border-radius: 20px;">
+        <div style="width: ${percent}%; background-color: ${color}; height: 100%; border-radius: 20px;"></div>
+      </div>
+    ;
+
+    // Jetzt korrekt: kein Überschreiben von ergebnisDiv
+    ergebnisDiv.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const values = {};
+    for (let i = 1; i <= anzahlFragen; i++) {
+      values['frage' + i] = formData.get('frage' + i);
+    }
+    auswertungAnzeigen(values);
+  });
+
+also die auswertung erfolgt nicht und der button ist einfach doof und nicht gelb
+</script>
