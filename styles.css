@@ -548,7 +548,7 @@ footer {
 }
 
 /* Gelber Button wie bei Forderungen */
-.auswerten-btn {
+button.auswerten-btn {
   background-color: #FFD700; /* Goldgelb */
   color: #000;
   border: none;
