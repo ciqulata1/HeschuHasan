@@ -10,9 +10,19 @@
   <h1>Ihre Auswertung</h1>
   <div id="ergebnis"></div>
 
-<script>
-  const datenRaw = localStorage.getItem('wahlomatDaten');
-  const ergebnisDiv = document.getElementById('ergebnis');
+
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const daten = {};
+  for (const [key, value] of params.entries()) {
+    daten[key] = value;
+  }
+
+  // Beispiel: Ausgabe ins HTML
+  document.getElementById('ergebnis').innerHTML = `
+    <h2>Ihre Antworten:</h2>
+    <pre>${JSON.stringify(daten, null, 2)}</pre>
+  `;
 
   if (!datenRaw) {
     ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
@@ -63,3 +73,5 @@
     }
   }
 </script>
+</body>
+</html>
