@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FDP-Wahl-O-Mat</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <button class="burger" onclick="toggleBurger()">☰</button>
+    <ul class="nav-list">
+      <li><a href="index.html">Start</a></li>
+      <li><a href="fdpwahlomat.html" class="active">FDP-Wahl-O-Mat</a></li>
+    </ul>
+    <ul class="nav-list-burger" id="burgerMenu">
+      <li><a href="index.html">Start</a></li>
+      <li><a href="fdpwahlomat.html" class="active">FDP-Wahl-O-Mat</a></li>
+    </ul>
+  </nav>
+
+  <!-- Inhalt -->
+  <div class="wrapper">
+    <h1 style="text-align: center;">🎯 FDP-Wahl-O-Mat</h1>
+    <p style="text-align: center;">Finde heraus, wie sehr du hinter den Positionen der FDP stehst – zu Themen wie Bildung, Umwelt und Innovation.</p>
+
+    <!-- Frage 1 -->
+    <button class="accordion">
+      Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="panel">
+      <div class="forderung-box">
+        <p class="forderung-item">📘 Ja – Bildung ist Zukunft und braucht Investitionen!</p>
+        <p class="forderung-item">🤔 Unentschieden – es kommt auf die genaue Umsetzung an.</p>
+        <p class="forderung-item">🚫 Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</p>
+      </div>
+    </div>
+
+    <!-- Frage 2 (Beispiel für weitere) -->
+    <button class="accordion">
+      Umwelt & Innovation: Soll CO₂-neutrale Technologie stärker gefördert werden?
+      <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="panel">
+      <div class="forderung-box">
+        <p class="forderung-item">🌱 Ja – Innovation ist der Schlüssel zum Klimaschutz.</p>
+        <p class="forderung-item">🤷 Vielleicht – solange keine Bürokratiehürden entstehen.</p>
+        <p class="forderung-item">🙅 Nein – der Markt regelt das besser als Subventionen.</p>
+      </div>
+    </div>
+
+    <!-- Zurück zur Startseite -->
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="index.html" class="fancy-download-button">🔙 Zurück zur Startseite</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 FDP Kandidat*innen – Bildung & Umwelt im Fokus.
+  </footer>
+
+  <!-- Accordion Script -->
+  <script>
+    function toggleBurger() {
+      const menu = document.getElementById('burgerMenu');
+      menu.classList.toggle('active');
+    }
+
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(acc => {
+      acc.addEventListener('click', function () {
+        this.classList.toggle('active');
+        const panel = this.nextElementSibling;
+        panel.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
