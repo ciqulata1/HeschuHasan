@@ -130,8 +130,6 @@ nav {
   padding: 0.5rem 1rem;
 }
 
-  
-
   /* Burger Button anzeigen */
   .burger {
     display: block;
@@ -540,7 +538,6 @@ footer {
   transition: box-shadow 0.3s ease;
 }
 
-}
 
 @keyframes pulseGlow {
   0%, 100% {
