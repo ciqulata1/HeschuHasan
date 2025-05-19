@@ -4,179 +4,177 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FDP Wahl-O-Mat</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Ihre externe CSS-Datei -->
 </head>
 <body>
   <h1>FDP Wahl-O-Mat</h1>
 
   <main>
-  <form id="wahlomatForm">
-    <p>Beantworte die Fragen (0 = Nein, 1 = Neutral, 2 = Ja):</p>
+    <form id="wahlomatForm">
+      <p>Beantworten Sie die Fragen ehrlich und spontan:</p>
 
-    <!-- 10 Fragen -->
-    <div>
-      <label>1. Soll die Bürokratie abgebaut werden?</label><br />
-      <select name="frage1" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>1. Soll die Bürokratie abgebaut werden?</label><br />
+        <select name="frage1" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <div>
-      <label>2. Sind Sie für mehr Digitalisierung?</label><br />
-      <select name="frage2" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>2. Sind Sie für mehr Digitalisierung?</label><br />
+        <select name="frage2" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <!-- Fragen 3–10 analog -->
-    <div>
-      <label>3. Soll die Steuerlast gesenkt werden?</label><br />
-      <select name="frage3" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>3. Soll die Steuerlast gesenkt werden?</label><br />
+        <select name="frage3" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <div>
-      <label>4. Wünschen Sie mehr unternehmerische Freiheit?</label><br />
-      <select name="frage4" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>4. Wünschen Sie mehr unternehmerische Freiheit?</label><br />
+        <select name="frage4" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <div>
-      <label>5. Ist Ihnen der Datenschutz wichtig?</label><br />
-      <select name="frage5" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>5. Ist Ihnen der Datenschutz wichtig?</label><br />
+        <select name="frage5" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <div>
-      <label>6. Unterstützen Sie die soziale Marktwirtschaft?</label><br />
-      <select name="frage6" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>6. Unterstützen Sie die soziale Marktwirtschaft?</label><br />
+        <select name="frage6" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <div>
-      <label>7. Soll der Staat sich aus der Wirtschaft raushalten?</label><br />
-      <select name="frage7" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>7. Soll der Staat sich aus der Wirtschaft heraushalten?</label><br />
+        <select name="frage7" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <div>
-      <label>8. Ist Ihnen individuelle Freiheit wichtig?</label><br />
-      <select name="frage8" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>8. Ist Ihnen individuelle Freiheit wichtig?</label><br />
+        <select name="frage8" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <div>
-      <label>9. Unterstützen Sie einen schlanken Staat?</label><br />
-      <select name="frage9" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>9. Unterstützen Sie einen schlanken Staat?</label><br />
+        <select name="frage9" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <div>
-      <label>10. Sind Sie für eine starke EU?</label><br />
-      <select name="frage10" required>
-        <option value="">Bitte wählen</option>
-        <option value="0">Nein</option>
-        <option value="1">Neutral</option>
-        <option value="2">Ja</option>
-      </select>
-    </div>
+      <div>
+        <label>10. Sind Sie für eine starke EU?</label><br />
+        <select name="frage10" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Ablehnung</option>
+          <option value="1">Neutral</option>
+          <option value="2">Zustimmung</option>
+        </select>
+      </div>
 
-    <br />
-    <button type="submit"
-      style="background:#FFD700; color:#000; font-weight:bold; border:none; padding:12px 24px; border-radius:6px; cursor:pointer;">
-      Auswerten
-    </button>
-  </form>
+      <br />
+      <button type="submit">Auswerten</button>
+    </form>
 
-  <div id="ergebnis" style="margin-top:30px;"></div>
-</main>
+    <div id="ergebnis"></div>
+  </main>
+
   <script>
-    console.log("Script läuft");
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
     const anzahlFragen = 10;
     const maxPunkte = anzahlFragen * 2;
 
-  form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  alert('Formular abgeschickt!');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-  const formData = new FormData(form);
-  let total = 0;
-  let alleAusgefuellt = true;
+      const formData = new FormData(form);
+      let total = 0;
+      let alleAusgefuellt = true;
 
-  for (let i = 1; i <= anzahlFragen; i++) {
-    const wert = formData.get('frage' + i);
-    if (wert === null || wert === '') {
-      alleAusgefuellt = false;
-      break;
-    }
-    total += Number(wert);
-  }
+      for (let i = 1; i <= anzahlFragen; i++) {
+        const wert = formData.get('frage' + i);
+        if (!wert) {
+          alleAusgefuellt = false;
+          break;
+        }
+        total += Number(wert);
+      }
 
-  if (!alleAusgefuellt) {
-    ergebnisDiv.textContent = 'Bitte beantworten Sie alle Fragen!';
-    return;
-  }
+      if (!alleAusgefuellt) {
+        ergebnisDiv.textContent = 'Bitte beantworten Sie alle Fragen!';
+        return;
+      }
 
-  const percent = (total / maxPunkte) * 100;
-  let text = '';
-  let color = '';
+      const percent = (total / maxPunkte) * 100;
+      let text = '';
+      let klasse = '';
 
-  if (percent >= 85) {
-    text = '💛 Sie sind voll kompatibel mit der FDP!';
-    color = '#ffd700';
-  } else if (percent >= 65) {
-    text = '🔥 Sie sind der FDP schon sehr nah!';
-    color = '#c71585';
-  } else if (percent >= 45) {
-    text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
-    color = '#1e90ff';
-  } else {
-    text = '😶 Sie sind noch weit weg von der FDP.';
-    color = '#808080';
-  }
+      if (percent >= 85) {
+        text = '💛 Sie sind voll kompatibel mit der FDP!';
+        klasse = 'stufe1';
+      } else if (percent >= 65) {
+        text = '🔥 Sie sind der FDP schon sehr nah!';
+        klasse = 'stufe2';
+      } else if (percent >= 45) {
+        text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
+        klasse = 'stufe3';
+      } else {
+        text = '😶 Sie sind noch weit weg von der FDP.';
+        klasse = 'stufe4';
+      }
 
-  ergebnisDiv.innerHTML = `
-    <p style="color: ${color}; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">${text}</p>
-    <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
-    <div style="background:#eee; border:1px solid #ccc; width:100%; height: 20px; border-radius: 10px; overflow: hidden; margin-top: 10px;">
-      <div style="width: ${percent}%; background-color: ${color}; height: 100%; border-radius: 10px;"></div>
-    </div>
-  `;
+      ergebnisDiv.innerHTML = `
+        <p class="${klasse}">${text}</p>
+        <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
+        <div class="balken-hintergrund">
+          <div class="balken-vordergrund" style="width: ${percent}%"></div>
+        </div>
+      `;
 
-  ergebnisDiv.scrollIntoView({ behavior: 'smooth' });
-});
+      ergebnisDiv.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
