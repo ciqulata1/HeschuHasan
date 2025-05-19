@@ -2,24 +2,24 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FDP Wahl-O-Mat</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Ihre externe CSS-Datei -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FDP Wahl-O-Mat Baden-Württemberg</title>
 </head>
 <body>
-  <h1>FDP Wahl-O-Mat</h1>
+  <h1>FDP Wahl-O-Mat Baden-Württemberg</h1>
 
   <main>
     <form id="wahlomatForm">
-      <p>Beantworten Sie die Fragen ehrlich und spontan:</p>
+      <p>Beantworten Sie die Fragen (0 = Nein, 1 = Neutral, 2 = Ja):</p>
 
+      <!-- 10 Grundfragen -->
       <div>
         <label>1. Soll die Bürokratie abgebaut werden?</label><br />
         <select name="frage1" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -27,9 +27,9 @@
         <label>2. Sind Sie für mehr Digitalisierung?</label><br />
         <select name="frage2" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -37,9 +37,9 @@
         <label>3. Soll die Steuerlast gesenkt werden?</label><br />
         <select name="frage3" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -47,9 +47,9 @@
         <label>4. Wünschen Sie mehr unternehmerische Freiheit?</label><br />
         <select name="frage4" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -57,9 +57,9 @@
         <label>5. Ist Ihnen der Datenschutz wichtig?</label><br />
         <select name="frage5" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -67,19 +67,19 @@
         <label>6. Unterstützen Sie die soziale Marktwirtschaft?</label><br />
         <select name="frage6" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
       <div>
-        <label>7. Soll der Staat sich aus der Wirtschaft heraushalten?</label><br />
+        <label>7. Soll der Staat sich aus der Wirtschaft raushalten?</label><br />
         <select name="frage7" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -87,9 +87,9 @@
         <label>8. Ist Ihnen individuelle Freiheit wichtig?</label><br />
         <select name="frage8" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -97,9 +97,9 @@
         <label>9. Unterstützen Sie einen schlanken Staat?</label><br />
         <select name="frage9" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -107,9 +107,72 @@
         <label>10. Sind Sie für eine starke EU?</label><br />
         <select name="frage10" required>
           <option value="">Bitte wählen</option>
-          <option value="0">Ablehnung</option>
+          <option value="0">Nein</option>
           <option value="1">Neutral</option>
-          <option value="2">Zustimmung</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <hr style="margin: 20px 0;" />
+
+      <!-- Regionale Fragen Baden-Württemberg / Freiburg -->
+      <div>
+        <label>11. Soll Baden-Württemberg verstärkt in Power-to-X-Technologien investieren, um erneuerbare Energien effizient zu speichern und nutzbar zu machen?</label><br />
+        <select name="frage11" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div>
+        <label>12. Sollen Planungs- und Genehmigungsverfahren für Infrastrukturprojekte in Baden-Württemberg deutlich beschleunigt werden, auch wenn dafür Umweltprüfungen verkürzt werden müssen?</label><br />
+        <select name="frage12" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div>
+        <label>13. Soll Informatik in Baden-Württemberg ab der Grundschule als Pflichtfach eingeführt werden?</label><br />
+        <select name="frage13" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div>
+        <label>14. Soll im Raum Freiburg mehr Fläche für den sozialen Wohnungsbau ausgewiesen werden, auch wenn dafür Teile von Grünflächen bebaut werden müssen?</label><br />
+        <select name="frage14" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div>
+        <label>15. Soll der Nahverkehr in der Region Freiburg bis 2030 vollständig auf emissionsfreie Fahrzeuge umgestellt werden?</label><br />
+        <select name="frage15" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div>
+        <label>16. Soll das Land Baden-Württemberg gezielt strukturschwache ländliche Regionen wie den Schwarzwald mit Innovationszentren für erneuerbare Energien fördern?</label><br />
+        <select name="frage16" required>
+          <option value="">Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
         </select>
       </div>
 
@@ -123,57 +186,25 @@
   <script>
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
-    const anzahlFragen = 10;
-    const maxPunkte = anzahlFragen * 2;
+    const anzahlFragen = 16;  // 10 + 6
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
       const formData = new FormData(form);
-      let total = 0;
-      let alleAusgefuellt = true;
+      let summe = 0;
 
       for (let i = 1; i <= anzahlFragen; i++) {
         const wert = formData.get('frage' + i);
-        if (!wert) {
-          alleAusgefuellt = false;
-          break;
+        if (wert === null || wert === "") {
+          alert('Bitte alle Fragen beantworten.');
+          return;
         }
-        total += Number(wert);
+        summe += Number(wert);
       }
 
-      if (!alleAusgefuellt) {
-        ergebnisDiv.textContent = 'Bitte beantworten Sie alle Fragen!';
-        return;
-      }
-
-      const percent = (total / maxPunkte) * 100;
-      let text = '';
-      let klasse = '';
-
-      if (percent >= 85) {
-        text = '💛 Sie sind voll kompatibel mit der FDP!';
-        klasse = 'stufe1';
-      } else if (percent >= 65) {
-        text = '🔥 Sie sind der FDP schon sehr nah!';
-        klasse = 'stufe2';
-      } else if (percent >= 45) {
-        text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
-        klasse = 'stufe3';
-      } else {
-        text = '😶 Sie sind noch weit weg von der FDP.';
-        klasse = 'stufe4';
-      }
-
-      ergebnisDiv.innerHTML = ergebnisDiv.classList.add('show');
-        <p class="${klasse}">${text}</p>
-        <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
-        <div class="balken-hintergrund">
-          <div class="balken-vordergrund" style="width: ${percent}%"></div>
-        </div>
-      `;
-
-      ergebnisDiv.scrollIntoView({ behavior: 'smooth' });
+      const prozent = (summe / (anzahlFragen * 2)) * 100;
+      ergebnisDiv.innerHTML = `<h2>Übereinstimmung mit FDP: ${prozent.toFixed(1)}%</h2>`;
     });
   </script>
 </body>
