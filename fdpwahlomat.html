@@ -229,34 +229,48 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Script läuft");
 
+  // Formular und Ergebnis-Div holen
   const form = document.getElementById('wahlomatForm');
   const ergebnisDiv = document.querySelector('.ergebnis');
+
+  // Anzahl der Fragen (falls sich ändert, hier anpassen)
   const anzahlFragen = 16;
 
-  form.addEventListener('submit', function (e) {
+  // Eventlistener für Formular-Submit
+  form.addEventListener('submit', e => {
     e.preventDefault();
 
+    // Daten aus dem Formular holen
     const formData = new FormData(form);
+
+    // Objekt für gespeicherte Antworten
     let daten = {};
     let summe = 0;
     let beantworteteFragen = 0;
 
+    // Schleife über alle Fragen
     for (let i = 1; i <= anzahlFragen; i++) {
       const wert = formData.get('frage' + i);
-      if (wert !== null && wert !== "") {
+      if (wert !== null && wert !== '') {
         daten['frage' + i] = wert;
         summe += Number(wert);
         beantworteteFragen++;
       }
     }
 
+    // Antworten in localStorage speichern
     localStorage.setItem('wahlomatDaten', JSON.stringify(daten));
 
+    // Ergebnis anzeigen
     if (beantworteteFragen === 0) {
       ergebnisDiv.innerHTML = `<p>Bitte beantworten Sie mindestens eine Frage.</p>`;
     } else {
+      // Prozent berechnen (Maximalwert pro Frage = 2)
       const prozent = (summe / (beantworteteFragen * 2)) * 100;
-      let smiley = '', text = '';
+
+      // Smiley und Text je nach Prozent
+      let smiley = '';
+      let text = '';
 
       if (prozent >= 70) {
         smiley = '😄';
@@ -269,11 +283,13 @@ document.addEventListener('DOMContentLoaded', () => {
         text = 'Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie regelmäßig vorbeischauen oder meinem Instagram folgen und den FDP-Vibe erleben!';
       }
 
+      // Hinweis, wenn nicht alle Fragen beantwortet wurden
       let hinweis = '';
       if (beantworteteFragen < anzahlFragen) {
         hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich Zeit, alle Fragen zu beantworten.</em></p>`;
       }
 
+      // Ergebnis ausgeben
       ergebnisDiv.innerHTML = `
         <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
         <p>${text}</p>
@@ -282,6 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-</script>  
+</script>
 </body>
 </html>
