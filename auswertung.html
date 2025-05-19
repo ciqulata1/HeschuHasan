@@ -10,25 +10,14 @@
   <h1>Ihre Auswertung</h1>
   <div id="ergebnis"></div>
 
-
   <script>
-  const params = new URLSearchParams(window.location.search);
-  const daten = {};
-  for (const [key, value] of params.entries()) {
-    daten[key] = value;
-  }
+    const params = new URLSearchParams(window.location.search);
+    const daten = {};
+    const ergebnisDiv = document.getElementById('ergebnis');
 
-  // Beispiel: Ausgabe ins HTML
-  document.getElementById('ergebnis').innerHTML = `
-    <h2>Ihre Antworten:</h2>
-    <pre>${JSON.stringify(daten, null, 2)}</pre>
-  `;
-
-  if (!datenRaw) {
-    ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
-  } else {
-    const daten = JSON.parse(datenRaw);
-    console.log('Parsed Daten:', daten);
+    for (const [key, value] of params.entries()) {
+      daten[key] = value;
+    }
 
     const anzahlFragen = 16;
     let summe = 0;
@@ -43,7 +32,7 @@
     }
 
     if (beantworteteFragen === 0) {
-      ergebnisDiv.innerHTML = `<p>Bitte beantworten Sie mindestens eine Frage.</p>`;
+      ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
     } else {
       const prozent = (summe / (beantworteteFragen * 2)) * 100;
       let smiley = '';
@@ -71,7 +60,6 @@
         ${hinweis}
       `;
     }
-  }
-</script>
+  </script>
 </body>
 </html>
