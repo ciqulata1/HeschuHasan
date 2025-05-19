@@ -190,6 +190,7 @@
       e.preventDefault();
       const formData = new FormData(form);
       let summe = 0;
+      console.log("Formular wurde abgeschickt!");
 
       for (let i = 1; i <= anzahlFragen; i++) {
         const wert = formData.get('frage' + i);
