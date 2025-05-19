@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FDP Wahl-O-Mat Baden-Württemberg</title>
-  <link rel="stylesheet" href="styles.css" />
   <style>
     body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 0 10px; }
     h1, h2 { color: #003087; }
@@ -20,27 +19,29 @@
   <h1>FDP Wahl-O-Mat Baden-Württemberg</h1>
 
   <main>
-    <form id="wahlomatForm">
+    <form id="wahlomatForm" onsubmit="return false;">
       <p>Beantworten Sie die Fragen entsprechend Ihrer persönlichen Vorstellung von Deutschlands Innen- sowie Außenwirkung:</p>
 
-      <!-- Fragen -->
+      <!-- Beispiel für eine Frage, hier bitte alle 16 Fragen analog einfügen -->
       <div class="contact-box">
         <label>
           1. Soll die Bürokratie abgebaut werden?
-          <select name="frage1">
-            <option disabled selected>Bitte wählen</option>
+          <select name="frage1" required>
+            <option value="" disabled selected>Bitte wählen</option>
             <option value="0">Nein</option>
             <option value="1">Neutral</option>
             <option value="2">Ja</option>
           </select>
         </label>
       </div>
+
+      <!-- ... alle weiteren Fragen 2 bis 16 analog ... -->
 
       <div class="contact-box">
         <label>
           2. Sind Sie für mehr Digitalisierung?
-          <select name="frage2">
-            <option disabled selected>Bitte wählen</option>
+          <select name="frage2" required>
+            <option value="" disabled selected>Bitte wählen</option>
             <option value="0">Nein</option>
             <option value="1">Neutral</option>
             <option value="2">Ja</option>
@@ -48,9 +49,7 @@
         </label>
       </div>
 
-      <div class="contact-box">
-        <label>
-          3. Soll Power-to-X-Technologie gefördert werden?
+      3. Soll Power-to-X-Technologie gefördert werden?
           <select name="frage3">
             <option disabled selected>Bitte wählen</option>
             <option value="0">Nein</option>
@@ -207,8 +206,8 @@
       <div class="contact-box">
         <label>
           16. Soll die Innovationskraft der Wirtschaft gefördert werden?
-          <select name="frage16">
-            <option disabled selected>Bitte wählen</option>
+          <select name="frage16" required>
+            <option value="" disabled selected>Bitte wählen</option>
             <option value="0">Nein</option>
             <option value="1">Neutral</option>
             <option value="2">Ja</option>
@@ -216,81 +215,71 @@
         </label>
       </div>
 
-     <button id="auswertenBtn" type="button">Auswerten</button>
+      <button id="auswertenBtn" type="button">Auswerten</button>
 
       <p style="font-size: 1em; color: #E20074; margin-top: 20px;">
         Hinweis: Ihre Antworten werden lokal in Ihrem Browser gespeichert. Diese Daten verlassen nicht Ihr Gerät.
       </p>
     </form>
 
-    <div id="ergebnis" class="ergebnis"></div>
+    <div id="ergebnis"></div>
   </main>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("Script läuft");
-
   const form = document.getElementById('wahlomatForm');
-  const ergebnisDiv = document.querySelector('.ergebnis');
+  const ergebnisDiv = document.getElementById('ergebnis');
   const anzahlFragen = 16;
-
-  // Button-Auswertung manuell auslösen (statt Formular-Submit)
   const auswertenBtn = document.getElementById('auswertenBtn');
-  if (auswertenBtn) {
-    auswertenBtn.addEventListener('click', () => {
-      // Formulardaten holen
-      const formData = new FormData(form);
 
-      let daten = {};
-      let summe = 0;
-      let beantworteteFragen = 0;
+  auswertenBtn.addEventListener('click', () => {
+    const formData = new FormData(form);
 
-      for (let i = 1; i <= anzahlFragen; i++) {
-        const wert = formData.get('frage' + i);
-        if (wert !== null && wert !== '') {
-          daten['frage' + i] = wert;
-          summe += Number(wert);
-          beantworteteFragen++;
-        }
+    let daten = {};
+    let summe = 0;
+    let beantworteteFragen = 0;
+
+    for (let i = 1; i <= anzahlFragen; i++) {
+      const wert = formData.get('frage' + i);
+      if (wert !== null && wert !== '') {
+        daten['frage' + i] = wert;
+        summe += Number(wert);
+        beantworteteFragen++;
       }
+    }
 
-      localStorage.setItem('wahlomatDaten', JSON.stringify(daten));
+    localStorage.setItem('wahlomatDaten', JSON.stringify(daten));
 
-      if (beantworteteFragen === 0) {
-        ergebnisDiv.innerHTML = `<p>Bitte beantworten Sie mindestens eine Frage.</p>`;
-      } else {
-        const prozent = (summe / (beantworteteFragen * 2)) * 100;
-        let smiley = '', text = '';
+    if (beantworteteFragen === 0) {
+      ergebnisDiv.innerHTML = `<p style="color: red;">Bitte beantworten Sie mindestens eine Frage.</p>`;
+      return;
+    }
 
-        if (prozent >= 70) {
-          smiley = '😄';
-          text = 'Ihre Übereinstimmung mit der FDP ist hoch. Danke, dass Sie sich für eine moderne Politik interessieren!';
-        } else if (prozent >= 40) {
-          smiley = '😐';
-          text = 'Ihre Übereinstimmung mit der FDP ist mittel. Für eine vollständige Auswertung nehmen Sie sich gerne Zeit, alle Fragen zu beantworten.';
-        } else {
-          smiley = '😞';
-          text = 'Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie regelmäßig vorbeischauen oder meinem Instagram folgen und den FDP-Vibe erleben!';
-        }
+    const prozent = (summe / (beantworteteFragen * 2)) * 100;
+    let smiley = '', text = '';
 
-        let hinweis = '';
-        if (beantworteteFragen < anzahlFragen) {
-          hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich Zeit, alle Fragen zu beantworten.</em></p>`;
-        }
+    if (prozent >= 70) {
+      smiley = '😄';
+      text = 'Ihre Übereinstimmung mit der FDP ist hoch. Danke, dass Sie sich für eine moderne Politik interessieren!';
+    } else if (prozent >= 40) {
+      smiley = '😐';
+      text = 'Ihre Übereinstimmung mit der FDP ist mittel. Für eine vollständige Auswertung nehmen Sie sich gerne Zeit, alle Fragen zu beantworten.';
+    } else {
+      smiley = '😞';
+      text = 'Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie regelmäßig vorbeischauen oder meinem Instagram folgen und den FDP-Vibe erleben!';
+    }
 
-        ergebnisDiv.innerHTML = `
-          <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
-          <p>${text}</p>
-          ${hinweis}
-        `;
-      }
-    });
-  } else {
-    console.error('Button mit ID "auswertenBtn" nicht gefunden!');
-  }
+    let hinweis = '';
+    if (beantworteteFragen < anzahlFragen) {
+      hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich Zeit, alle Fragen zu beantworten.</em></p>`;
+    }
 
-  // Optional: Falls du das Formular trotzdem submitten willst, hier verhindern
-  form.addEventListener('submit', e => e.preventDefault());
+    ergebnisDiv.innerHTML = `
+      <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
+      <p>${text}</p>
+      ${hinweis}
+    `;
+  });
 });
 </script>
 </body>
