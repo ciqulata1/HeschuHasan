@@ -45,11 +45,20 @@
   </form>
 
   <div id="ergebnis" aria-live="polite"></div>
+  <div id="ergebnis">
+  <p>Dein Ergebnis:</p>
+  <div class="balken">
+    <div class="balken-inner" id="balken"></div>
+  </div>
+</div>
 
   <script>
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
     const max = 2 * 5;
+    // Beispiel: Balken auf 70% füllen
+const balken = document.getElementById('balken');
+balken.style.width = '70%';
 
     function auswertungAnzeigen(values) {
       let total = 0;
