@@ -202,6 +202,20 @@
       }
 
       const prozent = (summe / (anzahlFragen * 2)) * 100;
+       let bewertung = '';
+       let smiley = '';
+
+      if (prozent >= 80) {
+  bewertung = 'Sie stimmen der FDP sehr stark zu!';
+  smiley = '😄';
+} else if (prozent >= 50) {
+  bewertung = 'Sie haben eine mittlere Übereinstimmung mit der FDP.';
+  smiley = '🙂';
+} else {
+  bewertung = 'Ihre Übereinstimmung mit der FDP ist gering. Ich freue mich, wenn Sie immer wieder auf meiner Seite vorbeischauen, mein Instagram regelmäßig checken und den FDP-Vibe spüren und manifestieren!';
+  smiley = '😕';
+}
+      
       ergebnisDiv.innerHTML = `<h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}%</h2>`;
     });
   </script>
