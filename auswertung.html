@@ -9,12 +9,31 @@
 <body>
   <h1>Ihre Auswertung</h1>
   <div id="ergebnis"></div>
-  window.onload = function() {
-  // dein Auswertungs-Code hier
-};
 
 
   <script>
+
+    const datenRaw = localStorage.getItem('wahlomatDaten');
+console.log('Raw Daten aus localStorage:', datenRaw);
+
+if (!datenRaw) {
+  ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
+} else {
+  const daten = JSON.parse(datenRaw);
+  console.log('Parsed Daten:', daten);
+
+
+const datenRaw = localStorage.getItem('wahlomatDaten');
+console.log('Raw Daten aus localStorage:', datenRaw);
+
+if (!datenRaw) {
+  ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
+} else {
+  const daten = JSON.parse(datenRaw);
+  console.log('Parsed Daten:', daten);
+  // weiter mit deiner Berechnung...
+}
+
     const ergebnisDiv = document.getElementById('ergebnis');
     const anzahlFragen = 16;
     const daten = JSON.parse(localStorage.getItem('wahlomatDaten')) || {};
@@ -61,3 +80,8 @@
   </script>
 </body>
 </html>
+
+  
+}
+
+    
