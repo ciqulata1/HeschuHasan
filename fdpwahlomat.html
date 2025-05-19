@@ -183,56 +183,25 @@
     <div id="ergebnis"></div>
   </main>
 
-  <script>
-  const datenRaw = localStorage.getItem('wahlomatDaten'); // ✅ Das hat bei dir gefehlt!
-  const ergebnisDiv = document.getElementById('ergebnis');
 
-  if (!datenRaw) {
-    ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
-  } else {
-    const daten = JSON.parse(datenRaw);
-    const anzahlFragen = 16;
-    let summe = 0;
-    let beantworteteFragen = 0;
+  <script>
+  const form = document.getElementById('wahlomatForm');
+  const anzahlFragen = 16;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const daten = {};
 
     for (let i = 1; i <= anzahlFragen; i++) {
-      const wert = daten['frage' + i];
-      if (wert !== undefined && wert !== null && wert !== "") {
-        summe += Number(wert);
-        beantworteteFragen++;
-      }
+      const wert = formData.get('frage' + i);
+      if (wert !== null) daten['frage' + i] = wert;
     }
 
-    if (beantworteteFragen === 0) {
-      ergebnisDiv.innerHTML = `<p>Bitte beantworten Sie mindestens eine Frage.</p>`;
-    } else {
-      const prozent = (summe / (beantworteteFragen * 2)) * 100;
-      let smiley = '';
-      let text = '';
-
-      if (prozent >= 70) {
-        smiley = '😄';
-        text = 'Ihre Übereinstimmung mit der FDP ist hoch. Danke, dass Sie sich für eine moderne Politik interessieren!';
-      } else if (prozent >= 40) {
-        smiley = '😐';
-        text = 'Ihre Übereinstimmung mit der FDP ist mittel. Für eine vollständige Auswertung nehmen Sie sich gerne Zeit, alle Fragen zu beantworten.';
-      } else {
-        smiley = '😞';
-        text = 'Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie regelmäßig vorbeischauen oder meinem Instagram folgen und den FDP-Vibe erleben!';
-      }
-
-      let hinweis = '';
-      if (beantworteteFragen < anzahlFragen) {
-        hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich Zeit, alle Fragen zu beantworten.</em></p>`;
-      }
-
-      ergebnisDiv.innerHTML = `
-        <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
-        <p>${text}</p>
-        ${hinweis}
-      `;
-    }
-  }
+    const params = new URLSearchParams(daten).toString();
+    window.location.href = 'auswertung.html?' + params;
+  });
 </script>
 </body>
 </html>
