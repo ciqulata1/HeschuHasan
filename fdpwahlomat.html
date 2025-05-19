@@ -225,61 +225,63 @@
     <div id="ergebnis" class="ergebnis"></div>
   </main>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('wahlomatForm');
-    const ergebnisDiv = document.getElementById('ergebnis');
-    const anzahlFragen = 16;
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("Script läuft");
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+  const form = document.getElementById('wahlomatForm');
+  const ergebnisDiv = document.querySelector('.ergebnis');
+  const anzahlFragen = 16;
 
-      const formData = new FormData(form);
-      let daten = {};
-      let summe = 0;
-      let beantworteteFragen = 0;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-      for (let i = 1; i <= anzahlFragen; i++) {
-        const wert = formData.get('frage' + i);
-        if (wert !== null && wert !== "") {
-          daten['frage' + i] = wert;
-          summe += Number(wert);
-          beantworteteFragen++;
-        }
+    const formData = new FormData(form);
+    let daten = {};
+    let summe = 0;
+    let beantworteteFragen = 0;
+
+    for (let i = 1; i <= anzahlFragen; i++) {
+      const wert = formData.get('frage' + i);
+      if (wert !== null && wert !== "") {
+        daten['frage' + i] = wert;
+        summe += Number(wert);
+        beantworteteFragen++;
       }
+    }
 
-      localStorage.setItem('wahlomatDaten', JSON.stringify(daten));
+    localStorage.setItem('wahlomatDaten', JSON.stringify(daten));
 
-      if (beantworteteFragen === 0) {
-        ergebnisDiv.innerHTML = `<p>Bitte beantworten Sie mindestens eine Frage.</p>`;
+    if (beantworteteFragen === 0) {
+      ergebnisDiv.innerHTML = `<p>Bitte beantworten Sie mindestens eine Frage.</p>`;
+    } else {
+      const prozent = (summe / (beantworteteFragen * 2)) * 100;
+      let smiley = '', text = '';
+
+      if (prozent >= 70) {
+        smiley = '😄';
+        text = 'Ihre Übereinstimmung mit der FDP ist hoch. Danke, dass Sie sich für eine moderne Politik interessieren!';
+      } else if (prozent >= 40) {
+        smiley = '😐';
+        text = 'Ihre Übereinstimmung mit der FDP ist mittel. Für eine vollständige Auswertung nehmen Sie sich gerne Zeit, alle Fragen zu beantworten.';
       } else {
-        const prozent = (summe / (beantworteteFragen * 2)) * 100;
-        let smiley = '', text = '';
-
-        if (prozent >= 70) {
-          smiley = '😄';
-          text = 'Ihre Übereinstimmung mit der FDP ist hoch. Danke, dass Sie sich für eine moderne Politik interessieren!';
-        } else if (prozent >= 40) {
-          smiley = '😐';
-          text = 'Ihre Übereinstimmung mit der FDP ist mittel. Für eine vollständige Auswertung nehmen Sie sich gerne Zeit, alle Fragen zu beantworten.';
-        } else {
-          smiley = '😞';
-          text = 'Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie regelmäßig vorbeischauen oder meinem Instagram folgen und den FDP-Vibe erleben!';
-        }
-
-        let hinweis = '';
-        if (beantworteteFragen < anzahlFragen) {
-          hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich Zeit, alle Fragen zu beantworten.</em></p>`;
-        }
-
-        ergebnisDiv.innerHTML = `
-          <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
-          <p>${text}</p>
-          ${hinweis}
-        `;
+        smiley = '😞';
+        text = 'Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie regelmäßig vorbeischauen oder meinem Instagram folgen und den FDP-Vibe erleben!';
       }
-    });
+
+      let hinweis = '';
+      if (beantworteteFragen < anzahlFragen) {
+        hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich Zeit, alle Fragen zu beantworten.</em></p>`;
+      }
+
+      ergebnisDiv.innerHTML = `
+        <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
+        <p>${text}</p>
+        ${hinweis}
+      `;
+    }
   });
-  </script>
+});
+</script>  
 </body>
 </html>
