@@ -114,6 +114,7 @@
   </main>
 
   <script>
+  document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
     const anzahlFragen = 16;
@@ -166,6 +167,5 @@
         `;
       }
     });
-  </script>
-</body>
-</html>
+  });
+</script>
