@@ -604,7 +604,26 @@ footer {
   transition: width 0.8s ease-in-out;
   animation: glowingBar 2.5s ease-in-out infinite alternate;
 }
+.ergebnis-container {
+  color: black; /* Sichtbare Schriftfarbe */
+  background-color: #f0f0f0; /* Heller Hintergrund */
+}
 
+.ergebnis-container {
+  display: block; /* oder flex, je nach Layout */
+  visibility: visible;
+}
+
+.ergebnis-container {
+  opacity: 1;
+}
+
+.ergebnis-container {
+  position: relative; /* oder static */
+  width: auto;
+  height: auto;
+  z-index: 10; /* Damit es vorne bleibt */
+}
 @keyframes glowingBar {
   0% {
     box-shadow:
