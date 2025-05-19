@@ -620,14 +620,14 @@ display: block; /* oder flex, wenn du Zentrierung brauchst */
 @keyframes glowingBar {
   0% {
     box-shadow:
-      0 0 10px #ffd700,
-      0 0 20px #ffcc00,
-      0 0 30px #ffaa00;
+      0 0 20px #ffd700,
+      0 0 40px #ffcc00,
+      0 0 60px #ffaa00;
   }
   100% {
     box-shadow:
-      0 0 20px #fff700,
-      0 0 30px #ffdd00,
-      0 0 40px #ffbb00;
+      0 0 30px #fff700,
+      0 0 60px #ffdd00,
+      0 0 90px #ffbb00;
   }
 }
