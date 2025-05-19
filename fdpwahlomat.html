@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FDP Wahl-O-Mat Baden-Württemberg</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
     body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 0 10px; }
-    h1 { text-align: center; color: #003087; }
+    h1, h2 { color: #003087; }
     .contact-box { margin-bottom: 15px; }
     label { font-weight: bold; }
     select { width: 100%; padding: 5px; font-size: 1rem; margin-top: 5px; }
@@ -22,195 +23,149 @@
     <form id="wahlomatForm">
       <p>Beantworten Sie die Fragen entsprechend Ihrer persönlichen Vorstellung von Deutschlands Innen- sowie Außenwirkung:</p>
 
-
+      <!-- Fragen -->
       <div class="contact-box">
         <label>1. Soll die Bürokratie abgebaut werden?</label><br />
-        <select name="frage1" class="pink">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage1"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>2. Sind Sie für mehr Digitalisierung?</label><br />
-        <select name="frage2" class="blue">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage2"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>3. Soll Power-to-X-Technologie gefördert werden?</label><br />
-        <select name="frage3" class="pink">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage3"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>4. Sind schnellere Genehmigungsverfahren wichtig?</label><br />
-        <select name="frage4" class="blue">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage4"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>5. Soll frühzeitige Digitalisierung in Schulen gefördert werden?</label><br />
-        <select name="frage5" class="pink">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage5"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>6. Soll die Informatikförderung in Schulen verbessert werden?</label><br />
-        <select name="frage6" class="blue">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage6"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>7. Soll der Ausbau erneuerbarer Energien beschleunigt werden?</label><br />
-        <select name="frage7" class="pink">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage7"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>8. Sind Investitionen in Forschung und Innovation wichtig?</label><br />
-        <select name="frage8" class="blue">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage8"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>9. Soll der Mittelstand stärker gefördert werden?</label><br />
-        <select name="frage9" class="pink">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage9"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>10. Soll das Bildungssystem modernisiert werden?</label><br />
-        <select name="frage10" class="blue">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage10"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>11. Soll die Wirtschaft stärker international ausgerichtet sein?</label><br />
-        <select name="frage11" class="pink">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage11"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>12. Sind Investitionen in Infrastruktur notwendig?</label><br />
-        <select name="frage12" class="blue">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage12"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>13. Soll der Umweltschutz stärker berücksichtigt werden?</label><br />
-        <select name="frage13" class="pink">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage13"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>14. Sind schnellere Digitalisierungsvorhaben im öffentlichen Sektor notwendig?</label><br />
-        <select name="frage14" class="blue">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage14"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>15. Soll das Steuersystem vereinfacht werden?</label><br />
-        <select name="frage15" class="pink">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage15"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <div class="contact-box">
         <label>16. Soll die Innovationskraft der Wirtschaft gefördert werden?</label><br />
-        <select name="frage16" class="blue">
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <select name="frage16"><option disabled selected>Bitte wählen</option><option value="0">Nein</option><option value="1">Neutral</option><option value="2">Ja</option></select>
       </div>
 
       <button type="submit">Auswerten</button>
-
-       <p style="font-size: 1.0 em; color: #E20074; margin-top: 20px;">
-  Hinweis: Ihre Antworten werden lokal in Ihrem Browser gespeichert, um Ihnen die Auswertung anzuzeigen. Diese Daten verlassen nicht Ihr Gerät.
-</p>
+      <p style="font-size: 1em; color: #E20074; margin-top: 20px;">
+        Hinweis: Ihre Antworten werden lokal in Ihrem Browser gespeichert. Diese Daten verlassen nicht Ihr Gerät.
+      </p>
     </form>
 
     <div id="ergebnis"></div>
   </main>
-<script>
-  const form = document.getElementById('wahlomatForm');
-  const anzahlFragen = 16;
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  <script>
+    const form = document.getElementById('wahlomatForm');
+    const ergebnisDiv = document.getElementById('ergebnis');
+    const anzahlFragen = 16;
 
-    const formData = new FormData(form);
-    let daten = {};
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    for (let i = 1; i <= anzahlFragen; i++) {
-      const wert = formData.get('frage' + i);
-      daten['frage' + i] = wert;
-    }
+      const formData = new FormData(form);
+      let daten = {};
+      let summe = 0;
+      let beantworteteFragen = 0;
 
-    // Speichern im localStorage
-    localStorage.setItem('wahlomatDaten', JSON.stringify(daten));
+      for (let i = 1; i <= anzahlFragen; i++) {
+        const wert = formData.get('frage' + i);
+        if (wert !== null && wert !== "") {
+          daten['frage' + i] = wert;
+          summe += Number(wert);
+          beantworteteFragen++;
+        }
+      }
 
-    // Weiterleitung zur Auswertungsseite
-    window.location.href = 'auswertung.html';
-  });
-</script>
+      localStorage.setItem('wahlomatDaten', JSON.stringify(daten));
+
+      if (beantworteteFragen === 0) {
+        ergebnisDiv.innerHTML = `<p>Bitte beantworten Sie mindestens eine Frage.</p>`;
+      } else {
+        const prozent = (summe / (beantworteteFragen * 2)) * 100;
+        let smiley = '', text = '';
+
+        if (prozent >= 70) {
+          smiley = '😄';
+          text = 'Ihre Übereinstimmung mit der FDP ist hoch. Danke, dass Sie sich für eine moderne Politik interessieren!';
+        } else if (prozent >= 40) {
+          smiley = '😐';
+          text = 'Ihre Übereinstimmung mit der FDP ist mittel. Für eine vollständige Auswertung nehmen Sie sich gerne Zeit, alle Fragen zu beantworten.';
+        } else {
+          smiley = '😞';
+          text = 'Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie regelmäßig vorbeischauen oder meinem Instagram folgen und den FDP-Vibe erleben!';
+        }
+
+        let hinweis = '';
+        if (beantworteteFragen < anzahlFragen) {
+          hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich Zeit, alle Fragen zu beantworten.</em></p>`;
+        }
+
+        ergebnisDiv.innerHTML = `
+          <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
+          <p>${text}</p>
+          ${hinweis}
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
