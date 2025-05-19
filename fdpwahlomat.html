@@ -186,38 +186,53 @@
     const ergebnisDiv = document.getElementById('ergebnis');
     const anzahlFragen = 16;
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      let summe = 0;
-      console.log("Formular wurde abgeschickt!");
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  let summe = 0;
+  let beantworteteFragen = 0;
 
-      for (let i = 1; i <= anzahlFragen; i++) {
-        const wert = formData.get('frage' + i);
-        if (wert === null || wert === "") {
-          alert('Bitte alle Fragen beantworten.');
-          return;
-        }
-        summe += Number(wert);
-      }
+  for (let i = 1; i <= anzahlFragen; i++) {
+    const wert = formData.get('frage' + i);
+    if (wert !== null && wert !== "") {
+      summe += Number(wert);
+      beantworteteFragen++;
+    }
+  }
 
-      const prozent = (summe / (anzahlFragen * 2)) * 100;
-       let bewertung = '';
-       let smiley = '';
+  if (beantworteteFragen === 0) {
+    alert('Bitte beantworten Sie mindestens eine Frage für eine Auswertung.');
+    return;
+  }
 
-      if (prozent >= 80) {
-  bewertung = 'Sie stimmen der FDP sehr stark zu!';
-  smiley = '😄';
-} else if (prozent >= 50) {
-  bewertung = 'Sie haben eine mittlere Übereinstimmung mit der FDP.';
-  smiley = '🙂';
-} else {
-  bewertung = 'Ihre Übereinstimmung mit der FDP ist gering. Ich freue mich, wenn Sie immer wieder auf meiner Seite vorbeischauen, mein Instagram regelmäßig checken und den FDP-Vibe spüren und manifestieren!';
-  smiley = '😕';
-}
-      
-      ergebnisDiv.innerHTML = `<h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}%</h2>`;
-    });
+  const maxPunkte = beantworteteFragen * 2;
+  const prozent = (summe / maxPunkte) * 100;
+
+  let bewertung = '';
+  let smiley = '';
+
+  if (prozent >= 80) {
+    bewertung = 'Sie stimmen der FDP sehr stark zu!';
+    smiley = '😄';
+  } else if (prozent >= 50) {
+    bewertung = 'Sie haben eine mittlere Übereinstimmung mit der FDP.';
+    smiley = '🙂';
+  } else {
+    bewertung = 'Ihre Übereinstimmung mit der FDP ist gering. Ich freue mich, wenn Sie immer wieder auf meiner Seite vorbeischauen, mein Instagram regelmäßig checken und den FDP-Vibe spüren und manifestieren!';
+    smiley = '😕';
+  }
+
+  let hinweis = '';
+  if (beantworteteFragen < anzahlFragen) {
+    hinweis = '<p><em>Für eine vollständige Auswertung nehmen Sie sich bitte Zeit, alle Fragen zu beantworten – für ein modernes Baden-Württemberg.</em></p>';
+  }
+
+  ergebnisDiv.innerHTML = `
+    <h2>${smiley} ${bewertung}</h2>
+    <p>Übereinstimmung: ${prozent.toFixed(1)}%</p>
+    ${hinweis}
+  `;
+});
   </script>
 </body>
 </html>
