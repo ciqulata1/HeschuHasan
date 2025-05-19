@@ -2,74 +2,72 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>fdp-Wahl-O-Mat</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <button class="burger" onclick="toggleBurger()">☰</button>
-    <ul class="nav-list">
-      <li><a href="index.html">Start</a></li>
-      <li><a href="fdpwahlomat.html" class="active">FDP-Wahl-O-Mat</a></li>
-    </ul>
-    <ul class="nav-list-burger" id="burgerMenu">
-      <li><a href="index.html">Start</a></li>
-      <li><a href="fdpwahlomat.html" class="active">FDP-Wahl-O-Mat</a></li>
-    </ul>
-  </nav>
 
-  <!-- Hauptinhalt in main packen -->
-  <main class="wrapper">
-    <h1 style="text-align: center;">🎯 fdp-Wahl-O-Mat</h1>
-    <p style="text-align: center;">Finde heraus, wie sehr du hinter den Positionen der FDP stehst – zu Themen wie Bildung, Umwelt und Innovation.</p>
+  <h1>🎯 fdp-Wahl-O-Mat</h1>
+  <p style="text-align:center;">Finde heraus, wie sehr du hinter den Positionen der FDP stehst!</p>
 
-    <!-- Frage 1 -->
-    <button class="accordion">
-      Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?
-      <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-    </button>
-    <div class="panel">
-      <div class="forderung-box">
-        <p class="forderung-item">📘 Ja – Bildung ist Zukunft und braucht Investitionen!</p>
-        <p class="forderung-item">🤔 Unentschieden – es kommt auf die genaue Umsetzung an.</p>
-        <p class="forderung-item">🚫 Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</p>
-      </div>
-    </div>
+  <!-- Fragen -->
+  <button class="accordion">
+    Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?
+    <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+  </button>
+  <div class="panel">
+    <div class="answer" data-points="2">📘 Ja – Bildung ist Zukunft und braucht Investitionen!</div>
+    <div class="answer" data-points="1">🤔 Unentschieden – es kommt auf die genaue Umsetzung an.</div>
+    <div class="answer" data-points="0">🚫 Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</div>
+  </div>
 
-    <!-- Frage 2 -->
-    <button class="accordion">
-      Umwelt & Innovation: Soll CO₂-neutrale Technologie stärker gefördert werden?
-      <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-    </button>
-    <div class="panel">
-      <div class="forderung-box">
-        <p class="forderung-item">🌱 Ja – Innovation ist der Schlüssel zum Klimaschutz.</p>
-        <p class="forderung-item">🤷 Vielleicht – solange keine Bürokratiehürden entstehen.</p>
-        <p class="forderung-item">🙅 Nein – der Markt regelt das besser als Subventionen.</p>
-      </div>
-    </div>
+  <button class="accordion">
+    Umwelt & Innovation: Soll CO₂-neutrale Technologie stärker gefördert werden?
+    <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+  </button>
+  <div class="panel">
+    <div class="answer" data-points="2">🌱 Ja – Innovation ist der Schlüssel zum Klimaschutz.</div>
+    <div class="answer" data-points="1">🤷 Vielleicht – solange keine Bürokratiehürden entstehen.</div>
+    <div class="answer" data-points="0">🙅 Nein – der Markt regelt das besser als Subventionen.</div>
+  </div>
 
-    <!-- Zurück zur Startseite -->
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="index.html" class="fancy-download-button">🔙 Zurück zur Startseite</a>
-    </div>
-  </main>
+  <button class="accordion">
+    Steuerpolitik: Soll es weniger Steuern für Unternehmen geben, um Innovation zu fördern?
+    <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+  </button>
+  <div class="panel">
+    <div class="answer" data-points="2">✅ Ja, weniger Steuern fördern Wachstum und Innovation.</div>
+    <div class="answer" data-points="1">🤔 Teilweise, aber soziale Gerechtigkeit muss bleiben.</div>
+    <div class="answer" data-points="0">❌ Nein, höhere Steuern sind für soziale Absicherung wichtig.</div>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 fdp Kandidat*innen – Bildung & Umwelt im Fokus.
-  </footer>
+  <button class="accordion">
+    Digitalisierung: Soll die Digitalisierung an Schulen stärker vorangetrieben werden?
+    <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+  </button>
+  <div class="panel">
+    <div class="answer" data-points="2">💻 Ja, damit Schüler:innen fit für die Zukunft sind.</div>
+    <div class="answer" data-points="1">🤷 Unentschieden, wichtig aber mit Augenmaß.</div>
+    <div class="answer" data-points="0">🚫 Nein, Fokus sollte auf klassischen Lernmethoden liegen.</div>
+  </div>
 
-  <!-- Accordion Script -->
+  <button class="accordion">
+    Soziale Marktwirtschaft: Soll der Staat stärker privatwirtschaftliches Engagement fördern?
+    <svg class="arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+  </button>
+  <div class="panel">
+    <div class="answer" data-points="2">👍 Ja, private Initiative ist Motor der Wirtschaft.</div>
+    <div class="answer" data-points="1">😐 Neutral, Staat und Wirtschaft sollen im Gleichgewicht sein.</div>
+    <div class="answer" data-points="0">👎 Nein, Staat muss mehr regulieren und eingreifen.</div>
+  </div>
+
+  <button id="auswertenBtn">Auswertung anzeigen</button>
+  <div id="auswertung"></div>
+
   <script>
-    function toggleBurger() {
-      const menu = document.getElementById('burgerMenu');
-      menu.classList.toggle('active');
-    }
-
+    // Akkordeon öffnen/schließen
     const accordions = document.querySelectorAll('.accordion');
     accordions.forEach(acc => {
       acc.addEventListener('click', function () {
@@ -78,6 +76,47 @@
         panel.classList.toggle('open');
       });
     });
+
+    // Antwort-Auswahl nur eine pro Frage
+    const allPanels = document.querySelectorAll('.panel');
+    allPanels.forEach(panel => {
+      const answers = panel.querySelectorAll('.answer');
+      answers.forEach(answer => {
+        answer.addEventListener('click', () => {
+          answers.forEach(a => a.classList.remove('selected'));
+          answer.classList.add('selected');
+        });
+      });
+    });
+
+    // Auswertung anzeigen
+    document.getElementById('auswertenBtn').addEventListener('click', () => {
+      let totalPoints = 0;
+      let totalQuestions = allPanels.length;
+
+      allPanels.forEach(panel => {
+        const selected = panel.querySelector('.answer.selected');
+        if (selected) {
+          totalPoints += parseInt(selected.getAttribute('data-points'));
+        }
+      });
+
+      const maxPoints = totalQuestions * 2;
+      const percent = (totalPoints / maxPoints) * 100;
+      const auswertungDiv = document.getElementById('auswertung');
+
+      if (percent >= 75) {
+        auswertungDiv.textContent = "💛 Du bist richtig FDP! Gelb und voller Tatendrang.";
+        auswertungDiv.className = 'gelb';
+      } else if (percent >= 40) {
+        auswertungDiv.textContent = "💚 Du bist noch grün – auf dem Weg zur FDP, aber noch lernbereit.";
+        auswertungDiv.className = 'gruen';
+      } else {
+        auswertungDiv.textContent = "💙 Du bist eher blau – vielleicht SPD oder ganz anders, aber nicht FDP.";
+        auswertungDiv.className = 'blau';
+      }
+    });
   </script>
+
 </body>
 </html>
