@@ -605,25 +605,18 @@ footer {
   animation: glowingBar 2.5s ease-in-out infinite alternate;
 }
 .ergebnis-container {
-  color: black; /* Sichtbare Schriftfarbe */
-  background-color: #f0f0f0; /* Heller Hintergrund */
+display: block; /* oder flex, wenn du Zentrierung brauchst */
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  padding: 10px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  color: #003348;
+  border: 1px solid #c1d9e8;
+  border-radius: 8px;
+  background-color: #ffd100; 
 }
 
-.ergebnis-container {
-  display: block; /* oder flex, je nach Layout */
-  visibility: visible;
-}
-
-.ergebnis-container {
-  opacity: 1;
-}
-
-.ergebnis-container {
-  position: relative; /* oder static */
-  width: auto;
-  height: auto;
-  z-index: 10; /* Damit es vorne bleibt */
-}
 @keyframes glowingBar {
   0% {
     box-shadow:
