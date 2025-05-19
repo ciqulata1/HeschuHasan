@@ -124,6 +124,7 @@
   <div id="ergebnis" style="margin-top:30px;"></div>
 </main>
   <script>
+    console.log("Script läuft");
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
     const anzahlFragen = 10;
@@ -131,6 +132,9 @@
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      alert('Formular abgeschickt!
+            #);
+    });
 
       const formData = new FormData(form);
       let total = 0;
