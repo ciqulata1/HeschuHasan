@@ -552,6 +552,42 @@ footer {
   }
 }
 
+/* Gelber Button wie bei Forderungen */
+.auswerten-btn {
+  background-color: #FFD700; /* Goldgelb */
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.auswerten-btn:hover,
+.auswerten-btn:focus {
+  background-color: #FFC300;
+  box-shadow: 0 6px 12px rgba(255, 195, 0, 0.6);
+  outline: none;
+}
+
+/* Ergebnis-Box Styling */
+#ergebnis {
+  margin-top: 30px;
+  border: 3px solid transparent;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: #fffbea;
+  transition: border-color 0.5s ease;
+}
+
 
 
 
