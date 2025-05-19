@@ -720,4 +720,24 @@ button.auswerten-btn {
   background-color: #ffd100;
 }
 
+select.pink {
+  background-color: #ff00a9;
+  color: white;
+}
+
+select.blue {
+  background-color: #002f6c;
+  color: white;
+}
+
+option {
+  color: white;
+}
+
+option.placeholder {
+  color: white;
+  background-color: #ff00a9;
+}
+
+
 
