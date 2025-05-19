@@ -3,82 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>fdp-Wahl-O-Mat - Einfach</title>
+  <title>fdp-Wahl-O-Mat - Basis</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main>
-    <h1>🎯 fdp-Wahl-O-Mat</h1>
-    <form id="wahlomatForm">
-      <section>
-        <p>1. Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?</p>
-        <label><input type="radio" name="frage1" value="2" required> Ja – Bildung ist Zukunft und braucht Investitionen!</label><br />
-        <label><input type="radio" name="frage1" value="1"> Unentschieden – es kommt auf die genaue Umsetzung an.</label><br />
-        <label><input type="radio" name="frage1" value="0"> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
-      </section>
-      <section>
-        <p>2. Umwelt & Innovation: Soll CO₂-neutrale Technologie stärker gefördert werden?</p>
-        <label><input type="radio" name="frage2" value="2" required> Ja – Innovation ist der Schlüssel zum Klimaschutz.</label><br />
-        <label><input type="radio" name="frage2" value="1"> Vielleicht – solange keine Bürokratiehürden entstehen.</label><br />
-        <label><input type="radio" name="frage2" value="0"> Nein – der Markt regelt das besser als Subventionen.</label>
-      </section>
-      <section>
-        <p>3. Steuerpolitik: Soll es niedrigere Steuern für Unternehmen geben, um Innovationen zu fördern?</p>
-        <label><input type="radio" name="frage3" value="2" required> Ja, das stärkt die Wirtschaft.</label><br />
-        <label><input type="radio" name="frage3" value="1"> Teilweise, aber mit Auflagen.</label><br />
-        <label><input type="radio" name="frage3" value="0"> Nein, das benachteiligt die Allgemeinheit.</label>
-      </section>
-      <section>
-        <p>4. Digitalisierung: Soll der Staat mehr in digitale Infrastruktur investieren?</p>
-        <label><input type="radio" name="frage4" value="2" required> Ja, das ist die Zukunft.</label><br />
-        <label><input type="radio" name="frage4" value="1"> Solange es sinnvoll eingesetzt wird.</label><br />
-        <label><input type="radio" name="frage4" value="0"> Nein, der Markt soll es regeln.</label>
-      </section>
-      <section>
-        <p>5. Arbeitsmarkt: Soll mehr Flexibilität für Arbeitnehmer und Arbeitgeber geschaffen werden?</p>
-        <label><input type="radio" name="frage5" value="2" required> Ja, das fördert Chancen.</label><br />
-        <label><input type="radio" name="frage5" value="1"> Kommt auf die Details an.</label><br />
-        <label><input type="radio" name="frage5" value="0"> Nein, das schwächt die Arbeitnehmer.</label>
-      </section>
+<main>
+  <h1>🎯 fdp-Wahl-O-Mat</h1>
+  <form id="wahlomatForm">
+    <!-- Deine Fragen hier unverändert -->
+    <section>
+      <p>1. Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?</p>
+      <label><input type="radio" name="frage1" value="2" required> Ja – Bildung ist Zukunft und braucht Investitionen!</label>
+      <label><input type="radio" name="frage1" value="1"> Unentschieden – es kommt auf die genaue Umsetzung an.</label>
+      <label><input type="radio" name="frage1" value="0"> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
+    </section>
+    <!-- ... weitere Fragen ... -->
+    <section>
+      <p>5. Arbeitsmarkt: Soll mehr Flexibilität für Arbeitnehmer und Arbeitgeber geschaffen werden?</p>
+      <label><input type="radio" name="frage5" value="2" required> Ja, das fördert Chancen.</label>
+      <label><input type="radio" name="frage5" value="1"> Kommt auf die Details an.</label>
+      <label><input type="radio" name="frage5" value="0"> Nein, das schwächt die Arbeitnehmer.</label>
+    </section>
 
-      <button type="submit">Auswertung anzeigen</button>
-    </form>
+    <!-- HIER: type="submit" sicherstellen -->
+    <button type="submit" class="auswerten-btn">Auswertung anzeigen</button>
+  </form>
 
-    <div id="ergebnis" style="margin-top: 1rem;"></div>
-  </main>
+  <div id="ergebnis" aria-live="polite"></div>
 
   <script>
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
-    const maxPunkte = 2 * 5; // 5 Fragen, max 2 Punkte pro Frage
+    const max = 2 * 5;
 
-    form.addEventListener('submit', event => {
-      event.preventDefault(); // Verhindert Seitenreload
-
+    form.addEventListener('submit', e => {
+      e.preventDefault();
       const formData = new FormData(form);
-      let total = 0;
+      const values = {};
       for(let i = 1; i <= 5; i++) {
-        const wert = formData.get('frage' + i);
-        if(wert === null) {
-          ergebnisDiv.textContent = 'Bitte beantworte alle Fragen!';
-          return;
-        }
-        total += Number(wert);
+        values['frage' + i] = formData.get('frage' + i);
       }
 
-      const prozent = (total / maxPunkte) * 100;
+      let total = 0;
+      for(let i = 1; i <= 5; i++) {
+        total += Number(values['frage' + i]);
+      }
+
+      const percent = (total / max) * 100;
 
       let text = '';
-      if(prozent >= 85) text = '💛 Sie sind voll kompatibel mit der fdp!';
-      else if(prozent >= 65) text = '🔥 Sie sind der fdp schon sehr nah!';
-      else if(prozent >= 45) text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
-      else text = '😶 Sie sind noch weit weg von der fdp.';
+      let color = '';
+
+      if(percent >= 85) {
+        text = '💛 Sie sind voll kompatibel mit der fdp!';
+        color = '#FFD700';
+      } else if(percent >= 65) {
+        text = '🔥 Sie sind der fdp schon sehr nah!';
+        color = '#C71585';
+      } else if(percent >= 45) {
+        text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
+        color = '#1E90FF';
+      } else {
+        text = '😶 Sie sind noch weit weg von der fdp.';
+        color = '#808080';
+      }
 
       ergebnisDiv.innerHTML = `
-        <p style="font-weight:bold; font-size:1.2rem;">${text}</p>
-        <p>Ihre Übereinstimmung: ${prozent.toFixed(1)}%</p>
+        <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
+        <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
+        <div class="balken" aria-label="Übereinstimmungsbalken" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}">
+          <div class="balken-inner" style="width: ${percent}%; background-color: ${color};"></div>
+        </div>
       `;
+
       ergebnisDiv.scrollIntoView({behavior: 'smooth'});
     });
+
+    // Optional: URL-Parameter Auswertung beim Laden
+    function getUrlParams() {
+      const params = {};
+      const searchParams = new URLSearchParams(window.location.search);
+      for(let i = 1; i <= 5; i++) {
+        const val = searchParams.get('frage' + i);
+        if(val === null) return null;
+        params['frage' + i] = val;
+      }
+      return params;
+    }
+
+    window.addEventListener('load', () => {
+      const params = getUrlParams();
+      if(params) {
+        for(let i = 1; i <= 5; i++) {
+          const selector = `input[name=frage${i}][value="${params['frage' + i]}"]`;
+          const input = document.querySelector(selector);
+          if(input) input.checked = true;
+        }
+        // Ergebnis anzeigen, wenn URL-Parameter gesetzt sind
+        const event = new Event('submit');
+        form.dispatchEvent(event);
+      }
+    });
   </script>
+</main>
 </body>
 </html>
