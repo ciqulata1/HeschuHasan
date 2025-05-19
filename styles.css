@@ -739,5 +739,22 @@ option.placeholder {
   background-color: #ff00a9;
 }
 
+.zurueck-link {
+  display: inline-block;
+  text-align: center;
+  font-size: 1em;
+  color: #fff;
+  background-color: #E20074; /* gleiche Farbe wie z. B. .pink */
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.zurueck-link:hover {
+  background-color: #c0005f; /* dunklerer Ton bei Hover */
+}
+
 
 
