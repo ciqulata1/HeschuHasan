@@ -440,7 +440,6 @@ button, a {
 }
 
 .forderung-box {
- .forderung-box {
   display: block; /* oder flex, wenn du Zentrierung brauchst */
   max-width: 600px;
   margin: 0 auto 1rem;
