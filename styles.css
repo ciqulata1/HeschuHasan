@@ -98,13 +98,6 @@ h1, h2, p, ul, li, button.accordion {
   box-shadow: none !important;
 }
 
-
-/* Desktop Menü (Beispiel) */
-.nav-list {
-  display: flex;
-  list-style: none;
-  gap: 25px;
-}
 @media (max-width: 768px) {
   .nav-list {
     display: none;
@@ -181,12 +174,15 @@ a {
 
 
 /* --- Navigation (farbig & animiert) --- */
+
 .nav-list {
-  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* erlaubt Umbruch */
+  justify-content: center; /* zentriert das Menü */
   padding: 0 30px;
   margin: 0 auto 30px auto;
-  display: flex;
-  gap: 25px;
+  list-style: none;
+  gap: 1rem; /* Abstand zwischen den Menüpunkten */
   background: linear-gradient(90deg, #ff00cc, #005a87, #ffde00);
   border-radius: 10px;
   box-shadow:
