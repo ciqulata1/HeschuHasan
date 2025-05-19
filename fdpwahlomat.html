@@ -3,111 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>fdp-Wahl-O-Mat - Basis</title>
+  <title>fdp-Wahl-O-Mat - Einfach</title>
 </head>
 <body>
   <main>
     <h1>🎯 fdp-Wahl-O-Mat</h1>
-    <form id="wahlomatForm" novalidate>
-      <div id="error" aria-live="assertive" role="alert" style="color: red; font-weight: bold; display: none;"></div>
+    <form id="wahlomatForm">
       <section>
         <p>1. Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?</p>
-        <label><input type="radio" name="frage1" value="2" /> Ja – Bildung ist Zukunft und braucht Investitionen!</label><br />
-        <label><input type="radio" name="frage1" value="1" /> Unentschieden – es kommt auf die genaue Umsetzung an.</label><br />
-        <label><input type="radio" name="frage1" value="0" /> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
+        <label><input type="radio" name="frage1" value="2" required> Ja – Bildung ist Zukunft und braucht Investitionen!</label><br />
+        <label><input type="radio" name="frage1" value="1"> Unentschieden – es kommt auf die genaue Umsetzung an.</label><br />
+        <label><input type="radio" name="frage1" value="0"> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
       </section>
       <section>
         <p>2. Umwelt & Innovation: Soll CO₂-neutrale Technologie stärker gefördert werden?</p>
-        <label><input type="radio" name="frage2" value="2" /> Ja – Innovation ist der Schlüssel zum Klimaschutz.</label><br />
-        <label><input type="radio" name="frage2" value="1" /> Vielleicht – solange keine Bürokratiehürden entstehen.</label><br />
-        <label><input type="radio" name="frage2" value="0" /> Nein – der Markt regelt das besser als Subventionen.</label>
+        <label><input type="radio" name="frage2" value="2" required> Ja – Innovation ist der Schlüssel zum Klimaschutz.</label><br />
+        <label><input type="radio" name="frage2" value="1"> Vielleicht – solange keine Bürokratiehürden entstehen.</label><br />
+        <label><input type="radio" name="frage2" value="0"> Nein – der Markt regelt das besser als Subventionen.</label>
       </section>
       <section>
         <p>3. Steuerpolitik: Soll es niedrigere Steuern für Unternehmen geben, um Innovationen zu fördern?</p>
-        <label><input type="radio" name="frage3" value="2" /> Ja, das stärkt die Wirtschaft.</label><br />
-        <label><input type="radio" name="frage3" value="1" /> Teilweise, aber mit Auflagen.</label><br />
-        <label><input type="radio" name="frage3" value="0" /> Nein, das benachteiligt die Allgemeinheit.</label>
+        <label><input type="radio" name="frage3" value="2" required> Ja, das stärkt die Wirtschaft.</label><br />
+        <label><input type="radio" name="frage3" value="1"> Teilweise, aber mit Auflagen.</label><br />
+        <label><input type="radio" name="frage3" value="0"> Nein, das benachteiligt die Allgemeinheit.</label>
       </section>
       <section>
         <p>4. Digitalisierung: Soll der Staat mehr in digitale Infrastruktur investieren?</p>
-        <label><input type="radio" name="frage4" value="2" /> Ja, das ist die Zukunft.</label><br />
-        <label><input type="radio" name="frage4" value="1" /> Solange es sinnvoll eingesetzt wird.</label><br />
-        <label><input type="radio" name="frage4" value="0" /> Nein, der Markt soll es regeln.</label>
+        <label><input type="radio" name="frage4" value="2" required> Ja, das ist die Zukunft.</label><br />
+        <label><input type="radio" name="frage4" value="1"> Solange es sinnvoll eingesetzt wird.</label><br />
+        <label><input type="radio" name="frage4" value="0"> Nein, der Markt soll es regeln.</label>
       </section>
       <section>
         <p>5. Arbeitsmarkt: Soll mehr Flexibilität für Arbeitnehmer und Arbeitgeber geschaffen werden?</p>
-        <label><input type="radio" name="frage5" value="2" /> Ja, das fördert Chancen.</label><br />
-        <label><input type="radio" name="frage5" value="1" /> Kommt auf die Details an.</label><br />
-        <label><input type="radio" name="frage5" value="0" /> Nein, das schwächt die Arbeitnehmer.</label>
+        <label><input type="radio" name="frage5" value="2" required> Ja, das fördert Chancen.</label><br />
+        <label><input type="radio" name="frage5" value="1"> Kommt auf die Details an.</label><br />
+        <label><input type="radio" name="frage5" value="0"> Nein, das schwächt die Arbeitnehmer.</label>
       </section>
 
       <button type="submit">Auswertung anzeigen</button>
     </form>
 
-    <div id="ergebnis" aria-live="polite" style="margin-top: 1rem;"></div>
+    <div id="ergebnis" style="margin-top: 1rem;"></div>
   </main>
 
   <script>
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
-    const errorDiv = document.getElementById('error');
-    const maxPunkte = 2 * 5;
+    const maxPunkte = 2 * 5; // 5 Fragen, max 2 Punkte pro Frage
 
-    function auswertungAnzeigen(values) {
+    form.addEventListener('submit', event => {
+      event.preventDefault(); // Verhindert Seitenreload
+
+      const formData = new FormData(form);
       let total = 0;
       for(let i = 1; i <= 5; i++) {
-        total += Number(values['frage' + i]);
+        const wert = formData.get('frage' + i);
+        if(wert === null) {
+          ergebnisDiv.textContent = 'Bitte beantworte alle Fragen!';
+          return;
+        }
+        total += Number(wert);
       }
 
-      const percent = (total / maxPunkte) * 100;
+      const prozent = (total / maxPunkte) * 100;
+
       let text = '';
-      let color = '';
-
-      if(percent >= 85) {
-        text = '💛 Sie sind voll kompatibel mit der fdp!';
-        color = '#FFD700';
-      } else if(percent >= 65) {
-        text = '🔥 Sie sind der fdp schon sehr nah!';
-        color = '#C71585';
-      } else if(percent >= 45) {
-        text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
-        color = '#1E90FF';
-      } else {
-        text = '😶 Sie sind noch weit weg von der fdp.';
-        color = '#808080';
-      }
+      if(prozent >= 85) text = '💛 Sie sind voll kompatibel mit der fdp!';
+      else if(prozent >= 65) text = '🔥 Sie sind der fdp schon sehr nah!';
+      else if(prozent >= 45) text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
+      else text = '😶 Sie sind noch weit weg von der fdp.';
 
       ergebnisDiv.innerHTML = `
-        <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
-        <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
-        <div aria-label="Übereinstimmungsbalken" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}" style="width: 100%; height: 20px; background: #ddd; border-radius: 10px;">
-          <div style="width: ${percent}%; height: 100%; background-color: ${color}; border-radius: 10px 0 0 10px;"></div>
-        </div>
+        <p style="font-weight:bold; font-size:1.2rem;">${text}</p>
+        <p>Ihre Übereinstimmung: ${prozent.toFixed(1)}%</p>
       `;
       ergebnisDiv.scrollIntoView({behavior: 'smooth'});
-    }
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      errorDiv.style.display = 'none';
-      const formData = new FormData(form);
-      const values = {};
-      let allAnswered = true;
-      for(let i = 1; i <= 5; i++) {
-        const val = formData.get('frage' + i);
-        if(val === null) {
-          allAnswered = false;
-          break;
-        }
-        values['frage' + i] = val;
-      }
-      if(!allAnswered) {
-        errorDiv.textContent = 'Bitte beantworten Sie alle Fragen, bevor Sie auswerten.';
-        errorDiv.style.display = 'block';
-        ergebnisDiv.innerHTML = '';
-        return;
-      }
-      auswertungAnzeigen(values);
     });
   </script>
 </body>
