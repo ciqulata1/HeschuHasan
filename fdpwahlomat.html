@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>fdp-Wahl-O-Mat - Basis</title>
-  <!-- CSS extern einbinden -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -42,7 +41,7 @@
       <label><input type="radio" name="frage5" value="0"> Nein, das schwächt die Arbeitnehmer.</label>
     </section>
 
-<button type="submit" class="auswerten-btn">Auswertung anzeigen</button>
+    <button type="submit" class="auswerten-btn">Auswertung anzeigen</button>
   </form>
 
   <div id="ergebnis" aria-live="polite"></div>
@@ -50,16 +49,12 @@
   <script>
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
+    const max = 2 * 5;
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-
-      const formData = new FormData(form);
+    function auswertungAnzeigen(values) {
       let total = 0;
-      const max = 2 * 5;
-
       for(let i = 1; i <= 5; i++) {
-        total += Number(formData.get('frage' + i));
+        total += Number(values['frage' + i]);
       }
 
       const percent = (total / max) * 100;
@@ -90,6 +85,42 @@
       `;
 
       ergebnisDiv.scrollIntoView({behavior: 'smooth'});
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const values = {};
+      for(let i = 1; i <= 5; i++) {
+        values['frage' + i] = formData.get('frage' + i);
+      }
+      auswertungAnzeigen(values);
+    });
+
+    // Funktion, um URL-Parameter auszulesen
+    function getUrlParams() {
+      const params = {};
+      const searchParams = new URLSearchParams(window.location.search);
+      for(let i = 1; i <= 5; i++) {
+        const val = searchParams.get('frage' + i);
+        if(val === null) return null;  // Wenn ein Parameter fehlt, abbrechen
+        params['frage' + i] = val;
+      }
+      return params;
+    }
+
+    // Beim Laden prüfen, ob URL-Parameter da sind und gleich auswerten
+    window.addEventListener('load', () => {
+      const params = getUrlParams();
+      if(params) {
+        // Radio Buttons entsprechend vorauswählen
+        for(let i = 1; i <= 5; i++) {
+          const selector = `input[name=frage${i}][value="${params['frage' + i]}"]`;
+          const input = document.querySelector(selector);
+          if(input) input.checked = true;
+        }
+        auswertungAnzeigen(params);
+      }
     });
   </script>
 
