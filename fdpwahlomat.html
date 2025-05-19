@@ -46,7 +46,7 @@
 
   <div id="ergebnis" aria-live="polite"></div>
   <div id="ergebnis">
-  <p>Dein Ergebnis:</p>
+  <p>Ihr Ergebnis:</p>
   <div class="balken">
     <div class="balken-inner" id="balken"></div>
   </div>
@@ -72,22 +72,22 @@ balken.style.width = '70%';
       let color = '';
 
       if(percent >= 85) {
-        text = '💛 Du bist voll kompatibel mit der fdp!';
+        text = '💛 Sie sind voll kompatibel mit der fdp!';
         color = '#FFD700';
       } else if(percent >= 65) {
-        text = '🔥 Du bist der fdp schon sehr nah!';
+        text = '🔥 Sie sind der fdp schon sehr nah!';
         color = '#C71585';
       } else if(percent >= 45) {
-        text = '💙 Da kann noch was kommen – du bist auf dem Weg!';
+        text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
         color = '#1E90FF';
       } else {
-        text = '😶 Du bist noch weit weg von der fdp.';
+        text = '😶 Sie sind noch weit weg von der fdp.';
         color = '#808080';
       }
 
       ergebnisDiv.innerHTML = `
         <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
-        <p>Deine Übereinstimmung: ${percent.toFixed(1)}%</p>
+        <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
         <div class="balken" aria-label="Übereinstimmungsbalken" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}">
           <div class="balken-inner" style="width: ${percent}%; background-color: ${color};"></div>
         </div>
