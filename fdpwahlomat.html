@@ -130,57 +130,53 @@
     const anzahlFragen = 10;
     const maxPunkte = anzahlFragen * 2;
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Formular abgeschickt!);
-    });
+  form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Formular abgeschickt!');
 
-      const formData = new FormData(form);
-      let total = 0;
-      let alleAusgefuellt = true;
+  const formData = new FormData(form);
+  let total = 0;
+  let alleAusgefuellt = true;
 
-      for (let i = 1; i <= anzahlFragen; i++) {
-        const wert = formData.get('frage' + i);
-        if (wert === null || wert === '') {
-          alleAusgefuellt = false;
-          break;
-        }
-        total += Number(wert);
-      }
+  for (let i = 1; i <= anzahlFragen; i++) {
+    const wert = formData.get('frage' + i);
+    if (wert === null || wert === '') {
+      alleAusgefuellt = false;
+      break;
+    }
+    total += Number(wert);
+  }
 
-      if (!alleAusgefuellt) {
-        ergebnisDiv.textContent = 'Bitte beantworten Sie alle Fragen!';
-        return;
-      }
+  if (!alleAusgefuellt) {
+    ergebnisDiv.textContent = 'Bitte beantworten Sie alle Fragen!';
+    return;
+  }
 
-      const percent = (total / maxPunkte) * 100;
-      let text = '';
-      let color = '';
+  const percent = (total / maxPunkte) * 100;
+  let text = '';
+  let color = '';
 
-      if (percent >= 85) {
-        text = '💛 Sie sind voll kompatibel mit der FDP!';
-        color = '#ffd700';
-      } else if (percent >= 65) {
-        text = '🔥 Sie sind der FDP schon sehr nah!';
-        color = '#c71585';
-      } else if (percent >= 45) {
-        text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
-        color = '#1e90ff';
-      } else {
-        text = '😶 Sie sind noch weit weg von der FDP.';
-        color = '#808080';
-      }
+  if (percent >= 85) {
+    text = '💛 Sie sind voll kompatibel mit der FDP!';
+    color = '#ffd700';
+  } else if (percent >= 65) {
+    text = '🔥 Sie sind der FDP schon sehr nah!';
+    color = '#c71585';
+  } else if (percent >= 45) {
+    text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
+    color = '#1e90ff';
+  } else {
+    text = '😶 Sie sind noch weit weg von der FDP.';
+    color = '#808080';
+  }
 
-      ergebnisDiv.innerHTML = `
-        <p style="color: ${color}; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">${text}</p>
-        <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
-        <div style="background:#eee; border:1px solid #ccc; width:100%; height: 20px; border-radius: 10px; overflow: hidden; margin-top: 10px;">
-          <div style="width: ${percent}%; background-color: ${color}; height: 100%; border-radius: 10px;"></div>
-        </div>
-      `;
+  ergebnisDiv.innerHTML = `
+    <p style="color: ${color}; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">${text}</p>
+    <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
+    <div style="background:#eee; border:1px solid #ccc; width:100%; height: 20px; border-radius: 10px; overflow: hidden; margin-top: 10px;">
+      <div style="width: ${percent}%; background-color: ${color}; height: 100%; border-radius: 10px;"></div>
+    </div>
+  `;
 
-      ergebnisDiv.scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
-</body>
-</html>
+  ergebnisDiv.scrollIntoView({ behavior: 'smooth' });
+});
