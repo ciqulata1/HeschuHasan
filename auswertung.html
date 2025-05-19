@@ -15,6 +15,7 @@
 
     const datenRaw = localStorage.getItem('wahlomatDaten');
 console.log('Raw Daten aus localStorage:', datenRaw);
+     const ergebnisDiv = document.getElementById('ergebnis');
 
 if (!datenRaw) {
   ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
@@ -34,7 +35,6 @@ if (!datenRaw) {
   // weiter mit deiner Berechnung...
 }
 
-    const ergebnisDiv = document.getElementById('ergebnis');
     const anzahlFragen = 16;
     const daten = JSON.parse(localStorage.getItem('wahlomatDaten')) || {};
     let summe = 0;
