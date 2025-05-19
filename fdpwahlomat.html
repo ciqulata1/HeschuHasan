@@ -3,108 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>fdp-Wahl-O-Mat - Basis</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>fdp-Wahl-O-Mat - Erweiterte Version</title>
 </head>
 <body>
-<main>
-  <h1>🎯 fdp-Wahl-O-Mat</h1>
-  <form id="wahlomatForm">
-    <!-- Deine Fragen hier unverändert -->
-    <section>
-      <p>1. Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?</p>
-      <label><input type="radio" name="frage1" value="2" required> Ja – Bildung ist Zukunft und braucht Investitionen!</label>
-      <label><input type="radio" name="frage1" value="1"> Unentschieden – es kommt auf die genaue Umsetzung an.</label>
-      <label><input type="radio" name="frage1" value="0"> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
-    </section>
-    <!-- ... weitere Fragen ... -->
-    <section>
-      <p>5. Arbeitsmarkt: Soll mehr Flexibilität für Arbeitnehmer und Arbeitgeber geschaffen werden?</p>
-      <label><input type="radio" name="frage5" value="2" required> Ja, das fördert Chancen.</label>
-      <label><input type="radio" name="frage5" value="1"> Kommt auf die Details an.</label>
-      <label><input type="radio" name="frage5" value="0"> Nein, das schwächt die Arbeitnehmer.</label>
-    </section>
+  <main>
+    <h1>🎯 fdp-Wahl-O-Mat</h1>
+    <form id="wahlomatForm">
 
-    <!-- HIER: type="submit" sicherstellen -->
-    <button type="submit" class="auswerten-btn">Auswertung anzeigen</button>
-  </form>
+      <h2>Bildung & Umwelt</h2>
 
-  <div id="ergebnis" aria-live="polite"></div>
+      <section>
+        <p>1. Soll der Bund stärker in Bildung investieren?</p>
+        <label><input type="radio" name="frage1" value="2" required> Ja – Bildung ist Zukunft und braucht Investitionen!</label><br>
+        <label><input type="radio" name="frage1" value="1"> Unentschieden – es kommt auf die genaue Umsetzung an.</label><br>
+        <label><input type="radio" name="frage1" value="0"> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
+      </section>
 
-  <script>
-    const form = document.getElementById('wahlomatForm');
-    const ergebnisDiv = document.getElementById('ergebnis');
-    const max = 2 * 5;
+      <section>
+        <p>2. Soll CO₂-neutrale Technologie stärker gefördert werden?</p>
+        <label><input type="radio" name="frage2" value="2" required> Ja – Innovation ist der Schlüssel zum Klimaschutz.</label><br>
+        <label><input type="radio" name="frage2" value="1"> Vielleicht – solange keine Bürokratiehürden entstehen.</label><br>
+        <label><input type="radio" name="frage2" value="0"> Nein – der Markt regelt das besser als Subventionen.</label>
+      </section>
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const values = {};
-      for(let i = 1; i <= 5; i++) {
-        values['frage' + i] = formData.get('frage' + i);
-      }
+      <section>
+        <p>3. Soll mehr Geld in nachhaltigen Nahverkehr investiert werden?</p>
+        <label><input type="radio" name="frage3" value="2" required> Ja, dringend notwendig.</label><br>
+        <label><input type="radio" name="frage3" value="1"> Teilweise, aber nicht auf Kosten der Wirtschaft.</label><br>
+        <label><input type="radio" name="frage3" value="0"> Nein, der Individualverkehr soll Vorrang haben.</label>
+      </section>
 
-      let total = 0;
-      for(let i = 1; i <= 5; i++) {
-        total += Number(values['frage' + i]);
-      }
+      <section>
+        <p>4. Soll mehr für den Schutz von Natur und Umwelt getan werden?</p>
+        <label><input type="radio" name="frage4" value="2" required> Ja, das ist sehr wichtig.</label><br>
+        <label><input type="radio" name="frage4" value="1"> In Maßen, ohne Wirtschaft zu bremsen.</label><br>
+        <label><input type="radio" name="frage4" value="0"> Nein, die Wirtschaft hat Priorität.</label>
+      </section>
 
-      const percent = (total / max) * 100;
+      <section>
+        <p>5. Soll der Staat mehr in Forschung für saubere Technologien investieren?</p>
+        <label><input type="radio" name="frage5" value="2" required> Ja, das sichert unsere Zukunft.</label><br>
+        <label><input type="radio" name="frage5" value="1"> Teilweise, aber mit Bedacht.</label><br>
+        <label><input type="radio" name="frage5" value="0"> Nein, das sollte der Markt regeln.</label>
+      </section>
 
-      let text = '';
-      let color = '';
+      <h2>Wirtschaft & Gesellschaft</h2>
 
-      if(percent >= 85) {
-        text = '💛 Sie sind voll kompatibel mit der fdp!';
-        color = '#FFD700';
-      } else if(percent >= 65) {
-        text = '🔥 Sie sind der fdp schon sehr nah!';
-        color = '#C71585';
-      } else if(percent >= 45) {
-        text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
-        color = '#1E90FF';
-      } else {
-        text = '😶 Sie sind noch weit weg von der fdp.';
-        color = '#808080';
-      }
+      <section>
+        <p>6. Soll es niedrigere Steuern für Unternehmen geben, um Innovationen zu fördern?</p>
+        <label><input type="radio" name="frage6" value="2" required> Ja, das stärkt die Wirtschaft.</label><br>
+        <label><input type="radio" name="frage6" value="1"> Teilweise, aber mit Auflagen.</label><br>
+        <label><input type="radio" name="frage6" value="0"> Nein, das benachteiligt die Allgemeinheit.</label>
+      </section>
 
-      ergebnisDiv.innerHTML = `
-        <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
-        <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
-        <div class="balken" aria-label="Übereinstimmungsbalken" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}">
-          <div class="balken-inner" style="width: ${percent}%; background-color: ${color};"></div>
-        </div>
-      `;
+      <section>
+        <p>7. Soll mehr Flexibilität für Arbeitnehmer und Arbeitgeber geschaffen werden?</p>
+        <label><input type="radio" name="frage7" value="2" required> Ja, das fördert Chancen.</label><br>
+        <label><input type="radio" name="frage7" value="1"> Kommt auf die Details an.</label><br>
+        <label><input type="radio" name="frage7" value="0"> Nein, das schwächt die Arbeitnehmer.</label>
+      </section>
 
-      ergebnisDiv.scrollIntoView({behavior: 'smooth'});
-    });
+      <section>
+        <p>8. Soll das Sozialsystem modernisiert und nachhaltiger gestaltet werden?</p>
+        <label><input type="radio" name="frage8" value="2" required> Ja, es braucht Reformen.</label><br>
+        <label><input type="radio" name="frage8" value="1"> Vielleicht, wenn es fair bleibt.</label><br>
+        <label><input type="radio" name="frage8" value="0"> Nein, das System funktioniert so gut.</label>
+      </section>
 
-    // Optional: URL-Parameter Auswertung beim Laden
-    function getUrlParams() {
-      const params = {};
-      const searchParams = new URLSearchParams(window.location.search);
-      for(let i = 1; i <= 5; i++) {
-        const val = searchParams.get('frage' + i);
-        if(val === null) return null;
-        params['frage' + i] = val;
-      }
-      return params;
-    }
+      <section>
+        <p>9. Soll Deutschland mehr Verantwortung in der EU übernehmen?</p>
+        <label><input type="radio" name="frage9" value="2" required> Ja, für ein starkes Europa.</label><br>
+        <label><input type="radio" name="frage9" value="1"> Ja, aber mit Vorsicht.</label><br>
+        <label><input type="radio" name="frage9" value="0"> Nein, lieber national fokussiert bleiben.</label>
+      </section>
 
-    window.addEventListener('load', () => {
-      const params = getUrlParams();
-      if(params) {
-        for(let i = 1; i <= 5; i++) {
-          const selector = `input[name=frage${i}][value="${params['frage' + i]}"]`;
-          const input = document.querySelector(selector);
-          if(input) input.checked = true;
+      <section>
+        <p>10. Soll mehr Geld in Forschung und Entwicklung fließen?</p>
+        <label><input type="radio" name="frage10" value="2" required> Ja, das sichert Zukunft.</label><br>
+        <label><input type="radio" name="frage10" value="1"> Teilweise, gezielt eingesetzt.</label><br>
+        <label><input type="radio" name="frage10" value="0"> Nein, private Firmen sollen investieren.</label>
+      </section>
+
+      <button type="submit">Auswertung anzeigen</button>
+    </form>
+
+    <div id="ergebnis" aria-live="polite" style="margin-top: 20px;"></div>
+
+    <script>
+      const form = document.getElementById('wahlomatForm');
+      const ergebnisDiv = document.getElementById('ergebnis');
+      const anzahlFragen = 10;
+      const maxPunkte = anzahlFragen * 2;
+
+      function auswertungAnzeigen(values) {
+        let total = 0;
+        for(let i = 1; i <= anzahlFragen; i++) {
+          total += Number(values['frage' + i]);
         }
-        // Ergebnis anzeigen, wenn URL-Parameter gesetzt sind
-        const event = new Event('submit');
-        form.dispatchEvent(event);
+
+        const percent = (total / maxPunkte) * 100;
+        let text = '';
+        let color = '';
+
+        if(percent >= 85) {
+          text = '💛 Sie sind voll kompatibel mit der fdp!';
+          color = '#ffd700';
+        } else if(percent >= 65) {
+          text = '🔥 Sie sind der fdp schon sehr nah!';
+          color = '#c71585';
+        } else if(percent >= 45) {
+          text = '💙 Da kann noch was kommen – Sie sind auf dem Weg!';
+          color = '#1e90ff';
+        } else {
+          text = '😶 Sie sind noch weit weg von der fdp.';
+          color = '#808080';
+        }
+
+        ergebnisDiv.innerHTML = `
+          <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
+          <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
+          <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}" style="background:#eee; border:1px solid #ccc; width: 100%; height: 20px; border-radius: 5px;">
+            <div style="width: ${percent}%; background-color: ${color}; height: 100%; border-radius: 5px;"></div>
+          </div>
+        `;
+
+        ergebnisDiv.scrollIntoView({behavior: 'smooth'});
       }
-    });
-  </script>
-</main>
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const values = {};
+        for(let i = 1; i <= anzahlFragen; i++) {
+          values['frage' + i] = formData.get('frage' + i);
+        }
+        auswertungAnzeigen(values);
+      });
+    </script>
+  </main>
 </body>
 </html>
