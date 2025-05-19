@@ -111,7 +111,8 @@ h1, h2, p, ul, li, button.accordion {
 @media (max-width: 768px) {
   /* Desktop-Menü ausblenden */
   .nav-list {
-    display: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 nav {
   position: fixed;
@@ -191,11 +192,13 @@ a {
     0 0 20px #ffde0088;
   animation: pulseGlow 3s ease-in-out infinite;
   max-width: 900px;
+  width: 100%
 }
 
 .nav-list li {
-  flex: 1;
+  flex: 1 1 auto;
   text-align: center;
+  min-width: 100px;
 }
 .nav-list-burger li a {
   color: white !important;
