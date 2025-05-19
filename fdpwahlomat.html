@@ -4,52 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>fdp-Wahl-O-Mat - Basis</title>
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<main>
-  <h1>🎯 fdp-Wahl-O-Mat</h1>
-  <form id="wahlomatForm">
-    <section>
-      <p>1. Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?</p>
-      <label><input type="radio" name="frage1" value="2" required> Ja – Bildung ist Zukunft und braucht Investitionen!</label>
-      <label><input type="radio" name="frage1" value="1"> Unentschieden – es kommt auf die genaue Umsetzung an.</label>
-      <label><input type="radio" name="frage1" value="0"> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
-    </section>
-    <section>
-      <p>2. Umwelt & Innovation: Soll CO₂-neutrale Technologie stärker gefördert werden?</p>
-      <label><input type="radio" name="frage2" value="2" required> Ja – Innovation ist der Schlüssel zum Klimaschutz.</label>
-      <label><input type="radio" name="frage2" value="1"> Vielleicht – solange keine Bürokratiehürden entstehen.</label>
-      <label><input type="radio" name="frage2" value="0"> Nein – der Markt regelt das besser als Subventionen.</label>
-    </section>
-    <section>
-      <p>3. Steuerpolitik: Soll es niedrigere Steuern für Unternehmen geben, um Innovationen zu fördern?</p>
-      <label><input type="radio" name="frage3" value="2" required> Ja, das stärkt die Wirtschaft.</label>
-      <label><input type="radio" name="frage3" value="1"> Teilweise, aber mit Auflagen.</label>
-      <label><input type="radio" name="frage3" value="0"> Nein, das benachteiligt die Allgemeinheit.</label>
-    </section>
-    <section>
-      <p>4. Digitalisierung: Soll der Staat mehr in digitale Infrastruktur investieren?</p>
-      <label><input type="radio" name="frage4" value="2" required> Ja, das ist die Zukunft.</label>
-      <label><input type="radio" name="frage4" value="1"> Solange es sinnvoll eingesetzt wird.</label>
-      <label><input type="radio" name="frage4" value="0"> Nein, der Markt soll es regeln.</label>
-    </section>
-    <section>
-      <p>5. Arbeitsmarkt: Soll mehr Flexibilität für Arbeitnehmer und Arbeitgeber geschaffen werden?</p>
-      <label><input type="radio" name="frage5" value="2" required> Ja, das fördert Chancen.</label>
-      <label><input type="radio" name="frage5" value="1"> Kommt auf die Details an.</label>
-      <label><input type="radio" name="frage5" value="0"> Nein, das schwächt die Arbeitnehmer.</label>
-    </section>
+  <main>
+    <h1>🎯 fdp-Wahl-O-Mat</h1>
+    <form id="wahlomatForm" novalidate>
+      <div id="error" aria-live="assertive" role="alert" style="color: red; font-weight: bold; display: none;"></div>
+      <section>
+        <p>1. Bildungsoffensive starten: Soll der Bund stärker in Bildung investieren?</p>
+        <label><input type="radio" name="frage1" value="2" /> Ja – Bildung ist Zukunft und braucht Investitionen!</label><br />
+        <label><input type="radio" name="frage1" value="1" /> Unentschieden – es kommt auf die genaue Umsetzung an.</label><br />
+        <label><input type="radio" name="frage1" value="0" /> Nein – Bildung ist Ländersache und der Bund sollte sich heraushalten.</label>
+      </section>
+      <section>
+        <p>2. Umwelt & Innovation: Soll CO₂-neutrale Technologie stärker gefördert werden?</p>
+        <label><input type="radio" name="frage2" value="2" /> Ja – Innovation ist der Schlüssel zum Klimaschutz.</label><br />
+        <label><input type="radio" name="frage2" value="1" /> Vielleicht – solange keine Bürokratiehürden entstehen.</label><br />
+        <label><input type="radio" name="frage2" value="0" /> Nein – der Markt regelt das besser als Subventionen.</label>
+      </section>
+      <section>
+        <p>3. Steuerpolitik: Soll es niedrigere Steuern für Unternehmen geben, um Innovationen zu fördern?</p>
+        <label><input type="radio" name="frage3" value="2" /> Ja, das stärkt die Wirtschaft.</label><br />
+        <label><input type="radio" name="frage3" value="1" /> Teilweise, aber mit Auflagen.</label><br />
+        <label><input type="radio" name="frage3" value="0" /> Nein, das benachteiligt die Allgemeinheit.</label>
+      </section>
+      <section>
+        <p>4. Digitalisierung: Soll der Staat mehr in digitale Infrastruktur investieren?</p>
+        <label><input type="radio" name="frage4" value="2" /> Ja, das ist die Zukunft.</label><br />
+        <label><input type="radio" name="frage4" value="1" /> Solange es sinnvoll eingesetzt wird.</label><br />
+        <label><input type="radio" name="frage4" value="0" /> Nein, der Markt soll es regeln.</label>
+      </section>
+      <section>
+        <p>5. Arbeitsmarkt: Soll mehr Flexibilität für Arbeitnehmer und Arbeitgeber geschaffen werden?</p>
+        <label><input type="radio" name="frage5" value="2" /> Ja, das fördert Chancen.</label><br />
+        <label><input type="radio" name="frage5" value="1" /> Kommt auf die Details an.</label><br />
+        <label><input type="radio" name="frage5" value="0" /> Nein, das schwächt die Arbeitnehmer.</label>
+      </section>
 
-    <button type="submit" class="auswerten-btn">Auswertung anzeigen</button>
-  </form>
+      <button type="submit">Auswertung anzeigen</button>
+    </form>
 
-  <div id="ergebnis" aria-live="polite"></div>
+    <div id="ergebnis" aria-live="polite" style="margin-top: 1rem;"></div>
+  </main>
 
   <script>
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
-    const max = 2 * 5;
+    const errorDiv = document.getElementById('error');
+    const maxPunkte = 2 * 5;
 
     function auswertungAnzeigen(values) {
       let total = 0;
@@ -57,8 +59,7 @@
         total += Number(values['frage' + i]);
       }
 
-      const percent = (total / max) * 100;
-
+      const percent = (total / maxPunkte) * 100;
       let text = '';
       let color = '';
 
@@ -79,47 +80,35 @@
       ergebnisDiv.innerHTML = `
         <p style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${text}</p>
         <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
-        <div class="balken" aria-label="Übereinstimmungsbalken" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}">
-          <div class="balken-inner" style="width: ${percent}%; background-color: ${color};"></div>
+        <div aria-label="Übereinstimmungsbalken" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent.toFixed(1)}" style="width: 100%; height: 20px; background: #ddd; border-radius: 10px;">
+          <div style="width: ${percent}%; height: 100%; background-color: ${color}; border-radius: 10px 0 0 10px;"></div>
         </div>
       `;
-
       ergebnisDiv.scrollIntoView({behavior: 'smooth'});
     }
 
     form.addEventListener('submit', e => {
       e.preventDefault();
+      errorDiv.style.display = 'none';
       const formData = new FormData(form);
       const values = {};
+      let allAnswered = true;
       for(let i = 1; i <= 5; i++) {
-        values['frage' + i] = formData.get('frage' + i);
+        const val = formData.get('frage' + i);
+        if(val === null) {
+          allAnswered = false;
+          break;
+        }
+        values['frage' + i] = val;
+      }
+      if(!allAnswered) {
+        errorDiv.textContent = 'Bitte beantworten Sie alle Fragen, bevor Sie auswerten.';
+        errorDiv.style.display = 'block';
+        ergebnisDiv.innerHTML = '';
+        return;
       }
       auswertungAnzeigen(values);
     });
-
-    function getUrlParams() {
-      const params = {};
-      const searchParams = new URLSearchParams(window.location.search);
-      for(let i = 1; i <= 5; i++) {
-        const val = searchParams.get('frage' + i);
-        if(val === null) return null;
-        params['frage' + i] = val;
-      }
-      return params;
-    }
-
-    window.addEventListener('load', () => {
-      const params = getUrlParams();
-      if(params) {
-        for(let i = 1; i <= 5; i++) {
-          const selector = `input[name=frage${i}][value="${params['frage' + i]}"]`;
-          const input = document.querySelector(selector);
-          if(input) input.checked = true;
-        }
-        auswertungAnzeigen(params);
-      }
-    });
   </script>
-</main>
 </body>
 </html>
