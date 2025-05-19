@@ -217,6 +217,7 @@
       </div>
 
       <button type="submit">Auswerten</button>
+      <button id="auswertenBtn">Auswerten</button>
       <p style="font-size: 1em; color: #E20074; margin-top: 20px;">
         Hinweis: Ihre Antworten werden lokal in Ihrem Browser gespeichert. Diese Daten verlassen nicht Ihr Gerät.
       </p>
@@ -299,5 +300,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('auswertenBtn');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      // Hier kommt dein Auswertungs-Code hin
+      console.log('Auswerten-Button wurde geklickt!');
+    });
+  } else {
+    console.error('Button mit ID "auswertenBtn" nicht gefunden!');
+  }
+});
+
 </body>
 </html>
