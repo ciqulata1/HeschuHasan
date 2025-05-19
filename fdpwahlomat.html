@@ -165,7 +165,7 @@
         klasse = 'stufe4';
       }
 
-      ergebnisDiv.innerHTML = `
+      ergebnisDiv.innerHTML = ergebnisDiv.classList.add('show');
         <p class="${klasse}">${text}</p>
         <p>Ihre Übereinstimmung: ${percent.toFixed(1)}%</p>
         <div class="balken-hintergrund">
