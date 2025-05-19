@@ -12,11 +12,9 @@
 
   <script>
     const ergebnisDiv = document.getElementById('ergebnis');
-    const datenRaw = localStorage.getItem('wahlomatDaten');
-    console.log('Raw Daten aus localStorage:', datenRaw);
 
     if (!datenRaw) {
-      ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
+      window.location.href = 'fdpwahlomat.html'; `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
     } else {
       const daten = JSON.parse(datenRaw);
       console.log('Parsed Daten:', daten);
