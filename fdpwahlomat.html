@@ -183,8 +183,8 @@
 
   <script>
     const form = document.getElementById('wahlomatForm');
-    const ergebnisDiv = document.getElementById('ergebnis');
-    const anzahlFragen = 16;
+const ergebnisDiv = document.getElementById('ergebnis');
+const anzahlFragen = 16;
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -201,35 +201,35 @@ form.addEventListener('submit', function (e) {
   }
 
   if (beantworteteFragen === 0) {
-    alert('Bitte beantworten Sie mindestens eine Frage für eine Auswertung.');
+    ergebnisDiv.innerHTML = `<p>Bitte beantworten Sie mindestens eine Frage, um eine Auswertung zu erhalten.</p>`;
     return;
   }
 
-  const maxPunkte = beantworteteFragen * 2;
-  const prozent = (summe / maxPunkte) * 100;
+  const prozent = (summe / (beantworteteFragen * 2)) * 100;
 
-  let bewertung = '';
+  // Smiley und Text je nach Prozent
   let smiley = '';
+  let text = '';
 
-  if (prozent >= 80) {
-    bewertung = 'Sie stimmen der FDP sehr stark zu!';
+  if (prozent >= 70) {
     smiley = '😄';
-  } else if (prozent >= 50) {
-    bewertung = 'Sie haben eine mittlere Übereinstimmung mit der FDP.';
-    smiley = '🙂';
+    text = 'Ihre Übereinstimmung mit der FDP ist hoch. Danke, dass Sie sich für eine moderne Politik interessieren!';
+  } else if (prozent >= 40) {
+    smiley = '😐';
+    text = 'Ihre Übereinstimmung mit der FDP ist mittel. Für eine vollständige Auswertung nehmen Sie sich gerne Zeit, alle Fragen zu beantworten.';
   } else {
-    bewertung = 'Ihre Übereinstimmung mit der FDP ist gering. Ich freue mich, wenn Sie immer wieder auf meiner Seite vorbeischauen, mein Instagram regelmäßig checken und den FDP-Vibe spüren und manifestieren!';
-    smiley = '😕';
+    smiley = '😞';
+    text = `Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie immer wieder auf meiner Seite vorbeischauen oder mein Instagram regelmäßig checken und den FDP Vibe spüren manifestieren.`;
   }
 
   let hinweis = '';
   if (beantworteteFragen < anzahlFragen) {
-    hinweis = '<p><em>Für eine vollständige Auswertung nehmen Sie sich bitte Zeit, alle Fragen zu beantworten – für ein modernes Baden-Württemberg.</em></p>';
+    hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich Zeit, alle Fragen zu beantworten.</em></p>`;
   }
 
   ergebnisDiv.innerHTML = `
-    <h2>${smiley} ${bewertung}</h2>
-    <p>Übereinstimmung: ${prozent.toFixed(1)}%</p>
+    <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
+    <p>${text}</p>
     ${hinweis}
   `;
 });
