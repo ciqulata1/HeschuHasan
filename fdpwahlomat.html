@@ -9,7 +9,7 @@
     body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 0 10px; }
     h1, h2 { color: #003087; }
     .contact-box { margin-bottom: 15px; }
-    label { font-weight: bold; }
+    label { font-weight: bold; display: block; }
     select { width: 100%; padding: 5px; font-size: 1rem; margin-top: 5px; }
     button { background-color: #ffd700; border: none; padding: 10px 20px; font-size: 1.1rem; cursor: pointer; }
     button:hover { background-color: #ffea00; }
@@ -25,163 +25,195 @@
 
       <!-- Fragen -->
       <div class="contact-box">
-        <label for="frage1">1. Soll die Bürokratie abgebaut werden?</label><br />
-        <select id="frage1" name="frage1">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          1. Soll die Bürokratie abgebaut werden?
+          <select name="frage1">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage2">2. Sind Sie für mehr Digitalisierung?</label><br />
-        <select id="frage2" name="frage2">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          2. Sind Sie für mehr Digitalisierung?
+          <select name="frage2">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage3">3. Soll Power-to-X-Technologie gefördert werden?</label><br />
-        <select id="frage3" name="frage3">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          3. Soll Power-to-X-Technologie gefördert werden?
+          <select name="frage3">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage4">4. Sind schnellere Genehmigungsverfahren wichtig?</label><br />
-        <select id="frage4" name="frage4">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          4. Sind schnellere Genehmigungsverfahren wichtig?
+          <select name="frage4">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage5">5. Soll frühzeitige Digitalisierung in Schulen gefördert werden?</label><br />
-        <select id="frage5" name="frage5">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          5. Soll frühzeitige Digitalisierung in Schulen gefördert werden?
+          <select name="frage5">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage6">6. Soll die Informatikförderung in Schulen verbessert werden?</label><br />
-        <select id="frage6" name="frage6">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          6. Soll die Informatikförderung in Schulen verbessert werden?
+          <select name="frage6">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage7">7. Soll der Ausbau erneuerbarer Energien beschleunigt werden?</label><br />
-        <select id="frage7" name="frage7">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          7. Soll der Ausbau erneuerbarer Energien beschleunigt werden?
+          <select name="frage7">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage8">8. Sind Investitionen in Forschung und Innovation wichtig?</label><br />
-        <select id="frage8" name="frage8">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          8. Sind Investitionen in Forschung und Innovation wichtig?
+          <select name="frage8">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage9">9. Soll der Mittelstand stärker gefördert werden?</label><br />
-        <select id="frage9" name="frage9">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          9. Soll der Mittelstand stärker gefördert werden?
+          <select name="frage9">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage10">10. Soll das Bildungssystem modernisiert werden?</label><br />
-        <select id="frage10" name="frage10">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          10. Soll das Bildungssystem modernisiert werden?
+          <select name="frage10">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage11">11. Soll die Wirtschaft stärker international ausgerichtet sein?</label><br />
-        <select id="frage11" name="frage11">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          11. Soll die Wirtschaft stärker international ausgerichtet sein?
+          <select name="frage11">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage12">12. Sind Investitionen in Infrastruktur notwendig?</label><br />
-        <select id="frage12" name="frage12">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          12. Sind Investitionen in Infrastruktur notwendig?
+          <select name="frage12">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage13">13. Soll der Umweltschutz stärker berücksichtigt werden?</label><br />
-        <select id="frage13" name="frage13">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          13. Soll der Umweltschutz stärker berücksichtigt werden?
+          <select name="frage13">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage14">14. Sind schnellere Digitalisierungsvorhaben im öffentlichen Sektor notwendig?</label><br />
-        <select id="frage14" name="frage14">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          14. Sind schnellere Digitalisierungsvorhaben im öffentlichen Sektor notwendig?
+          <select name="frage14">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage15">15. Soll das Steuersystem vereinfacht werden?</label><br />
-        <select id="frage15" name="frage15">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          15. Soll das Steuersystem vereinfacht werden?
+          <select name="frage15">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <div class="contact-box">
-        <label for="frage16">16. Soll die Innovationskraft der Wirtschaft gefördert werden?</label><br />
-        <select id="frage16" name="frage16">
-          <option disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
+        <label>
+          16. Soll die Innovationskraft der Wirtschaft gefördert werden?
+          <select name="frage16">
+            <option disabled selected>Bitte wählen</option>
+            <option value="0">Nein</option>
+            <option value="1">Neutral</option>
+            <option value="2">Ja</option>
+          </select>
+        </label>
       </div>
 
       <button type="submit">Auswerten</button>
@@ -190,7 +222,7 @@
       </p>
     </form>
 
-    <div class="ergebnis"></div>
+    <div id="ergebnis" class="ergebnis"></div>
   </main>
 
   <script>
