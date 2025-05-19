@@ -2,214 +2,76 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <link rel="manifest" href="/IMG_2078.png">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Heschu Hasan kandidiert 2026 in Freiburg. Ihre Themen: Bildung, Umwelt und ein bürgernaher Staat.">
-<meta name="author" content="Heschu Hasan">
-<meta property="og:title" content="Heschu Hasan – Direktkandidatin Freiburg" />
-  <meta property="og:image" content="/IMG_1604.jpeg" />
-<meta property="og:description" content="Für eine faire Verwaltung, Umwelt und Bildung." />
-
-<meta property="og:type" content="website" />
-
-  <title>Heschu Hasan – Direktkandidatin Freiburg</title>
-
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="/IMG_2065.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/IMG_2066.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/IMG_2067.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/IMG_2068.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/IMG_2069.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/IMG_2070.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/IMG_2071.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/IMG_2072.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/IMG_2073.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/IMG_2074.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/IMG_2075.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/IMG_2076.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/IMG_2077.png">
-  <link rel="manifest" href="/IMG_2078.png">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/IMG_2084.ico">
-  <meta name="theme-color" content="#ffffff">
-
-  <!-- Externe CSS-Datei -->
-  <link rel="stylesheet" href="styles.css" />
+  <title>FDP Wahl-O-Mat</title>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <nav>
-        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
+  <h1>FDP Wahl-O-Mat</h1>
 
-        <!-- Desktop Menü -->
-        <ul class="nav-list">
-          <li><a href="#" data-page="index.html" class="active">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-          <li><a href="#" data-page="fdpwahlomat.html">fdp Wahl-O-Mat</a></li>
-        </ul>
+  <form id="wahlomatForm">
+    <p>Beantworten Sie die folgenden Fragen (0 = nein, 1 = neutral, 2 = ja):</p>
+    
+    <!-- 10 Fragen -->
+    <div>
+      <label for="frage1">1. Soll die Bürokratie abgebaut werden?</label><br />
+      <select name="frage1" required>
+        <option value="">Bitte wählen</option>
+        <option value="0">Nein</option>
+        <option value="1">Neutral</option>
+        <option value="2">Ja</option>
+      </select>
+    </div>
 
-        <!-- Mobile Menü -->
-        <ul class="nav-list-burger">
-          <li><a href="#" data-page="index.html" class="active">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-          <li><a href="#" data-page="fdpwahlomat.html">fdp Wahl-O-Mat</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div>
+      <label for="frage2">2. Sind Sie für mehr Digitalisierung?</label><br />
+      <select name="frage2" required>
+        <option value="">Bitte wählen</option>
+        <option value="0">Nein</option>
+        <option value="1">Neutral</option>
+        <option value="2">Ja</option>
+      </select>
+    </div>
 
-    <main id="content">
-      <!-- Initialer Startinhalt -->
-      <section class="intro">
-        <h1>Willkommen auf meiner Website. Hier finden Sie alles zu 
-          meiner Kandidatur für die Landtagswahlen 2026 in Baden-Württemberg.</h1>
-        <h2>Viele Bürger:innen wissen genau, was sie wollen – aber sie stoßen auf eine Verwaltung, die mauert.</h2>
+    <!-- Fragen 3–10 ähnlich -->
+    <div>
+      <label for="frage3">3. Soll die Steuerlast gesenkt werden?</label><br />
+      <select name="frage3" required>
+        <option value="">Bitte wählen</option>
+        <option value="0">Nein</option>
+        <option value="1">Neutral</option>
+        <option value="2">Ja</option>
+      </select>
+    </div>
 
-        <p>
-          Ich meine Situationen, in denen Bürger:innen durch das Verhalten von Ämtern, Gerichten oder Polizei zur Ohnmacht gedrängt werden – durch Verzögerung, Ignoranz und Übermacht. Und wenn sie dann emotional reagieren, werden sie kriminalisiert.
-        </p>
-        <p><strong>Das ist nicht rechtsstaatlich. Das ist systematisch unfair.</strong></p>
-        
-        <div class="accordion-wrapper">
-        <button class="accordion" aria-expanded="false" aria-controls="panel1" id="accordion1">
-          Meine Forderungen
-        </div>
-          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/>
-          </svg>
-        </button>
-        <div id="panel1" class="panel" role="region" aria-labelledby="accordion1" aria-hidden="true">
-          <div class="forderung-box">
-            <div class="forderung-icon">⚖️</div>
-            <div class="forderung-text">Konsequenzen bei systematischer Behördenwillkür</div>
-          </div>
-          <div class="forderung-box">
-            <div class="forderung-icon">🛡️</div>
-            <div class="forderung-text">Schutz vor ungerechtfertigter Kriminalisierung</div>
-          </div>
-          <div class="forderung-box">
-            <div class="forderung-icon">⏳</div>
-            <div class="forderung-text">Das Recht darf nicht an Fristen und Formularen scheitern</div>
-          </div>
-        </div>
+    <div>
+      <label for="frage4">4. Wünschen Sie mehr unternehmerische Freiheit?</label><br />
+      <select name="frage4" required>
+        <option value="">Bitte wählen</option>
+        <option value="0">Nein</option>
+        <option value="1">Neutral</option>
+        <option value="2">Ja</option>
+      </select>
+    </div>
 
-        <p>
-          Besonders im Bereich Umwelt und Bildung wird sichtbar, wie oft Politik nicht daran scheitert, dass es keine Ideen gibt – sondern daran, dass das System diese Ideen blockiert.
-        </p>
-        <ul>
-          <li>Energiewende? Verzögert durch überlastete Verfahren.</li>
-          <li>Bildungsgerechtigkeit? Ausgebremst durch starre Strukturen.</li>
-        </ul>
-        <p>
-          Und ganz ehrlich: Der Staat kann nicht von Respekt sprechen, wenn er selbst keinen zeigt. Wie soll ein Bürger friedlich bleiben, wenn er von oben herab behandelt wird? Der Staat muss Vorbild sein – sonst hat er kein Recht, etwas vom Bürger zu verlangen. Das ist keine Schwäche – das ist Stärke durch Integrität.
-        </p>
+    <div>
+      <label for="frage5">5. Ist Ihnen der Datenschutz wichtig?</label><br />
+      <select name="frage5" required>
+        <option value="">Bitte wählen</option>
+        <option value="0">Nein</option>
+        <option value="1">Neutral</option>
+        <option value="2">Ja</option>
+      </select>
+    </div>
 
-        <div class="contact-box">
-          <a href="mailto:heschuhasan@gmail.com" class="email-button">
-            ✉️ Kontakt per E-Mail
-          </a>
-          <p>Bei Fragen oder Anregungen zum Wahlkampf – gestalten Sie mit!</p>
-        </div>
-      </section>
-    </main>
+    <div>
+      <label for="frage6">6. Unterstützen Sie die soziale Marktwirtschaft?</label><br />
+      <select name="frage6" required>
+        <option value="">Bitte wählen</option>
+        <option value="0">Nein</option>
+        <option value="1">Neutral</option>
+        <option value="2">Ja</option>
+      </select>
+    </div>
 
-    <footer>
-      <p>&copy; 2025 Heschu Hasan</p>
-    </footer>
-
-    <script>
-      // Accordion Funktion
-      function initAccordion() {
-        const acc = document.querySelector(".accordion");
-        const panel = document.querySelector(".panel");
-
-        if (acc && panel) {
-          acc.addEventListener("click", function () {
-            const isOpen = panel.classList.toggle("open");
-            acc.classList.toggle("active", isOpen);
-            acc.setAttribute("aria-expanded", isOpen);
-            panel.setAttribute("aria-hidden", !isOpen);
-
-            if (isOpen) {
-              panel.style.maxHeight = panel.scrollHeight + "px";
-            } else {
-              panel.style.maxHeight = null;
-            }
-          });
-
-          panel.style.maxHeight = null; // Startzustand
-          panel.setAttribute("aria-hidden", "true");
-          acc.setAttribute("aria-expanded", "false");
-        }
-      }
-
-      // Dynamisches Nachladen der Seiten (Navigation)
-      function setupNavigation() {
-        const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
-        const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
-
-        function loadPage(e) {
-          e.preventDefault();
-          const page = this.getAttribute('data-page');
-          if (!page) return;
-
-          fetch(page)
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
-              document.getElementById('content').innerHTML = newContent;
-
-              // Accordion neu initialisieren (falls vorhanden)
-              initAccordion();
-
-              // Menü schließen bei mobile
-              navBurger.classList.remove('active');
-
-              // Aktiven Menüpunkt synchron setzen in beiden Menüs
-              navLinksDesktop.forEach(a => a.classList.remove('active'));
-              navLinksMobile.forEach(a => a.classList.remove('active'));
-
-              navLinksDesktop.forEach(a => {
-                if (a.getAttribute('data-page') === page) a.classList.add('active');
-              });
-              navLinksMobile.forEach(a => {
-                if (a.getAttribute('data-page') === page) a.classList.add('active');
-              });
-            })
-.catch(err => {
-  console.error('Fehler beim Laden:', err);
-  document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
-});
-        }
-
-        navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
-        navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
-      }
-
-      // Burger-Menü Toggle
-      const burger = document.querySelector('.burger');
-      const navBurger = document.querySelector('.nav-list-burger');
-
-      burger.addEventListener('click', () => {
-        navBurger.classList.toggle('active');
-      });
-
-      // Initialisierungen
-      initAccordion();
-      setupNavigation();
-    </script>
-  </div>
-</body>
-</html>
+    <div>
+      <label for="frage7">7. Soll der Staat sich aus der Wirtschaft raushalten?</label><br />
+     
