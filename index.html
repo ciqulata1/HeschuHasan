@@ -188,10 +188,10 @@
                 if (a.getAttribute('data-page') === page) a.classList.add('active');
               });
             })
-            .catch(err => {
-              console.error('Fehler beim Laden:', err);
-              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>;
-            });
+.catch(err => {
+  console.error('Fehler beim Laden:', err);
+  document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
+});
         }
 
         navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
