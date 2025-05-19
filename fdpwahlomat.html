@@ -45,20 +45,11 @@
   </form>
 
   <div id="ergebnis" aria-live="polite"></div>
-  <div id="ergebnis">
-  <p>Ihr Ergebnis:</p>
-  <div class="balken">
-    <div class="balken-inner" id="balken"></div>
-  </div>
-</div>
 
   <script>
     const form = document.getElementById('wahlomatForm');
     const ergebnisDiv = document.getElementById('ergebnis');
     const max = 2 * 5;
-    // Beispiel: Balken auf 70% füllen
-const balken = document.getElementById('balken');
-balken.style.width = '70%';
 
     function auswertungAnzeigen(values) {
       let total = 0;
@@ -106,23 +97,20 @@ balken.style.width = '70%';
       auswertungAnzeigen(values);
     });
 
-    // Funktion, um URL-Parameter auszulesen
     function getUrlParams() {
       const params = {};
       const searchParams = new URLSearchParams(window.location.search);
       for(let i = 1; i <= 5; i++) {
         const val = searchParams.get('frage' + i);
-        if(val === null) return null;  // Wenn ein Parameter fehlt, abbrechen
+        if(val === null) return null;
         params['frage' + i] = val;
       }
       return params;
     }
 
-    // Beim Laden prüfen, ob URL-Parameter da sind und gleich auswerten
     window.addEventListener('load', () => {
       const params = getUrlParams();
       if(params) {
-        // Radio Buttons entsprechend vorauswählen
         for(let i = 1; i <= 5; i++) {
           const selector = `input[name=frage${i}][value="${params['frage' + i]}"]`;
           const input = document.querySelector(selector);
@@ -132,6 +120,6 @@ balken.style.width = '70%';
       }
     });
   </script>
-  </main>
+</main>
 </body>
 </html>
