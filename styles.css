@@ -595,8 +595,27 @@ footer {
 .balken-inner {
   height: 100%;
   width: 0;
-  background-color: #FFD700;
+  background: linear-gradient(90deg, #ffd700, #ffcc00, #ffaa00);
   border-radius: 10px 0 0 10px;
-  transition: width 0.5s ease;
+  box-shadow:
+    0 0 8px #ffd700,
+    0 0 15px #ffcc0080,
+    0 0 20px #ffaa0070;
+  transition: width 0.8s ease-in-out;
+  animation: glowingBar 2.5s ease-in-out infinite alternate;
 }
 
+@keyframes glowingBar {
+  0% {
+    box-shadow:
+      0 0 10px #ffd700,
+      0 0 20px #ffcc00,
+      0 0 30px #ffaa00;
+  }
+  100% {
+    box-shadow:
+      0 0 20px #fff700,
+      0 0 30px #ffdd00,
+      0 0 40px #ffbb00;
+  }
+}
