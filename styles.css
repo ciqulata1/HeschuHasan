@@ -22,13 +22,10 @@ flex-wrap: wrap;
   box-sizing: border-box;
 }
 
-
 h1, h2, p, ul, li, button.accordion {
   color: white;
   font-family: 'Great Vibes', cursive;
-  list-style-type: none;
   text-align: center;
-  position: center;
 }
 
 /* Burger Button */
