@@ -27,6 +27,7 @@ h1, h2, p, ul, li, button.accordion {
   color: white;
   font-family: 'Great Vibes', cursive;
   list-style-type: none;
+  position: center;
 }
 
 /* Burger Button */
