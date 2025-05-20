@@ -14,12 +14,12 @@
     const params = new URLSearchParams(window.location.search);
     const daten = {};
     const ergebnisDiv = document.getElementById('ergebnis');
+    const anzahlFragen = 16;
 
     for (const [key, value] of params.entries()) {
       daten[key] = value;
     }
 
-    const anzahlFragen = 16;
     let summe = 0;
     let beantworteteFragen = 0;
 
@@ -58,13 +58,10 @@
         <h2>Übereinstimmung mit der FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
         <p>${text}</p>
         ${hinweis}
+        <div class="contact-box">
+          <a href="fdpwahlomat.html" class="zurueck-link">🔁 Zurück zum Fragebogen</a>
+        </div>
       `;
-
-      ergebnisDiv.innerHTML += `
-  <div class="contact-box">
-    <a href="fdpwahlomat.html" class="zurueck-link">🔁 Zurück zum Fragebogen</a>
-  </div>
-`;
     }
   </script>
 </body>
