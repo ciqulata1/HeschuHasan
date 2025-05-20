@@ -25,7 +25,7 @@ flex-wrap: wrap;
 
 h1, h2, p, ul, li, button.accordion {
   color: white;
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Great Vibes'
   list-style-type: none;
   position: center;
 }
