@@ -1,0 +1,20 @@
+{
+  "name": "Heschu Hasan – Direktkandidatin Freiburg",
+  "short_name": "Heschu Hasan",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#006400",
+  "icons": [
+    {
+      "src": "IMG_2074.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "IMG_2073.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
