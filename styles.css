@@ -484,39 +484,100 @@ button, a {
 }
 
 /* Forderung-Items */
-.forderung-item {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.95rem; /* kleiner als vorher */
-  padding: 10px 0 20px 0;
-  border-bottom: 1px solid #c1d9e8;
-  color: #003348; 
-  border-bottom: none;
-}
-.forderung-item:last-child {
-  border-bottom: none;
+/* Accordion-Grundstruktur */
+.accordion-wrapper {
+  margin: 2em 0;
+  width: 100%;
 }
 
+.accordion {
+  width: 100%;
+  background-color: #f0f0f0;
+  color: #000;
+  text-align: left;
+  padding: 1em;
+  font-size: 1.2em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion .arrow {
+  transition: transform 0.3s ease;
+}
+
+.accordion[aria-expanded="true"] .arrow {
+  transform: rotate(180deg);
+}
+
+/* Inhalt bei geschlossenem Zustand ausblenden */
 .forderung-box {
-  display: block; /* oder flex, wenn du Zentrierung brauchst */
-  max-width: 600px;
-  margin: 0 auto 1rem;
-  padding: 10px 20px;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.9rem;
-  color: #003348;
-  border: 1px solid #c1d9e8;
-  border-radius: 8px;
-  background-color: #ffd100; 
+  display: none;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em 0;
 }
 
-
-.forderung-box:last-child {
-  border-bottom: none;
+/* Sichtbar, wenn geöffnet */
+.accordion[aria-expanded="true"] + .forderung-box {
+  display: flex;
 }
 
+/* Einzelne Forderung */
+.forderung-box .forderung-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+/* Icon */
 .forderung-icon {
-  margin-right: 10px;
-  font-size: 1.2rem;
+  font-size: 2em;
+  line-height: 1;
+}
+
+/* Text */
+.forderung-text {
+  flex: 1;
+}
+
+/* Details Styling */
+details {
+  margin-top: 0.5em;
+}
+
+details summary {
+  cursor: pointer;
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+details[open] summary::after {
+  content: " ▲";
+}
+
+details summary::after {
+  content: " ▼";
+}
+
+/* Responsives Verhalten */
+@media (max-width: 600px) {
+  .accordion {
+    font-size: 1em;
+    padding: 0.8em;
+  }
+
+  .forderung-box .forderung-box {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .forderung-icon {
+    font-size: 1.5em;
+  }
 }
 
 
