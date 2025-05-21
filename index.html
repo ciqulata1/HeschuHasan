@@ -139,32 +139,36 @@
   </div>
 </section>
 
-    <script>
-      // Accordion Funktion
-      function initAccordion() {
-        const acc = document.querySelector(".accordion");
-        const panel = document.querySelector(".panel");
+<script>
+  function initAccordion() {
+    document.querySelectorAll(".accordion").forEach(button => {
+      const panelId = button.getAttribute("aria-controls");
+      const panel = document.getElementById(panelId);
 
-        if (acc && panel) {
-          acc.addEventListener("click", function () {
-            const isOpen = panel.classList.toggle("open");
-            acc.classList.toggle("active", isOpen);
-            acc.setAttribute("aria-expanded", isOpen);
-            panel.setAttribute("aria-hidden", !isOpen);
+      if (!panel) return;
 
-            if (isOpen) {
-              panel.style.maxHeight = panel.scrollHeight + "px";
-            } else {
-              panel.style.maxHeight = null;
-            }
-          });
+      panel.style.maxHeight = null;
+      panel.setAttribute("aria-hidden", "true");
+      button.setAttribute("aria-expanded", "false");
 
-          panel.style.maxHeight = null; // Startzustand
-          panel.setAttribute("aria-hidden", "true");
-          acc.setAttribute("aria-expanded", "false");
+      button.addEventListener("click", () => {
+        const isOpen = button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", !isOpen);
+        panel.setAttribute("aria-hidden", isOpen);
+
+        if (!isOpen) {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } else {
+          panel.style.maxHeight = null;
         }
-      }
+      });
+    });
+  }
 
+  // Initial aufrufen
+  initAccordion();
+</script>
       // Dynamisches Nachladen der Seiten (Navigation)
       function setupNavigation() {
         const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
