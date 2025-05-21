@@ -793,5 +793,36 @@ option.placeholder {
   background-color: #c0005f; /* dunklerer Ton bei Hover */
 }
 
+.manifesto-container {
+  font-family: "Georgia", serif;
+  background-color: #fdfdfd;
+  padding: 30px;
+  border: 2px solid #ddd;
+  max-width: 800px;
+  margin: 40px auto;
+  line-height: 1.6;
+
+  user-select: none; /* verhindert Text-Kopieren */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.manifesto-container h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.manifesto-container h2 {
+  font-size: 20px;
+  color: #444;
+  margin-top: 25px;
+}
+
+.manifesto-container p {
+  font-size: 16px;
+  color: #333;
+}
+
 
 
