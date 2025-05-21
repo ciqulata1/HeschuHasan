@@ -1,5 +1,10 @@
 /* --- Grundlegendes Layout --- */
-
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
 
 .frage-container {
   display: grid;
