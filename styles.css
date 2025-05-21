@@ -1,4 +1,22 @@
 /* --- Grundlegendes Layout --- */
+
+.back-button {
+  background-color: #005a87; /* Beispiel: dunkleres Blau */
+  color: white;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+  max-width: 200px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #0073b1;
+}
 body {
   user-select: none;
   -webkit-user-select: none;
