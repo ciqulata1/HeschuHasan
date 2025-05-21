@@ -202,6 +202,13 @@
         navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
       }
 
+      document.addEventListener("keydown", function (e) {
+  if (e.key === "PrintScreen") {
+    alert("Screenshots sind auf dieser Seite nicht erlaubt.");
+    e.preventDefault();
+  }
+});
+
       // Burger-Menü Toggle
       const burger = document.querySelector('.burger');
       const navBurger = document.querySelector('.nav-list-burger');
