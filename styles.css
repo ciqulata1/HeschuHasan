@@ -1,5 +1,110 @@
 /* --- Grundlegendes Layout --- */
 
+/* ------------------------------ */
+/* Google Font: UnifrakturCook     */
+/* Im HTML-Head:                  */
+/* <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> */
+/* ------------------------------ */
+
+/* Eigene Font mit @font-face (DrogoFont Beispiel) */
+@font-face {
+  font-family: 'DrogoFont';
+  src: url('fonts/DrogoFont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* CSS-Variablen für Light Mode (default) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #007bff;
+  --font-main: 'UnifrakturCook', serif;
+  --font-alt: 'DrogoFont', sans-serif;
+}
+
+/* Dark Mode Variablen */
+body.dark {
+  --bg-color: #121212;
+  --text-color: #eeeeee;
+  --primary-color: #bb86fc;
+}
+
+/* Grundstyles */
+html {
+  scroll-behavior: smooth; /* Smooth Scroll für interne Links */
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Beispielhafte Klasse für alternative Schrift */
+.alt-font {
+  font-family: var(--font-alt);
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 12pt !important;
+  }
+
+  nav, footer, .no-print {
+    display: none !important;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+    color: black;
+  }
+}
+
+/* Beispiel weiterer Utility Klassen */
+.no-print {
+  display: none;
+}
+
+/* Optional: Button zum Dark Mode Umschalten */
+/* (Der Button selbst wird im HTML benötigt, hier das Styling) */
+.dark-toggle-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--bg-color);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  transition: background-color 0.3s ease;
+}
+
+.dark-toggle-btn:hover {
+  background-color: darken(var(--primary-color), 10%);
+}
+
 .back-button {
   background-color: #005a87; /* Beispiel: dunkleres Blau */
   color: white;
