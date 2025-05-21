@@ -498,7 +498,6 @@ button, a {
   padding: 1em;
   font-size: 1.2em;
   border: none;
-  outline: none;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -513,7 +512,7 @@ button, a {
   transform: rotate(180deg);
 }
 
-/* Inhalt bei geschlossenem Zustand ausblenden */
+/* Anfangs ausblenden */
 .forderung-box {
   display: none;
   flex-direction: column;
@@ -521,28 +520,54 @@ button, a {
   padding: 1em 0;
 }
 
+/* Nur das äußere soll ausgeblendet werden */
+.accordion + .forderung-box {
+  display: none;
+}
+
 /* Sichtbar, wenn geöffnet */
 .accordion[aria-expanded="true"] + .forderung-box {
   display: flex;
 }
 
-/* Einzelne Forderung */
+/* Innenleben */
 .forderung-box .forderung-box {
   display: flex;
   align-items: flex-start;
   gap: 1em;
 }
 
-/* Icon */
 .forderung-icon {
   font-size: 2em;
   line-height: 1;
 }
 
-/* Text */
 .forderung-text {
   flex: 1;
 }
+
+details {
+  margin-top: 0.5em;
+}
+
+details summary {
+  cursor: pointer;
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .accordion {
+    font-size: 1em;
+    padding: 0.8em;
+  }
+
+  .forderung-box .forderung-box {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+
 
 /* Details Styling */
 details {
