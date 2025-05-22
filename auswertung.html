@@ -32,7 +32,12 @@
     }
 
     if (beantworteteFragen === 0) {
-      ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten. Selbst bei einer Antwort erhalten Sie Feedback! Ist das nicht fabulös? Welcome im liberalen Wonderland, das dem Panorama des Dreisamtals in nichts nachzustehen vermag!</p>`;
+      ergebnisDiv.innerHTML = `
+        <p>Keine Daten gefunden. Bitte zuerst Fragen beantworten. Selbst bei einer Antwort erhalten Sie Feedback! Ist das nicht fabulös? Welcome im liberalen Wonderland, das dem Panorama des Dreisamtals in nichts nachzustehen vermag!</p>
+        <div class="contact-box">
+          <a href="meinungsmacher.html" class="zurueck-link">🔁 Zurück zum Fragebogen</a>
+        </div>
+      `;
     } else {
       const prozent = (summe / (beantworteteFragen * 2)) * 100;
       let smiley = '';
@@ -43,7 +48,7 @@
         text = 'Ihre Übereinstimmung mit der FDP ist hoch. Danke, dass Sie sich für eine moderne Politik interessieren!';
       } else if (prozent >= 40) {
         smiley = '😐';
-        text = 'Ihre Übereinstimmung mit der FDP ist mittel. Für eine vollständige Auswertung nehmen Sie sich gerne Zeit, alle Fragen zu beantworten.';
+        text = 'Ihre Übereinstimmung mit der FDP ist mittel.';
       } else {
         smiley = '😞';
         text = 'Ihre Übereinstimmung ist gering. Ich freue mich, wenn Sie regelmäßig vorbeischauen oder meinem Instagram folgen und den FDP-Vibe erleben!';
@@ -51,7 +56,7 @@
 
       let hinweis = '';
       if (beantworteteFragen < anzahlFragen) {
-        hinweis = `<p><em>Für eine vollständige Auswertung nehmen Sie sich bitte die Zeit, alle Fragen zu beantworten.</em></p>`;
+        hinweis = `<p><em>Sie haben nur ${beantworteteFragen} von ${anzahlFragen} Fragen beantwortet. Für eine vollständige Auswertung nehmen Sie sich bitte die Zeit, alle Fragen zu beantworten.</em></p>`;
       }
 
       ergebnisDiv.innerHTML = `
