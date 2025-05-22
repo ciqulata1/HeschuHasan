@@ -145,7 +145,7 @@
 
 <div id="counter-container"></div>
 
-
+<div id="cursor-trail-container"></div>
 
   <script>
     function initAccordion() {
@@ -234,5 +234,20 @@
       setupNavigation();
     });
   </script>
+const trailContainer = document.getElementById('cursor-trail-container');
+
+document.addEventListener('mousemove', e => {
+  const dot = document.createElement('div');
+  dot.classList.add('cursor-trail-dot');
+  dot.style.left = e.clientX + 'px';
+  dot.style.top = e.clientY + 'px';
+
+  trailContainer.appendChild(dot);
+
+  setTimeout(() => {
+    dot.remove();
+  }, 800);
+});
+  
 </body>
 </html>
