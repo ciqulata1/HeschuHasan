@@ -119,6 +119,33 @@ a:focus {
   transition: background-color 0.3s ease;
 }
 
+#cursor-trail-container {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 9999;
+  cursor: auto; /* Standard-Cursor bleibt */
+}
+
+.cursor-trail-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.1); /* sehr dezenter schwarzer Punkt */
+  border-radius: 50%;
+  opacity: 1;
+  pointer-events: none;
+  animation: fadeOutTrail 0.8s forwards;
+}
+
+@keyframes fadeOutTrail {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
 .back-button:hover {
   background-color: #0073b1;
 }
