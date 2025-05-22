@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Ihre Auswertung</h1>
+  <h1>✨Ihre fabulöse Auswertung✨</h1>
   <div id="ergebnis"></div>
 
   <script>
@@ -32,7 +32,7 @@
     }
 
     if (beantworteteFragen === 0) {
-      ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten.</p>`;
+      ergebnisDiv.innerHTML = `<p>Keine Daten gefunden. Bitte zuerst Fragen beantworten. Selbst bei einer Antwort erhalten Sie Feedback! Ist das nicht fabulös? Welcome im liberalen Wonderland, das dem Panorama des Dreisamtals in nichts nachzustehen vermag!</p>`;
     } else {
       const prozent = (summe / (beantworteteFragen * 2)) * 100;
       let smiley = '';
