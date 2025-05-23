@@ -1391,5 +1391,22 @@ option.placeholder {
   height: auto;
   display: block;
 }
+.bildreihe {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Damit es auf kleinen Bildschirmen nicht kaputtgeht */
+  margin: 30px 0;
+}
 
+.bildreihe .biografie-image-wrapper {
+  flex: 1 1 30%;
+  max-width: 300px;
+}
+
+.bildreihe .biografie-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
