@@ -251,10 +251,17 @@
   let isSpeaking = false;
 
   function setFemaleVoice(utterance, voices) {
-    const femaleVoice = voices.find(voice =>
-      voice.name.toLowerCase().includes('female') || voice.name.toLowerCase().includes('frau'));
-    if (femaleVoice) utterance.voice = femaleVoice;
+  let femaleVoice = voices.find(voice =>
+    voice.name.toLowerCase().includes('female') ||
+    voice.name.toLowerCase().includes('frau') ||
+    voice.name.toLowerCase().includes('woman') ||
+    (voice.lang.startsWith('de') && voice.name.toLowerCase().includes('frau'))
+  );
+  if (!femaleVoice) {
+    femaleVoice = voices.find(voice => voice.lang.startsWith('de')) || voices[0];
   }
+  if (femaleVoice) utterance.voice = femaleVoice;
+}
 
   readButton.addEventListener('click', () => {
     if (!('speechSynthesis' in window)) {
