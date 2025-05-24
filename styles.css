@@ -1416,7 +1416,7 @@ option.placeholder {
   background: transparent;
   border: none;
   cursor: pointer;
-  margin-left: 2.5;
+  margin-right: 4;
   padding: 0.2rem 0.4rem;      /* Abstand zum Menü-Button */
   transition: color 0.3s;
 }
