@@ -1409,7 +1409,6 @@ option.placeholder {
   height: auto;
   display: block;
 }
-
   .hör-button {
   font-size: 1.5rem;      /* großes Symbol */
   color: #FFD100;  /* auffällige Farbe, z.B. orange-rot */
@@ -1425,6 +1424,7 @@ option.placeholder {
 .hör-button:focus {
   color: #FF0000;         /* noch kräftiger beim Hover */
   outline: none;
+
 }
   .hör-button {
   margin-left: 0.5rem; /* Standard-Abstand für kleine Bildschirme */
