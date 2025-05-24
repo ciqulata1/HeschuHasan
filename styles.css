@@ -1430,9 +1430,6 @@ option.placeholder {
   background-color: #ff33bb;
   box-shadow: 0 0 16px #ff33bbaa;
 }
-  .hör-button {
-  margin-left: 0.5rem; /* Standard-Abstand für kleine Bildschirme */
-}
 
 /* Für mittlere Bildschirme ab 600px */
 @media (min-width: 600px) {
