@@ -247,58 +247,60 @@
   });
 
   // Vorlese-Button mit Stimme
-  const readButton = document.getElementById('readButton');
-  let isSpeaking = false;
-
   function setFemaleVoice(utterance, voices) {
+  const preferredNames = ['anna', 'maria', 'helena', 'frau', 'female', 'woman'];
   let femaleVoice = voices.find(voice =>
-    voice.name.toLowerCase().includes('female') ||
-    voice.name.toLowerCase().includes('frau') ||
-    voice.name.toLowerCase().includes('woman') ||
-    (voice.lang.startsWith('de') && voice.name.toLowerCase().includes('frau'))
+    preferredNames.some(name => voice.name.toLowerCase().includes(name)) &&
+    voice.lang.startsWith('de')
   );
+
   if (!femaleVoice) {
     femaleVoice = voices.find(voice => voice.lang.startsWith('de')) || voices[0];
   }
   if (femaleVoice) utterance.voice = femaleVoice;
 }
 
-  readButton.addEventListener('click', () => {
-    if (!('speechSynthesis' in window)) {
-      alert('Dein Browser unterstützt keine Sprachausgabe.');
-      return;
-    }
+function speakText() {
+  if (!('speechSynthesis' in window)) {
+    alert('Dein Browser unterstützt keine Sprachausgabe.');
+    return;
+  }
 
-    if (isSpeaking) {
-      speechSynthesis.cancel();
-      isSpeaking = false;
-      readButton.textContent = '🎙️';
-    } else {
-      const textToRead = document.getElementById('content').innerText || document.body.innerText;
-      const utterance = new SpeechSynthesisUtterance(textToRead);
-      let voices = speechSynthesis.getVoices();
+  if (isSpeaking) {
+    speechSynthesis.cancel();
+    isSpeaking = false;
+    readButton.textContent = '🎙️';
+  } else {
+    const textToRead = document.getElementById('content').innerText || document.body.innerText;
+    const utterance = new SpeechSynthesisUtterance(textToRead);
 
-      if (!voices.length) {
-        speechSynthesis.onvoiceschanged = () => {
-          voices = speechSynthesis.getVoices();
-          setFemaleVoice(utterance, voices);
-          speechSynthesis.speak(utterance);
-          isSpeaking = true;
-          readButton.textContent = '⏹️';
-        };
-      } else {
-        setFemaleVoice(utterance, voices);
-        speechSynthesis.speak(utterance);
-        isSpeaking = true;
-        readButton.textContent = '⏹️';
-      }
+    utterance.rate = 0.9;
+    utterance.pitch = 0.8;
+
+    function startSpeaking() {
+      const voices = speechSynthesis.getVoices();
+      setFemaleVoice(utterance, voices);
+      speechSynthesis.speak(utterance);
+      isSpeaking = true;
+      readButton.textContent = '⏹️';
 
       utterance.onend = () => {
         isSpeaking = false;
         readButton.textContent = '🎙️';
       };
     }
-  });
+
+    if (speechSynthesis.getVoices().length === 0) {
+      speechSynthesis.onvoiceschanged = () => {
+        startSpeaking();
+      };
+    } else {
+      startSpeaking();
+    }
+  }
+}
+
+readButton.addEventListener('click', speakText);
 
   // Wenn DOM geladen: Accordion und Navigation initialisieren
   document.addEventListener('DOMContentLoaded', () => {
