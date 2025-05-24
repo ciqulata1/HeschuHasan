@@ -261,23 +261,53 @@
     }
   });
 </script>
-  <script>
 
-  const trailContainer = document.getElementById('cursor-trail-container');
+<script>
+  const button = document.getElementById('readButton');
+  let isSpeaking = false;
 
-document.addEventListener('mousemove', e => {
-  const dot = document.createElement('div');
-  dot.classList.add('cursor-trail-dot');
-  dot.style.left = e.clientX + 'px';
-  dot.style.top = e.clientY + 'px';
+  button.addEventListener('click', () => {
+    if (!('speechSynthesis' in window)) {
+      alert('Dein Browser unterstützt keine Sprachausgabe.');
+      return;
+    }
 
-  trailContainer.appendChild(dot);
+    if (isSpeaking) {
+      speechSynthesis.cancel();
+      isSpeaking = false;
+      button.textContent = '🎙️';
+    } else {
+      const textToRead = document.body.innerText;
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      let voices = speechSynthesis.getVoices();
 
-  setTimeout(() => {
-    dot.remove();
-  }, 800);
-});
+      if (!voices.length) {
+        speechSynthesis.onvoiceschanged = () => {
+          voices = speechSynthesis.getVoices();
+          setFemaleVoice(utterance, voices);
+          speechSynthesis.speak(utterance);
+          isSpeaking = true;
+          button.textContent = '⏹️';
+        };
+      } else {
+        setFemaleVoice(utterance, voices);
+        speechSynthesis.speak(utterance);
+        isSpeaking = true;
+        button.textContent = '⏹️';
+      }
 
-    </script>
-</body>
-</html>
+      utterance.onend = () => {
+        isSpeaking = false;
+        button.textContent = '🎙️';
+      };
+    }
+  });
+
+  function setFemaleVoice(utterance, voices) {
+    const femaleVoice = voices.find(voice => 
+      voice.lang.startsWith('de') &&
+      (voice.name.toLowerCase().includes('female') || voice.name.toLowerCase().includes('frau') || voice.name.toLowerCase().includes('anna'))
+    );
+    utterance.voice = femaleVoice || voices.find(voice => voice.lang.startsWith('de')) || voices[0];
+  }
+</script>
