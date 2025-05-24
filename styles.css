@@ -1410,3 +1410,19 @@ option.placeholder {
   display: block;
 }
 
+  .hör-button {
+  font-size: 2.5rem;      /* großes Symbol */
+  color: #FF4500;         /* auffällige Farbe, z.B. orange-rot */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;      /* Abstand zum Menü-Button */
+  transition: color 0.3s;
+}
+
+.hör-button:hover,
+.hör-button:focus {
+  color: #FF0000;         /* noch kräftiger beim Hover */
+  outline: none;
+}
+
