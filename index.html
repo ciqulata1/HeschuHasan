@@ -159,90 +159,9 @@
       <p>&copy; 2025 Heschu Hasan</p>
     </footer>
   
-  <script>
-    function initAccordion() {
-      const acc = document.querySelector(".accordion");
-      const panel = document.getElementById("panel1");
+ <script>
+  // Hier der gesamte JavaScript-Code, den ich dir eben gegeben habe:
 
-      if (acc && panel) {
-        acc.addEventListener("click", function () {
-          const isOpen = panel.classList.toggle("open");
-          acc.classList.toggle("active", isOpen);
-          acc.setAttribute("aria-expanded", isOpen);
-          panel.setAttribute("aria-hidden", !isOpen);
-
-          if (isOpen) {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-          } else {
-            panel.style.maxHeight = null;
-          }
-        });
-
-        panel.style.maxHeight = null;
-        panel.setAttribute("aria-hidden", "true");
-        acc.setAttribute("aria-expanded", "false");
-      }
-    }
-
-    function setupNavigation() {
-      const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
-      const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
-      const navBurger = document.querySelector('.nav-list-burger');
-
-      function loadPage(e) {
-        e.preventDefault();
-        const page = this.getAttribute('data-page');
-        if (!page) return;
-
-        fetch(page)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
-            document.getElementById('content').innerHTML = newContent;
-
-            initAccordion();
-            navBurger.classList.remove('active');
-
-            navLinksDesktop.forEach(a => a.classList.remove('active'));
-            navLinksMobile.forEach(a => a.classList.remove('active'));
-
-            navLinksDesktop.forEach(a => {
-              if (a.getAttribute('data-page') === page) a.classList.add('active');
-            });
-            navLinksMobile.forEach(a => {
-              if (a.getAttribute('data-page') === page) a.classList.add('active');
-            });
-          })
-          .catch(err => {
-            console.error('Fehler beim Laden:', err);
-            document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
-          });
-      }
-
-      navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
-      navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
-    }
-
-    // Screenshot-Hinweis
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "PrintScreen") {
-        alert("Screenshots sind auf dieser Seite nicht erlaubt.");
-        e.preventDefault();
-      }
-    });
-
-    // Burger Menü
-    const burger = document.querySelector('.burger');
-    const navBurger = document.querySelector('.nav-list-burger');
-
-    burger.addEventListener('click', () => {
-      navBurger.classList.toggle('active');
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-  // Accordion initialisieren
   function initAccordion() {
     const acc = document.querySelector(".accordion");
     const panel = document.getElementById("panel1");
@@ -267,7 +186,6 @@
     }
   }
 
-  // Navigation Setup mit Fetch & Aktiv-Klassen setzen
   function setupNavigation() {
     const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
     const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
@@ -287,10 +205,10 @@
 
           initAccordion();
 
-          // Alle mobilen nav-list-burger verstecken
+          // Mobile Menü schließen
           document.querySelectorAll('.nav-list-burger.active').forEach(el => el.classList.remove('active'));
 
-          // Klassen für aktiven Link setzen
+          // Aktive Links setzen
           navLinksDesktop.forEach(a => a.classList.toggle('active', a.getAttribute('data-page') === page));
           navLinksMobile.forEach(a => a.classList.toggle('active', a.getAttribute('data-page') === page));
         })
@@ -304,7 +222,7 @@
     navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
   }
 
-  // Screenshot-Hinweis blockieren
+  // Screenshot-Sperre
   document.addEventListener("keydown", function (e) {
     if (e.key === "PrintScreen") {
       alert("Screenshots sind auf dieser Seite nicht erlaubt.");
@@ -312,21 +230,21 @@
     }
   });
 
-  // Burger Menü: alle Burger-Buttons abfragen und Toggle für jeweiliges nav-list-burger
+  // Burger Menü Toggle und aria-expanded setzen
   document.querySelectorAll('.burger').forEach(burger => {
     burger.addEventListener('click', () => {
-      // Suche nav-list-burger im gleichen Eltern-Container oder als nächstes Geschwister
       let navBurger = burger.nextElementSibling;
       if (!navBurger || !navBurger.classList.contains('nav-list-burger')) {
         navBurger = burger.parentElement.querySelector('.nav-list-burger');
       }
       if (navBurger) {
         navBurger.classList.toggle('active');
+        burger.setAttribute('aria-expanded', navBurger.classList.contains('active'));
       }
     });
   });
 
-  // Vorlese-Button mit Start/Stop und Stimme setzen
+  // Vorlese-Button mit Stimme
   const readButton = document.getElementById('readButton');
   let isSpeaking = false;
 
@@ -373,7 +291,9 @@
     }
   });
 
-  // Initial Setup
-  initAccordion();
-  setupNavigation();
-});
+  // Wenn DOM geladen: Accordion und Navigation initialisieren
+  document.addEventListener('DOMContentLoaded', () => {
+    initAccordion();
+    setupNavigation();
+  });
+</script>
