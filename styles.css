@@ -1443,7 +1443,6 @@ option.placeholder {
     margin-left: 2rem;
   }
 }
-
   .sr-only {
     position: absolute !important;
     width: 1px; 
@@ -1456,3 +1455,4 @@ option.placeholder {
     border: 0;
 
   }
+
