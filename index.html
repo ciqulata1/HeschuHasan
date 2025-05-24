@@ -247,25 +247,26 @@
   });
 
   // Vorlese-Button mit Stimme
-  function setSexyFemaleVoice(utterance, voices) {
-  // Versuche gezielt bekannte "sexy" weibliche Stimmen zu wählen
+  // Vorlese-Button mit Stimme
+const readButton = document.getElementById('readButton');
+let isSpeaking = false;
+
+function setFemaleVoice(utterance, voices) {
   const preferredVoices = [
-    'Google Deutsch', 
-    'Google Deutsch Female', 
-    'Microsoft Hedda Desktop', 
+    'Google Deutsch',
+    'Google Deutsch Female',
+    'Microsoft Hedda Desktop',
     'Google UK English Female',
-    'Anna',  // macOS z.B.
-    'Laura', // macOS z.B.
+    'Anna', // macOS
+    'Laura' // macOS
   ];
 
   let voice = null;
-
   for (const name of preferredVoices) {
     voice = voices.find(v => v.name.includes(name));
     if (voice) break;
   }
 
-  // Fallback: irgendeine deutsche weibliche Stimme oder einfach erste Stimme
   if (!voice) {
     voice = voices.find(v => v.lang.startsWith('de') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('de')) || voices[0];
   }
@@ -287,21 +288,21 @@ readButton.addEventListener('click', () => {
     const textToRead = document.getElementById('content').innerText || document.body.innerText;
     const utterance = new SpeechSynthesisUtterance(textToRead);
 
-    utterance.rate = 0.85;  // Langsamer, angenehmer
-    utterance.pitch = 0.75; // Tiefer und weiblicher
+    utterance.rate = 0.85;  // angenehme Sprechgeschwindigkeit
+    utterance.pitch = 0.75; // tiefere, weibliche Stimme
 
     let voices = speechSynthesis.getVoices();
 
     if (!voices.length) {
       speechSynthesis.onvoiceschanged = () => {
         voices = speechSynthesis.getVoices();
-        setSexyFemaleVoice(utterance, voices);
+        setFemaleVoice(utterance, voices);
         speechSynthesis.speak(utterance);
         isSpeaking = true;
         readButton.textContent = '⏹️';
       };
     } else {
-      setSexyFemaleVoice(utterance, voices);
+      setFemaleVoice(utterance, voices);
       speechSynthesis.speak(utterance);
       isSpeaking = true;
       readButton.textContent = '⏹️';
@@ -313,7 +314,6 @@ readButton.addEventListener('click', () => {
     };
   }
 });
-
     if (speechSynthesis.getVoices().length === 0) {
       speechSynthesis.onvoiceschanged = () => {
         startSpeaking();
