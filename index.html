@@ -314,15 +314,7 @@ readButton.addEventListener('click', () => {
     };
   }
 });
-    if (speechSynthesis.getVoices().length === 0) {
-      speechSynthesis.onvoiceschanged = () => {
-        startSpeaking();
-      };
-    } else {
-      startSpeaking();
-    }
-  }
-}
+    
 
 readButton.addEventListener('click', speakText);
 
