@@ -262,7 +262,17 @@
   });
 </script>
 
-<script>
+
+  function setFemaleVoice(utterance, voices) {
+    const femaleVoice = voices.find(voice => 
+      voice.lang.startsWith('de') &&
+      (voice.name.toLowerCase().includes('female') || voice.name.toLowerCase().includes('frau') || voice.name.toLowerCase().includes('anna'))
+    );
+    utterance.voice = femaleVoice || voices.find(voice => voice.lang.startsWith('de')) || voices[0];
+  }
+</script>
+
+  <script>
   const button = document.getElementById('readButton');
   let isSpeaking = false;
 
@@ -303,11 +313,3 @@
     }
   });
 
-  function setFemaleVoice(utterance, voices) {
-    const femaleVoice = voices.find(voice => 
-      voice.lang.startsWith('de') &&
-      (voice.name.toLowerCase().includes('female') || voice.name.toLowerCase().includes('frau') || voice.name.toLowerCase().includes('anna'))
-    );
-    utterance.voice = femaleVoice || voices.find(voice => voice.lang.startsWith('de')) || voices[0];
-  }
-</script>
