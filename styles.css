@@ -461,8 +461,8 @@ h1, h2, p, ul, li, button.accordion {
   top: 10px;
   right: 10px;
   z-index: 1001; max-height: 500px;
-  font-size: 2.5rem;
-  background: none;
+  font-size: 1.5rem;
+  background: transparent;
   border: none;
   color: white;
   cursor: pointer;
@@ -631,7 +631,7 @@ a {
 
   /* Burger Button anzeigen */
   .burger {
-    display: block;
+  display: block
   }
   .nav-list-burger {
     display: none;
@@ -1410,14 +1410,14 @@ option.placeholder {
   display: block;
 }
   .hör-button {
-  font-size: 1.5rem;      /* großes Symbol */
+  font-size: 1.2rem;      /* großes Symbol */
   color: #FFD100;  /* auffällige Farbe, z.B. orange-rot */
   font-family: 'Great Vibes';
   background: transparent;
   border: none;
   cursor: pointer;
   margin-right: 4;
-  padding: 0.2rem 0.4rem;      /* Abstand zum Menü-Button */
+  padding: 0.2rem 0.6rem;      /* Abstand zum Menü-Button */
   transition: color 0.3s;
 }
 
