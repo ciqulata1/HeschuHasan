@@ -51,6 +51,12 @@
   <div class="wrapper">
     <header>
       <h1>Heschu Hasan – Direktkandidatin Freiburg</h1>
+      
+  <!-- Vorlese-Button mit großem Mikrofon -->
+  <button id="readButton" class="burger hör-button" aria-label="Text vorlesen" title="Text vorlesen">
+    🎙️
+  </button>
+</header>
       <nav>
         <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
@@ -239,7 +245,20 @@
       setupNavigation();
     });
   </script>
+<script>
+  const button = document.getElementById('readButton');
 
+  button.addEventListener('click', () => {
+    const textToRead = document.body.innerText;
+
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      speechSynthesis.speak(utterance);
+    } else {
+      alert('Dein Browser unterstützt keine Sprachausgabe.');
+    }
+  });
+</script>
   <script>
 
   const trailContainer = document.getElementById('cursor-trail-container');
