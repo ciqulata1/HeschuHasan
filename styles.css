@@ -1411,8 +1411,9 @@ option.placeholder {
 }
 
   .hör-button {
-  font-size: 2.5rem;      /* großes Symbol */
-  color: #FF4500;         /* auffällige Farbe, z.B. orange-rot */
+  font-size: 1.5rem;      /* großes Symbol */
+  color: #FFD100;  /* auffällige Farbe, z.B. orange-rot */
+  font-family: Vibes;
   background: transparent;
   border: none;
   cursor: pointer;
