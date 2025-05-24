@@ -50,16 +50,24 @@
 <body>
   
   <div class="wrapper">
-    <header>
-      <h1>Heschu Hasan – Direktkandidatin Freiburg</h1>
-   <!-- Vorlese-Button mit großem Mikrofon -->
-  <button id="readButton" class="burger hör-button" aria-label="Text vorlesen" title="Text vorlesen">
+ <header>
+  <h1>Heschu Hasan – Direktkandidatin Freiburg</h1>
+
+  <!-- Vorlese-Button direkt sichtbar -->
+  <button id="readButton" class="hör-button" aria-label="Text vorlesen" title="Text vorlesen">
     🎙️
-
-  <span class="sr-only">Text vorlesen / stoppen</span>
-
+    <span class="sr-only">Text vorlesen / stoppen</span>
   </button>
+
+  <!-- Mobile Menü Button -->
+  <button class="burger" aria-label="Menü öffnen">&#9776;</button>
+
+  <!-- Mobile Menü -->
+  <ul class="nav-list-burger">
+    <!-- Menüeinträge -->
+  </ul>
 </header>
+
       <nav>
         <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
