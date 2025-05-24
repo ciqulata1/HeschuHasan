@@ -1422,6 +1422,7 @@ option.placeholder {
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: 'Great Vibes';
 }
 
 .hör-button:hover,
