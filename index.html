@@ -247,20 +247,33 @@
   });
 
   // Vorlese-Button mit Stimme
-  function setFemaleVoice(utterance, voices) {
-  const preferredNames = ['anna', 'maria', 'helena', 'frau', 'female', 'woman'];
-  let femaleVoice = voices.find(voice =>
-    preferredNames.some(name => voice.name.toLowerCase().includes(name)) &&
-    voice.lang.startsWith('de')
-  );
+  function setSexyFemaleVoice(utterance, voices) {
+  // Versuche gezielt bekannte "sexy" weibliche Stimmen zu wählen
+  const preferredVoices = [
+    'Google Deutsch', 
+    'Google Deutsch Female', 
+    'Microsoft Hedda Desktop', 
+    'Google UK English Female',
+    'Anna',  // macOS z.B.
+    'Laura', // macOS z.B.
+  ];
 
-  if (!femaleVoice) {
-    femaleVoice = voices.find(voice => voice.lang.startsWith('de')) || voices[0];
+  let voice = null;
+
+  for (const name of preferredVoices) {
+    voice = voices.find(v => v.name.includes(name));
+    if (voice) break;
   }
-  if (femaleVoice) utterance.voice = femaleVoice;
+
+  // Fallback: irgendeine deutsche weibliche Stimme oder einfach erste Stimme
+  if (!voice) {
+    voice = voices.find(v => v.lang.startsWith('de') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('de')) || voices[0];
+  }
+
+  if (voice) utterance.voice = voice;
 }
 
-function speakText() {
+readButton.addEventListener('click', () => {
   if (!('speechSynthesis' in window)) {
     alert('Dein Browser unterstützt keine Sprachausgabe.');
     return;
@@ -274,21 +287,32 @@ function speakText() {
     const textToRead = document.getElementById('content').innerText || document.body.innerText;
     const utterance = new SpeechSynthesisUtterance(textToRead);
 
-    utterance.rate = 0.9;
-    utterance.pitch = 0.8;
+    utterance.rate = 0.85;  // Langsamer, angenehmer
+    utterance.pitch = 0.75; // Tiefer und weiblicher
 
-    function startSpeaking() {
-      const voices = speechSynthesis.getVoices();
-      setFemaleVoice(utterance, voices);
+    let voices = speechSynthesis.getVoices();
+
+    if (!voices.length) {
+      speechSynthesis.onvoiceschanged = () => {
+        voices = speechSynthesis.getVoices();
+        setSexyFemaleVoice(utterance, voices);
+        speechSynthesis.speak(utterance);
+        isSpeaking = true;
+        readButton.textContent = '⏹️';
+      };
+    } else {
+      setSexyFemaleVoice(utterance, voices);
       speechSynthesis.speak(utterance);
       isSpeaking = true;
       readButton.textContent = '⏹️';
-
-      utterance.onend = () => {
-        isSpeaking = false;
-        readButton.textContent = '🎙️';
-      };
     }
+
+    utterance.onend = () => {
+      isSpeaking = false;
+      readButton.textContent = '🎙️';
+    };
+  }
+});
 
     if (speechSynthesis.getVoices().length === 0) {
       speechSynthesis.onvoiceschanged = () => {
