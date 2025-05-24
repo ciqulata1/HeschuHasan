@@ -1411,8 +1411,7 @@ option.placeholder {
 }
 .hör-button {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  margin-left: 4px;
   z-index: 9999;
   font-size: 1.6rem;
   color: #fff;
