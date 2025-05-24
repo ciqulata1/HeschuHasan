@@ -1425,4 +1425,21 @@ option.placeholder {
   color: #FF0000;         /* noch kräftiger beim Hover */
   outline: none;
 }
+  .hör-button {
+  margin-left: 0.5rem; /* Standard-Abstand für kleine Bildschirme */
+}
+
+/* Für mittlere Bildschirme ab 600px */
+@media (min-width: 600px) {
+  .hör-button {
+    margin-left: 1rem;
+  }
+}
+
+/* Für große Bildschirme ab 1000px */
+@media (min-width: 1000px) {
+  .hör-button {
+    margin-left: 2rem;
+  }
+}
 
