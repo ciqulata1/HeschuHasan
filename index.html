@@ -53,11 +53,13 @@
  <header>
   <h1>Heschu Hasan – Direktkandidatin Freiburg</h1>
 
-  <!-- Vorlese-Button direkt sichtbar -->
-  <button id="readButton" class="hör-button" aria-label="Text vorlesen" title="Text vorlesen">
-    🎙️
-    <span class="sr-only">Text vorlesen / stoppen</span>
-  </button>
+  <!-- Vorlese-Button -->
+      <button id="readButton" class="hör-button" aria-label="Text vorlesen" title="Text vorlesen">
+        🎙️<span class="sr-only">Text vorlesen / stoppen</span>
+      </button>
+
+      <!-- Burger Menü Button im Header -->
+      <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
   <!-- Mobile Menü Button -->
   <button class="burger" aria-label="Menü öffnen">&#9776;</button>
@@ -252,31 +254,101 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-      initAccordion();
-      setupNavigation();
-    });
-  </script>
-<script>
-  const button = document.getElementById('readButton');
+  // Accordion initialisieren
+  function initAccordion() {
+    const acc = document.querySelector(".accordion");
+    const panel = document.getElementById("panel1");
 
-  button.addEventListener('click', () => {
-    const textToRead = document.body.innerText;
+    if (acc && panel) {
+      acc.addEventListener("click", function () {
+        const isOpen = panel.classList.toggle("open");
+        acc.classList.toggle("active", isOpen);
+        acc.setAttribute("aria-expanded", isOpen);
+        panel.setAttribute("aria-hidden", !isOpen);
 
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(textToRead);
-      speechSynthesis.speak(utterance);
-    } else {
-      alert('Dein Browser unterstützt keine Sprachausgabe.');
+        if (isOpen) {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } else {
+          panel.style.maxHeight = null;
+        }
+      });
+
+      panel.style.maxHeight = null;
+      panel.setAttribute("aria-hidden", "true");
+      acc.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  // Navigation Setup mit Fetch & Aktiv-Klassen setzen
+  function setupNavigation() {
+    const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
+    const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
+
+    function loadPage(e) {
+      e.preventDefault();
+      const page = this.getAttribute('data-page');
+      if (!page) return;
+
+      fetch(page)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
+          document.getElementById('content').innerHTML = newContent;
+
+          initAccordion();
+
+          // Alle mobilen nav-list-burger verstecken
+          document.querySelectorAll('.nav-list-burger.active').forEach(el => el.classList.remove('active'));
+
+          // Klassen für aktiven Link setzen
+          navLinksDesktop.forEach(a => a.classList.toggle('active', a.getAttribute('data-page') === page));
+          navLinksMobile.forEach(a => a.classList.toggle('active', a.getAttribute('data-page') === page));
+        })
+        .catch(err => {
+          console.error('Fehler beim Laden:', err);
+          document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
+        });
+    }
+
+    navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
+    navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
+  }
+
+  // Screenshot-Hinweis blockieren
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "PrintScreen") {
+      alert("Screenshots sind auf dieser Seite nicht erlaubt.");
+      e.preventDefault();
     }
   });
-</script>
 
+  // Burger Menü: alle Burger-Buttons abfragen und Toggle für jeweiliges nav-list-burger
+  document.querySelectorAll('.burger').forEach(burger => {
+    burger.addEventListener('click', () => {
+      // Suche nav-list-burger im gleichen Eltern-Container oder als nächstes Geschwister
+      let navBurger = burger.nextElementSibling;
+      if (!navBurger || !navBurger.classList.contains('nav-list-burger')) {
+        navBurger = burger.parentElement.querySelector('.nav-list-burger');
+      }
+      if (navBurger) {
+        navBurger.classList.toggle('active');
+      }
+    });
+  });
 
-  <script>
-  const button = document.getElementById('readButton');
+  // Vorlese-Button mit Start/Stop und Stimme setzen
+  const readButton = document.getElementById('readButton');
   let isSpeaking = false;
 
-  button.addEventListener('click', () => {
+  function setFemaleVoice(utterance, voices) {
+    const femaleVoice = voices.find(voice =>
+      voice.name.toLowerCase().includes('female') || voice.name.toLowerCase().includes('frau'));
+    if (femaleVoice) utterance.voice = femaleVoice;
+  }
+
+  readButton.addEventListener('click', () => {
     if (!('speechSynthesis' in window)) {
       alert('Dein Browser unterstützt keine Sprachausgabe.');
       return;
@@ -285,9 +357,9 @@
     if (isSpeaking) {
       speechSynthesis.cancel();
       isSpeaking = false;
-      button.textContent = '🎙️';
+      readButton.textContent = '🎙️';
     } else {
-const textToRead = document.getElementById('content').innerText;
+      const textToRead = document.getElementById('content').innerText || document.body.innerText;
       const utterance = new SpeechSynthesisUtterance(textToRead);
       let voices = speechSynthesis.getVoices();
 
@@ -297,19 +369,23 @@ const textToRead = document.getElementById('content').innerText;
           setFemaleVoice(utterance, voices);
           speechSynthesis.speak(utterance);
           isSpeaking = true;
-          button.textContent = '⏹️';
+          readButton.textContent = '⏹️';
         };
       } else {
         setFemaleVoice(utterance, voices);
         speechSynthesis.speak(utterance);
         isSpeaking = true;
-        button.textContent = '⏹️';
+        readButton.textContent = '⏹️';
       }
 
       utterance.onend = () => {
         isSpeaking = false;
-        button.textContent = '🎙️';
+        readButton.textContent = '🎙️';
       };
     }
   });
 
+  // Initial Setup
+  initAccordion();
+  setupNavigation();
+});
