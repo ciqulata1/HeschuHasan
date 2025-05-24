@@ -246,8 +246,7 @@
     });
   });
 
-  // Vorlese-Button mit Stimme
-  // Vorlese-Button mit Stimme
+// Vorlese-Button mit Stimme
 const readButton = document.getElementById('readButton');
 let isSpeaking = false;
 
@@ -314,7 +313,12 @@ readButton.addEventListener('click', () => {
     };
   }
 });
-    
+
+// Wenn DOM geladen: Accordion und Navigation initialisieren
+document.addEventListener('DOMContentLoaded', () => {
+  initAccordion();
+  setupNavigation();
+});
 
 readButton.addEventListener('click', speakText);
 
