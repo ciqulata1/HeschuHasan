@@ -279,7 +279,7 @@
       isSpeaking = false;
       button.textContent = '🎙️';
     } else {
-      const textToRead = document.body.innerText;
+const textToRead = document.getElementById('content').innerText;
       const utterance = new SpeechSynthesisUtterance(textToRead);
       let voices = speechSynthesis.getVoices();
 
