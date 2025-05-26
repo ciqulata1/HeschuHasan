@@ -9,13 +9,11 @@
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  integrity="sha512-pVU6lFf2WfvDFe2+rqgG0OPgfSxH5/1aG8hu6zUbQ7uLp6G0SK/o/tknB7Q4g+Z3jX2v6vcr1wlYZ5Q/2R+9hg=="
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 />
 
 <style>
-  /* Farbpalette und Basis */
   :root {
     --yellow: #ffed00;
     --magenta: #e5007d;
@@ -25,10 +23,10 @@
     --white: #ffffff;
   }
 
-  /* Reset & Basis */
   * {
     box-sizing: border-box;
   }
+
   body {
     margin: 0;
     background-color: var(--white);
@@ -47,95 +45,35 @@
     outline: none;
   }
 
-  /* Header */
-   header {
-
-
-
+  header {
     background-color: var(--white);
-
-
     border-bottom: 2px solid var(--cyan);
-
-
     padding: 20px 40px;
-
-
     display: flex;
-
-
     align-items: center;
-
-
     justify-content: space-between;
-
-
   }
-
-
   header h1 {
-
-
     font-family: Georgia, serif;
-
-
     font-weight: bold;
-
-
     font-size: 1.8rem;
-
-
     color: var(--cyan);
-
-
     margin: 0;
-
-
   }
-
-
   nav a {
-
-
     font-weight: normal;
-
-
     font-size: 1rem;
-
-
     margin-left: 25px;
-
-
     text-transform: uppercase;
-
-
     letter-spacing: 0.05em;
-
-      nav a.active,
-
-
-  nav a:hover {
-
-
-    color: var(--magenta);
-
-
-    font-weight: bold;
-
-
   }
-  <h1>HESCHU HASAN</h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html" class="active">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
-  </nav>
 
-</header>
+  nav a.active,
+  nav a:hover {
+    color: var(--magenta);
+    font-weight: bold;
+  }
 
-  /* Hauptinhalt */
   main {
     padding: 20px 40px;
     max-width: 1200px;
@@ -149,13 +87,19 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
+  main h3 {
+    color: var(--cyan);
+    font-weight: normal;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+  }
   main p {
     font-size: 1.1rem;
     max-width: 700px;
   }
 
-  /* Umwelt-Themen Boxen */
-  .umwelt-boxes {
+  /* Wichtig: Klassenname wie bei Bildung verwenden */
+  .bildung-boxes {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
@@ -173,6 +117,8 @@
     font-size: 1.1rem;
     border-radius: 5px;
     user-select: none;
+    display: block; /* Für <a> wichtig */
+    text-decoration: none;
   }
   .box:hover {
     border-color: var(--magenta);
@@ -192,7 +138,6 @@
     letter-spacing: 0.05em;
   }
 
-  /* Footer */
   footer {
     background-color: var(--cyan);
     color: var(--white);
@@ -219,7 +164,6 @@
     outline: none;
   }
 
-  /* Responsive */
   @media (max-width: 768px) {
     header {
       flex-direction: column;
@@ -230,12 +174,11 @@
       margin-left: 0;
       margin-right: 15px;
     }
-    .umwelt-boxes {
+    .bildung-boxes {
       flex-direction: column;
     }
   }
 </style>
-
 </head>
 <body>
 
@@ -243,41 +186,41 @@
   <h1>HESCHU HASAN</h1>
   <nav>
     <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
     <a href="umwelt.html" class="active">Umwelt</a>
-    <a href="meinungs-macher.html">Meinungs-Macher</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
 
 <main>
   <h2>Meine Umweltthemen</h2>
-  <h3>Klicken Sie eines der Themenfelder an um mehr zu erfahren.</h3>
+  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
 
-  <div class="umwelt-boxes" role="list">
-    <div class="box" tabindex="0" role="listitem">
+  <div class="bildung-boxes" role="list">
+    <a href="klimaschutz.html" class="box" role="listitem" tabindex="0">
       <h3>Klimaschutz & Energiewende</h3>
       <p>Förderung nachhaltiger Energien und konsequente CO₂-Reduktion.</p>
-    </div>
-    <div class="box" tabindex="0" role="listitem">
+    </a>
+    <a href="wasserwirtschaft.html" class="box" role="listitem" tabindex="0">
       <h3>Wasserwirtschaft</h3>
       <p>Effiziente Nutzung und Schutz unserer Wasserressourcen.</p>
-    </div>
-    <div class="box" tabindex="0" role="listitem">
+    </a>
+    <a href="abfall-recycling.html" class="box" role="listitem" tabindex="0">
       <h3>Abfall & Recycling</h3>
       <p>Verbesserung der Kreislaufwirtschaft und Müllvermeidung.</p>
-    </div>
-    <div class="box" tabindex="0" role="listitem">
+    </a>
+    <a href="naturschutz.html" class="box" role="listitem" tabindex="0">
       <h3>Naturschutz & Biodiversität</h3>
       <p>Erhalt von Lebensräumen und Artenvielfalt in unserer Region.</p>
-    </div>
-    <div class="box" tabindex="0" role="listitem">
+    </a>
+    <a href="mobilitaet.html" class="box" role="listitem" tabindex="0">
       <h3>Mobilität & Verkehr</h3>
       <p>Förderung umweltfreundlicher Verkehrskonzepte und Infrastruktur.</p>
-    </div>
+    </a>
   </div>
 </main>
 
-<!-- Footer -->
 <footer>
   <h3>Treffen Sie mich in den Sozialen Medien</h3>
   <div class="social-links">
@@ -288,15 +231,12 @@
 </footer>
 
 <script>
-  // Klick auf Box: "selected" Klasse toggeln für Stiländerung
+  // Boxen anklickbar + Tastatur Unterstützung
   document.querySelectorAll('.box').forEach(box => {
     box.addEventListener('click', () => {
-      // Alle boxen entfernen "selected"
       document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
-      // Aktuelle markieren
       box.classList.add('selected');
     });
-    // Tastatur Enter & Space auch aktivieren
     box.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -305,7 +245,8 @@
     });
   });
 </script>
-<!-- FontAwesome Script (ganz unten vor </body>) -->
+
+<!-- FontAwesome Script -->
 <script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
 </body>
 </html>
