@@ -1,502 +1,264 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Meinungs-Macher - Heschu Hasan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meinungs-Macher - Heschu Hasan</title>
 
-<!-- FontAwesome CDN für Icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+  <!-- FontAwesome CDN für Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
-<style>
-  :root {
-    --yellow: #ffed00;
-    --magenta: #e5007d;
-    --cyan: #009ee3;
-    --turquoise: #00abae;
-    --black: #000000;
-    --white: #ffffff;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    background-color: var(--white);
-    color: var(--cyan);
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.5;
-  }
-
-  a {
-    color: var(--cyan);
-    text-decoration: none;
-  }
-  a:hover,
-  a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-
-  header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--cyan);
-    padding: 20px 40px;
-    text-align: center;
-  }
-  header h1 {
-    font-family: Georgia, serif;
-    font-weight: bold;
-    font-size: 1.8rem;
-    color: var(--cyan);
-    margin: 0;
-  }
-  header span.name {
-    display: block;
-    font-weight: normal;
-    font-size: 1.2rem;
-    margin-top: 6px;
-    color: var(--magenta);
-    font-family: Georgia, serif;
-  }
-
-  nav {
-    background-color: var(--white);
-    padding: 15px 40px;
-    border-bottom: 2px solid var(--cyan);
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    font-family: Georgia, serif;
-  }
-
-  nav a {
-    font-weight: normal;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--cyan);
-  }
-  nav a.active,
-  nav a:hover,
-  nav a:focus {
-    color: var(--magenta);
-    font-weight: bold;
-    outline: none;
-  }
-
-  main {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 0 40px;
-  }
-
-  main h2 {
-    color: var(--cyan);
-    font-weight: bold;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  main p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin-bottom: 1.5rem;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  label {
-    font-weight: bold;
-    font-size: 1rem;
-    margin-bottom: 6px;
-    color: var(--cyan);
-    font-family: Georgia, serif;
-  }
-
-  select, textarea {
-    font-family: Georgia, serif;
-    font-size: 1rem;
-    padding: 8px 12px;
-    border: 2px solid var(--cyan);
-    border-radius: 6px;
-    color: var(--cyan);
-    background-color: var(--white);
-    transition: border-color 0.3s ease;
-  }
-  select:focus, textarea:focus {
-    border-color: var(--magenta);
-    outline: none;
-  }
-
-  button {
-    align-self: flex-start;
-    background-color: var(--white);
-    color: var(--cyan);
-    border: 2px solid var(--cyan);
-    padding: 0.8rem 2.2rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: Georgia, serif;
-  }
-  button:hover,
-  button:focus {
-    background-color: var(--magenta);
-    color: var(--turquoise);
-    border-color: var(--magenta);
-    outline: none;
-  }
-
-  footer {
-    background-color: var(--cyan);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    font-family: Georgia, serif;
-    margin-top: 50px;
-  }
-
-  footer h3 {
-    margin: 0 0 15px 0;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  footer .social-links a {
-    color: var(--white);
-    font-size: 30px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-  footer .social-links a:hover,
-  footer .social-links a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-
-  @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      gap: 15px;
-      padding: 15px;
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
     }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--cyan);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      font-family: Georgia, serif;
+      font-weight: bold;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+    }
+    nav a {
+      font-weight: normal;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: bold;
+    }
+
     main {
-      padding: 0 20px;
-      margin: 20px auto;
+      padding: 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    button {
-      width: 100%;
-      text-align: center;
+    main h2 {
+      color: var(--cyan);
+      font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
-  }
-</style>
+    main h3 {
+      color: var(--cyan);
+      font-weight: normal;
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question p {
+      margin-bottom: 10px;
+    }
+    .answers label {
+      display: block;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+    .result {
+      display: none;
+      margin-top: 30px;
+      font-weight: bold;
+      color: var(--magenta);
+    }
+    button[type="submit"] {
+      background-color: var(--cyan);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    button[type="submit"]:hover {
+      background-color: var(--magenta);
+    }
+
+    footer {
+      padding: 30px 40px;
+      background-color: var(--white);
+      border-top: 2px solid var(--cyan);
+      margin-top: 60px;
+    }
+    footer h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--cyan);
+    }
+    .social-links a {
+      font-size: 1.5rem;
+      margin-right: 15px;
+      color: var(--cyan);
+    }
+    .social-links a:hover {
+      color: var(--magenta);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Meinungs-Macher</h1>
-  <span class="name">Heschu Hasan</span>
-</header>
+  <main>
+    <h2>Meinungs-Macher</h2>
+    <h3>Beantworten Sie 21 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
 
-<nav>
-  <a href="index.html">Startseite</a>
-  <a href="bildung.html">Bildung</a>
-  <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
-  <a href="impressum.html">Impressum</a>
-</nav>
-
-<main>
-  <h2>Testen Sie Ihre politische Meinung</h2>
-  <p>Beantworten Sie 16 kurze Fragen – und erfahren Sie, wie stark Ihre Haltung mit den Positionen der FDP Baden-Württemberg übereinstimmt.</p>
-
-  <form id="wahlomatForm" action="auswertung.html" method="get" autocomplete="off">
-    <label for="frage1">1. Bürokratieabbau in Verwaltung und Behörden?</label>
-    <select name="frage1" id="frage1" required>
-      <option value="" disabled selected>Bitte wählen</option>
-      <option value="0">Nein</option>
-      <option value="1">Neutral</option>
-      <option value="2">Ja</option>
-    </select>
-
-    <label for="frage2">2. Mehr bezahlbarer Wohnraum schaffen?</label>
-    <select name="frage2" id="frage2" required>
-      <option value="" disabled selected>Bitte wählen</option>
-      <option value="0">Nein</option>
-      <option value="1">Neutral</option>
-      <option value="2">Ja</option>
-    </select>
-
-     <div class="contact-box">
-        <label for="frage3">3. Schulen digitaler ausstatten und digitaler Unterricht?</label>
-        <select name="frage3" id="frage3" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage4">4. Energiewende schneller vorantreiben?</label>
-        <select name="frage4" id="frage4" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage5">5. Ausbau von Radwegen und öffentlichem Nahverkehr?</label>
-        <select name="frage5" id="frage5" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage6">6. Förderungen für Startups und Innovationen ausbauen?</label>
-        <select name="frage6" id="frage6" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage7">7. Steuererleichterungen für Familien und Alleinerziehende?</label>
-        <select name="frage7" id="frage7" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage8">8. Mehr Investitionen in die Gesundheitsversorgung?</label>
-        <select name="frage8" id="frage8" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage9">9. Ausbau von Ganztagsschulen?</label>
-        <select name="frage9" id="frage9" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage10">10. Einführung eines landesweiten Mindestlohns?</label>
-        <select name="frage10" id="frage10" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage11">11. Ausbau erneuerbarer Energien in Landwirtschaft und Industrie?</label>
-        <select name="frage11" id="frage11" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage12">12. Verbesserter Schutz von Natur- und Landschaftsschutzgebieten?</label>
-        <select name="frage12" id="frage12" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage13">13. Erleichterte Genehmigungsverfahren für Bauvorhaben?</label>
-        <select name="frage13" id="frage13" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage14">14. Förderung von Elektroautos und Ladeinfrastruktur?</label>
-        <select name="frage14" id="frage14" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage15">15. Stärkere Unterstützung für Kulturschaffende und Vereine?</label>
-        <select name="frage15" id="frage15" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage16">16. Einführung eines landesweiten Klimaschutzgesetzes?</label>
-        <select name="frage16" id="frage16" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage17">17. Förderung von erneuerbarer Energie in Privathaushalten?</label>
-        <select name="frage17" id="frage17" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage18">18. Ausbau von Sprachförderprogrammen für Kinder?</label>
-        <select name="frage18" id="frage18" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage19">19. Förderung von beruflicher Weiterbildung und Umschulung?</label>
-        <select name="frage19" id="frage19" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage20">20. Verbesserung der Pflegebedingungen in Seniorenheimen?</label>
-        <select name="frage20" id="frage20" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage21">21. Einführung eines besseren Schutzes gegen Datenmissbrauch?</label>
-        <select name="frage21" id="frage21" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage22">22. Förderung von erneuerbaren Energien in Industrie und Gewerbe?</label>
-        <select name="frage22" id="frage22" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage23">23. Bessere Integration von Geflüchteten und Migranten?</label>
-        <select name="frage23" id="frage23" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="contact-box">
-        <label for="frage24">24. Ausbau von Sport- und Freizeitangeboten?</label>
-        <select name="frage24" id="frage24" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
-
-      <div class="submit-wrapper">
-        <button type="submit">Auswertung anzeigen</button>
-      </div>
-
+    <form id="quizForm">
+      <div id="questions"></div>
+      <button type="submit">Auswertung anzeigen</button>
     </form>
+
+    <div id="result" class="result"></div>
   </main>
-<footer>
-    <span>Folgen Sie mir auf:</span>
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="instagram-icon.png" alt="Instagram Icon" />
-    </a>
-    <span>© 2025 Heschu Hasan – FDP Baden-Württemberg</span>
+
+  <footer>
+    <h3>Treffen Sie mich in den Sozialen Medien</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
   </footer>
 
   <script>
-    const form = document.getElementById('wahlomatForm');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const params = new URLSearchParams(formData).toString();
-      window.location.href = 'auswertung.html?' + params;
+    document.addEventListener('DOMContentLoaded', function () {
+      const questions = [
+        "Soll der Ausbau von Power-to-X-Technologien staatlich stärker gefördert werden?",
+        "Sollen Genehmigungsverfahren für neue Technologien schneller ablaufen?",
+        "Soll Informatik Pflichtfach ab der Grundschule sein?",
+        "Soll die Schulpflicht um digitale Kompetenzen erweitert werden?",
+        "Soll der öffentliche Nahverkehr kostenlos sein?",
+        "Sollten alle Neubauten Solaranlagen erhalten müssen?",
+        "Sollten Steuern auf klimaschädliche Produkte erhöht werden?",
+        "Sollte das Wahlalter auf 16 Jahre gesenkt werden?",
+        "Soll ein bedingungsloses Grundeinkommen eingeführt werden?",
+        "Soll mehr Geld in Bildung statt in Verteidigung investiert werden?",
+        "Soll ein Tempolimit von 120 km/h auf Autobahnen eingeführt werden?",
+        "Soll die Polizei mit Bodycams ausgestattet werden?",
+        "Soll Deutschland mehr Geflüchtete aufnehmen?",
+        "Sollte Cannabis legalisiert werden?",
+        "Soll die Maskenpflicht in Pflegeheimen dauerhaft bleiben?",
+        "Soll das Gendern in der Sprache staatlich gefördert werden?",
+        "Soll der ländliche Raum stärker digitalisiert werden?",
+        "Sollte Bargeld abgeschafft werden?",
+        "Sollten Politikergehälter an den Mindestlohn gekoppelt werden?",
+        "Soll die Grundsteuer reformiert werden?",
+        "Soll ein verpflichtendes Klimaschutzjahr für Schulabgänger eingeführt werden?"
+      ];
+
+      const questionContainer = document.getElementById("questions");
+
+      questions.forEach((question, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+
+        div.innerHTML = `
+          <p><strong>${index + 1}. ${question}</strong></p>
+          <div class="answers">
+            <label><input type="radio" name="q${index}" value="1" required /> Stimme zu</label>
+            <label><input type="radio" name="q${index}" value="0" /> Neutral</label>
+            <label><input type="radio" name="q${index}" value="-1" /> Lehne ab</label>
+          </div>
+        `;
+
+        questionContainer.appendChild(div);
+      });
+
+      document.getElementById("quizForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        let score = 0;
+
+        for (let i = 0; i < questions.length; i++) {
+          const value = parseInt(formData.get("q" + i));
+          score += value;
+        }
+
+        let resultText = "";
+        if (score > 10) {
+          resultText = "Ihre Meinung deckt sich stark mit meinen Positionen.";
+        } else if (score >= 0) {
+          resultText = "Es gibt einige Gemeinsamkeiten mit meinen Positionen.";
+        } else {
+          resultText = "Ihre Meinung unterscheidet sich stark von meinen Positionen.";
+        }
+
+        document.getElementById("result").textContent = resultText;
+        document.getElementById("result").style.display = "block";
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      });
     });
   </script>
-
-  </body>
+</body>
 </html>
-
-
-
-
-    <button type="submit">Absenden</button>
-  </form>
-</main>
-
-
-   
-     
