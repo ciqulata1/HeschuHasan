@@ -1,50 +1,18 @@
-/* --- Grundlegendes Layout --- */
-/* --- Grundlegendes Layout --- */
-
-/* ------------------------------ */
-/* Google Font: UnifrakturCook     */
-/* Im HTML-Head:                  */
-/* <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet"> */
-/* ------------------------------ */
-
-/* Eigene Font mit @font-face (DrogoFont Beispiel) */
-@font-face {
-  font-family: 'DrogoFont';
-  src: url('fonts/DrogoFont.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
 :root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
-  --primary-color: #005bac; /* FDP-Blau */
-  --accent-color: #e10098;  /* FDP-Magenta */
-  --highlight-color: #ffed00; /* FDP-Gelb */
-
-  --font-main: 'UnifrakturCook', serif;
-  --font-alt: 'DrogoFont', sans-serif;
+  /* FDP Farben Light Mode */
+  --bg-color: #ffffff;        /* Weißer Hintergrund */
+  --text-color: #333333;      /* Dunkelgrauer Text */
+  --primary-color: #005AA7;   /* FDP-Blau */
+  --highlight-color: #FFD100; /* FDP-Gelb */
+  --font-main: 'Helvetica', 'Arial', sans-serif;
 }
 
 body.dark {
-  --bg-color: #121212;
-  --text-color: #eeeeee;
-  --primary-color: #e10098; /* dunkler Akzent für Dark Mode */
-  --accent-color: #ffed00;
-  --highlight-color: #005bac;
-}
-
-body {
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #f4f4f4;
-  background-color: #1e1e1e;
-}
-
-/* Grundstyles */
-html {
-  scroll-behavior: smooth; /* Smooth Scroll für interne Links */
+  /* Dunkler Modus, dunkle Blautöne, Gelb als Highlight */
+  --bg-color: #005AA7;        /* Dunkles Blau als Hintergrund */
+  --text-color: #FFD100;      /* Gelber Text */
+  --primary-color: #FFD100;   /* Gelbe Links/Akzente */
+  --highlight-color: #ffffff; /* Weiß als Kontrastfarbe */
 }
 
 body {
@@ -54,538 +22,40 @@ body {
   font-family: var(--font-main);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* Links */
 a {
   color: var(--primary-color);
   text-decoration: none;
-  cursor: pointer;
 }
-
-a:hover,
-a:focus {
+a:hover {
   text-decoration: underline;
-  outline: none;
 }
-
-/* Beispielhafte Klasse für alternative Schrift */
-.alt-font {
-  font-family: var(--font-alt);
-}
-
-/* Print Styles */
-@media print {
-  body {
-    background-color: white !important;
-    color: black !important;
-    font-size: 12pt !important;
-  }
-
-  nav, footer, .no-print {
-    display: none !important;
-  }
-
-  a::after {
-    content: " (" attr(href) ")";
-    font-size: 90%;
-    color: black;
-  }
-}
-
-/* Beispiel weiterer Utility Klassen */
-.no-print {
-  display: none;
-}
-
-/* Optional: Button zum Dark Mode Umschalten */
-/* (Der Button selbst wird im HTML benötigt, hier das Styling) */
-.dark-toggle-btn {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  background-color: var(--primary-color);
-  border: none;
+.highlight {
+  background-color: var(--highlight-color);
   color: var(--bg-color);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 0.3rem;
-  transition: background-color 0.3s ease;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
 }
 
-.dark-toggle-btn:hover {
-  background-color: darken(var(--primary-color), 10%);
-}
-
-.back-button {
-  background-color: #005AA7; /* Beispiel: dunkleres Blau */
-  color: white;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-weight: 700;
-  cursor: pointer;
-  margin: 20px auto;
-  display: block;
-  max-width: 200px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-#cursor-trail-container {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  pointer-events: none;
-  overflow: visible;
-  z-index: 9999;
-  cursor: auto; /* Standard-Cursor bleibt */
-}
-
-.cursor-trail-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: rgba(0, 0, 0, 0.1); /* sehr dezenter schwarzer Punkt */
-  border-radius: 50%;
-  opacity: 1;
-  pointer-events: none;
-  animation: fadeOutTrail 0.8s forwards;
-}
-
-@keyframes fadeOutTrail {
-  to {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-}
-
-.back-button:hover {
-  background-color: #005AA7;
-}
-body {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-.frage-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-
-label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-}
-
-select {
-  width: 100%;
-  padding: 8px;
-  font-size: 1em;
-}
-
-button {
-  display: block;
-  margin: 30px auto 0;
-  padding: 10px 20px;
-  font-size: 1.1em;
-  background-color: #005AA7;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #005AA7;
-}
-
-body {
-font-weight: 400; /* default reicht, Great Vibes hat meistnur eine Schriftstärke */
-margin: 0;
-font-size: clamp(1rem, 2vw, 1.2rem);
-padding: 20px;
-padding-top: 80px;
-background-color: #005AA7;
-color: white;
-line-height: 1.6;
-flex-wrap: wrap; 
-  
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-
-h1, h2, p, ul, li, button.accordion {
-  color: white;
-  font-family: 'Great Vibes', cursive;
-  text-align: center;
-}
-
-/
-
-/* Positionierung des Navs für das Dropdown */
-nav {
-  position: relative;
-}
-
-* Mobile Menü */
-.nav-list-burger {
-
- transition: max-height 0.3s ease;
-  overflow: hidden;
-  max-height: 0;
-  position: fixed;
-  top: 60px; /* Platz unter Burger */
-  right: 10px;
- background: linear-gradient(90deg, #a8d0ff, #fff9a8, #f7a8d0);
-   color: black;
-  padding: 1rem;
-  display: none;
-  flex-direction: column;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  max-height: 80vh;
-  overflow-y: auto;
-  width: 200px; /* Breite setzen, sonst evtl. unsichtbar */
- 
-}
-  .nav-list-burger li a {
-  color: white !important;
-  text-decoration: none !important;  /* Durchstreichen verhindern */
-}
-
-.nav-list-burger.active {
-  display: flex;
-    max-height: 500px;
-}
-
-.nav-list-burger li {
-  margin-bottom: 12px; /* Abstand zwischen den Punkten */
-}
-
-
-.nav-list-burger li a {
-  padding: 1rem;
-  border-top: 1px solid #444;
-  color: white;
-  text-decoration: none;
-}
-.nav-list-burger li a.active {
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.nav-list-burger a {
-  text-decoration: none !important;
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-@media (max-width: 768px) {
-  .nav-list {
-    display: none;
-  }
-  .burger {
-    display: block;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  /* Desktop-Menü ausblenden */
-  .nav-list {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  }
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: #005AA7; /* Hintergrund fixieren */
-  padding: 0.5rem 1rem;
-}
-
-  /* Burger Button anzeigen */
-  .burger {
-    display: block;
-  }
-  .nav-list-burger {
-    display: none;
-}
-  .nav-list-burger.active {
-    display: flex;
-  }
-}
-
-
-
-/* Wrapper-Stil */
-.wrapper {
-  background-color: #005AA7; /* etwas helleres Anthrazit als Body */
-  max-width: 1200px;
-  width: 100%;
-
-  padding: 30px;
-  border-radius: 8px;
-
-  /* Schatten in grau-blau für die gesamte Seite */
-  box-shadow: 0 0 30px 5px rgba(100, 110, 140, 0.4);
-
-  box-sizing: border-box;
-}
-
-/* Für kleine Bildschirme */
-@media (max-width: 480px) {
-  body {
-    padding: 10px;
-  }
-  .wrapper {
-    padding: 15px;
-  }
-}
-
-a {
-  color: #005a87;
-  text-decoration: none;
-}
-
-
-/* --- Navigation (farbig & animiert) --- */
-
-.n
-
-.nav-list-burger a {
-  text-decoration: none !important;
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-@media (max-width: 768px) {
-  .nav-list {
-    display: none;
-  }
-  .burger {
-    display: block;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  /* Desktop-Menü ausblenden */
-  .nav-list {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  }
-
-
-  /* Burger Button anzeigen */
-  .burger {
-  display: block
-  }
-  .nav-list-burger {
-    display: none;
-}
-  .nav-list-burger.active {
-    display: flex;
-  }
-}
-
-/* Positionierung des Navs für das Dropdown */
-nav {
-  position: relative;
-}
-
-/* Wrapper-Stil */
-.wrapper {
-  background-color: #005AA7; /* etwas helleres Anthrazit als Body */
-  max-width: 1200px;
-  width: 100%;
-
-  padding: 30px;
-  border-radius: 8px;
-
-  /* Schatten in grau-blau für die gesamte Seite */
-  box-shadow: 0 0 30px 5px rgba(100, 110, 140, 0.4);
-
-  box-sizing: border-box;
-}
-
-/* Für kleine Bildschirme */
-@media (max-width: 480px) {
-  body {
-    padding: 10px;
-  }
-  .wrapper {
-    padding: 15px;
-  }
-}
-
-a {
-  color: #005a87;
-  text-decoration: none;
-}
-
-
-/* --- Navigation (farbig & animiert) --- */
-
-.nav-list {
-  display: flex;
-  flex-wrap: wrap; /* erlaubt Umbruch */
-  justify-content: center; /* zentriert das Menü */
-  padding: 0 30px;
-  margin: 0 auto 30px auto;
-  list-style: none;
-  gap: 1rem; /* Abstand zwischen den Menüpunkten */
-  background: linear-gradient(90deg, #ff00cc, #005a87, #ffde00);
-  border-radius: 10px;
-  box-shadow:
-    0 0 10px #ff00cc88,
-    0 0 15px #005a8788,
-    0 0 20px #ffde0088;
-  animation: pulseGlow 3s ease-in-out infinite;
-  max-width: 900px;
-  width: 100%
-}
-
-.nav-list li {
-  flex: 1 1 auto;
-  text-align: center;
-  min-width: 100px;
-}
-.nav-list-burger li a {
-  color: white !important;
-  text-decoration: none !important;
-}
-
-
-.nav-list a {
-  display: block;
-  padding: 12px 20px;
-  font-weight: 700;
-  color: white;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  font-size: 1.1rem;
-}
-
-.nav-list a:hover,
-.nav-list a.active {
-  background: linear-gradient(45deg, #ffde00, #ff00cc);
-  color: #00334d;
-  box-shadow:
-    0 0 8px #ffde00cc,
-    0 0 15px #ff00cccc;
-  transform: scale(1.05);
-}
-
-/* Animation der Leuchtkraft */
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow:
-      0 0 10px #ff00cc88,
-      0 0 15px #005a8788,
-      0 0 20px #ffde0088;
-  }
-  50% {
-    box-shadow:
-      0 0 20px #ff00cccc,
-      0 0 30px #fff,
-      0 0 40px #ffde00cc;
-  }
-}
-
-.accordion {
-  max-width: 100%;
-  width: fit-content;
-  position: relative;
-  padding-right: 30px; 
-  margin: 2rem auto;
-  background-color: #005AA7; /* etwas dunkleres Gelb */
-  color: #222;
-  border: 2px solid #004080;
-  cursor: pointer;
-  padding: 15px 20px;
-  font-family: 'Great Vibes', cursive;
-  width: 100%;
-  border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  font-weight: 600;
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  margin-bottom: 20px !important;;
-  box-shadow:
-    
-}0 0 10px 3px rgba(255, 199, 0, 0.8),
-    0 0 20px 7px rgba(255, 199, 0, 0.6),
-    0 0 30px 12px rgba(255, 199, 0, 0.4),
-    0 0 40px 20px rgba(255, 199, 0, 0.3);
-
-.accordion .header {
-  display: flex;
-  align-items: center; /* Vertikal zentrieren */
-}
-
-
-.accordion-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.accordion:hover {
-  background-color: #FFD500; /* dunkler beim Hover */
-  border-color: #003366;
-  box-shadow:
-    0 0 20px 5px rgba(255, 215, 0, 1),
-    0 0 30px 15px rgba(255, 215, 0, 0.8),
-    0 0 40px 25px rgba(255, 215, 0, 0.6),
-    0 0 50px 30px rgba(255, 215, 0, 0.4);
-  cursor: pointer; 
-  
-}
-
-.accordion.active {
-    background-color: #B38F00;
-  border-color: #002244;
-  color: white !important;
-  box-shadow:
-    0 0 25px 10px rgba(255, 199, 0, 0.9),
-    0 0 40px 20px rgba(255, 199, 0, 0.7),
-    0 0 50px 30px rgba(255, 199, 0, 0.5);
-}
-
+background-color: white;
+border-color: #002244; /* Dunkelblau */
+color: white !important;
+box-shadow:
+  0 0 25px 10px rgba(255, 199, 0, 0.9),    /* Gelb */
+  0 0 40px 20px rgba(0, 36, 68, 0.7),      /* Blau (#002244) */
+  0 0 50px 30px rgba(255, 0, 255, 0.5);    /* Magenta */
 .contact-box {
-  background-color: #FFD500; /* FDP-Gelb */
-  border: 2px solid #003348;
+  background-color: white; /* Weißer Hintergrund */
+  border: 2px solid #003348; /* FDP-Blau */
   border-radius: 8px;
   padding: 10px 20px;
   text-align: center;
   box-shadow:
-    0 0 10px #f5c518,
-    0 0 20px #f5c518,
-    0 0 30px #f5c518,
-    0 0 40px #ddb100,
-    0 0 50px #ddb100,
-    0 0 60px #b38f00;
+    0 0 10px #FFD500,       /* Gelb */
+    0 0 20px #FFD500,
+    0 0 30px #003348,       /* Blau */
+    0 0 40px #003348,
+    0 0 50px #FF00FF,       /* Magenta */
+    0 0 60px #FF00FF;
   animation: glowing 2.5s ease-in-out infinite alternate;
   max-width: 600px;
   margin: 2rem auto;
@@ -594,14 +64,53 @@ a {
   cursor: pointer;
 }
 
+@keyframes glowing {
+  0% {
+    box-shadow:
+      0 0 10px #FFD500,
+      0 0 20px #FFD500,
+      0 0 30px transparent,
+      0 0 40px transparent,
+      0 0 50px transparent,
+      0 0 60px transparent;
+  }
+  33% {
+    box-shadow:
+      0 0 10px transparent,
+      0 0 20px transparent,
+      0 0 30px #003348,
+      0 0 40px #003348,
+      0 0 50px transparent,
+      0 0 60px transparent;
+  }
+  66% {
+    box-shadow:
+      0 0 10px transparent,
+      0 0 20px transparent,
+      0 0 30px transparent,
+      0 0 40px transparent,
+      0 0 50px #FF00FF,
+      0 0 60px #FF00FF;
+  }
+  100% {
+    box-shadow:
+      0 0 10px #FFD500,
+      0 0 20px #FFD500,
+      0 0 30px transparent,
+      0 0 40px transparent,
+      0 0 50px transparent,
+      0 0 60px transparent;
+  }
+}
+
 .contact-box:hover {
   box-shadow:
-    0 0 20px #ffeb3b,
-    0 0 30px #ffeb3b,
-    0 0 40px #ffeb3b,
-    0 0 50px #ffea00,
-    0 0 60px #ffd600,
-    0 0 70px #ffca28;
+    0 0 20px #FFD500,   /* Gelb */
+    0 0 30px #FFD500,
+    0 0 40px #003348,   /* Blau */
+    0 0 50px #003348,
+    0 0 60px #FF00FF,   /* Magenta */
+    0 0 70px #FF00FF;
   transform: scale(1.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -614,32 +123,19 @@ a {
   display: inline-block;
   margin-bottom: 10px;
   padding: 10px 20px;
-  background-color: #FFD500;
-  transition: background-color 0.3s ease;
+  background-color: #FFD500;  /* FDP-Gelb */
+  border: 2px solid #003348;  /* FDP-Blau */
+  border-radius: 5px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-@keyframes glowing {
-  0% {
-    box-shadow:
-      0 0 10px #f5c518,
-      0 0 20px #f5c518,
-      0 0 30px #f5c518,
-      0 0 40px #ddb100,
-      0 0 50px #ddb100,
-      0 0 60px #b38f00;
-  }
-  100% {
-    box-shadow:
-      0 0 20px #ffeb3b,
-      0 0 30px #ffeb3b,
-      0 0 40px #ffeb3b,
-      0 0 50px #ffea00,
-      0 0 60px #ffd600,
-      0 0 70px #ffca28;
-  }
+.email-button:hover {
+  background-color: #003348;  /* FDP-Blau */
+  box-shadow:
+    0 0 10px #FF00FF,  /* Magenta */
+    0 0 20px #FF00FF;
+  color: white;
 }
-
-/* Pfeil */
 
 .accordion.active .arrow {
   transform: rotate(180deg);
@@ -649,27 +145,24 @@ a {
 .accordion .arrow {
   margin-left: auto;
   fill: none;
-  stroke: #003348;
+  stroke: #003348; /* FDP-Blau */
   transition: transform 0.3s ease;
   width: 16px;
   height: 16px;
 }
 
-
 /* Panel */
- .panel {
+.panel {
   max-height: 500px;
   overflow: visible !important;
   transition: max-height 0.4s ease, padding 0.4s ease;
-  background: linear-gradient(135deg, #f39ac3, #e6007e);
+  background: linear-gradient(135deg, #FFD500, #E6007E); /* FDP Gelb zu Magenta */
   border-radius: 0 0 6px 6px;
   padding: 0 20px;
   padding-bottom: 20px;
   margin-bottom: 40px;
   color: white; 
 }
-
-
 
 button, a {
   touch-action: manipulation;
@@ -679,8 +172,8 @@ button, a {
   overflow: hidden;
   max-height: 0;
   max-width: 500px;
-  opacity:0; 
-  transition: max-height 0.3s ease out;
+  opacity: 0; 
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
   margin-bottom: 30px;
   border-radius: 8px;
   padding: 20px;
@@ -702,8 +195,8 @@ button, a {
 
 .accordion {
   width: 100%;
-  background-color: #f0f0f0;
-  color: #000;
+  background-color: #FFD500; /* FDP Gelb */
+  color: #003348; /* FDP Blau */
   text-align: left;
   padding: 1em;
   font-size: 1.2em;
@@ -712,22 +205,35 @@ button, a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 6px;
+  box-shadow:
+    0 0 5px #FFD500,
+    0 0 10px #003348;
 }
 
 .accordion .arrow {
   transition: transform 0.3s ease;
 }
 
-.accordion[aria-expanded="true"] .arrow {
-  transform: rotate(180deg);
+.accordion[aria-expanded="true"] {
+  background-color: #003348; /* FDP Blau */
+  color: #FFD500; /* FDP Gelb */
+  box-shadow:
+    0 0 10px #FFD500,
+    0 0 20px #E6007E; /* Magenta */
 }
 
-/* Anfangs ausblenden */
+.accordion[aria-expanded="true"] .arrow {
+  transform: rotate(180deg);
+  stroke: #FFD500; /* Pfeil in Gelb bei offenem Accordion */
+}
+
 .forderung-box {
   display: none;
   flex-direction: column;
   gap: 1em;
   padding: 1em 0;
+  color: #003348; /* FDP Blau als Textfarbe */
 }
 
 /* Nur das äußere soll ausgeblendet werden */
@@ -738,6 +244,13 @@ button, a {
 /* Sichtbar, wenn geöffnet */
 .accordion[aria-expanded="true"] + .forderung-box {
   display: flex;
+  background-color: #FFD500; /* FDP Gelb als Hintergrund bei offen */
+  border-radius: 6px;
+  padding: 1em;
+  box-shadow:
+    0 0 10px #FFD500,
+    0 0 20px #E6007E; /* Magenta Glow */
+  color: #003348; /* Text in Blau */
 }
 
 /* Innenleben */
@@ -750,10 +263,12 @@ button, a {
 .forderung-icon {
   font-size: 2em;
   line-height: 1;
+  color: #E6007E; /* Magenta für Icons */
 }
 
 .forderung-text {
   flex: 1;
+  color: #003348; /* FDP Blau für Text */
 }
 
 details {
@@ -762,7 +277,7 @@ details {
 
 details summary {
   cursor: pointer;
-  color: #0066cc;
+  color: #003348; /* FDP Blau */
   text-decoration: underline;
 }
 
@@ -776,45 +291,9 @@ details summary {
     flex-direction: column;
     gap: 0.5em;
   }
-
-/* Details Styling */
-details {
-  margin-top: 0.5em;
-}
-
-details summary {
-  cursor: pointer;
-  color: #0066cc;
-  text-decoration: underline;
-}
-
-details[open] summary::after {
-  content: " ▲";
-}
-
-details summary::after {
-  content: " ▼";
-}
-
-/* Responsives Verhalten */
-@media (max-width: 600px) {
-  .accordion {
-    font-size: 1em;
-    padding: 0.8em;
-  }
-
-  .forderung-box .forderung-box {
-    flex-direction: column;
-    gap: 0.5em;
-  }
-
-  .forderung-icon {
-    font-size: 1.5em;
-  }
 }
 
 
-/* Intro Abschnitt */
 .intro p strong {
   color: #ffffff;
   font-weight: 700;
@@ -826,15 +305,15 @@ details summary::after {
   display: inline-block;
   margin: 1.5em 0;
   padding: 1em 2.5em;
-  background: linear-gradient(135deg, #ff00cc, #005a87, #ffde00);
-  color: #00334d;
+  background: linear-gradient(135deg, #E6007E, #003348, #FFD500); /* Magenta -> Blau -> Gelb */
+  color: #003348; /* FDP Blau für Text */
   font-weight: 800;
   text-decoration: none;
   border-radius: 16px;
   box-shadow:
-    0 8px 20px rgba(255, 0, 204, 0.5),
-    0 0 15px rgba(0, 90, 135, 0.7),
-    0 0 10px rgba(255, 222, 0, 0.6);
+    0 8px 20px rgba(230, 0, 126, 0.5),   /* Magenta */
+    0 0 15px rgba(0, 51, 72, 0.7),       /* Blau */
+    0 0 10px rgba(255, 213, 0, 0.6);     /* Gelb */
   transition: transform 0.25s ease, box-shadow 0.3s ease;
   user-select: none;
 }
@@ -842,18 +321,16 @@ details summary::after {
 .fancy-download-button:hover {
   transform: scale(1.1);
   box-shadow:
-    0 12px 30px rgba(255, 0, 204, 0.8),
-    0 0 25px rgba(0, 90, 135, 1),
-    0 0 20px rgba(255, 222, 0, 0.9);
+    0 12px 30px rgba(230, 0, 126, 0.8),  /* Magenta */
+    0 0 25px rgba(0, 51, 72, 1),         /* Blau */
+    0 0 20px rgba(255, 213, 0, 0.9);     /* Gelb */
 }
-
-/* Footer */
 
 footer {
   margin-top: 60px;
   padding: 20px 0;
-  border-top: 1px solid #c1d9e8;
-  color: #004766;
+  border-top: 1px solid #003348; /* FDP Dunkelblau */
+  color: #003348; /* FDP Dunkelblau */
   text-align: center;
   font-size: 0.9rem;
 }
@@ -880,55 +357,53 @@ footer {
   border-radius: 50%;    /* macht es rund */
   object-fit: cover;     /* Bild füllt den Kreis gut aus */
   display: block;        /* entfernt kleine Inline-Abstände */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* leichter Schatten */
+  box-shadow: 0 0 10px rgba(255, 213, 0, 0.5); /* FDP Gelb Glow */
 }
 
 :focus {
   outline: none; /* Outline aus */
-  box-shadow: 0 0 4px 2px rgba(255, 105, 180, 0.6); /* zartes Pink mit Glow */
+  box-shadow: 0 0 6px 3px rgba(230, 0, 126, 0.7); /* FDP Magenta Glow */
   outline-offset: 2px;
   border-radius: 4px; /* runde Ecken */
   transition: box-shadow 0.3s ease;
 }
 
-
-/* Für mittlere Bildschirme ab 600px */
 @media (min-width: 600px) {
   .hör-button {
     margin-left: 1rem;
   }
 }
 
-  @keyframes pulseGlow {
+@keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 6px 2px rgba(255, 222, 0, 0.7);
+    box-shadow: 0 0 6px 2px rgba(255, 199, 0, 0.7); /* FDP Gelb */
   }
   50% {
-    box-shadow: 0 0 12px 4px rgba(255, 222, 0, 1);
+    box-shadow: 0 0 12px 4px rgba(255, 199, 0, 1);
   }
 }
 
 /* Gelber Button wie bei Forderungen */
 button.auswerten-btn {
-  background-color: #FFD700; /* Goldgelb */
-  color: #000;
+  background-color: #FFD500; /* FDP Gelb */
+  color: #003348; /* FDP Blau */
   border: none;
   padding: 12px 24px;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(255, 199, 0, 0.4);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .auswerten-btn:hover,
 .auswerten-btn:focus {
-  background-color: #FFC300;
-  box-shadow: 0 6px 12px rgba(255, 195, 0, 0.6);
+  background-color: #FFCC00; /* etwas helleres FDP Gelb */
+  box-shadow: 0 6px 12px rgba(255, 199, 0, 0.6);
   outline: none;
 }
 .auswerten-btn:focus-visible {
-  outline: 2px dashed #003348;
+  outline: 2px dashed #003348; /* FDP Blau */
   outline-offset: 4px;
 }
 
@@ -944,7 +419,7 @@ button.auswerten-btn {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background-color: #fffbea;
+  background-color: #fffbea; /* heller warmer Hintergrund */
   transition: border-color 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
@@ -962,10 +437,10 @@ button.auswerten-btn {
   padding: 10px 20px;
   font-family: 'Playfair Display', serif;
   font-size: 0.9rem;
-  color: #003348;
+  color: #003348; /* FDP Blau */
   border: 1px solid #c1d9e8;
   border-radius: 8px;
-  background-color: #ffd100;
+  background-color: #FFD500; /* FDP Gelb */
 }
 
 /* Balken für Ergebnisanzeige */
@@ -980,13 +455,13 @@ button.auswerten-btn {
 .balken-inner {
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, #ffd700, #ffcc00, #ffaa00);
-  background-color: #ffd700; /* Fallback */
+  background: linear-gradient(90deg, #FFD500, #FFCC00, #B38F00); /* FDP Gelbtöne */
+  background-color: #FFD500; /* Fallback */
   border-radius: 10px 0 0 10px;
   box-shadow:
-    0 0 8px #ffd700,
-    0 0 15px #ffcc0080,
-    0 0 20px #ffaa0070;
+    0 0 8px #FFD500,
+    0 0 15px #FFCC0080,
+    0 0 20px #B38F0070;
   transition: width 0.8s ease-in-out;
   animation: glowingBar 2.5s ease-in-out infinite alternate;
 }
@@ -995,23 +470,7 @@ button.auswerten-btn {
   transition: transform 0.3s ease;
 }
 
-/* Animation für leuchtenden Balken */
-@keyframes glowingBar {
-  0% {
-    box-shadow:
-      0 0 20px #ffd700,
-      0 0 40px #ffcc00,
-      0 0 60px #ffaa00;
-  }
-  100% {
-    box-shadow:
-      0 0 30px #fff700,
-      0 0 60px #ffdd00,
-      0 0 90px #ffbb00;
-  }
-}
 
-/* Responsive Optimierung für mobile Endgeräte */
 @media (max-width: 600px) {
   .ergebnis {
     padding: 15px 10px;
@@ -1022,27 +481,28 @@ button.auswerten-btn {
     padding: 8px 15px;
   }
 }
+
 /* Gelber Button wie bei Forderungen */
 button.auswerten-btn {
-  background-color: #FFD700; /* Goldgelb */
-  color: #000;
+  background-color: #FFD500; /* FDP Gelb */
+  color: #003348; /* FDP Blau */
   border: none;
   padding: 12px 24px;
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 8px rgba(255, 213, 0, 0.4);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .auswerten-btn:hover,
 .auswerten-btn:focus {
-  background-color: #FFC300;
-  box-shadow: 0 6px 12px rgba(255, 195, 0, 0.6);
+  background-color: #FFCC00; /* etwas helleres Gelb */
+  box-shadow: 0 6px 12px rgba(255, 204, 0, 0.6);
   outline: none;
 }
 .auswerten-btn:focus-visible {
-  outline: 2px dashed #003348;
+  outline: 2px dashed #003348; /* FDP Blau */
   outline-offset: 4px;
 }
 
@@ -1058,7 +518,7 @@ button.auswerten-btn {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background-color: #fffbea;
+  background-color: #fffbea; /* sanftes creme */
   transition: border-color 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
@@ -1076,19 +536,20 @@ button.auswerten-btn {
   padding: 10px 20px;
   font-family: 'Playfair Display', serif;
   font-size: 0.9rem;
-  color: #003348;
+  color: #003348; /* FDP Blau */
   border: 1px solid #c1d9e8;
   border-radius: 8px;
-  background-color: #ffd100;
+  background-color: #FFD500; /* FDP Gelb */
 }
 
+/* Select-Felder */
 select.pink {
-  background-color: #ff00a9;
+  background-color: #E20074; /* FDP Magenta */
   color: white;
 }
 
 select.blue {
-  background-color: #002f6c;
+  background-color: #003348; /* FDP Blau */
   color: white;
 }
 
@@ -1098,15 +559,16 @@ option {
 
 option.placeholder {
   color: white;
-  background-color: #ff00a9;
+  background-color: #E20074; /* FDP Magenta */
 }
 
+/* Zurück-Link */
 .zurueck-link {
   display: inline-block;
   text-align: center;
   font-size: 1em;
   color: #fff;
-  background-color: #E20074; /* gleiche Farbe wie z. B. .pink */
+  background-color: #E20074; /* FDP Magenta */
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 6px;
@@ -1115,9 +577,10 @@ option.placeholder {
 }
 
 .zurueck-link:hover {
-  background-color: #c0005f; /* dunklerer Ton bei Hover */
+  background-color: #b3005a; /* dunklerer Magenta-Ton */
 }
 
+/* Manifesto Container */
 .manifesto-container {
   font-family: "Georgia", serif;
   background-color: #fdfdfd;
@@ -1126,8 +589,7 @@ option.placeholder {
   max-width: 800px;
   margin: 40px auto;
   line-height: 1.6;
-
-  user-select: none; /* verhindert Text-Kopieren */
+  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1148,6 +610,8 @@ option.placeholder {
   font-size: 16px;
   color: #333;
 }
+
+/* Biografie Bild */
 .biografie-image-wrapper {
   display: flex;
   flex-direction: column;
@@ -1162,11 +626,13 @@ option.placeholder {
   height: auto;
   display: block;
 }
+
+/* Bildreihe */
 .bildreihe {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap; /* Damit es auf kleinen Bildschirmen nicht kaputtgeht */
+  flex-wrap: wrap;
   margin: 30px 0;
 }
 
@@ -1180,16 +646,18 @@ option.placeholder {
   height: auto;
   display: block;
 }
+
+/* Hör-Button */
 .hör-button {
   position: fixed;
   margin-left: 4px;
   z-index: 9999;
   font-size: 1.6rem;
   color: #fff;
-  background-color: #e10098; /* Magenta */
+  background-color: #E20074; /* FDP Magenta */
   border: none;
   border-radius: 8px;
-  box-shadow: 0 0 12px #e10098aa; /* Leucht-Effekt */
+  box-shadow: 0 0 12px #E20074aa;
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1202,22 +670,5 @@ option.placeholder {
   box-shadow: 0 0 16px #ff33bbaa;
 }
 
-* Für große Bildschirme ab 1000px */
-@media (min-width: 1000px) {
-  .hör-button {
-    margin-left: 2rem;
-  }
-}
-  .sr-only {
-    position: absolute !important;
-    width: 1px; 
-    height: 1px; 
-    padding: 0; 
-    margin: -1px; 
-    overflow: hidden; 
-    clip: rect(0,0,0,0); 
-    white-space: nowrap; 
-    border: 0;
 
-  }
 
