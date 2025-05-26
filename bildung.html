@@ -1,128 +1,231 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bildung – Heschu Hasan</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heschu Hasan</title>
+    <meta name="description" content="Heschu Hasan ist Direktkandidatin der FDP für Freiburg-Ost bei der Landtagswahl 2026. Informieren Sie sich über ihre Themen Umwelt, Bildung und Verwaltung." />
+    <meta name="author" content="Heschu Hasan">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --magenta: #e5007d;
+            --yellow: #ffed00;
+            --blue: #009ee3;
+            --light-blue: #00abae;
+            --violett: #a5027d;
+            --white: #ffffff;
+            --black: #000000;
+        }
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/IMG_2073.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/IMG_2075.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/IMG_2077.png">
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--black);
+        }
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+        .skip-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--magenta);
+            color: var(--yellow);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1000;
+        }
 
-  <!-- Externe CSS-Datei -->
-  <link rel="stylesheet" href="styles.css" />
+        header {
+            background-color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--magenta);
+            color: var(--yellow);
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        h2 {
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .topic-box {
+            border: 2px solid var(--blue);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--black);
+            transition: 0.3s;
+        }
+
+        .topic-box:hover {
+            background-color: var(--magenta);
+            color: var(--yellow);
+        }
+
+        .subtopics {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-left: 1rem;
+        }
+
+        .topic-box:hover .subtopics {
+            display: flex;
+        }
+
+        .subtopics a {
+            border: 2px solid var(--light-blue);
+            padding: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--black);
+            transition: 0.3s;
+        }
+
+        .subtopics a:hover {
+            background-color: var(--magenta);
+            color: var(--yellow);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin-top: 2rem;
+        }
+
+        input, textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: var(--magenta);
+            color: var(--yellow);
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: var(--blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="wrapper">
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
     <header>
-      <nav>
-        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
-
-        <!-- Desktop Menü -->
-        <ul class="nav-list">
-          <li><a href="index.html">Startseite</a></li>
-          <li><a href="umwelt.html">Umwelt</a></li>
-          <li><a href="bildung.html" class="active">Bildung</a></li>
-          <li><a href="biografie.html">Biografie</a></li>
-          <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
-        </ul>
-
-        <!-- Mobile Menü -->
-        <ul class="nav-list-burger">
-          <li><a href="index.html">Startseite</a></li>
-          <li><a href="umwelt.html">Umwelt</a></li>
-          <li><a href="bildung.html" class="active">Bildung</a></li>
-          <li><a href="biografie.html">Biografie</a></li>
-          <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
-        </ul>
-      </nav>
+        <div class="site-title">Heschu Hasan</div>
+        <nav>
+            <ul>
+                <li><a href="#start">Start</a></li>
+                <li><a href="#themen">Themen</a></li>
+                <li><a href="wahlomat.html">Wahl-O-Mat</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main id="content">
-      <section>
-        <h1>📚 Bildung für die Zukunft</h1>
-        <p>Bildung ist der Schlüssel zu Freiheit, Selbstverwirklichung und Fortschritt. Unsere Kinder verdienen ein System, das sie individuell fördert – unabhängig von Herkunft oder Geldbeutel.</p>
-        <ul>
-          <li>💡 <strong>Moderne Lehrpläne:</strong> Praxisnah, digital und zukunftsorientiert</li>
-          <li>💻 <strong>Digitale Ausstattung:</strong> Laptops, WLAN & Lernplattformen an allen Schulen</li>
-          <li>🎯 <strong>Individuelle Förderung:</strong> Stärken erkennen, Talente entfalten</li>
-          <li>🤝 <strong>Gemeinsam stark:</strong> Schulen, Eltern und Kommunen vernetzen</li>
-        </ul>
-        <p>🎓 <strong>Mein Ziel:</strong> Ein Bildungssystem, das nicht verwaltet, sondern befähigt. Bildung muss Chancen schaffen – für alle!</p>
-      </section>
+    <main id="main-content" class="content">
+        <section id="themen">
+            <h2>Meine Themen</h2>
+            <div class="topics">
+                <a class="topic-box" href="bildung.html">Bildung</a>
+                <a class="topic-box" href="umwelt.html">Umwelt</a>
+                <div class="topic-box">
+                    Verwaltung
+                    <div class="subtopics">
+                        <a href="wahlprogramm.html">Allgemein</a>
+                        <a href="justiz.html">Justiz</a>
+                    </div>
+                </div>
+                <a class="topic-box" href="meinungsmacher.html">Meinungs-Macher</a>
+                <a class="topic-box" href="wahlomat.html">Wahl-O-Mat</a>
+            </div>
+        </section>
 
-      <div class="manifesto-container">
-  <h1>Bildung. Zukunft. Freiheit.</h1>
-  <p><em>Ein persönliches Manifest von Heschu HASAN, Kandidatin für den Landtag Baden-Württemberg (FDP)</em></p>
-
-  <h2>1. Bildung braucht Individualität, nicht Gleichmacherei.</h2>
-  <p>
-    Jeder Mensch lernt anders – das ist keine Schwäche, das ist eine Wahrheit. Deshalb ist das gegliederte Schulsystem in Baden-Württemberg ein Schatz, den wir bewahren und intelligent weiterentwickeln müssen. Hauptschule, Realschule, Gymnasium – sie eröffnen Wege, statt sie zu versperren.
-  </p>
-
-  <h2>2. Leistung ist keine Last, sondern Würde.</h2>
-  <p>
-    Ich stehe für das Leistungsprinzip. Es ist Ausdruck von Eigenverantwortung, Ehrgeiz und Selbstbestimmung. Noten allein sind nicht alles – aber sie sind auch nicht nichts. Wer mehr leistet, darf mehr erwarten. Und wer später startet, verdient eine faire zweite Chance.
-  </p>
-
-  <h2>3. Digitalisierung ist wie Industrialisierung: zuerst Angst, dann Fortschritt.</h2>
-  <p>
-    Wir stehen in einem gewaltigen Umbruch – und ja, er macht Angst. Auch den Profis. Aber wie einst die Industrialisierung unsere Welt geprägt hat, so wird es auch die Digitalisierung tun. Waschmaschinen waren einst fremd. Heute sind sie Alltag. Schulen müssen nicht hinterherhinken – sie müssen vorangehen.
-  </p>
-
-  <h2>4. Technologieoffenheit beginnt im Klassenzimmer.</h2>
-  <p>
-    Informatik muss früh unterrichtet werden – nicht optional, sondern selbstverständlich. Digitale Kompetenzen sind keine Kür mehr, sondern Grundlage. Die Schule muss auf das Leben vorbereiten, nicht auf Prüfungen.
-  </p>
-
-  <h2>5. Dienstleistungen sind keine zweite Klasse.</h2>
-  <p>
-    In der öffentlichen Debatte ist oft nur von Industrie die Rede. Aber Dienstleistungen – Pflege, Bildung, Logistik, Beratung, Gastronomie – halten unser Land zusammen. Auch hier beginnt Anerkennung mit Bildung: praxisnah, werteorientiert, zukunftsfest.
-  </p>
-
-  <h2>6. Schuluniformen? Nur, wenn man will.</h2>
-  <p>
-    Ich bin gegen Zwang. Auch beim Stil. Wer sich mit Uniform besser fühlt – soll sie tragen dürfen. Wer sich individuell ausdrücken möchte – muss das auch dürfen. Wie an Universitäten: Optional. Kein Dogma. Keine Schablone.
-  </p>
-
-  <h2>7. Reformen ja – aber mit Haltung.</h2>
-  <p>
-    Wir brauchen keinen permanenten Systemumbau, sondern Klarheit und Stabilität. G8, G9 – das Hin und Her war ein Symptom, nicht die Lösung. Ich stehe für eine Schule, die sich verbessert, ohne sich zu verlieren.
-  </p>
-
-  <h2>8. Bildung in Baden-Württemberg ist Landespolitik. Punkt.</h2>
-  <p>
-    Ich mache keine Bundespolitik. Ich kandidiere für den Landtag Baden-Württemberg – weil ich glaube, dass Veränderung vor der eigenen Haustür beginnt. Hier. In unserem Bildungssystem. Mit Klarheit. Mit Verantwortung. Mit Stil.
-  </p>
-
-  <h2>Meine Haltung. Mein Wort.</h2>
-  <p>
-    Dieses Manifest ist Ausdruck meiner persönlichen Überzeugung. Ich bin bereit, dafür öffentlich einzustehen – im Gespräch, im Dialog, auf Veranstaltungen. Wenn Sie mit mir sprechen möchten, schreiben Sie mir: <strong>heschuhasan@gmail.com</strong><br>
-    Wenn sich genug interessierte Bürgerinnen und Bürger melden, organisiere ich gern ein persönliches Treffen zum offenen Austausch. Denn liberale Politik beginnt mit Zuhören.
-  </p>
-
-  <p><strong>Heschu HASAN</strong><br>
-  Kandidatin für den Landtag Baden-Württemberg<br>
-  Freie Demokratische Partei – liberal, leidenschaftlich, individuell</p>
-</div>
+        <section id="kontakt">
+            <h2>Kontaktformular</h2>
+            <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Ihr Name" required>
+                <input type="email" name="email" placeholder="Ihre E-Mail" required>
+                <textarea name="nachricht" rows="5" placeholder="Ihre Nachricht" required></textarea>
+                <button type="submit">Absenden</button>
+            </form>
+        </section>
     </main>
 
     <footer>
-      <p>&copy; 2025 Heschu Hasan</p>
+        &copy; 2025 Heschu Hasan – FDP Freiburg-Ost · Kaiser-Joseph Straße · <a href="impressum.html" style="color: var(--yellow); text-decoration: underline;">Impressum</a>
     </footer>
-  </div>
-
-  <script>
-    const burger = document.querySelector('.burger');
-    const navBurger = document.querySelector('.nav-list-burger');
-
-    burger.addEventListener('click', () => {
-      navBurger.classList.toggle('active');
-    });
-  </script>
 </body>
+
 </html>
