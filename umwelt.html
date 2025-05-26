@@ -1,63 +1,128 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meine Themenübersicht</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    li.topic {
-      background: #4CAF50;
-      margin-bottom: 10px;
-      padding: 15px;
-      border-radius: 6px;
-      font-weight: bold;
-      color: white;
-    }
-    li.topic > a {
-      color: white;
-      text-decoration: none;
-      display: block;
-    }
-    ul.subtopics {
-      margin-top: 10px;
-      margin-left: 20px;
-    }
-    ul.subtopics li {
-      background: #e0e0e0;
-      margin-bottom: 6px;
-      padding: 8px 12px;
-      border-radius: 4px;
-      font-weight: normal;
-    }
-    ul.subtopics li a {
-      color: #333;
-      text-decoration: none;
-    }
-    ul.subtopics li a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Themenübersicht FDP Design</title>
+<style>
+  /* Farben */
+  :root {
+    --gelb: #ffed00;
+    --magenta: #e5007d;
+    --cyan: #009ee3;
+    --tuerkis: #00abae;
+    --violett: #a5027d;
+    --schwarz: #000000;
+    --weiss: #ffffff;
+  }
+
+  /* Grundlegendes Styling */
+  body {
+    font-family: 'Futura Book', Arial, sans-serif;
+    background-color: var(--weiss);
+    color: var(--schwarz);
+    margin: 2rem;
+    letter-spacing: -0.05em; /* Laufweite ca -10 */
+  }
+
+  /* Überschrift - Headlines in Futura Bold Oblique, Versalien */
+  h1 {
+    font-family: 'Futura Bold Oblique', Arial, sans-serif;
+    text-transform: uppercase;
+    font-style: oblique;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: var(--schwarz);
+    letter-spacing: -0.05em;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  /* Zwischenüberschriften in Futura Medium */
+  h2 {
+    font-family: 'Futura Medium', Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--magenta);
+    letter-spacing: -0.05em;
+  }
+
+  /* Links */
+  a {
+    color: var(--magenta);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Menü */
+  ul.topics {
+    list-style: none;
+    padding-left: 0;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  ul.topics > li {
+    background-color: var(--gelb);
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    font-family: 'Futura Medium', Arial, sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--magenta);
+    letter-spacing: -0.05em;
+  }
+
+  ul.topics > li:hover {
+    background-color: var(--magenta);
+    color: var(--gelb);
+    cursor: pointer;
+  }
+
+  ul.topics > li:hover a {
+    color: var(--gelb);
+  }
+
+  /* Unterpunkte */
+  ul.subtopics {
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  ul.subtopics li {
+    background-color: var(--cyan);
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    color: var(--weiss);
+    font-family: 'Futura Medium', Arial, sans-serif;
+    letter-spacing: normal;
+  }
+
+  ul.subtopics li a {
+    color: var(--weiss);
+  }
+
+  ul.subtopics li:hover {
+    background-color: var(--tuerkis);
+  }
+</style>
 </head>
 <body>
-  <h1>Meine Themenübersicht</h1>
+  <h1>THEMENÜBERSICHT</h1>
 
-  <ul>
-    <li class="topic">
-      <a href="umwelt.html">Erneuerbare Energien</a>
+  <ul class="topics">
+    <li>
+      <a href="umwelt.html">ERNEUERBARE ENERGIEN</a>
       <ul class="subtopics">
         <li><a href="umweltallgemein.html">Allgemein</a></li>
         <li><a href="umweltwindkraft.html">Windkraft</a></li>
@@ -65,8 +130,8 @@
       </ul>
     </li>
 
-    <li class="topic">
-      <a href="fossile.html">Tücken der fossilen Brennstoffe</a>
+    <li>
+      <a href="fossile.html">TÜCKEN DER FOSSILEN BRENNSTOFFE</a>
       <ul class="subtopics">
         <li><a href="fossileallgemein.html">Allgemein</a></li>
         <li><a href="gaskraftwerke.html">Gaskraftwerke</a></li>
@@ -74,12 +139,13 @@
       </ul>
     </li>
 
-    <li class="topic">
-      <a href="stellungnahmen.html">Stellungnahmen</a>
+    <li>
+      <a href="stellungnahmen.html">STELLUNGNAHMEN</a>
     </li>
   </ul>
 </body>
 </html>
+
 
  
 
