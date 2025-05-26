@@ -1,325 +1,323 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Heschu Hasan kandidiert 2026 in Freiburg. Ihre Themen: Bildung, Umwelt und ein bürgernaher Staat.">
-  <meta name="author" content="Heschu Hasan">
-  <meta property="og:title" content="Heschu Hasan – Direktkandidatin Freiburg" />
-  <meta property="og:image" content="/IMG_1604.jpeg" />
-  <meta property="og:description" content="Für eine faire Verwaltung, Umwelt und Bildung." />
-  <meta property="og:type" content="website" />
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/IMG_2084.ico">
-  <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heschu Hasan</title>
+    <meta name="description" content="Heschu Hasan ist Direktkandidatin der FDP für Freiburg-Ost bei der Landtagswahl 2026. Informieren Sie sich über ihre Themen Umwelt, Bildung und Verwaltung." />
+    <meta name="author" content="Heschu Hasan" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --magenta: #e5007d;
+            --yellow: #ffed00;
+            --blue: #009ee3;
+            --light-blue: #00abae;
+            --violett: #a5027d;
+            --white: #ffffff;
+            --black: #000000;
+        }
 
- 
-  <title>Heschu Hasan – Direktkandidatin Freiburg</title>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--black);
+        }
 
-  <!-- Favicon (Standard) -->
-  <link rel="icon" href="/IMG_2074.png" type="image/png">
+        /* Skiplink für Screenreader und Tastaturnavigation */
+        .skip-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--magenta);
+            color: var(--yellow);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1000;
+        }
 
-  <!-- Apple Touch Icons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="/IMG_2065.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/IMG_2066.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/IMG_2067.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/IMG_2068.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/IMG_2069.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/IMG_2070.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/IMG_2071.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/IMG_2072.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/IMG_2073.png">
+        .skip-link:focus {
+            outline: 3px solid var(--yellow);
+            outline-offset: 2px;
+        }
 
-  <!-- Weitere PNG-Favicons -->
-  <link rel="icon" type="image/png" sizes="192x192" href="/IMG_2074.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/IMG_2075.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/IMG_2076.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/IMG_2077.png">
+        header {
+            background-color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
 
-  <!-- Manifest -->
-  <link rel="manifest" href="/manifest.json">
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+        nav ul li a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            background-color: var(--magenta);
+            color: var(--yellow);
+            outline: none;
+        }
+
+        .title-banner {
+            background-color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--blue);
+            font-family: 'Futura', 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        h2 {
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: 5px;
+            text-align: center;
+            font-family: 'Futura', 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            margin: 0;
+        }
+
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .topic-box,
+        .subtopics a {
+            border: 2px solid var(--blue);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--black);
+            transition: 0.3s;
+            display: block;
+            font-family: 'Futura', 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+
+        .topic-box:hover,
+        .topic-box:focus,
+        .subtopics a:hover,
+        .subtopics a:focus {
+            background-color: var(--magenta);
+            color: var(--yellow);
+            outline: none;
+        }
+
+        .subtopics {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            display: none; /* Subtopics initially hidden */
+        }
+
+        .topic-box[aria-expanded="true"] .subtopics {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin-top: 2rem;
+        }
+
+        label {
+            font-weight: 600;
+            font-family: 'Futura', 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+
+        input,
+        textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--magenta);
+            outline: none;
+            box-shadow: 0 0 0 3px var(--yellow);
+        }
+
+        button {
+            background-color: var(--magenta);
+            color: var(--yellow);
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Futura', 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+
+        button:hover,
+        button:focus {
+            background-color: var(--a5027d);
+            outline: none;
+        }
+
+        footer {
+            background-color: var(--blue);
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--white);
+            font-family: 'Futura', 'Inter', sans-serif;
+            letter-spacing: -0.05em;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        footer a {
+            color: var(--yellow);
+            text-decoration: none;
+        }
+
+        footer a:hover,
+        footer a:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+    </style>
 </head>
 
 <body>
-  
-  <div class="wrapper">
-<header>
-  <h1>Heschu Hasan – Direktkandidatin Freiburg</h1>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 
-  <button id="readButton" class="hör-button" aria-label="Text vorlesen" title="Text vorlesen">🎙️<span class="sr-only">Text vorlesen / stoppen</span></button>
+    <header role="banner" aria-label="Hauptnavigation">
+        <nav role="navigation" aria-label="Hauptmenü">
+            <ul>
+                <li><a href="#start">Start</a></li>
+                <li><a href="#themen">Themen</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <button class="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">&#9776;</button>
+    <div class="title-banner" role="heading" aria-level="1" tabindex="0">
+        Heschu Hasan
+    </div>
 
-  <!-- Desktop Menü -->
-  <nav>
-    <ul class="nav-list">
-      <li><a href="#" data-page="index.html" class="active">Startseite</a></li>
-      <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-      <li><a href="#" data-page="bildung.html">Bildung</a></li>
-      <li><a href="#" data-page="biografie.html">Biografie</a></li>
-      <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-      <li><a href="#" data-page="meinungsmacher.html">Meinungs-Macher</a></li>
-      <li><a href="#" data-page="impressum.html">Impressum</a></li>
-    </ul>
+    <main id="main-content" class="content" tabindex="-1">
+        <section id="themen" aria-labelledby="themen-title">
+            <h2 id="themen-title">Meine Themen</h2>
+            <div class="topics">
+                <a class="topic-box" href="bildung.html">Bildung</a>
+                <a class="topic-box" href="umwelt.html">Umwelt</a>
 
-    <!-- Mobile Menü -->
-    <ul class="nav-list-burger" id="mobile-menu" hidden>
-      <li><a href="#" data-page="index.html" class="active">Startseite</a></li>
-      <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-      <li><a href="#" data-page="bildung.html">Bildung</a></li>
-      <li><a href="#" data-page="biografie.html">Biografie</a></li>
-      <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-      <li><a href="#" data-page="meinungsmacher.html">Meinungs-Macher</a></li>
-      <li><a href="#" data-page="impressum.html">Impressum</a></li>
-    </ul>
-  </nav>
-</header>
-    <main id="content">
-      <section class="intro">
-        <h1>Willkommen. Ich bin Heschu Hasan – und ich kämpfe für einen Staat, der seine Bürger ernst nimmt.</h1>
+                <div class="topic-box" role="region" aria-labelledby="verwaltung-title" aria-expanded="false" tabindex="0" id="verwaltung-box">
+                    <a href="wahlprogramm.html" id="verwaltung-title" aria-haspopup="true" aria-controls="verwaltung-subtopics" aria-expanded="false">Verwaltung</a>
+                    <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
+                        <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
+                    </div>
+                </div>
 
-        <h2>Ein Staat funktioniert nur, wenn er fair, transparent und respektvoll handelt – gegenüber jedem Einzelnen.</h2>
-
-        <p>
-          Zu viele Menschen erleben im Alltag eine Verwaltung, die abschottet statt zuhört, die blockiert statt begleitet.
-          Ich will das ändern.
-        </p>
-
-        <p>
-          <strong>Behördenwillkür untergräbt das Vertrauen in unseren Rechtsstaat.</strong> Sie macht Menschen wütend, hilflos oder sogar kriminell –
-          nicht weil sie "schlecht" sind, sondern weil sie sich nicht anders zu helfen wissen.
-        </p>
-
-        <p>
-          Ich bin überzeugt: Nur ein Staat, der selbst mit Integrität handelt, kann auch Integrität einfordern. 
-          Der Staat muss Vorbild sein – nicht Macht demonstrieren, sondern Vertrauen aufbauen.
-        </p>
-
-        <div class="accordion-wrapper">
-          <button class="accordion" aria-expanded="false" aria-controls="panel1" id="accordion1">
-            Meine Forderungen
-            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none"/>
-            </svg>
-          </button>
-
-          <div class="forderung-box" id="panel1">
-            <div class="forderung-box">
-              <div class="forderung-icon">⚖️</div>
-              <div class="forderung-text">
-                <strong>Rechtsstaat statt Amtswillkür</strong>
-                <details>
-                  <summary><a href="justiz.html" class="mehr-erfahren-link">Mehr erfahren</a></summary>
-                  Bürger:innen müssen die Möglichkeit haben, Entscheidungen der Verwaltung nachvollziehen und überprüfen zu können. Intransparente Prozesse schaffen Frust und zerstören Vertrauen.
-                </details>
-              </div>
+                <a class="topic-box" href="meinungsmacher.html">Meinungs-Macher</a>
             </div>
+        </section>
 
-            <div class="forderung-box">
-              <div class="forderung-icon">🛡️</div>
-              <div class="forderung-text">Kein Generalverdacht: Schutz vor ungerechter Kriminalisierung</div>
-            </div>
+        <section id="kontakt" aria-labelledby="kontakt-title">
+            <h2 id="kontakt-title">Kontaktformular</h2>
+            <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain" aria-label="Kontaktformular">
+                <label for="name">Ihr Name</label>
+                <input type="text" id="name" name="name" placeholder="Ihr Name" required />
 
-            <div class="forderung-box">
-              <div class="forderung-icon">⏳</div>
-              <div class="forderung-text">Bürgerrechte dürfen nicht an Formularen und Fristen scheitern</div>
-            </div>
-          </div>
-        </div>
+                <label for="email">Ihre E-Mail</label>
+                <input type="email" id="email" name="email" placeholder="Ihre E-Mail" required />
 
-        <p>
-          Ich stehe für eine Politik, die nicht sagt: "So ist es halt." – sondern fragt: "Wie kann es besser gehen?"
-          Ich will eine Verwaltung, die den Menschen dient – nicht umgekehrt.
-        </p>
+                <label for="nachricht">Ihre Nachricht</label>
+                <textarea id="nachricht" name="nachricht" rows="5" placeholder="Ihre Nachricht" required></textarea>
 
-        <div class="contact-box">
-          <a href="mailto:heschuhasan@gmail.com" class="email-button">
-            ✉️ Kontakt per E-Mail
-          </a>
-          <p>Sie haben etwas erlebt, das Sie verändern möchten? Schreiben Sie mir – ich höre zu.</p>
-        </div>
-      </section>
+                <button type="submit">Absenden</button>
+            </form>
+        </section>
     </main>
-  </div>
 
-<div id="counter-container"></div>
-
-<div id="cursor-trail-container"></div>
-
-  <footer>
-      <p>&copy; 2025 Heschu Hasan</p>
+    <footer role="contentinfo">
+        &copy; 2025 Heschu Hasan – FDP Freiburg-Ost · Kaiser-Joseph Straße · <a href="impressum.html">Impressum</a>
     </footer>
-  
- <script>
-  // Hier der gesamte JavaScript-Code, den ich dir eben gegeben habe:
 
-  function initAccordion() {
-    const acc = document.querySelector(".accordion");
-    const panel = document.getElementById("panel1");
+    <script>
+        // Verwaltung-Box: Aufklappbare Unterthemen für Tastatur und Screenreader
+        const verwaltungBox = document.getElementById('verwaltung-box');
+        const verwaltungLink = document.getElementById('verwaltung-title');
+        const subtopics = document.getElementById('verwaltung-subtopics');
 
-    if (acc && panel) {
-      acc.addEventListener("click", function () {
-        const isOpen = panel.classList.toggle("open");
-        acc.classList.toggle("active", isOpen);
-        acc.setAttribute("aria-expanded", isOpen);
-        panel.setAttribute("aria-hidden", !isOpen);
-
-        if (isOpen) {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        } else {
-          panel.style.maxHeight = null;
+        function toggleSubtopics() {
+            const expanded = verwaltungBox.getAttribute('aria-expanded') === 'true';
+            verwaltungBox.setAttribute('aria-expanded', !expanded);
+            verwaltungLink.setAttribute('aria-expanded', !expanded);
+            if (!expanded) {
+                subtopics.style.display = 'flex';
+            } else {
+                subtopics.style.display = 'none';
+            }
         }
-      });
 
-      panel.style.maxHeight = null;
-      panel.setAttribute("aria-hidden", "true");
-      acc.setAttribute("aria-expanded", "false");
-    }
-  }
-
-  function setupNavigation() {
-    const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
-    const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
-
-    function loadPage(e) {
-      e.preventDefault();
-      const page = this.getAttribute('data-page');
-      if (!page) return;
-
-      fetch(page)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, 'text/html');
-          const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
-          document.getElementById('content').innerHTML = newContent;
-
-          initAccordion();
-
-          // Mobile Menü schließen
-          document.querySelectorAll('.nav-list-burger.active').forEach(el => el.classList.remove('active'));
-
-          // Aktive Links setzen
-          navLinksDesktop.forEach(a => a.classList.toggle('active', a.getAttribute('data-page') === page));
-          navLinksMobile.forEach(a => a.classList.toggle('active', a.getAttribute('data-page') === page));
-        })
-        .catch(err => {
-          console.error('Fehler beim Laden:', err);
-          document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
+        verwaltungLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleSubtopics();
         });
-    }
 
-    navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
-    navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
-  }
+        verwaltungBox.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleSubtopics();
+            }
+        });
+    </script>
+</body>
 
-  // Screenshot-Sperre
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "PrintScreen") {
-      alert("Screenshots sind auf dieser Seite nicht erlaubt.");
-      e.preventDefault();
-    }
-  });
-
-  // Burger Menü Toggle und aria-expanded setzen
-  document.querySelectorAll('.burger').forEach(burger => {
-    burger.addEventListener('click', () => {
-      let navBurger = burger.nextElementSibling;
-      if (!navBurger || !navBurger.classList.contains('nav-list-burger')) {
-        navBurger = burger.parentElement.querySelector('.nav-list-burger');
-      }
-      if (navBurger) {
-        navBurger.classList.toggle('active');
-        burger.setAttribute('aria-expanded', navBurger.classList.contains('active'));
-      }
-    });
-  });
-
-// Vorlese-Button mit Stimme
-const readButton = document.getElementById('readButton');
-let isSpeaking = false;
-
-function setFemaleVoice(utterance, voices) {
-  const preferredVoices = [
-    'Google Deutsch',
-    'Google Deutsch Female',
-    'Microsoft Hedda Desktop',
-    'Google UK English Female',
-    'Anna', // macOS
-    'Laura' // macOS
-  ];
-
-  let voice = null;
-  for (const name of preferredVoices) {
-    voice = voices.find(v => v.name.includes(name));
-    if (voice) break;
-  }
-
-  if (!voice) {
-    voice = voices.find(v => v.lang.startsWith('de') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('de')) || voices[0];
-  }
-
-  if (voice) utterance.voice = voice;
-}
-
-readButton.addEventListener('click', () => {
-  if (!('speechSynthesis' in window)) {
-    alert('Dein Browser unterstützt keine Sprachausgabe.');
-    return;
-  }
-
-  if (isSpeaking) {
-    speechSynthesis.cancel();
-    isSpeaking = false;
-    readButton.textContent = '🎙️';
-  } else {
-    const textToRead = document.getElementById('content').innerText || document.body.innerText;
-    const utterance = new SpeechSynthesisUtterance(textToRead);
-
-    utterance.rate = 0.85;  // angenehme Sprechgeschwindigkeit
-    utterance.pitch = 0.75; // tiefere, weibliche Stimme
-
-    let voices = speechSynthesis.getVoices();
-
-    if (!voices.length) {
-      speechSynthesis.onvoiceschanged = () => {
-        voices = speechSynthesis.getVoices();
-        setFemaleVoice(utterance, voices);
-        speechSynthesis.speak(utterance);
-        isSpeaking = true;
-        readButton.textContent = '⏹️';
-      };
-    } else {
-      setFemaleVoice(utterance, voices);
-      speechSynthesis.speak(utterance);
-      isSpeaking = true;
-      readButton.textContent = '⏹️';
-    }
-
-    utterance.onend = () => {
-      isSpeaking = false;
-      readButton.textContent = '🎙️';
-    };
-  }
-});
-
-// Wenn DOM geladen: Accordion und Navigation initialisieren
-document.addEventListener('DOMContentLoaded', () => {
-  initAccordion();
-  setupNavigation();
-});
-
-
-  // Wenn DOM geladen: Accordion und Navigation initialisieren
-  document.addEventListener('DOMContentLoaded', () => {
-    initAccordion();
-    setupNavigation();
-  });
-</script>
+</html>
