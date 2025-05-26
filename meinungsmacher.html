@@ -1,5 +1,194 @@
 <!DOCTYPE html>
+<html lang="de"><!DOCTYPE html>
 <html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meinungs-Macher - Heschu Hasan</title>
+
+<!-- FontAwesome für Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link rel="stylesheet" href="bildung.css" />
+<style>
+  /* Zusätzliche Anpassungen für Umfrage */
+  .question {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--black);
+    font-family: 'Calibri', sans-serif;
+  }
+
+  .answers label {
+    display: inline-block;
+    margin-right: 1.5rem;
+    cursor: pointer;
+    font-family: 'Calibri Light', sans-serif;
+    font-weight: 300;
+    color: var(--black);
+  }
+
+  .answers input {
+    margin-right: 0.4rem;
+  }
+
+  button[type="submit"] {
+    background-color: var(--magenta);
+    color: var(--yellow);
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Calibri Bold', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+    margin: 2rem auto 0;
+    max-width: 220px;
+    transition: background-color 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #c3006b;
+  }
+
+  #feedback {
+    text-align: center;
+    margin-top: 1rem;
+    font-family: 'Calibri', sans-serif;
+    font-weight: 600;
+    color: var(--magenta);
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .answers label {
+      display: block;
+      margin: 0.5rem 0;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Meinungs-Macher</h2>
+  <h3>Beantworten Sie 21 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
+
+  <form id="quizForm">
+    <div id="questions"></div>
+    <button type="submit">Absenden</button>
+  </form>
+
+  <div id="feedback" role="alert" aria-live="polite"></div>
+</main>
+
+<footer>
+  <h3>Folgen Sie Sie mir auf den Sozialen Medien</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const questions = [
+      "Soll der Ausbau von Power-to-X-Technologien staatlich stärker gefördert werden?",
+      "Sollen Genehmigungsverfahren für neue Technologien schneller ablaufen?",
+      "Soll Informatik Pflichtfach ab der Grundschule sein?",
+      "Soll die Schulpflicht um digitale Kompetenzen erweitert werden?",
+      "Soll der öffentliche Nahverkehr kostenlos sein?",
+      "Sollten alle Neubauten Solaranlagen erhalten müssen?",
+      "Sollten Steuern auf klimaschädliche Produkte erhöht werden?",
+      "Sollte das Wahlalter auf 16 Jahre gesenkt werden?",
+      "Soll ein bedingungsloses Grundeinkommen eingeführt werden?",
+      "Soll mehr Geld in Bildung statt in Verteidigung investiert werden?",
+      "Soll ein Tempolimit von 120 km/h auf Autobahnen eingeführt werden?",
+      "Soll die Polizei mit Bodycams ausgestattet werden?",
+      "Soll Deutschland mehr Geflüchtete aufnehmen?",
+      "Sollte Cannabis legalisiert werden?",
+      "Soll die Maskenpflicht in Pflegeheimen dauerhaft bleiben?",
+      "Soll das Gendern in der Sprache staatlich gefördert werden?",
+      "Soll der ländliche Raum stärker digitalisiert werden?",
+      "Sollte Bargeld abgeschafft werden?",
+      "Sollten Politikergehälter an den Mindestlohn gekoppelt werden?",
+      "Soll die Grundsteuer reformiert werden?",
+      "Soll ein verpflichtendes Klimaschutzjahr für Schulabgänger eingeführt werden?"
+    ];
+
+    const questionContainer = document.getElementById("questions");
+
+    questions.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `
+        <p><strong>${i + 1}. ${q}</strong></p>
+        <div class="answers">
+          <label><input type="radio" name="q${i}" value="ja" required /> Ja</label>
+          <label><input type="radio" name="q${i}" value="neutral" /> Neutral</label>
+          <label><input type="radio" name="q${i}" value="nein" /> Nein</label>
+        </div>`;
+      questionContainer.appendChild(div);
+    });
+
+    const form = document.getElementById('quizForm');
+    const feedback = document.getElementById('feedback');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      // Check ob alle Fragen beantwortet sind - browser macht das durch required, trotzdem sicherheitshalber prüfen
+      const allAnswered = questions.every((_, i) => {
+        return form.elements[`q${i}`].value || 
+          Array.from(form.elements[`q${i}`]).some(input => input.checked);
+      });
+
+      if (!allAnswered) {
+        feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
+        feedback.style.color = 'red';
+        feedback.style.display = 'block';
+        return;
+      }
+
+      // Beispiel: Feedback anzeigen
+      feedback.textContent = 'Vielen Dank für Ihre Teilnahme! Ihre Antworten wurden gespeichert.';
+      feedback.style.color = 'var(--magenta)';
+      feedback.style.display = 'block';
+
+      // Formular zurücksetzen, damit erneut abgesendet werden kann
+      form.reset();
+
+      // Optional: Scroll zum Feedback
+      feedback.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
+
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
