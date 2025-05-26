@@ -5,144 +5,203 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Umwelt - Heschu Hasan</title>
 
-<!-- Google Fonts als konservative Alternative zu Futura -->
+<!-- FontAwesome CDN für Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-pVU6lFf2WfvDFe2+rqgG0OPgfSxH5/1aG8hu6zUbQ7uLp6G0SK/o/tknB7Q4g+Z3jX2v6vcr1wlYZ5Q/2R+9hg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
 <style>
-  body {
-    background: #ffffff;
-    color: #009ee3; /* Blau für normalen Text */
-    font-family: Georgia, "Times New Roman", serif;
-    margin: 0;
-    padding: 0;
+  /* Farbpalette und Basis */
+  :root {
+    --yellow: #ffed00;
+    --magenta: #e5007d;
+    --cyan: #009ee3;
+    --turquoise: #00abae;
+    --black: #000000;
+    --white: #ffffff;
   }
 
+  /* Reset & Basis */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background-color: var(--white);
+    color: var(--cyan);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+
+  a {
+    color: var(--cyan);
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
+
+  /* Header */
   header {
-    background: #ffffff; /* weiß */
-    padding: 15px 20px;
-    border-bottom: 1px solid #ccc;
+    background-color: var(--white);
+    border-bottom: 2px solid var(--cyan);
+    padding: 20px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   header h1 {
+    font-family: Georgia, serif;
     font-weight: bold;
     font-size: 1.8rem;
-    color: #000000;
+    color: var(--cyan);
     margin: 0;
-    font-style: normal;
-    text-transform: uppercase;
   }
-
   nav a {
-    text-decoration: none;
-    color: #009ee3;
     font-weight: normal;
     font-size: 1rem;
-    margin-left: 20px;
-    transition: color 0.3s ease;
-  }
-  nav a:hover {
-    color: #a5027d; /* Magenta Akzent beim Hover */
+    margin-left: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
-  /* Zurück-Button */
-  .back-button {
-    border: 2px solid #009ee3;
-    background: transparent;
-    color: #009ee3;
+  nav a.active,
+  nav a:hover {
+    color: var(--magenta);
     font-weight: bold;
-    padding: 8px 16px;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-family: Georgia, "Times New Roman", serif;
-    transition: all 0.3s ease;
+  }
+
+  /* Zurück Button */
+  .back-button {
     display: inline-block;
-    margin: 20px;
-    border-radius: 4px;
+    margin: 15px 40px;
+    padding: 10px 20px;
+    border: 2px solid var(--cyan);
+    color: var(--cyan);
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    transition: all 0.3s ease;
+    font-family: Georgia, serif;
+    font-size: 1rem;
     user-select: none;
   }
-  .back-button:focus,
-  .back-button:hover {
-    background: #e5007d; /* Magenta */
-    color: #00abae; /* Türkis */
-    border-color: #e5007d;
+  .back-button:hover,
+  .back-button:focus {
+    border-color: var(--magenta);
+    background-color: var(--magenta);
+    color: var(--white);
     outline: none;
   }
 
-  /* Container für die Boxen */
-  .container {
-    max-width: 1000px;
+  /* Hauptinhalt */
+  main {
+    padding: 20px 40px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+  }
+  main h2 {
+    color: var(--cyan);
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  main p {
+    font-size: 1.1rem;
+    max-width: 700px;
   }
 
-  /* Boxen für Umweltthemen */
-  .box-grid {
+  /* Umwelt-Themen Boxen */
+  .umwelt-boxes {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
   }
   .box {
     flex: 1 1 280px;
-    border: 2px solid #009ee3;
-    background: #ffffff;
+    border: 2px solid var(--cyan);
+    background-color: var(--white);
+    color: var(--cyan);
     padding: 20px;
     cursor: pointer;
-    color: #009ee3;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: Georgia, "Times New Roman", serif;
-    border-radius: 6px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    border-radius: 5px;
     user-select: none;
   }
   .box:hover {
-    border-color: #a5027d;
+    border-color: var(--magenta);
   }
-  .box.active {
-    background: #a5027d; /* Magenta */
-    color: #00abae; /* Türkis */
-    border-color: #a5027d;
+  .box:focus,
+  .box.selected {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    outline: none;
+    border-color: var(--magenta);
   }
 
-  /* Text außerhalb der Boxen */
-  p, h2 {
-    color: #009ee3;
-    font-family: Georgia, "Times New Roman", serif;
-    text-transform: uppercase;
+  .box h3 {
+    margin-top: 0;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   /* Footer */
-  footer.footer-section {
-    background-color: #009ee3; /* Cyan */
-    color: white;
-    padding: 40px 20px;
+  footer {
+    background-color: var(--cyan);
+    color: var(--white);
     text-align: center;
-    font-family: Georgia, "Times New Roman", serif;
+    padding: 30px 20px;
+    font-family: Georgia, serif;
   }
-  footer.footer-section h3 {
-    margin-bottom: 20px;
+  footer h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
   footer .social-links a {
-    color: white;
-    font-size: 28px;
-    margin: 0 10px;
-    display: inline-block;
-    vertical-align: middle;
+    color: var(--white);
+    font-size: 30px;
+    margin: 0 15px;
     transition: color 0.3s ease;
   }
-  footer .social-links a:hover {
-    color: #e5007d;
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: var(--magenta);
+    outline: none;
   }
 
-  /* Instagram Icon via FontAwesome */
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+  /* Responsive */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px 20px;
+    }
+    nav a {
+      margin-left: 0;
+      margin-right: 15px;
+    }
+    .umwelt-boxes {
+      flex-direction: column;
+    }
+  }
 </style>
+
 </head>
 <body>
 
@@ -150,30 +209,42 @@
   <h1>HESCHU HASAN</h1>
   <nav>
     <a href="index.html">Startseite</a>
-    <a href="umwelt.html">Umwelt</a>
+    <a href="umwelt.html" class="active">Umwelt</a>
+    <a href="meinungs-macher.html">Meinungs-Macher</a>
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
 
-<main class="container">
+<button class="back-button" onclick="history.back()">Zurück</button>
 
-  <button class="back-button" onclick="history.back()">← Zurück</button>
+<main>
+  <h2>Unsere Umweltthemen</h2>
 
-  <h2>UMWELTTHEMEN</h2>
-  <p>Wählen Sie ein Thema aus, um mehr zu erfahren.</p>
-
-  <div class="box-grid">
-    <div class="box" tabindex="0">Klimaschutz</div>
-    <div class="box" tabindex="0">Nachhaltige Energie</div>
-    <div class="box" tabindex="0">Wasserqualität</div>
-    <div class="box" tabindex="0">Umweltbildung</div>
-    <div class="box" tabindex="0">Artenschutz</div>
-    <div class="box" tabindex="0">Abfallvermeidung</div>
+  <div class="umwelt-boxes" role="list">
+    <div class="box" tabindex="0" role="listitem">
+      <h3>Klimaschutz & Energiewende</h3>
+      <p>Förderung nachhaltiger Energien und konsequente CO₂-Reduktion.</p>
+    </div>
+    <div class="box" tabindex="0" role="listitem">
+      <h3>Wasserwirtschaft</h3>
+      <p>Effiziente Nutzung und Schutz unserer Wasserressourcen.</p>
+    </div>
+    <div class="box" tabindex="0" role="listitem">
+      <h3>Abfall & Recycling</h3>
+      <p>Verbesserung der Kreislaufwirtschaft und Müllvermeidung.</p>
+    </div>
+    <div class="box" tabindex="0" role="listitem">
+      <h3>Naturschutz & Biodiversität</h3>
+      <p>Erhalt von Lebensräumen und Artenvielfalt in unserer Region.</p>
+    </div>
+    <div class="box" tabindex="0" role="listitem">
+      <h3>Mobilität & Verkehr</h3>
+      <p>Förderung umweltfreundlicher Verkehrskonzepte und Infrastruktur.</p>
+    </div>
   </div>
-
 </main>
 
-<footer class="footer-section">
+<footer>
   <h3>Treffen Sie mich in den Sozialen Medien</h3>
   <div class="social-links">
     <a href="https://www.instagram.com/fdp_freiburg/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -183,13 +254,20 @@
 </footer>
 
 <script>
-  // Boxen Klick-Effekt: toggelt aktive Klasse
+  // Klick auf Box: "selected" Klasse toggeln für Stiländerung
   document.querySelectorAll('.box').forEach(box => {
     box.addEventListener('click', () => {
-      // Alle Boxen deaktivieren
-      document.querySelectorAll('.box').forEach(b => b.classList.remove('active'));
-      // Diese Box aktivieren
-      box.classList.add('active');
+      // Alle boxen entfernen "selected"
+      document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
+      // Aktuelle markieren
+      box.classList.add('selected');
+    });
+    // Tastatur Enter & Space auch aktivieren
+    box.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        box.click();
+      }
     });
   });
 </script>
