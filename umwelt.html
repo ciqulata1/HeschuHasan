@@ -1,269 +1,86 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heschu Hasan</title>
-    <meta name="description" content="Heschu Hasan ist Direktkandidatin der FDP für Freiburg-Ost bei der Landtagswahl 2026. Informieren Sie sich über ihre Themen Umwelt, Bildung und Verwaltung." />
-    <meta name="author" content="Heschu Hasan">
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --magenta: #e5007d;
-            --yellow: #ffed00;
-            --blue: #009ee3;
-            --light-blue: #00abae;
-            --violett: #a5027d;
-            --white: #ffffff;
-            --black: #000000;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: var(--white);
-            color: var(--black);
-        }
-
-        /* Skip-Link Styles */
-        .skip-link {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--magenta);
-            color: var(--yellow);
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            z-index: 1000;
-
-            /* Versteckt */
-            clip: rect(1px, 1px, 1px, 1px);
-            clip-path: inset(50%);
-            height: 1px;
-            width: 1px;
-            overflow: hidden;
-        }
-
-        /* Sichtbar bei Fokus */
-        .skip-link:focus,
-        .skip-link:active {
-            clip: auto;
-            clip-path: none;
-            height: auto;
-            width: auto;
-            overflow: visible;
-            position: fixed;
-        }
-
-        header {
-            background-color: var(--white);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--blue);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--black);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
-
-        nav ul li a:hover {
-            background-color: var(--magenta);
-            color: var(--yellow);
-        }
-
-        .content {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 2rem;
-        }
-
-        h2 {
-            background-color: var(--blue);
-            color: var(--white);
-            padding: 0.75rem;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .topics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .topic-box {
-            border: 2px solid var(--blue);
-            padding: 1rem;
-            text-align: center;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--black);
-            transition: 0.3s;
-        }
-
-        .topic-box:hover {
-            background-color: var(--magenta);
-            color: var(--yellow);
-        }
-
-        .subtopics {
-            display: none;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 1rem;
-            padding-left: 1rem;
-        }
-
-        .topic-box:hover .subtopics {
-            display: flex;
-        }
-
-        .subtopics a {
-            border: 2px solid var(--light-blue);
-            padding: 0.5rem;
-            text-align: center;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--black);
-            transition: 0.3s;
-        }
-
-        .subtopics a:hover {
-            background-color: var(--magenta);
-            color: var(--yellow);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 500px;
-            margin-top: 2rem;
-        }
-
-        input,
-        textarea {
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: var(--magenta);
-            color: var(--yellow);
-            padding: 0.75rem;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        footer {
-            background-color: var(--blue);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-        .external-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .external-links a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            color: var(--black);
-            transition: color 0.3s;
-        }
-
-        .external-links a:hover {
-            color: var(--magenta);
-        }
-
-        .external-links svg {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meine Themenübersicht</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li.topic {
+      background: #4CAF50;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: white;
+    }
+    li.topic > a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+    ul.subtopics {
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    ul.subtopics li {
+      background: #e0e0e0;
+      margin-bottom: 6px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-weight: normal;
+    }
+    ul.subtopics li a {
+      color: #333;
+      text-decoration: none;
+    }
+    ul.subtopics li a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-
 <body>
-    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+  <h1>Meine Themenübersicht</h1>
 
-    <header>
-        <div class="site-title">Heschu Hasan</div>
-        <nav>
-            <ul>
-                <li><a href="#start">Start</a></li>
-                <li><a href="#start">Themen</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-                <li><a href="impressum.html">Impressum</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main id="main-content" class="content" tabindex="-1">
-
-<section id="themen">
-  <h2>Meine Themen</h2>
-  <ul class="topics">
-    <li class="topic-item">
-      <a href="umwelt.html" class="topic-box">Erneuerbare Energien</a>
+  <ul>
+    <li class="topic">
+      <a href="umwelt.html">Erneuerbare Energien</a>
       <ul class="subtopics">
         <li><a href="umweltallgemein.html">Allgemein</a></li>
         <li><a href="umweltwindkraft.html">Windkraft</a></li>
-        <li><a href="umweltpower.html">Power-to-X Technologien</a></li>
+        <li><a href="umweltpower.html">Power to X</a></li>
       </ul>
     </li>
-    <li class="topic-item">
-      <a href="fossile.html" class="topic-box">Tücken der fossilen Brennstoffe</a>
+
+    <li class="topic">
+      <a href="fossile.html">Tücken der fossilen Brennstoffe</a>
       <ul class="subtopics">
-        <li><a href="wahlprogramm.html">Allgemein</a></li>
-        <li><a href="justiz.html">Gaskraftwerke</a></li>
-        <li><a href="justiz.html">Kohlekraftwerke</a></li>
+        <li><a href="fossileallgemein.html">Allgemein</a></li>
+        <li><a href="gaskraftwerke.html">Gaskraftwerke</a></li>
+        <li><a href="kohlekraftwerke.html">Kohlekraftwerke</a></li>
       </ul>
+    </li>
+
+    <li class="topic">
+      <a href="stellungnahmen.html">Stellungnahmen</a>
     </li>
   </ul>
-</section>
-    </main>
+</body>
+</html>
+
  
 
         <section class="external-links">
