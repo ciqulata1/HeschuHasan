@@ -14,28 +14,23 @@
   font-style: normal;
 }
 
-/* CSS-Variablen für Light Mode (default) */
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
-  --primary-color: #007bff;
+  --primary-color: #005bac; /* FDP-Blau */
+  --accent-color: #e10098;  /* FDP-Magenta */
+  --highlight-color: #ffed00; /* FDP-Gelb */
+
   --font-main: 'UnifrakturCook', serif;
   --font-alt: 'DrogoFont', sans-serif;
 }
 
-/* Dark Mode Variablen */
 body.dark {
   --bg-color: #121212;
   --text-color: #eeeeee;
-  --primary-color: #bb86fc;
-}
-
-.bildunterschrift {
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: 0.5rem;
-  font-style: italic;
-  text-align: center;
+  --primary-color: #e10098; /* dunkler Akzent für Dark Mode */
+  --accent-color: #ffed00;
+  --highlight-color: #005bac;
 }
 
 /* Grundstyles */
