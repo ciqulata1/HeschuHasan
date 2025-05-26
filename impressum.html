@@ -4,20 +4,163 @@
   <meta charset="UTF-8">
   <title>Impressum – Heschu Hasan</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    @font-face {
+      font-family: 'Futura Bold Oblique';
+      src: url('FuturaBoldOblique.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Futura Medium';
+      src: url('FuturaMedium.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Futura Book';
+      src: url('FuturaBook.woff2') format('woff2');
+    }
+
+    body {
+      background-color: #ffed00;
+      font-family: 'Futura Book', sans-serif;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      font-family: 'Futura Medium', sans-serif;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      color: #000000;
+    }
+
+    .jump-link {
+      background-color: #e5007d;
+      color: #ffed00;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-family: 'Futura Medium', sans-serif;
+      text-transform: uppercase;
+    }
+
+    main.impressum {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-family: 'Futura Bold Oblique', sans-serif;
+      text-transform: uppercase;
+      font-size: 2.5rem;
+      letter-spacing: -0.5px;
+      color: #000000;
+    }
+
+    p, a {
+      font-family: 'Futura Book', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      letter-spacing: -0.5px;
+    }
+
+    strong {
+      font-family: 'Futura Medium', sans-serif;
+      text-transform: uppercase;
+    }
+
+    a {
+      color: #e5007d;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #a5027d;
+    }
+
+    .textbalken {
+      background-color: #e5007d;
+      color: #ffed00;
+      padding: 1rem;
+      font-family: 'Futura Medium', sans-serif;
+      text-transform: uppercase;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .zurueck-link {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: #009ee3;
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .zurueck-link:hover {
+      background-color: #00abae;
+    }
+
+    footer {
+      background-color: #009ee3;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem 2rem;
+      font-family: 'Futura Book', sans-serif;
+    }
+
+    .social-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #ffffff;
+      color: #e5007d;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 1rem;
+      text-decoration: none;
+    }
+
+    .social-button:hover {
+      background-color: #ffed00;
+      color: #000000;
+    }
+  </style>
 </head>
 <body>
-  <main class="impressum">
-    <h1>Impressum</h1>
+  <header>
+    <div><strong>HESCHU HASAN</strong></div>
+    <nav>
+      <a href="index.html">Start</a>
+      <a href="themen.html">Themen</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a class="jump-link" href="#main">Zum Start springen</a>
+    </nav>
+  </header>
+
+  <main id="main" class="impressum">
+    <div class="textbalken">Impressum</div>
+
     <p><strong>Angaben gemäß § 5 TMG</strong></p>
     <p>
       Heschu Hasan<br>
       Kaiser-Joseph-Straße 216<br>
-      79098Freiburg<br>
+      79098 Freiburg<br>
     </p>
 
     <p><strong>Kontakt</strong></p>
     <p>
-      Telefon der Geschäftsstelle:+49 761 34515<br>
+      Telefon der Geschäftsstelle: +49 761 34515<br>
       E-Mail: <a href="mailto:heschuhasan@gmail.com">heschuhasan@gmail.com</a>
     </p>
 
@@ -33,7 +176,15 @@
       Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
     </p>
 
-    <p><a href="index.html">Zurück zur Startseite</a></p>
+    <a class="zurueck-link" href="index.html">Zurück zur Startseite</a>
   </main>
+
+  <footer>
+    <p>Folge mir auf Instagram:</p>
+    <a class="social-button" href="https://instagram.com/heschuhasan" target="_blank">
+      <img src="instagram-icon.svg" alt="Instagram" width="20" height="20"> @heschuhasan
+    </a>
+    <p>&copy; Heschu Hasan</p>
+  </footer>
 </body>
 </html>
