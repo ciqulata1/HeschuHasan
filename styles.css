@@ -118,7 +118,7 @@ a:focus {
 }
 
 .back-button {
-  background-color: #005a87; /* Beispiel: dunkleres Blau */
+  background-color: #005AA7; /* Beispiel: dunkleres Blau */
   color: white;
   border-radius: 8px;
   padding: 12px 24px;
@@ -159,7 +159,7 @@ a:focus {
 }
 
 .back-button:hover {
-  background-color: #0073b1;
+  background-color: #005AA7;
 }
 body {
   user-select: none;
@@ -193,7 +193,7 @@ button {
   margin: 30px auto 0;
   padding: 10px 20px;
   font-size: 1.1em;
-  background-color: #003366;
+  background-color: #005AA7;
   color: white;
   border: none;
   border-radius: 6px;
@@ -201,7 +201,7 @@ button {
 }
 
 button:hover {
-  background-color: #0050aa;
+  background-color: #005AA7;
 }
 
 body {
@@ -210,7 +210,7 @@ margin: 0;
 font-size: clamp(1rem, 2vw, 1.2rem);
 padding: 20px;
 padding-top: 80px;
-background-color: #2f2f2f;
+background-color: #005AA7;
 color: white;
 line-height: 1.6;
 flex-wrap: wrap; 
@@ -316,7 +316,7 @@ nav {
   left: 0;
   right: 0;
   z-index: 100;
-  background: #2f2f2f; /* Hintergrund fixieren */
+  background: #005AA7; /* Hintergrund fixieren */
   padding: 0.5rem 1rem;
 }
 
@@ -336,7 +336,7 @@ nav {
 
 /* Wrapper-Stil */
 .wrapper {
-  background-color: #3a3a3a; /* etwas helleres Anthrazit als Body */
+  background-color: #005AA7; /* etwas helleres Anthrazit als Body */
   max-width: 1200px;
   width: 100%;
 
@@ -413,7 +413,7 @@ nav {
 
 /* Wrapper-Stil */
 .wrapper {
-  background-color: #3a3a3a; /* etwas helleres Anthrazit als Body */
+  background-color: #005AA7; /* etwas helleres Anthrazit als Body */
   max-width: 1200px;
   width: 100%;
 
@@ -517,7 +517,7 @@ a {
   position: relative;
   padding-right: 30px; 
   margin: 2rem auto;
-  background-color: #FFC700; /* etwas dunkleres Gelb */
+  background-color: #005AA7; /* etwas dunkleres Gelb */
   color: #222;
   border: 2px solid #004080;
   cursor: pointer;
@@ -534,11 +534,11 @@ a {
   user-select: none;
   margin-bottom: 20px !important;;
   box-shadow:
-    0 0 10px 3px rgba(255, 199, 0, 0.8),
+    
+}0 0 10px 3px rgba(255, 199, 0, 0.8),
     0 0 20px 7px rgba(255, 199, 0, 0.6),
     0 0 30px 12px rgba(255, 199, 0, 0.4),
     0 0 40px 20px rgba(255, 199, 0, 0.3);
-}
 
 .accordion .header {
   display: flex;
@@ -560,10 +560,11 @@ a {
     0 0 40px 25px rgba(255, 215, 0, 0.6),
     0 0 50px 30px rgba(255, 215, 0, 0.4);
   cursor: pointer; 
+  
 }
 
 .accordion.active {
-  background-color: #B38F00;
+    background-color: #B38F00;
   border-color: #002244;
   color: white !important;
   box-shadow:
@@ -571,6 +572,7 @@ a {
     0 0 40px 20px rgba(255, 199, 0, 0.7),
     0 0 50px 30px rgba(255, 199, 0, 0.5);
 }
+
 .contact-box {
   background-color: #FFD500; /* FDP-Gelb */
   border: 2px solid #003348;
@@ -846,6 +848,7 @@ details summary::after {
 }
 
 /* Footer */
+
 footer {
   margin-top: 60px;
   padding: 20px 0;
@@ -887,10 +890,6 @@ footer {
   border-radius: 4px; /* runde Ecken */
   transition: box-shadow 0.3s ease;
 }
-
-
-
-
 
 
 /* Für mittlere Bildschirme ab 600px */
