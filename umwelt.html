@@ -1,140 +1,174 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Umwelt - Themen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Umwelt | Heschu Hasan</title>
 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&family=Montserrat:wght@500&display=swap');
+  <!-- Google Fonts Ersatz für Futura -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet" />
 
-  body {
-    margin: 0;
-    background-color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: -0.05em;
-    color: #000000;
-  }
+  <style>
+    /* Farbpalette konservativ gemäß Vorgabe */
+    :root {
+      --gelb: #ffed00;      /* Hauptfarbe für Flächen */
+      --magenta: #e5007d;   /* Akzentfarbe max 25% */
+      --blau: #009ee3;      /* für Rahmen */
+      --tuerkis: #00abae;   /* Akzent */
+      --violett: #a5027d;   /* Akzent */
+      --weiss: #ffffff;
+      --schwarz: #000000;
+    }
 
-  header {
-    background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 2px solid #ffed00;
-  }
+    /* Grundstyles */
+    body {
+      margin: 0;
+      background: var(--weiss);
+      color: var(--schwarz);
+      font-family: 'Fira Sans', 'Futura', sans-serif;
+      letter-spacing: -0.05em; /* leicht reduziertes Kerning */
+      line-height: 1.4;
+      font-weight: 400;
+    }
 
-  nav a {
-    color: #000000;
-    text-decoration: none;
-    font-weight: 700;
-    font-style: italic;
-    letter-spacing: -0.1em;
-  }
+    /* Header */
+    header {
+      background: var(--gelb);
+      padding: 1rem 2rem;
+      border-bottom: 4px solid var(--violett);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  nav a:hover,
-  nav a:focus {
-    text-decoration: underline;
-  }
+    header h1 {
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--violett);
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: -0.05em;
+    }
 
-  .header-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
+    nav a {
+      font-weight: 600;
+      font-style: normal;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: var(--blau);
+      text-decoration: none;
+      border: 2px solid var(--blau);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      letter-spacing: -0.05em;
+    }
 
-  .header-links a {
-    color: #a5027d;
-    text-decoration: none;
-    font-weight: 500;
-  }
+    nav a:hover,
+    nav a:focus {
+      background: var(--blau);
+      color: var(--weiss);
+      outline: none;
+    }
 
-  .header-links a:hover,
-  .header-links a:focus {
-    text-decoration: underline;
-  }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
 
-  .instagram-icon svg {
-    fill: #a5027d;
-    width: 24px;
-    height: 24px;
-    display: block;
-  }
+    main h2 {
+      font-style: italic;
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--violett);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      letter-spacing: -0.05em;
+    }
 
-  main {
-    padding: 2rem;
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.5rem;
+    }
 
-  .themen-box {
-    border: 2px solid #009ee3;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-radius: 6px;
-    max-width: 600px;
-  }
+    .box {
+      border: 3px solid var(--blau);
+      padding: 1.5rem;
+      border-radius: 6px;
+      background: var(--weiss);
+      color: var(--schwarz);
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
 
-  .themen-box h2 {
-    font-weight: 700;
-    font-style: italic;
-    color: #009ee3;
-    letter-spacing: -0.1em;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-  }
+    .box:hover {
+      box-shadow: 0 0 15px rgba(0,158,227,0.5);
+    }
 
-  .themen-box p {
-    font-weight: 500;
-    color: #000000;
-    text-transform: none;
-    letter-spacing: normal;
-    margin: 0;
-  }
-</style>
+    .box h3 {
+      font-weight: 600;
+      font-style: normal;
+      font-size: 1.25rem;
+      margin-top: 0;
+      text-transform: uppercase;
+      color: var(--magenta);
+      letter-spacing: -0.05em;
+    }
+
+    .box p {
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1rem;
+      margin-bottom: 0;
+      color: var(--schwarz);
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <nav>
-    <a href="index.html" aria-label="Zurück zur Startseite">← ZURÜCK</a>
-  </nav>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html" aria-label="Zurück zur Startseite">Zurück</a>
+    </nav>
+  </header>
 
-  <div class="header-links">
-    <a href="impressum.html" aria-label="Impressum öffnen">IMPRESSUM</a>
-    <a href="https://www.instagram.com/deinprofil" target="_blank" rel="noopener" aria-label="Instagram Profil" class="instagram-icon">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5zm4.5-.75a1.125 1.125 0 1 1 0 2.25 1.125 1.125 0 0 1 0-2.25z"/>
-      </svg>
-    </a>
-  </div>
-</header>
+  <main>
+    <h2>Umwelt & Nachhaltigkeit</h2>
 
-<main>
-  <section class="themen-box">
-    <h2>KLIMASCHUTZ</h2>
-    <p>Nachhaltige Strategien zur Reduktion von CO₂-Emissionen und Förderung erneuerbarer Energien.</p>
-  </section>
-
-  <section class="themen-box">
-    <h2>WASSERMANAGEMENT</h2>
-    <p>Innovative Lösungen für effiziente Nutzung und Schutz unserer Wasserressourcen.</p>
-  </section>
-
-  <section class="themen-box">
-    <h2>ABFALLVERMEIDUNG</h2>
-    <p>Maßnahmen zur Minimierung von Abfall und Förderung von Recycling und Kreislaufwirtschaft.</p>
-  </section>
-
-  <section class="themen-box">
-    <h2>BIODIVERSITÄT</h2>
-    <p>Erhalt und Schutz der natürlichen Lebensräume für eine vielfältige Tier- und Pflanzenwelt.</p>
-  </section>
-</main>
+    <div class="grid">
+      <div class="box">
+        <h3>Klimaschutz</h3>
+        <p>Förderung erneuerbarer Energien und Reduzierung von CO₂-Emissionen für eine lebenswerte Zukunft.</p>
+      </div>
+      <div class="box">
+        <h3>Wassermanagement</h3>
+        <p>Nachhaltiger Umgang mit Wasserressourcen und Schutz unserer Gewässer.</p>
+      </div>
+      <div class="box">
+        <h3>Abfallvermeidung</h3>
+        <p>Unterstützung von Recycling und Reduktion von Plastikmüll im Alltag.</p>
+      </div>
+      <div class="box">
+        <h3>Naturschutz</h3>
+        <p>Erhalt der Biodiversität und Schutz von Flora und Fauna in unserer Region.</p>
+      </div>
+      <div class="box">
+        <h3>Mobilität</h3>
+        <p>Förderung umweltfreundlicher Verkehrsmittel und Ausbau nachhaltiger Infrastruktur.</p>
+      </div>
+      <div class="box">
+        <h3>Bildung</h3>
+        <p>Stärkung der Umweltbildung und Bewusstseinsförderung in Schulen und Gemeinden.</p>
+      </div>
+    </div>
+  </main>
 
 </body>
 </html>
-
 <footer>
   &copy; 2025 HESCHU HASAN – FDP DIREKTKANDIDATIN FREIBURG-OST | <a href="impressum.html">IMPRESSUM</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
