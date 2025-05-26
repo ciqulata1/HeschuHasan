@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="de"><!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8" />
@@ -13,9 +12,83 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 />
-<link rel="stylesheet" href="bildung.css" />
+
 <style>
-  /* Zusätzliche Anpassungen für Umfrage */
+  :root {
+    --magenta: #e5007d;
+    --yellow: #ffed00;
+    --white: #ffffff;
+    --black: #000000;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Calibri', sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background-color: var(--white);
+    padding: 1.5rem;
+    text-align: center;
+    font-family: 'Calibri Bold', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  nav {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  nav a {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Calibri Bold', sans-serif;
+    font-size: 1rem;
+  }
+
+  nav a.active,
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  main {
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-grow: 1;
+  }
+
+  h2 {
+    font-family: 'Calibri Bold', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--magenta);
+    text-align: center;
+  }
+
+  h3 {
+    font-family: 'Calibri Bold', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--magenta);
+    text-align: center;
+  }
+
   .question {
     background-color: var(--white);
     border-radius: 10px;
@@ -96,7 +169,7 @@
   <h2>Meinungs-Macher</h2>
   <h3>Beantworten Sie 21 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
 
-  <form id="quizForm">
+  <form id="quizForm" action="auswertung.html" method="post">
     <div id="questions"></div>
     <button type="submit">Absenden</button>
   </form>
@@ -105,7 +178,7 @@
 </main>
 
 <footer>
-  <h3>Folgen Sie Sie mir auf den Sozialen Medien</h3>
+  <h3>Folgen Sie mir auf den Sozialen Medien</h3>
   <div class="social-links">
     <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
       <i class="fa-brands fa-instagram"></i>
@@ -154,306 +227,21 @@
       questionContainer.appendChild(div);
     });
 
+    // Optional: Feedback bei JS-Formular-Submit deaktivieren,
+    // da das Formular jetzt an auswertung.html geschickt wird
+    /*
     const form = document.getElementById('quizForm');
     const feedback = document.getElementById('feedback');
-
     form.addEventListener('submit', e => {
       e.preventDefault();
-
-      // Check ob alle Fragen beantwortet sind - browser macht das durch required, trotzdem sicherheitshalber prüfen
-      const allAnswered = questions.every((_, i) => {
-        return form.elements[`q${i}`].value || 
-          Array.from(form.elements[`q${i}`]).some(input => input.checked);
-      });
-
-      if (!allAnswered) {
-        feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
-        feedback.style.color = 'red';
-        feedback.style.display = 'block';
-        return;
-      }
-
-      // Beispiel: Feedback anzeigen
       feedback.textContent = 'Vielen Dank für Ihre Teilnahme! Ihre Antworten wurden gespeichert.';
       feedback.style.color = 'var(--magenta)';
       feedback.style.display = 'block';
-
-      // Formular zurücksetzen, damit erneut abgesendet werden kann
       form.reset();
-
-      // Optional: Scroll zum Feedback
       feedback.scrollIntoView({ behavior: 'smooth' });
     });
+    */
   });
 </script>
-</body>
-</html>
-
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Bildungsthemen mit Fragen - Heschu Hasan</title>
-
-<style>
-  :root {
-    --magenta: #e5007d;
-    --yellow: #ffed00;
-    --cyan: #009ee3;
-    --white: #ffffff;
-    --black: #000000;
-  }
-
-  body {
-    margin: 0;
-    font-family: 'Calibri', sans-serif;
-    background-color: var(--white);
-    color: var(--black);
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  header {
-    background-color: var(--white);
-    padding: 1.5rem;
-    text-align: center;
-    font-family: 'Calibri Bold', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    letter-spacing: 1px;
-    flex-shrink: 0;
-  }
-
-  nav {
-    margin-top: 0.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  nav a {
-    color: var(--black);
-    text-decoration: none;
-    font-weight: 700;
-    font-family: 'Calibri Bold', sans-serif;
-    font-size: 1rem;
-  }
-
-  nav a.active,
-  nav a:hover {
-    text-decoration: underline;
-  }
-
-  main {
-    padding: 2rem 1rem;
-    max-width: 1000px;
-    margin: 0 auto;
-    flex-grow: 1;
-  }
-
-  h2 {
-    font-family: 'Calibri Bold', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--magenta);
-    text-align: center;
-  }
-
-  h3 {
-    font-family: 'Calibri Bold', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 0.8rem;
-    color: var(--magenta);
-  }
-
-  p.description {
-    font-family: 'Calibri Regular', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    margin-top: 0;
-    margin-bottom: 1.2rem;
-  }
-
-  form {
-    border: 2px solid var(--magenta);
-    border-radius: 12px;
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
-    background-color: #f9f9f9;
-    max-width: 600px;
-    margin-bottom: 2rem;
-  }
-
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: 700;
-    font-family: 'Calibri Bold', sans-serif;
-    color: var(--magenta);
-  }
-
-  input[type="text"],
-  textarea {
-    margin-top: 0.3rem;
-    padding: 0.5rem;
-    width: 100%;
-    font-family: 'Calibri', sans-serif;
-    font-size: 1rem;
-    border: 1.5px solid var(--magenta);
-    border-radius: 6px;
-    resize: vertical;
-  }
-
-  textarea {
-    min-height: 80px;
-  }
-
-  button {
-    margin-top: 1.5rem;
-    background-color: var(--magenta);
-    color: var(--white);
-    border: none;
-    padding: 0.7rem 1.2rem;
-    font-weight: 700;
-    font-family: 'Calibri Bold', sans-serif;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  button:hover,
-  button:focus {
-    background-color: #b30062;
-    outline: none;
-  }
-
-  footer {
-    background-color: var(--cyan);
-    color: var(--white);
-    padding: 1.2rem 1rem;
-    text-align: center;
-    flex-shrink: 0;
-    font-family: 'Calibri Regular', sans-serif;
-    font-weight: 400;
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    nav {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    form {
-      width: 100%;
-    }
-  }
-</style>
-</head>
-<body>
-<header>
-  <h1>HESCHU HASAN</h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html" class="active">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
-  </nav>
-</header>
-
-<main>
-  <h2>Meine Bildungsthemen</h2>
-  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren und Ihre Meinung zu teilen.</h3>
-
-  <!-- Frühkindliche Bildung -->
-  <section>
-    <h3>Frühkindliche Bildung</h3>
-    <p class="description">Förderung frühzeitiger Bildung und Entwicklungsmöglichkeiten.</p>
-    <form aria-label="Frühkindliche Bildung Fragen">
-      <label for="frage1-fk">Wie wichtig ist Ihnen die frühkindliche Bildung?</label>
-      <textarea id="frage1-fk" name="frage1-fk" placeholder="Ihre Antwort hier..."></textarea>
-
-      <label for="frage2-fk">Welche Maßnahmen sollten Ihrer Meinung nach frühkindliche Bildung verbessern?</label>
-      <textarea id="frage2-fk" name="frage2-fk" placeholder="Ihre Antwort hier..."></textarea>
-
-      <button type="submit">Antwort absenden</button>
-    </form>
-  </section>
-
-  <!-- Digitale Bildung -->
-  <section>
-    <h3>Digitale Bildung</h3>
-    <p class="description">Integration moderner Technologien in den Schulalltag.</p>
-    <form aria-label="Digitale Bildung Fragen">
-      <label for="frage1-db">Welche digitalen Technologien halten Sie für unverzichtbar im Unterricht?</label>
-      <textarea id="frage1-db" name="frage1-db" placeholder="Ihre Antwort hier..."></textarea>
-
-      <label for="frage2-db">Wie sollte die digitale Bildung in Ihrer Region verbessert werden?</label>
-      <textarea id="frage2-db" name="frage2-db" placeholder="Ihre Antwort hier..."></textarea>
-
-      <button type="submit">Antwort absenden</button>
-    </form>
-  </section>
-
-  <!-- Lehrerbildung & Fortbildung -->
-  <section>
-    <h3>Lehrerbildung &amp; Fortbildung</h3>
-    <p class="description">Qualitätssteigerung durch bessere Ausbildung und Weiterbildung.</p>
-    <form aria-label="Lehrerbildung und Fortbildung Fragen">
-      <label for="frage1-lf">Welche Fortbildungsangebote würden Sie Lehrkräften empfehlen?</label>
-      <textarea id="frage1-lf" name="frage1-lf" placeholder="Ihre Antwort hier..."></textarea>
-
-      <label for="frage2-lf">Was sind Ihrer Meinung nach die größten Herausforderungen in der Lehrerbildung?</label>
-      <textarea id="frage2-lf" name="frage2-lf" placeholder="Ihre Antwort hier..."></textarea>
-
-      <button type="submit">Antwort absenden</button>
-    </form>
-  </section>
-
-  <!-- Schulfinanzierung -->
-  <section>
-    <h3>Schulfinanzierung</h3>
-    <p class="description">Faire und nachhaltige Finanzierung der Bildungseinrichtungen.</p>
-    <form aria-label="Schulfinanzierung Fragen">
-      <label for="frage1-sf">Wie sollte die Schulfinanzierung Ihrer Meinung nach verbessert werden?</label>
-      <textarea id="frage1-sf" name="frage1-sf" placeholder="Ihre Antwort hier..."></textarea>
-
-      <label for="frage2-sf">Welche Prioritäten sollten bei der Verwendung von Mitteln gesetzt werden?</label>
-      <textarea id="frage2-sf" name="frage2-sf" placeholder="Ihre Antwort hier..."></textarea>
-
-      <button type="submit">Antwort absenden</button>
-    </form>
-  </section>
-
-  <!-- Inklusion & Chancengleichheit -->
-  <section>
-    <h3>Inklusion &amp; Chancengleichheit</h3>
-    <p class="description">Bildung für alle, unabhängig von Herkunft und Fähigkeiten.</p>
-    <form aria-label="Inklusion und Chancengleichheit Fragen">
-      <label for="frage1-ic">Welche Schritte sind notwendig, um Chancengleichheit an Schulen zu fördern?</label>
-      <textarea id="frage1-ic" name="frage1-ic" placeholder="Ihre Antwort hier..."></textarea>
-
-      <label for="frage2-ic">Wie kann die Inklusion von Kindern mit besonderen Bedürfnissen besser umgesetzt werden?</label>
-      <textarea id="frage2-ic" name="frage2-ic" placeholder="Ihre Antwort hier..."></textarea>
-
-      <button type="submit">Antwort absenden</button>
-    </form>
-  </section>
-
-</main>
-
-<footer>
-  <h3>Folgen Sie mir auf den Sozialen Medien</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;fill:#fff;" viewBox="0 0 24 24"><path d="M7.75 2C4.48 2 2 4.48 2 7.75v8.5C2 19.52 4.48 22 7.75 22h8.5c3.27 0 5.75-2.48 5.75-5.75v-8.5C22 4.48 19.52 2 16.25 2h-8.5zM20 16.25c0 1.8-1.45 3.25-3.25 3.25h-8.5c-1.8 0-3.25-1.45-3.25-3.25v-8.5c0-1.8 1.45-3.25 3.25-3.25h8.5c1.8 0 3.25 1.45 3.25 3.25v8.5zm-10.25-5.75A3.25 3.25 0 1 1 13 13.75 3.25 3.25 0 0 1 9.75 10.5zm0 5.5A2.25 2.25 0 1 0 7.5 13.75a2.25 2.25 0 0 0 2.25 2.25zm4.88-7.72a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z"/></svg>
-    </a>
-  </div>
-</footer>
 </body>
 </html>
