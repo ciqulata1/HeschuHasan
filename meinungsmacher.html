@@ -182,7 +182,7 @@
   </main>
 
   <footer>
-    <h3>Treffen Sie mich in den Sozialen Medien</h3>
+    <h3>Folgen Sie mir auf Instagram</h3>
     <div class="social-links">
       <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
         <i class="fa-brands fa-instagram"></i>
@@ -254,7 +254,21 @@
           resultText = "Ihre Meinung unterscheidet sich stark von meinen Positionen.";
         }
 
-        document.getElementById("result").textContent = resultText;
+        document.getElementById("quizForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  let score = 0;
+
+  for (let i = 0; i < questions.length; i++) {
+    const value = parseInt(formData.get("q" + i));
+    score += value;
+  }
+
+  // Weiterleitung zur Auswertungsseite mit Score als Parameter
+  window.location.href = `auswertung.html?score=${score}`;
+});
+
         document.getElementById("result").style.display = "block";
         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
       });
