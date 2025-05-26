@@ -3,176 +3,138 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Umwelt - Heschu Hasan | FDP Direktkandidatin</title>
+<title>Umwelt - Themen</title>
 
 <style>
-  /* FDP Farben */
-  :root {
-    --fdp-yellow: #ffed00;    /* Gelb dominiert */
-    --fdp-magenta: #e5007d;   /* Magenta Akzent, max 25% */
-    --fdp-blue: #009ee3;      /* Blau für Rahmen */
-    --fdp-cyan: #00abae;      /* Cyan Akzent */
-    --fdp-dark-magenta: #a5027d;
-    --fdp-white: #ffffff;
-    --fdp-black: #000000;
-  }
-
-  /* Schriftfamilien - Futura Ersatz (Google Fonts nicht verfügbar, deshalb Fallbacks) */
-  @font-face {
-    font-family: 'FuturaBoldOblique';
-    /* hier lokale Einbindung oder URL, sonst Fallback */
-    font-weight: 700;
-    font-style: italic;
-  }
-  @font-face {
-    font-family: 'FuturaMedium';
-    font-weight: 500;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'FuturaBook';
-    font-weight: 400;
-    font-style: normal;
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&family=Montserrat:wght@500&display=swap');
 
   body {
-    margin: 0; padding: 0;
-    background: var(--fdp-yellow);
-    color: var(--fdp-black);
-    font-family: 'FuturaBook', Arial, sans-serif;
-    letter-spacing: -0.05em; /* leichtes Laufweiten-Minus */
-    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    background-color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    color: #000000;
   }
 
   header {
-    background: var(--fdp-magenta);
-    color: var(--fdp-yellow);
-    text-align: center;
-    padding: 2rem 1rem;
-    font-family: 'FuturaBoldOblique', Arial, sans-serif;
-    font-weight: 700;
-    font-style: italic;
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: -0.1em; /* Kerning metrisch */
-    user-select: none;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #ffed00;
   }
 
-  main {
-    max-width: 1200px;
-    margin: 2rem auto 4rem auto;
-    padding: 0 1rem;
-  }
-
-  h1, h2 {
-    font-family: 'FuturaBoldOblique', Arial, sans-serif;
+  nav a {
+    color: #000000;
+    text-decoration: none;
     font-weight: 700;
     font-style: italic;
-    text-transform: uppercase;
     letter-spacing: -0.1em;
-    margin-bottom: 1rem;
-    color: var(--fdp-dark-magenta);
   }
 
-  h2 {
-    font-size: 1.75rem;
-    margin-top: 3rem;
-  }
-
-  .subtitle {
-    font-family: 'FuturaMedium', Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: -0.08em;
-    margin-bottom: 2rem;
-    color: var(--fdp-black);
-  }
-
-  /* Box-Container Grid */
-  .topics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    gap: 1.5rem;
-  }
-
-  /* Themen-Boxen */
-  .topic-box {
-    background: var(--fdp-yellow);
-    border: 3px solid var(--fdp-blue);
-    border-radius: 8px;
-    padding: 1.5rem 1rem;
-    box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-    color: var(--fdp-black);
-    font-family: 'FuturaMedium', Arial, sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: -0.08em;
-    user-select: none;
-  }
-
-  .topic-box:hover,
-  .topic-box:focus {
-    background: var(--fdp-magenta);
-    color: var(--fdp-yellow);
-    border-color: var(--fdp-magenta);
-    outline: none;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgb(229,0,125,0.6);
-  }
-
-  footer {
-    background: var(--fdp-dark-magenta);
-    color: var(--fdp-yellow);
-    text-align: center;
-    padding: 1rem 0;
-    font-family: 'FuturaMedium', Arial, sans-serif;
-    letter-spacing: -0.05em;
-    font-size: 0.875rem;
-  }
-
-  /* Links im Footer */
-  footer a {
-    color: var(--fdp-yellow);
+  nav a:hover,
+  nav a:focus {
     text-decoration: underline;
   }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    header {
-      font-size: 1.8rem;
-      padding: 1.5rem 1rem;
-    }
-    main {
-      margin: 1rem;
-    }
+  .header-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .header-links a {
+    color: #a5027d;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .header-links a:hover,
+  .header-links a:focus {
+    text-decoration: underline;
+  }
+
+  .instagram-icon svg {
+    fill: #a5027d;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  main {
+    padding: 2rem;
+  }
+
+  .themen-box {
+    border: 2px solid #009ee3;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    max-width: 600px;
+  }
+
+  .themen-box h2 {
+    font-weight: 700;
+    font-style: italic;
+    color: #009ee3;
+    letter-spacing: -0.1em;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .themen-box p {
+    font-weight: 500;
+    color: #000000;
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0;
   }
 </style>
 </head>
 <body>
 
 <header>
-  HESCHU HASAN
+  <nav>
+    <a href="index.html" aria-label="Zurück zur Startseite">← ZURÜCK</a>
+  </nav>
+
+  <div class="header-links">
+    <a href="impressum.html" aria-label="Impressum öffnen">IMPRESSUM</a>
+    <a href="https://www.instagram.com/deinprofil" target="_blank" rel="noopener" aria-label="Instagram Profil" class="instagram-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5zm4.5-.75a1.125 1.125 0 1 1 0 2.25 1.125 1.125 0 0 1 0-2.25z"/>
+      </svg>
+    </a>
+  </div>
 </header>
 
 <main>
-  <h1>UMWELT</h1>
-  <p class="subtitle">FÜR EIN GRÜNERES UND ZUKUNFTSFÄHIGES FREIBURG</p>
+  <section class="themen-box">
+    <h2>KLIMASCHUTZ</h2>
+    <p>Nachhaltige Strategien zur Reduktion von CO₂-Emissionen und Förderung erneuerbarer Energien.</p>
+  </section>
 
-  <section class="topics-grid" aria-label="Umwelt-Themen">
-    <div tabindex="0" class="topic-box" role="button" aria-pressed="false" onclick="alert('Mehr Infos zu KLIMASCHUTZ')">KLIMASCHUTZ</div>
-    <div tabindex="0" class="topic-box" role="button" aria-pressed="false" onclick="alert('Mehr Infos zu ERNEUERBARE ENERGIEN')">ERNEUERBARE ENERGIEN</div>
-    <div tabindex="0" class="topic-box" role="button" aria-pressed="false" onclick="alert('Mehr Infos zu NACHHALTIGE ENERGIE')">NACHHALTIGE ENERGIE</div>
-    <div tabindex="0" class="topic-box" role="button" aria-pressed="false" onclick="alert('Mehr Infos zu ARTENSCHUTZ')">ARTENSCHUTZ</div>
-    <div tabindex="0" class="topic-box" role="button" aria-pressed="false" onclick="alert('Mehr Infos zu WASSERTHEMEN')">WASSERTHEMEN</div>
-    <div tabindex="0" class="topic-box" role="button" aria-pressed="false" onclick="alert('Mehr Infos zu LUFTVERSCHMUTZUNG')">LUFTVERSCHMUTZUNG</div>
-    <div tabindex="0" class="topic-box" role="button" aria-pressed="false" onclick="alert('Mehr Infos zu ABFALLWIRTSCHAFT')">ABFALLWIRTSCHAFT</div>
-    <div tabindex="0" class="topic-box" role="button" aria-pressed="false" onclick="alert('Mehr Infos zu UMWELTBILDUNG')">UMWELTBILDUNG</div>
+  <section class="themen-box">
+    <h2>WASSERMANAGEMENT</h2>
+    <p>Innovative Lösungen für effiziente Nutzung und Schutz unserer Wasserressourcen.</p>
+  </section>
+
+  <section class="themen-box">
+    <h2>ABFALLVERMEIDUNG</h2>
+    <p>Maßnahmen zur Minimierung von Abfall und Förderung von Recycling und Kreislaufwirtschaft.</p>
+  </section>
+
+  <section class="themen-box">
+    <h2>BIODIVERSITÄT</h2>
+    <p>Erhalt und Schutz der natürlichen Lebensräume für eine vielfältige Tier- und Pflanzenwelt.</p>
   </section>
 </main>
 
-<footer>
+</body>
+</html>
+
 <footer>
   &copy; 2025 HESCHU HASAN – FDP DIREKTKANDIDATIN FREIBURG-OST | <a href="impressum.html">IMPRESSUM</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
