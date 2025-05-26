@@ -1,249 +1,97 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Bildung - Heschu Hasan</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bildung</title>
+    <style>
+        /* Schrift und allgemeines Design wie bei umwelt.html */
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-<!-- FontAwesome CDN für Icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+        header {
+            background-color: #004d40; /* Beispiel: Dunkelgrün */
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
 
-<style>
-  :root {
-    --yellow: #ffed00;
-    --magenta: #e5007d;
-    --cyan: #009ee3;
-    --turquoise: #00abae;
-    --black: #000000;
-    --white: #ffffff;
-  }
+        main {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-  * {
-    box-sizing: border-box;
-  }
+        h1 {
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #004d40;
+        }
 
-  body {
-    margin: 0;
-    background-color: var(--white);
-    color: var(--cyan);
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.5;
-  }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #333;
+        }
 
-  a {
-    color: var(--cyan);
-    text-decoration: none;
-  }
-  a:hover,
-  a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
+        /* Responsive */
+        @media (max-width: 600px) {
+            main {
+                padding: 1rem;
+                max-width: 95%;
+            }
 
-  header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--cyan);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header h1 {
-    font-family: Georgia, serif;
-    font-weight: bold;
-    font-size: 1.8rem;
-    color: var(--cyan);
-    margin: 0;
-  }
-  nav a {
-    font-weight: normal;
-    font-size: 1rem;
-    margin-left: 25px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
+            h1 {
+                font-size: 2rem;
+            }
 
-  nav a.active,
-  nav a:hover {
-    color: var(--magenta);
-    font-weight: bold;
-  }
+            p {
+                font-size: 1rem;
+            }
+        }
 
-  main {
-    padding: 20px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  main h2 {
-    color: var(--cyan);
-    font-weight: bold;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  main h3 {
-    color: var(--cyan);
-    font-weight: normal;
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-  }
-  main p {
-    font-size: 1.1rem;
-    max-width: 700px;
-  }
-
-  .bildung-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin-top: 40px;
-  }
-  .box {
-    flex: 1 1 280px;
-    border: 2px solid var(--cyan);
-    background-color: var(--white);
-    color: var(--cyan);
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: Georgia, serif;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    user-select: none;
-  }
-  .box:hover {
-    border-color: var(--magenta);
-  }
-  .box:focus,
-  .box.selected {
-    background-color: var(--magenta);
-    color: var(--turquoise);
-    outline: none;
-    border-color: var(--magenta);
-  }
-
-  .box h3 {
-    margin-top: 0;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  footer {
-    background-color: var(--cyan);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    font-family: Georgia, serif;
-  }
-  footer h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  footer .social-links a {
-    color: var(--white);
-    font-size: 30px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-  footer .social-links a:hover,
-  footer .social-links a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 15px 20px;
-    }
-    nav a {
-      margin-left: 0;
-      margin-right: 15px;
-    }
-    .bildung-boxes {
-      flex-direction: column;
-    }
-  }
-</style>
+        footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        Bildung
+    </header>
+    <main>
+        <h1>Unsere Bildungsthemen</h1>
 
-<header>
-  <h1>HESCHU HASAN</h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html" class="active">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
-  </nav>
-</header>
+        <p>Hier kommen deine kompletten Bildungsthemen rein, die du mir gibst.</p>
+        <p>Zum Beispiel: Frühzeitige Digitalisierung der Schulen, Informatik-Förderung, moderne Lernmethoden, Ausbau der digitalen Infrastruktur und schnellere Genehmigungsverfahren für Bildungsprojekte.</p>
+        <p>Weitere Inhalte kannst du hier einfach ergänzen und sie werden automatisch zentriert dargestellt.</p>
 
-<main>
-  <h2>Meine Bildungsthemen</h2>
-  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
-
-  <div class="bildung-boxes" role="list">
-    <a href="fruehkindliche-bildung.html" class="box" role="listitem" tabindex="0">
-      <h3>Frühkindliche Bildung</h3>
-      <p>Förderung frühzeitiger Bildung und Entwicklungsmöglichkeiten.</p>
-    </a>
-    <a href="digitale-bildung.html" class="box" role="listitem" tabindex="0">
-      <h3>Digitale Bildung</h3>
-      <p>Integration moderner Technologien in den Schulalltag.</p>
-    </a>
-    <a href="lehrerbildung.html" class="box" role="listitem" tabindex="0">
-      <h3>Lehrerbildung & Fortbildung</h3>
-      <p>Qualitätssteigerung durch bessere Ausbildung und Weiterbildung.</p>
-    </a>
-    <a href="schulfinanzierung.html" class="box" role="listitem" tabindex="0">
-      <h3>Schulfinanzierung</h3>
-      <p>Faire und nachhaltige Finanzierung der Bildungseinrichtungen.</p>
-    </a>
-    <a href="inklusion.html" class="box" role="listitem" tabindex="0">
-      <h3>Inklusion & Chancengleichheit</h3>
-      <p>Bildung für alle, unabhängig von Herkunft und Fähigkeiten.</p>
-    </a>
-  </div>
-</main>
-
-<footer>
-  <h3>Treffen Sie mich in den Sozialen Medien</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-  </div>
-</footer>
-
-<script>
-  // Boxen anklickbar + Tastatur Unterstützung
-  document.querySelectorAll('.box').forEach(box => {
-    box.addEventListener('click', () => {
-      document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
-      box.classList.add('selected');
-    });
-    box.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        box.click();
-      }
-    });
-  });
-</script>
-
-<!-- FontAwesome Script -->
-<script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
+        <!-- Ersetze die Beispieltexte mit deinem gesamten Text -->
+    </main>
+    <footer>
+        &copy; 2025 Dein Name oder Organisation
+    </footer>
 </body>
 </html>
