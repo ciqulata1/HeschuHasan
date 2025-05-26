@@ -3,16 +3,19 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Umwelt – Heschu Hasan</title>
-    <meta name="description" content="Thema Umwelt von Heschu Hasan, Direktkandidatin der FDP für Freiburg-Ost." />
-    <meta name="author" content="Heschu Hasan" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heschu Hasan</title>
+    <meta name="description" content="Heschu Hasan ist Direktkandidatin der FDP für Freiburg-Ost bei der Landtagswahl 2026. Informieren Sie sich über ihre Themen Umwelt, Bildung und Verwaltung." />
+    <meta name="author" content="Heschu Hasan">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --magenta: #e5007d;
             --yellow: #ffed00;
             --blue: #009ee3;
+            --light-blue: #00abae;
+            --violett: #a5027d;
             --white: #ffffff;
             --black: #000000;
         }
@@ -24,6 +27,19 @@
             color: var(--black);
         }
 
+        .skip-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--magenta);
+            color: var(--yellow);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
         header {
             background-color: var(--white);
             padding: 1rem 2rem;
@@ -33,7 +49,12 @@
             position: sticky;
             top: 0;
             z-index: 999;
-            border-bottom: 2px solid var(--blue);
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--blue);
         }
 
         nav ul {
@@ -50,141 +71,198 @@
             font-weight: 600;
             padding: 0.5rem 1rem;
             border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
         }
 
-        nav ul li a:hover,
-        nav ul li a:focus {
+        nav ul li a:hover {
             background-color: var(--magenta);
             color: var(--yellow);
-            outline: none;
         }
 
-        .title-banner {
-            background-color: var(--white);
-            padding: 2rem;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--blue);
-            font-family: 'Futura', 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-        }
-
-        main.content {
+        .content {
             max-width: 1000px;
-            margin: auto;
+            margin: 2rem auto;
             padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        h1, h2 {
-            font-family: 'Futura', 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: var(--blue);
-            text-align: center;
-            margin-bottom: 1rem;
         }
 
         h2 {
-            font-size: 1.5rem;
-            color: var(--magenta);
-            margin-bottom: 1rem;
-        }
-
-        .box-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .box {
-            border: 2px solid var(--blue);
-            border-radius: 8px;
-            padding: 1.5rem;
-            background-color: var(--white);
-            color: var(--black);
-            font-weight: 600;
-            font-family: 'Futura', 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: 5px;
             text-align: center;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-            cursor: pointer;
         }
 
-        .box:hover,
-        .box:focus {
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .topic-box {
+            border: 2px solid var(--blue);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--black);
+            transition: 0.3s;
+        }
+
+        .topic-box:hover {
             background-color: var(--magenta);
             color: var(--yellow);
-            outline: none;
+        }
+
+        .subtopics {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-left: 1rem;
+        }
+
+        .topic-box:hover .subtopics {
+            display: flex;
+        }
+
+        .subtopics a {
+            border: 2px solid var(--light-blue);
+            padding: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--black);
+            transition: 0.3s;
+        }
+
+        .subtopics a:hover {
+            background-color: var(--magenta);
+            color: var(--yellow);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin-top: 2rem;
+        }
+
+        input, textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: var(--magenta);
+            color: var(--yellow);
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         footer {
             background-color: var(--blue);
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
             color: var(--white);
-            font-family: 'Futura', 'Inter', sans-serif;
-            letter-spacing: -0.05em;
-            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            margin-top: 2rem;
         }
 
-        footer a {
-            color: var(--yellow);
+        .external-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .external-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             text-decoration: none;
+            font-weight: 600;
+            color: var(--black);
+            transition: color 0.3s;
         }
 
-        footer a:hover,
-        footer a:focus {
-            text-decoration: underline;
-            outline: none;
+        .external-links a:hover {
+            color: var(--magenta);
         }
 
+        .external-links svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
     </style>
 </head>
 
 <body>
-    <header role="banner" aria-label="Hauptnavigation">
-        <nav role="navigation" aria-label="Hauptmenü">
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+    <header>
+        <div class="site-title">Heschu Hasan</div>
+        <nav>
             <ul>
-                <li><a href="index.html">Start</a></li>
-                <li><a href="index.html#themen">Themen</a></li>
-                <li><a href="index.html#kontakt">Kontakt</a></li>
+                <li><a href="#start">Start</a></li>
+                <li><a href="#themen">Themen</a></li>
+                <li><a href="wahlomat.html">Wahl-O-Mat</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
                 <li><a href="impressum.html">Impressum</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="title-banner" role="heading" aria-level="1" tabindex="0">
-        Heschu Hasan
-    </div>
+    <main id="main-content" class="content">
+        <section id="themen">
+            <h2>Meine Themen</h2>
+            <div class="topics">
+                <a class="topic-box" href="bildung.html">Bildung</a>
+                <a class="topic-box" href="umwelt.html">Umwelt</a>
+                <div class="topic-box">
+                    Verwaltung
+                    <div class="subtopics">
+                        <a href="wahlprogramm.html">Allgemein</a>
+                        <a href="justiz.html">Justiz</a>
+                    </div>
+                </div>
+                <a class="topic-box" href="meinungsmacher.html">Meinungs-Macher</a>
+                <a class="topic-box" href="wahlomat.html">Wahl-O-Mat</a>
+            </div>
+        </section>
 
-    <main id="main-content" class="content" tabindex="-1">
-        <h1>Umwelt</h1>
+        <section class="external-links">
+            <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .2 2.5.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.5.3 1.3.4 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 2-.4 2.5-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.5.2-1.3.3-2.5.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.2-2.5-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.5-.3-1.3-.4-2.5-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-2 .4-2.5.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.5-.2 1.3-.3 2.5-.4C8.4 2.2 8.8 2.2 12 2.2zm0-2.2C8.7 0 8.3 0 7 .1 5.6.1 4.6.3 3.8.6 3 .9 2.2 1.3 1.5 2 .8 2.7.4 3.5.1 4.3 0 5.2-.1 6.2-.1 7.6 0 9 .1 9.4.1 12c0 2.6 0 3 0 4.4-.1 1.4-.1 1.8-.1 4.4 0 1.4.1 2.4.2 3.2.3.8.6 1.6 1.3 2.3.7.7 1.5 1.1 2.3 1.4.8.2 1.8.3 3.2.3 1.4.1 1.8.1 4.4.1s3-.1 4.4-.1c1.4 0 2.4-.1 3.2-.3.8-.3 1.6-.6 2.3-1.3.7-.7 1.1-1.5 1.4-2.3.2-.8.3-1.8.3-3.2.1-1.4.1-1.8.1-4.4s0-3-.1-4.4c0-1.4-.1-2.4-.3-3.2-.3-.8-.6-1.6-1.3-2.3-.7-.7-1.5-1.1-2.3-1.4C19.8.3 18.8.1 17.4.1 16 0 15.6 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.7a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0z"/></svg>
+                Instagram
+            </a>
+            <a href="https://www.linkedin.com/in/heschuhasan/" target="_blank" rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2 9h6v12H2zM14 9c-2.21 0-4 1.79-4 4v8h-6V9h6v1.5c1-1.2 2.7-1.5 4-1.5 3.31 0 6 2.69 6 6v7h-6v-7c0-1.1-.9-2-2-2z"/></svg>
+                LinkedIn
+            </a>
+        </section>
 
-        <p>Hier findest du die wichtigsten Informationen und Positionen von Heschu Hasan zum Thema Umwelt.</p>
-
-        <div class="box-container" role="list" aria-label="Weitere Themen">
-            <a href="index.html#themen" class="box" role="listitem" tabindex="0">Zurück zu Themen</a>
-            <a href="index.html" class="box" role="listitem" tabindex="0">Zur Startseite</a>
-            <a href="impressum.html" class="box" role="listitem" tabindex="0">Impressum</a>
-        </div>
+        <section id="kontakt">
+            <h2>Kontaktformular</h2>
+            <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Ihr Name" required>
+                <input type="email" name="email" placeholder="Ihre E-Mail" required>
+                <textarea name="nachricht" rows="5" placeholder="Ihre Nachricht" required></textarea>
+                <button type="submit">Absenden</button>
+            </form>
+        </section>
     </main>
 
-    <footer role="contentinfo">
-        &copy; 2025 Heschu Hasan – FDP Freiburg-Ost · Kaiser-Joseph Straße · <a href="impressum.html">Impressum</a>
+    <footer>
+        &copy; 2025 Heschu Hasan – FDP Freiburg-Ost · Kaiser-Joseph Straße · <a href="impressum.html" style="color: var(--yellow); text-decoration: underline;">Impressum</a>
     </footer>
 </body>
 
