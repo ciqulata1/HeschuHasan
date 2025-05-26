@@ -1,269 +1,249 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meinungs-Macher - Baden-Württemberg</title>
-  <style>
-    :root {
-      --cyan: #009ee3;
-      --magenta: #e20074;
-      --turquoise: #00ffff;
-      --background: #f5f8fa;
-      --font-family: 'Source Sans Pro', Arial, sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meinungs-Macher - Heschu Hasan</title>
 
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: var(--font-family);
-      background: var(--background);
-      color: #222;
-      line-height: 1.5;
-    }
+<!-- FontAwesome CDN für Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 
-    header {
-      background-color: var(--cyan);
-      padding: 1.5rem 2rem;
-      color: white;
-      font-weight: 700;
-      font-size: 2rem;
-      border-bottom: 4px solid var(--magenta);
-      text-align: center;
-      user-select: none;
-    }
-    header span.name {
-      display: block;
-      font-size: 1.4rem;
-      margin-top: 0.3rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
+<style>
+  :root {
+    --yellow: #ffed00;
+    --magenta: #e5007d;
+    --cyan: #009ee3;
+    --turquoise: #00abae;
+    --black: #000000;
+    --white: #ffffff;
+  }
 
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
+  body {
+    margin: 0;
+    background-color: var(--white);
+    color: var(--cyan);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
 
-   
-:root {
-  --gelb: #ffed00;
-  --magenta: #e5007d;
-  --cyan-blau: #009ee3;
-  --tuerkis: #00abae;
-  --dunkel-magenta: #a5027d;
-  --weiss: #ffffff;
-  --schwarz: #000000;
-}
+  a {
+    color: var(--cyan);
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
 
-body {
-  font-family: 'Futura Book', Arial, sans-serif;
-  background: var(--weiss);
-  color: var(--schwarz);
-  margin: 0;
-  padding: 0;
-  letter-spacing: -0.01em;
-}
+  header {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--cyan);
+    padding: 20px 40px;
+    text-align: center;
+  }
+  header h1 {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--cyan);
+    margin: 0;
+  }
+  header span.name {
+    display: block;
+    font-weight: normal;
+    font-size: 1.2rem;
+    margin-top: 6px;
+    color: var(--magenta);
+    font-family: Georgia, serif;
+  }
 
-/* Header */
-header {
-  background-color: var(--gelb);
-  color: var(--schwarz);
-  text-align: center;
-  padding: 1em 1em;
-  font-family: 'Futura Medium', Arial, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-}
+  nav {
+    background-color: var(--white);
+    padding: 15px 40px;
+    border-bottom: 2px solid var(--cyan);
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    font-family: Georgia, serif;
+  }
 
-/* Navigation: Box-Container */
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: 2em auto;
-  gap: 1em;
-  justify-content: center;
-  padding: 0 1em;
-}
+  nav a {
+    font-weight: normal;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cyan);
+  }
+  nav a.active,
+  nav a:hover,
+  nav a:focus {
+    color: var(--magenta);
+    font-weight: bold;
+    outline: none;
+  }
 
-/* Jede Box */
-nav a {
-  background-color: var(--magenta);
-  color: var(--gelb);
-  flex: 1 1 200px;
-  max-width: 250px;
-  text-decoration: none;
-  font-family: 'Futura Medium', Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  padding: 1.5em 1em;
-  text-align: center;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+  main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 40px;
+  }
 
-nav a:hover,
-nav a:focus {
-  background-color: var(--dunkel-magenta);
-  outline: none;
-}
+  main h2 {
+    color: var(--cyan);
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
 
-/* Footer */
-footer {
-  background-color: var(--gelb);
-  color: var(--schwarz);
-  text-align: center;
-  padding: 1em 1em;
-  font-family: 'Futura Medium', Arial, sans-serif;
-  letter-spacing: -0.02em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
-}
+  main p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+  }
 
-footer img {
-  height: 1.3em;
-  vertical-align: middle;
-}
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
 
+  label {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: var(--cyan);
+    font-family: Georgia, serif;
+  }
 
+  select, textarea {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border: 2px solid var(--cyan);
+    border-radius: 6px;
+    color: var(--cyan);
+    background-color: var(--white);
+    transition: border-color 0.3s ease;
+  }
+  select:focus, textarea:focus {
+    border-color: var(--magenta);
+    outline: none;
+  }
 
-    .contact-box {
-      background: white;
-      border: 2px solid var(--cyan);
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
-      width: 300px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: background-color 0.3s ease, color 0.3s ease;
-      cursor: default;
-      display: flex;
+  button {
+    align-self: flex-start;
+    background-color: var(--white);
+    color: var(--cyan);
+    border: 2px solid var(--cyan);
+    padding: 0.8rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: Georgia, serif;
+  }
+  button:hover,
+  button:focus {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    border-color: var(--magenta);
+    outline: none;
+  }
+
+  footer {
+    background-color: var(--cyan);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 20px;
+    font-family: Georgia, serif;
+    margin-top: 50px;
+  }
+
+  footer h3 {
+    margin: 0 0 15px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  footer .social-links a {
+    color: var(--white);
+    font-size: 30px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
+    nav {
       flex-direction: column;
-      user-select: none;
+      gap: 15px;
+      padding: 15px;
     }
-    .contact-box:hover {
-      background-color: var(--magenta);
-      color: var(--turquoise);
-    }
-
-    .contact-box label {
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      cursor: pointer;
-      user-select: text;
-    }
-    footer {
-  background-color: #222;
-  color: #eee;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 0.9rem;
-  font-weight: 400;
-  user-select: none;
-  margin-top: 3rem;
-}
-
-
-    select {
-      font-size: 1rem;
-      padding: 0.5rem;
-      border-radius: 6px;
-      border: 2px solid var(--cyan);
-      outline-offset: 2px;
-      transition: border-color 0.3s ease;
-      cursor: pointer;
-    }
-    select:focus {
-      border-color: var(--magenta);
-      outline: none;
-    }
-
-    .submit-wrapper {
-      width: 100%;
-      text-align: center;
-      margin-top: 2rem;
+    main {
+      padding: 0 20px;
+      margin: 20px auto;
     }
     button {
-      background-color: transparent;
-      border: 2px solid var(--cyan);
-      color: var(--cyan);
-      padding: 0.9rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
+      width: 100%;
+      text-align: center;
     }
-    button:hover {
-      background-color: var(--magenta);
-      color: white;
-      border-color: var(--magenta);
-    }
-
-    @media (max-width: 650px) {
-      .contact-box {
-        width: 100%;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    Meinungs-Macher Baden-Württemberg
-    <span class="name">Heschu Hasan</span>
-  </header>
 
-   <nav>
-    <a href="bildung.html">Bildung</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="auswertung.html">Auswertung</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-  </nav>
-  <main>
-     <h1>Willkommen beim Meinungs-Macher</h1>
-    <p>Hier können Sie Ihre politischen Einstellungen spielerisch testen. Beantworten Sie 16 kurze Fragen – und erfahren Sie, wie stark Ihre Haltung mit den Positionen der FDP Baden-Württemberg übereinstimmt.</p>
-    <p><a href="frage1.html" style="display:inline-block;background-color:var(--magenta);color:var(--gelb);padding:1em 1.5em;text-decoration:none;font-family:'Futura Medium', Arial, sans-serif;text-transform:uppercase;border-radius:6px;letter-spacing:-0.03em;">▶️ Jetzt starten</a></p>
-    <form id="wahlomatForm" action="auswertung.html" method="get" autocomplete="off">
+<header>
+  <h1>Meinungs-Macher</h1>
+  <span class="name">Heschu Hasan</span>
+</header>
 
-      <div class="contact-box">
-        <label for="frage1">1. Bürokratieabbau in Verwaltung und Behörden?</label>
-        <select name="frage1" id="frage1" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
+<nav>
+  <a href="index.html">Startseite</a>
+  <a href="bildung.html">Bildung</a>
+  <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
+  <a href="impressum.html">Impressum</a>
+</nav>
 
-      <div class="contact-box">
-        <label for="frage2">2. Mehr bezahlbarer Wohnraum schaffen?</label>
-        <select name="frage2" id="frage2" required>
-          <option value="" disabled selected>Bitte wählen</option>
-          <option value="0">Nein</option>
-          <option value="1">Neutral</option>
-          <option value="2">Ja</option>
-        </select>
-      </div>
+<main>
+  <h2>Testen Sie Ihre politische Meinung</h2>
+  <p>Beantworten Sie 16 kurze Fragen – und erfahren Sie, wie stark Ihre Haltung mit den Positionen der FDP Baden-Württemberg übereinstimmt.</p>
 
-      <div class="contact-box">
+  <form id="wahlomatForm" action="auswertung.html" method="get" autocomplete="off">
+    <label for="frage1">1. Bürokratieabbau in Verwaltung und Behörden?</label>
+    <select name="frage1" id="frage1" required>
+      <option value="" disabled selected>Bitte wählen</option>
+      <option value="0">Nein</option>
+      <option value="1">Neutral</option>
+      <option value="2">Ja</option>
+    </select>
+
+    <label for="frage2">2. Mehr bezahlbarer Wohnraum schaffen?</label>
+    <select name="frage2" id="frage2" required>
+      <option value="" disabled selected>Bitte wählen</option>
+      <option value="0">Nein</option>
+      <option value="1">Neutral</option>
+      <option value="2">Ja</option>
+    </select>
+
+     <div class="contact-box">
         <label for="frage3">3. Schulen digitaler ausstatten und digitaler Unterricht?</label>
         <select name="frage3" id="frage3" required>
           <option value="" disabled selected>Bitte wählen</option>
@@ -509,3 +489,14 @@ footer img {
 
   </body>
 </html>
+
+
+
+
+    <button type="submit">Absenden</button>
+  </form>
+</main>
+
+
+   
+     
