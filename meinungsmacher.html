@@ -1,278 +1,222 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meinungs-Macher - Heschu Hasan</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meinungs-Macher - Heschu Hasan</title>
 
-  <!-- FontAwesome CDN für Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
-  <style>
-    :root {
-      --yellow: #ffed00;
-      --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
-      --black: #000000;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background-color: var(--white);
-      color: var(--cyan);
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.5;
-    }
-
-    a {
-      color: var(--cyan);
-      text-decoration: none;
-    }
-    a:hover,
-    a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
-
-    header {
-      background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header h1 {
-      font-family: Georgia, serif;
-      font-weight: bold;
-      font-size: 1.8rem;
-      color: var(--cyan);
-      margin: 0;
-    }
-    nav a {
-      font-weight: normal;
-      font-size: 1rem;
-      margin-left: 25px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    nav a.active,
-    nav a:hover {
-      color: var(--magenta);
-      font-weight: bold;
-    }
-
-    main {
-      padding: 20px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    main h2 {
-      color: var(--cyan);
-      font-weight: bold;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    main h3 {
-      color: var(--cyan);
-      font-weight: normal;
-      font-size: 1.25rem;
-      margin-bottom: 20px;
-    }
-    .question {
-      margin-bottom: 20px;
-    }
-    .question p {
-      margin-bottom: 10px;
-    }
-    .answers label {
-      display: block;
-      margin-bottom: 5px;
-      cursor: pointer;
-    }
-    .result {
-      display: none;
-      margin-top: 30px;
-      font-weight: bold;
-      color: var(--magenta);
-    }
-    button[type="submit"] {
-      background-color: var(--cyan);
-      color: var(--white);
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      margin-top: 20px;
-    }
-    button[type="submit"]:hover {
-      background-color: var(--magenta);
-    }
-
-    footer {
-      padding: 30px 40px;
-      background-color: var(--white);
-      border-top: 2px solid var(--cyan);
-      margin-top: 60px;
-    }
-    footer h3 {
-      font-size: 1rem;
-      margin-bottom: 10px;
-      color: var(--cyan);
-    }
-    .social-links a {
-      font-size: 1.5rem;
-      margin-right: 15px;
-      color: var(--cyan);
-    }
-    .social-links a:hover {
-      color: var(--magenta);
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
-      nav a {
-        margin-left: 0;
-        margin-right: 15px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>HESCHU HASAN</h1>
-    <nav>
-      <a href="index.html">Startseite</a>
-      <a href="bildung.html">Bildung</a>
-      <a href="umwelt.html">Umwelt</a>
-      <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
-      <a href="impressum.html">Impressum</a>
-    </nav>
-  </header>
-
-  <main>
-    <h2>Meinungs-Macher</h2>
-    <h3>Beantworten Sie 21 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
-
-    <form id="quizForm">
-      <div id="questions"></div>
-      <button type="submit">Auswertung anzeigen</button>
-    </form>
-
-    <div id="result" class="result"></div>
-  </main>
-
-  <footer>
-    <h3>Folgen Sie mir auf Instagram</h3>
-    <div class="social-links">
-      <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const questions = [
-        "Soll der Ausbau von Power-to-X-Technologien staatlich stärker gefördert werden?",
-        "Sollen Genehmigungsverfahren für neue Technologien schneller ablaufen?",
-        "Soll Informatik Pflichtfach ab der Grundschule sein?",
-        "Soll die Schulpflicht um digitale Kompetenzen erweitert werden?",
-        "Soll der öffentliche Nahverkehr kostenlos sein?",
-        "Sollten alle Neubauten Solaranlagen erhalten müssen?",
-        "Sollten Steuern auf klimaschädliche Produkte erhöht werden?",
-        "Sollte das Wahlalter auf 16 Jahre gesenkt werden?",
-        "Soll ein bedingungsloses Grundeinkommen eingeführt werden?",
-        "Soll mehr Geld in Bildung statt in Verteidigung investiert werden?",
-        "Soll ein Tempolimit von 120 km/h auf Autobahnen eingeführt werden?",
-        "Soll die Polizei mit Bodycams ausgestattet werden?",
-        "Soll Deutschland mehr Geflüchtete aufnehmen?",
-        "Sollte Cannabis legalisiert werden?",
-        "Soll die Maskenpflicht in Pflegeheimen dauerhaft bleiben?",
-        "Soll das Gendern in der Sprache staatlich gefördert werden?",
-        "Soll der ländliche Raum stärker digitalisiert werden?",
-        "Sollte Bargeld abgeschafft werden?",
-        "Sollten Politikergehälter an den Mindestlohn gekoppelt werden?",
-        "Soll die Grundsteuer reformiert werden?",
-        "Soll ein verpflichtendes Klimaschutzjahr für Schulabgänger eingeführt werden?"
-      ];
-
-      const questionContainer = document.getElementById("questions");
-
-      questions.forEach((question, index) => {
-        const div = document.createElement("div");
-        div.className = "question";
-
-        div.innerHTML = `
-          <p><strong>${index + 1}. ${question}</strong></p>
-          <div class="answers">
-            <label><input type="radio" name="q${index}" value="1" required /> Stimme zu</label>
-            <label><input type="radio" name="q${index}" value="0" /> Neutral</label>
-            <label><input type="radio" name="q${index}" value="-1" /> Lehne ab</label>
-          </div>
-        `;
-
-        questionContainer.appendChild(div);
-      });
-
-      document.getElementById("quizForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-        let score = 0;
-
-        for (let i = 0; i < questions.length; i++) {
-          const value = parseInt(formData.get("q" + i));
-          score += value;
-        }
-
-        let resultText = "";
-        if (score > 10) {
-          resultText = "Ihre Meinung deckt sich stark mit meinen Positionen.";
-        } else if (score >= 0) {
-          resultText = "Es gibt einige Gemeinsamkeiten mit meinen Positionen.";
-        } else {
-          resultText = "Ihre Meinung unterscheidet sich stark von meinen Positionen.";
-        }
-
-        document.getElementById("quizForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const formData = new FormData(this);
-  let score = 0;
-
-  for (let i = 0; i < questions.length; i++) {
-    const value = parseInt(formData.get("q" + i));
-    score += value;
+<!-- FontAwesome CDN für Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link rel="stylesheet" href="bildung.css" />
+<style>
+  /* Grundlayout */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #222;
+    line-height: 1.6;
   }
 
-  // Weiterleitung zur Auswertungsseite mit Score als Parameter
-  window.location.href = `auswertung.html?score=${score}`;
-});
+  header {
+    background-color: #222;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
 
-        document.getElementById("result").style.display = "block";
-        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-      });
+  header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+
+  nav {
+    margin-top: 0.5rem;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+  }
+
+  nav a.active,
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  main {
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+    color: #444;
+  }
+
+  .question {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .answers label {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
+
+  .answers input {
+    margin-right: 0.4rem;
+  }
+
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 2rem auto 0;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  footer {
+    background-color: #222;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  footer h3 {
+    margin-top: 0;
+  }
+
+  .social-links a {
+    color: white;
+    margin: 0 0.5rem;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: #aaa;
+  }
+
+  @media (max-width: 600px) {
+    nav a {
+      display: block;
+      margin: 0.5rem 0;
+    }
+
+    .answers label {
+      display: block;
+      margin: 0.5rem 0;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Meinungs-Macher</h2>
+  <h3>Beantworten Sie 21 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
+
+  <form id="quizForm">
+    <div id="questions"></div>
+    <button type="submit">Auswertung anzeigen</button>
+  </form>
+</main>
+
+<footer>
+  <h3>Treffen Sie mich in den Sozialen Medien</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const questions = [
+      "Soll der Ausbau von Power-to-X-Technologien staatlich stärker gefördert werden?",
+      "Sollen Genehmigungsverfahren für neue Technologien schneller ablaufen?",
+      "Soll Informatik Pflichtfach ab der Grundschule sein?",
+      "Soll die Schulpflicht um digitale Kompetenzen erweitert werden?",
+      "Soll der öffentliche Nahverkehr kostenlos sein?",
+      "Sollten alle Neubauten Solaranlagen erhalten müssen?",
+      "Sollten Steuern auf klimaschädliche Produkte erhöht werden?",
+      "Sollte das Wahlalter auf 16 Jahre gesenkt werden?",
+      "Soll ein bedingungsloses Grundeinkommen eingeführt werden?",
+      "Soll mehr Geld in Bildung statt in Verteidigung investiert werden?",
+      "Soll ein Tempolimit von 120 km/h auf Autobahnen eingeführt werden?",
+      "Soll die Polizei mit Bodycams ausgestattet werden?",
+      "Soll Deutschland mehr Geflüchtete aufnehmen?",
+      "Sollte Cannabis legalisiert werden?",
+      "Soll die Maskenpflicht in Pflegeheimen dauerhaft bleiben?",
+      "Soll das Gendern in der Sprache staatlich gefördert werden?",
+      "Soll der ländliche Raum stärker digitalisiert werden?",
+      "Sollte Bargeld abgeschafft werden?",
+      "Sollten Politikergehälter an den Mindestlohn gekoppelt werden?",
+      "Soll die Grundsteuer reformiert werden?",
+      "Soll ein verpflichtendes Klimaschutzjahr für Schulabgänger eingeführt werden?"
+    ];
+
+    const questionContainer = document.getElementById("questions");
+
+    questions.forEach((question, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+
+      div.innerHTML = `
+        <p><strong>${index + 1}. ${question}</strong></p>
+        <div class="answers">
+          <label><input type="radio" name="q${index}" value="1" required /> Stimme zu</label>
+          <label><input type="radio" name="q${index}" value="0" /> Neutral</label>
+          <label><input type="radio" name="q${index}" value="-1" /> Lehne ab</label>
+        </div>
+      `;
+
+      questionContainer.appendChild(div);
     });
-  </script>
-</body>
-</html>
+
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new Fo
