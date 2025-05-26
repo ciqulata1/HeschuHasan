@@ -1,327 +1,333 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Heschu Hasan - Wahlkreiskandidatin Freiburg - Ost - Wahlkreis 46</title>
-    <meta name="description" content="Heschu Hasan ist Direktkandidatin der FDP für Freiburg-Ost bei der Landtagswahl 2026." />
-    <meta name="author" content="Heschu Hasan" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-    <style>
-        /* Hier exakt der gleiche CSS-Code wie in umwelt.html, den du gegeben hast */
-        :root {
-            --magenta: #e5007d;
-            --yellow: #ffed00;
-            --blue: #009ee3;
-            --light-blue: #00abae;
-            --violett: #a5027d;
-            --white: #ffffff;
-            --black: #000000;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Heschu Hasan - Wahlkreiskandidatin Freiburg - Ost - Wahlkreis 46</title>
 
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: var(--white);
-            color: var(--black);
-        }
+<!-- FontAwesome CDN für Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 
-        .skip-link {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--magenta);
-            color: var(--yellow);
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            z-index: 1000;
-        }
+<style>
+  :root {
+    --yellow: #ffed00;
+    --magenta: #e5007d;
+    --cyan: #009ee3;
+    --turquoise: #00abae;
+    --black: #000000;
+    --white: #ffffff;
+  }
 
-        .skip-link:focus {
-            outline: 3px solid var(--yellow);
-            outline-offset: 2px;
-        }
+  * {
+    box-sizing: border-box;
+  }
 
-        header {
-            background-color: var(--white);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
+  body {
+    margin: 0;
+    background-color: var(--white);
+    color: var(--cyan);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-            margin: 0;
-            padding: 0;
-        }
+  a {
+    color: var(--cyan);
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--black);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
+  header {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--cyan);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--cyan);
+    margin: 0;
+  }
+  nav a {
+    font-weight: normal;
+    font-size: 1rem;
+    margin-left: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 
-        nav ul li a:hover,
-        nav ul li a:focus {
-            background-color: var(--magenta);
-            color: var(--yellow);
-            outline: none;
-        }
+  nav a.active,
+  nav a:hover {
+    color: var(--magenta);
+    font-weight: bold;
+  }
 
-        .title-banner {
-            background-color: var(--white);
-            padding: 2rem;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--blue);
-            font-family: 'Futura', 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-        }
+  main {
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  main h2 {
+    color: var(--cyan);
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  main h3 {
+    color: var(--cyan);
+    font-weight: normal;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+  }
+  main p {
+    font-size: 1.1rem;
+    max-width: 700px;
+  }
 
-        .content {
-            max-width: 1000px;
-            margin: auto;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
+  .topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 40px;
+  }
+  .topic-box {
+    flex: 1 1 280px;
+    border: 2px solid var(--cyan);
+    background-color: var(--white);
+    color: var(--cyan);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    user-select: none;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .topic-box:hover,
+  .topic-box:focus {
+    border-color: var(--magenta);
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    outline: none;
+  }
 
-        h2 {
-            background-color: var(--blue);
-            color: var(--white);
-            padding: 0.75rem;
-            border-radius: 5px;
-            text-align: center;
-            font-family: 'Futura', 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-            margin: 0;
-        }
+  /* Für Verwaltung mit Unterthemen */
+  .topic-box[aria-expanded="true"] {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    border-color: var(--magenta);
+  }
+  .subtopics {
+    margin-top: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .topic-box[aria-expanded="true"] .subtopics {
+    display: flex;
+  }
+  .subtopics a {
+    color: var(--cyan);
+    border: 2px solid var(--cyan);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+  .subtopics a:hover,
+  .subtopics a:focus {
+    border-color: var(--magenta);
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    outline: none;
+  }
 
-        .topics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
+  form {
+    max-width: 500px;
+    margin-top: 50px;
+    font-family: Georgia, serif;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid var(--cyan);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: Georgia, serif;
+    color: var(--black);
+  }
+  input:focus,
+  textarea:focus {
+    border-color: var(--magenta);
+    outline: none;
+    box-shadow: 0 0 6px var(--magenta);
+  }
+  button {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: Georgia, serif;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  button:hover,
+  button:focus {
+    background-color: var(--cyan);
+    color: var(--white);
+    outline: none;
+  }
 
-        .topic-box,
-        .subtopics a {
-            border: 2px solid var(--blue);
-            padding: 1rem;
-            text-align: center;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--black);
-            transition: 0.3s;
-            display: block;
-            font-family: 'Futura', 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-        }
+  footer {
+    background-color: var(--cyan);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 20px;
+    font-family: Georgia, serif;
+  }
+  footer p {
+    margin: 10px 0;
+  }
+  footer .social-links a {
+    color: var(--white);
+    font-size: 30px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
 
-        .topic-box:hover,
-        .topic-box:focus,
-        .subtopics a:hover,
-        .subtopics a:focus {
-            background-color: var(--magenta);
-            color: var(--yellow);
-            outline: none;
-        }
-
-        .subtopics {
-            margin-top: 0.5rem;
-            padding-left: 1rem;
-            display: none;
-        }
-
-        .topic-box[aria-expanded="true"] .subtopics {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 500px;
-            margin-top: 2rem;
-        }
-
-        label {
-            font-weight: 600;
-            font-family: 'Futura', 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-        }
-
-        input,
-        textarea {
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-        }
-
-        input:focus,
-        textarea:focus {
-            border-color: var(--magenta);
-            outline: none;
-            box-shadow: 0 0 0 3px var(--yellow);
-        }
-
-        button {
-            background-color: var(--magenta);
-            color: var(--yellow);
-            padding: 0.75rem;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: 'Futura', 'Inter', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-        }
-
-        button:hover,
-        button:focus {
-            background-color: var(--a5027d);
-            outline: none;
-        }
-
-        footer {
-            background-color: var(--blue);
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-            color: var(--white);
-            font-family: 'Futura', 'Inter', sans-serif;
-            letter-spacing: -0.05em;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        footer a {
-            color: var(--yellow);
-            text-decoration: none;
-        }
-
-        footer a:hover,
-        footer a:focus {
-            text-decoration: underline;
-            outline: none;
-        }
-    </style>
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px 20px;
+    }
+    nav a {
+      margin-left: 0;
+      margin-right: 15px;
+    }
+    .topics {
+      flex-direction: column;
+    }
+  }
+</style>
 </head>
-
 <body>
-    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 
-    <header role="banner" aria-label="Hauptnavigation">
-        <nav role="navigation" aria-label="Hauptmenü">
-            <ul>
-                <li><a href="#start">Start</a></li>
-                <li><a href="#themen">Themen</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-                <li><a href="impressum.html">Impressum</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
 
-    <div class="title-banner" role="heading" aria-level="1" tabindex="0">
-        Heschu Hasan
+<main>
+  <h2>Meine Themen</h2>
+  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+
+  <div class="topics" role="list">
+    <a href="bildung.html" class="topic-box" role="listitem" tabindex="0">Bildung</a>
+    <a href="umwelt.html" class="topic-box" role="listitem" tabindex="0">Umwelt</a>
+
+    <div class="topic-box" role="region" aria-expanded="false" tabindex="0" id="verwaltung-box" aria-label="Verwaltung mit Unterthemen">
+      Verwaltung
+      <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
+        <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
+      </div>
     </div>
 
-    <main id="main-content" class="content" tabindex="-1">
-        <!-- Beispiel Inhalt: Themen -->
-        <section id="themen" aria-labelledby="themen-title">
-            <h2 id="themen-title">Meine Themen</h2>
-            <div class="topics">
-                <a class="topic-box" href="bildung.html">Bildung</a>
-                <a class="topic-box" href="umwelt.html">Umwelt</a>
-                <div class="topic-box" role="region" aria-labelledby="verwaltung-title" aria-expanded="false" tabindex="0" id="verwaltung-box">
-                    <a href="wahlprogramm.html" id="verwaltung-title" aria-haspopup="true" aria-controls="verwaltung-subtopics" aria-expanded="false">Verwaltung</a>
-                    <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
-                        <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
-                    </div>
-                </div>
-                <a class="topic-box" href="meinungsmacher.html">Meinungs-Macher</a>
-            </div>
-        </section>
+    <a href="meinungsmacher.html" class="topic-box" role="listitem" tabindex="0">Meinungs-Macher</a>
+  </div>
 
-        <!-- Beispiel Inhalt: Kontakt -->
-        <section id="kontakt" aria-labelledby="kontakt-title">
-            <h2 id="kontakt-title">Kontaktformular</h2>
-            <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain" aria-label="Kontaktformular">
-                <label for="name">Ihr Name</label>
-                <input type="text" id="name" name="name" placeholder="Ihr Name" required />
+  <section id="kontakt" aria-labelledby="kontakt-title">
+    <h2 id="kontakt-title">Kontaktformular</h2>
+    <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain" aria-label="Kontaktformular">
+      <label for="name">Ihr Name</label>
+      <input type="text" id="name" name="name" placeholder="Ihr Name" required />
 
-                <label for="email">Ihre E-Mail</label>
-                <input type="email" id="email" name="email" placeholder="Ihre E-Mail" required />
+      <label for="email">Ihre E-Mail</label>
+      <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de" required />
 
-                <label for="nachricht">Ihre Nachricht</label>
-                <textarea id="nachricht" name="nachricht" rows="5" placeholder="Ihre Nachricht" required></textarea>
+      <label for="nachricht">Nachricht</label>
+      <textarea id="nachricht" name="nachricht" rows="6" placeholder="Ihre Nachricht..." required></textarea>
 
-                <button type="submit">Absenden</button>
-            </form>
-        </section>
-    </main>
+      <button type="submit">Absenden</button>
+    </form>
+  </section>
+</main>
 
-    <footer>
-        <p>Folgen Sie mir auf:</p>
-        <div class="social-links">
-            <a href="https://www.instagram.com/heschuhasan/" target="_blank" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
-        <p>&copy; 2025 Heschu Hasan – FDP Baden-Württemberg</p>
-    </footer>
+<footer>
+  <p>© 2025 Heschu Hasan – FDP Freiburg</p>
+  <div class="social-links" aria-label="Soziale Medien">
+    <a href="https://twitter.com/heschuhasan" target="_blank" rel="noopener" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://facebook.com/heschuhasan" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</footer>
 
-    <script>
-        const verwaltungBox = document.getElementById('verwaltung-box');
-        const subtopics = document.getElementById('verwaltung-subtopics');
+<script>
+  // Optional: Einfacher Toggle für Verwaltung Unterthemen
+  const verwaltungBox = document.getElementById('verwaltung-box');
+  const verwaltungSubs = document.getElementById('verwaltung-subtopics');
+  verwaltungBox.addEventListener('click', () => {
+    const expanded = verwaltungBox.getAttribute('aria-expanded') === 'true';
+    verwaltungBox.setAttribute('aria-expanded', !expanded);
+    verwaltungSubs.style.display = expanded ? 'none' : 'flex';
+  });
+  // Auch mit Enter/Space aktivierbar
+  verwaltungBox.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      verwaltungBox.click();
+    }
+  });
+</script>
 
-        function toggleSubtopics() {
-            const expanded = verwaltungBox.getAttribute('aria-expanded') === 'true';
-            verwaltungBox.setAttribute('aria-expanded', !expanded);
-            verwaltungLink.setAttribute('aria-expanded', !expanded);
-            if (!expanded) {
-                subtopics.style.display = 'flex';
-            } else {
-                subtopics.style.display = 'none';
-            }
-        }
-
-        verwaltungLink.addEventListener('click', function (e) {
-            e.preventDefault();
-            toggleSubtopics();
-        });
-
-        verwaltungBox.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleSubtopics();
-            }
-        });
-    </script>
 </body>
-
 </html>
