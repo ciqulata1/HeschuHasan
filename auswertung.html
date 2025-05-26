@@ -2,163 +2,193 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Auswertung – Meinungs-Macher</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Fallback Google Fonts für Beispielzwecke (Futura nicht frei verfügbar) -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif; /* Platzhalter für Futura */
-      margin: 0;
-      padding: 0;
-      background-color: #ffffff;
-      color: #000;
+    /* Farben */
+    :root {
+      --gelb: #ffed00;
+      --magenta: #e5007d;
+      --cyan-blau: #009ee3;
+      --tuerkis: #00abae;
+      --dunkel-magenta: #a5027d;
+      --weiss: #ffffff;
+      --schwarz: #000000;
     }
 
-    header {
-      background-color: #ffffff;
-      padding: 1rem;
+    body {
+      font-family: 'Futura Book', Arial, sans-serif;
+      background: var(--weiss);
+      color: var(--schwarz);
+      margin: 0;
+      padding: 0;
+      letter-spacing: -0.01em; /* optisches Kerning */
+    }
+
+    header, footer {
+      background-color: var(--gelb);
+      color: var(--schwarz);
       text-align: center;
+      padding: 1em 1em;
+      font-family: 'Futura Medium', Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 0 1em;
     }
 
     h1 {
-      font-family: 'Montserrat', sans-serif; /* Futura Bold Oblique */
-      font-weight: 700;
-      font-size: 2rem;
-      color: #e5007d;
+      font-family: 'Futura Bold Oblique', Arial, sans-serif;
+      font-weight: bold;
+      font-style: oblique;
       text-transform: uppercase;
-      letter-spacing: -0.5px;
+      color: var(--magenta);
+      margin-bottom: 0.5em;
+      letter-spacing: -0.05em;
     }
 
     h2 {
-      font-family: 'Montserrat', sans-serif; /* Futura Medium */
+      font-family: 'Futura Medium', Arial, sans-serif;
       font-weight: 500;
-      color: #009ee3;
       text-transform: uppercase;
+      color: var(--dunkel-magenta);
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      letter-spacing: -0.03em;
     }
 
     p {
-      font-family: 'Montserrat', sans-serif; /* Futura Book */
-      font-weight: 400;
+      font-family: 'Futura Book', Arial, sans-serif;
       font-size: 1rem;
-      color: #000;
-      line-height: 1.6;
+      line-height: 1.5;
+      color: var(--schwarz);
+      margin-bottom: 1em;
     }
 
-    #ergebnis {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background-color: #ffffff;
-      border-radius: 0.5rem;
-    }
-
-    .contact-box {
-      margin-top: 2rem;
-      text-align: center;
+    .hinweis {
+      font-family: 'Futura Medium', Arial, sans-serif;
+      color: var(--magenta);
+      font-weight: 500;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      margin-top: 1em;
     }
 
     .zurueck-link {
       display: inline-block;
-      background-color: #e5007d;
-      color: #ffed00;
-      padding: 0.75rem 1.5rem;
+      background-color: var(--magenta);
+      color: var(--gelb);
+      padding: 0.7em 1.2em;
       text-decoration: none;
+      font-family: 'Futura Medium', Arial, sans-serif;
       font-weight: 500;
-      border-radius: 0.5rem;
       text-transform: uppercase;
+      letter-spacing: -0.03em;
+      border-radius: 4px;
+      margin-top: 1.5em;
+      transition: background-color 0.3s ease;
+    }
+
+    .zurueck-link:hover,
+    .zurueck-link:focus {
+      background-color: var(--dunkel-magenta);
+      outline: none;
     }
 
     footer {
-      background-color: #009ee3;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5em;
+      flex-wrap: wrap;
     }
 
-    .footer-icon {
-      width: 20px;
+    footer img {
+      height: 1.3em;
       vertical-align: middle;
-      margin-right: 0.5rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Ihre Auswertung</h1>
+    MEINUNGS-MACHER BADEN-WÜRTTEMBERG
   </header>
 
   <main>
-    <div id="ergebnis"></div>
+    <h1>Auswertung Ihres Meinungsbilds</h1>
+    <div id="ergebnis" role="region" aria-live="polite"></div>
   </main>
 
   <footer>
-    <p>Folgen Sie mir auf:
-      <a href="https://instagram.com/heschuhasan" target="_blank">
-        <img src="instagram-icon.png" alt="Instagram" class="footer-icon" />
-      </a>
-    </p>
-    <p>&copy; 2025 Heschu Hasan – FDP Baden-Württemberg</p>
+    <span>Folgen Sie mir auf:</span>
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="instagram-icon.png" alt="Instagram Icon" />
+    </a>
+    <span>© 2025 Heschu Hasan – FDP Baden-Württemberg</span>
   </footer>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const daten = {};
-    const ergebnisDiv = document.getElementById('ergebnis');
-    const anzahlFragen = 16;
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const daten = {};
+      const ergebnisDiv = document.getElementById('ergebnis');
+      const anzahlFragen = 16;
 
-    for (const [key, value] of params.entries()) {
-      daten[key] = value;
-    }
-
-    let summe = 0;
-    let beantworteteFragen = 0;
-
-    for (let i = 1; i <= anzahlFragen; i++) {
-      const wert = daten['frage' + i];
-      if (wert !== undefined && wert !== null && wert !== "") {
-        summe += Number(wert);
-        beantworteteFragen++;
+      for (const [key, value] of params.entries()) {
+        daten[key] = value;
       }
-    }
 
-    if (beantworteteFragen === 0) {
-      ergebnisDiv.innerHTML = `
-        <h2>Keine Antworten erkannt</h2>
-        <p>Bitte füllen Sie den Fragebogen vollständig aus, um eine fundierte Auswertung zu erhalten.</p>
-        <div class="contact-box">
-          <a href="meinungsmacher.html" class="zurueck-link">Zurück zum Fragebogen</a>
-        </div>
-      `;
-    } else {
-      const prozent = (summe / (beantworteteFragen * 2)) * 100;
-      let text = '';
+      let summe = 0;
+      let beantworteteFragen = 0;
 
-      if (prozent >= 70) {
-        text = 'Ihre politischen Werte stimmen in hohem Maße mit denen der Freien Demokraten überein. Vielen Dank für Ihr Interesse an einer zukunftsorientierten Politik.';
-      } else if (prozent >= 40) {
-        text = 'Sie teilen einige Positionen der Freien Demokraten. Wir laden Sie ein, unsere Programme näher kennenzulernen und sich ein umfassenderes Bild zu machen.';
+      for (let i = 1; i <= anzahlFragen; i++) {
+        const wert = daten['frage' + i];
+        if (wert !== undefined && wert !== null && wert !== "") {
+          summe += Number(wert);
+          beantworteteFragen++;
+        }
+      }
+
+      if (beantworteteFragen === 0) {
+        ergebnisDiv.innerHTML = `
+          <p>Keine Daten gefunden. Bitte zuerst den Fragebogen ausfüllen. Schon eine Antwort gibt Ihnen Feedback!</p>
+          <a href="meinungsmacher.html" class="zurueck-link">🔁 Zurück zum Fragebogen</a>
+        `;
       } else {
-        text = 'Ihre Antworten zeigen, dass Ihre politischen Vorstellungen von denen der Freien Demokraten abweichen. Wir freuen uns dennoch über Ihr Interesse.';
-      }
+        const prozent = (summe / (beantworteteFragen * 2)) * 100;
+        let smiley = '';
+        let text = '';
 
-      let hinweis = '';
-      if (beantworteteFragen < anzahlFragen) {
-        hinweis = `<p><em>Sie haben nur ${beantworteteFragen} von ${anzahlFragen} Fragen beantwortet. Für eine vollständige Auswertung empfehlen wir, alle Fragen zu beantworten.</em></p>`;
-      }
+        if (prozent >= 70) {
+          smiley = '😊';
+          text = 'IHRE ÜBEREINSTIMMUNG MIT DER FDP IST HOCH. DANKE, DASS SIE SICH FÜR EINE MODERNE POLITIK INTERESSIEREN!';
+        } else if (prozent >= 40) {
+          smiley = '😐';
+          text = 'IHRE ÜBEREINSTIMMUNG MIT DER FDP IST MITTEL.';
+        } else {
+          smiley = '😞';
+          text = 'IHRE ÜBEREINSTIMMUNG IST GERING. ICH FREUE MICH, WENN SIE REGELMÄSSIG VORBEISCHAUEN UND DEN FDP-VIBE ERLEBEN!';
+        }
 
-      ergebnisDiv.innerHTML = `
-        <h2>Übereinstimmung: ${prozent.toFixed(1)}%</h2>
-        <p>${text}</p>
-        ${hinweis}
-        <div class="contact-box">
-          <a href="meinungsmacher.html" class="zurueck-link">Zurück zum Fragebogen</a>
-        </div>
-      `;
-    }
+        let hinweis = '';
+        if (beantworteteFragen < anzahlFragen) {
+          hinweis = `<p class="hinweis">SIE HABEN NUR ${beantworteteFragen} VON ${anzahlFragen} FRAGEN BEANTWORTET. FÜR EINE VOLLSTÄNDIGE AUSWERTUNG NEHMEN SIE SICH BITTE DIE ZEIT, ALLE FRAGEN ZU BEANTWORTEN.</p>`;
+        }
+
+        ergebnisDiv.innerHTML = `
+          <h2>ÜBEREINSTIMMUNG MIT DER FDP: ${prozent.toFixed(1)}% ${smiley}</h2>
+          <p>${text}</p>
+          ${hinweis}
+          <a href="meinungsmacher.html" class="zurueck-link">🔁 Zurück zum Fragebogen</a>
+        `;
+      }
+    })();
   </script>
 </body>
 </html>
