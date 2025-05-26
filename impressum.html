@@ -1,213 +1,136 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <title>Impressum – Heschu Hasan</title>
-  <style>
-    @font-face {
-      font-family: 'Futura Bold Oblique';
-      src: url('FuturaBoldOblique.woff2') format('woff2');
-    }
-    @font-face {
-      font-family: 'Futura Medium';
-      src: url('FuturaMedium.woff2') format('woff2');
-    }
-    @font-face {
-      font-family: 'Futura Book';
-      src: url('FuturaBook.woff2') format('woff2');
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Impressum - Heschu Hasan</title>
 
-    :root {
-      --cyan: #009ee3;
-      --turquoise: #00abae;
-      --magenta: #e5007d;
-    }
+<style>
+  body {
+    font-family: "Futura Book", sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+    color: #000000;
+  }
+  header {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #009ee3;
+  }
+  header h1 {
+    font-family: "Futura Bold Oblique", sans-serif;
+    font-size: 2rem;
+    color: #009ee3;
+    margin: 0;
+  }
+  nav a {
+    text-decoration: none;
+    color: #009ee3;
+    margin-left: 1.5rem;
+    font-family: "Futura Medium", sans-serif;
+    text-transform: uppercase;
+  }
+  nav a.active,
+  nav a:hover,
+  nav a:focus {
+    color: #e5007d;
+    font-weight: bold;
+    outline: none;
+  }
 
-    body {
-      background-color: #ffffff;
-      font-family: 'Futura Book', sans-serif;
-      color: #000000;
-      margin: 0;
-      padding: 0;
-    }
+  main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  main h2 {
+    font-family: "Futura Bold Oblique", sans-serif;
+    text-transform: uppercase;
+    color: #009ee3;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  main p, main address {
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  main address {
+    font-style: normal;
+  }
 
+  footer {
+    margin-top: 4rem;
+    background-color: #009ee3;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-family: "Futura Medium", sans-serif;
+    font-size: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
     header {
-      background-color: #ffffff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
     }
-
     nav a {
-      font-family: 'Futura Medium', sans-serif;
-      text-transform: uppercase;
-      text-decoration: none;
-      margin-left: 1.5rem;
-      color: #000000;
+      margin-left: 0;
+      margin-right: 1rem;
+      margin-top: 0.5rem;
     }
-
-    .jump-link {
-      background-color: var(--magenta);
-      color: #ffed00;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      font-family: 'Futura Medium', sans-serif;
-      text-transform: uppercase;
-    }
-
-    main.impressum {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h1 {
-      font-family: 'Futura Bold Oblique', sans-serif;
-      text-transform: uppercase;
-      font-size: 2.5rem;
-      letter-spacing: -0.5px;
-      color: #000000;
-    }
-
-    p, a {
-      font-family: 'Futura Book', sans-serif;
-      font-size: 1rem;
-      line-height: 1.6;
-      letter-spacing: -0.5px;
-    }
-
-    strong {
-      font-family: 'Futura Medium', sans-serif;
-      text-transform: uppercase;
-    }
-
-    a {
-      color: var(--magenta);
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: #a5027d;
-    }
-
-    .textbalken {
-      background-color: var(--magenta);
-      color: #ffed00;
-      padding: 1rem;
-      font-family: 'Futura Medium', sans-serif;
-      text-transform: uppercase;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .zurueck-link {
-      display: inline-block;
-      margin-top: 2rem;
-      background-color: var(--cyan);
-      color: #ffffff;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .zurueck-link:hover {
-      background-color: var(--turquoise);
-    }
-
-    footer {
-      background: var(--cyan);
-      color: white;
-      padding: 4rem; /* mehr padding */
-      text-align: center;
-      font-size: 1rem;
-      margin-top: 4rem;
-    }
-
-    .social-links {
-      margin-top: 1rem;
-    }
-
-    .social-links a {
-      color: white;
-      font-size: 1.5rem;
-      margin: 0 0.5rem;
-      transition: color 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .social-links a svg {
-      fill: white !important;
-      width: 32px;
-      height: 32px;
-    }
-
-    .social-links a:hover {
-      color: var(--turquoise);
-    }
-
-    .info-text {
-      color: white;
-      margin-top: 2rem;
-      font-family: 'Futura Medium', sans-serif;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div><strong>HESCHU HASAN</strong></div>
-    <nav>
-      <a href="index.html">Start</a>
-      <a href="themen.html">Themen</a>
-      <a href="kontakt.html">Kontakt</a>
-      <a class="jump-link" href="#main">Zum Start springen</a>
-    </nav>
-  </header>
 
-  <main id="main" class="impressum">
-    <div class="textbalken">Impressum</div>
+<header>
+  <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="impressum.html" class="active">Impressum</a>
+  </nav>
+</header>
 
-    <p><strong>Angaben gemäß § 5 TMG</strong></p>
-    <p>
-      Heschu Hasan<br />
-      Kaiser-Joseph-Straße 216<br />
-      79098 Freiburg<br />
-    </p>
+<main>
+  <h2>Impressum</h2>
+  <p><strong>Angaben gemäß § 5 TMG:</strong></p>
+  <address>
+    Heschu Hasan<br />
+    Musterstraße 12<br />
+    79100 Freiburg<br />
+    Deutschland
+  </address>
 
-    <p><strong>Kontakt</strong></p>
-    <p>
-      Telefon der Geschäftsstelle: +49 761 34515<br />
-      E-Mail: <a href="mailto:heschuhasan@gmail.com">heschuhasan@gmail.com</a>
-    </p>
+  <p><strong>Kontakt:</strong></p>
+  <p>
+    Telefon: 0123 456789<br />
+    E-Mail: <a href="mailto:info@heschuhasan.de">info@heschuhasan.de</a>
+  </p>
 
-    <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</strong></p>
-    <p>
-      Heschu Hasan<br />
-      Adresse wie oben
-    </p>
+  <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong></p>
+  <p>
+    Heschu Hasan<br />
+    Musterstraße 12<br />
+    79100 Freiburg
+  </p>
 
-    <p><strong>Haftungsausschluss</strong></p>
-    <p>
-      Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für die Inhalte externer Links.
-      Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
-    </p>
+  <p><strong>Haftungsausschluss:</strong></p>
+  <p>
+    Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+  </p>
+</main>
 
-    <a class="zurueck-link" href="index.html">Zurück zur Startseite</a>
-  </main>
+<footer>
+  &copy; 2025 Heschu Hasan
+</footer>
 
-  <footer>
-    <div class="info-text">Folgen Sie mir auf Instagram</div>
-    <div class="social-links">
-      <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram Profil von Heschu Hasan">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="white" width="32" height="32">
-          <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5c3.176 0 5.75-2.574 5.75-5.75v-8.5C22 4.574 19.426 2 16.25 2h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm5.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-        </svg>
-      </a>
-    </div>
-    <div class="info-text">&copy; Heschu Hasan</div>
-  </footer>
 </body>
 </html>
