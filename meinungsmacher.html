@@ -55,16 +55,93 @@
       justify-content: center;
     }
 
-    footer {
-  background-color: #222;
-  color: #eee;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 0.9rem;
-  font-weight: 400;
-  user-select: none;
-  margin-top: 3rem;
+   
+:root {
+  --gelb: #ffed00;
+  --magenta: #e5007d;
+  --cyan-blau: #009ee3;
+  --tuerkis: #00abae;
+  --dunkel-magenta: #a5027d;
+  --weiss: #ffffff;
+  --schwarz: #000000;
 }
+
+body {
+  font-family: 'Futura Book', Arial, sans-serif;
+  background: var(--weiss);
+  color: var(--schwarz);
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Header */
+header {
+  background-color: var(--gelb);
+  color: var(--schwarz);
+  text-align: center;
+  padding: 1em 1em;
+  font-family: 'Futura Medium', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* Navigation: Box-Container */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 2em auto;
+  gap: 1em;
+  justify-content: center;
+  padding: 0 1em;
+}
+
+/* Jede Box */
+nav a {
+  background-color: var(--magenta);
+  color: var(--gelb);
+  flex: 1 1 200px;
+  max-width: 250px;
+  text-decoration: none;
+  font-family: 'Futura Medium', Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  padding: 1.5em 1em;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--dunkel-magenta);
+  outline: none;
+}
+
+/* Footer */
+footer {
+  background-color: var(--gelb);
+  color: var(--schwarz);
+  text-align: center;
+  padding: 1em 1em;
+  font-family: 'Futura Medium', Arial, sans-serif;
+  letter-spacing: -0.02em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+footer img {
+  height: 1.3em;
+  vertical-align: middle;
+}
+
 
 
     .contact-box {
@@ -153,6 +230,13 @@
     <span class="name">Heschu Hasan</span>
   </header>
 
+   <nav>
+    <a href="bildung.html">Bildung</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="auswertung.html">Auswertung</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+  </nav>
   <main>
     <form id="wahlomatForm" action="auswertung.html" method="get" autocomplete="off">
 
