@@ -3,332 +3,396 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meinungs-Macher Baden-Württemberg</title>
-
-  <!-- Google Fonts – konservative Schriftart -->
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome für Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <title>Meinungs-Macher - Wahl-O-Mat BW</title>
   <style>
     :root {
       --cyan: #009ee3;
       --magenta: #e20074;
       --turquoise: #00ffff;
-      --background: #ffffff;
+      --background: #f5f8fa;
+      --font-family: 'Source Sans Pro', Arial, sans-serif;
     }
 
+    * {
+      box-sizing: border-box;
+    }
     body {
-      background-color: var(--background);
-      font-family: 'Source Sans Pro', sans-serif;
       margin: 0;
-      padding: 0;
-      color: #000;
+      font-family: var(--font-family);
+      background: var(--background);
+      color: #222;
+      line-height: 1.5;
     }
 
     header {
-      background: white;
-      padding: 1rem 2rem;
-      border-bottom: 2px solid var(--cyan);
+      background-color: var(--cyan);
+      padding: 1.5rem 2rem;
+      color: white;
+      font-weight: 700;
+      font-size: 2rem;
+      border-bottom: 4px solid var(--magenta);
+      text-align: center;
+      user-select: none;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: var(--cyan);
+    header span.name {
+      display: block;
+      font-size: 1.4rem;
+      margin-top: 0.3rem;
+      font-weight: 400;
+      letter-spacing: 1px;
     }
 
     main {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
 
-    .frage-container {
+    form {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .contact-box {
-      background: #f2f2f2;
-      border: 2px solid var(--cyan);
-      padding: 1rem;
-      border-radius: 10px;
-      flex: 1 1 45%;
-      min-width: 300px;
-      transition: all 0.3s ease;
-    }
-
-    .contact-box:hover {
-      background: var(--magenta);
-      color: var(--turquoise);
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    select {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-
-    button {
-      margin-top: 2rem;
-      padding: 0.8rem 1.5rem;
-      border: 2px solid var(--cyan);
-      background: transparent;
-      color: var(--cyan);
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: var(--magenta);
-      color: white;
+      gap: 1.5rem;
+      justify-content: center;
     }
 
     footer {
-      background: var(--cyan);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      font-size: 1rem;
-      margin-top: 4rem;
-    }
+  background-color: #222;
+  color: #eee;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  user-select: none;
+  margin-top: 3rem;
+}
 
-    .social-links {
-      margin-top: 1rem;
-    }
 
-    .social-links a {
-      color: white;
-      font-size: 1.5rem;
-      margin: 0 0.5rem;
-      transition: color 0.3s ease;
+    .contact-box {
+      background: white;
+      border: 2px solid var(--cyan);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
     }
-
-    .social-links a:hover {
+    .contact-box:hover {
+      background-color: var(--magenta);
       color: var(--turquoise);
     }
 
-    .info-text {
-      color: var(--magenta);
+    .contact-box label {
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+      user-select: text;
+    }
+
+    select {
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 2px solid var(--cyan);
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+      cursor: pointer;
+    }
+    select:focus {
+      border-color: var(--magenta);
+      outline: none;
+    }
+
+    .submit-wrapper {
+      width: 100%;
+      text-align: center;
       margin-top: 2rem;
+    }
+    button {
+      background-color: transparent;
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
+      padding: 0.9rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    button:hover {
+      background-color: var(--magenta);
+      color: white;
+      border-color: var(--magenta);
+    }
+
+    @media (max-width: 650px) {
+      .contact-box {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Meinungs-Macher Baden-Württemberg</h1>
+    Wahl-O-Mat Baden-Württemberg
+    <span class="name">Heschu Hasan</span>
   </header>
 
   <main>
-      <p>Beantworten Sie die Fragen entsprechend Ihrer persönlichen Vorstellung:</p>
-     <form id="wahlomatForm" action="auswertung.html" method="get">
+    <form id="wahlomatForm" action="auswertung.html" method="get" autocomplete="off">
 
-      <div class="frage-container">
-
-        <!-- Alle 16 Fragen -->
-  
-        <div class="contact-box">
-          <label for="frage1">1. Soll die Bürokratie abgebaut werden?</label>
-          <select name="frage1" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-        <form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage2">2. Sind Sie für mehr Digitalisierung?</label>
-          <select name="frage2" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-
-<form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage3">3. Soll Power-to-X-Technologie gefördert werden?</label>
-          <select name="frage3" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-<form method="get" action="auswertung.html">
-
-        <div class="contact-box">
-          <label for="frage4">4. Brauchen wir schnellere Genehmigungsverfahren?</label>
-          <select name="frage4" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-<form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage5">5. Sollte frühzeitig Informatik in Schulen unterrichtet werden?</label>
-          <select name="frage5" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-
-<form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage6">6. Soll die individuelle Leistung wieder stärker belohnt werden?</label>
-          <select name="frage6" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-
-<form method="get" action="auswertung.html">
-        <div class="contact-box">
-  
-          <label for="frage7">7. Soll Migration stärker gesteuert werden?</label>
-          <select name="frage7" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-  
-  <form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage8">8. Brauchen wir Technologieoffenheit in der Energiepolitik?</label>
-          <select name="frage8" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-  <form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage9">9. Soll Künstliche Intelligenz stärker gefördert werden?</label>
-          <select name="frage9" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-
-    <form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage10">10. Soll der ÖPNV effizienter statt teurer werden?</label>
-          <select name="frage10" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-
-      <form method="get" action="auswertung.html">
-
-        <div class="contact-box">
-          <label for="frage11">11. Sollte Wasserstoff eine stärkere Rolle in der Mobilität spielen?</label>
-          <select name="frage11" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-   
-<form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage12">12. Brauchen wir mehr unternehmerische Freiheit?</label>
-          <select name="frage12" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-  <form method="get" action="auswertung.html">
-
-        <div class="contact-box">
-          <label for="frage13">13. Soll das Ehrenamt steuerlich stärker gefördert werden?</label>
-          <select name="frage13" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-  <form method="get" action="auswertung.html">
-
-        <div class="contact-box">
-          <label for="frage14">14. Sollen Schulen mehr Entscheidungsspielraum erhalten?</label>
-          <select name="frage14" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-<form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage15">15. Soll Forschung stärker gefördert werden?</label>
-          <select name="frage15" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-<form method="get" action="auswertung.html">
-        <div class="contact-box">
-          <label for="frage16">16. Brauchen wir mehr politische Bildung an Schulen?</label>
-          <select name="frage16" required>
-            <option value="" disabled selected>Bitte wählen</option>
-            <option value="0">Nein</option>
-            <option value="1">Neutral</option>
-            <option value="2">Ja</option>
-          </select>
-        </div>
-     
       <div class="contact-box">
-    <button type="submit">Auswertung anzeigen</button>
-  </div>
+        <label for="frage1">1. Bürokratieabbau in Verwaltung und Behörden?</label>
+        <select name="frage1" id="frage1" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
 
-   <p class="info-text">
-        Hinweis: Ihre Antworten werden nur lokal gespeichert, um die Auswertung anzuzeigen.
-      </p>
-  </form>
+      <div class="contact-box">
+        <label for="frage2">2. Mehr bezahlbarer Wohnraum schaffen?</label>
+        <select name="frage2" id="frage2" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage3">3. Schulen digitaler ausstatten und digitaler Unterricht?</label>
+        <select name="frage3" id="frage3" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage4">4. Energiewende schneller vorantreiben?</label>
+        <select name="frage4" id="frage4" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage5">5. Ausbau von Radwegen und öffentlichem Nahverkehr?</label>
+        <select name="frage5" id="frage5" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage6">6. Förderungen für Startups und Innovationen ausbauen?</label>
+        <select name="frage6" id="frage6" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage7">7. Steuererleichterungen für Familien und Alleinerziehende?</label>
+        <select name="frage7" id="frage7" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage8">8. Mehr Investitionen in die Gesundheitsversorgung?</label>
+        <select name="frage8" id="frage8" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage9">9. Ausbau von Ganztagsschulen?</label>
+        <select name="frage9" id="frage9" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage10">10. Einführung eines landesweiten Mindestlohns?</label>
+        <select name="frage10" id="frage10" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage11">11. Ausbau erneuerbarer Energien in Landwirtschaft und Industrie?</label>
+        <select name="frage11" id="frage11" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage12">12. Verbesserter Schutz von Natur- und Landschaftsschutzgebieten?</label>
+        <select name="frage12" id="frage12" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage13">13. Erleichterte Genehmigungsverfahren für Bauvorhaben?</label>
+        <select name="frage13" id="frage13" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage14">14. Förderung von Elektroautos und Ladeinfrastruktur?</label>
+        <select name="frage14" id="frage14" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage15">15. Stärkere Unterstützung für Kulturschaffende und Vereine?</label>
+        <select name="frage15" id="frage15" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage16">16. Einführung eines landesweiten Klimaschutzgesetzes?</label>
+        <select name="frage16" id="frage16" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage17">17. Förderung von erneuerbarer Energie in Privathaushalten?</label>
+        <select name="frage17" id="frage17" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage18">18. Ausbau von Sprachförderprogrammen für Kinder?</label>
+        <select name="frage18" id="frage18" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage19">19. Förderung von beruflicher Weiterbildung und Umschulung?</label>
+        <select name="frage19" id="frage19" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage20">20. Verbesserung der Pflegebedingungen in Seniorenheimen?</label>
+        <select name="frage20" id="frage20" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage21">21. Einführung eines besseren Schutzes gegen Datenmissbrauch?</label>
+        <select name="frage21" id="frage21" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage22">22. Förderung von erneuerbaren Energien in Industrie und Gewerbe?</label>
+        <select name="frage22" id="frage22" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage23">23. Bessere Integration von Geflüchteten und Migranten?</label>
+        <select name="frage23" id="frage23" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="contact-box">
+        <label for="frage24">24. Ausbau von Sport- und Freizeitangeboten?</label>
+        <select name="frage24" id="frage24" required>
+          <option value="" disabled selected>Bitte wählen</option>
+          <option value="0">Nein</option>
+          <option value="1">Neutral</option>
+          <option value="2">Ja</option>
+        </select>
+      </div>
+
+      <div class="submit-wrapper">
+        <button type="submit">Auswertung anzeigen</button>
+      </div>
+
+    </form>
   </main>
-
-  <footer>
-    <p>Folgen Sie mir auf:</p>
-    <div class="social-links">
-      <a href="https://www.instagram.com/heschuhasan/" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-    <p>&copy; 2025 Heschu Hasan – FDP Baden-Württemberg</p>
+<footer>
+    &copy; 2025 Heschu Hasan - Wahl-O-Mat Baden-Württemberg
   </footer>
 
   <script>
@@ -341,5 +405,5 @@
     });
   </script>
 
-</body>
+  </body>
 </html>
