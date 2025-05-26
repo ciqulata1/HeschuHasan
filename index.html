@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Heschu Hasan</title>
-    <meta name="description" content="Heschu Hasan ist Direktkandidatin der FDP für Freiburg-Ost bei der Landtagswahl 2026. Informieren Sie sich über ihre Themen Umwelt, Bildung und Verwaltung." />
+    <title>Heschu Hasan - Wahlkreiskandidatin Freiburg - Ost - Wahlkreis 46</title>
+    <meta name="description" content="Heschu Hasan ist Direktkandidatin der FDP für Freiburg-Ost bei der Landtagswahl 2026." />
     <meta name="author" content="Heschu Hasan" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
     <style>
+        /* Hier exakt der gleiche CSS-Code wie in umwelt.html, den du gegeben hast */
         :root {
             --magenta: #e5007d;
             --yellow: #ffed00;
@@ -26,7 +27,6 @@
             color: var(--black);
         }
 
-        /* Skiplink für Screenreader und Tastaturnavigation */
         .skip-link {
             position: absolute;
             top: 10px;
@@ -147,7 +147,7 @@
         .subtopics {
             margin-top: 0.5rem;
             padding-left: 1rem;
-            display: none; /* Subtopics initially hidden */
+            display: none;
         }
 
         .topic-box[aria-expanded="true"] .subtopics {
@@ -251,23 +251,23 @@
     </div>
 
     <main id="main-content" class="content" tabindex="-1">
+        <!-- Beispiel Inhalt: Themen -->
         <section id="themen" aria-labelledby="themen-title">
             <h2 id="themen-title">Meine Themen</h2>
             <div class="topics">
                 <a class="topic-box" href="bildung.html">Bildung</a>
                 <a class="topic-box" href="umwelt.html">Umwelt</a>
-
                 <div class="topic-box" role="region" aria-labelledby="verwaltung-title" aria-expanded="false" tabindex="0" id="verwaltung-box">
                     <a href="wahlprogramm.html" id="verwaltung-title" aria-haspopup="true" aria-controls="verwaltung-subtopics" aria-expanded="false">Verwaltung</a>
                     <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
                         <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
                     </div>
                 </div>
-
                 <a class="topic-box" href="meinungsmacher.html">Meinungs-Macher</a>
             </div>
         </section>
 
+        <!-- Beispiel Inhalt: Kontakt -->
         <section id="kontakt" aria-labelledby="kontakt-title">
             <h2 id="kontakt-title">Kontaktformular</h2>
             <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain" aria-label="Kontaktformular">
@@ -286,19 +286,17 @@
     </main>
 
     <footer>
-    <p>Folgen Sie mir auf:</p>
-    <div class="social-links">
-      <a href="https://www.instagram.com/heschuhasan/" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-    <p>&copy; 2025 Heschu Hasan – FDP Baden-Württemberg</p>
-  </footer>
+        <p>Folgen Sie mir auf:</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/heschuhasan/" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 Heschu Hasan – FDP Baden-Württemberg</p>
+    </footer>
 
     <script>
-        // Verwaltung-Box: Aufklappbare Unterthemen für Tastatur und Screenreader
         const verwaltungBox = document.getElementById('verwaltung-box');
-        const verwaltungLink = document.getElementById('verwaltung-title');
         const subtopics = document.getElementById('verwaltung-subtopics');
 
         function toggleSubtopics() {
