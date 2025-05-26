@@ -1,155 +1,202 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Themenübersicht FDP Design</title>
-<style>
-  /* Farben */
-  :root {
-    --gelb: #ffed00;
-    --magenta: #e5007d;
-    --cyan: #009ee3;
-    --tuerkis: #00abae;
-    --violett: #a5027d;
-    --schwarz: #000000;
-    --weiss: #ffffff;
-  }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Umwelt – Heschu Hasan</title>
+    <meta name="description" content="Themen rund um Umwelt und Nachhaltigkeit von Heschu Hasan, FDP Freiburg-Ost." />
+    <meta name="author" content="Heschu Hasan" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --magenta: #e5007d;
+            --yellow: #ffed00;
+            --blue: #009ee3;
+            --light-blue: #00abae;
+            --violett: #a5027d;
+            --white: #ffffff;
+            --black: #000000;
+        }
 
-  /* Grundlegendes Styling */
-  body {
-    font-family: 'Futura Book', Arial, sans-serif;
-    background-color: var(--weiss);
-    color: var(--schwarz);
-    margin: 2rem;
-    letter-spacing: -0.05em; /* Laufweite ca -10 */
-  }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--black);
+        }
 
-  /* Überschrift - Headlines in Futura Bold Oblique, Versalien */
-  h1 {
-    font-family: 'Futura Bold Oblique', Arial, sans-serif;
-    text-transform: uppercase;
-    font-style: oblique;
-    font-weight: 700;
-    font-size: 2.5rem;
-    color: var(--schwarz);
-    letter-spacing: -0.05em;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
+        .skip-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--magenta);
+            color: var(--yellow);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1000;
+        }
 
-  /* Zwischenüberschriften in Futura Medium */
-  h2 {
-    font-family: 'Futura Medium', Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--magenta);
-    letter-spacing: -0.05em;
-  }
+        .skip-link:focus {
+            outline: 3px solid var(--yellow);
+            outline-offset: 2px;
+        }
 
-  /* Links */
-  a {
-    color: var(--magenta);
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+        header {
+            background-color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
 
-  /* Menü */
-  ul.topics {
-    list-style: none;
-    padding-left: 0;
-    max-width: 700px;
-    margin: 0 auto;
-  }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
 
-  ul.topics > li {
-    background-color: var(--gelb);
-    margin-bottom: 1rem;
-    padding: 1rem 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    font-family: 'Futura Medium', Arial, sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: var(--magenta);
-    letter-spacing: -0.05em;
-  }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
 
-  ul.topics > li:hover {
-    background-color: var(--magenta);
-    color: var(--gelb);
-    cursor: pointer;
-  }
+        nav ul li a:hover,
+        nav ul li a:focus {
+            background-color: var(--magenta);
+            color: var(--yellow);
+            outline: none;
+        }
 
-  ul.topics > li:hover a {
-    color: var(--gelb);
-  }
+        .title-banner {
+            background-color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--blue);
+            font-family: 'Futura', 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
 
-  /* Unterpunkte */
-  ul.subtopics {
-    margin-top: 0.5rem;
-    margin-left: 1.5rem;
-    list-style-type: none;
-    padding-left: 0;
-  }
+        .content {
+            max-width: 900px;
+            margin: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
 
-  ul.subtopics li {
-    background-color: var(--cyan);
-    margin-bottom: 0.5rem;
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    color: var(--weiss);
-    font-family: 'Futura Medium', Arial, sans-serif;
-    letter-spacing: normal;
-  }
+        h1, h2 {
+            font-family: 'Futura', 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            color: var(--blue);
+        }
 
-  ul.subtopics li a {
-    color: var(--weiss);
-  }
+        h2 {
+            background-color: var(--blue);
+            color: var(--white);
+            padding: 0.75rem;
+            border-radius: 5px;
+            text-align: center;
+            margin: 0;
+        }
 
-  ul.subtopics li:hover {
-    background-color: var(--tuerkis);
-  }
-</style>
+        p {
+            line-height: 1.5;
+            font-size: 1.1rem;
+            color: var(--black);
+        }
+
+        a.back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--magenta);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Futura', 'Inter', sans-serif;
+        }
+
+        a.back-link:hover,
+        a.back-link:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+
+        footer {
+            background-color: var(--blue);
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--white);
+            font-family: 'Futura', 'Inter', sans-serif;
+            letter-spacing: -0.05em;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        footer a {
+            color: var(--yellow);
+            text-decoration: none;
+        }
+
+        footer a:hover,
+        footer a:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+    </style>
 </head>
+
 <body>
-  <h1>THEMENÜBERSICHT</h1>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 
-  <ul class="topics">
-    <li>
-      <a href="umwelt.html">ERNEUERBARE ENERGIEN</a>
-      <ul class="subtopics">
-        <li><a href="umweltallgemein.html">Allgemein</a></li>
-        <li><a href="umweltwindkraft.html">Windkraft</a></li>
-        <li><a href="umweltpower.html">Power to X</a></li>
-      </ul>
-    </li>
+    <header role="banner" aria-label="Hauptnavigation">
+        <nav role="navigation" aria-label="Hauptmenü">
+            <ul>
+                <li><a href="index.html#start">Start</a></li>
+                <li><a href="index.html#themen">Themen</a></li>
+                <li><a href="index.html#kontakt">Kontakt</a></li>
+                <li><a href="impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <li>
-      <a href="fossile.html">TÜCKEN DER FOSSILEN BRENNSTOFFE</a>
-      <ul class="subtopics">
-        <li><a href="fossileallgemein.html">Allgemein</a></li>
-        <li><a href="gaskraftwerke.html">Gaskraftwerke</a></li>
-        <li><a href="kohlekraftwerke.html">Kohlekraftwerke</a></li>
-      </ul>
-    </li>
+    <div class="title-banner" role="heading" aria-level="1" tabindex="0">
+        Umwelt
+    </div>
 
-    <li>
-      <a href="stellungnahmen.html">STELLUNGNAHMEN</a>
-    </li>
-  </ul>
-</body>
-</html>
+    <main id="main-content" class="content" tabindex="-1">
+        <h2>Unsere Umwelt schützen – Für eine nachhaltige Zukunft</h2>
+        <p>
+            Als Direktkandidatin der FDP für Freiburg-Ost setze ich mich besonders für den Schutz unserer Umwelt ein.
+            Dabei sind mir nachhaltige Konzepte, erneuerbare Energien und der verantwortungsvolle Umgang mit Ressourcen wichtig.
+        </p>
+        <p>
+            Mein Fokus liegt auf Innovationen wie Power-to-X-Technologien, um die Energiewende voranzutreiben, schnellere Genehmigungsverfahren für nachhaltige Projekte und Förderung von Bildung im Umweltbereich.
+        </p>
+        <p>
+            Gemeinsam können wir Freiburg fit machen für die Zukunft – ökologisch, wirtschaftlich und sozial.
+        </p>
 
+        <a href="index.html#themen" class="back-link" aria-label="Zurück zur Themenübersicht">← Zurück zur Themenübersicht</a>
+    </main>
 
- 
-
-        <section class="external-links">
+   <section class="external-links">
             <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .2 2.5.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.5.3 1.3.4 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 2-.4 2.5-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.5.2-1.3.3-2.5.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.2-2.5-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.5-.3-1.3-.4-2.5-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-2 .4-2.5.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.5-.2 1.3-.3 2.5-.4C8.4 2.2 8.8 2.2 12 2.2zm0-2.2C8.7 0 8.3 0 7 .1 5.6.1 4.6.3 3.8.6 3 .9 2.2 1.3 1.5 2 .8 2.7.4 3.5.1 4.3 0 5.2-.1 6.2-.1 7.6 0 9 .1 9.4.1 12c0 2.6 0 3 0 4.4-.1 1.4-.1 1.8-.1 4.4 0 1.4.1 2.4.2 3.2.3.8.6 1.6 1.3 2.3.7.7 1.5 1.1 2.3 1.4.8.2 1.8.3 3.2.3 1.4.1 1.8.1 4.4.1s3-.1 4.4-.1c1.4 0 2.4-.1 3.2-.3.8-.3 1.6-.6 2.3-1.3.7-.7 1.1-1.5 1.4-2.3.2-.8.3-1.8.3-3.2.1-1.4.1-1.8.1-4.4s0-3-.1-4.4c0-1.4-.1-2.4-.3-3.2-.3-.8-.6-1.6-1.3-2.3-.7-.7-1.5-1.1-2.3-1.4-.8-.2-1.8-.3-3.2-.3zM12 5.8a6.2 6.2 0 1 0 6.2 6.2A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.4-11.7a1.4 1.4 0 1 1-1.4-1.4 1.4 1.4 0 0 1 1.4 1.4z"/>
@@ -190,3 +237,6 @@
 </body>
 
 </html>
+
+
+
