@@ -4,12 +4,6 @@
   <meta charset="UTF-8" />
   <title>Impressum – Heschu Hasan</title>
   <style>
-    :root {
-      --cyan: #009ee3;
-      --turquoise: #00abae;
-      --magenta: #e5007d;
-    }
-
     @font-face {
       font-family: 'Futura Bold Oblique';
       src: url('FuturaBoldOblique.woff2') format('woff2');
@@ -21,6 +15,12 @@
     @font-face {
       font-family: 'Futura Book';
       src: url('FuturaBook.woff2') format('woff2');
+    }
+
+    :root {
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --magenta: #e5007d;
     }
 
     body {
@@ -118,7 +118,7 @@
     footer {
       background: var(--cyan);
       color: white;
-      padding: 2rem;
+      padding: 4rem; /* mehr padding */
       text-align: center;
       font-size: 1rem;
       margin-top: 4rem;
@@ -137,20 +137,22 @@
       align-items: center;
     }
 
+    .social-links a svg {
+      fill: white !important;
+      width: 32px;
+      height: 32px;
+    }
+
     .social-links a:hover {
       color: var(--turquoise);
     }
 
-    .social-links svg {
-      fill: currentColor;
-      width: 24px;
-      height: 24px;
-      transition: fill 0.3s ease;
-    }
-
     .info-text {
-      color: var(--magenta);
+      color: white;
       margin-top: 2rem;
+      font-family: 'Futura Medium', sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -200,7 +202,7 @@
     <div class="info-text">Folgen Sie mir auf Instagram</div>
     <div class="social-links">
       <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram Profil von Heschu Hasan">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="white" width="32" height="32">
           <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5c3.176 0 5.75-2.574 5.75-5.75v-8.5C22 4.574 19.426 2 16.25 2h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm5.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
         </svg>
       </a>
