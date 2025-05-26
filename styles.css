@@ -226,6 +226,7 @@ flex-wrap: wrap;
   box-sizing: border-box;
 }
 
+
 h1, h2, p, ul, li, button.accordion {
   color: white;
   font-family: 'Great Vibes', cursive;
@@ -332,6 +333,7 @@ nav {
 }
 
 
+
 /* Wrapper-Stil */
 .wrapper {
   background-color: #3a3a3a; /* etwas helleres Anthrazit als Body */
@@ -408,8 +410,6 @@ a {
 nav {
   position: relative;
 }
-
-
 
 /* Wrapper-Stil */
 .wrapper {
