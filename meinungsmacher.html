@@ -3,15 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Meinungs-Macher - Heschu Hasan</title>
-
-<!-- FontAwesome für Icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+<title>Bildungsthemen mit Fragen - Heschu Hasan</title>
 
 <style>
   :root {
@@ -42,16 +34,10 @@
     font-size: 2rem;
     letter-spacing: 1px;
     flex-shrink: 0;
-    position: relative;
-  }
-
-  header h1 {
-    color: var(--black);
-    margin: 0 0 0.8rem 0;
   }
 
   nav {
-    margin-top: 0;
+    margin-top: 0.5rem;
     display: flex;
     justify-content: center;
     gap: 1.5rem;
@@ -72,7 +58,7 @@
 
   main {
     padding: 2rem 1rem;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     flex-grow: 1;
   }
@@ -83,58 +69,77 @@
     font-size: 2rem;
     margin-bottom: 0.5rem;
     color: var(--magenta);
+    text-align: center;
   }
 
   h3 {
-    font-family: 'Calibri Regular', sans-serif;
-    font-weight: 400;
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    color: var(--black);
-  }
-
-  .question {
-    background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--black);
-    font-family: 'Calibri Regular', sans-serif;
-    font-weight: 400;
-  }
-
-  .answers label {
-    display: inline-block;
-    margin-right: 1.2rem;
-    margin-top: 0.5rem;
-    cursor: pointer;
-    font-family: 'Calibri Light', sans-serif;
-    font-weight: 300;
-    color: var(--black);
-  }
-
-  .answers input {
-    margin-right: 0.4rem;
-  }
-
-  button[type="submit"] {
-    background-color: var(--magenta);
-    color: var(--yellow);
-    padding: 0.9rem 2rem;
-    border: none;
-    border-radius: 10px;
     font-family: 'Calibri Bold', sans-serif;
     font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: block;
-    margin: 2rem auto 0;
-    max-width: 220px;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--magenta);
   }
 
-  button[type="submit"]:hover {
-    filter: brightness(90%);
+  p.description {
+    font-family: 'Calibri Regular', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+  }
+
+  form {
+    border: 2px solid var(--magenta);
+    border-radius: 12px;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 700;
+    font-family: 'Calibri Bold', sans-serif;
+    color: var(--magenta);
+  }
+
+  input[type="text"],
+  textarea {
+    margin-top: 0.3rem;
+    padding: 0.5rem;
+    width: 100%;
+    font-family: 'Calibri', sans-serif;
+    font-size: 1rem;
+    border: 1.5px solid var(--magenta);
+    border-radius: 6px;
+    resize: vertical;
+  }
+
+  textarea {
+    min-height: 80px;
+  }
+
+  button {
+    margin-top: 1.5rem;
+    background-color: var(--magenta);
+    color: var(--white);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    font-weight: 700;
+    font-family: 'Calibri Bold', sans-serif;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover,
+  button:focus {
+    background-color: #b30062;
+    outline: none;
   }
 
   footer {
@@ -147,31 +152,15 @@
     font-weight: 400;
   }
 
-  footer h3 {
-    margin-top: 0;
-    font-weight: 400;
-    font-size: 1.1rem;
-  }
-
-  .social-links a {
-    color: var(--white);
-    margin: 0 0.6rem;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-  }
-
-  .social-links a:hover {
-    color: var(--magenta);
-  }
-
+  /* Responsive */
   @media (max-width: 600px) {
     nav {
       flex-direction: column;
       gap: 0.5rem;
     }
-    .answers label {
-      display: block;
-      margin: 0.5rem 0;
+
+    form {
+      width: 100%;
     }
   }
 </style>
@@ -181,73 +170,101 @@
   <h1>HESCHU HASAN</h1>
   <nav>
     <a href="index.html">Startseite</a>
-    <a href="bildung.html">Bildung</a>
+    <a href="bildung.html" class="active">Bildung</a>
     <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
 
 <main>
-  <h2>Meinungs-Macher</h2>
-  <h3>Beantworten Sie 21 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
+  <h2>Meine Bildungsthemen</h2>
+  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren und Ihre Meinung zu teilen.</h3>
 
-  <form id="quizForm" method="GET" action="auswertung.html" novalidate>
-    <div id="questions"></div>
-    <button type="submit">Auswertung anzeigen</button>
-  </form>
+  <!-- Frühkindliche Bildung -->
+  <section>
+    <h3>Frühkindliche Bildung</h3>
+    <p class="description">Förderung frühzeitiger Bildung und Entwicklungsmöglichkeiten.</p>
+    <form aria-label="Frühkindliche Bildung Fragen">
+      <label for="frage1-fk">Wie wichtig ist Ihnen die frühkindliche Bildung?</label>
+      <textarea id="frage1-fk" name="frage1-fk" placeholder="Ihre Antwort hier..."></textarea>
+
+      <label for="frage2-fk">Welche Maßnahmen sollten Ihrer Meinung nach frühkindliche Bildung verbessern?</label>
+      <textarea id="frage2-fk" name="frage2-fk" placeholder="Ihre Antwort hier..."></textarea>
+
+      <button type="submit">Antwort absenden</button>
+    </form>
+  </section>
+
+  <!-- Digitale Bildung -->
+  <section>
+    <h3>Digitale Bildung</h3>
+    <p class="description">Integration moderner Technologien in den Schulalltag.</p>
+    <form aria-label="Digitale Bildung Fragen">
+      <label for="frage1-db">Welche digitalen Technologien halten Sie für unverzichtbar im Unterricht?</label>
+      <textarea id="frage1-db" name="frage1-db" placeholder="Ihre Antwort hier..."></textarea>
+
+      <label for="frage2-db">Wie sollte die digitale Bildung in Ihrer Region verbessert werden?</label>
+      <textarea id="frage2-db" name="frage2-db" placeholder="Ihre Antwort hier..."></textarea>
+
+      <button type="submit">Antwort absenden</button>
+    </form>
+  </section>
+
+  <!-- Lehrerbildung & Fortbildung -->
+  <section>
+    <h3>Lehrerbildung &amp; Fortbildung</h3>
+    <p class="description">Qualitätssteigerung durch bessere Ausbildung und Weiterbildung.</p>
+    <form aria-label="Lehrerbildung und Fortbildung Fragen">
+      <label for="frage1-lf">Welche Fortbildungsangebote würden Sie Lehrkräften empfehlen?</label>
+      <textarea id="frage1-lf" name="frage1-lf" placeholder="Ihre Antwort hier..."></textarea>
+
+      <label for="frage2-lf">Was sind Ihrer Meinung nach die größten Herausforderungen in der Lehrerbildung?</label>
+      <textarea id="frage2-lf" name="frage2-lf" placeholder="Ihre Antwort hier..."></textarea>
+
+      <button type="submit">Antwort absenden</button>
+    </form>
+  </section>
+
+  <!-- Schulfinanzierung -->
+  <section>
+    <h3>Schulfinanzierung</h3>
+    <p class="description">Faire und nachhaltige Finanzierung der Bildungseinrichtungen.</p>
+    <form aria-label="Schulfinanzierung Fragen">
+      <label for="frage1-sf">Wie sollte die Schulfinanzierung Ihrer Meinung nach verbessert werden?</label>
+      <textarea id="frage1-sf" name="frage1-sf" placeholder="Ihre Antwort hier..."></textarea>
+
+      <label for="frage2-sf">Welche Prioritäten sollten bei der Verwendung von Mitteln gesetzt werden?</label>
+      <textarea id="frage2-sf" name="frage2-sf" placeholder="Ihre Antwort hier..."></textarea>
+
+      <button type="submit">Antwort absenden</button>
+    </form>
+  </section>
+
+  <!-- Inklusion & Chancengleichheit -->
+  <section>
+    <h3>Inklusion &amp; Chancengleichheit</h3>
+    <p class="description">Bildung für alle, unabhängig von Herkunft und Fähigkeiten.</p>
+    <form aria-label="Inklusion und Chancengleichheit Fragen">
+      <label for="frage1-ic">Welche Schritte sind notwendig, um Chancengleichheit an Schulen zu fördern?</label>
+      <textarea id="frage1-ic" name="frage1-ic" placeholder="Ihre Antwort hier..."></textarea>
+
+      <label for="frage2-ic">Wie kann die Inklusion von Kindern mit besonderen Bedürfnissen besser umgesetzt werden?</label>
+      <textarea id="frage2-ic" name="frage2-ic" placeholder="Ihre Antwort hier..."></textarea>
+
+      <button type="submit">Antwort absenden</button>
+    </form>
+  </section>
+
 </main>
 
 <footer>
-  <h3>Folgen Sie Sie mir auf den Sozialen Medien</h3>
+  <h3>Folgen Sie mir auf den Sozialen Medien</h3>
   <div class="social-links">
     <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;fill:#fff;" viewBox="0 0 24 24"><path d="M7.75 2C4.48 2 2 4.48 2 7.75v8.5C2 19.52 4.48 22 7.75 22h8.5c3.27 0 5.75-2.48 5.75-5.75v-8.5C22 4.48 19.52 2 16.25 2h-8.5zM20 16.25c0 1.8-1.45 3.25-3.25 3.25h-8.5c-1.8 0-3.25-1.45-3.25-3.25v-8.5c0-1.8 1.45-3.25 3.25-3.25h8.5c1.8 0 3.25 1.45 3.25 3.25v8.5zm-10.25-5.75A3.25 3.25 0 1 1 13 13.75 3.25 3.25 0 0 1 9.75 10.5zm0 5.5A2.25 2.25 0 1 0 7.5 13.75a2.25 2.25 0 0 0 2.25 2.25zm4.88-7.72a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z"/></svg>
     </a>
   </div>
 </footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const questions = [
-      "Soll der Ausbau von Power-to-X-Technologien staatlich stärker gefördert werden?",
-      "Sollen Genehmigungsverfahren für neue Technologien schneller ablaufen?",
-      "Soll Informatik Pflichtfach ab der Grundschule sein?",
-      "Soll die Schulpflicht um digitale Kompetenzen erweitert werden?",
-      "Soll der öffentliche Nahverkehr kostenlos sein?",
-      "Sollten alle Neubauten Solaranlagen erhalten müssen?",
-      "Sollten Steuern auf klimaschädliche Produkte erhöht werden?",
-      "Sollte das Wahlalter auf 16 Jahre gesenkt werden?",
-      "Soll ein bedingungsloses Grundeinkommen eingeführt werden?",
-      "Soll mehr Geld in Bildung statt in Verteidigung investiert werden?",
-      "Soll ein Tempolimit von 120 km/h auf Autobahnen eingeführt werden?",
-      "Soll die Polizei mit Bodycams ausgestattet werden?",
-      "Soll Deutschland mehr Geflüchtete aufnehmen?",
-      "Sollte Cannabis legalisiert werden?",
-      "Soll die Maskenpflicht in Pflegeheimen dauerhaft bleiben?",
-      "Soll das Gendern in der Sprache staatlich gefördert werden?",
-      "Soll der ländliche Raum stärker digitalisiert werden?",
-      "Sollte Bargeld abgeschafft werden?",
-      "Sollten Politikergehälter an den Mindestlohn gekoppelt werden?",
-      "Soll die Grundsteuer reformiert werden?",
-      "Soll ein verpflichtendes Klimaschutzjahr für Schulabgänger eingeführt werden?"
-    ];
-
-    const questionContainer = document.getElementById("questions");
-
-    questions.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.innerHTML = `
-        <p><strong>${i + 1}. ${q}</strong></p>
-        <div class="answers">
-          <label><input type="radio" name="q${i}" value="1" required /> Stimme zu</label>
-          <label><input type="radio" name="q${i}" value="0" /> Neutral</label>
-          <label><input type="radio" name="q${i}" value="-1" /> Lehne ab</label>
-        </div>`;
-      questionContainer.appendChild(div);
-    });
-  });
-</script>
 </body>
 </html>
