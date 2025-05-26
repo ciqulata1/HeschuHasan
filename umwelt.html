@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Umwelt – Heschu Hasan</title>
 
-  <!-- Favicons (kannst du anpassen oder übernehmen) -->
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/IMG_2073.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/IMG_2075.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/IMG_2077.png">
@@ -13,151 +13,310 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <!-- Externe CSS-Datei -->
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --magenta: #e5007d;
+      --yellow: #ffed00;
+      --blue: #009ee3;
+      --light-blue: #00abae;
+      --violett: #a5027d;
+      --white: #ffffff;
+      --black: #000000;
+
+      --font-main: Arial, sans-serif;
+      --font-accent: 'Great Vibes', cursive;
+    }
+
+    /* Basisreset & Box-sizing */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    header {
+      border-bottom: 2px solid var(--magenta);
+      margin-bottom: 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .burger {
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--magenta);
+      display: none; /* nur mobil sichtbar */
+    }
+
+    ul.nav-list, ul.nav-list-burger {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1rem;
+    }
+
+    ul.nav-list li a,
+    ul.nav-list-burger li a {
+      text-decoration: none;
+      color: var(--magenta);
+      font-weight: bold;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    ul.nav-list li a:hover,
+    ul.nav-list-burger li a:hover,
+    ul.nav-list li a.active,
+    ul.nav-list-burger li a.active {
+      background-color: var(--magenta);
+      color: var(--white);
+    }
+
+    /* Mobile Menü */
+    ul.nav-list-burger {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 2.5rem;
+      right: 0;
+      background: var(--white);
+      border: 2px solid var(--magenta);
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 180px;
+      z-index: 100;
+    }
+
+    ul.nav-list-burger.active {
+      display: flex;
+    }
+
+    /* Sichtbar bei max 768px */
+    @media (max-width: 768px) {
+      .burger {
+        display: block;
+      }
+      ul.nav-list {
+        display: none;
+      }
+    }
+
+    main {
+      flex: 1;
+    }
+
+    h1 {
+      font-family: var(--font-accent);
+      color: var(--magenta);
+      font-size: 2.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    h2 {
+      font-family: var(--font-main);
+      color: var(--blue);
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Unternavigation für Umwelt-Seite */
+    nav.subnav {
+      margin: 1rem 0 2rem;
+      border-bottom: 2px solid var(--magenta);
+    }
+
+    nav.subnav ul {
+      display: flex;
+      gap: 1rem;
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    nav.subnav ul li a {
+      color: var(--violett);
+      font-weight: 600;
+      text-decoration: none;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    nav.subnav ul li a:hover,
+    nav.subnav ul li a.active {
+      border-bottom-color: var(--magenta);
+      color: var(--magenta);
+    }
+
+    footer {
+      border-top: 2px solid var(--magenta);
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--magenta);
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <div class="wrapper">
     <header>
-      <nav>
+      <nav aria-label="Hauptnavigation">
         <button class="burger" aria-label="Menü öffnen">&#9776;</button>
 
-        <!-- Desktop Menü -->
         <ul class="nav-list">
-          <li><a href="#" data-page="index.html">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html" class="active">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="umwelt.html" class="active">Umwelt</a></li>
+          <li><a href="bildung.html">Bildung</a></li>
+          <li><a href="biografie.html">Biografie</a></li>
+          <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
         </ul>
 
-        <!-- Mobile Menü -->
-        <ul class="nav-list-burger">
-          <li><a href="#" data-page="index.html">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html" class="active">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
+        <ul class="nav-list-burger" aria-label="Mobiles Menü">
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="umwelt.html" class="active">Umwelt</a></li>
+          <li><a href="bildung.html">Bildung</a></li>
+          <li><a href="biografie.html">Biografie</a></li>
+          <li><a href="wahlprogramm.html">Wahlprogramm</a></li>
         </ul>
       </nav>
     </header>
 
-    <main id="content">
-      <section>
-        <h1>Umweltpolitik: Zukunft gestalten mit Power-to-X</h1>
+    <!-- Unternavigation Umwelt -->
+    <nav class="subnav" aria-label="Unternavigation Umwelt">
+      <ul>
+        <li><a href="#allgemein" class="active">Allgemein</a></li>
+        <li><a href="#aktuelles">Aktuelles</a></li>
+        <li><a href="#meine-vorschlaege">Meine Vorschläge</a></li>
+        <li><a href="#wahlkampf-szenerie">Wahlkampf Szenerie</a></li>
+      </ul>
+    </nav>
 
+    <main id="content">
+      <section id="allgemein">
+        <h1>Umweltpolitik: Zukunft gestalten mit Power-to-X</h1>
         <p>
           Die Energiewende darf nicht zum Rückschritt werden. <strong>Power-to-X-Technologien</strong> sind der Schlüssel, um erneuerbare Energien effizient zu speichern und flexibel nutzbar zu machen. Sie ermöglichen die Transformation von überschüssigem Strom in Wasserstoff, synthetische Kraftstoffe oder Wärme – und das nachhaltig und skalierbar.
         </p>
-
         <p>
           Ich lehne Gaskraftwerke als Übergangslösung strikt ab. Sie sind eine Sackgasse, die uns an fossilen Mustern festhalten lässt, anstatt echten Fortschritt zu ermöglichen. <strong>Erneuerbar heißt auch: weg von alten Technologien und Investitionen, die unsere Zukunft blockieren.</strong>
         </p>
-
         <p>
           Nur mit konsequenter Förderung und Investition in innovative Technologien schaffen wir eine stabile, saubere und wirtschaftlich starke Energieversorgung, die auch zukünftigen Generationen gerecht wird.
         </p>
+      </section>
 
+      <section id="aktuelles">
+        <h2>Energiepolitik zwischen Anspruch und Realität</h2>
+        <p>
+          Als überzeugte Liberale, Wirtschaftswissenschaftlerin und Kandidatin der Freien Demokraten sehe ich es als meine Aufgabe, politische Entscheidungen nicht nur kurzfristig zu betrachten, sondern sie im Lichte einer langfristigen, marktwirtschaftlich fundierten und bürgernahen Perspektive zu bewerten.
+        </p>
+        <p>
+          Die Diskussion um den Neubau und die staatliche Förderung von Gaskraftwerken ist derzeit intensiv. Es wäre jedoch zu einfach, die Positionen innerhalb der politischen Landschaft als bloß rückwärtsgewandt zu interpretieren. Auch innerhalb der FDP wird diese Frage differenziert diskutiert – aus Verantwortung heraus, Versorgungssicherheit zu gewährleisten und Preisstabilität zu ermöglichen.
+        </p>
+      </section>
 
-          <h1>Zwischen Marktwirtschaft und Verantwortung: Warum wir mehr als Gaskraftwerke brauchen</h1>
+      <section id="meine-vorschlaege">
+        <h2>Technologische Rückschritte vermeiden – Innovation ermöglichen</h2>
+        <p>
+          Dass fossile Energieträger überhaupt noch eine Rolle spielen müssen, ist weniger Ausdruck ideologischer Verhaftung als vielmehr das Resultat eines enormen energiepolitischen und strukturellen Drucks, unter dem Deutschland aktuell steht.
+        </p>
+        <p>
+          Doch gerade in Zeiten des Wandels braucht es Stimmen, die nicht nur mit dem Strom schwimmen, sondern an die Kraft der Prinzipien glauben: an die ordnungspolitische Klarheit einer echten, sozialen Marktwirtschaft – im Sinne Ludwig Erhards. Für mich ist klar: Nachhaltige Energiepolitik darf nicht zu einem milliardenschweren Subventionsprogramm für gestrige Technologien verkommen. Der Staat darf nicht zum Planer einer fossilen Infrastruktur werden, deren Nutzen bereits bei Inbetriebnahme zweifelhaft ist.
+        </p>
+      </section>
 
-<h2>Energiepolitik zwischen Anspruch und Realität</h2>
-<p>
-Als überzeugte Liberale, Wirtschaftswissenschaftlerin und Kandidatin der Freien Demokraten sehe ich es als meine Aufgabe, politische Entscheidungen nicht nur kurzfristig zu betrachten, sondern sie im Lichte einer langfristigen, marktwirtschaftlich fundierten und bürgernahen Perspektive zu bewerten.
-</p>
-<p>
-Die Diskussion um den Neubau und die staatliche Förderung von Gaskraftwerken ist derzeit intensiv. Es wäre jedoch zu einfach, die Positionen innerhalb der politischen Landschaft als bloß rückwärtsgewandt zu interpretieren. Auch innerhalb der FDP wird diese Frage differenziert diskutiert – aus Verantwortung heraus, Versorgungssicherheit zu gewährleisten und Preisstabilität zu ermöglichen.
-</p>
-
-<h2>Technologische Rückschritte vermeiden – Innovation ermöglichen</h2>
-<p>
-Dass fossile Energieträger überhaupt noch eine Rolle spielen müssen, ist weniger Ausdruck ideologischer Verhaftung als vielmehr das Resultat eines enormen energiepolitischen und strukturellen Drucks, unter dem Deutschland aktuell steht.
-</p>
-<p>
-Doch gerade in Zeiten des Wandels braucht es Stimmen, die nicht nur mit dem Strom schwimmen, sondern an die Kraft der Prinzipien glauben: an die ordnungspolitische Klarheit einer echten, sozialen Marktwirtschaft – im Sinne Ludwig Erhards. Für mich ist klar: Nachhaltige Energiepolitik darf nicht zu einem milliardenschweren Subventionsprogramm für gestrige Technologien verkommen. Der Staat darf nicht zum Planer einer fossilen Infrastruktur werden, deren Nutzen bereits bei Inbetriebnahme zweifelhaft ist.
-</p>
-
-<h2>Marktwirtschaft braucht einen glaubwürdigen Ordnungsrahmen</h2>
-<p>
-Was wir stattdessen brauchen, ist ein glaubwürdiger Ordnungsrahmen, der Innovation ermöglicht, Unternehmertum belohnt und ökologische wie ökonomische Verantwortung vereint. Eine Energiepolitik, die technologieoffen ist, aber nicht technologie-naiv. Die Wettbewerbsmechanismen stärkt, anstatt sie durch bürokratische Steuerung oder politisch motivierte Einzelinteressen zu unterwandern.
-</p>
-<p>
-Es ist unsere Aufgabe als Freie Demokraten, diesen Rahmen mitzugestalten – nicht als Bremser, sondern als Ermöglicher.
-</p>
-
-<h2>Eine liberale Stimme mit Rückgrat</h2>
-<p>
-Ich stehe für eine FDP, die marktwirtschaftlich denkt, liberal handelt und moralisch handelt. Eine FDP, die sich nicht von kurzfristigen Sachzwängen treiben lässt, sondern mit Augenmaß und Rückgrat nach vorne denkt – mit dem Bürger im Blick, mit dem Portemonnaie des Bürgers im Blick, und mit der Verpflichtung, öffentliche Mittel klug und zukunftsorientiert einzusetzen.
-</p>
-<p>
-Eine starke Stimme für Innovation, für Gerechtigkeit in der Verwaltung, für ein faires Miteinander von Markt und Moral. Denn nur so schaffen wir eine Energiepolitik, die nicht nur technisch funktioniert, sondern auch politisch und gesellschaftlich trägt.
-</p>
-
-
-      
+      <section id="wahlkampf-szenerie">
+        <h2>Marktwirtschaft braucht einen glaubwürdigen Ordnungsrahmen</h2>
+        <p>
+          Was wir stattdessen brauchen, ist ein glaubwürdiger Ordnungsrahmen, der Innovation ermöglicht, Unternehmertum belohnt und ökologische wie ökonomische Verantwortung vereint. Eine Energiepolitik, die technologieoffen ist, aber nicht technologie-naiv. Die Wettbewerbsmechanismen stärkt, anstatt sie durch bürokratische Steuerung oder politisch motivierte Einzelinteressen zu unterwandern.
+        </p>
+        <p>
+          Es ist unsere Aufgabe als Freie Demokraten, diesen Rahmen mitzugestalten – nicht als Bremser, sondern als Ermöglicher.
+        </p>
+        <h2>Eine liberale Stimme mit Rückgrat</h2>
+        <p>
+          Ich stehe für eine FDP, die marktwirtschaftlich denkt, liberal handelt und moralisch handelt. Eine FDP, die sich nicht von kurzfristigen Sachzwängen treiben lässt, sondern mit Augenmaß und Rückgrat nach vorne denkt – mit dem Bürger im Blick, mit dem Portemonnaie des Bürgers im Blick, und mit der Verpflichtung, öffentliche Mittel klug und zukunftsorientiert einzusetzen.
+        </p>
+        <p>
+          Eine starke Stimme für Innovation, für Gerechtigkeit in der Verwaltung, für ein faires Miteinander von Markt und Moral. Denn nur so schaffen wir eine Energiepolitik, die nicht nur technisch funktioniert, sondern auch politisch und gesellschaftlich trägt.
+        </p>
+      </section>
     </main>
 
     <footer>
       <p>&copy; 2025 Heschu Hasan</p>
     </footer>
 
-    <script>
-      // Accordion (falls gewünscht, hier leer)
+  </div>
 
-      // Dynamisches Nachladen der Seiten (Navigation)
-      function setupNavigation() {
-        const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
-        const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
-        const navBurger = document.querySelector('.nav-list-burger');
+  <script>
+    // Burger Menü Toggle
+    const burger = document.querySelector('.burger');
+    const navBurger = document.querySelector('.nav-list-burger');
 
-        function loadPage(e) {
-          e.preventDefault();
-          const page = this.getAttribute('data-page');
-          if (!page) return;
+    burger.addEventListener('click', () => {
+      navBurger.classList.toggle('active');
+    });
 
-          fetch(page)
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
-              document.getElementById('content').innerHTML = newContent;
+    // Aktivität in Unternavigation (Scrollspy-like)
+    const subnavLinks = document.querySelectorAll('nav.subnav ul li a');
+    const sections = [...document.querySelectorAll('main section')];
 
-              // Menü schließen bei mobile
-              navBurger.classList.remove('active');
+    function onScroll() {
+      const scrollPos = window.scrollY + 100; // Offset für Sichtbarkeit
+      let currentId = sections[0].id;
 
-              // Aktiven Menüpunkt synchron setzen
-              navLinksDesktop.forEach(a => a.classList.remove('active'));
-              navLinksMobile.forEach(a => a.classList.remove('active'));
-
-              navLinksDesktop.forEach(a => {
-                if (a.getAttribute('data-page') === page) a.classList.add('active');
-              });
-              navLinksMobile.forEach(a => {
-                if (a.getAttribute('data-page') === page) a.classList.add('active');
-              });
-            })
-            .catch(err => {
-              console.error('Fehler beim Laden:', err);
-              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
-            });
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPos) {
+          currentId = section.id;
         }
-
-        navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
-        navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
       }
 
-      // Burger-Menü Toggle
-      const burger = document.querySelector('.burger');
-      const navBurger = document.querySelector('.nav-list-burger');
-
-      burger.addEventListener('click', () => {
-        navBurger.classList.toggle('active');
+      subnavLinks.forEach(link => {
+        if (link.getAttribute('href') === '#' + currentId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
       });
+    }
 
-      // Initialisierung
-      setupNavigation();
-    </script>
-  </div>
+    window.addEventListener('scroll', onScroll);
+  </script>
 </body>
 </html>
