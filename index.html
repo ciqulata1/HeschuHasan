@@ -143,37 +143,47 @@
     outline: none;
   }
 
-  /* Verwaltung mit Unterthemen */
-  .topic-box[aria-expanded="true"] {
-    background-color: var(--magenta);
-    color: var(--turquoise);
-    border-color: var(--magenta);
+  /* Verwaltung Subtopics */
+  .topic-box[aria-expanded="false"] .subtopics {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    display: block;
   }
+  .topic-box[aria-expanded="true"] .subtopics {
+    max-height: 500px; /* groß genug für den Inhalt */
+  }
+
   .subtopics {
     margin-top: 15px;
-    display: none;
+    display: block;
     flex-direction: column;
     gap: 10px;
   }
-  .topic-box[aria-expanded="true"] .subtopics {
-    display: flex;
-  }
+
   .subtopics a {
-    color: var(--cyan);
-    border: 2px solid var(--cyan);
+    background-color: #ffffff;
+    color: var(--turquoise);
+    border: 2px solid var(--turquoise);
     padding: 10px;
     border-radius: 5px;
     font-size: 1rem;
     font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: none;
     letter-spacing: normal;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    display: block;
+    width: fit-content;
   }
   .subtopics a:hover,
   .subtopics a:focus {
-    border-color: var(--magenta);
     background-color: var(--magenta);
-    color: var(--turquoise);
+    color: var(--white);
+    border-color: var(--magenta);
     outline: none;
   }
 
@@ -331,19 +341,19 @@
 </footer>
 
 <script>
-  // Einfacher Toggle für Verwaltung Unterthemen
   const verwaltungBox = document.getElementById('verwaltung-box');
-  const verwaltungSubs = document.getElementById('verwaltung-subtopics');
-  verwaltungBox.addEventListener('click', () => {
+
+  function toggleVerwaltung() {
     const expanded = verwaltungBox.getAttribute('aria-expanded') === 'true';
     verwaltungBox.setAttribute('aria-expanded', !expanded);
-    verwaltungSubs.style.display = expanded ? 'none' : 'flex';
-  });
-  // Auch mit Enter/Space aktivierbar
+  }
+
+  verwaltungBox.addEventListener('click', toggleVerwaltung);
+
   verwaltungBox.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      verwaltungBox.click();
+      toggleVerwaltung();
     }
   });
 </script>
