@@ -87,7 +87,6 @@
 
   main h2 {
     color: var(--black);
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 20px;
@@ -122,7 +121,7 @@
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-weight: 300;
+    font-weight: bold;
     font-size: 1.1rem;
     border-radius: 5px;
     user-select: none;
@@ -137,36 +136,32 @@
   .topic-box:focus {
     border-color: var(--magenta);
     background-color: var(--magenta);
-    color: var(--turquoise);
+    color: var(--yellow);
     outline: none;
   }
-
-  .topic-box[aria-expanded="false"] .subtopics {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-  }
-  .topic-box[aria-expanded="true"] .subtopics {
-    max-height: 500px;
+  .topic-box.active {
+    background-color: var(--white);
+    color: var(--black);
+    font-weight: bold;
   }
 
   .subtopics {
     margin-top: 15px;
-    display: block;
+    display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
   .subtopics a {
-    background-color: #ffffff;
-    color: var(--turquoise);
+    background-color: var(--white);
+    color: var(--yellow);
     border: 2px solid var(--turquoise);
     padding: 10px;
     border-radius: 5px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: bold;
     text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
     user-select: none;
     display: block;
@@ -181,36 +176,7 @@
   }
 
   .mission-box {
-    position: static;
-    z-index: auto;
-    pointer-events: auto;
-  }
-  .mission-box.centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    background-color: var(--white);
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    max-width: 90vw;
-    max-height: 90vh;
-    overflow-y: auto;
-    border-color: var(--magenta);
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
-  }
-
-  .btn-link.active {
-    color: var(--magenta);
+    margin-top: 60px;
   }
 
   .mission-box h2 {
@@ -317,6 +283,7 @@
     color: var(--magenta);
     outline: none;
   }
+
   @media (max-width: 768px) {
     header {
       flex-direction: column;
@@ -394,9 +361,7 @@
     Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
   </label><br />
   
-  <!-- Captcha ausschalten -->
   <input type="hidden" name="_captcha" value="false" />
-  
   <button type="submit">Absenden</button>
 </form>
 
@@ -411,17 +376,18 @@
   </div>
 </footer>
 
-
 <script>
   // Fade-in Effekt
   window.addEventListener("DOMContentLoaded", () => {
     document.body.style.opacity = 1;
   });
 
-  // Toggle Verwaltung
-  document.getElementById("verwaltung-box").addEventListener("click", function () {
+  // Toggle Verwaltung-Box & active-Klasse
+  const verwaltungBox = document.getElementById("verwaltung-box");
+  verwaltungBox.addEventListener("click", function () {
     const expanded = this.getAttribute("aria-expanded") === "true";
     this.setAttribute("aria-expanded", !expanded);
+    this.classList.toggle("active", !expanded);
   });
 </script>
 
