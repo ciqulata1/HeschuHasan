@@ -291,18 +291,16 @@
       padding: 15px 20px;
     }
     .logo-container {
-  display: flex;
-  align-items: center;
-}
+      display: flex;
+      align-items: center;
+    }
     #fdp-logo {
-  height: 50px;
-  margin-right: 15px;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-
+      height: 50px;
+      margin-right: 15px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
     nav a {
       margin-left: 0;
       margin-right: 15px;
@@ -396,29 +394,43 @@
   // Wenn das DOM vollständig geladen ist
   document.addEventListener("DOMContentLoaded", () => {
     // Body langsam einblenden
-    document.body.style.opacity = 1;
+    document.body.style.opacity = "1";
 
-    // FDP-Logo animiert einblenden
-    const logo = document.getElementById('fdp-logo');
-    if (logo) {
-      logo.style.opacity = '0';
-      logo.style.transform = 'translateY(-20px)';
-      setTimeout(() => {
-        logo.style.opacity = '1';
-        logo.style.transform = 'translateY(0)';
-      }, 500);
-    }
-
-    // Verwaltung-Box aktivieren/deaktivieren
+    // Verwaltung-Unterthemen ein-/ausklappen
     const verwaltungBox = document.getElementById("verwaltung-box");
-    if (verwaltungBox) {
-      verwaltungBox.addEventListener("click", function () {
-        const expanded = this.getAttribute("aria-expanded") === "true";
-        this.setAttribute("aria-expanded", !expanded);
-        this.classList.toggle("active", !expanded);
-      });
-    }
+    const subtopics = document.getElementById("verwaltung-subtopics");
+
+    verwaltungBox.addEventListener("click", () => {
+      const expanded = verwaltungBox.getAttribute("aria-expanded") === "true";
+      verwaltungBox.setAttribute("aria-expanded", !expanded);
+      if (expanded) {
+        subtopics.style.display = "none";
+      } else {
+        subtopics.style.display = "flex";
+      }
+    });
+
+    // Initial Unterthemen verstecken
+    subtopics.style.display = "none";
+
+    // Tastaturzugänglichkeit: Enter / Space toggelt Unterthemen
+    verwaltungBox.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        verwaltungBox.click();
+      }
+    });
+
+    // Animation FDP-Logo nach 1 Sekunde
+    setTimeout(() => {
+      const fdpLogo = document.getElementById("fdp-logo");
+      if (fdpLogo) {
+        fdpLogo.style.opacity = "1";
+        fdpLogo.style.transform = "translateY(0)";
+      }
+    }, 1000);
   });
 </script>
+
 </body>
 </html>
