@@ -40,6 +40,26 @@ a {
   font-weight: 600;
 }
 
+   .back-button {
+    margin-top: 30px;
+    background-color: var(--magenta);
+    color: var(--white);
+    border: none;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .back-button:hover,
+  .back-button:focus {
+    background-color: var(--yellow);
+    color: var(--black);
+    outline: none;
+  }
+
+
 a:hover,
 a:focus {
   color: var(--magenta);
@@ -260,7 +280,7 @@ footer .social-links a:focus {
     </a>
   </div>
 </footer>
-
+  <button id="back-to-home" class="back-button">Zurück zur Startseite</button>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const questions = [
