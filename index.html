@@ -87,15 +87,16 @@
     max-width: 1200px;
     margin: 0 auto;
   }
-main h2 {
-  color: var(--black); /* Überschrift jetzt schwarz */
-  font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
+
+  main h2 {
+    color: var(--black); /* Überschrift jetzt schwarz */
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
 
   main h3 {
     color: var(--cyan);
@@ -192,6 +193,11 @@ main h2 {
   }
 
   /* CSS: Zentrierung der Mission-Box */
+  .mission-box {
+    position: static; /* Standard position, damit Link normal anklickbar ist */
+    z-index: auto;
+    pointer-events: auto;
+  }
   .mission-box.centered {
     position: fixed;
     top: 50%;
@@ -204,6 +210,7 @@ main h2 {
     max-height: 90vh;
     overflow-y: auto;
     border-color: var(--magenta);
+    pointer-events: auto;
   }
 
   /* Overlay */
@@ -243,6 +250,7 @@ main h2 {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    cursor: pointer;
   }
   .btn-link:hover,
   .btn-link:focus {
@@ -383,90 +391,70 @@ main h2 {
   <section class="mission-box" aria-labelledby="mission-title">
     <h2 id="mission-title">Meine Mission für Freiburg</h2>
     <p>
-      Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP und Wahlkreiskandidatin für Freiburg-Ost (Wahlkreis 46).  
-      Mit Leidenschaft setze ich mich für Bildung, Umwelt und Bürgerrechte ein – für eine moderne und lebenswerte Stadt.
+      Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP und Wahlkreiskandidatin für Freiburg-Ost (Wahlkreis 46).
+      Für Freiburg setze ich mich für Bildung, Umwelt, Justiz und gute Verwaltung ein.
     </p>
-    <p>
-      <a href="mission.html" class="btn-link" aria-label="Mehr über Meine Mission für Freiburg erfahren">Mehr erfahren &raquo;</a>
-    </p>
+    <a href="mission.html" class="btn-link" aria-label="Mehr über Meine Mission für Freiburg erfahren">Mehr erfahren &raquo;</a>
   </section>
 
-  <section id="kontakt" aria-labelledby="kontakt-title">
-    <h2 id="kontakt-title">Kontaktformular</h2>
-    <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain" aria-label="Kontaktformular">
-      <label for="name">Ihr Name</label>
-      <input type="text" id="name" name="name" placeholder="Ihr Name" required />
-
-      <label for="email">Ihre E-Mail</label>
-      <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de" required />
-
-      <label for="nachricht">Nachricht</label>
-      <textarea id="nachricht" name="nachricht" rows="6" placeholder="Ihre Nachricht..." required></textarea>
-
-      <button type="submit">Absenden</button>
-    </form>
-  </section>
+  <form>
+    <label for="email">Emailadresse:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      placeholder="Ihre Emailadresse"
+      autocomplete="email"
+      aria-required="true"
+    />
+    <label for="message">Nachricht:</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      placeholder="Schreiben Sie Ihre Nachricht hier..."
+      aria-required="true"
+    ></textarea>
+    <button type="submit" aria-label="Nachricht absenden">Absenden</button>
+  </form>
 </main>
 
 <footer>
-  <p>© 2023 Heschu Hasan - Wahlkreiskandidatin Freiburg Ost</p>
-  <div class="social-links" aria-label="Soziale Netzwerke">
-    <a href="https://www.instagram.com/heschuhasan" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <i class="fab fa-instagram" aria-hidden="true"></i>
+  <p>&copy; 2024 Heschu Hasan | Ihre Wahlkreiskandidatin Freiburg - Ost</p>
+  <div class="social-links" aria-label="Soziale Medien">
+    <a href="https://www.facebook.com/HeschuHasan" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <i class="fab fa-facebook"></i>
     </a>
-    <a href="https://twitter.com/heschuhasan" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-      <i class="fab fa-twitter" aria-hidden="true"></i>
+    <a href="https://twitter.com/HeschuHasan" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
     </a>
-    <a href="https://www.facebook.com/heschuhasan" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-      <i class="fab fa-facebook" aria-hidden="true"></i>
+    <a href="https://instagram.com/HeschuHasan" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
     </a>
   </div>
 </footer>
 
 <script>
-  document.body.style.opacity = '1'; // Smooth fade-in nach Laden
-
-  const verwaltungBox = document.getElementById('verwaltung-box');
-
-  function toggleVerwaltung() {
-    const expanded = verwaltungBox.getAttribute('aria-expanded') === 'true';
-    verwaltungBox.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  }
-
-  verwaltungBox.addEventListener('click', toggleVerwaltung);
-  verwaltungBox.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      toggleVerwaltung();
-    }
+  // Seiten-Fade-In
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.style.opacity = "1";
   });
 
-  // Mission Popup
-  const missionBox = document.querySelector('.mission-box');
-  const mehrLink = missionBox.querySelector('.btn-link');
+  // Verwaltung Aufklappen / Einklappen
+  const verwaltungBox = document.getElementById("verwaltung-box");
+  const verwaltungSubtopics = document.getElementById("verwaltung-subtopics");
 
-  mehrLink.addEventListener('click', (event) => {
-    event.preventDefault();
-    missionBox.classList.add('centered');
+  verwaltungBox.addEventListener("click", () => {
+    const expanded = verwaltungBox.getAttribute("aria-expanded") === "true";
+    verwaltungBox.setAttribute("aria-expanded", String(!expanded));
+  });
 
-    const overlay = document.createElement('div');
-    overlay.classList.add('overlay');
-    document.body.appendChild(overlay);
-
-    function close() {
-      missionBox.classList.remove('centered');
-      mehrLink.classList.remove('active');
-      overlay.remove();
+  verwaltungBox.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      verwaltungBox.click();
     }
-
-    overlay.addEventListener('click', close);
-
-    document.addEventListener('keydown', function escHandler(e) {
-      if (e.key === 'Escape' && missionBox.classList.contains('centered')) {
-        close();
-        document.removeEventListener('keydown', escHandler);
-      }
-    });
   });
 </script>
 
