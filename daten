@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung – Heschu Hasan</title>
+  <style>
+    :root {
+      --primary-color: #009ee3;
+      --accent-color: #e5007d;
+      --bg-color: #ffffff;
+      --text-color: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Calibri, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-top: 40px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-top: 30px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Datenschutzerklärung</h1>
+
+    <p>Der Schutz Ihrer persönlichen Daten ist mir ein besonderes Anliegen. Ich, Heschu Hasan, behandle Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+
+    <h2>1. Verantwortliche Stelle</h2>
+    <p>Verantwortlich für die Verarbeitung Ihrer personenbezogenen Daten auf dieser Website ist:</p>
+    <p>
+      Heschu Hasan<br>
+      FDP Wahlkreiskandidatin Freiburg-Ost<br>
+      E-Mail: <a href="mailto:kontakt@heschuhasan.de">kontakt@heschuhasan.de</a>
+    </p>
+
+    <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+    <p>Personenbezogene Daten werden auf dieser Website nur im technisch notwendigen Umfang erhoben (z. B. im Kontaktformular). Die dabei erfassten Daten (wie Name, E-Mail-Adresse, Nachricht) werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht ohne Ihre ausdrückliche Zustimmung weitergegeben.</p>
+
+    <h2>3. Verwendung von Cookies</h2>
+    <p>Diese Website verwendet keine Cookies zur Nachverfolgung oder Analyse. Sollte dies zukünftig der Fall sein, wird eine entsprechende Einwilligung eingeholt.</p>
+
+    <h2>4. Server-Logfiles</h2>
+    <p>Der Webserver erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt. Diese Daten (z. B. IP-Adresse, Browsertyp, Betriebssystem) dienen ausschließlich der statistischen Auswertung und zur Gewährleistung eines störungsfreien Betriebs.</p>
+
+    <h2>5. Ihre Rechte</h2>
+    <p>Sie haben jederzeit das Recht auf Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung. Außerdem haben Sie das Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</p>
+
+    <h2>6. Kontakt zur Datenschutzverantwortlichen</h2>
+    <p>Wenn Sie Fragen zum Datenschutz haben oder von Ihren Rechten Gebrauch machen möchten, schreiben Sie bitte an: <a href="mailto:kontakt@heschuhasan.de">kontakt@heschuhasan.de</a></p>
+
+    <h2>7. Änderungen dieser Datenschutzerklärung</h2>
+    <p>Ich behalte mir vor, diese Datenschutzerklärung bei Bedarf anzupassen. Es gilt die jeweils aktuelle Version auf dieser Website.</p>
+
+    <p><strong>Stand:</strong> Mai 2025</p>
+  </div>
+</body>
+</html>
