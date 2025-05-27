@@ -290,6 +290,19 @@
       align-items: flex-start;
       padding: 15px 20px;
     }
+    .logo-container {
+  display: flex;
+  align-items: center;
+}
+
+#fdp-logo {
+  height: 50px;
+  margin-right: 15px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
     nav a {
       margin-left: 0;
       margin-right: 15px;
@@ -303,7 +316,10 @@
 <body>
 
 <header>
+  <div class="logo-container">
+    <img id="fdp-logo" src="fdplogo.png" alt="FDP Logo" />
   <h1>HESCHU HASAN</h1>
+     </div>
   <nav>
     <a href="index.html">Startseite</a>
     <a href="bildung.html">Bildung</a>
@@ -377,19 +393,32 @@
 </footer>
 
 <script>
-  // Fade-in Effekt
-  window.addEventListener("DOMContentLoaded", () => {
+  // Wenn das DOM vollständig geladen ist
+  document.addEventListener("DOMContentLoaded", () => {
+    // Body langsam einblenden
     document.body.style.opacity = 1;
-  });
 
-  // Toggle Verwaltung-Box & active-Klasse
-  const verwaltungBox = document.getElementById("verwaltung-box");
-  verwaltungBox.addEventListener("click", function () {
-    const expanded = this.getAttribute("aria-expanded") === "true";
-    this.setAttribute("aria-expanded", !expanded);
-    this.classList.toggle("active", !expanded);
+    // FDP-Logo animiert einblenden
+    const logo = document.getElementById('fdp-logo');
+    if (logo) {
+      logo.style.opacity = '0';
+      logo.style.transform = 'translateY(-20px)';
+      setTimeout(() => {
+        logo.style.opacity = '1';
+        logo.style.transform = 'translateY(0)';
+      }, 500);
+    }
+
+    // Verwaltung-Box aktivieren/deaktivieren
+    const verwaltungBox = document.getElementById("verwaltung-box");
+    if (verwaltungBox) {
+      verwaltungBox.addEventListener("click", function () {
+        const expanded = this.getAttribute("aria-expanded") === "true";
+        this.setAttribute("aria-expanded", !expanded);
+        this.classList.toggle("active", !expanded);
+      });
+    }
   });
 </script>
-
 </body>
 </html>
