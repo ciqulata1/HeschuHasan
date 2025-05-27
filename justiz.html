@@ -100,18 +100,22 @@
     flex-wrap: wrap;
   }
 
+  /* Boxen mit Pinkem Hintergrund und weißem, fettem Text */
   .box {
     flex: 1 1 30%;
-    background-color: var(--cyan);
+    background-color: var(--magenta);
     color: var(--white);
+    font-weight: bold;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     min-width: 260px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease, box-shadow 0.1s ease;
   }
   .box h3 {
     margin-top: 0;
-    font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 10px;
     letter-spacing: 0.1em;
@@ -119,6 +123,15 @@
   .box p {
     font-size: 1rem;
     line-height: 1.4;
+  }
+
+  /* Drücken-Effekt: Hintergrund weiß, Text bleibt weiß mit Schatten */
+  .box:active {
+    background-color: var(--white);
+    color: var(--white);
+    text-shadow: 0 0 5px var(--magenta);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transform: scale(0.97);
   }
 
   /* Button */
@@ -203,12 +216,12 @@
 <header>
   <h1>HESCHU HASAN</h1>
   <nav>
+    <a href="digitalejustiz.html" class="active">Digitale Justiz</a>
     <a href="index.html">Startseite</a>
     <a href="bildung.html">Bildung</a>
     <a href="umwelt.html">Umwelt</a>
     <a href="meinungsmacher.html">Meinungs-Macher</a>
     <a href="impressum.html">Impressum</a>
-    <a href="digitalejustiz.html" class="active">Digitale Justiz</a>
   </nav>
 </header>
 
@@ -240,15 +253,15 @@
   </p>
 
   <div class="box-container">
-    <div class="box fade-init">
+    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Exekutive Informationen">
       <h3>Exekutive</h3>
       <p>Die Exekutive sorgt für die Ausführung der Gesetze und ist verantwortlich für die Verwaltung, Polizei und andere staatliche Organe, die Recht und Ordnung durchsetzen.</p>
     </div>
-    <div class="box fade-init">
+    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Judikative Informationen">
       <h3>Judikative</h3>
       <p>Die Judikative interpretiert die Gesetze, entscheidet über Rechtsstreitigkeiten und sorgt für die Rechtsprechung an Gerichten.</p>
     </div>
-    <div class="box fade-init">
+    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Legislative Informationen">
       <h3>Legislative</h3>
       <p>Die Legislative ist das Parlament, das Gesetze erlässt, ändert oder aufhebt und somit die rechtlichen Rahmenbedingungen schafft.</p>
     </div>
@@ -269,26 +282,30 @@
 
 <script>
   // Zurück zur Startseite beim Klick auf Button
-  document.getElementById('back-to-home').addEventListener('click', () => {
+  document.getElementById('back-to-home').addEventListener('click', function() {
     window.location.href = 'index.html';
   });
 
-  // Fade-In beim Scrollen
-  document.addEventListener('DOMContentLoaded', () => {
-    const fadeElems = document.querySelectorAll('main p, .box');
+  // Fade-in Animation für alle fade-init Elemente nach kurzer Verzögerung
+  window.addEventListener('load', () => {
+    const fadeEls = document.querySelectorAll('.fade-init');
+    fadeEls.forEach((el, i) => {
+      setTimeout(() => el.classList.add('fade-in'), i * 250);
+    });
+  });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    fadeElems.forEach(el => {
-      el.classList.add('fade-init'); // initialer Zustand
-      observer.observe(el);
+  // Optional: Boxen Toggle Aria-pressed für Barrierefreiheit
+  const boxes = document.querySelectorAll('.box');
+  boxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const pressed = box.getAttribute('aria-pressed') === 'true';
+      box.setAttribute('aria-pressed', !pressed);
+    });
+    box.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        box.click();
+      }
     });
   });
 </script>
