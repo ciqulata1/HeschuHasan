@@ -87,7 +87,9 @@
   main p {
     font-size: 1.1rem;
     max-width: 800px;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem auto; /* zentriert */
+    color: black; /* schwarz */
+    text-align: center; /* zentriert */
   }
 
   /* Container für Boxen */
@@ -125,8 +127,8 @@
     background-color: var(--magenta);
     color: var(--white);
     border: none;
-    padding: 12px 25px;
-    font-size: 1rem;
+    padding: 8px 18px; /* kleiner */
+    font-size: 0.9rem; /* kleiner */
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
@@ -163,6 +165,17 @@
   footer .social-links a:focus {
     color: var(--magenta);
     outline: none;
+  }
+
+  /* Fade-in Animation */
+  .fade-init {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .fade-in {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   @media (max-width: 768px) {
@@ -202,40 +215,40 @@
 <main>
   <h1>💻 Digitale Justiz – fairer, menschlicher, zugänglicher</h1>
 
-  <p>
+  <p class="fade-init">
     Die Justiz hat die wichtige Aufgabe, Recht zu sprechen, ohne dabei die Würde und das Wohl aller Beteiligten aus den Augen zu verlieren. Für viele Menschen, insbesondere Opfer sexualisierter Gewalt, kann der Gang vor Gericht retraumatisierend oder sogar unerträglich sein. Hier bieten digitale Verfahren eine echte Chance: Durch Online-Verhandlungen lassen sich belastende persönliche Begegnungen vermeiden, ohne die Gerechtigkeit zu gefährden.
   </p>
 
-  <p>
+  <p class="fade-init">
     Diskriminierung ist leider keine Erscheinung, die auf die Straße beschränkt ist – auch im Gerichtssaal begegnen Menschen Vorurteilen aufgrund ihrer Sprache, Herkunft, Kleidung oder ihres Auftretens. Digitale Verfahren können dabei helfen, diese unbewussten Barrieren abzubauen und ein faires, objektives Verfahren zu gewährleisten.
   </p>
 
-  <p>
+  <p class="fade-init">
     Die Justiz muss im 21. Jahrhundert ankommen und den digitalen Wandel aktiv gestalten. Die Einführung einer sogenannten Justiz-Cloud kann veraltete Papierprozesse ablösen, die Kommunikation zwischen Gericht, Anwälten und Bürger:innen deutlich beschleunigen und transparenter machen. Dadurch wird die Nachvollziehbarkeit verbessert, Fehler werden minimiert und die Frustration auf allen Seiten reduziert.
   </p>
 
-  <p>
+  <p class="fade-init">
     Eine weitere wichtige Voraussetzung für ein funktionierendes Rechtssystem ist die Integrität aller, die in der Justiz tätig sind. Neben einer fundierten juristischen Ausbildung benötigen Richter:innen, Staatsanwält:innen und andere Justizkräfte eine klare ethische Orientierung. Empathie, Verantwortungsbewusstsein und moralisches Urteilsvermögen sind keine „netten Extras“, sondern unabdingbare Grundvoraussetzungen. Die Ausbildung muss daher gezielt darauf ausgerichtet werden, diese Fähigkeiten zu fördern und sicherzustellen, dass nur integre Menschen in diesem sensiblen Bereich tätig sind.
   </p>
 
-  <p>
+  <p class="fade-init">
     Darüber hinaus eröffnet die Digitalisierung auch die Möglichkeit, Verfahren für viele Menschen zugänglicher zu machen – etwa für Menschen mit Mobilitätseinschränkungen, für Betroffene, die in ländlichen Regionen leben, oder für jene, die durch soziale oder psychische Belastungen kaum in der Lage sind, persönlich vor Gericht zu erscheinen. Die digitale Justiz schafft hier neue Chancen, den Zugang zum Rechtssystem zu erleichtern und Barrieren abzubauen.
   </p>
 
-  <p>
+  <p class="fade-init">
     Diese Fortschritte sind notwendig, um ein faires, transparentes und menschliches Rechtssystem zu etablieren, das das Vertrauen der Bürger:innen verdient. Nur so kann die Justiz ihren Auftrag erfüllen und zu einem Fundament für gesellschaftlichen Zusammenhalt werden.
   </p>
 
   <div class="box-container">
-    <div class="box">
+    <div class="box fade-init">
       <h3>Exekutive</h3>
       <p>Die Exekutive sorgt für die Ausführung der Gesetze und ist verantwortlich für die Verwaltung, Polizei und andere staatliche Organe, die Recht und Ordnung durchsetzen.</p>
     </div>
-    <div class="box">
+    <div class="box fade-init">
       <h3>Judikative</h3>
       <p>Die Judikative interpretiert die Gesetze, entscheidet über Rechtsstreitigkeiten und sorgt für die Rechtsprechung an Gerichten.</p>
     </div>
-    <div class="box">
+    <div class="box fade-init">
       <h3>Legislative</h3>
       <p>Die Legislative ist das Parlament, das Gesetze erlässt, ändert oder aufhebt und somit die rechtlichen Rahmenbedingungen schafft.</p>
     </div>
@@ -246,20 +259,39 @@
 
 <footer>
   <h3>Treffen Sie mich in den Sozialen Medien</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
+  <div class="social-links" aria-label="Social Media Links">
+    <a href="https://www.facebook.com/HeschuHasan" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://twitter.com/HeschuHasan" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/heschuhasan" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
   </div>
+  <p>© 2025 Heschu Hasan</p>
 </footer>
 
 <script>
-  document.getElementById('back-to-home').addEventListener('click', function () {
+  // Zurück zur Startseite beim Klick auf Button
+  document.getElementById('back-to-home').addEventListener('click', () => {
     window.location.href = 'index.html';
+  });
+
+  // Fade-In beim Scrollen
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElems = document.querySelectorAll('main p, .box');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeElems.forEach(el => {
+      el.classList.add('fade-init'); // initialer Zustand
+      observer.observe(el);
+    });
   });
 </script>
 
-<!-- FontAwesome Script -->
-<script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
 </body>
 </html>
