@@ -34,6 +34,9 @@
     font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     font-weight: 400;
     line-height: 1.5;
+
+    opacity: 0; /* Für smooth fade-in */
+    transition: opacity 1s ease;
   }
 
   a {
@@ -187,16 +190,37 @@
     outline: none;
   }
 
-  .mission-box {
-    border: 2px solid var(--cyan);
+  /* CSS: Zentrierung der Mission-Box */
+  .mission-box.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
     background-color: var(--white);
-    color: var(--cyan);
-    padding: 25px 30px;
-    max-width: 700px;
-    margin-top: 40px;
-    border-radius: 6px;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-color: var(--magenta);
   }
+
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+  }
+
+  /* Link wenn aktiv */
+  .btn-link.active {
+    color: var(--magenta);
+  }
+
   .mission-box h2 {
     font-weight: 700;
     font-size: 1.8rem;
@@ -226,7 +250,6 @@
     outline: none;
   }
 
-  
   form {
     max-width: 500px;
     margin-top: 50px;
@@ -338,7 +361,15 @@
     <a href="bildung.html" class="topic-box" role="listitem" tabindex="0">Bildung</a>
     <a href="umwelt.html" class="topic-box" role="listitem" tabindex="0">Umwelt</a>
 
-    <div class="topic-box" role="region" aria-expanded="false" tabindex="0" id="verwaltung-box" aria-label="Verwaltung mit Unterthemen">
+    <div
+      class="topic-box"
+      role="region"
+      aria-expanded="false"
+      tabindex="0"
+      id="verwaltung-box"
+      aria-label="Verwaltung mit Unterthemen"
+      aria-controls="verwaltung-subtopics"
+    >
       Verwaltung
       <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
         <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
@@ -349,15 +380,15 @@
   </div>
 
   <section class="mission-box" aria-labelledby="mission-title">
-  <h2 id="mission-title">Meine Mission für Freiburg</h2>
-  <p>
-    Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP und Wahlkreiskandidatin für Freiburg-Ost (Wahlkreis 46).  
-    Mit Leidenschaft setze ich mich für Bildung, Umwelt und Bürgerrechte ein – für eine moderne und lebenswerte Stadt.
-  </p>
-  <p>
-    <a href="mission.html" class="btn-link" aria-label="Mehr über Meine Mission für Freiburg erfahren">Mehr erfahren &raquo;</a>
-  </p>
-</section>
+    <h2 id="mission-title">Meine Mission für Freiburg</h2>
+    <p>
+      Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP und Wahlkreiskandidatin für Freiburg-Ost (Wahlkreis 46).  
+      Mit Leidenschaft setze ich mich für Bildung, Umwelt und Bürgerrechte ein – für eine moderne und lebenswerte Stadt.
+    </p>
+    <p>
+      <a href="mission.html" class="btn-link" aria-label="Mehr über Meine Mission für Freiburg erfahren">Mehr erfahren &raquo;</a>
+    </p>
+  </section>
 
   <section id="kontakt" aria-labelledby="kontakt-title">
     <h2 id="kontakt-title">Kontaktformular</h2>
@@ -377,35 +408,64 @@
 </main>
 
 <footer>
-  <p>© 2025 Heschu Hasan – FDP Freiburg</p>
-  <div class="social-links" aria-label="Soziale Medien">
-    <a href="https://twitter.com/heschuhasan" target="_blank" rel="noopener" aria-label="Twitter">
-      <i class="fab fa-twitter"></i>
+  <p>© 2023 Heschu Hasan - Wahlkreiskandidatin Freiburg Ost</p>
+  <div class="social-links" aria-label="Soziale Netzwerke">
+    <a href="https://www.instagram.com/heschuhasan" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <i class="fab fa-instagram" aria-hidden="true"></i>
     </a>
-    <a href="https://facebook.com/heschuhasan" target="_blank" rel="noopener" aria-label="Facebook">
-      <i class="fab fa-facebook"></i>
+    <a href="https://twitter.com/heschuhasan" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+      <i class="fab fa-twitter" aria-hidden="true"></i>
     </a>
-    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
+    <a href="https://www.facebook.com/heschuhasan" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <i class="fab fa-facebook" aria-hidden="true"></i>
     </a>
   </div>
 </footer>
 
 <script>
+  document.body.style.opacity = '1'; // Smooth fade-in nach Laden
+
   const verwaltungBox = document.getElementById('verwaltung-box');
 
   function toggleVerwaltung() {
     const expanded = verwaltungBox.getAttribute('aria-expanded') === 'true';
-    verwaltungBox.setAttribute('aria-expanded', !expanded);
+    verwaltungBox.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   }
 
   verwaltungBox.addEventListener('click', toggleVerwaltung);
-
-  verwaltungBox.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
+  verwaltungBox.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
       toggleVerwaltung();
     }
+  });
+
+  // Mission Popup
+  const missionBox = document.querySelector('.mission-box');
+  const mehrLink = missionBox.querySelector('.btn-link');
+
+  mehrLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    missionBox.classList.add('centered');
+
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    document.body.appendChild(overlay);
+
+    function close() {
+      missionBox.classList.remove('centered');
+      mehrLink.classList.remove('active');
+      overlay.remove();
+    }
+
+    overlay.addEventListener('click', close);
+
+    document.addEventListener('keydown', function escHandler(e) {
+      if (e.key === 'Escape' && missionBox.classList.contains('centered')) {
+        close();
+        document.removeEventListener('keydown', escHandler);
+      }
+    });
   });
 </script>
 
