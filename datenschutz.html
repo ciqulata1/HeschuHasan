@@ -218,7 +218,8 @@
 
     <p><strong>Stand:</strong> Mai 2025</p>
 
-    <button class="back-button" onclick="history.back()">← Zurück</button>
+    <button class="back-button" onclick="if(document.referrer) { history.back(); } else { window.location.href='index.html'; }">← Zurück</button>
+
   </main>
 
   <footer>
