@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meine Mission für Freiburg – Heschu Hasan</title>
+
+<!-- FontAwesome CDN für Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+<style>
+  :root {
+    --yellow: #ffed00;
+    --magenta: #e5007d;
+    --cyan: #009ee3;
+    --turquoise: #00abae;
+    --black: #000000;
+    --white: #ffffff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--white);
+    color: var(--cyan);
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  a {
+    color: var(--cyan);
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
+
+  header {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--cyan);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--cyan);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  nav a.active,
+  nav a:hover {
+    color: var(--magenta);
+    font-weight: 700;
+  }
+
+  main {
+    padding: 20px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  main h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  main p {
+    font-weight: 300;
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  footer {
+    background-color: var(--cyan);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 20px;
+    font-weight: 500;
+  }
+  footer p {
+    margin: 10px 0;
+  }
+  footer .social-links a {
+    color: var(--white);
+    font-size: 30px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px 20px;
+    }
+    nav a {
+      margin-left: 0;
+      margin-right: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="mission.html" class="active">Meine Mission</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Meine Mission für Freiburg</h2>
+  <p>
+    Als Ihre Direktkandidatin und Wahlkreiskandidatin der FDP für Freiburg-Ost (Wahlkreis 46) setze ich mich mit voller Kraft für die Zukunft unserer Stadt ein.
+  </p>
+  <p>
+    Bildung, Umweltschutz und die Förderung von Freiheit und Bürgerrechten sind meine zentralen Anliegen. Ich strebe eine offene, moderne Politik an, die die Bedürfnisse aller Menschen in Freiburg berücksichtigt.
+  </p>
+  <p>
+    Gemeinsam mit Ihnen möchte ich Freiburg nachhaltiger, gerechter und innovativer gestalten.
+  </p>
+</main>
+
+<footer>
+  <p>© 2025 Heschu Hasan – FDP Freiburg</p>
+  <div class="social-links" aria-label="Soziale Medien">
+    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
 
