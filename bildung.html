@@ -31,7 +31,7 @@
       margin: 0;
       background-color: var(--white);
       color: var(--cyan);
-      font-family: Georgia, serif;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
       font-weight: 400;
       line-height: 1.5;
     }
@@ -42,6 +42,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     a:hover,
@@ -58,6 +59,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     header h1 {
@@ -67,6 +69,7 @@
       color: var(--cyan);
       text-transform: uppercase;
       letter-spacing: 0.06em;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     .subtitle {
@@ -78,6 +81,7 @@
       margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     nav {
@@ -85,23 +89,27 @@
       flex-wrap: wrap;
       justify-content: center;
       margin-top: 10px;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     nav a {
       font-size: 1rem;
       margin: 5px 15px;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     nav a.active,
     nav a:hover {
       color: var(--magenta);
       font-weight: 700;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     main {
       padding: 20px 40px;
       max-width: 1200px;
       margin: 0 auto;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     main h2 {
@@ -111,6 +119,7 @@
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     main h3 {
@@ -118,12 +127,14 @@
       font-weight: 600;
       font-size: 1.25rem;
       margin-bottom: 20px;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     main p {
       font-weight: 300;
       font-size: 1.1rem;
       max-width: 700px;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     .bildung-boxes {
@@ -131,6 +142,7 @@
       flex-wrap: wrap;
       gap: 25px;
       margin-top: 40px;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     .box {
@@ -148,6 +160,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     .box h3 {
@@ -155,6 +168,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     .box:hover {
@@ -167,6 +181,7 @@
       color: var(--turquoise);
       outline: none;
       border-color: var(--magenta);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     .box.show {
@@ -180,6 +195,7 @@
       text-align: center;
       padding: 30px 20px;
       font-weight: 500;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     footer h3 {
@@ -188,6 +204,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     footer .social-links a {
@@ -195,12 +212,14 @@
       font-size: 30px;
       margin: 0 15px;
       transition: color 0.3s ease;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     footer .social-links a:hover,
     footer .social-links a:focus {
       color: var(--magenta);
       outline: none;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     }
 
     @media (max-width: 768px) {
@@ -274,37 +293,19 @@
 <script>
   // Boxen anklickbar + Tastatur Unterstützung
   document.querySelectorAll('.box').forEach(box => {
+    // Animation beim Laden
+    setTimeout(() => box.classList.add('show'), 100);
+
     box.addEventListener('click', () => {
-      document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
-      box.classList.add('selected');
+      window.location.href = box.href;
     });
-    box.addEventListener('keydown', e => {
+    box.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        box.click();
+        window.location.href = box.href;
       }
     });
   });
-
-  // Scroll-Effekt
-  const boxes = document.querySelectorAll('.box');
-
-  function checkBoxes() {
-    const triggerBottom = window.innerHeight * 0.85;
-
-    boxes.forEach(box => {
-      const boxTop = box.getBoundingClientRect().top;
-
-      if (boxTop < triggerBottom) {
-        box.classList.add('show');
-      } else {
-        box.classList.remove('show');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', checkBoxes);
-  checkBoxes();
 </script>
 
 </body>
