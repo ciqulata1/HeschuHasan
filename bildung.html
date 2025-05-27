@@ -1,249 +1,271 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bildung - Heschu Hasan</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bildung - Heschu Hasan</title>
 
-  <!-- FontAwesome CDN für Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+<!-- FontAwesome CDN für Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 
-  <style>
-    :root {
-      --yellow: #ffed00;
-      --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
-      --black: #000000;
-      --white: #ffffff;
-    }
+<style>
+  :root {
+    --yellow: #ffed00;
+    --magenta: #e5007d;
+    --cyan: #009ee3;
+    --turquoise: #00abae;
+    --black: #000000;
+    --white: #ffffff;
+  }
 
-    * {
-      box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      margin: 0;
-      background-color: var(--white);
-      color: var(--cyan);
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-      font-weight: 400;
-      line-height: 1.5;
-    }
+  body {
+    margin: 0;
+    background-color: var(--white);
+    color: var(--cyan);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+  }
 
-    a {
-      color: var(--cyan);
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
+  a {
+    color: var(--cyan);
+    text-decoration: none;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  a:hover,
+  a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
 
-    a:hover,
-    a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
+  header {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--cyan);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--cyan);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 25px;
+  }
 
+  nav a.active,
+  nav a:hover {
+    color: var(--magenta);
+    font-weight: 700;
+  }
+
+  main {
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  main h2 {
+    color: var(--black);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  main h3 {
+    color: var(--cyan);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+  main p {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    max-width: 700px;
+  }
+
+  .bildung-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 40px;
+  }
+  .box {
+    flex: 1 1 280px;
+    border: 2px solid var(--cyan);
+    background-color: var(--white);
+    color: var(--cyan);
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    user-select: none;
+    display: block; /* Für <a> wichtig */
+    text-decoration: none;
+  }
+  .box:hover {
+    border-color: var(--magenta);
+  }
+  .box:focus,
+  .box.selected {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    outline: none;
+    border-color: var(--magenta);
+  }
+
+  .box h3 {
+    margin-top: 0;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Kontaktformular Überschrift */
+  .contact-form-title {
+    color: var(--black);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin: 40px auto 20px;
+    padding-left: 5px;
+  }
+
+  /* Formular Styling ergänzend */
+  .contact-form-container {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    color: var(--cyan);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-size: 1rem;
+    padding: 8px 10px;
+    border: 2px solid var(--cyan);
+    border-radius: 4px;
+    color: var(--black);
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--magenta);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  button[type="submit"] {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    border: none;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  button[type="submit"]:hover,
+  button[type="submit"]:focus {
+    background-color: var(--cyan);
+    color: var(--magenta);
+    outline: none;
+  }
+
+  footer {
+    background-color: var(--cyan);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 20px;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 500;
+  }
+  footer h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  footer .social-links a {
+    color: var(--white);
+    font-size: 30px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
     header {
-      background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      padding: 10px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px 20px;
     }
-
-    header h1 {
-      font-weight: 700;
-      font-size: 1.8rem;
-      margin: 0;
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    .subtitle {
-      width: 100%;
-      text-align: center;
-      font-size: 1rem;
-      color: var(--black);
-      margin-top: 5px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 10px;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
     nav a {
-      font-size: 1rem;
-      margin: 5px 15px;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      margin-left: 0;
+      margin-right: 15px;
     }
-
-    nav a.active,
-    nav a:hover {
-      color: var(--magenta);
-      font-weight: 700;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    main {
-      padding: 20px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    main h2 {
-      color: var(--black);
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    main h3 {
-      color: var(--cyan);
-      font-weight: 600;
-      font-size: 1.25rem;
-      margin-bottom: 20px;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    main p {
-      font-weight: 300;
-      font-size: 1.1rem;
-      max-width: 700px;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
     .bildung-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 25px;
-      margin-top: 40px;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      flex-direction: column;
     }
-
-    .box {
-      flex: 1 1 280px;
-      border: 2px solid var(--cyan);
-      background-color: var(--white);
-      color: var(--cyan);
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 300;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      text-decoration: none;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    .box h3 {
-      margin-top: 0;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    .box:hover {
-      border-color: var(--magenta);
-    }
-
-    .box:focus,
-    .box.selected {
-      background-color: var(--magenta);
-      color: var(--turquoise);
-      outline: none;
-      border-color: var(--magenta);
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    .box.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    footer {
-      background-color: var(--cyan);
-      color: var(--white);
-      text-align: center;
-      padding: 30px 20px;
-      font-weight: 500;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    footer h3 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    footer .social-links a {
-      color: var(--white);
-      font-size: 30px;
-      margin: 0 15px;
-      transition: color 0.3s ease;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    footer .social-links a:hover,
-    footer .social-links a:focus {
-      color: var(--magenta);
-      outline: none;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
-
-      nav {
-        justify-content: flex-start;
-      }
-
-      .bildung-boxes {
-        flex-direction: column;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
 <header>
   <h1>HESCHU HASAN</h1>
-  <div class="subtitle">Landtagskandidatin für Baden-Württemberg</div>
   <nav>
     <a href="index.html">Startseite</a>
     <a href="bildung.html" class="active">Bildung</a>
@@ -293,20 +315,55 @@
 <script>
   // Boxen anklickbar + Tastatur Unterstützung
   document.querySelectorAll('.box').forEach(box => {
-    // Animation beim Laden
-    setTimeout(() => box.classList.add('show'), 100);
-
     box.addEventListener('click', () => {
-      window.location.href = box.href;
+      document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
+      box.classList.add('selected');
     });
-    box.addEventListener('keydown', (e) => {
+    box.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        window.location.href = box.href;
+        box.click();
       }
     });
   });
+
+  // Beispiel für ein "spezielles Script" ähnlich justiz.html
+  // z.B. Animation beim Scrollen oder Fade-In Effekt für Boxen
+  const boxes = document.querySelectorAll('.box');
+
+  function checkBoxes() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    boxes.forEach(box => {
+      const boxTop = box.getBoundingClientRect().top;
+
+      if (boxTop < triggerBottom) {
+        box.classList.add('show');
+      } else {
+        box.classList.remove('show');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkBoxes);
+  checkBoxes();
 </script>
+
+<!-- FontAwesome Script -->
+<script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
+
+<style>
+  /* Beispiel für die Animation */
+  .box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
 
 </body>
 </html>
