@@ -14,143 +14,211 @@
 />
 
 <style>
-  :root {
-    --magenta: #e5007d;
-    --yellow: #ffed00;
-    --white: #ffffff;
-    --black: #000000;
-  }
+:root {
+  --yellow: #ffed00;
+  --magenta: #e5007d;
+  --cyan: #009ee3;
+  --turquoise: #00abae;
+  --black: #000000;
+  --white: #ffffff;
+}
+* {
+  box-sizing: border-box;
+}
+/* ... der gesamte restliche CSS-Code hier ... */
+</style>
 
-  body {
-    margin: 0;
-    font-family: 'Calibri', sans-serif;
-    background-color: var(--white);
-    color: var(--black);
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+body {
+  margin: 0;
+  background-color: var(--white);
+  color: var(--black);
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+  font-weight: 400; /* Regular */
+  line-height: 1.6;
+}
 
+/* ===== Links ===== */
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: 600;
+}
+a:hover,
+a:focus {
+  color: var(--magenta);
+  outline: none;
+}
+
+/* ===== Header ===== */
+header {
+  background-color: var(--white);
+  border-bottom: 2px solid var(--cyan);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header h1 {
+  font-family: Calibri, sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 1.8rem;
+  color: var(--cyan);
+  margin: 0;
+}
+nav a {
+  font-family: Calibri, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-left: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+nav a.active,
+nav a:hover {
+  color: var(--magenta);
+  font-weight: 700;
+}
+
+/* ===== Main Content ===== */
+main {
+  padding: 15px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+main h2 {
+  font-family: Calibri, sans-serif;
+  font-weight: 700; /* Bold */
+  color: var(--cyan);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+main h3 {
+  font-family: Calibri, sans-serif;
+  font-weight: 600;
+  color: var(--cyan);
+  font-size: 1rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+main p {
+  font-family: Calibri, sans-serif;
+  font-weight: 300; /* Light */
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #333;
+}
+
+/* ===== Questions & Answers ===== */
+.question {
+  background-color: var(--white);
+  border: 2px solid var(--cyan);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: Calibri, sans-serif;
+  font-weight: 400;
+  color: var(--black);
+}
+
+.answers label {
+  display: inline-block;
+  margin-right: 1.5rem;
+  cursor: pointer;
+  font-family: Calibri, sans-serif;
+  font-weight: 300; /* Light */
+  color: var(--black);
+}
+
+.answers input {
+  margin-right: 0.4rem;
+}
+
+/* ===== Submit Button ===== */
+button[type="submit"] {
+  background-color: var(--magenta);
+  color: var(--yellow);
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-family: Calibri, sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: block;
+  margin: 2rem auto 0;
+  max-width: 220px;
+  transition: background-color 0.3s ease;
+}
+button[type="submit"]:hover {
+  background-color: #c3006b;
+}
+
+/* ===== Feedback Message ===== */
+#feedback {
+  text-align: center;
+  margin-top: 1rem;
+  font-family: Calibri, sans-serif;
+  font-weight: 600;
+  color: var(--magenta);
+  display: none;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: var(--cyan);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 20px;
+  font-family: Calibri, sans-serif;
+}
+footer h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+footer .social-links a {
+  color: var(--white);
+  font-size: 30px;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+footer .social-links a:hover,
+footer .social-links a:focus {
+  color: var(--magenta);
+  outline: none;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
   header {
-    background-color: var(--white);
-    padding: 1.5rem;
-    text-align: center;
-    font-family: 'Calibri Bold', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    letter-spacing: 1px;
-    flex-shrink: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
   }
-
-  nav {
-    margin-top: 0.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
   nav a {
-    color: var(--black);
-    text-decoration: none;
-    font-weight: 700;
-    font-family: 'Calibri Bold', sans-serif;
-    font-size: 1rem;
+    margin-left: 0;
+    margin-right: 15px;
   }
-
-  nav a.active,
-  nav a:hover {
-    text-decoration: underline;
-  }
-
-  main {
-    padding: 2rem 1rem;
-    max-width: 1000px;
-    margin: 0 auto;
-    flex-grow: 1;
-  }
-
-  h2 {
-    font-family: 'Calibri Bold', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--magenta);
-    text-align: center;
-  }
-
-  h3 {
-    font-family: 'Calibri Bold', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 0.8rem;
-    color: var(--magenta);
-    text-align: center;
-  }
-
-  .question {
-    background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--black);
-    font-family: 'Calibri', sans-serif;
-  }
-
   .answers label {
-    display: inline-block;
-    margin-right: 1.5rem;
-    cursor: pointer;
-    font-family: 'Calibri Light', sans-serif;
-    font-weight: 300;
-    color: var(--black);
-  }
-
-  .answers input {
-    margin-right: 0.4rem;
-  }
-
-  button[type="submit"] {
-    background-color: var(--magenta);
-    color: var(--yellow);
-    padding: 0.9rem 2rem;
-    border: none;
-    border-radius: 10px;
-    font-family: 'Calibri Bold', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
     display: block;
-    margin: 2rem auto 0;
-    max-width: 220px;
-    transition: background-color 0.3s ease;
+    margin: 0.5rem 0;
   }
+}
 
-  button[type="submit"]:hover {
-    background-color: #c3006b;
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
   }
+}
 
-  #feedback {
-    text-align: center;
-    margin-top: 1rem;
-    font-family: 'Calibri', sans-serif;
-    font-weight: 600;
-    color: var(--magenta);
-    display: none;
-  }
-
-  @media (max-width: 600px) {
-    nav {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .answers label {
-      display: block;
-      margin: 0.5rem 0;
-    }
-  }
 </style>
 </head>
 <body>
