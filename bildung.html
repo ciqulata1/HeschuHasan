@@ -150,10 +150,21 @@
     letter-spacing: 0.05em;
   }
 
+  /* Kontaktformular Überschrift */
+  .contact-form-title {
+    color: var(--black);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin: 40px auto 20px;
+    padding-left: 5px;
+  }
+
   /* Formular Styling ergänzend */
   .contact-form-container {
     max-width: 700px;
-    margin: 50px auto 60px;
+    margin: 0 auto 60px;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
     color: var(--cyan);
   }
@@ -291,6 +302,8 @@
   </div>
 </main>
 
+<div class="contact-form-title">Kontaktformular</div>
+
 <div class="contact-form-container">
   <form id="contact-form">
     <label for="name">Name:</label>
@@ -329,9 +342,44 @@
       }
     });
   });
+
+  // Beispiel für ein "spezielles Script" ähnlich justiz.html
+  // z.B. Animation beim Scrollen oder Fade-In Effekt für Boxen
+  const boxes = document.querySelectorAll('.box');
+
+  function checkBoxes() {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    boxes.forEach(box => {
+      const boxTop = box.getBoundingClientRect().top;
+
+      if (boxTop < triggerBottom) {
+        box.classList.add('show');
+      } else {
+        box.classList.remove('show');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkBoxes);
+  checkBoxes();
 </script>
 
 <!-- FontAwesome Script -->
 <script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
+
+<style>
+  /* Beispiel für die Animation */
+  .box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
 </body>
 </html>
