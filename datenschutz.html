@@ -6,9 +6,15 @@
   <title>Datenschutzerklärung – Heschu Hasan</title>
   <style>
     :root {
-      --primary-color: #009ee3;
-      --accent-color: #e5007d;
-      --bg-color: #ffffff;
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+      --primary-color: var(--cyan);
+      --accent-color: var(--magenta);
+      --bg-color: var(--white);
       --text-color: #333333;
     }
 
@@ -19,11 +25,19 @@
     }
 
     body {
-      font-family: Calibri, sans-serif;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       padding: 20px;
       line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
 
     .container {
@@ -50,32 +64,120 @@
       margin-bottom: 20px;
     }
 
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
+    header {
+      background-color: var(--bg-color);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav a:hover,
+    nav a:focus,
+    nav a.active {
+      color: var(--magenta);
+      font-weight: 700;
+      outline: none;
     }
 
-    a:hover {
-      text-decoration: underline;
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
+    footer h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+    .social-text {
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    button.back-button {
+      background-color: var(--cyan);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    button.back-button:hover,
+    button.back-button:focus {
+      background-color: var(--magenta);
+      outline: none;
     }
 
     @media (max-width: 600px) {
       body {
         padding: 10px;
       }
-
       h1 {
         font-size: 1.5em;
       }
-
       h2 {
         font-size: 1.2em;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="impressum.html" class="active">Impressum</a>
+    </nav>
+  </header>
+
+  <main class="container">
     <h1>Datenschutzerklärung</h1>
 
     <p>Der Schutz Ihrer persönlichen Daten ist mir ein besonderes Anliegen. Ich, Heschu Hasan, behandle Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
@@ -83,9 +185,8 @@
     <h2>1. Verantwortliche Stelle</h2>
     <p>Verantwortlich für die Verarbeitung Ihrer personenbezogenen Daten auf dieser Website ist:</p>
     <p>
-      Heschu Hasan<br>
-      FDP Wahlkreiskandidatin Freiburg-Ost<br>
-      E-Mail: <a href="mailto:kontakt@heschuhasan.de">kontakt@heschuhasan.de</a>
+      FDP Kreisverband Freiburg<br />
+      E-Mail: <a href="mailto:info@fdp-freiburg.de">info@fdp-freiburg.de</a>
     </p>
 
     <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
@@ -101,12 +202,27 @@
     <p>Sie haben jederzeit das Recht auf Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung. Außerdem haben Sie das Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</p>
 
     <h2>6. Kontakt zur Datenschutzverantwortlichen</h2>
-    <p>Wenn Sie Fragen zum Datenschutz haben oder von Ihren Rechten Gebrauch machen möchten, schreiben Sie bitte an: <a href="mailto:kontakt@heschuhasan.de">kontakt@heschuhasan.de</a></p>
+    <p>Wenn Sie Fragen zum Datenschutz haben oder von Ihren Rechten Gebrauch machen möchten, schreiben Sie bitte an: <a href="mailto:info@fdp-freiburg.de">info@fdp-freiburg.de</a></p>
 
     <h2>7. Änderungen dieser Datenschutzerklärung</h2>
     <p>Ich behalte mir vor, diese Datenschutzerklärung bei Bedarf anzupassen. Es gilt die jeweils aktuelle Version auf dieser Website.</p>
 
     <p><strong>Stand:</strong> Mai 2025</p>
-  </div>
+
+    <button class="back-button" onclick="history.back()">← Zurück</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Heschu Hasan – FDP Freiburg-Ost</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <p class="social-text">Treffen Sie sich mit mir auf den Sozialen Medien</p>
+  </footer>
+
+  <!-- FontAwesome Script -->
+  <script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
 </body>
 </html>
