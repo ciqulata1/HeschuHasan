@@ -31,13 +31,18 @@
     margin: 0;
     background-color: var(--white);
     color: var(--cyan);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
     line-height: 1.5;
   }
 
   a {
     color: var(--cyan);
     text-decoration: none;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   a:hover,
   a:focus {
@@ -54,24 +59,24 @@
     justify-content: space-between;
   }
   header h1 {
-    font-family: Georgia, serif;
-    font-weight: bold;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
     font-size: 1.8rem;
     color: var(--cyan);
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
   nav a {
-    font-weight: normal;
+    font-weight: 600;
     font-size: 1rem;
     margin-left: 25px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 
   nav a.active,
   nav a:hover {
     color: var(--magenta);
-    font-weight: bold;
+    font-weight: 700;
   }
 
   main {
@@ -81,7 +86,8 @@
   }
   main h2 {
     color: var(--cyan);
-    font-weight: bold;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
     font-size: 2rem;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -89,11 +95,16 @@
   }
   main h3 {
     color: var(--cyan);
-    font-weight: normal;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
     font-size: 1.25rem;
     margin-bottom: 20px;
+    text-transform: none;
+    letter-spacing: normal;
   }
   main p {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 300;
     font-size: 1.1rem;
     max-width: 700px;
   }
@@ -112,10 +123,13 @@
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: Georgia, serif;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 300;
     font-size: 1.1rem;
     border-radius: 5px;
     user-select: none;
+    display: block; /* Für <a> wichtig */
+    text-decoration: none;
   }
   .box:hover {
     border-color: var(--magenta);
@@ -130,9 +144,67 @@
 
   .box h3 {
     margin-top: 0;
-    font-weight: bold;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  /* Formular Styling ergänzend */
+  .contact-form-container {
+    max-width: 700px;
+    margin: 50px auto 60px;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    color: var(--cyan);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-size: 1rem;
+    padding: 8px 10px;
+    border: 2px solid var(--cyan);
+    border-radius: 4px;
+    color: var(--black);
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--magenta);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  button[type="submit"] {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    border: none;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  button[type="submit"]:hover,
+  button[type="submit"]:focus {
+    background-color: var(--cyan);
+    color: var(--magenta);
+    outline: none;
   }
 
   footer {
@@ -140,12 +212,13 @@
     color: var(--white);
     text-align: center;
     padding: 30px 20px;
-    font-family: Georgia, serif;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 500;
   }
   footer h3 {
     margin-top: 0;
     margin-bottom: 15px;
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
@@ -217,9 +290,9 @@
     </a>
   </div>
 </main>
-  <div class="contact-form-container">
+
+<div class="contact-form-container">
   <form id="contact-form">
-    <!-- Deine Formularfelder hier -->
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
@@ -232,7 +305,6 @@
     <button type="submit">Absenden</button>
   </form>
 </div>
-
 
 <footer>
   <h3>Treffen Sie mich in den Sozialen Medien</h3>
