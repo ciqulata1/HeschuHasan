@@ -7,116 +7,129 @@
   <style>
     /* Farben */
     :root {
-      --gelb: #ffed00;
+      --yellow: #ffed00;
       --magenta: #e5007d;
-      --cyan-blau: #009ee3;
-      --tuerkis: #00abae;
-      --dunkel-magenta: #a5027d;
-      --weiss: #ffffff;
-      --schwarz: #000000;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --dark-magenta: #a5027d;
+      --white: #ffffff;
+      --black: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Futura Book', Arial, sans-serif;
-      background: var(--weiss);
-      color: var(--schwarz);
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 400; /* Regular */
+      background-color: var(--white);
+      color: var(--black);
       margin: 0;
       padding: 0;
-      letter-spacing: -0.01em;
+      letter-spacing: 0;
+      line-height: 1.6;
     }
 
     header {
-      background-color: var(--gelb);
-      color: var(--schwarz);
+      background-color: var(--yellow);
+      color: var(--black);
       text-align: center;
-      padding: 1em 1em;
-      font-family: 'Futura Medium', Arial, sans-serif;
+      padding: 1.2rem 1rem;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 700; /* Bold */
       text-transform: uppercase;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.06em;
     }
 
     main {
       max-width: 800px;
-      margin: 2em auto;
-      padding: 0 1em;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
     }
 
     h1 {
-      font-family: 'Futura Bold Oblique', Arial, sans-serif;
-      font-weight: bold;
-      font-style: oblique;
-      text-transform: uppercase;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 700; /* Bold */
       color: var(--magenta);
-      margin-bottom: 0.5em;
-      letter-spacing: -0.05em;
+      margin-bottom: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 2rem;
     }
 
     h2 {
-      font-family: 'Futura Medium', Arial, sans-serif;
-      font-weight: 500;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 600; /* Semi-Bold */
+      color: var(--dark-magenta);
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
       text-transform: uppercase;
-      color: var(--dunkel-magenta);
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
-      letter-spacing: -0.03em;
+      letter-spacing: 0.07em;
+      font-size: 1.4rem;
     }
 
     p {
-      font-family: 'Futura Book', Arial, sans-serif;
-      font-size: 1rem;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 300; /* Light */
+      font-size: 1.1rem;
       line-height: 1.5;
-      color: var(--schwarz);
-      margin-bottom: 1em;
+      color: var(--black);
+      margin-bottom: 1.2rem;
     }
 
     .hinweis {
-      font-family: 'Futura Medium', Arial, sans-serif;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 600;
       color: var(--magenta);
-      font-weight: 500;
-      font-style: normal;
       text-transform: uppercase;
-      letter-spacing: -0.03em;
-      margin-top: 1em;
+      letter-spacing: 0.07em;
+      margin-top: 1.2rem;
     }
 
     .zurueck-link {
       display: inline-block;
       background-color: var(--magenta);
-      color: var(--gelb);
-      padding: 0.7em 1.2em;
+      color: var(--yellow);
+      padding: 0.75rem 1.5rem;
       text-decoration: none;
-      font-family: 'Futura Medium', Arial, sans-serif;
-      font-weight: 500;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: -0.03em;
-      border-radius: 4px;
-      margin-top: 1.5em;
+      letter-spacing: 0.07em;
+      border-radius: 10px;
+      margin-top: 2rem;
       transition: background-color 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(229, 0, 125, 0.6);
     }
 
     .zurueck-link:hover,
     .zurueck-link:focus {
-      background-color: var(--dunkel-magenta);
+      background-color: var(--dark-magenta);
       outline: none;
+      box-shadow: 0 3px 12px rgba(165, 2, 125, 0.9);
     }
 
     footer {
-      background-color: var(--gelb);
-      color: var(--schwarz);
+      background-color: var(--cyan);
+      color: var(--white);
       text-align: center;
-      padding: 1em 1em;
-      font-family: 'Futura Medium', Arial, sans-serif;
-      letter-spacing: -0.02em;
+      padding: 1.5rem 1rem;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 0.5em;
+      gap: 0.5rem;
       flex-wrap: wrap;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     footer img {
-      height: 1.3em;
+      height: 1.5rem;
       vertical-align: middle;
     }
   </style>
