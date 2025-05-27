@@ -244,7 +244,7 @@ footer .social-links a:focus {
   <h2>Meinungs-Macher</h2>
   <h3>Beantworten Sie 21 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
 
-  <form id="quizForm" action="auswertung.html" method="post">
+  <form id="quizForm">
     <div id="questions"></div>
     <button type="submit">Absenden</button>
   </form>
@@ -300,6 +300,23 @@ footer .social-links a:focus {
           <label><input type="radio" name="q${i}" value="nein" /> Nein</label>
         </div>`;
       questionContainer.appendChild(div);
+    });
+
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Verhindert das Standard-Absenden
+
+      const formData = new FormData(this);
+      let jaCount = 0;
+      const total = questions.length;
+
+      for (let i = 0; i < total; i++) {
+        let answer = formData.get(`q${i}`);
+        if (answer === 'ja') jaCount++;
+      }
+
+      const feedback = document.getElementById('feedback');
+      feedback.style.display = 'block';
+      feedback.textContent = `Du hast ${jaCount} von ${total} Fragen mit "Ja" beantwortet.`;
     });
   });
 </script>
