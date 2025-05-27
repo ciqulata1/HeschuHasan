@@ -31,13 +31,18 @@
     margin: 0;
     background-color: var(--white);
     color: var(--cyan);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
     line-height: 1.5;
   }
 
   a {
     color: var(--cyan);
     text-decoration: none;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   a:hover,
   a:focus {
@@ -54,24 +59,24 @@
     justify-content: space-between;
   }
   header h1 {
-    font-family: Georgia, serif;
-    font-weight: bold;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
     font-size: 1.8rem;
     color: var(--cyan);
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
   nav a {
-    font-weight: normal;
+    font-weight: 600;
     font-size: 1rem;
     margin-left: 25px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 
   nav a.active,
   nav a:hover {
     color: var(--magenta);
-    font-weight: bold;
+    font-weight: 700;
   }
 
   main {
@@ -81,7 +86,8 @@
   }
   main h2 {
     color: var(--cyan);
-    font-weight: bold;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 700;
     font-size: 2rem;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -89,11 +95,16 @@
   }
   main h3 {
     color: var(--cyan);
-    font-weight: normal;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
     font-size: 1.25rem;
     margin-bottom: 20px;
+    text-transform: none;
+    letter-spacing: normal;
   }
   main p {
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 300;
     font-size: 1.1rem;
     max-width: 700px;
   }
@@ -112,13 +123,17 @@
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: Georgia, serif;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 300;
     font-size: 1.1rem;
     border-radius: 5px;
     user-select: none;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .topic-box:hover,
   .topic-box:focus {
@@ -128,7 +143,7 @@
     outline: none;
   }
 
-  /* Für Verwaltung mit Unterthemen */
+  /* Verwaltung mit Unterthemen */
   .topic-box[aria-expanded="true"] {
     background-color: var(--magenta);
     color: var(--turquoise);
@@ -149,6 +164,8 @@
     padding: 10px;
     border-radius: 5px;
     font-size: 1rem;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
     text-transform: none;
     letter-spacing: normal;
   }
@@ -163,13 +180,13 @@
   form {
     max-width: 500px;
     margin-top: 50px;
-    font-family: Georgia, serif;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    color: var(--cyan);
   }
   label {
     display: block;
     margin-bottom: 8px;
-    font-weight: bold;
-    color: var(--cyan);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -181,8 +198,9 @@
     border: 2px solid var(--cyan);
     border-radius: 5px;
     font-size: 1rem;
-    font-family: Georgia, serif;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     color: var(--black);
+    font-weight: 400;
   }
   input:focus,
   textarea:focus {
@@ -195,10 +213,10 @@
     color: var(--turquoise);
     border: none;
     padding: 12px 20px;
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-family: Georgia, serif;
+    letter-spacing: 0.1em;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -215,7 +233,8 @@
     color: var(--white);
     text-align: center;
     padding: 30px 20px;
-    font-family: Georgia, serif;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 500;
   }
   footer p {
     margin: 10px 0;
@@ -312,7 +331,7 @@
 </footer>
 
 <script>
-  // Optional: Einfacher Toggle für Verwaltung Unterthemen
+  // Einfacher Toggle für Verwaltung Unterthemen
   const verwaltungBox = document.getElementById('verwaltung-box');
   const verwaltungSubs = document.getElementById('verwaltung-subtopics');
   verwaltungBox.addEventListener('click', () => {
