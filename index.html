@@ -60,6 +60,12 @@
     align-items: center;
     justify-content: space-between;
   }
+  /* Wrapper für Überschrift und Logo */
+  header > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   header h1 {
     font-weight: 700;
     font-size: 1.8rem;
@@ -67,6 +73,13 @@
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+  }
+  #fdp-logo {
+    margin-top: 8px;
+    max-height: 40px;
+    transition: opacity 1s ease, transform 1s ease;
+    opacity: 0;
+    transform: translateY(-20px);
   }
   nav a {
     font-weight: 600;
@@ -290,18 +303,6 @@
       align-items: flex-start;
       padding: 15px 20px;
     }
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    #fdp-logo {
-      height: 10px;
-      margin-right: 15px;
-      opacity: 0;
-      transform: translateY(-20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
     nav a {
       margin-left: 0;
       margin-right: 15px;
@@ -315,10 +316,10 @@
 <body>
 
 <header>
-   <div style="display: flex; align-items: center;">
-    <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo">
-  <h1>HESCHU HASAN</h1>
-     </div>
+  <div>
+    <h1>HESCHU HASAN</h1>
+    <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" />
+  </div>
   <nav>
     <a href="index.html">Startseite</a>
     <a href="bildung.html">Bildung</a>
