@@ -1,562 +1,3 @@
-Weiter zum Inhalt
-Chatverlauf
-Du:
-was muss man alles beachten, wenn man ein kontaktformular auf einer website bereit stellt? braucht man dafür nicht sql?
-ChatGPT:
-
-Ein Kontaktformular auf einer Website zu erstellen, ist technisch einfach – aber es gibt wichtige rechtliche, technische und sicherheitsrelevante Aspekte, die du beachten musst. SQL brauchst du nicht zwingend, es kommt darauf an, wie du die Daten verarbeiten willst. Hier ist ein Überblick:
-✅ 1. Rechtliche Anforderungen (DSGVO!)
-
-Wenn du personenbezogene Daten (z. B. Name, E-Mail-Adresse) abfragst, musst du:
-
-    Datenschutzerklärung verlinken (unter dem Formular)
-
-    Zweck der Datenerhebung angeben (z. B. „zur Kontaktaufnahme“)
-
-    Einwilligung einholen (Checkbox mit: „Ich habe die Datenschutzerklärung gelesen und stimme zu“ – nicht vorausgewählt!)
-
-    Keine Pflichtfelder, die nicht zwingend nötig sind (z. B. Telefonnummer nur optional)
-
-    Keine Weitergabe an Dritte ohne Einwilligung
-
-✅ 2. Technische Umsetzung (SQL optional)
-Möglichkeit A: Formular per E-Mail versenden (ohne SQL)
-
-    Einfach und oft ausreichend für kleinere Seiten.
-
-    Formular wird über z. B. PHP, Node.js oder ein Formular-Dienst (z. B. Formspree, Netlify Forms) versendet.
-
-    Keine Datenbank notwendig.
-
-Möglichkeit B: Formular speichert Daten in Datenbank (z. B. SQL)
-
-    Du brauchst SQL, wenn du die Daten speichern, durchsuchen oder später verarbeiten willst.
-
-    Du benötigst:
-
-        Backend (z. B. PHP, Python, Node.js)
-
-        SQL-Datenbank (MySQL, PostgreSQL etc.)
-
-        Sicherheit (siehe unten!)
-
-✅ 3. Sicherheit beachten
-
-    Eingaben validieren und bereinigen (Schutz vor SQL-Injection)
-
-    ReCAPTCHA oder Honeypot gegen Spam
-
-    SSL-Verschlüsselung (https) ist Pflicht bei Formularen
-
-    CSRF-Schutz einbauen (z. B. über Tokens im Formular)
-
-✅ 4. Optional: Bestätigungsnachricht / Weiterleitung
-
-    Zeige nach Absenden eine Dankeseite oder schicke eine Bestätigungs-E-Mail.
-
-Fazit:
-Ziel	SQL nötig?	Empfehlung
-Einfaches Formular (E-Mail erhalten)	❌ Nein	Verwende PHP oder externe Dienste
-Daten speichern, analysieren	✅ Ja	Datenbank mit Backend verwenden
-DSGVO-konform	⚠️ Ja	Immer beachten!
-
-Wenn du möchtest, kann ich dir gerne ein Beispiel für ein sicheres und DSGVO-konformes Kontaktformular (mit oder ohne SQL) schreiben. Sag mir einfach, was du brauchst!
-Du:
-ja das müsste auf der index seite kommen diese abfrage oder? wenn jemand auf meine seite geht oder erst beim versenden der email?
-ChatGPT:
-
-Gute Frage! Die DSGVO-relevante Zustimmung (also z. B. zur Datenschutzerklärung) musst du erst beim Versenden des Formulars einholen – nicht direkt beim Betreten der Website.
-📌 Was heißt das konkret?
-👀 Beim Betreten der Website:
-
-    Du brauchst keine Checkbox zur Datenschutzerklärung für ein Kontaktformular, weil ja noch keine Daten übermittelt werden.
-
-    Du brauchst nur einen Cookie-Hinweis, wenn du Cookies oder Tracking nutzt (z. B. Google Analytics, YouTube-Videos, Fonts von externen Servern etc.).
-
-📨 Beim Absenden des Kontaktformulars:
-
-    Dann ist der Moment, in dem du personenbezogene Daten abfragst – also z. B. Name, E-Mail, Nachricht.
-
-    Ab diesem Moment greift die DSGVO → du musst:
-
-        Eine Checkbox einbauen mit:
-
-            ☑ Ich habe die [Datenschutzerklärung] gelesen und stimme zu.
-
-        Die Checkbox darf nicht vorangekreuzt sein.
-
-        Das Formular darf nicht abschickbar sein, wenn die Checkbox nicht angehakt wurde.
-
-✅ Beispiel-Formular (ohne SQL, DSGVO-konform)
-
-<form method="POST" action="/kontakt.php">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required><br>
-
-  <label for="email">E-Mail:</label>
-  <input type="email" id="email" name="email" required><br>
-
-  <label for="nachricht">Nachricht:</label>
-  <textarea id="nachricht" name="nachricht" required></textarea><br>
-
-  <label>
-    <input type="checkbox" name="datenschutz" required>
-    Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
-  </label><br>
-
-  <button type="submit">Absenden</button>
-</form>
-
-Wichtig: /kontakt.php müsste dann den Versand per E-Mail regeln. Ich kann dir dafür auch ein PHP-Skript schreiben, wenn du willst.
-
-Wenn du es besonders sauber und professionell machen willst, kann ich dir auch ein kleines Frontend-Backend-Komplettpaket zeigen – mit oder ohne SQL. Sag einfach, ob du:
-
-    nur E-Mail-Versand willst oder
-
-    zusätzlich eine Speicherung der Daten (z. B. für spätere Auswertung).
-
-Du:
-muss die Datenschutzerklärung von mir sein? kannst du eine html erstellen? Entsprechend diesem html
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Biografie – Heschu Hasan</title>
-
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-  <!-- Externe CSS-Datei -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="wrapper">
-    <header>
-      <nav>
-        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
-
-        <!-- Desktop Menü -->
-        <ul class="nav-list">
-          <li><a href="#" data-page="index.html">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html" class="active">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-        </ul>
-
-        <!-- Mobile Menü -->
-        <ul class="nav-list-burger">
-          <li><a href="#" data-page="index.html">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html" class="active">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main id="content">
-      <section>
-        <h1>Biografie</h1>
-
-        <section>
-  <h2>Über mich</h2>
-  <div class="biografie-image-wrapper" style="float:right; margin-left:20px; max-width:300px;">
-    <img src="IMG_1604.jpeg" alt="Portrait von Heschu Hasan" class="biografie-image" />
-    <p class="bildunterschrift">Foto: Daniel Karreis 2025</p>
-  </div>
-
-  <p>Ich bin Heschu Hasan, 35 Jahre alt, Direktkandidatin für den Landtag Baden-Württemberg. Geboren in der autonomen Region Kurdistan, lebe ich seit 1996 in Deutschland und bin deutsche Staatsbürgerin. Ich bin studierte Wirtschaftswissenschaftlerin mit technischem Hintergrund und politischem Herzen – geprägt von Lebensrealität, nicht von Karriereplanung.</p>
-
-  <p>Mein Vater wurde schwer verletzt – in einem politischen System, das Menschlichkeit kaum kannte. Diese Erfahrung begleitet mich bis heute. Sie hat mir früh gezeigt, wie fragil Sicherheit ist. Und wie tief die Wunden sind, wenn Mitgefühl fehlt.</p>
-
-  <p>Deutschland ist ein wohlhabendes Land. Aber Barmherzigkeit, echtes Zuhören, gegenseitige Fürsorge – das ist nicht immer selbstverständlich. Viele geben ihr Bestes, jeden Tag. Und doch erleben zu viele Menschen, dass ihr Schmerz unsichtbar bleibt. Ich glaube: Politik beginnt genau da, wo Menschen sich gesehen fühlen. Und genau deshalb bin ich hier.</p>
-</section>
-
-<section>
-  <h2>Bildung und Kultur</h2>
-  <p>Ich hatte Kunst-Leistungskurs und Englisch-Leistungskurs – beides nicht zufällig. Ich liebe Sprachen. Ich liebe Kunst. Sprache schafft Verbindung, Kunst gibt Raum für das, was nicht gesagt werden kann. Beides hat mich geprägt und mir geholfen, mich in dieser Welt zu orientieren – intellektuell, emotional und gesellschaftlich.</p>
-
-  <p>Mich begeistert die Tiefe des Expressionismus, die Leichtigkeit des Impressionismus, die Sehnsucht der Romantik – und genauso die Provokation der Pop-Art von Andy Warhol. Ein Selbstporträt im Warhol-Stil habe ich schon im Kunst-LK gezeichnet – aus dem Wunsch, Identität sichtbar zu machen, auf eine andere Art. Ich denke oft daran, auch heute ein neues Porträt im Stil von Warhol zu gestalten – vielleicht mit Hilfe von KI. Denn auch das ist Teil unserer Zeit: Kreativität durch Technologie erweitern.</p>
-
-  <p>Für mich ist Kultur nicht Dekoration. Kultur ist Erdung. Sie hält uns verbunden – mit unserer Geschichte, unserer Umwelt, mit anderen Menschen. Ohne Kultur fehlt Barmherzigkeit. Und ohne Barmherzigkeit verlieren wir, was uns menschlich macht.</p>
-
-  <div class="biografie-image-wrapper" style="float:right; margin-left:20px; max-width:300px;">
-    <img src="IMG_1343.jpeg" alt="Heschu Hasan beim Newroz-Fest in traditioneller kurdischer Kleidung" class="biografie-image" />
-    <p class="bildunterschrift">Foto: Teilnehmer Newroz-Fest, März 2025</p>
-  </div>
-</section>
-
-<section>
-  <h2>Politisches Engagement</h2>
-  <p>Seit 2016 habe ich einen Abschluss in Wirtschaftswissenschaften. Mein Studium in International Information Systems setze ich fort, weil ich überzeugt bin: Ohne digitale Kompetenz gibt es keine soziale Gerechtigkeit – und keinen Klimaschutz. Digitalisierung ist kein Ziel. Sie ist ein Werkzeug, um Bildung und Umwelt überhaupt möglich zu machen.</p>
-
-  <p>Ich stehe für drei Dinge: <strong>Bildung, Umwelt und einen bürgernahen Staat.</strong> Nicht als Schlagworte – sondern als Grundlage für ein gelingendes Leben. Denn ohne Bildung keine Chancengerechtigkeit. Ohne Umwelt keinen Lebensraum. Und ohne Bürgernähe keinen gesellschaftlichen Zusammenhalt.</p>
-
-  <p>Politik macht mir Freude. Richtig große Freude. Und sie wurde in mir entfacht durch die Führungspersönlichkeiten der FDP – durch Christian Lindner, Bettina Stark-Watzinger und viele andere, die mir gezeigt haben: Deine Stimme zählt. Deine Geschichte hat Gewicht. In Bad Krozingen habe ich das erste Mal erlebt, wie es ist, wenn Menschen zuhören – nicht, weil sie müssen, sondern weil sie wollen.</p>
-
-  <p>Als die FDP aus dem Bundestag gefallen ist, hat mich das tief getroffen. Nicht, weil es um Macht ging – sondern weil ich wusste, wie viel Mut, Fachwissen und Klarheit verloren zu gehen drohten. Das hat in mir den Entschluss reifen lassen: Ich engagiere mich. Ich trete an. Das ist der liberale Spirit, der mich durch und durch durchdrungen hat. Für Lösungen. Für Mitgefühl. Für Politik, die nicht über die Menschen hinweggeht, sondern auf Augenhöhe mit ihnen arbeitet.</p>
-
-  <p>Ich jogge. Ich schreibe Gedichte. Ich baue meine eigene Website. Nicht, weil ich muss, sondern weil ich glaube: Wer sich weiterentwickelt, bleibt lebendig. Und wer lebendig bleibt, kann etwas bewegen.</p>
-   <p>Ich bin keine Berufspolitikerin. Ich bin eine Frau mit Haltung, Geschichte – und Hoffnung. Und ich gebe mein Bestes. Jeden Tag. Für ein Land, das zuhört. Und für eine Zukunft, die verbindet.</p>
-
-<section>
-  <h2>Berufliche Erfahrungen</h2>
-
-  <div class="biografie-image-wrapper" style="float:right; margin-left:20px; max-width:300px;">
-    <img src="IMG_2130.jpeg" alt="Heschu Hasan bei der Arbeit in der Verwaltung" class="biografie-image" />
-  </div>
-  <p>
-    In den letzten Jahren habe ich in verschiedenen Bereichen gearbeitet – im Vertrieb, im Customer Relationship Management (CRM) und auch in der öffentlichen Verwaltung. Ich kenne die Anforderungen von Kund:innen genauso wie die Abläufe in Behörden. Besonders prägend war meine Zeit beim Freistaat Bayern im Amt für Asyl und Rückführungen. Dort habe ich in der IT mitgewirkt – und dabei gesehen, wie wichtig gute Organisation, klare Kommunikation und digitale Prozesse für faire Verfahren sind.
-  </p>
-
-  <p>
-    Was mich antreibt, ist nicht nur die Frage: Wie kann man Systeme effizienter machen? Sondern: Wie können sie menschenfreundlicher werden? Diese Perspektive bringe ich mit – aus der Praxis, für die Politik.
-  </p>
-
-  <section>
-  <h2>Freiheit erleben – unterwegs in Europa</h2>
-
-  <div class="biografie-image-wrapper" style="float:right; margin-left:20px; max-width:300px;">
-  <img src="IMG_2132.jpeg" alt="Heschu Hasan mit der Europaflagge" class="biografie-image" />
-  <p class="bildunterschrift">
-    Foto: Privat<br />
-    Quelle der Europaflagge: <a href="https://www.sylt-flagge.de/c/flaggen-fahnen/weltfrieden" target="_blank" rel="noopener noreferrer">sylt-flagge.de</a>
-  </p>
-</div>
-  <p>
-    Für mich bedeutet Freiheit nicht nur politisches Engagement, sondern auch kulturelle Offenheit. Ich reise gerne – nach Frankreich, in die Schweiz und darüber hinaus. Diese Orte geben mir Kraft, Inspiration und ein Gefühl von Zugehörigkeit.
-  </p>
-
-  <p>
-    In Frankreich – wo auf vielen Gebäuden „Liberté, Égalité, Fraternité“ steht – spüre ich eine Verbindung zu den Grundwerten, die auch mich in meinem politischen Denken prägen. Genau dieser Leitsatz bestärkt mich darin, in der FDP aktiv zu sein – für eine Politik der Freiheit und der Verantwortung.
-  </p>
-
-  <p>
-    In Basel habe ich kürzlich eine Kirche besucht – ein Ort der Stille, der Geschichte und des Nachdenkens. Solche Momente sind mir wichtig. Sie zeigen mir, wie wertvoll kulturelle Vielfalt und religiöse Toleranz in Europa sind.
-  </p>
-
-    <section>
-
-  <h2>Verbunden mit Europa – und besonders mit Frankreich</h2>
-
-      
-  <p>
-    Reisen bedeutet für mich: neue Perspektiven einnehmen, offen bleiben, zuhören. Besonders Frankreich liegt mir am Herzen. Ich war dort schon oft, wurde einmal in die Botschaft eingeladen – und habe tiefe Verbundenheit gespürt. 
-  </p>
-
-  <p>
-    Innerhalb meines Studiums hatte ich mehrfach die Chance, durch Stipendien an französischen Grandes Écoles zu studieren. Diese Zeit hat mein Weltbild erweitert – und meine Begeisterung für Bildung, Europa und interkulturellen Austausch noch vertieft.
-  </p>
-
-  <p>
-    Ich sehe viele Parallelen zwischen meinen Überzeugungen und den Werten der Freien Demokraten – gerade im europäischen Kontext. Die deutsch-französische Freundschaft ist für mich nicht nur Geschichte, sondern gelebte Gegenwart. Ich glaube: Diese Beziehung braucht Pflege, Respekt und Vertrauen – genau das, wofür die FDP steht. Und genau darum setze ich mich dafür ein, dass Europa weiter zusammenwächst – mit gegenseitiger Achtung als Fundament.
-  </p>
-
-  <p>
-    Auch die Schweiz hat mir kulturell viel gegeben – besonders Orte wie Basel, mit ihrer Offenheit und spirituellen Tiefe. Dort habe ich eine Kirche besucht, die mir Ruhe und neue Kraft gegeben hat. Solche Erfahrungen prägen mich – als Mensch und als Politikerin.
-  </p>
-
-  <div class="bildreihe">
-  <div class="biografie-image-wrapper">
-    <img src="IMG_9350.jpeg" alt="Heschu Hasan in Frankreich" class="biografie-image" />
-  </div>
-
-  <div class="biografie-image-wrapper">
-    <img src="IMG_9881.jpeg" alt="Heschu Hasan in Frankreich" class="biografie-image" />
-  </div>
-
-  <div class="biografie-image-wrapper">
-    <img src="IMG_8861.jpeg" alt="Heschu Hasan in einer Kirche in Basel" class="biografie-image" />
-  </div>
-</div>
-</section>
-
-
-</section>
-<script>
-      // Burger-Menü Toggle
-      const burger = document.querySelector('.burger');
-      const navBurger = document.querySelector('.nav-list-burger');
-
-      burger.addEventListener('click', () => {
-        navBurger.classList.toggle('active');
-      });
-
-      // Dynamisches Nachladen der Seiten (Navigation)
-      function setupNavigation() {
-        const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
-        const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
-
-        function loadPage(e) {
-          e.preventDefault();
-          const page = this.getAttribute('data-page');
-          if (!page) return;
-
-          fetch(page)
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
-              document.getElementById('content').innerHTML = newContent;
-
-              // Menü schließen bei mobile
-              navBurger.classList.remove('active');
-
-              // Aktiven Menüpunkt synchron setzen
-              navLinksDesktop.forEach(a => a.classList.remove('active'));
-              navLinksMobile.forEach(a => a.classList.remove('active'));
-
-              navLinksDesktop.forEach(a => {
-                if (a.getAttribute('data-page') === page) a.classList.add('active');
-              });
-              navLinksMobile.forEach(a => {
-                if (a.getAttribute('data-page') === page) a.classList.add('active');
-              });
-            })
-            .catch(err => {
-              console.error('Fehler beim Laden:', err);
-              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
-            });
-        }
-
-        navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
-        navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
-      }
-
-      setupNavigation();
-    </script>
-  </div>
-</body>
-</html>
-ChatGPT:
-
-Ja, laut Datenschutz-Grundverordnung (DSGVO) bist du als Betreiberin einer Website verpflichtet, eine Datenschutzerklärung bereitzustellen, wenn du personenbezogene Daten erhebst oder verarbeitest – was bei den meisten Websites der Fall ist, etwa durch:
-
-    Kontaktformulare
-
-    Einbindung von Drittanbietern (z. B. Google Fonts, YouTube, Social Media Buttons)
-
-    Analyse-Tools (z. B. Matomo, Google Analytics)
-
-    Hosting mit Logfile-Erfassung
-
-Wenn du keine Drittanbieter nutzt und kein Kontaktformular oder Newsletter hast, brauchst du trotzdem mindestens eine einfache Datenschutzerklärung, die das Hosting (Server-Logfiles etc.) abdeckt.
-✅ Hier ist eine HTML-Datei für deine Datenschutzerklärung im gleichen Design-Stil wie deine Biografie-Seite:
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Datenschutzerklärung – Heschu Hasan</title>
-
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-  <!-- Externe CSS-Datei -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="wrapper">
-    <header>
-      <nav>
-        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
-
-        <!-- Desktop Menü -->
-        <ul class="nav-list">
-          <li><a href="#" data-page="index.html">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-          <li><a href="#" data-page="datenschutz.html" class="active">Datenschutz</a></li>
-        </ul>
-
-        <!-- Mobile Menü -->
-        <ul class="nav-list-burger">
-          <li><a href="#" data-page="index.html">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-          <li><a href="#" data-page="datenschutz.html" class="active">Datenschutz</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main id="content">
-      <section>
-        <h1>Datenschutzerklärung</h1>
-        <p>Diese Website erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch an den Server übermittelt. Dies sind:</p>
-        <ul>
-          <li>Browsertyp und Browserversion</li>
-          <li>Verwendetes Betriebssystem</li>
-          <li>Referrer URL</li>
-          <li>Hostname des zugreifenden Rechners</li>
-          <li>Uhrzeit der Serveranfrage</li>
-          <li>IP-Adresse (in gekürzter Form)</li>
-        </ul>
-        <p>Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.</p>
-
-        <h2>Cookies</h2>
-        <p>Diese Website verwendet keine Cookies zur Nutzerverfolgung.</p>
-
-        <h2>Externe Inhalte</h2>
-        <p>Diese Website verzichtet aktuell auf die Einbindung externer Inhalte wie YouTube, Google Maps oder soziale Medien.</p>
-
-        <h2>Kontaktaufnahme</h2>
-        <p>Wenn Sie mich per E-Mail kontaktieren, werden Ihre Angaben zwecks Bearbeitung der Anfrage sowie für den Fall von Anschlussfragen gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.</p>
-
-        <h2>Ihre Rechte</h2>
-        <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft, Empfänger und Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</p>
-
-        <p>Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im <a href="impressum.html">Impressum</a> angegebenen Adresse an mich wenden.</p>
-
-        <h2>Verantwortlich für den Datenschutz</h2>
-        <p>Heschu Hasan<br />
-        E-Mail: [Deine E-Mail-Adresse einfügen]<br />
-        Adresse: [Falls du eine offizielle Adresse hinterlegen willst]</p>
-
-        <p>Stand: Mai 2025</p>
-      </section>
-    </main>
-  </div>
-
-  <script>
-    const burger = document.querySelector('.burger');
-    const navBurger = document.querySelector('.nav-list-burger');
-
-    burger.addEventListener('click', () => {
-      navBurger.classList.toggle('active');
-    });
-
-    function setupNavigation() {
-      const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
-      const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
-
-      function loadPage(e) {
-        e.preventDefault();
-        const page = this.getAttribute('data-page');
-        if (!page) return;
-
-        fetch(page)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
-            document.getElementById('content').innerHTML = newContent;
-
-            navBurger.classList.remove('active');
-            navLinksDesktop.forEach(a => a.classList.remove('active'));
-            navLinksMobile.forEach(a => a.classList.remove('active'));
-
-            navLinksDesktop.forEach(a => {
-              if (a.getAttribute('data-page') === page) a.classList.add('active');
-            });
-            navLinksMobile.forEach(a => {
-              if (a.getAttribute('data-page') === page) a.classList.add('active');
-            });
-          });
-      }
-
-      navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
-      navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
-    }
-
-    document.addEventListener('DOMContentLoaded', setupNavigation);
-  </script>
-</body>
-</html>
-
-📌 Was du noch anpassen solltest:
-
-    Trage deine echte E-Mail-Adresse ein.
-
-    Wenn du möchtest, auch deine Adresse (Pflicht nur bei geschäftsmäßigen Websites).
-
-Wenn du mir sagst, ob du z. B. Google Fonts verwendest oder ein Kontaktformular einbauen willst, passe ich die Erklärung gerne entsprechend an.
-Du:
-ist der inhalt ausreichend?
-ChatGPT:
-
-Der Inhalt der generierten Datenschutzerklärung ist für eine private politische Website wie deine grundsätzlich ausreichend, wenn:
-
-    kein Kontaktformular, kein Newsletter, keine Social Plugins (z. B. Facebook-Buttons),
-
-    keine eingebetteten YouTube-Videos, Google Fonts (extern), Google Maps oder ähnliche Dienste verwendet werden,
-
-    kein Website-Tracking (z. B. Google Analytics, Matomo) eingebunden ist,
-
-    du keine personenbezogenen Daten sammelst, z. B. durch Cookies, Login-Funktionalität oder ein Spendenformular.
-
-✅ Was die aktuelle Datenschutzerklärung gut abdeckt:
-
-    Sie erklärt klar:
-
-        wer verantwortlich ist,
-
-        welche Daten ggf. automatisch beim Besuch verarbeitet werden (Server-Logfiles),
-
-        wie Nutzerrechte aussehen (z. B. Auskunft, Löschung etc.),
-
-        Hinweise zur sicheren Übertragung via TLS/SSL.
-
-🔎 Was du noch prüfen bzw. ergänzen solltest:
-
-    Webhosting-Dienst:
-
-        Wer hostet deine Seite? Bei Nutzung externer Anbieter wie IONOS, Strato, GitHub Pages, Netlify etc. sollte der Hoster genannt werden, inkl. Verweis auf deren Datenschutzhinweise.
-
-        Beispiel: „Diese Website wird bei [Anbietername] gehostet. Der Anbieter verarbeitet personenbezogene Daten im Rahmen der Auftragsverarbeitung gemäß Art. 28 DSGVO.“
-
-    Google Fonts? (Falls eingebunden)
-
-        Wenn du Google Fonts nicht lokal, sondern direkt von Google lädst, musst du das erwähnen, da dabei IP-Adressen an Google gesendet werden.
-
-    Externe Links (z. B. sylt-flagge.de):
-
-        Hier ist zwar kein direkter Datenschutzbezug, aber du kannst optional ergänzen:
-
-            „Für die Inhalte externer Seiten, auf die diese Website verlinkt, wird keine Haftung übernommen. Bitte beachten Sie die Datenschutzhinweise der jeweiligen Anbieter.“
-
-📌 Fazit:
-
-Ja, für deine Zwecke ist der Text inhaltlich solide und datenschutzrechtlich tragfähig, wenn du keine zusätzlichen Dienste eingebunden hast. Falls du noch Google Fonts, Analytics o. ä. nutzt oder externe Ressourcen lädst, passe den Text bitte entsprechend an. Ich kann dir bei der Anpassung gerne helfen – sag einfach, welche Tools oder Dienste du auf der Seite einsetzt.
-Du:
-ja nur das   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-ChatGPT:
-
-Perfekt, danke! Wenn nur Font Awesome über das CDN von Cloudflare (cdnjs) eingebunden wird, dann betrifft das den Datenschutz nur geringfügig, aber formal musst du es erwähnen, da beim Aufruf dieser Ressource die IP-Adresse deines Seitenbesuchers an Cloudflare übermittelt wird.
-🔧 Ergänzung für die Datenschutzerklärung:
-
-Füge am besten folgenden Abschnitt hinzu (vor oder nach dem Abschnitt zu Server-Logfiles):
-
-Einbindung von Font Awesome über CDN
-
-Auf dieser Website wird zur Darstellung von Icons „Font Awesome“ verwendet. Die Schriftart wird über das Content Delivery Network (CDN) von Cloudflare eingebunden:
-
-Anbieter: Cloudflare Inc., 101 Townsend St., San Francisco, CA 94107, USA
-
-Beim Aufruf der Seite wird eine Verbindung zu den Servern von Cloudflare hergestellt, wodurch Ihre IP-Adresse übertragen werden kann. Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse liegt in einer einheitlichen und ansprechenden Darstellung der Website.
-
-Weitere Informationen zum Datenschutz bei Cloudflare finden Sie in der Datenschutzerklärung von Cloudflare:
-https://www.cloudflare.com/privacypolicy/
-
-Wenn du möchtest, kann ich dir die vollständige Datenschutzerklärung mit dieser Ergänzung in einem Stück liefern. Sag einfach Bescheid!
-Du:
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -590,21 +31,13 @@ Du:
     margin: 0;
     background-color: var(--white);
     color: var(--cyan);
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 400;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     line-height: 1.5;
-
-    opacity: 0; /* Für smooth fade-in */
-    transition: opacity 1s ease;
   }
 
   a {
     color: var(--cyan);
     text-decoration: none;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
   a:hover,
   a:focus {
@@ -621,24 +54,25 @@ Du:
     justify-content: space-between;
   }
   header h1 {
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 700;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-weight: bold;
     font-size: 1.8rem;
     color: var(--cyan);
     margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
   }
   nav a {
-    font-weight: 600;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-weight: normal;
     font-size: 1rem;
     margin-left: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   nav a.active,
   nav a:hover {
     color: var(--magenta);
-    font-weight: 700;
+    font-weight: bold;
   }
 
   main {
@@ -646,29 +80,24 @@ Du:
     max-width: 1200px;
     margin: 0 auto;
   }
-
   main h2 {
-    color: var(--black); /* Überschrift jetzt schwarz */
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 700;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: var(--cyan);
+    font-weight: bold;
     font-size: 2rem;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-
   main h3 {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     color: var(--cyan);
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 600;
+    font-weight: normal;
     font-size: 1.25rem;
     margin-bottom: 20px;
-    text-transform: none;
-    letter-spacing: normal;
   }
   main p {
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 300;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     font-size: 1.1rem;
     max-width: 700px;
   }
@@ -680,6 +109,7 @@ Du:
     margin-top: 40px;
   }
   .topic-box {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     flex: 1 1 280px;
     border: 2px solid var(--cyan);
     background-color: var(--white);
@@ -687,17 +117,12 @@ Du:
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 300;
     font-size: 1.1rem;
     border-radius: 5px;
     user-select: none;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .topic-box:hover,
   .topic-box:focus {
@@ -707,141 +132,62 @@ Du:
     outline: none;
   }
 
-  /* Verwaltung Subtopics */
-  .topic-box[aria-expanded="false"] .subtopics {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    display: block;
+  /* Für Verwaltung mit Unterthemen */
+  .topic-box[aria-expanded="true"] {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    border-color: var(--magenta);
   }
-  .topic-box[aria-expanded="true"] .subtopics {
-    max-height: 500px; /* groß genug für den Inhalt */
-  }
-
   .subtopics {
     margin-top: 15px;
-    display: block;
+    display: none;
     flex-direction: column;
     gap: 10px;
   }
-
+  .topic-box[aria-expanded="true"] .subtopics {
+    display: flex;
+  }
   .subtopics a {
-    background-color: #ffffff;
-    color: var(--turquoise);
-    border: 2px solid var(--turquoise);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: var(--cyan);
+    border: 2px solid var(--cyan);
     padding: 10px;
     border-radius: 5px;
     font-size: 1rem;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 600;
     text-transform: none;
     letter-spacing: normal;
-    text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    cursor: pointer;
-    user-select: none;
-    display: block;
-    width: fit-content;
   }
   .subtopics a:hover,
   .subtopics a:focus {
+    border-color: var(--magenta);
     background-color: var(--magenta);
-    color: var(--white);
-    border-color: var(--magenta);
-    outline: none;
-  }
-
-  /* CSS: Zentrierung der Mission-Box */
-  .mission-box {
-    position: static; /* Standard position, damit Link normal anklickbar ist */
-    z-index: auto;
-    pointer-events: auto;
-  }
-  .mission-box.centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    background-color: var(--white);
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    max-width: 90vw;
-    max-height: 90vh;
-    overflow-y: auto;
-    border-color: var(--magenta);
-    pointer-events: auto;
-  }
-
-  /* Overlay */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
-  }
-
-  /* Link wenn aktiv */
-  .btn-link.active {
-    color: var(--magenta);
-  }
-
-  .mission-box h2 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .mission-box p {
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-  .btn-link {
-    display: inline-block;
-    margin-top: 15px;
-    font-weight: 700;
-    color: var(--magenta);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    cursor: pointer;
-  }
-  .btn-link:hover,
-  .btn-link:focus {
-    color: var(--cyan);
-    text-decoration: underline;
+    color: var(--turquoise);
     outline: none;
   }
 
   form {
     max-width: 500px;
     margin-top: 50px;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    color: var(--cyan);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   }
   label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 600;
+    font-weight: bold;
+    color: var(--cyan);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
   input,
   textarea {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: 2px solid var(--cyan);
     border-radius: 5px;
     font-size: 1rem;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     color: var(--black);
-    font-weight: 400;
   }
   input:focus,
   textarea:focus {
@@ -850,14 +196,14 @@ Du:
     box-shadow: 0 0 6px var(--magenta);
   }
   button {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     background-color: var(--magenta);
     color: var(--turquoise);
     border: none;
     padding: 12px 20px;
-    font-weight: 700;
+    font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    letter-spacing: 0.05em;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -874,8 +220,7 @@ Du:
     color: var(--white);
     text-align: center;
     padding: 30px 20px;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 500;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   }
   footer p {
     margin: 10px 0;
@@ -929,15 +274,7 @@ Du:
     <a href="bildung.html" class="topic-box" role="listitem" tabindex="0">Bildung</a>
     <a href="umwelt.html" class="topic-box" role="listitem" tabindex="0">Umwelt</a>
 
-    <div
-      class="topic-box"
-      role="region"
-      aria-expanded="false"
-      tabindex="0"
-      id="verwaltung-box"
-      aria-label="Verwaltung mit Unterthemen"
-      aria-controls="verwaltung-subtopics"
-    >
+    <div class="topic-box" role="region" aria-expanded="false" tabindex="0" id="verwaltung-box" aria-label="Verwaltung mit Unterthemen">
       Verwaltung
       <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
         <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
@@ -947,72 +284,51 @@ Du:
     <a href="meinungsmacher.html" class="topic-box" role="listitem" tabindex="0">Meinungs-Macher</a>
   </div>
 
-  <section class="mission-box" aria-labelledby="mission-title">
-    <h2 id="mission-title">Meine Mission für Freiburg</h2>
-    <p>
-      Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP und Wahlkreiskandidatin für Freiburg-Ost (Wahlkreis 46).
-      Für Freiburg setze ich mich für Bildung, Umwelt, Justiz und gute Verwaltung ein.
-    </p>
-    <a href="mission.html" class="btn-link" aria-label="Mehr über Meine Mission für Freiburg erfahren">Mehr erfahren &raquo;</a>
+  <section id="kontakt" aria-labelledby="kontakt-title">
+    <h2 id="kontakt-title">Kontaktformular</h2>
+    <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain" aria-label="Kontaktformular">
+      <label for="name">Ihr Name</label>
+      <input type="text" id="name" name="name" placeholder="Ihr Name" required />
+
+      <label for="email">Ihre E-Mail</label>
+      <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de" required />
+
+      <label for="nachricht">Nachricht</label>
+      <textarea id="nachricht" name="nachricht" rows="6" placeholder="Ihre Nachricht..." required></textarea>
+
+      <button type="submit">Absenden</button>
+    </form>
   </section>
-
-<h2> KONTAKTFORMULAR </h2>
-
-  <form>
-    <label for="email">Emailadresse:</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      required
-      placeholder="Ihre Emailadresse"
-      autocomplete="email"
-      aria-required="true"
-    />
-    <label for="message">Nachricht:</label>
-    <textarea
-      id="message"
-      name="message"
-      rows="5"
-      placeholder="Schreiben Sie Ihre Nachricht hier..."
-      aria-required="true"
-    ></textarea>
-     <label>
-    <input type="checkbox" name="datenschutz" required>
-    Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
-  </label><br>
-    <button type="submit" aria-label="Nachricht absenden">Absenden</button>
-  </form>
 </main>
 
 <footer>
-  <p>&copy; 2025 Heschu Hasan | Ihre Wahlkreiskandidatin Freiburg - Ost</p>
-  
-<div>
-    <a href="https://instagram.com/HeschuHasan" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+  <p>© 2025 Heschu Hasan – FDP Freiburg</p>
+  <div class="social-links" aria-label="Soziale Medien">
+    <a href="https://twitter.com/heschuhasan" target="_blank" rel="noopener" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://facebook.com/heschuhasan" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
   </div>
 </footer>
 
 <script>
-  // Seiten-Fade-In
-  document.addEventListener("DOMContentLoaded", () => {
-    document.body.style.opacity = "1";
+  // Optional: Einfacher Toggle für Verwaltung Unterthemen
+  const verwaltungBox = document.getElementById('verwaltung-box');
+  const verwaltungSubs = document.getElementById('verwaltung-subtopics');
+  verwaltungBox.addEventListener('click', () => {
+    const expanded = verwaltungBox.getAttribute('aria-expanded') === 'true';
+    verwaltungBox.setAttribute('aria-expanded', !expanded);
+    verwaltungSubs.style.display = expanded ? 'none' : 'flex';
   });
-
-  // Verwaltung Aufklappen / Einklappen
-  const verwaltungBox = document.getElementById("verwaltung-box");
-  const verwaltungSubtopics = document.getElementById("verwaltung-subtopics");
-
-  verwaltungBox.addEventListener("click", () => {
-    const expanded = verwaltungBox.getAttribute("aria-expanded") === "true";
-    verwaltungBox.setAttribute("aria-expanded", String(!expanded));
-  });
-
-  verwaltungBox.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
+  // Auch mit Enter/Space aktivierbar
+  verwaltungBox.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
       verwaltungBox.click();
     }
   });
@@ -1020,518 +336,3 @@ Du:
 
 </body>
 </html>
-
-das ist das allles wwas ich benutze bitte die datenschutzerklärung html datei entsprechend anpassen
-ChatGPT:
-
-Dein HTML- und CSS-Code ist sehr sauber und professionell aufgebaut! Hier ist ein kurzer Überblick über die wichtigsten Punkte sowie einige Verbesserungsvorschläge:
-✅ Was bereits sehr gut ist:
-
-    Responsives Layout mit Medienabfrage für mobile Geräte.
-
-    Barrierefreiheit: Du verwendest aria-* Attribute, role, tabindex, was super ist.
-
-    Farbgebung: Die Farben der FDP sind gut getroffen (cyan, magenta, gelb).
-
-    Visuelle Konsistenz durch klare Schriftwahl und einheitliche Abstände.
-
-    Interaktive Elemente (z. B. topic-box Hover- und Focus-Zustände) sind gut gestaltet.
-
-    Zentrale Mission-Box mit optionalem Overlay ist bereits vorbereitet.
-
-🛠️ Empfohlene Optimierungen:
-1. Fade-In-Effekt aktivieren
-
-Aktuell hat dein <body> opacity: 0, aber keine JavaScript-Funktion, die es auf 1 setzt:
-
-👉 Ergänze am Ende deines <body>:
-
-<script>
-  window.addEventListener("load", () => {
-    document.body.style.opacity = 1;
-  });
-</script>
-
-2. aria-expanded bei Klick auf Verwaltung umschalten
-
-Für Barrierefreiheit und bessere UX sollte die Verwaltung-Box aus- und einklappbar sein:
-
-👉 Ergänze diesen JS-Code:
-
-<script>
-  document.getElementById("verwaltung-box").addEventListener("click", function () {
-    const expanded = this.getAttribute("aria-expanded") === "true";
-    this.setAttribute("aria-expanded", String(!expanded));
-  });
-</script>
-
-3. Formular-Button: Typische Bestätigung nach dem Absenden
-
-Derzeit passiert beim Klicken auf den Button nichts. Du könntest entweder:
-
-    Einen echten Formular-Handler einbauen, oder
-
-    eine einfache Bestätigung via JavaScript:
-
-<script>
-  document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("Vielen Dank für Ihre Nachricht!");
-    this.reset();
-  });
-</script>
-
-4. Footer abschließen
-
-Der Footer endet mit &copy;.... Ergänze z. B.:
-
-<p>&copy; 2025 Heschu Hasan. Alle Rechte vorbehalten.</p>
-
-5. Mobile Navigation optimieren
-
-Auf kleineren Bildschirmen könnte eine Burger-Navigation helfen, falls du das Menü noch erweitern willst. Optional, aber nice-to-have.
-✅ Barrierefreiheit & Usability
-
-    aria-label, aria-controls, aria-expanded – großartig!
-
-    Vielleicht bei den <input>-Feldern noch aria-describedby hinzufügen, wenn du z. B. Fehlermeldungen anzeigen willst.
-
-Optional: Verbesserte Struktur für SEO
-
-Du könntest deine Abschnitte mit <section> statt nur <div> kennzeichnen und z. B. aria-labelledby verwenden:
-
-<section aria-labelledby="themen-title">
-  <h2 id="themen-title">Meine Themen</h2>
-  ...
-</section>
-
-Wenn du möchtest, kann ich dir auch helfen, die Seite vollständig barrierefrei zu testen (z. B. Screenreader-Kompatibilität), oder eine serverseitige Mail-Funktion fürs Formular bauen.
-
-Möchtest du noch etwas Bestimmtes anpassen oder erweitern?
-Du:
-gib mir den gesamten html
-ChatGPT:
-
-Hier ist dein vollständiger HTML-Code, inklusive des bisher abgeschnittenen Teils des <footer>:
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Heschu Hasan - Wahlkreiskandidatin Freiburg - Ost - Wahlkreis 46</title>
-
-<!-- FontAwesome CDN für Icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-
-<style>
-  :root {
-    --yellow: #ffed00;
-    --magenta: #e5007d;
-    --cyan: #009ee3;
-    --turquoise: #00abae;
-    --black: #000000;
-    --white: #ffffff;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    background-color: var(--white);
-    color: var(--cyan);
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    opacity: 0;
-    transition: opacity 1s ease;
-  }
-
-  a {
-    color: var(--cyan);
-    text-decoration: none;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  a:hover,
-  a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-
-  header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--cyan);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--cyan);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  nav a {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-left: 25px;
-  }
-  nav a.active,
-  nav a:hover {
-    color: var(--magenta);
-    font-weight: 700;
-  }
-
-  main {
-    padding: 20px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  main h2 {
-    color: var(--black);
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  main h3 {
-    color: var(--cyan);
-    font-weight: 600;
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-  }
-
-  main p {
-    font-weight: 300;
-    font-size: 1.1rem;
-    max-width: 700px;
-  }
-
-  .topics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin-top: 40px;
-  }
-  .topic-box {
-    flex: 1 1 280px;
-    border: 2px solid var(--cyan);
-    background-color: var(--white);
-    color: var(--cyan);
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 300;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    user-select: none;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .topic-box:hover,
-  .topic-box:focus {
-    border-color: var(--magenta);
-    background-color: var(--magenta);
-    color: var(--turquoise);
-    outline: none;
-  }
-
-  .topic-box[aria-expanded="false"] .subtopics {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-  }
-  .topic-box[aria-expanded="true"] .subtopics {
-    max-height: 500px;
-  }
-
-  .subtopics {
-    margin-top: 15px;
-    display: block;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .subtopics a {
-    background-color: #ffffff;
-    color: var(--turquoise);
-    border: 2px solid var(--turquoise);
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    cursor: pointer;
-    user-select: none;
-    display: block;
-    width: fit-content;
-  }
-  .subtopics a:hover,
-  .subtopics a:focus {
-    background-color: var(--magenta);
-    color: var(--white);
-    border-color: var(--magenta);
-    outline: none;
-  }
-
-  .mission-box {
-    position: static;
-    z-index: auto;
-    pointer-events: auto;
-  }
-  .mission-box.centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    background-color: var(--white);
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    max-width: 90vw;
-    max-height: 90vh;
-    overflow-y: auto;
-    border-color: var(--magenta);
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
-  }
-
-  .btn-link.active {
-    color: var(--magenta);
-  }
-
-  .mission-box h2 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .mission-box p {
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-
-  .btn-link {
-    display: inline-block;
-    margin-top: 15px;
-    font-weight: 700;
-    color: var(--magenta);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-  }
-  .btn-link:hover,
-  .btn-link:focus {
-    color: var(--cyan);
-    text-decoration: underline;
-    outline: none;
-  }
-
-  form {
-    max-width: 500px;
-    margin-top: 50px;
-    color: var(--cyan);
-  }
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  input,
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid var(--cyan);
-    border-radius: 5px;
-    font-size: 1rem;
-    color: var(--black);
-  }
-  input:focus,
-  textarea:focus {
-    border-color: var(--magenta);
-    outline: none;
-    box-shadow: 0 0 6px var(--magenta);
-  }
-
-  button {
-    background-color: var(--magenta);
-    color: var(--turquoise);
-    border: none;
-    padding: 12px 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  button:hover,
-  button:focus {
-    background-color: var(--cyan);
-    color: var(--white);
-    outline: none;
-  }
-
-  footer {
-    background-color: var(--cyan);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    font-weight: 500;
-  }
-  footer p {
-    margin: 10px 0;
-  }
-  footer .social-links a {
-    color: var(--white);
-    font-size: 30px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-  footer .social-links a:hover,
-  footer .social-links a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 15px 20px;
-    }
-    nav a {
-      margin-left: 0;
-      margin-right: 15px;
-    }
-    .topics {
-      flex-direction: column;
-    }
-  }
-</style>
-</head>
-<body>
-
-<header>
-  <h1>HESCHU HASAN</h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
-  </nav>
-</header>
-
-<main>
-  <h2>Meine Themen</h2>
-  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
-
-  <div class="topics" role="list">
-    <a href="bildung.html" class="topic-box" role="listitem" tabindex="0">Bildung</a>
-    <a href="umwelt.html" class="topic-box" role="listitem" tabindex="0">Umwelt</a>
-
-    <div
-      class="topic-box"
-      role="region"
-      aria-expanded="false"
-      tabindex="0"
-      id="verwaltung-box"
-      aria-label="Verwaltung mit Unterthemen"
-      aria-controls="verwaltung-subtopics"
-    >
-      Verwaltung
-      <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
-        <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
-      </div>
-    </div>
-
-    <a href="meinungsmacher.html" class="topic-box" role="listitem" tabindex="0">Meinungs-Macher</a>
-  </div>
-
-  <section class="mission-box" aria-labelledby="mission-title">
-    <h2 id="mission-title">Meine Mission für Freiburg</h2>
-    <p>
-      Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP und Wahlkreiskandidatin für Freiburg-Ost (Wahlkreis 46).
-      Für Freiburg setze ich mich für Bildung, Umwelt, Justiz und gute Verwaltung ein.
-    </p>
-    <a href="mission.html" class="btn-link" aria-label="Mehr über Meine Mission für Freiburg erfahren">Mehr erfahren &raquo;</a>
-  </section>
-
-  <h2>KONTAKTFORMULAR</h2>
-  <form>
-    <label for="email">Emailadresse:</label>
-    <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
-    <label for="message">Nachricht:</label>
-    <textarea id="message" name="message" rows="5" placeholder="Schreiben Sie Ihre Nachricht hier..."></textarea>
-    <label>
-      <input type="checkbox" name="datenschutz" required />
-      Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
-    </label><br />
-    <button type="submit">Absenden</button>
-  </form>
-</main>
-
-<footer>
-  <p>&copy; 2025 Heschu Hasan – FDP Freiburg-Ost</p>
-  <div class="social-links">
-    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-    <a href="mailto:kontakt@heschuhasan.de" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-  </div>
-</footer>
-
-<script>
-  // Fade-in Effekt
-  window.addEventListener("DOMContentLoaded", () => {
-    document.body.style.opacity = 1;
-  });
-
-  // Toggle Verwaltung
-  document.getElementById("verwaltung-box").addEventListener("click", function () {
-    const expanded = this.getAttribute("aria-expanded") === "true";
-    this.setAttribute("aria-expanded", !expanded);
-  });
-</script>
-
-</body>
-</html>
-
-Wenn du eine bestimmte Datei draus machen oder in Unterseiten aufteilen willst, sag einfach Bescheid!
-
-
-ChatGPT kann Fehler machen. Überprüfe wichtige Informationen. Siehe Cookie-Voreinstellungen.
