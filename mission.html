@@ -27,12 +27,17 @@
     box-sizing: border-box;
   }
 
+  /* mission.html: Fließtext schwarz in Calibri */
   body {
     margin: 0;
     background-color: var(--white);
     color: var(--cyan);
     font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
     line-height: 1.5;
+
+    opacity: 0; /* Für smooth fade-in */
+    transition: opacity 1s ease;
   }
 
   a {
@@ -127,6 +132,13 @@
     }
   }
 </style>
+
+<script>
+  window.addEventListener('load', () => {
+    document.body.style.opacity = '1';
+  });
+</script>
+
 </head>
 <body>
 
@@ -166,4 +178,3 @@
 
 </body>
 </html>
-
