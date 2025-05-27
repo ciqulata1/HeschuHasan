@@ -31,13 +31,20 @@
     margin: 0;
     background-color: var(--white);
     color: var(--cyan);
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
     line-height: 1.5;
+    opacity: 0;
+    transition: opacity 1s ease;
   }
 
   a {
     color: var(--cyan);
     text-decoration: none;
+    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   a:hover,
   a:focus {
@@ -54,25 +61,22 @@
     justify-content: space-between;
   }
   header h1 {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.8rem;
     color: var(--cyan);
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
   nav a {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    font-weight: normal;
+    font-weight: 600;
     font-size: 1rem;
     margin-left: 25px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
-
   nav a.active,
   nav a:hover {
     color: var(--magenta);
-    font-weight: bold;
+    font-weight: 700;
   }
 
   main {
@@ -80,24 +84,25 @@
     max-width: 1200px;
     margin: 0 auto;
   }
+
   main h2 {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    color: var(--cyan);
-    font-weight: bold;
+    color: var(--black);
+    font-weight: 700;
     font-size: 2rem;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
+
   main h3 {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     color: var(--cyan);
-    font-weight: normal;
+    font-weight: 600;
     font-size: 1.25rem;
     margin-bottom: 20px;
   }
+
   main p {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-weight: 300;
     font-size: 1.1rem;
     max-width: 700px;
   }
@@ -109,7 +114,6 @@
     margin-top: 40px;
   }
   .topic-box {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     flex: 1 1 280px;
     border: 2px solid var(--cyan);
     background-color: var(--white);
@@ -117,12 +121,16 @@
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: 300;
     font-size: 1.1rem;
     border-radius: 5px;
     user-select: none;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .topic-box:hover,
   .topic-box:focus {
@@ -132,55 +140,122 @@
     outline: none;
   }
 
-  /* Für Verwaltung mit Unterthemen */
-  .topic-box[aria-expanded="true"] {
-    background-color: var(--magenta);
-    color: var(--turquoise);
-    border-color: var(--magenta);
+  .topic-box[aria-expanded="false"] .subtopics {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
   }
+  .topic-box[aria-expanded="true"] .subtopics {
+    max-height: 500px;
+  }
+
   .subtopics {
     margin-top: 15px;
-    display: none;
+    display: block;
     flex-direction: column;
     gap: 10px;
   }
-  .topic-box[aria-expanded="true"] .subtopics {
-    display: flex;
-  }
+
   .subtopics a {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    color: var(--cyan);
-    border: 2px solid var(--cyan);
+    background-color: #ffffff;
+    color: var(--turquoise);
+    border: 2px solid var(--turquoise);
     padding: 10px;
     border-radius: 5px;
     font-size: 1rem;
-    text-transform: none;
-    letter-spacing: normal;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    display: block;
+    width: fit-content;
   }
   .subtopics a:hover,
   .subtopics a:focus {
-    border-color: var(--magenta);
     background-color: var(--magenta);
-    color: var(--turquoise);
+    color: var(--white);
+    border-color: var(--magenta);
+    outline: none;
+  }
+
+  .mission-box {
+    position: static;
+    z-index: auto;
+    pointer-events: auto;
+  }
+  .mission-box.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background-color: var(--white);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-color: var(--magenta);
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+  }
+
+  .btn-link.active {
+    color: var(--magenta);
+  }
+
+  .mission-box h2 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .mission-box p {
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .btn-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 700;
+    color: var(--magenta);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+  }
+  .btn-link:hover,
+  .btn-link:focus {
+    color: var(--cyan);
+    text-decoration: underline;
     outline: none;
   }
 
   form {
     max-width: 500px;
     margin-top: 50px;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: var(--cyan);
   }
   label {
     display: block;
     margin-bottom: 8px;
-    font-weight: bold;
-    color: var(--cyan);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
   input,
   textarea {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -195,15 +270,15 @@
     outline: none;
     box-shadow: 0 0 6px var(--magenta);
   }
+
   button {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     background-color: var(--magenta);
     color: var(--turquoise);
     border: none;
     padding: 12px 20px;
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -220,7 +295,7 @@
     color: var(--white);
     text-align: center;
     padding: 30px 20px;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-weight: 500;
   }
   footer p {
     margin: 10px 0;
@@ -274,7 +349,15 @@
     <a href="bildung.html" class="topic-box" role="listitem" tabindex="0">Bildung</a>
     <a href="umwelt.html" class="topic-box" role="listitem" tabindex="0">Umwelt</a>
 
-    <div class="topic-box" role="region" aria-expanded="false" tabindex="0" id="verwaltung-box" aria-label="Verwaltung mit Unterthemen">
+    <div
+      class="topic-box"
+      role="region"
+      aria-expanded="false"
+      tabindex="0"
+      id="verwaltung-box"
+      aria-label="Verwaltung mit Unterthemen"
+      aria-controls="verwaltung-subtopics"
+    >
       Verwaltung
       <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
         <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
@@ -284,51 +367,54 @@
     <a href="meinungsmacher.html" class="topic-box" role="listitem" tabindex="0">Meinungs-Macher</a>
   </div>
 
-  <section id="kontakt" aria-labelledby="kontakt-title">
-    <h2 id="kontakt-title">Kontaktformular</h2>
-    <form action="mailto:heschuhasan@gmail.com" method="post" enctype="text/plain" aria-label="Kontaktformular">
-      <label for="name">Ihr Name</label>
-      <input type="text" id="name" name="name" placeholder="Ihr Name" required />
-
-      <label for="email">Ihre E-Mail</label>
-      <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de" required />
-
-      <label for="nachricht">Nachricht</label>
-      <textarea id="nachricht" name="nachricht" rows="6" placeholder="Ihre Nachricht..." required></textarea>
-       <label for="datenschutz" style="font-weight: normal; font-size: 0.9rem; color: var(--cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-    <input type="checkbox" id="datenschutz" name="datenschutz" required />
-    Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und akzeptiere sie.
-  </label>
-
-      <button type="submit">Absenden</button>
-    </form>
+  <section class="mission-box" aria-labelledby="mission-title">
+    <h2 id="mission-title">Meine Mission für Freiburg</h2>
+    <p>
+      Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP und Wahlkreiskandidatin für Freiburg-Ost (Wahlkreis 46).
+      Für Freiburg setze ich mich für Bildung, Umwelt, Justiz und gute Verwaltung ein.
+    </p>
+    <a href="mission.html" class="btn-link" aria-label="Mehr über Meine Mission für Freiburg erfahren">Mehr erfahren &raquo;</a>
   </section>
+
+  <h2>KONTAKTFORMULAR</h2>
+ <form action="https://formsubmit.co/heschuhasan@gmail.com" method="POST">
+  <label for="email">Emailadresse:</label>
+  <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
+  
+  <label for="message">Nachricht:</label>
+  <textarea id="message" name="message" rows="5" placeholder="Schreiben Sie Ihre Nachricht hier..." required></textarea>
+  
+  <label>
+    <input type="checkbox" name="datenschutz" required />
+    Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
+  </label><br />
+  
+  <!-- Captcha ausschalten -->
+  <input type="hidden" name="_captcha" value="false" />
+  
+  <button type="submit">Absenden</button>
+</form>
+
 </main>
 
 <footer>
-  <p>© 2025 Heschu Hasan – FDP Freiburg</p>
-  <div class="social-links" aria-label="Soziale Medien">
-    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
+  <p>&copy; 2025 Heschu Hasan – FDP Freiburg-Ost</p>
+  <div class="social-links">
+      <p>Treffen Sie mich in den Sozialen Medien</p>
+    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
   </div>
 </footer>
 
 <script>
-  // Optional: Einfacher Toggle für Verwaltung Unterthemen
-  const verwaltungBox = document.getElementById('verwaltung-box');
-  const verwaltungSubs = document.getElementById('verwaltung-subtopics');
-  verwaltungBox.addEventListener('click', () => {
-    const expanded = verwaltungBox.getAttribute('aria-expanded') === 'true';
-    verwaltungBox.setAttribute('aria-expanded', !expanded);
-    verwaltungSubs.style.display = expanded ? 'none' : 'flex';
+  // Fade-in Effekt
+  window.addEventListener("DOMContentLoaded", () => {
+    document.body.style.opacity = 1;
   });
-  // Auch mit Enter/Space aktivierbar
-  verwaltungBox.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      verwaltungBox.click();
-    }
+
+  // Toggle Verwaltung
+  document.getElementById("verwaltung-box").addEventListener("click", function () {
+    const expanded = this.getAttribute("aria-expanded") === "true";
+    this.setAttribute("aria-expanded", !expanded);
   });
 </script>
 
