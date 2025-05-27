@@ -100,12 +100,13 @@
     flex-wrap: wrap;
   }
 
-  /* Boxen mit Pinkem Hintergrund und weißem, fettem Text */
+  /* Boxen mit pinkem Hintergrund und weißem, fettem Text */
   .box {
     flex: 1 1 30%;
     background-color: var(--magenta);
     color: var(--white);
     font-weight: bold;
+    font-family: Calibri, sans-serif;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -125,13 +126,18 @@
     line-height: 1.4;
   }
 
-  /* Drücken-Effekt: Hintergrund weiß, Text bleibt weiß mit Schatten */
-  .box:active {
+  /* Zustand wenn Box aktiv ist (geklickt) */
+  .box.active {
     background-color: var(--white);
-    color: var(--white);
-    text-shadow: 0 0 5px var(--magenta);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    color: var(--black);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     transform: scale(0.97);
+  }
+
+  /* Drücken-Effekt (kurzzeitig) */
+  .box:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
 
   /* Button */
@@ -140,8 +146,8 @@
     background-color: var(--magenta);
     color: var(--white);
     border: none;
-    padding: 8px 18px; /* kleiner */
-    font-size: 0.9rem; /* kleiner */
+    padding: 8px 18px;
+    font-size: 0.9rem;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
@@ -253,15 +259,15 @@
   </p>
 
   <div class="box-container">
-    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Exekutive Informationen">
+    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Exekutive Informationen" data-link="exekutive.html">
       <h3>Exekutive</h3>
       <p>Die Exekutive sorgt für die Ausführung der Gesetze und ist verantwortlich für die Verwaltung, Polizei und andere staatliche Organe, die Recht und Ordnung durchsetzen.</p>
     </div>
-    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Judikative Informationen">
+    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Judikative Informationen" data-link="judikative.html">
       <h3>Judikative</h3>
       <p>Die Judikative interpretiert die Gesetze, entscheidet über Rechtsstreitigkeiten und sorgt für die Rechtsprechung an Gerichten.</p>
     </div>
-    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Legislative Informationen">
+    <div class="box fade-init" tabindex="0" role="button" aria-pressed="false" aria-label="Legislative Informationen" data-link="legislative.html">
       <h3>Legislative</h3>
       <p>Die Legislative ist das Parlament, das Gesetze erlässt, ändert oder aufhebt und somit die rechtlichen Rahmenbedingungen schafft.</p>
     </div>
@@ -294,13 +300,24 @@
     });
   });
 
-  // Optional: Boxen Toggle Aria-pressed für Barrierefreiheit
+  // Boxen Verhalten: Farbe wechseln + neue Seite öffnen
   const boxes = document.querySelectorAll('.box');
   boxes.forEach(box => {
     box.addEventListener('click', () => {
-      const pressed = box.getAttribute('aria-pressed') === 'true';
-      box.setAttribute('aria-pressed', !pressed);
+      // Aktiviere optische Änderung
+      boxes.forEach(b => b.classList.remove('active')); // Nur eine aktive Box zur Zeit
+      box.classList.add('active');
+
+      // Öffne die verlinkte Seite (aus data-link Attribut)
+      const link = box.getAttribute('data-link');
+      if (link) {
+        // Verzögert öffnen, damit man die Farbänderung sieht (ca. 150ms)
+        setTimeout(() => {
+          window.location.href = link;
+        }, 150);
+      }
     });
+
     box.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
