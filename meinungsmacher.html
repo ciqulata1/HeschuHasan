@@ -295,10 +295,26 @@
       "Soll die Justiz in Baden-Württemberg stärker digitalisiert und das Personal dafür geschult werden?",
       "Soll der öffentliche Nahverkehr in Baden-Württemberg günstiger oder kostenlos angeboten werden?",
       "Soll ein Tempolimit von 120 km/h auf Autobahnen in Baden-Württemberg eingeführt werden?",
+      "Soll in Baden-Württemberg in städtischen und ländlichen Gebieten ein generelles 30-km/h-Tempolimit eingeführt werden, um CO2-Emissionen zu senken?",
       "Soll der Staat mehr in professionelle Sozialarbeit investieren, um Obdachlosen in Härtefällen besser helfen zu können?",
       "Soll die Gleichbehandlung von Geflüchteten und inländischen Obdachlosen bei Unterbringung und Versorgung gesetzlich sichergestellt werden?",
       "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden?",
       "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
+    ];
+
+    // Positionen von Heschu Hasan (in derselben Reihenfolge wie die Fragen)
+    const hasanPositions = [
+      "ja",       // Frage 1
+      "ja",       // Frage 2
+      "ja",       // Frage 3
+      "ja",       // Frage 4
+      "ja",       // Frage 5
+      "nein",     // Frage 6
+      "nein",     // Frage 7
+      "ja",       // Frage 8
+      "ja",       // Frage 9
+      "ja",       // Frage 10
+      "ja"        // Frage 11
     ];
 
     const questionContainer = document.getElementById("questions");
@@ -308,10 +324,10 @@
       div.className = "question";
       div.innerHTML = `
         <p><strong>${i + 1}. ${q}</strong></p>
-        <div class="answers">
-          <label><input type="radio" name="q${i}" value="ja" required> Ja</label>
-          <label><input type="radio" name="q${i}" value="neutral"> Neutral</label>
-          <label><input type="radio" name="q${i}" value="nein"> Nein</label>
+        <div class="answers" role="radiogroup" aria-labelledby="q${i}-label">
+          <label><input type="radio" name="q${i}" id="q${i}-ja" value="ja" required /> Ja</label>
+          <label><input type="radio" name="q${i}" id="q${i}-neutral" value="neutral" /> Neutral</label>
+          <label><input type="radio" name="q${i}" id="q${i}-nein" value="nein" /> Nein</label>
         </div>`;
       questionContainer.appendChild(div);
     });
@@ -323,25 +339,40 @@
       event.preventDefault();
 
       const formData = new FormData(this);
-      let jaCount = 0;
+      let matchCount = 0;
+      const total = questions.length;
 
-      for (let i = 0; i < questions.length; i++) {
+      for (let i = 0; i < total; i++) {
         const answer = formData.get(`q${i}`);
         if (!answer) {
           feedback.style.display = 'block';
-          feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
+          feedback.textContent = `Bitte beantworten Sie alle Fragen.`;
           feedback.style.color = 'red';
           return;
         }
-        if (answer === 'ja') jaCount++;
+        if (answer === hasanPositions[i]) {
+          matchCount++;
+        }
       }
 
+      const percentage = Math.round((matchCount / total) * 100);
+
+      // Ergebnis anzeigen
       feedback.style.display = 'block';
       feedback.style.color = 'var(--magenta)';
-      feedback.textContent = `Du hast ${jaCount} von ${questions.length} Fragen mit "Ja" beantwortet.`;
+      feedback.innerHTML = `
+        <p>Sie stimmen mit <strong>${matchCount} von ${total}</strong> Positionen von Heschu Hasan überein.</p>
+        <p><strong>Übereinstimmung: ${percentage}%</strong></p>
+      `;
 
+      // Ergebnis lokal speichern (optional)
       try {
-        const result = { timestamp: new Date().toISOString(), jaCount, total: questions.length };
+        const result = {
+          timestamp: new Date().toISOString(),
+          matchCount,
+          total,
+          percentage
+        };
         localStorage.setItem('meinungsMacherErgebnis', JSON.stringify(result));
       } catch (e) {
         console.warn("Speichern im lokalen Speicher ist fehlgeschlagen.", e);
@@ -353,6 +384,3 @@
     });
   });
 </script>
-
-</body>
-</html>
