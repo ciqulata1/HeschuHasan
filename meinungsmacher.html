@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meinungs-Macher</title>
+  <title>Meinungs-Macher - Baden-Württemberg</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   <style>
     :root {
       --yellow: #ffed00;
       --magenta: #e5007d;
       --cyan: #009ee3;
+      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
     }
@@ -22,7 +30,20 @@
       background-color: var(--white);
       color: var(--black);
       font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
       line-height: 1.6;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
     }
 
     header {
@@ -32,6 +53,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     header h1 {
@@ -41,17 +63,47 @@
       margin: 0;
     }
 
+    nav {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    nav a {
+      font-weight: 500;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
     main {
-      padding: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
+      padding: 15px 20px;
+      max-width: 900px;
+      margin: 2rem auto 3rem auto;
     }
 
     main h2 {
       font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
       text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: center;
+      color: var(--cyan);
+    }
+
+    main h3 {
+      font-weight: 600;
+      color: var(--magenta);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
@@ -59,20 +111,29 @@
       background-color: var(--white);
       border: 2px solid var(--cyan);
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
       padding: 1.5rem;
       margin-bottom: 1.5rem;
     }
 
-    .answers label {
-      display: inline-block;
-      margin-right: 1.5rem;
-      cursor: pointer;
-      font-weight: 300;
+    .question p {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 0.8rem;
+      color: var(--black);
     }
 
-    .answers input {
+    .answers label {
+      display: inline-block;
+      margin-right: 1.8rem;
+      cursor: pointer;
+      font-weight: 400;
+      user-select: none;
+    }
+
+    .answers input[type="radio"] {
       margin-right: 0.4rem;
+      cursor: pointer;
     }
 
     button[type="submit"] {
@@ -82,82 +143,109 @@
       border: none;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       cursor: pointer;
       display: block;
-      margin: 2rem auto 1rem;
-      max-width: 220px;
+      margin: 2rem auto 0;
+      max-width: 240px;
       transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(229, 0, 125, 0.3);
     }
 
-    button[type="submit"]:hover {
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
       background-color: #c3006b;
-    }
-
-    .back-button {
-      margin: 30px auto;
-      display: block;
-      background-color: var(--magenta);
-      color: var(--white);
-      border: none;
-      padding: 8px 18px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .back-button:hover {
-      background-color: var(--yellow);
-      color: var(--black);
+      outline: none;
     }
 
     #feedback {
       text-align: center;
-      margin-top: 1rem;
-      font-weight: 600;
+      margin-top: 1.5rem;
+      font-weight: 700;
+      font-size: 1.2rem;
       color: var(--magenta);
+      display: none;
     }
 
-    #progressBarContainer {
-      width: 100%;
-      background-color: #eee;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 25px;
-      margin: 20px 0;
-    }
-
-    #progressBar {
-      height: 100%;
-      width: 0;
-      background-color: var(--cyan);
-      text-align: center;
+    .back-button {
+      margin: 30px auto 50px auto;
+      display: block;
+      background-color: var(--magenta);
       color: var(--white);
-      font-weight: bold;
-      transition: width 0.8s ease;
+      border: none;
+      padding: 10px 22px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      max-width: 220px;
+      box-shadow: 0 3px 7px rgba(229, 0, 125, 0.4);
     }
 
-    .social {
+    .back-button:hover,
+    .back-button:focus {
+      background-color: var(--yellow);
+      color: var(--black);
+      outline: none;
+    }
+
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
       text-align: center;
-      margin: 40px 0 20px;
-    }
-
-    .social p {
+      padding: 30px 20px;
       font-weight: 600;
-      margin-bottom: 10px;
     }
 
-    .social a img {
-      width: 40px;
-      height: 40px;
+    footer h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
     }
 
     @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 15px;
+        margin-top: 10px;
+      }
+
       .answers label {
         display: block;
         margin: 0.5rem 0;
+      }
+
+      main {
+        padding: 15px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      button[type="submit"],
+      .back-button {
+        width: 100%;
+        max-width: 100%;
       }
     }
   </style>
@@ -166,31 +254,37 @@
 
 <header>
   <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
 </header>
 
 <main>
-  <h2>Ihre 10-Fragen-Meinungs-Macher-Quiz</h2>
-  <p style="text-align: center;">Beantworten Sie die Fragen und finde heraus, wie sehr Sie mit meinen politischen Positionen übereinstimmen.</p>
+  <h2>Meinungs-Macher</h2>
+  <h3>Beantworten Sie 10 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
 
-  <form id="quizForm">
+  <form id="quizForm" novalidate>
     <div id="questions"></div>
     <button type="submit">Absenden</button>
   </form>
 
-  <div id="feedback"></div>
-  <div id="progressBarContainer" style="display:none;">
-    <div id="progressBar">0%</div>
-  </div>
+  <div id="feedback" role="alert" aria-live="polite"></div>
 </main>
 
-<div class="social">
-  <p>Treffen Sie sich mit mir auf den sozialen Medien:</p>
-  <a href="https://www.instagram.com/deinusername/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
-  </a>
-</div>
+<button id="back-to-home" class="back-button">Zurück zur Startseite</button>
 
-<button class="back-button" onclick="window.location.href='index.html'">Zurück zur Startseite</button>
+<footer>
+  <h3>Treffen Sie mich auf den sozialen Medien</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </div>
+</footer>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -215,45 +309,47 @@
       div.innerHTML = `
         <p><strong>${i + 1}. ${q}</strong></p>
         <div class="answers">
-          <label><input type="radio" name="q${i}" value="ja" required /> Ja</label>
-          <label><input type="radio" name="q${i}" value="neutral" /> Neutral</label>
-          <label><input type="radio" name="q${i}" value="nein" /> Nein</label>
+          <label><input type="radio" name="q${i}" value="ja" required> Ja</label>
+          <label><input type="radio" name="q${i}" value="neutral"> Neutral</label>
+          <label><input type="radio" name="q${i}" value="nein"> Nein</label>
         </div>`;
       questionContainer.appendChild(div);
     });
 
-    document.getElementById('quizForm').addEventListener('submit', function (event) {
+    const form = document.getElementById('quizForm');
+    const feedback = document.getElementById('feedback');
+
+    form.addEventListener('submit', function(event) {
       event.preventDefault();
+
       const formData = new FormData(this);
       let jaCount = 0;
-      const total = questions.length;
 
-      for (let i = 0; i < total; i++) {
-        let answer = formData.get(`q${i}`);
+      for (let i = 0; i < questions.length; i++) {
+        const answer = formData.get(`q${i}`);
         if (!answer) {
-          alert("Bitte beantworte alle Fragen.");
+          feedback.style.display = 'block';
+          feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
+          feedback.style.color = 'red';
           return;
         }
         if (answer === 'ja') jaCount++;
       }
 
-      const percent = Math.round((jaCount / total) * 100);
-      const feedback = document.getElementById('feedback');
-      const progressBarContainer = document.getElementById('progressBarContainer');
-      const progressBar = document.getElementById('progressBar');
+      feedback.style.display = 'block';
+      feedback.style.color = 'var(--magenta)';
+      feedback.textContent = `Du hast ${jaCount} von ${questions.length} Fragen mit "Ja" beantwortet.`;
 
-      feedback.textContent = `Du stimmst mit ${percent}% meiner politischen Ansichten überein.`;
-      progressBarContainer.style.display = "block";
-      progressBar.style.width = `${percent}%`;
-      progressBar.textContent = `${percent}%`;
-
-      if (percent >= 70) {
-        progressBar.style.backgroundColor = "green";
-      } else if (percent >= 40) {
-        progressBar.style.backgroundColor = "orange";
-      } else {
-        progressBar.style.backgroundColor = "red";
+      try {
+        const result = { timestamp: new Date().toISOString(), jaCount, total: questions.length };
+        localStorage.setItem('meinungsMacherErgebnis', JSON.stringify(result));
+      } catch (e) {
+        console.warn("Speichern im lokalen Speicher ist fehlgeschlagen.", e);
       }
+    });
+
+    document.getElementById('back-to-home').addEventListener('click', () => {
+      window.location.href = "index.html";
     });
   });
 </script>
