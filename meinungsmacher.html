@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Meinungs-Macher - Baden-Württemberg</title>
+  <title>Meinungs-Macher</title>
 
   <link
     rel="stylesheet"
@@ -19,6 +19,9 @@
       --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
+      --green: #2ecc71;
+      --red: #e74c3c;
+      --gray: #7f8c8d;
     }
 
     * {
@@ -63,16 +66,10 @@
       margin: 0;
     }
 
-    nav {
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
     nav a {
       font-weight: 500;
       font-size: 1rem;
+      margin-left: 25px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -85,26 +82,33 @@
 
     main {
       padding: 15px 20px;
-      max-width: 900px;
-      margin: 2rem auto 3rem auto;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     main h2 {
       font-weight: 700;
-      font-size: 1.8rem;
-      margin-bottom: 0.3rem;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-align: center;
-      color: var(--cyan);
     }
 
     main h3 {
       font-weight: 600;
-      color: var(--magenta);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
+      color: var(--cyan);
+      font-size: 1rem;
+      margin-bottom: 20px;
       text-align: center;
+    }
+
+    main p {
+      font-weight: 300;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #333;
     }
 
     .question {
@@ -116,24 +120,15 @@
       margin-bottom: 1.5rem;
     }
 
-    .question p {
-      font-weight: 600;
-      font-size: 1.05rem;
-      margin-bottom: 0.8rem;
-      color: var(--black);
-    }
-
     .answers label {
       display: inline-block;
-      margin-right: 1.8rem;
+      margin-right: 1.5rem;
       cursor: pointer;
-      font-weight: 400;
-      user-select: none;
+      font-weight: 300;
     }
 
-    .answers input[type="radio"] {
+    .answers input {
       margin-right: 0.4rem;
-      cursor: pointer;
     }
 
     button[type="submit"] {
@@ -143,44 +138,101 @@
       border: none;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       cursor: pointer;
       display: block;
       margin: 2rem auto 0;
-      max-width: 240px;
+      max-width: 220px;
       transition: background-color 0.3s ease;
-      box-shadow: 0 4px 8px rgba(229, 0, 125, 0.3);
     }
 
-    button[type="submit"]:hover,
-    button[type="submit"]:focus {
+    button[type="submit"]:hover {
       background-color: #c3006b;
-      outline: none;
     }
 
     #feedback {
-      text-align: center;
-      margin-top: 1.5rem;
-      font-weight: 700;
-      font-size: 1.2rem;
+      margin-top: 2rem;
+      font-weight: 600;
+      color: var(--black);
+      border: 2px solid var(--cyan);
+      padding: 20px;
+      border-radius: 10px;
+      background: #f0faff;
+    }
+
+    #feedback h3 {
       color: var(--magenta);
-      display: none;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    #feedback ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+
+    #feedback ul li {
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    #feedback ul li em {
+      font-weight: 300;
+      font-style: normal;
+      margin-left: 5px;
+      color: #555;
+    }
+
+    #feedback ul li .icon {
+      margin-right: 8px;
+      font-size: 1.2rem;
+      vertical-align: middle;
+    }
+
+    .bar-chart {
+      margin-top: 1rem;
+      display: flex;
+      gap: 10px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .bar {
+      flex: 1;
+      text-align: center;
+      color: white;
+      font-weight: 700;
+      border-radius: 5px;
+      padding: 5px 0;
+      user-select: none;
+    }
+
+    .bar.ja {
+      background-color: var(--green);
+    }
+
+    .bar.neutral {
+      background-color: var(--gray);
+    }
+
+    .bar.nein {
+      background-color: var(--red);
     }
 
     .back-button {
-      margin: 30px auto 50px auto;
+      margin: 30px auto;
       display: block;
       background-color: var(--magenta);
       color: var(--white);
       border: none;
-      padding: 10px 22px;
-      font-size: 1rem;
-      font-weight: 700;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: bold;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      max-width: 220px;
-      box-shadow: 0 3px 7px rgba(229, 0, 125, 0.4);
     }
 
     .back-button:hover,
@@ -195,7 +247,6 @@
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
-      font-weight: 600;
     }
 
     footer h3 {
@@ -221,14 +272,14 @@
 
     @media (max-width: 768px) {
       header {
-        padding: 15px 20px;
         flex-direction: column;
         align-items: flex-start;
+        padding: 15px 20px;
       }
 
-      nav {
-        gap: 15px;
-        margin-top: 10px;
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
       }
 
       .answers label {
@@ -236,16 +287,15 @@
         margin: 0.5rem 0;
       }
 
-      main {
-        padding: 15px 20px;
+      .bar-chart {
+        max-width: 100%;
       }
     }
 
-    @media (max-width: 480px) {
-      button[type="submit"],
-      .back-button {
-        width: 100%;
-        max-width: 100%;
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
       }
     }
   </style>
@@ -265,99 +315,21 @@
 
 <main>
   <h2>Meinungs-Macher</h2>
-  <h3>Beantworten Sie 11 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
+  <h3>Beantworten Sie 10 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
+  <p>Das Quiz orientiert sich an aktuellen politischen Fragen in Baden-Württemberg.</p>
 
   <form id="quizForm" novalidate>
     <div id="questions"></div>
-    <button type="submit" aria-label="Antworten absenden">Absenden</button>
+    <button type="submit">Absenden</button>
   </form>
 
   <div id="feedback" role="alert" aria-live="polite"></div>
 </main>
 
-<button id="back-to-home" class="back-button" aria-label="Zurück zur Startseite">Zurück zur Startseite</button>
+<button id="back-to-home" class="back-button">Zurück zur Startseite</button>
 
 <footer>
   <h3>Treffen Sie mich auf den Sozialen Medien</h3>
   <div class="social-links">
     <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-  </div>
-</footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const questions = [
-      "Soll der Ausbau von Power-to-X-Technologien in Baden-Württemberg staatlich stärker gefördert werden?",
-      "Soll der Netzausbau in Baden-Württemberg deutlich beschleunigt werden, um Wind- und Solarstrom besser weiterzuleiten?",
-      "Soll Informatik als Pflichtfach ab der Grundschule in Baden-Württemberg eingeführt werden?",
-      "Soll die Justiz in Baden-Württemberg stärker digitalisiert und das Personal dafür geschult werden?",
-      "Soll der öffentliche Nahverkehr in Baden-Württemberg günstiger oder kostenlos angeboten werden?",
-      "Soll ein Tempolimit von 120 km/h auf Autobahnen in Baden-Württemberg eingeführt werden?",
-      "Soll in Baden-Württemberg in städtischen und ländlichen Gebieten ein generelles 30-km/h-Tempolimit eingeführt werden, um CO2-Emissionen zu senken?",
-      "Soll der Staat mehr in professionelle Sozialarbeit investieren, um Obdachlosen in Härtefällen besser helfen zu können?",
-      "Soll die Gleichbehandlung von Geflüchteten und inländischen Obdachlosen bei Unterbringung und Versorgung gesetzlich sichergestellt werden?",
-      "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden?",
-      "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
-    ];
-
-    const questionContainer = document.getElementById("questions");
-
-    // Dynamisch Fragen mit Antwortoptionen hinzufügen
-    questions.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.innerHTML = `
-        <p><strong>${i + 1}. ${q}</strong></p>
-        <div class="answers" role="radiogroup" aria-labelledby="q${i}-label">
-          <label><input type="radio" name="q${i}" id="q${i}-ja" value="ja" required /> Ja</label>
-          <label><input type="radio" name="q${i}" id="q${i}-neutral" value="neutral" /> Neutral</label>
-          <label><input type="radio" name="q${i}" id="q${i}-nein" value="nein" /> Nein</label>
-        </div>`;
-      questionContainer.appendChild(div);
-    });
-
-    const form = document.getElementById('quizForm');
-    const feedback = document.getElementById('feedback');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(this);
-      let jaCount = 0;
-      const total = questions.length;
-
-      for (let i = 0; i < total; i++) {
-        const answer = formData.get(`q${i}`);
-        if (!answer) {
-          feedback.style.display = 'block';
-          feedback.textContent = `Bitte beantworten Sie alle Fragen.`;
-          feedback.style.color = 'red';
-          return;
-        }
-        if (answer === 'ja') jaCount++;
-      }
-
-      // Feedback anzeigen
-      feedback.style.display = 'block';
-      feedback.style.color = 'var(--magenta)';
-      feedback.textContent = `Du hast ${jaCount} von ${total} Fragen mit "Ja" beantwortet.`;
-
-      // Ergebnisse lokal im Browser speichern (DSGVO-konform, keine Weitergabe)
-      try {
-        const result = { timestamp: new Date().toISOString(), jaCount, total };
-        localStorage.setItem('meinungsMacherErgebnis', JSON.stringify(result));
-      } catch (e) {
-        console.warn("Speichern im lokalen Speicher ist fehlgeschlagen.", e);
-      }
-    });
-
-    document.getElementById('back-to-home').addEventListener('click', () => {
-      window.location.href = "index.html";
-    });
-  });
-</script>
-
-</body>
-</html>
+      <i class="fa-brands fa-instagram"></
