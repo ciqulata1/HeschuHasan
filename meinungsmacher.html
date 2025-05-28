@@ -164,39 +164,47 @@
       color: var(--magenta);
       margin-top: 0;
       margin-bottom: 10px;
+      text-align: center;
     }
 
     #feedback ul {
       list-style: none;
       padding-left: 0;
       margin-top: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     #feedback ul li {
       margin-bottom: 12px;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
     }
 
     #feedback ul li em {
       font-weight: 300;
       font-style: normal;
-      margin-left: 5px;
       color: #555;
     }
 
     #feedback ul li .icon {
-      margin-right: 8px;
-      font-size: 1.2rem;
-      vertical-align: middle;
+      font-size: 1.3rem;
+      width: 24px;
+      text-align: center;
     }
 
     .bar-chart {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       display: flex;
       gap: 10px;
       max-width: 400px;
       margin-left: auto;
       margin-right: auto;
+      justify-content: center;
     }
 
     .bar {
@@ -207,6 +215,8 @@
       border-radius: 5px;
       padding: 5px 0;
       user-select: none;
+      position: relative;
+      font-size: 1rem;
     }
 
     .bar.ja {
@@ -219,6 +229,15 @@
 
     .bar.nein {
       background-color: var(--red);
+    }
+
+    .bar span.label {
+      position: absolute;
+      top: -1.8rem;
+      width: 100%;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--black);
     }
 
     .back-button {
@@ -320,16 +339,241 @@
 
   <form id="quizForm" novalidate>
     <div id="questions"></div>
-    <button type="submit">Absenden</button>
+    <button type="submit" aria-label="Fragen absenden">Absenden</button>
   </form>
 
   <div id="feedback" role="alert" aria-live="polite"></div>
 </main>
 
-<button id="back-to-home" class="back-button">Zurück zur Startseite</button>
+<button id="back-to-home" class="back-button" style="display:none;">Zurück zur Startseite</button>
 
 <footer>
   <h3>Treffen Sie mich auf den Sozialen Medien</h3>
   <div class="social-links">
     <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://twitter.com/heschuhasan" target="_blank" rel="noopener" aria-label="Twitter">
+      <i class="fa-brands fa-twitter"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/heschuhasan/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  const questions = [
+    {
+      text: "Soll der Ausbau von Power-to-X-Technologien staatlich stärker gefördert werden?",
+      position: "ja",
+    },
+    {
+      text: "Sollen Genehmigungsverfahren für neue Technologien schneller ablaufen?",
+      position: "ja",
+    },
+    {
+      text: "Soll Informatik Pflichtfach ab der Grundschule sein?",
+      position: "ja",
+    },
+    {
+      text: "Soll die Schulpflicht um digitale Kompetenzen erweitert werden?",
+      position: "ja",
+    },
+    {
+      text: "Soll der öffentliche Nahverkehr kostenlos sein?",
+      position: "neutral",
+    },
+    {
+      text: "Sollten alle Neubauten Solaranlagen erhalten müssen?",
+      position: "ja",
+    },
+    {
+      text: "Sollten Steuern auf klimaschädliche Produkte erhöht werden?",
+      position: "ja",
+    },
+    {
+      text: "Sollte ein Tempolimit von 120 km/h auf Autobahnen eingeführt werden?",
+      position: "ja",
+    },
+    {
+      text: "Soll in Städten und ländlichen Gebieten innerorts 30 km/h als Höchstgeschwindigkeit eingeführt werden, um CO₂-Emissionen zu senken?",
+      position: "ja",
+    },
+    {
+      text: "Soll das Wahlalter in Baden-Württemberg bei 16 Jahren beibehalten werden?",
+      position: "ja",
+    }
+  ];
+
+  // Eigene Positionen festlegen (wie du möchtest, hier einfach auf "ja" oder "neutral" oder "nein")
+  // position = "ja", "neutral", "nein"
+  // Beispiel: Wenn du z.B. bei "ÖPNV kostenlos" neutral bist, bei Tempolimit ja, usw.
+  // Das kannst du individuell anpassen:
+  const myPositions = [
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "neutral",
+    "ja",
+    "ja",
+    "ja",
+    "ja",
+    "ja"
+  ];
+
+  const answersLabels = {
+    ja: "Ja",
+    neutral: "Neutral",
+    nein: "Nein",
+  };
+
+  const feedbackDiv = document.getElementById("feedback");
+  const questionsDiv = document.getElementById("questions");
+  const form = document.getElementById("quizForm");
+  const backButton = document.getElementById("back-to-home");
+
+  // Funktion zum Erstellen der Fragen im Formular
+  function createQuestions() {
+    questions.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.setAttribute("aria-labelledby", `q${i}-label`);
+      div.innerHTML = `
+        <p id="q${i}-label" style="font-weight:600;">${i + 1}. ${q.text}</p>
+        <div class="answers" role="radiogroup" aria-describedby="q${i}-label">
+          <label>
+            <input type="radio" name="q${i}" value="ja" required />
+            Ja
+          </label>
+          <label>
+            <input type="radio" name="q${i}" value="neutral" />
+            Neutral
+          </label>
+          <label>
+            <input type="radio" name="q${i}" value="nein" />
+            Nein
+          </label>
+        </div>
+      `;
+      questionsDiv.appendChild(div);
+    });
+  }
+
+  // Icon für die Auswertung
+  function getIconForAnswer(ans) {
+    switch (ans) {
+      case "ja":
+        return '<i class="fa-solid fa-thumbs-up" style="color: var(--green);" aria-label="Ja"></i>';
+      case "neutral":
+        return '<i class="fa-solid fa-handshake" style="color: var(--gray);" aria-label="Neutral"></i>';
+      case "nein":
+        return '<i class="fa-solid fa-thumbs-down" style="color: var(--red);" aria-label="Nein"></i>';
+      default:
+        return "";
+    }
+  }
+
+  // Auswertung der Übereinstimmung (gleiche Antwort = übereinstimmung)
+  function checkAgreement(user, mine) {
+    if (user === mine) return true;
+    return false;
+  }
+
+  // Prozent berechnen und runden
+  function percent(part, total) {
+    return Math.round((part / total) * 100);
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Sammle Antworten
+    const formData = new FormData(form);
+    let userAnswers = [];
+
+    for (let i = 0; i < questions.length; i++) {
+      const answer = formData.get(`q${i}`);
+      if (!answer) {
+        alert(`Bitte beantworte Frage ${i + 1}`);
+        return;
+      }
+      userAnswers.push(answer);
+    }
+
+    // Werte aus
+    let matchCount = 0;
+    let jaCount = 0;
+    let neutralCount = 0;
+    let neinCount = 0;
+
+    let resultsHTML = "<ul>";
+
+    for (let i = 0; i < questions.length; i++) {
+      const userA = userAnswers[i];
+      const myA = myPositions[i];
+
+      if (userA === "ja") jaCount++;
+      else if (userA === "neutral") neutralCount++;
+      else if (userA === "nein") neinCount++;
+
+      if (checkAgreement(userA, myA)) {
+        matchCount++;
+      }
+
+      const iconUser = getIconForAnswer(userA);
+      const iconMine = getIconForAnswer(myA);
+      resultsHTML += `<li>
+        <span class="icon" title="Deine Antwort">${iconUser}</span>
+        ${questions[i].text}
+        <em>(Deine Antwort: ${answersLabels[userA]} | Meine Position: ${answersLabels[myA]} ${iconMine})</em>
+      </li>`;
+    }
+    resultsHTML += "</ul>";
+
+    const totalQuestions = questions.length;
+    const matchPercent = percent(matchCount, totalQuestions);
+    const jaPercent = percent(jaCount, totalQuestions);
+    const neutralPercent = percent(neutralCount, totalQuestions);
+    const neinPercent = percent(neinCount, totalQuestions);
+
+    // Balkendiagramm HTML
+    const barChart = `
+      <div class="bar-chart" aria-label="Antwortverteilung">
+        <div class="bar ja" style="width: ${jaPercent}%" role="progressbar" aria-valuenow="${jaPercent}" aria-valuemin="0" aria-valuemax="100">
+          <span class="label">Ja (${jaPercent}%)</span>
+        </div>
+        <div class="bar neutral" style="width: ${neutralPercent}%" role="progressbar" aria-valuenow="${neutralPercent}" aria-valuemin="0" aria-valuemax="100">
+          <span class="label">Neutral (${neutralPercent}%)</span>
+        </div>
+        <div class="bar nein" style="width: ${neinPercent}%" role="progressbar" aria-valuenow="${neinPercent}" aria-valuemin="0" aria-valuemax="100">
+          <span class="label">Nein (${neinPercent}%)</span>
+        </div>
+      </div>
+    `;
+
+    feedbackDiv.innerHTML = `
+      <h3>Dein Ergebnis</h3>
+      <p>Du hast <strong>${matchCount} von ${totalQuestions} (${matchPercent}%)</strong> Fragen genauso beantwortet wie ich.</p>
+      ${barChart}
+      ${resultsHTML}
+    `;
+
+    feedbackDiv.scrollIntoView({ behavior: "smooth" });
+
+    // Nach Absenden kein nochmal Absenden mehr
+    form.style.display = "none";
+    backButton.style.display = "block";
+  });
+
+  backButton.addEventListener("click", () => {
+    // Zurück zur Startseite (Index)
+    window.location.href = "index.html";
+  });
+
+  createQuestions();
+</script>
+
+</body>
+</html>
