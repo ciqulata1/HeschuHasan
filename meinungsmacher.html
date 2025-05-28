@@ -4,24 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Meinungs-Macher</title>
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
   <style>
     :root {
       --yellow: #ffed00;
       --magenta: #e5007d;
       --cyan: #009ee3;
-      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
-      --green: #2ecc71;
-      --red: #e74c3c;
-      --gray: #7f8c8d;
     }
 
     * {
@@ -33,20 +22,7 @@
       background-color: var(--white);
       color: var(--black);
       font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      font-weight: 400;
       line-height: 1.6;
-    }
-
-    a {
-      color: var(--cyan);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    a:hover,
-    a:focus {
-      color: var(--magenta);
-      outline: none;
     }
 
     header {
@@ -56,7 +32,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
     }
 
     header h1 {
@@ -66,23 +41,9 @@
       margin: 0;
     }
 
-    nav a {
-      font-weight: 500;
-      font-size: 1rem;
-      margin-left: 25px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    nav a.active,
-    nav a:hover {
-      color: var(--magenta);
-      font-weight: 700;
-    }
-
     main {
-      padding: 15px 20px;
-      max-width: 1200px;
+      padding: 20px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
@@ -91,31 +52,14 @@
       font-size: 1.5rem;
       margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
       text-align: center;
-    }
-
-    main h3 {
-      font-weight: 600;
-      color: var(--cyan);
-      font-size: 1rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    main p {
-      font-weight: 300;
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      color: #333;
     }
 
     .question {
       background-color: var(--white);
       border: 2px solid var(--cyan);
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
       padding: 1.5rem;
       margin-bottom: 1.5rem;
     }
@@ -141,103 +85,13 @@
       font-size: 1.1rem;
       cursor: pointer;
       display: block;
-      margin: 2rem auto 0;
+      margin: 2rem auto 1rem;
       max-width: 220px;
       transition: background-color 0.3s ease;
     }
 
     button[type="submit"]:hover {
       background-color: #c3006b;
-    }
-
-    #feedback {
-      margin-top: 2rem;
-      font-weight: 600;
-      color: var(--black);
-      border: 2px solid var(--cyan);
-      padding: 20px;
-      border-radius: 10px;
-      background: #f0faff;
-    }
-
-    #feedback h3 {
-      color: var(--magenta);
-      margin-top: 0;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    #feedback ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 10px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #feedback ul li {
-      margin-bottom: 12px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1rem;
-    }
-
-    #feedback ul li em {
-      font-weight: 300;
-      font-style: normal;
-      color: #555;
-    }
-
-    #feedback ul li .icon {
-      font-size: 1.3rem;
-      width: 24px;
-      text-align: center;
-    }
-
-    .bar-chart {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 10px;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-      justify-content: center;
-    }
-
-    .bar {
-      flex: 1;
-      text-align: center;
-      color: white;
-      font-weight: 700;
-      border-radius: 5px;
-      padding: 5px 0;
-      user-select: none;
-      position: relative;
-      font-size: 1rem;
-    }
-
-    .bar.ja {
-      background-color: var(--green);
-    }
-
-    .bar.neutral {
-      background-color: var(--gray);
-    }
-
-    .bar.nein {
-      background-color: var(--red);
-    }
-
-    .bar span.label {
-      position: absolute;
-      top: -1.8rem;
-      width: 100%;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--black);
     }
 
     .back-button {
@@ -254,67 +108,56 @@
       transition: background-color 0.3s ease;
     }
 
-    .back-button:hover,
-    .back-button:focus {
+    .back-button:hover {
       background-color: var(--yellow);
       color: var(--black);
-      outline: none;
     }
 
-    footer {
-      background-color: var(--cyan);
-      color: var(--white);
+    #feedback {
       text-align: center;
-      padding: 30px 20px;
-    }
-
-    footer h3 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    footer .social-links a {
-      color: var(--white);
-      font-size: 30px;
-      margin: 0 15px;
-      transition: color 0.3s ease;
-    }
-
-    footer .social-links a:hover,
-    footer .social-links a:focus {
+      margin-top: 1rem;
+      font-weight: 600;
       color: var(--magenta);
-      outline: none;
+    }
+
+    #progressBarContainer {
+      width: 100%;
+      background-color: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 25px;
+      margin: 20px 0;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0;
+      background-color: var(--cyan);
+      text-align: center;
+      color: var(--white);
+      font-weight: bold;
+      transition: width 0.8s ease;
+    }
+
+    .social {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+
+    .social p {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .social a img {
+      width: 40px;
+      height: 40px;
     }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
-
-      nav a {
-        margin-left: 0;
-        margin-right: 15px;
-      }
-
       .answers label {
         display: block;
         margin: 0.5rem 0;
-      }
-
-      .bar-chart {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 0.5rem;
       }
     }
   </style>
@@ -323,256 +166,96 @@
 
 <header>
   <h1>HESCHU HASAN</h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
-  </nav>
 </header>
 
 <main>
-  <h2>Meinungs-Macher</h2>
-  <h3>Beantworten Sie 10 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
-  <p>Das Quiz orientiert sich an aktuellen politischen Fragen in Baden-Württemberg.</p>
+  <h2>Ihre 10-Fragen-Meinungs-Macher-Quiz</h2>
+  <p style="text-align: center;">Beantworten Sie die Fragen und finde heraus, wie sehr Sie mit meinen politischen Positionen übereinstimmen.</p>
 
-  <form id="quizForm" novalidate>
+  <form id="quizForm">
     <div id="questions"></div>
-    <button type="submit" aria-label="Fragen absenden">Absenden</button>
+    <button type="submit">Absenden</button>
   </form>
 
-  <div id="feedback" role="alert" aria-live="polite"></div>
+  <div id="feedback"></div>
+  <div id="progressBarContainer" style="display:none;">
+    <div id="progressBar">0%</div>
+  </div>
 </main>
 
-<button id="back-to-home" class="back-button" style="display:none;">Zurück zur Startseite</button>
+<div class="social">
+  <p>Treffen Sie sich mit mir auf den sozialen Medien:</p>
+  <a href="https://www.instagram.com/deinusername/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+  </a>
+</div>
 
-<footer>
-  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-    <a href="https://twitter.com/heschuhasan" target="_blank" rel="noopener" aria-label="Twitter">
-      <i class="fa-brands fa-twitter"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/heschuhasan/" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <i class="fa-brands fa-linkedin"></i>
-    </a>
-  </div>
-</footer>
+<button class="back-button" onclick="window.location.href='index.html'">Zurück zur Startseite</button>
 
 <script>
-  const questions = [
-    {
-      text: "Soll der Ausbau von Power-to-X-Technologien staatlich stärker gefördert werden?",
-      position: "ja",
-    },
-    {
-      text: "Sollen Genehmigungsverfahren für neue Technologien schneller ablaufen?",
-      position: "ja",
-    },
-    {
-      text: "Soll Informatik Pflichtfach ab der Grundschule sein?",
-      position: "ja",
-    },
-    {
-      text: "Soll die Schulpflicht um digitale Kompetenzen erweitert werden?",
-      position: "ja",
-    },
-    {
-      text: "Soll der öffentliche Nahverkehr kostenlos sein?",
-      position: "neutral",
-    },
-    {
-      text: "Sollten alle Neubauten Solaranlagen erhalten müssen?",
-      position: "ja",
-    },
-    {
-      text: "Sollten Steuern auf klimaschädliche Produkte erhöht werden?",
-      position: "ja",
-    },
-    {
-      text: "Sollte ein Tempolimit von 120 km/h auf Autobahnen eingeführt werden?",
-      position: "ja",
-    },
-    {
-      text: "Soll in Städten und ländlichen Gebieten innerorts 30 km/h als Höchstgeschwindigkeit eingeführt werden, um CO₂-Emissionen zu senken?",
-      position: "ja",
-    },
-    {
-      text: "Soll das Wahlalter in Baden-Württemberg bei 16 Jahren beibehalten werden?",
-      position: "ja",
-    }
-  ];
+  document.addEventListener('DOMContentLoaded', () => {
+    const questions = [
+      "Soll der Ausbau von Power-to-X-Technologien in Baden-Württemberg staatlich stärker gefördert werden?",
+      "Soll der Netzausbau in Baden-Württemberg deutlich beschleunigt werden, um Wind- und Solarstrom besser weiterzuleiten?",
+      "Soll Informatik als Pflichtfach ab der Grundschule in Baden-Württemberg eingeführt werden?",
+      "Soll die Justiz in Baden-Württemberg stärker digitalisiert und das Personal dafür geschult werden?",
+      "Soll der öffentliche Nahverkehr in Baden-Württemberg günstiger oder kostenlos angeboten werden?",
+      "Soll ein Tempolimit von 120 km/h auf Autobahnen in Baden-Württemberg eingeführt werden?",
+      "Soll der Staat mehr in professionelle Sozialarbeit investieren, um Obdachlosen in Härtefällen besser helfen zu können?",
+      "Soll die Gleichbehandlung von Geflüchteten und inländischen Obdachlosen bei Unterbringung und Versorgung gesetzlich sichergestellt werden?",
+      "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden?",
+      "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
+    ];
 
-  // Eigene Positionen festlegen (wie du möchtest, hier einfach auf "ja" oder "neutral" oder "nein")
-  // position = "ja", "neutral", "nein"
-  // Beispiel: Wenn du z.B. bei "ÖPNV kostenlos" neutral bist, bei Tempolimit ja, usw.
-  // Das kannst du individuell anpassen:
-  const myPositions = [
-    "ja",
-    "ja",
-    "ja",
-    "ja",
-    "neutral",
-    "ja",
-    "ja",
-    "ja",
-    "ja",
-    "ja"
-  ];
+    const questionContainer = document.getElementById("questions");
 
-  const answersLabels = {
-    ja: "Ja",
-    neutral: "Neutral",
-    nein: "Nein",
-  };
-
-  const feedbackDiv = document.getElementById("feedback");
-  const questionsDiv = document.getElementById("questions");
-  const form = document.getElementById("quizForm");
-  const backButton = document.getElementById("back-to-home");
-
-  // Funktion zum Erstellen der Fragen im Formular
-  function createQuestions() {
     questions.forEach((q, i) => {
       const div = document.createElement("div");
       div.className = "question";
-      div.setAttribute("aria-labelledby", `q${i}-label`);
       div.innerHTML = `
-        <p id="q${i}-label" style="font-weight:600;">${i + 1}. ${q.text}</p>
-        <div class="answers" role="radiogroup" aria-describedby="q${i}-label">
-          <label>
-            <input type="radio" name="q${i}" value="ja" required />
-            Ja
-          </label>
-          <label>
-            <input type="radio" name="q${i}" value="neutral" />
-            Neutral
-          </label>
-          <label>
-            <input type="radio" name="q${i}" value="nein" />
-            Nein
-          </label>
-        </div>
-      `;
-      questionsDiv.appendChild(div);
+        <p><strong>${i + 1}. ${q}</strong></p>
+        <div class="answers">
+          <label><input type="radio" name="q${i}" value="ja" required /> Ja</label>
+          <label><input type="radio" name="q${i}" value="neutral" /> Neutral</label>
+          <label><input type="radio" name="q${i}" value="nein" /> Nein</label>
+        </div>`;
+      questionContainer.appendChild(div);
     });
-  }
 
-  // Icon für die Auswertung
-  function getIconForAnswer(ans) {
-    switch (ans) {
-      case "ja":
-        return '<i class="fa-solid fa-thumbs-up" style="color: var(--green);" aria-label="Ja"></i>';
-      case "neutral":
-        return '<i class="fa-solid fa-handshake" style="color: var(--gray);" aria-label="Neutral"></i>';
-      case "nein":
-        return '<i class="fa-solid fa-thumbs-down" style="color: var(--red);" aria-label="Nein"></i>';
-      default:
-        return "";
-    }
-  }
+    document.getElementById('quizForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      let jaCount = 0;
+      const total = questions.length;
 
-  // Auswertung der Übereinstimmung (gleiche Antwort = übereinstimmung)
-  function checkAgreement(user, mine) {
-    if (user === mine) return true;
-    return false;
-  }
-
-  // Prozent berechnen und runden
-  function percent(part, total) {
-    return Math.round((part / total) * 100);
-  }
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    // Sammle Antworten
-    const formData = new FormData(form);
-    let userAnswers = [];
-
-    for (let i = 0; i < questions.length; i++) {
-      const answer = formData.get(`q${i}`);
-      if (!answer) {
-        alert(`Bitte beantworte Frage ${i + 1}`);
-        return;
-      }
-      userAnswers.push(answer);
-    }
-
-    // Werte aus
-    let matchCount = 0;
-    let jaCount = 0;
-    let neutralCount = 0;
-    let neinCount = 0;
-
-    let resultsHTML = "<ul>";
-
-    for (let i = 0; i < questions.length; i++) {
-      const userA = userAnswers[i];
-      const myA = myPositions[i];
-
-      if (userA === "ja") jaCount++;
-      else if (userA === "neutral") neutralCount++;
-      else if (userA === "nein") neinCount++;
-
-      if (checkAgreement(userA, myA)) {
-        matchCount++;
+      for (let i = 0; i < total; i++) {
+        let answer = formData.get(`q${i}`);
+        if (!answer) {
+          alert("Bitte beantworte alle Fragen.");
+          return;
+        }
+        if (answer === 'ja') jaCount++;
       }
 
-      const iconUser = getIconForAnswer(userA);
-      const iconMine = getIconForAnswer(myA);
-      resultsHTML += `<li>
-        <span class="icon" title="Deine Antwort">${iconUser}</span>
-        ${questions[i].text}
-        <em>(Deine Antwort: ${answersLabels[userA]} | Meine Position: ${answersLabels[myA]} ${iconMine})</em>
-      </li>`;
-    }
-    resultsHTML += "</ul>";
+      const percent = Math.round((jaCount / total) * 100);
+      const feedback = document.getElementById('feedback');
+      const progressBarContainer = document.getElementById('progressBarContainer');
+      const progressBar = document.getElementById('progressBar');
 
-    const totalQuestions = questions.length;
-    const matchPercent = percent(matchCount, totalQuestions);
-    const jaPercent = percent(jaCount, totalQuestions);
-    const neutralPercent = percent(neutralCount, totalQuestions);
-    const neinPercent = percent(neinCount, totalQuestions);
+      feedback.textContent = `Du stimmst mit ${percent}% meiner politischen Ansichten überein.`;
+      progressBarContainer.style.display = "block";
+      progressBar.style.width = `${percent}%`;
+      progressBar.textContent = `${percent}%`;
 
-    // Balkendiagramm HTML
-    const barChart = `
-      <div class="bar-chart" aria-label="Antwortverteilung">
-        <div class="bar ja" style="width: ${jaPercent}%" role="progressbar" aria-valuenow="${jaPercent}" aria-valuemin="0" aria-valuemax="100">
-          <span class="label">Ja (${jaPercent}%)</span>
-        </div>
-        <div class="bar neutral" style="width: ${neutralPercent}%" role="progressbar" aria-valuenow="${neutralPercent}" aria-valuemin="0" aria-valuemax="100">
-          <span class="label">Neutral (${neutralPercent}%)</span>
-        </div>
-        <div class="bar nein" style="width: ${neinPercent}%" role="progressbar" aria-valuenow="${neinPercent}" aria-valuemin="0" aria-valuemax="100">
-          <span class="label">Nein (${neinPercent}%)</span>
-        </div>
-      </div>
-    `;
-
-    feedbackDiv.innerHTML = `
-      <h3>Dein Ergebnis</h3>
-      <p>Du hast <strong>${matchCount} von ${totalQuestions} (${matchPercent}%)</strong> Fragen genauso beantwortet wie ich.</p>
-      ${barChart}
-      ${resultsHTML}
-    `;
-
-    feedbackDiv.scrollIntoView({ behavior: "smooth" });
-
-    // Nach Absenden kein nochmal Absenden mehr
-    form.style.display = "none";
-    backButton.style.display = "block";
+      if (percent >= 70) {
+        progressBar.style.backgroundColor = "green";
+      } else if (percent >= 40) {
+        progressBar.style.backgroundColor = "orange";
+      } else {
+        progressBar.style.backgroundColor = "red";
+      }
+    });
   });
-
-  backButton.addEventListener("click", () => {
-    // Zurück zur Startseite (Index)
-    window.location.href = "index.html";
-  });
-
-  createQuestions();
 </script>
 
 </body>
