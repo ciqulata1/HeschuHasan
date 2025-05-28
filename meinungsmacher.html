@@ -1,251 +1,233 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Meinungs-Macher</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meinungs-Macher</title>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<style>
-:root {
-  --yellow: #ffed00;
-  --magenta: #e5007d;
-  --cyan: #009ee3;
-  --turquoise: #00abae;
-  --black: #000000;
-  --white: #ffffff;
-}
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  background-color: var(--white);
-  color: var(--black);
-  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-  font-weight: 400; /* Regular */
-  line-height: 1.6;
-}
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+    }
 
-a {
-  color: var(--cyan);
-  text-decoration: none;
-  font-weight: 600;
-}
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
 
-   .back-button {
-    margin-top: 30px;
-    background-color: var(--magenta);
-    color: var(--white);
-    border: none;
-    padding: 8px 18px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .back-button:hover,
-  .back-button:focus {
-    background-color: var(--yellow);
-    color: var(--black);
-    outline: none;
-  }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
 
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-a:hover,
-a:focus {
-  color: var(--magenta);
-  outline: none;
-}
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+    }
 
-header {
-  background-color: var(--white);
-  border-bottom: 2px solid var(--cyan);
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    nav a {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
-header h1 {
-  font-family: Calibri, sans-serif;
-  font-weight: 700; /* Bold */
-  font-size: 1.8rem;
-  color: var(--cyan);
-  margin: 0;
-}
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
 
-nav a {
-  font-family: Calibri, sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  margin-left: 25px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
+    main {
+      padding: 15px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-nav a.active,
-nav a:hover {
-  color: var(--magenta);
-  font-weight: 700;
-}
+    main h2 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
 
-/* ===== Main Content ===== */
-main {
-  padding: 15px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    main h3 {
+      font-weight: 600;
+      color: var(--cyan);
+      font-size: 1rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-main h2 {
-  font-family: Calibri, sans-serif;
-  font-weight: 700; /* Bold */
-  color: var(--black);
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-align: center;
-}
+    main p {
+      font-weight: 300;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #333;
+    }
 
-main h3 {
-  font-family: Calibri, sans-serif;
-  font-weight: 600;
-  color: var(--cyan);
-  font-size: 1rem;
-  margin-bottom: 20px;
-  text-align: center;
-}
+    .question {
+      background-color: var(--white);
+      border: 2px solid var(--cyan);
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
 
-main p {
-  font-family: Calibri, sans-serif;
-  font-weight: 300; /* Light */
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
-  color: #333;
-}
+    .answers label {
+      display: inline-block;
+      margin-right: 1.5rem;
+      cursor: pointer;
+      font-weight: 300;
+    }
 
-/* ===== Questions & Answers ===== */
-.question {
-  background-color: var(--white);
-  border: 2px solid var(--cyan);
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-family: Calibri, sans-serif;
-  font-weight: 400;
-  color: var(--black);
-}
+    .answers input {
+      margin-right: 0.4rem;
+    }
 
-.answers label {
-  display: inline-block;
-  margin-right: 1.5rem;
-  cursor: pointer;
-  font-family: Calibri, sans-serif;
-  font-weight: 300; /* Light */
-  color: var(--black);
-}
+    button[type="submit"] {
+      background-color: var(--magenta);
+      color: var(--yellow);
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: block;
+      margin: 2rem auto 0;
+      max-width: 220px;
+      transition: background-color 0.3s ease;
+    }
 
-.answers input {
-  margin-right: 0.4rem;
-}
+    button[type="submit"]:hover {
+      background-color: #c3006b;
+    }
 
-/* ===== Submit Button ===== */
-button[type="submit"] {
-  background-color: var(--magenta);
-  color: var(--yellow);
-  padding: 0.9rem 2rem;
-  border: none;
-  border-radius: 10px;
-  font-family: Calibri, sans-serif;
-  font-weight: 700; /* Bold */
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: block;
-  margin: 2rem auto 0;
-  max-width: 220px;
-  transition: background-color 0.3s ease;
-}
+    #feedback {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--magenta);
+      display: none;
+    }
 
-button[type="submit"]:hover {
-  background-color: #c3006b;
-}
+    .back-button {
+      margin: 30px auto;
+      display: block;
+      background-color: var(--magenta);
+      color: var(--white);
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-/* ===== Feedback Message ===== */
-#feedback {
-  text-align: center;
-  margin-top: 1rem;
-  font-family: Calibri, sans-serif;
-  font-weight: 600;
-  color: var(--magenta);
-  display: none;
-}
+    .back-button:hover,
+    .back-button:focus {
+      background-color: var(--yellow);
+      color: var(--black);
+      outline: none;
+    }
 
-/* ===== Footer ===== */
-footer {
-  background-color: var(--cyan);
-  color: var(--white);
-  text-align: center;
-  padding: 30px 20px;
-  font-family: Calibri, sans-serif;
-}
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+    }
 
-footer h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
+    footer h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
 
-footer .social-links a {
-  color: var(--white);
-  font-size: 30px;
-  margin: 0 15px;
-  transition: color 0.3s ease;
-}
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
 
-footer .social-links a:hover,
-footer .social-links a:focus {
-  color: var(--magenta);
-  outline: none;
-}
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
 
-/* ===== Responsive Design ===== */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 20px;
-  }
-  nav a {
-    margin-left: 0;
-    margin-right: 15px;
-  }
-  .answers label {
-    display: block;
-    margin: 0.5rem 0;
-  }
-}
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
 
-@media (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-</style>
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
 
+      .answers label {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -272,7 +254,7 @@ footer .social-links a:focus {
   <div id="feedback" role="alert" aria-live="polite"></div>
 </main>
 
-    <button id="back-to-home" class="back-button">Zurück zur Startseite</button>
+<button id="back-to-home" class="back-button">Zurück zur Startseite</button>
 
 <footer>
   <h3>Treffen Sie mich auf den Sozialen Medien</h3>
@@ -282,6 +264,8 @@ footer .social-links a:focus {
     </a>
   </div>
 </footer>
+
+<!-- JavaScript -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const questions = [
@@ -324,7 +308,8 @@ footer .social-links a:focus {
     });
 
     document.getElementById('quizForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Verhindert das Standard-Absenden
+      event.preventDefault();
+      console.log("Form wurde abgeschickt"); // Debug
 
       const formData = new FormData(this);
       let jaCount = 0;
@@ -338,6 +323,11 @@ footer .social-links a:focus {
       const feedback = document.getElementById('feedback');
       feedback.style.display = 'block';
       feedback.textContent = `Du hast ${jaCount} von ${total} Fragen mit "Ja" beantwortet.`;
+    });
+
+    document.getElementById('back-to-home').addEventListener('click', () => {
+      console.log("Zurück zur Startseite gedrückt"); // Debug
+      window.location.href = "index.html";
     });
   });
 </script>
