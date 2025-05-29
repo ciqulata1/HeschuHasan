@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Klimaschutz & Energiewende – Heschu Hasan</title>
+  <title>Klimaschutz – Heschu Hasan</title>
 
   <link
     rel="stylesheet"
@@ -114,6 +114,7 @@
       color: var(--turquoise);
       cursor: pointer;
       transition: all 0.3s ease;
+      user-select: none;
     }
 
     .themenbox:hover {
@@ -185,48 +186,65 @@
   </header>
 
   <main>
-    <!-- Themenübersicht -->
-    <div class="themenbox" onclick="location.href='#energiewende';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#energiewende';">
-      🌍 Mehr über die Energiewende erfahren
+    <!-- Themenübersicht mit ID als Anker -->
+    <div id="themen">
+      <div class="themenbox" onclick="location.href='#energiewende';" role="button" tabindex="0" 
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#energiewende';">
+        🌍 Mehr über die Energiewende erfahren
+      </div>
+
+      <div class="themenbox" onclick="location.href='#co2reduktion';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#co2reduktion';">
+        ♻️ CO₂-Reduktion & Klimaschutz
+      </div>
+
+      <div class="themenbox" onclick="location.href='#erneuerbare';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#erneuerbare';">
+        🔋 Erneuerbare Energien fördern
+      </div>
     </div>
 
-    <div class="themenbox" onclick="location.href='#co2reduktion';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#co2reduktion';">
-      ♻️ CO₂-Reduktion & Klimaschutz
-    </div>
-
-    <div class="themenbox" onclick="location.href='#erneuerbare';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#erneuerbare';">
-      🔋 Erneuerbare Energien fördern
-    </div>
-
-    <!-- Inhalte mit Anker-Zielen -->
+    <!-- Inhaltsabschnitte mit Ankern -->
     <h2 id="energiewende">Energiewende – Weg zu nachhaltiger Energie</h2>
     <p>
-      Die Energiewende ist der zentrale Schlüssel für den Klimaschutz. Wir müssen konsequent auf erneuerbare Energien setzen, fossile Brennstoffe abschaffen und neue Technologien fördern, um die Klimaziele zu erreichen.
+      Die Energiewende ist eine zentrale Herausforderung unserer Zeit. Der Umstieg auf erneuerbare Energien und der Ausstieg aus fossilen Brennstoffen sind essentiell, um den Klimawandel aufzuhalten.
     </p>
     <p>
-      Dazu gehören mehr Wind- und Solaranlagen, die Förderung von Energiespeichern und intelligente Netze, die Versorgungssicherheit gewährleisten.
+      Dafür brauchen wir innovative Technologien, politische Unterstützung und das Engagement aller Bürgerinnen und Bürger.
     </p>
+
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
 
     <h2 id="co2reduktion">CO₂-Reduktion & Klimaschutz</h2>
     <p>
-      Klimaschutz bedeutet vor allem, den CO₂-Ausstoß drastisch zu senken. Das gelingt nur durch klare politische Vorgaben, Investitionen in saubere Technologien und das Engagement aller Bürger:innen.
+      Die Reduktion von CO₂-Emissionen ist entscheidend, um die Erderwärmung zu begrenzen. Durch Energieeffizienz, nachhaltige Mobilität und bewussten Konsum können wir unseren CO₂-Fußabdruck verringern.
     </p>
     <p>
-      Ich setze mich für verbindliche Klimaziele und eine sozial gerechte Umsetzung ein, die niemanden zurücklässt.
+      Auch politische Maßnahmen wie CO₂-Steuern und Investitionen in grüne Infrastruktur spielen eine große Rolle.
     </p>
+
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
 
     <h2 id="erneuerbare">Erneuerbare Energien fördern</h2>
     <p>
-      Die Zukunft liegt in Sonnen-, Wind- und Wasserkraft. Durch gezielte Förderprogramme und Abbau von Bürokratie will ich den Ausbau erneuerbarer Energien beschleunigen.
+      Erneuerbare Energien wie Solar-, Wind- und Wasserkraft sind die Grundlage einer nachhaltigen Energieversorgung. Wir müssen den Ausbau beschleunigen und innovative Speichertechnologien entwickeln.
     </p>
     <p>
-      Dabei ist auch die Akzeptanz vor Ort wichtig – Bürgerenergieprojekte stärken den Zusammenhalt und schaffen regionale Wertschöpfung.
+      Zudem sind Bürgerenergieprojekte und regionale Initiativen wichtige Bausteine für eine grüne Zukunft.
     </p>
 
-    <!-- Zurück zur Übersicht -->
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <!-- Gesamtrückkehr zur Umwelt-Übersicht -->
     <div class="themenbox" onclick="location.href='umwelt.html';" role="button" tabindex="0" 
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='umwelt.html';">
       ← Zurück zur Übersicht
