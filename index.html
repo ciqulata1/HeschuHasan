@@ -96,6 +96,8 @@
     padding: 20px 40px;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
 
   main h2 {
@@ -119,6 +121,23 @@
     font-size: 1.1rem;
     max-width: 700px;
   }
+
+  main::before {
+  content: "";
+  position: absolute;
+  top: 120px;
+  right: 40px;
+  width: 300px;
+  height: 450px;
+  background-image: url("IMG_1604.jpeg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08; /* dezent im Hintergrund */
+  z-index: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 158, 227, 0.25);
+  pointer-events: none;
+}
 
   .topics {
     display: flex;
@@ -363,9 +382,7 @@
 </header>
 
 <main>
-  <div class="sticky-image">
-<img src="IMG_1604.jpeg" alt="Porträt von Heschu Hasan, FDP-Kandidatin für Freiburg-Ost" />
-</div>
+
   <h2>Meine Themen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
   <!-- Füge das hier NACH <main> ein, aber VOR </main> -->
