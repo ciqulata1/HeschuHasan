@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Umwelt – Heschu Hasan</title>
+  <title>Klimaschutz & Energiewende – Heschu Hasan</title>
 
   <link
     rel="stylesheet"
@@ -58,8 +58,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: relative;
-      z-index: 10;
     }
 
     header h1 {
@@ -71,59 +69,18 @@
       letter-spacing: 0.06em;
     }
 
-    nav.main-nav {
-      display: flex;
-      gap: 25px;
-    }
-
-    nav.main-nav a {
+    nav a {
       font-weight: 600;
       font-size: 1rem;
+      margin-left: 25px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 6px 0;
-      border-bottom: 3px solid transparent;
-      transition: border-color 0.3s ease;
     }
 
-    nav.main-nav a.active,
-    nav.main-nav a:hover {
+    nav a.active,
+    nav a:hover {
       color: var(--magenta);
       font-weight: 700;
-      border-bottom-color: var(--magenta);
-    }
-
-    /* Sticky Submenu */
-    nav.submenu {
-      position: sticky;
-      top: 0;
-      background: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      display: flex;
-      gap: 30px;
-      padding: 10px 40px;
-      z-index: 9;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    nav.submenu a {
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--cyan);
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
-      padding-bottom: 4px;
-      transition: all 0.3s ease;
-    }
-
-    nav.submenu a:hover,
-    nav.submenu a.active {
-      color: var(--magenta);
-      border-bottom-color: var(--magenta);
-      font-weight: 700;
-      outline: none;
     }
 
     main {
@@ -132,28 +89,16 @@
       margin: 0 auto;
     }
 
-    h2 {
+    main h2 {
       color: var(--cyan);
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
-    h2 i {
-      color: var(--magenta);
-      font-size: 1.6rem;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    p {
+    main p {
       font-size: 1.1rem;
       margin-bottom: 1.25rem;
       color: var(--black);
@@ -169,15 +114,12 @@
       color: var(--turquoise);
       cursor: pointer;
       transition: all 0.3s ease;
-      user-select: none;
     }
 
-    .themenbox:hover,
-    .themenbox:focus {
+    .themenbox:hover {
       background-color: var(--magenta);
       color: var(--white);
       border-color: var(--magenta);
-      outline: none;
     }
 
     footer {
@@ -215,20 +157,9 @@
         align-items: flex-start;
         padding: 15px 20px;
       }
-
-      nav.main-nav {
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-
-      nav.submenu {
-        padding: 10px 20px;
-        gap: 15px;
-        overflow-x: auto;
-        scrollbar-width: none; /* Firefox */
-      }
-      nav.submenu::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
       }
     }
   </style>
@@ -236,31 +167,6 @@
   <script>
     window.addEventListener('load', () => {
       document.body.style.opacity = '1';
-
-      // Highlight submenu link on scroll
-      const sections = document.querySelectorAll('section');
-      const submenuLinks = document.querySelectorAll('nav.submenu a');
-
-      function onScroll() {
-        const scrollPos = window.scrollY + 120; // Offset for sticky nav height + margin
-        let current = null;
-
-        sections.forEach(section => {
-          if (scrollPos >= section.offsetTop) {
-            current = section.getAttribute('id');
-          }
-        });
-
-        submenuLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
-          }
-        });
-      }
-
-      window.addEventListener('scroll', onScroll);
-      onScroll();
     });
   </script>
 </head>
@@ -268,7 +174,7 @@
 <body>
   <header>
     <h1>HESCHU HASAN</h1>
-    <nav class="main-nav" aria-label="Hauptnavigation">
+    <nav>
       <a href="index.html">Startseite</a>
       <a href="bildung.html">Bildung</a>
       <a href="umwelt.html" class="active">Umwelt</a>
@@ -278,45 +184,50 @@
     </nav>
   </header>
 
-  <!-- Sticky Submenu -->
-  <nav class="submenu" aria-label="Seitennavigation">
-    <a href="#klimaschutz" class="active" tabindex="0"><i class="fas fa-leaf"></i> Klimaschutz</a>
-    <a href="#energiewende" tabindex="0"><i class="fas fa-bolt"></i> Energiewende</a>
-    <a href="#co2reduktion" tabindex="0"><i class="fas fa-smog"></i> CO2-Reduktion</a>
-  </nav>
-
   <main>
-    <section id="klimaschutz">
-      <h2><i class="fas fa-leaf"></i> Klimaschutz</h2>
-      <p>
-        Klimaschutz ist eine der größten Herausforderungen unserer Zeit. Nur mit konsequentem Handeln können wir die Erderwärmung stoppen und die Lebensqualität für kommende Generationen sichern.
-      </p>
-      <p>
-        Nachhaltige Entwicklung bedeutet, Ressourcen zu schonen und auf erneuerbare Energien zu setzen. Dabei spielt jeder Einzelne eine wichtige Rolle – vom bewussten Konsum bis zur Unterstützung klimafreundlicher Politik.
-      </p>
-    </section>
+    <!-- Themenübersicht -->
+    <div class="themenbox" onclick="location.href='#energiewende';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#energiewende';">
+      🌍 Mehr über die Energiewende erfahren
+    </div>
 
-    <section id="energiewende">
-      <h2><i class="fas fa-bolt"></i> Energiewende</h2>
-      <p>
-        Die Energiewende ist der Schlüssel zur nachhaltigen Energieversorgung. Wir fördern den Ausbau von Wind-, Solar- und Wasserkraft sowie innovativen Technologien zur Energiespeicherung.
-      </p>
-      <p>
-        Ziel ist es, die Abhängigkeit von fossilen Brennstoffen zu reduzieren und eine klimafreundliche Infrastruktur aufzubauen, die wirtschaftlich und sozial gerecht ist.
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#co2reduktion';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#co2reduktion';">
+      ♻️ CO₂-Reduktion & Klimaschutz
+    </div>
 
-    <section id="co2reduktion">
-      <h2><i class="fas fa-smog"></i> Konsequente CO2-Reduktion</h2>
-      <p>
-        Eine konsequente Reduktion von CO2-Emissionen ist unerlässlich, um die Klimaziele zu erreichen. Das betrifft Industrie, Verkehr, Landwirtschaft und den privaten Bereich gleichermaßen.
-      </p>
-      <p>
-        Maßnahmen wie Energieeffizienz, nachhaltige Mobilität und ökologische Landwirtschaft sind wichtige Bausteine für eine klimafreundliche Zukunft.
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#erneuerbare';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#erneuerbare';">
+      🔋 Erneuerbare Energien fördern
+    </div>
 
-    <div class="themenbox" onclick="location.href='umwelt.html';" role="button" tabindex="0"
+    <!-- Inhalte mit Anker-Zielen -->
+    <h2 id="energiewende">Energiewende – Weg zu nachhaltiger Energie</h2>
+    <p>
+      Die Energiewende ist der zentrale Schlüssel für den Klimaschutz. Wir müssen konsequent auf erneuerbare Energien setzen, fossile Brennstoffe abschaffen und neue Technologien fördern, um die Klimaziele zu erreichen.
+    </p>
+    <p>
+      Dazu gehören mehr Wind- und Solaranlagen, die Förderung von Energiespeichern und intelligente Netze, die Versorgungssicherheit gewährleisten.
+    </p>
+
+    <h2 id="co2reduktion">CO₂-Reduktion & Klimaschutz</h2>
+    <p>
+      Klimaschutz bedeutet vor allem, den CO₂-Ausstoß drastisch zu senken. Das gelingt nur durch klare politische Vorgaben, Investitionen in saubere Technologien und das Engagement aller Bürger:innen.
+    </p>
+    <p>
+      Ich setze mich für verbindliche Klimaziele und eine sozial gerechte Umsetzung ein, die niemanden zurücklässt.
+    </p>
+
+    <h2 id="erneuerbare">Erneuerbare Energien fördern</h2>
+    <p>
+      Die Zukunft liegt in Sonnen-, Wind- und Wasserkraft. Durch gezielte Förderprogramme und Abbau von Bürokratie will ich den Ausbau erneuerbarer Energien beschleunigen.
+    </p>
+    <p>
+      Dabei ist auch die Akzeptanz vor Ort wichtig – Bürgerenergieprojekte stärken den Zusammenhalt und schaffen regionale Wertschöpfung.
+    </p>
+
+    <!-- Zurück zur Übersicht -->
+    <div class="themenbox" onclick="location.href='umwelt.html';" role="button" tabindex="0" 
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='umwelt.html';">
       ← Zurück zur Übersicht
     </div>
