@@ -384,19 +384,21 @@
 
 .bg-overlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('IMG_1604.jpeg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;        /* Bild komplett sichtbar */
-  background-color: black;         /* Hintergrundfarbe falls Ränder sichtbar sind */
-  opacity: 0.8;
+  top: 0; left: 0; width: 100vw; height: 100vh;
   pointer-events: none;
   z-index: -1;
-  transition: opacity 1s ease;
+  opacity: 0.5; /* Transparenz Overlay */
+  overflow: hidden;
 }
 
-
+.bg-overlay img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;      /* GANZES Bild sichtbar */
+  object-position: top center; /* Gesicht oben ausrichten */
+  pointer-events: none;     /* Klicks durchlassen */
+  user-select: none;
+}
 
 </style>
 </head>
@@ -417,6 +419,9 @@
 </header>
 <div class="bg-overlay"></div>
 <main>
+  <div class="bg-overlay">
+  <img src="IMG_2206.jpeg" alt="Hintergrundbild" />
+</div>
 
   <h2>Meine Themen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
