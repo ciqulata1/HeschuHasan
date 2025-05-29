@@ -116,20 +116,26 @@
       margin-top: 40px;
     }
 
-    .box {
-      flex: 1 1 280px;
-      max-width: 300px;
-      border: 2px solid var(--cyan);
-      background-color: var(--white);
-      color: var(--cyan);
-      padding: 20px;
-      border-radius: 5px;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-    }
+  .box {
+  width: 100%;
+  max-width: 300px;
+  border: 2px solid var(--cyan);
+  background-color: var(--white);
+  color: var(--cyan);
+  padding: 20px;
+  border-radius: 5px;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  user-select: none;
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 
     .box:hover {
       border-color: var(--magenta);
