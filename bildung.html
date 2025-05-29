@@ -29,6 +29,11 @@
     body {
       margin: 0;
       background-color: var(--white);
+      background-image: url('IMG_2309.png');
+      background-repeat: repeat-y;
+      background-position: center top;
+      background-attachment: scroll;
+      background-size: cover;
       color: var(--cyan);
       font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
       font-weight: 400;
@@ -42,12 +47,6 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-
-  background-image: url('IMG_2309.png');
-background-repeat: repeat-y;
-background-attachment: scroll;
-background-position: center top;
-background-size: cover;
 
     a:hover,
     a:focus {
@@ -87,29 +86,14 @@ background-size: cover;
     }
 
     main {
-  padding: 40px 20px;
-  margin: 0 auto;
-  width: 90%;
-  max-width: 800px;
-  position: relative;
-  background-image: url('IMG_2308.png');
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: contain;
-  background-attachment: scroll; /* scrollt mit */
-  z-index: 1;
-}
-
-    main::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: white;
-      opacity: 0.8;
-      z-index: -1;
+      padding: 40px 20px;
+      margin: 0 auto;
+      width: 90%;
+      max-width: 800px;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.85); /* Halbtransparentes Weiß */
+      z-index: 1;
+      border-radius: 8px;
     }
 
     main h2 {
@@ -119,8 +103,6 @@ background-size: cover;
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      position: relative;
-      z-index: 2;
     }
 
     main h3 {
@@ -128,16 +110,12 @@ background-size: cover;
       font-weight: 600;
       font-size: 1.25rem;
       margin-bottom: 20px;
-      position: relative;
-      z-index: 2;
     }
 
     main p {
       font-weight: 300;
       font-size: 1.1rem;
       max-width: 700px;
-      position: relative;
-      z-index: 2;
     }
 
     .bildung-boxes {
@@ -146,8 +124,6 @@ background-size: cover;
       justify-content: center;
       gap: 25px;
       margin-top: 40px;
-      position: relative;
-      z-index: 2;
     }
 
     .box {
