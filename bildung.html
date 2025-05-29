@@ -28,16 +28,25 @@
 
     body {
       margin: 0;
-      background-color: var(--white);
       background-image: url('IMG_2308.png');
-      background-repeat: repeat-y;
+      background-repeat: no-repeat;
       background-position: center top;
-      background-attachment: scroll;
       background-size: cover;
+      background-attachment: fixed;
       color: var(--cyan);
       font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
       font-weight: 400;
       line-height: 1.5;
+      position: relative;
+    }
+
+    /* Weißer "Mantel" */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.85);
+      z-index: -1;
     }
 
     a {
@@ -87,13 +96,11 @@
 
     main {
       padding: 40px 20px;
-      margin: 40px auto;
+      margin: 0 auto;
       width: 100%;
       max-width: 1200px;
       position: relative;
-      background-color: rgba(255, 255, 255, 0.85); /* halbtransparentes Weiß */
       z-index: 1;
-      border-radius: 8px;
     }
 
     main h2 {
@@ -103,6 +110,8 @@
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      position: relative;
+      z-index: 2;
     }
 
     main h3 {
@@ -110,12 +119,16 @@
       font-weight: 600;
       font-size: 1.25rem;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
     }
 
     main p {
       font-weight: 300;
       font-size: 1.1rem;
       max-width: 700px;
+      position: relative;
+      z-index: 2;
     }
 
     .bildung-boxes {
@@ -124,6 +137,8 @@
       justify-content: center;
       gap: 25px;
       margin-top: 40px;
+      position: relative;
+      z-index: 2;
     }
 
     .box {
