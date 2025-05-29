@@ -382,23 +382,26 @@
   transition: opacity 1s ease;
 }
 
+/* Hintergrund Overlay */
 .bg-overlay {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  pointer-events: none;
   z-index: -1;
-  opacity: 0.5; /* Transparenz Overlay */
+  pointer-events: none;
+  opacity: 0.7;  /* Bild-Transparenz, gerne anpassen */
   overflow: hidden;
 }
 
 .bg-overlay img {
   width: 100vw;
   height: 100vh;
-  object-fit: contain;      /* GANZES Bild sichtbar */
-  object-position: top center; /* Gesicht oben ausrichten */
-  pointer-events: none;     /* Klicks durchlassen */
+  object-fit: contain;      /* gesamtes Bild sichtbar, ohne Verzerrung */
+  object-position: top center;
+  pointer-events: none;
   user-select: none;
 }
+
+/* Header */
 
 </style>
 </head>
