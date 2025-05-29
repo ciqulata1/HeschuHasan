@@ -366,16 +366,6 @@
   }
 }
 
-  .main-with-bg {
-  position: relative;
-  overflow: hidden; /* damit das Bild nicht rausfliest */
-  min-height: 100vh; /* damit es mindestens den Viewport füllt */
-  background-image: url('IMG_1604.jpeg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover; /* skaliert proportional, füllt den Container */
-  transition: background-color 0.6s ease, opacity 1s ease;
-}
 
 /* Ein Overlay, um die Transparenz zu steuern (Wasserzeichen) */
 .main-with-bg::before {
@@ -399,7 +389,7 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 1;
+  opacity: 0.8;
   pointer-events: none;
   z-index: -1;
   transition: opacity 1s ease;
@@ -422,7 +412,7 @@
   </nav>
 </header>
 <div class="bg-overlay"></div>
-<main class="main-with-bg">
+<main>
 
   <h2>Meine Themen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
@@ -541,10 +531,10 @@ navLinks.forEach(link => {
   const overlay = document.querySelector('.bg-overlay');
   const scrollTop = window.scrollY;
 
-  if (scrollTop > 200) { // z.B. ab 200px scroll soll es weniger sichtbar sein
-    overlay.style.opacity = '0.1'; // fast wie Wasserzeichen
+  if (scrollTop > 200) {
+    overlay.style.opacity = '0.05'; // noch dezenter beim Scrollen
   } else {
-    overlay.style.opacity = '1';
+    overlay.style.opacity = '0.08'; // sichtbar am Anfang
   }
 });
   
