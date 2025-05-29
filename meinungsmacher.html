@@ -28,10 +28,20 @@
     body {
       margin: 0;
       background-color: var(--white);
-      color: var(--black);
       font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      color: var(--cyan);
+      position: relative;
       font-weight: 400;
       line-height: 1.6;
+    }
+
+    /* Weißer halbtransparenter Mantel über ganze Seite */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.85);
+      z-index: -1;
     }
 
     a {
@@ -54,6 +64,8 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      z-index: 10;
+      position: relative;
     }
 
     header h1 {
@@ -61,6 +73,8 @@
       font-size: 1.8rem;
       color: var(--cyan);
       margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     nav {
@@ -84,9 +98,16 @@
     }
 
     main {
-      padding: 15px 20px;
       max-width: 900px;
       margin: 2rem auto 3rem auto;
+      padding: 20px;
+      position: relative;
+      background-image: url('IMG_2310.png');
+      background-repeat: repeat-y;
+      background-position: center top;
+      background-size: contain;
+      background-attachment: scroll;
+      z-index: 1;
     }
 
     main h2 {
@@ -97,6 +118,8 @@
       letter-spacing: 0.1em;
       text-align: center;
       color: var(--cyan);
+      position: relative;
+      z-index: 2;
     }
 
     main h3 {
@@ -105,6 +128,8 @@
       font-size: 1.1rem;
       margin-bottom: 2rem;
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
     .question {
@@ -114,16 +139,17 @@
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
       padding: 1.5rem;
       margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
     }
-
 
     .question p {
       font-weight: 600;
       font-size: 1.05rem;
       margin-bottom: 0.8rem;
       color: var(--black);
-        word-break: break-word;
-  overflow-wrap: break-word;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .answers label {
@@ -153,6 +179,8 @@
       max-width: 240px;
       transition: background-color 0.3s ease;
       box-shadow: 0 4px 8px rgba(229, 0, 125, 0.3);
+      position: relative;
+      z-index: 2;
     }
 
     button[type="submit"]:hover,
@@ -168,6 +196,8 @@
       font-size: 1.2rem;
       color: var(--magenta);
       display: none;
+      position: relative;
+      z-index: 2;
     }
 
     .back-button {
@@ -184,6 +214,8 @@
       transition: background-color 0.3s ease;
       max-width: 220px;
       box-shadow: 0 3px 7px rgba(229, 0, 125, 0.4);
+      position: relative;
+      z-index: 2;
     }
 
     .back-button:hover,
@@ -199,6 +231,8 @@
       text-align: center;
       padding: 30px 20px;
       font-weight: 600;
+      position: relative;
+      z-index: 10;
     }
 
     footer h3 {
@@ -282,107 +316,4 @@
 
 <footer>
   <h3>Treffen Sie mich auf den sozialen Medien</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-  </div>
-</footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const questions = [
-      "Soll der Ausbau von Power-to-X-Technologien in Baden-Württemberg staatlich stärker gefördert werden?",
-      "Soll der Netzausbau in Baden-Württemberg deutlich beschleunigt werden, um Wind- und Solarstrom besser weiterzuleiten?",
-      "Soll Informatik als Pflichtfach ab der Grundschule in Baden-Württemberg eingeführt werden?",
-      "Soll die Justiz in Baden-Württemberg stärker digitalisiert und das Personal dafür geschult werden?",
-      "Soll der öffentliche Nahverkehr in Baden-Württemberg günstiger oder kostenlos angeboten werden?",
-      "Soll ein Tempolimit von 120 km/h auf Autobahnen in Baden-Württemberg eingeführt werden?",
-      "Soll in Baden-Württemberg in städtischen und ländlichen Gebieten ein generelles 30-km/h-Tempolimit eingeführt werden, um CO2-Emissionen zu senken?",
-      "Soll der Staat mehr in professionelle Sozialarbeit investieren, um Obdachlosen in Härtefällen besser helfen zu können?",
-      "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden (Höhere Jahrgangsstufen)?",
-      "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
-    ];
-
-    // Positionen von Heschu Hasan (in derselben Reihenfolge wie die Fragen)
-    const hasanPositions = [
-      "ja",       // Frage 1
-      "ja",       // Frage 2
-      "ja",       // Frage 3
-      "ja",       // Frage 4
-      "ja",       // Frage 5
-      "nein",     // Frage 6
-      "nein",     // Frage 7
-      "ja",       // Frage 8
-      "ja",       // Frage 9
-      "ja",       // Frage 10
-      "ja"        // Frage 11
-    ];
-
-    const questionContainer = document.getElementById("questions");
-
-    questions.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.innerHTML = `
-        <p><strong>${i + 1}. ${q}</strong></p>
-        <div class="answers" role="radiogroup" aria-labelledby="q${i}-label">
-          <label><input type="radio" name="q${i}" id="q${i}-ja" value="ja" required /> Ja</label>
-          <label><input type="radio" name="q${i}" id="q${i}-neutral" value="neutral" /> Neutral</label>
-          <label><input type="radio" name="q${i}" id="q${i}-nein" value="nein" /> Nein</label>
-        </div>`;
-      questionContainer.appendChild(div);
-    });
-
-    const form = document.getElementById('quizForm');
-    const feedback = document.getElementById('feedback');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(this);
-      let matchCount = 0;
-      const total = questions.length;
-
-      for (let i = 0; i < total; i++) {
-        const answer = formData.get(`q${i}`);
-        if (!answer) {
-          feedback.style.display = 'block';
-          feedback.textContent = `Bitte beantworten Sie alle Fragen.`;
-          feedback.style.color = 'red';
-          return;
-        }
-        if (answer === hasanPositions[i]) {
-          matchCount++;
-        }
-      }
-
-      const percentage = Math.round((matchCount / total) * 100);
-
-      // Ergebnis anzeigen
-      feedback.style.display = 'block';
-      feedback.style.color = 'var(--magenta)';
-      feedback.innerHTML = `
-        <p>Sie stimmen mit <strong>${matchCount} von ${total}</strong> Positionen von Heschu Hasan überein.</p>
-        <p><strong>Übereinstimmung: ${percentage}%</strong></p>
-      `;
-
-      // Ergebnis lokal speichern (optional)
-      try {
-        const result = {
-          timestamp: new Date().toISOString(),
-          matchCount,
-          total,
-          percentage
-        };
-        localStorage.setItem('meinungsMacherErgebnis', JSON.stringify(result));
-      } catch (e) {
-        console.warn("Speichern im lokalen Speicher ist fehlgeschlagen.", e);
-      }
-    });
-
-    document.getElementById('back-to-home').addEventListener('click', () => {
-      window.location.href = "index.html";
-    });
-  });
-</script>
+  <div class="social
