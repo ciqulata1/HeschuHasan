@@ -295,42 +295,51 @@ header {
   }
 
 footer {
-  background-color: var(--white); /* oder weiß (#fff) */
-  color: var(--dark); /* dunkle Schriftfarbe */
-  position: relative; /* falls Overlay benutzt wird */
-  z-index: 10; /* über dem Hintergrundbild */
+  background-color: var(--white); /* weißer Hintergrund */
+  color: var(--white);             /* weißer Text */
+  position: relative;              /* für Overlay */
+  z-index: 10;                    /* über Hintergrund */
   padding: 20px;
+  text-align: center;             /* Text & Icons zentrieren */
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+  user-select: none;              /* Text nicht markierbar */
 }
 
-  footer h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  footer .social-links a {
-    color: var(--white);
-    font-size: 30px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-  footer .social-links a:hover,
-  footer .social-links a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-  footer p {
+footer h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--dark);             /* dunkle Überschrift */
+}
+
+footer p {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--white);
   margin: 0;
   padding: 5px 0;
   letter-spacing: 0.05em;
-  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-  user-select: none; /* Verhindert versehentliches Markieren */
 }
 
+footer .social-links {
+  margin: 15px 0;
+}
+
+footer .social-links a {
+  color: var(--cyan);             /* Standard Cyan */
+  font-size: 30px;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+footer .social-links a:hover,
+footer .social-links a:focus {
+  color: var(--magenta);          /* Hover Pink */
+  outline: none;
+}
 
   @media (max-width: 768px) {
     header {
