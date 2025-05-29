@@ -364,7 +364,7 @@
 
 <main>
   <div class="sticky-image">
-  <img src="IMG_1604.jpeg" alt="Heschu Hasan" />
+<img src="IMG_1604.jpeg" alt="Porträt von Heschu Hasan, FDP-Kandidatin für Freiburg-Ost" />
 </div>
   <h2>Meine Themen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
@@ -416,7 +416,8 @@
   </label><br />
   
   <input type="hidden" name="_captcha" value="false" />
-  <button type="submit">Absenden</button>
+  <input type="text" name="_honey" style="display:none">
+   <button type="submit">Absenden</button>
 </form>
 
 </main>
@@ -471,6 +472,14 @@
       }
     }, 1000);
   });
+// Aktive Navigation automatisch hervorheben
+const navLinks = document.querySelectorAll("nav a");
+navLinks.forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add("active");
+  }
+});
+  
 </script>
 
 </body>
