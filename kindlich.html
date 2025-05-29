@@ -26,6 +26,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       background-color: var(--white);
@@ -104,7 +108,7 @@
       border: 2px solid var(--turquoise);
       border-radius: 8px;
       padding: 16px 24px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       text-align: center;
       font-weight: 600;
       color: var(--turquoise);
@@ -181,11 +185,24 @@
   </header>
 
   <main>
-    <div class="themenbox" onclick="location.href='#sprachfoerderung';">
-  📘 Mehr über Sprachförderung lesen
-</div>
+    <!-- Themenübersicht -->
+    <div class="themenbox" onclick="location.href='#fruehfoerderung';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#fruehfoerderung';">
+      📘 Mehr über Frühförderung entdecken
+    </div>
 
-    <h2>Frühförderung beginnt mit Vertrauen</h2>
+    <div class="themenbox" onclick="location.href='#sprachfoerderung';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#sprachfoerderung';">
+      🗣️ Mehr über Sprachförderung lesen
+    </div>
+
+    <div class="themenbox" onclick="location.href='#elternarbeit';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#elternarbeit';">
+      👪 Mehr über Eltern als Partner erfahren
+    </div>
+
+    <!-- Inhalte mit Anker-Zielen -->
+    <h2 id="fruehfoerderung">Frühförderung beginnt mit Vertrauen</h2>
 
     <p>
       Bildung ist kein Privileg – sie ist ein Grundrecht. Und sie beginnt nicht erst in der Schule, sondern vom ersten Tag an. Frühkindliche Bildung entscheidet darüber, wie gut Kinder sich später entfalten können – sprachlich, emotional und sozial.
@@ -199,39 +216,31 @@
       Ich setze mich für verpflichtende, altersgerechte Sprachtests ein – aber nur dann, wenn ihnen eine intensive und wertschätzende Förderung vorausgeht. Kein Kind darf stigmatisiert werden – jedes Kind verdient faire Chancen.
     </p>
 
-    <p>
-      Auch Eltern müssen ernst genommen werden: Ihre Entscheidungen verdienen Respekt. Kitas sind keine Ersatzfamilien, sondern Partner. Gerade alleinerziehende Mütter und Väter brauchen echte Unterstützung, keine Belehrung.
-    </p>
-
-    <p>
-      Meine Bildungspolitik basiert auf Freiheit, Verantwortung und Vertrauen – in Familien, in Fachkräfte, in die Fähigkeiten der Kinder.
-    </p>
-
-    <p>
-      Freiburg verdient Bildung mit Herz – und mit Verstand. Für eine starke Zukunft, die bei den Kleinsten beginnt.
-    </p>
-
     <h2 id="sprachfoerderung">Gezielte Sprachförderung</h2>
-<p>Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein...</p>
+    <p>
+      Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein. Kinder, die sprachlich stark gefördert werden, haben deutlich bessere Chancen im Leben – unabhängig von Herkunft oder sozialem Umfeld.
+    </p>
+
+    <p>
+      Sprachförderung muss individuell, alltagsnah und frühzeitig ansetzen. Wir brauchen mehr Fachkräfte mit interkultureller Kompetenz, kleine Gruppen – und vor allem Zeit für Beziehung und Austausch.
+    </p>
+
+    <h2 id="elternarbeit">Eltern als Bildungspartner</h2>
+    <p>
+      Auch Eltern müssen ernst genommen werden: Ihre Entscheidungen verdienen Respekt. Kitas sind keine Ersatzfamilien, sondern Partner. Gerade alleinerziehende Mütter und Väter brauchen echte Unterstützung – keine Belehrung, sondern Begleitung.
+    </p>
+
+    <p>
+      Meine Bildungspolitik basiert auf Freiheit, Verantwortung und Vertrauen – in Familien, in Fachkräfte, in die Fähigkeiten der Kinder. Freiburg verdient Bildung mit Herz – und mit Verstand.
+    </p>
+
+    <!-- Zurück zur Übersicht -->
+    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
+      ← Zurück zur Übersicht
+    </div>
   </main>
-  <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
-  ← Zurück zur Übersicht
-</div>
-  
-<script>
-  // Wenn URL ein Anker enthält, sanft scrollen
-  window.addEventListener('DOMContentLoaded', () => {
-    const hash = window.location.hash;
-    if (hash) {
-      const target = document.querySelector(hash);
-      if (target) {
-        setTimeout(() => {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }, 200); // Kurze Verzögerung, bis die Seite vollständig gerendert ist
-      }
-    }
-  });
-</script>
+
   <footer>
     <h3>Treffen Sie mich auf den Sozialen Medien</h3>
     <div class="social-links" aria-label="Soziale Medien">
