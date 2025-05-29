@@ -322,6 +322,28 @@
       flex-direction: column;
     }
   }
+
+  /* Sticky-Bild, das beim Scrollen mitläuft */
+.sticky-image {
+  position: sticky;
+  top: 120px;
+  float: right;
+  margin-left: 30px;
+  max-width: 250px;
+  z-index: 1000;
+}
+.sticky-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 158, 227, 0.5);
+}
+
+/* Optional: Auf kleineren Bildschirmen ausblenden */
+@media (max-width: 768px) {
+  .sticky-image {
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -341,8 +363,13 @@
 </header>
 
 <main>
+  <div class="sticky-image">
+  <img src="IMG_1604.jpg" alt="Heschu Hasan" />
+</div>
   <h2>Meine Themen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+  <!-- Füge das hier NACH <main> ein, aber VOR </main> -->
+
 
   <div class="topics" role="list">
     <a href="bildung.html" class="topic-box" role="listitem" tabindex="0">Bildung</a>
