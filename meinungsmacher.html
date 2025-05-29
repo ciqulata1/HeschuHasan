@@ -29,7 +29,7 @@
       margin: 0;
       background-color: var(--white);
       color: var(--black);
-      font-family: 'Segoe UI', Candara, Calibri, Arial, sans-serif;
+      font-family: "Segoe UI", Calibri, Candara, Arial, sans-serif;
       font-weight: 400;
       line-height: 1.6;
     }
@@ -57,13 +57,12 @@
     }
 
     header h1 {
-      font-family: 'Arial Black', Gadget, sans-serif;
-      font-size: 2.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 900;
+      font-weight: 800;
+      font-size: 2rem;
       color: var(--cyan);
       margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     nav {
@@ -78,7 +77,7 @@
       font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--black);
+      color: var(--cyan);
     }
 
     nav a.active,
@@ -270,7 +269,6 @@
 </header>
 
 <main>
-  <img src="IMG_2310.png" alt="Meinungs-Macher Banner" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 30px;" />
   <h2>Meinungs-Macher</h2>
   <h3>Beantworten Sie 10 Fragen und sehen Sie, wie Ihre Meinung mit meinen Positionen übereinstimmt.</h3>
 
@@ -308,7 +306,9 @@
       "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
     ];
 
-    const hasanPositions = ["ja", "ja", "ja", "ja", "ja", "nein", "nein", "ja", "ja", "ja"];
+    const hasanPositions = [
+      "ja", "ja", "ja", "ja", "ja", "nein", "nein", "ja", "ja", "ja"
+    ];
 
     const questionContainer = document.getElementById("questions");
 
