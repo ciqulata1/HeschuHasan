@@ -382,18 +382,20 @@
   transition: opacity 1s ease;
 }
 
- .bg-overlay {
+.bg-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('IMG_2206.jpeg');
-  background-position: top center;    /* ganz oben mittig */
+  background-image: url('IMG_1604.jpeg');
   background-repeat: no-repeat;
-  background-size: cover;             /* füllt immer den gesamten Bereich */
+  background-position: center center;
+  background-size: contain;        /* Bild komplett sichtbar */
+  background-color: black;         /* Hintergrundfarbe falls Ränder sichtbar sind */
   opacity: 0.8;
   pointer-events: none;
   z-index: -1;
   transition: opacity 1s ease;
 }
+
 
 
 </style>
