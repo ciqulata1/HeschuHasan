@@ -294,13 +294,12 @@ header {
     outline: none;
   }
 
-  footer {
-  position: relative;
-  z-index: 10; /* oder höher, je nachdem was du brauchst */
-  background-color: var(--white); /* damit er undurchsichtig ist */
-  padding: 20px 40px;
-  border-top: 2px solid var(--cyan);
-  /* weitere Styles für den Footer */
+footer {
+  background-color: var(--white); /* oder weiß (#fff) */
+  color: var(--dark); /* dunkle Schriftfarbe */
+  position: relative; /* falls Overlay benutzt wird */
+  z-index: 10; /* über dem Hintergrundbild */
+  padding: 20px;
 }
 
   footer h3 {
