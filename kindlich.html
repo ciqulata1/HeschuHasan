@@ -181,9 +181,9 @@
   </header>
 
   <main>
-    <div class="themenbox" onclick="location.href='bildung.html';">
-      📘 Mehr über Frühförderung entdecken
-    </div>
+    <div class="themenbox" onclick="location.href='#sprachfoerderung';">
+  📘 Mehr über Sprachförderung lesen
+</div>
 
     <h2>Frühförderung beginnt mit Vertrauen</h2>
 
@@ -217,7 +217,21 @@
   <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
   ← Zurück zur Übersicht
 </div>
-
+  
+<script>
+  // Wenn URL ein Anker enthält, sanft scrollen
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, 200); // Kurze Verzögerung, bis die Seite vollständig gerendert ist
+      }
+    }
+  });
+</script>
   <footer>
     <h3>Treffen Sie mich auf den Sozialen Medien</h3>
     <div class="social-links" aria-label="Soziale Medien">
