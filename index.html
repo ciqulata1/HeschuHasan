@@ -385,17 +385,13 @@
   .bg-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  z-index: -1;
+  background-image: url('IMG_1604.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center 20%; /* <<< HIER */
   opacity: 0.8;
   pointer-events: none;
-  overflow: hidden;
-}
-
-.bg-overlay img {
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;
-  object-position: top center;
+  z-index: -1;
 }
 
 </style>
