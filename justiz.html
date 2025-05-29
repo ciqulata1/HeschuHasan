@@ -3,181 +3,260 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Staat und Recht - Themenübersicht</title>
+  <title>Justiz – Heschu Hasan</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
   <style>
-    /* Farben und Layout exakt wie bei kindlich.html */
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #fdf6e3;
-      color: #073642;
-      hyphens: auto;
-      -webkit-hyphens: auto;
-      -moz-hyphens: auto;
-      -ms-hyphens: auto;
-      line-height: 1.5;
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
     }
 
-    header, footer {
-      background-color: #eee8d5;
-      padding: 1rem 2rem;
-      text-align: center;
-      border-bottom: 3px solid #b58900;
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      hyphens: auto;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     header h1 {
-      margin: 0;
       font-weight: 700;
-      font-size: 2rem;
-      color: #657b83;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
     }
 
     main {
-      padding: 2rem;
+      padding: 20px 40px;
       max-width: 900px;
       margin: 0 auto;
     }
 
-    h2 {
-      color: #586e75;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      text-align: center;
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
-    .themen-container {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
     }
 
     .themenbox {
-      background: #eee8d5;
-      border: 2px solid #b58900;
-      border-radius: 10px;
-      padding: 1rem 1.5rem;
-      flex: 1 1 280px;
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
       cursor: pointer;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-      user-select: none;
-      box-shadow: 3px 3px 6px rgba(0,0,0,0.1);
-      hyphens: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 220px;
+      transition: all 0.3s ease;
     }
 
-    .themenbox:hover, .themenbox:focus {
-      background-color: #f6f1d1;
-      border-color: #cb4b16;
-      outline: none;
-    }
-
-    .themenbox h3 {
-      margin-top: 0;
-      font-size: 1.3rem;
-      color: #586e75;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .themenbox:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
     }
 
     .themenbox p {
-      margin-bottom: 0;
-      color: #586e75;
-      font-size: 0.95rem;
-      flex-grow: 1;
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      hyphens: auto;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     footer {
-      border-top: 3px solid #b58900;
-      color: #657b83;
-      font-size: 0.9rem;
-      hyphens: auto;
-      padding-bottom: 1rem;
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
     }
 
-    .social-links a {
-      margin: 0 0.5rem;
-      color: #657b83;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      vertical-align: middle;
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
       transition: color 0.3s ease;
     }
 
-    .social-links a:hover, .social-links a:focus {
-      color: #b58900;
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
       outline: none;
     }
 
-    /* Instagram Icon */
-    .instagram-icon {
-      width: 1.3em;
-      height: 1.3em;
-      vertical-align: middle;
-      fill: currentColor;
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
     }
   </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
 </head>
+
 <body>
   <header>
-    <h1>Staat und Recht</h1>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="justiz.html" class="active">Justiz</a>
+    </nav>
   </header>
 
   <main>
-    <h2>Themenübersicht</h2>
-    <div class="themen-container">
-      <div class="themenbox" tabindex="0" role="button" data-link="exekutive.html" aria-label="Exekutive – Polizei und Verwaltung">
-        <h3>👮‍♂️ Exekutive – Polizei und Verwaltung</h3>
-        <p>Die Exekutive setzt Gesetze durch und sorgt für Ordnung und Sicherheit. Ich bin eindeutig für den Einsatz von Tasern, um tödliche Gewalt zu reduzieren. Gerade nach den tragischen Vorfällen in NRW und Baden-Württemberg muss das sehr schnell ein Ende finden.</p>
-      </div>
+    <!-- Themenübersicht -->
+    <div class="themenbox" onclick="location.href='#exekutive';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#exekutive';">
+      ⚖️ Mehr über Exekutive (Polizei) erfahren
+    </div>
 
-      <div class="themenbox" tabindex="0" role="button" data-link="judikative.html" aria-label="Judikative – Gerichte und Rechtsprechung">
-        <h3>⚖️ Judikative – Gerichte und Rechtsprechung</h3>
-        <p>Die Judikative entscheidet in Streitfällen und kontrolliert die Einhaltung der Gesetze. Die Gerichte müssen digitaler werden, um Missverständnisse zu vermeiden und den Kontakt zwischen den beteiligten Personen zu reduzieren.</p>
-      </div>
+    <div class="themenbox" onclick="location.href='#judikative';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#judikative';">
+      🏛️ Mehr über Judikative (Gerichte) lesen
+    </div>
 
-      <div class="themenbox" tabindex="0" role="button" data-link="legislative.html" aria-label="Legislative – Parlamente und Gesetzgebung">
-        <h3>🏛️ Legislative – Parlamente und Gesetzgebung</h3>
-        <p>Die Legislative schafft und ändert Gesetze. Sie muss durchsichtiger und zugänglicher für Bürger werden, damit alle mehr Zugang zur Gesetzgebung erhalten und besser mitbestimmen können.</p>
-      </div>
+    <div class="themenbox" onclick="location.href='#legislative';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#legislative';">
+      📜 Mehr über Legislative (Parlament) entdecken
+    </div>
+
+    <!-- Inhalte mit Anker-Zielen -->
+    <h2 id="exekutive">Exekutive (Polizei)</h2>
+
+    <p>
+      Die Exekutive, insbesondere die Polizei, sorgt für die Umsetzung der Gesetze und den Schutz der Bürger. Ich bin fest davon überzeugt, dass die Polizei in Deutschland dringend modernisiert werden muss. Dazu gehören technische Hilfsmittel wie Taser, die helfen können, kritische Situationen ohne tödliche Gewalt zu entschärfen.
+    </p>
+
+    <p>
+      Angesichts der erschütternden Fälle von Gewalt gegen unschuldige Menschen in NRW und Baden-Württemberg in letzter Zeit ist es mehr als notwendig, dass die Polizei ihre Einsatzmethoden überdenkt. Es darf nicht länger passieren, dass aus Überforderung oder Angst auf die falschen Mittel zurückgegriffen wird. Taser könnten helfen, Leben zu retten.
+    </p>
+
+    <h2 id="judikative">Judikative (Gerichte)</h2>
+
+    <p>
+      Die Judikative stellt sicher, dass Recht und Gesetz eingehalten werden, und schützt die Grundrechte der Bürger. Doch gerade hier sehe ich großes Potential für eine digitale Modernisierung. Digitale Verfahren können helfen, Missverständnisse zu vermeiden und den Kontakt zwischen den Prozessbeteiligten zu reduzieren.
+    </p>
+
+    <p>
+      Weniger persönliche Kontakte, aber mehr Transparenz und digitale Dokumentationen können zu schnelleren und faireren Urteilen führen. Dies schützt nicht nur die Beteiligten, sondern stärkt das Vertrauen in die Rechtsprechung.
+    </p>
+
+    <h2 id="legislative">Legislative (Parlament)</h2>
+
+    <p>
+      Die Legislative ist das Parlament, das die Gesetze macht und kontrolliert. Um das Vertrauen der Bürger zu stärken, muss die Gesetzgebung deutlich transparenter werden. Die Bürger sollen besseren Zugang zu den Gesetzgebungsverfahren erhalten und verstehen können, wie Entscheidungen getroffen werden.
+    </p>
+
+    <p>
+      Mehr Offenheit und digitale Beteiligungsmöglichkeiten sind der Schlüssel, damit Demokratie wirklich lebendig wird. Nur so kann verhindert werden, dass Politik hinter verschlossenen Türen passiert und Entscheidungen für die Bürger nachvollziehbar bleiben.
+    </p>
+
+    <!-- Zurück zur Übersicht -->
+    <div class="themenbox" onclick="location.href='index.html';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='index.html';">
+      ← Zurück zur Startseite
     </div>
   </main>
 
-   <footer>
-    <div style="color: #2aa198; font-weight: 600; margin-bottom: 0.4rem; text-align: center;">
-      Folgen Sie mir. Treffen Sie mich auf Social Media.
-    </div>
-    <div class="social-links">
-      <a href="https://instagram.com/heschu" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg class="instagram-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm4.75-.88a1.125 1.125 0 110 2.25 1.125 1.125 0 010-2.25z"/>
-        </svg>
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
       </a>
     </div>
-    <p>&copy; 2025 Heschu Hasan – Alle Rechte vorbehalten.</p>
   </footer>
-
-  <script>
-    // Themenboxen als Buttons: Klick oder Enter/Space führt zur jeweiligen Seite
-    document.querySelectorAll('.themenbox').forEach(box => {
-      box.addEventListener('click', () => {
-        const link = box.getAttribute('data-link');
-        if (link) window.location.href = link;
-      });
-
-      box.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const link = box.getAttribute('data-link');
-          if (link) window.location.href = link;
-        }
-      });
-    });
-  </script>
 </body>
 </html>
