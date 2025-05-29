@@ -114,6 +114,7 @@
       color: var(--turquoise);
       cursor: pointer;
       transition: all 0.3s ease;
+      user-select: none;
     }
 
     .themenbox:hover {
@@ -185,20 +186,22 @@
   </header>
 
   <main>
-    <!-- Themenübersicht -->
-    <div class="themenbox" onclick="location.href='#fruehfoerderung';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#fruehfoerderung';">
-      📘 Mehr über Frühförderung entdecken
-    </div>
+    <!-- Themenübersicht mit ID als Anker -->
+    <div id="themen">
+      <div class="themenbox" onclick="location.href='#fruehfoerderung';" role="button" tabindex="0" 
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#fruehfoerderung';">
+        📘 Mehr über Frühförderung entdecken
+      </div>
 
-    <div class="themenbox" onclick="location.href='#sprachfoerderung';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#sprachfoerderung';">
-      🗣️ Mehr über Sprachförderung lesen
-    </div>
+      <div class="themenbox" onclick="location.href='#sprachfoerderung';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#sprachfoerderung';">
+        🗣️ Mehr über Sprachförderung lesen
+      </div>
 
-    <div class="themenbox" onclick="location.href='#elternarbeit';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#elternarbeit';">
-      👪 Mehr über Eltern als Partner erfahren
+      <div class="themenbox" onclick="location.href='#elternarbeit';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#elternarbeit';">
+        👪 Mehr über Eltern als Partner erfahren
+      </div>
     </div>
 
     <!-- Inhalte mit Anker-Zielen -->
@@ -216,6 +219,11 @@
       Ich setze mich für verpflichtende, altersgerechte Sprachtests ein – aber nur dann, wenn ihnen eine intensive und wertschätzende Förderung vorausgeht. Kein Kind darf stigmatisiert werden – jedes Kind verdient faire Chancen.
     </p>
 
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
     <h2 id="sprachfoerderung">Gezielte Sprachförderung</h2>
     <p>
       Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein. Kinder, die sprachlich stark gefördert werden, haben deutlich bessere Chancen im Leben – unabhängig von Herkunft oder sozialem Umfeld.
@@ -224,6 +232,11 @@
     <p>
       Sprachförderung muss individuell, alltagsnah und frühzeitig ansetzen. Wir brauchen mehr Fachkräfte mit interkultureller Kompetenz, kleine Gruppen – und vor allem Zeit für Beziehung und Austausch.
     </p>
+
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
 
     <h2 id="elternarbeit">Eltern als Bildungspartner</h2>
     <p>
@@ -234,7 +247,12 @@
       Meine Bildungspolitik basiert auf Freiheit, Verantwortung und Vertrauen – in Familien, in Fachkräfte, in die Fähigkeiten der Kinder. Freiburg verdient Bildung mit Herz – und mit Verstand.
     </p>
 
-    <!-- Zurück zur Übersicht -->
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <!-- Gesamtrückkehr zur Bildung-Übersicht -->
     <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" 
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
       ← Zurück zur Übersicht
@@ -251,4 +269,3 @@
   </footer>
 </body>
 </html>
-
