@@ -1,237 +1,227 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Umwelt - Heschu Hasan</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Umwelt - Heschu Hasan</title>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+<!-- FontAwesome CDN für Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 
-  <style>
-    :root {
-      --yellow: #ffed00;
-      --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
-      --black: #000000;
-      --white: #ffffff;
-    }
+<style>
+  /* CSS aus Bildung, übernommen und angepasst */
+  :root {
+    --yellow: #ffed00;
+    --magenta: #e5007d;
+    --cyan: #009ee3;
+    --turquoise: #00abae;
+    --black: #000000;
+    --white: #ffffff;
+  }
 
-    * {
-      box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      margin: 0;
-      background-color: var(--white);
-      color: var(--cyan);
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      font-weight: 400;
-      line-height: 1.5;
-    }
+  body {
+    margin: 0;
+    background-color: var(--white);
+    color: var(--cyan);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+  }
 
-    a {
-      color: var(--cyan);
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-    }
-    a:hover,
-    a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
+  a {
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  a:hover,
+  a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
 
+  header {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--cyan);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--cyan);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 25px;
+  }
+
+  nav a.active,
+  nav a:hover {
+    color: var(--magenta);
+    font-weight: 700;
+  }
+
+  main {
+    padding: 20px 20px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+  }
+  main h2 {
+    color: var(--black);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  main h3 {
+    color: var(--cyan);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+  }
+  main p {
+    font-weight: 300;
+    font-size: 1.1rem;
+    max-width: 700px;
+  }
+
+  .bildung-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+  }
+  .box {
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid var(--cyan);
+    background-color: var(--white);
+    color: var(--cyan);
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: 1.1rem;
+    user-select: none;
+    display: block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .box p {
+    font-weight: 300;
+    font-size: 1.1rem;
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .box:hover {
+    border-color: var(--magenta);
+  }
+  .box:focus,
+  .box.selected {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    outline: none;
+    border-color: var(--magenta);
+  }
+  .box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .box h3 {
+    margin-top: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  footer {
+    background-color: var(--cyan);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 20px;
+  }
+  footer h3 {
+    margin: 0 0 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  footer .social-links a {
+    color: var(--white);
+    font-size: 30px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
     header {
-      background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px 20px;
     }
-
-    header h1 {
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--cyan);
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-    }
-
     nav a {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-left: 25px;
+      margin-left: 0;
+      margin-right: 15px;
     }
-
-    nav a.active,
-    nav a:hover {
-      color: var(--magenta);
-      font-weight: 700;
-    }
-
-    main {
-      padding: 20px 20px;
-      margin: 0 auto;
-      width: 100%;
-      max-width: 1200px;
-    }
-
-    main h2 {
-      color: var(--black);
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-    }
-
-    main h3 {
-      color: var(--cyan);
-      font-weight: 600;
-      font-size: 1.25rem;
-      margin-bottom: 20px;
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-    }
-
-    main p {
-      font-weight: 300;
-      font-size: 1.1rem;
-      max-width: 700px;
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-    }
-
     .bildung-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 40px;
+      flex-direction: column;
+      align-items: center;
     }
-
-    .box {
-      width: 100%;
-      max-width: 300px;
-      border: 2px solid var(--cyan);
-      background-color: var(--white);
-      color: var(--cyan);
-      padding: 20px;
-      border-radius: 5px;
-      font-weight: 300;
-      font-size: 1.1rem;
-      user-select: none;
-      display: block;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      overflow: hidden;
-      box-sizing: border-box;
-      cursor: pointer;
-    }
-    .box p {
-      font-weight: 300;
-      font-size: 1.1rem;
-      hyphens: auto;
-      word-break: break-word;
-      overflow-wrap: break-word;
-    }
-    .box:hover {
-      border-color: var(--magenta);
-    }
-
-    .box:focus,
-    .box.selected {
-      background-color: var(--magenta);
-      color: var(--turquoise);
-      outline: none;
-      border-color: var(--magenta);
-    }
-
-    .box h3 {
-      margin-top: 0;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    footer {
-      background-color: var(--cyan);
-      color: var(--white);
-      text-align: center;
-      padding: 30px 20px;
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      font-weight: 500;
-    }
-
-    footer h3 {
-      margin: 0 0 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    footer .social-links a {
-      color: var(--white);
-      font-size: 30px;
-      margin: 0 15px;
-      transition: color 0.3s ease;
-    }
-
-    footer .social-links a:hover,
-    footer .social-links a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
-
-      nav a {
-        margin-left: 0;
-        margin-right: 15px;
-      }
-
-      .bildung-boxes {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
-
 <body>
-  <header>
-    <h1>HESCHU HASAN</h1>
-    <nav>
-      <a href="index.html">Startseite</a>
-      <a href="bildung.html">Bildung</a>
-      <a href="umwelt.html" class="active">Umwelt</a>
-      <a href="meinungsmacher.html">Meinungs-Macher</a>
-      <a href="impressum.html">Impressum</a>
-    </nav>
-  </header>
 
-  <main>
-    <h2>Meine Umweltthemen</h2>
-    <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+<header>
+  <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html" class="active">Umwelt</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
 
+<main>
+  <h2>Meine Umweltthemen</h2>
+  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+
+  <div class="bildung-boxes" role="list">
     <a href="klimaschutz.html#energiewende" class="box" role="listitem" tabindex="0">
       <h3>Klimaschutz & Energiewende</h3>
       <p>Förderung nachhaltiger Energien und konsequente CO₂-Reduktion.</p>
@@ -252,33 +242,53 @@
       <h3>Mobilität & Verkehr</h3>
       <p>Förderung umweltfreundlicher Verkehrskonzepte und Infrastruktur.</p>
     </a>
-  </main>
+  </div>
+</main>
 
-  <footer>
-    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links">
-      <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-  </footer>
+<footer>
+  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</footer>
 
-  <script>
-    // Boxen anklickbar + Tastatur Unterstützung
-    document.querySelectorAll('.box').forEach(box => {
-      box.addEventListener('click', () => {
-        document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
-        box.classList.add('selected');
-      });
-      box.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          box.click();
-        }
-      });
+<script>
+  // Click & Keyboard-Event für Auswahl der Boxen (wie Bildung)
+  document.querySelectorAll('.box').forEach(box => {
+    box.addEventListener('click', () => {
+      document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
+      box.classList.add('selected');
     });
-  </script>
+    box.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        box.click();
+      }
+    });
+  });
 
-  <script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
+  // Scroll Animation für Boxen einblenden
+  const boxes = document.querySelectorAll('.box');
+
+  function checkBoxes() {
+    const triggerBottom = window.innerHeight * 0.85;
+    boxes.forEach(box => {
+      const boxTop = box.getBoundingClientRect().top;
+      if (boxTop < triggerBottom) {
+        box.classList.add('show');
+      } else {
+        box.classList.remove('show');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkBoxes);
+  checkBoxes();
+</script>
+
+<script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
