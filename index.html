@@ -295,13 +295,14 @@ header {
   }
 
   footer {
-    background-color: var(--cyan);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-    font-weight: 500;
-  }
+  position: relative;
+  z-index: 10; /* oder höher, je nachdem was du brauchst */
+  background-color: var(--white); /* damit er undurchsichtig ist */
+  padding: 20px 40px;
+  border-top: 2px solid var(--cyan);
+  /* weitere Styles für den Footer */
+}
+
   footer h3 {
     margin-top: 0;
     margin-bottom: 15px;
