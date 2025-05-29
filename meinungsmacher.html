@@ -16,7 +16,6 @@
       --yellow: #ffed00;
       --magenta: #e5007d;
       --cyan: #009ee3;
-      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
     }
@@ -35,7 +34,7 @@
     }
 
     a {
-      color: var(--cyan);
+      color: var(--black);
       text-decoration: none;
       font-weight: 600;
     }
@@ -57,12 +56,21 @@
     }
 
     header h1 {
-      font-weight: 800;
-      font-size: 2rem;
+      font-weight: 700;
+      font-size: 1.8rem;
       color: var(--cyan);
       margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    }
+
+    header .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    header .logo-wrapper img {
+      height: 80px;
+      width: auto;
     }
 
     nav {
@@ -73,17 +81,17 @@
     }
 
     nav a {
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--cyan);
+      color: var(--black);
     }
 
     nav a.active,
     nav a:hover {
       color: var(--magenta);
-      font-weight: 900;
+      font-weight: 700;
     }
 
     main {
@@ -258,7 +266,10 @@
 <body>
 
 <header>
-  <h1>HESCHU HASAN</h1>
+  <div class="logo-wrapper">
+    <img src="img/IMG_2310.png" alt="Heschu Hasan" />
+    <h1>HESCHU HASAN</h1>
+  </div>
   <nav>
     <a href="index.html">Startseite</a>
     <a href="bildung.html">Bildung</a>
