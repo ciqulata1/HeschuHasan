@@ -14,7 +14,6 @@
 />
 
 <style>
-  /* CSS aus Bildung, übernommen und angepasst */
   :root {
     --yellow: #ffed00;
     --magenta: #e5007d;
@@ -58,6 +57,8 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    z-index: 10;
+    position: relative;
   }
   header h1 {
     font-weight: 700;
@@ -73,12 +74,6 @@
     margin-left: 25px;
   }
 
-background-image: url('IMG_2309.png');
-background-repeat: repeat-y;
-background-attachment: scroll;
-background-position: center top;
-background-size: cover;
-
   nav a.active,
   nav a:hover {
     color: var(--magenta);
@@ -90,7 +85,15 @@ background-size: cover;
     margin: 0 auto;
     width: 100%;
     max-width: 1200px;
+    position: relative;
+    background-image: url('IMG_2309.png');
+    background-repeat: repeat-y;
+    background-attachment: scroll;
+    background-position: center top;
+    background-size: cover;
+    z-index: 0;
   }
+
   main h2 {
     color: var(--black);
     font-weight: 700;
@@ -98,17 +101,25 @@ background-size: cover;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    position: relative;
+    z-index: 2;
   }
+
   main h3 {
     color: var(--cyan);
     font-weight: 600;
     font-size: 1.25rem;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
   }
+
   main p {
     font-weight: 300;
     font-size: 1.1rem;
     max-width: 700px;
+    position: relative;
+    z-index: 2;
   }
 
   .bildung-boxes {
@@ -117,7 +128,10 @@ background-size: cover;
     justify-content: center;
     gap: 25px;
     margin-top: 40px;
+    position: relative;
+    z-index: 2;
   }
+
   .box {
     width: 100%;
     max-width: 300px;
@@ -140,7 +154,11 @@ background-size: cover;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+    position: relative;
+    z-index: 2;
   }
+
   .box p {
     font-weight: 300;
     font-size: 1.1rem;
@@ -148,9 +166,11 @@ background-size: cover;
     word-break: break-word;
     overflow-wrap: break-word;
   }
+
   .box:hover {
     border-color: var(--magenta);
   }
+
   .box:focus,
   .box.selected {
     background-color: var(--magenta);
@@ -158,10 +178,12 @@ background-size: cover;
     outline: none;
     border-color: var(--magenta);
   }
+
   .box.show {
     opacity: 1;
     transform: translateY(0);
   }
+
   .box h3 {
     margin-top: 0;
     font-weight: 700;
@@ -174,19 +196,24 @@ background-size: cover;
     color: var(--white);
     text-align: center;
     padding: 30px 20px;
+    z-index: 10;
+    position: relative;
   }
+
   footer h3 {
     margin: 0 0 15px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
+
   footer .social-links a {
     color: var(--white);
     font-size: 30px;
     margin: 0 15px;
     transition: color 0.3s ease;
   }
+
   footer .social-links a:hover,
   footer .social-links a:focus {
     color: var(--magenta);
@@ -261,7 +288,7 @@ background-size: cover;
 </footer>
 
 <script>
-  // Click & Keyboard-Event für Auswahl der Boxen (wie Bildung)
+  // Click & Keyboard-Event für Auswahl der Boxen
   document.querySelectorAll('.box').forEach(box => {
     box.addEventListener('click', () => {
       document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
