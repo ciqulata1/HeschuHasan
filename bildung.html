@@ -81,18 +81,18 @@
     }
 
     main {
-      padding: 40px 20px;
-      margin: 0 auto;
-      width: 100%;
-      max-width: 1200px;
-      position: relative;
-      background-image: url('IMG_2308.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: scroll;
-      z-index: 1;
-    }
+  padding: 40px 20px;
+  margin: 0 auto;
+  width: 90%;         /* etwas kleiner als volle Breite */
+  max-width: 800px;   /* max Breite */
+  position: relative;
+  background-image: url('IMG_2308.png');
+  background-repeat: no-repeat;
+  background-position: center top;  /* zentriert, oben ausgerichtet */
+  background-size: contain;         /* Bild maximal in Breite & Höhe enthalten */
+  background-attachment: scroll;
+  z-index: 1;
+}
 
     main::before {
       content: "";
