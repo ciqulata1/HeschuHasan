@@ -1,320 +1,330 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bildung - Heschu Hasan</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bildung - Heschu Hasan</title>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-  <style>
-    :root {
-      --yellow: #ffed00;
-      --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
-      --black: #000000;
-      --white: #ffffff;
-    }
+<style>
+  :root {
+    --yellow: #ffed00;
+    --magenta: #e5007d;
+    --cyan: #009ee3;
+    --turquoise: #00abae;
+    --black: #000000;
+    --white: #ffffff;
+  }
 
-    * {
-      box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      margin: 0;
-      background-image: url('IMG_2308.png');
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: cover;
-      background-attachment: fixed;
-      color: var(--cyan);
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      font-weight: 400;
-      line-height: 1.5;
-      position: relative;
-    }
+  body {
+    margin: 0;
+    background-color: var(--white);
+    position: relative;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+    color: var(--cyan);
+  }
 
-    /* Weißer "Mantel" */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-color: rgba(255, 255, 255, 0.85);
-      z-index: -1;
-    }
+  /* Weißer halbtransparenter Mantel über ganze Seite */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+  }
 
-    a {
-      color: var(--cyan);
-      text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+  a {
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  a:hover,
+  a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
 
-    a:hover,
-    a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
+  header {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--cyan);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    z-index: 10;
+    position: relative;
+  }
 
+  header h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--cyan);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  nav a {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 25px;
+  }
+
+  nav a.active,
+  nav a:hover {
+    color: var(--magenta);
+    font-weight: 700;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px;
+    position: relative;
+    z-index: 1;
+    background-image: url('IMG_2309.png');
+    background-repeat: repeat-y;
+    background-position: center top;
+    background-size: contain; /* Bild mittig, Seiten werden „beschnitten“ */
+    background-attachment: scroll;
+  }
+
+  main h2 {
+    color: var(--black);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 2;
+  }
+
+  main h3 {
+    color: var(--cyan);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  main p {
+    font-weight: 300;
+    font-size: 1.1rem;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .bildung-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .box {
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid var(--cyan);
+    background-color: var(--white);
+    color: var(--cyan);
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: 300;
+    font-size: 1.1rem;
+    user-select: none;
+    display: block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+    position: relative;
+    z-index: 2;
+  }
+
+  .box p {
+    font-weight: 300;
+    font-size: 1.1rem;
+    hyphens: auto;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .box:hover {
+    border-color: var(--magenta);
+  }
+
+  .box:focus,
+  .box.selected {
+    background-color: var(--magenta);
+    color: var(--turquoise);
+    outline: none;
+    border-color: var(--magenta);
+  }
+
+  .box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .box h3 {
+    margin-top: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  footer {
+    background-color: var(--cyan);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 20px;
+    z-index: 10;
+    position: relative;
+  }
+
+  footer h3 {
+    margin: 0 0 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  footer .social-links a {
+    color: var(--white);
+    font-size: 30px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: var(--magenta);
+    outline: none;
+  }
+
+  @media (max-width: 768px) {
     header {
-      background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    header h1 {
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--cyan);
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px 20px;
     }
 
     nav a {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-left: 25px;
-    }
-
-    nav a.active,
-    nav a:hover {
-      color: var(--magenta);
-      font-weight: 700;
-    }
-
-    main {
-      padding: 40px 20px;
-      margin: 0 auto;
-      width: 100%;
-      max-width: 1200px;
-      position: relative;
-      z-index: 1;
-    }
-
-    main h2 {
-      color: var(--black);
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      position: relative;
-      z-index: 2;
-    }
-
-    main h3 {
-      color: var(--cyan);
-      font-weight: 600;
-      font-size: 1.25rem;
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    main p {
-      font-weight: 300;
-      font-size: 1.1rem;
-      max-width: 700px;
-      position: relative;
-      z-index: 2;
+      margin-left: 0;
+      margin-right: 15px;
     }
 
     .bildung-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 40px;
-      position: relative;
-      z-index: 2;
+      flex-direction: column;
+      align-items: center;
     }
-
-    .box {
-      width: 100%;
-      max-width: 300px;
-      border: 2px solid var(--cyan);
-      background-color: var(--white);
-      color: var(--cyan);
-      padding: 20px;
-      border-radius: 5px;
-      font-weight: 300;
-      font-size: 1.1rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .box.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .box:hover {
-      border-color: var(--magenta);
-    }
-
-    .box:focus,
-    .box.selected {
-      background-color: var(--magenta);
-      color: var(--turquoise);
-      outline: none;
-      border-color: var(--magenta);
-    }
-
-    .box h3 {
-      margin-top: 0;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .box p {
-      hyphens: auto;
-      word-break: break-word;
-      overflow-wrap: break-word;
-    }
-
-    footer {
-      background-color: var(--cyan);
-      color: var(--white);
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    footer h3 {
-      margin: 0 0 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    footer .social-links a {
-      color: var(--white);
-      font-size: 30px;
-      margin: 0 15px;
-      transition: color 0.3s ease;
-    }
-
-    footer .social-links a:hover,
-    footer .social-links a:focus {
-      color: var(--magenta);
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
-
-      nav a {
-        margin-left: 0;
-        margin-right: 15px;
-      }
-
-      .bildung-boxes {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
-
 <body>
-  <header>
-    <h1>HESCHU HASAN</h1>
-    <nav>
-      <a href="index.html">Startseite</a>
-      <a href="bildung.html" class="active">Bildung</a>
-      <a href="umwelt.html">Umwelt</a>
-      <a href="meinungsmacher.html">Meinungs-Macher</a>
-      <a href="impressum.html">Impressum</a>
-    </nav>
-  </header>
 
-  <main>
-    <h2>Meine Bildungsthemen</h2>
-    <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+<header>
+  <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html" class="active">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
 
-    <div class="bildung-boxes" role="list">
-      <a href="kindlich.html" class="box" role="listitem" tabindex="0">
-        <h3>Frühkindliche Bildung</h3>
-        <p>Förderung frühzeitiger Bildung und Entwicklungsmöglichkeiten.</p>
-      </a>
-      <a href="digitale-bildung.html" class="box" role="listitem" tabindex="0">
-        <h3>Digitale Bildung</h3>
-        <p>Integration moderner Technologien in den Schulalltag.</p>
-      </a>
-      <a href="lehrerbildung.html" class="box" role="listitem" tabindex="0">
-        <h3>Lehrerbildung & Fortbildung</h3>
-        <p>Qualitätssteigerung durch bessere Ausbildung und Weiterbildung.</p>
-      </a>
-      <a href="schulfinanzierung.html" class="box" role="listitem" tabindex="0">
-        <h3>Schulfinanzierung</h3>
-        <p>Faire und nachhaltige Finanzierung der Bildungseinrichtungen.</p>
-      </a>
-      <a href="inklusion.html" class="box" role="listitem" tabindex="0">
-        <h3>Inklusion & Chancengleichheit</h3>
-        <p>Bildung für alle, unabhängig von Herkunft und Fähigkeiten.</p>
-      </a>
-    </div>
-  </main>
+<main>
+  <h2>Meine Bildungsthemen</h2>
+  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
 
-  <footer>
-    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links">
-      <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-  </footer>
+  <div class="bildung-boxes" role="list">
+    <a href="schulbildung.html" class="box" role="listitem" tabindex="0">
+      <h3>Schulbildung</h3>
+      <p>Förderung moderner und inklusiver Lernkonzepte.</p>
+    </a>
+    <a href="hochschulbildung.html" class="box" role="listitem" tabindex="0">
+      <h3>Hochschulbildung</h3>
+      <p>Unterstützung der Wissenschaft und Forschung.</p>
+    </a>
+    <a href="weiterbildung.html" class="box" role="listitem" tabindex="0">
+      <h3>Weiterbildung</h3>
+      <p>Lebenslanges Lernen als Schlüssel zur Zukunft.</p>
+    </a>
+    <a href="berufsbildung.html" class="box" role="listitem" tabindex="0">
+      <h3>Berufsbildung</h3>
+      <p>Stärkung praxisnaher Aus- und Weiterbildung.</p>
+    </a>
+    <a href="digitalisierung.html" class="box" role="listitem" tabindex="0">
+      <h3>Digitalisierung</h3>
+      <p>Integration digitaler Medien im Bildungsbereich.</p>
+    </a>
+  </div>
+</main>
 
-  <script>
-    document.querySelectorAll('.box').forEach(box => {
-      box.addEventListener('click', () => {
-        document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
-        box.classList.add('selected');
-      });
-      box.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          box.click();
-        }
-      });
+<footer>
+  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.box').forEach(box => {
+    box.addEventListener('click', () => {
+      document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
+      box.classList.add('selected');
     });
+    box.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        box.click();
+      }
+    });
+  });
 
-    const boxes = document.querySelectorAll('.box');
+  const boxes = document.querySelectorAll('.box');
 
-    function checkBoxes() {
-      const triggerBottom = window.innerHeight * 0.85;
-      boxes.forEach(box => {
-        const boxTop = box.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) {
-          box.classList.add('show');
-        } else {
-          box.classList.remove('show');
-        }
-      });
-    }
+  function checkBoxes() {
+    const triggerBottom = window.innerHeight * 0.85;
+    boxes.forEach(box => {
+      const boxTop = box.getBoundingClientRect().top;
+      if (boxTop < triggerBottom) {
+        box.classList.add('show');
+      } else {
+        box.classList.remove('show');
+      }
+    });
+  }
 
-    window.addEventListener('scroll', checkBoxes);
-    checkBoxes();
-  </script>
+  window.addEventListener('scroll', checkBoxes);
+  checkBoxes();
+</script>
 
-  <script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
