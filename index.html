@@ -53,14 +53,17 @@
     outline: none;
   }
 
-  header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--cyan);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+header {
+  position: relative;         /* damit z-index wirkt */
+  z-index: 10;                /* höher als das Hintergrundbild */
+  background-color: var(--white);
+  border-bottom: 2px solid var(--cyan);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
   /* Wrapper für Überschrift und Logo */
   header > div {
     display: flex;
