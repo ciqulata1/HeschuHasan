@@ -115,13 +115,21 @@
       color: var(--turquoise);
       cursor: pointer;
       transition: all 0.3s ease;
-      user-select: none;
     }
 
     .themenbox:hover {
       background-color: var(--magenta);
       color: var(--white);
       border-color: var(--magenta);
+    }
+
+    .themenbox p {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      hyphens: auto;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     footer {
@@ -187,7 +195,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="top">
     <!-- Themenübersicht -->
     <div class="themenbox" onclick="location.href='#exekutive';" role="button" tabindex="0"
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#exekutive';">
@@ -235,7 +243,13 @@
       Mehr Offenheit und digitale Beteiligungsmöglichkeiten sind der Schlüssel, damit Demokratie wirklich lebendig wird. Nur so kann verhindert werden, dass Politik hinter verschlossenen Türen passiert und Entscheidungen für die Bürger nachvollziehbar bleiben.
     </p>
 
-    <!-- Zurück zur Übersicht -->
+    <!-- Zurück zur Themenübersicht -->
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+
+    <!-- Zurück zur Startseite -->
     <div class="themenbox" onclick="location.href='index.html';" role="button" tabindex="0"
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='index.html';">
       ← Zurück zur Startseite
