@@ -139,6 +139,8 @@
   pointer-events: none;
 }
 
+  
+
   .topics {
     display: flex;
     flex-wrap: wrap;
@@ -363,6 +365,45 @@
     display: none;
   }
 }
+
+  .main-with-bg {
+  position: relative;
+  overflow: hidden; /* damit das Bild nicht rausfliest */
+  min-height: 100vh; /* damit es mindestens den Viewport füllt */
+  background-image: url('IMG_1604.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; /* skaliert proportional, füllt den Container */
+  transition: background-color 0.6s ease, opacity 1s ease;
+}
+
+/* Ein Overlay, um die Transparenz zu steuern (Wasserzeichen) */
+.main-with-bg::before {
+  content: "";
+  position: fixed; /* fixed, damit es beim scrollen bleibt */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('IMG_1604.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1; /* Start sichtbar */
+  pointer-events: none; /* Nicht anklickbar */
+  z-index: -1; /* hinter allem */
+  transition: opacity 1s ease;
+}
+
+  .bg-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('IMG_1604.jpeg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 1s ease;
+}
 </style>
 </head>
 <body>
@@ -380,8 +421,8 @@
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
-
-<main>
+<div class="bg-overlay"></div>
+<main class="main-with-bg">
 
   <h2>Meine Themen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
@@ -494,6 +535,16 @@ const navLinks = document.querySelectorAll("nav a");
 navLinks.forEach(link => {
   if (link.href === window.location.href) {
     link.classList.add("active");
+  }
+});
+  window.addEventListener('scroll', () => {
+  const overlay = document.querySelector('.bg-overlay');
+  const scrollTop = window.scrollY;
+
+  if (scrollTop > 200) { // z.B. ab 200px scroll soll es weniger sichtbar sein
+    overlay.style.opacity = '0.1'; // fast wie Wasserzeichen
+  } else {
+    overlay.style.opacity = '1';
   }
 });
   
