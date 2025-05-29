@@ -58,8 +58,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: relative;
-      z-index: 10;
     }
 
     header h1 {
@@ -71,59 +69,18 @@
       letter-spacing: 0.06em;
     }
 
-    nav.main-nav {
-      display: flex;
-      gap: 25px;
-    }
-
-    nav.main-nav a {
+    nav a {
       font-weight: 600;
       font-size: 1rem;
+      margin-left: 25px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 6px 0;
-      border-bottom: 3px solid transparent;
-      transition: border-color 0.3s ease;
     }
 
-    nav.main-nav a.active,
-    nav.main-nav a:hover {
+    nav a.active,
+    nav a:hover {
       color: var(--magenta);
       font-weight: 700;
-      border-bottom-color: var(--magenta);
-    }
-
-    /* Sticky Submenu */
-    nav.submenu {
-      position: sticky;
-      top: 0;
-      background: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      display: flex;
-      gap: 30px;
-      padding: 10px 40px;
-      z-index: 9;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    nav.submenu a {
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--cyan);
-      cursor: pointer;
-      border-bottom: 3px solid transparent;
-      padding-bottom: 4px;
-      transition: all 0.3s ease;
-    }
-
-    nav.submenu a:hover,
-    nav.submenu a.active {
-      color: var(--magenta);
-      border-bottom-color: var(--magenta);
-      font-weight: 700;
-      outline: none;
     }
 
     main {
@@ -132,28 +89,16 @@
       margin: 0 auto;
     }
 
-    h2 {
+    main h2 {
       color: var(--cyan);
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
-    h2 i {
-      color: var(--magenta);
-      font-size: 1.6rem;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    p {
+    main p {
       font-size: 1.1rem;
       margin-bottom: 1.25rem;
       color: var(--black);
@@ -169,15 +114,12 @@
       color: var(--turquoise);
       cursor: pointer;
       transition: all 0.3s ease;
-      user-select: none;
     }
 
-    .themenbox:hover,
-    .themenbox:focus {
+    .themenbox:hover {
       background-color: var(--magenta);
       color: var(--white);
       border-color: var(--magenta);
-      outline: none;
     }
 
     footer {
@@ -215,20 +157,9 @@
         align-items: flex-start;
         padding: 15px 20px;
       }
-
-      nav.main-nav {
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-
-      nav.submenu {
-        padding: 10px 20px;
-        gap: 15px;
-        overflow-x: auto;
-        scrollbar-width: none; /* Firefox */
-      }
-      nav.submenu::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
       }
     }
   </style>
@@ -236,31 +167,6 @@
   <script>
     window.addEventListener('load', () => {
       document.body.style.opacity = '1';
-
-      // Highlight submenu link on scroll
-      const sections = document.querySelectorAll('section');
-      const submenuLinks = document.querySelectorAll('nav.submenu a');
-
-      function onScroll() {
-        const scrollPos = window.scrollY + 120; // Offset for sticky nav height + margin
-        let current = null;
-
-        sections.forEach(section => {
-          if (scrollPos >= section.offsetTop) {
-            current = section.getAttribute('id');
-          }
-        });
-
-        submenuLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
-          }
-        });
-      }
-
-      window.addEventListener('scroll', onScroll);
-      onScroll();
     });
   </script>
 </head>
@@ -268,7 +174,7 @@
 <body>
   <header>
     <h1>HESCHU HASAN</h1>
-    <nav class="main-nav" aria-label="Hauptnavigation">
+    <nav>
       <a href="index.html">Startseite</a>
       <a href="bildung.html" class="active">Bildung</a>
       <a href="umwelt.html">Umwelt</a>
@@ -278,49 +184,58 @@
     </nav>
   </header>
 
-  <!-- Sticky Submenu -->
-  <nav class="submenu" aria-label="Seitennavigation">
-    <a href="#fakten" class="active" tabindex="0"><i class="fas fa-info-circle"></i> Fakten</a>
-    <a href="#forderungen" tabindex="0"><i class="fas fa-bullseye"></i> Forderungen</a>
-    <a href="#vision" tabindex="0"><i class="fas fa-lightbulb"></i> Vision</a>
-  </nav>
-
   <main>
-    <section id="fakten">
-      <h2><i class="fas fa-info-circle"></i> Fakten</h2>
-      <p>
-        Bildung ist kein Privileg – sie ist ein Grundrecht. Und sie beginnt nicht erst in der Schule, sondern vom ersten Tag an. Frühkindliche Bildung entscheidet darüber, wie gut Kinder sich später entfalten können – sprachlich, emotional und sozial.
-      </p>
-      <p>
-        Doch viele Kitas stehen unter Druck: zu wenig Personal, zu große Gruppen, zu wenig Zeit für das, was wirklich zählt – die individuelle Förderung. Besonders Kinder mit Migrationshintergrund brauchen mehr als nur Betreuung. Sie brauchen gezielte, liebevolle Sprachförderung. Denn Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein.
-      </p>
-      <p>
-        Ich setze mich für verpflichtende, altersgerechte Sprachtests ein – aber nur dann, wenn ihnen eine intensive und wertschätzende Förderung vorausgeht. Kein Kind darf stigmatisiert werden – jedes Kind verdient faire Chancen.
-      </p>
-    </section>
+    <!-- Themenübersicht -->
+    <div class="themenbox" onclick="location.href='#fruehfoerderung';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#fruehfoerderung';">
+      📘 Mehr über Frühförderung entdecken
+    </div>
 
-    <section id="forderungen">
-      <h2><i class="fas fa-bullseye"></i> Forderungen</h2>
-      <p>
-        Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein. Kinder, die sprachlich stark gefördert werden, haben deutlich bessere Chancen im Leben – unabhängig von Herkunft oder sozialem Umfeld.
-      </p>
-      <p>
-        Sprachförderung muss individuell, alltagsnah und frühzeitig ansetzen. Wir brauchen mehr Fachkräfte mit interkultureller Kompetenz, kleine Gruppen – und vor allem Zeit für Beziehung und Austausch.
-      </p>
-      <p>
-        Auch Eltern müssen ernst genommen werden: Ihre Entscheidungen verdienen Respekt. Kitas sind keine Ersatzfamilien, sondern Partner. Gerade alleinerziehende Mütter und Väter brauchen echte Unterstützung – keine Belehrung, sondern Begleitung.
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#sprachfoerderung';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#sprachfoerderung';">
+      🗣️ Mehr über Sprachförderung lesen
+    </div>
 
-    <section id="vision">
-      <h2><i class="fas fa-lightbulb"></i> Vision</h2>
-      <p>
-        Meine Bildungspolitik basiert auf Freiheit, Verantwortung und Vertrauen – in Familien, in Fachkräfte, in die Fähigkeiten der Kinder. Freiburg verdient Bildung mit Herz – und mit Verstand.
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#elternarbeit';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#elternarbeit';">
+      👪 Mehr über Eltern als Partner erfahren
+    </div>
+
+    <!-- Inhalte mit Anker-Zielen -->
+    <h2 id="fruehfoerderung">Frühförderung beginnt mit Vertrauen</h2>
+
+    <p>
+      Bildung ist kein Privileg – sie ist ein Grundrecht. Und sie beginnt nicht erst in der Schule, sondern vom ersten Tag an. Frühkindliche Bildung entscheidet darüber, wie gut Kinder sich später entfalten können – sprachlich, emotional und sozial.
+    </p>
+
+    <p>
+      Doch viele Kitas stehen unter Druck: zu wenig Personal, zu große Gruppen, zu wenig Zeit für das, was wirklich zählt – die individuelle Förderung. Besonders Kinder mit Migrationshintergrund brauchen mehr als nur Betreuung. Sie brauchen gezielte, liebevolle Sprachförderung. Denn Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein.
+    </p>
+
+    <p>
+      Ich setze mich für verpflichtende, altersgerechte Sprachtests ein – aber nur dann, wenn ihnen eine intensive und wertschätzende Förderung vorausgeht. Kein Kind darf stigmatisiert werden – jedes Kind verdient faire Chancen.
+    </p>
+
+    <h2 id="sprachfoerderung">Gezielte Sprachförderung</h2>
+    <p>
+      Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein. Kinder, die sprachlich stark gefördert werden, haben deutlich bessere Chancen im Leben – unabhängig von Herkunft oder sozialem Umfeld.
+    </p>
+
+    <p>
+      Sprachförderung muss individuell, alltagsnah und frühzeitig ansetzen. Wir brauchen mehr Fachkräfte mit interkultureller Kompetenz, kleine Gruppen – und vor allem Zeit für Beziehung und Austausch.
+    </p>
+
+    <h2 id="elternarbeit">Eltern als Bildungspartner</h2>
+    <p>
+      Auch Eltern müssen ernst genommen werden: Ihre Entscheidungen verdienen Respekt. Kitas sind keine Ersatzfamilien, sondern Partner. Gerade alleinerziehende Mütter und Väter brauchen echte Unterstützung – keine Belehrung, sondern Begleitung.
+    </p>
+
+    <p>
+      Meine Bildungspolitik basiert auf Freiheit, Verantwortung und Vertrauen – in Familien, in Fachkräfte, in die Fähigkeiten der Kinder. Freiburg verdient Bildung mit Herz – und mit Verstand.
+    </p>
 
     <!-- Zurück zur Übersicht -->
-    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0"
+    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" 
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
       ← Zurück zur Übersicht
     </div>
@@ -336,3 +251,4 @@
   </footer>
 </body>
 </html>
+
