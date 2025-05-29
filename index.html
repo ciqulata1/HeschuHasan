@@ -382,17 +382,19 @@
   transition: opacity 1s ease;
 }
 
-  .bg-overlay {
+ .bg-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image: url('IMG_1604.jpeg');
+  background-position: top center;    /* ganz oben mittig */
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center 20%; /* <<< HIER */
+  background-size: cover;             /* füllt immer den gesamten Bereich */
   opacity: 0.8;
   pointer-events: none;
   z-index: -1;
+  transition: opacity 1s ease;
 }
+
 
 </style>
 </head>
