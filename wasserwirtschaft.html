@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wasserwirtschaft – Heschu Hasan</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
+    main {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+    }
+
+    .themenbox {
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .themenbox:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
+
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html" class="active">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="themen">
+      <div class="themenbox" onclick="location.href='#wasserkraft';">⚡ Nutzung von Wasserkraft</div>
+      <div class="themenbox" onclick="location.href='#wasserstoff';">💧 Grüner Wasserstoff</div>
+      <div class="themenbox" onclick="location.href='#gewaesserschutz';">🌿 Gewässerschutz & Renaturierung</div>
+      <div class="themenbox" onclick="location.href='#versorgung';">🚰 Trinkwasser sichern</div>
+    </div>
+
+    <h2 id="wasserkraft">Nutzung von Wasserkraft</h2>
+    <p>
+      In Bayern wird Wasserkraft traditionell effektiv genutzt, um saubere Energie zu erzeugen. Kleine und große Anlagen leisten einen wichtigen Beitrag zur Energiewende – emissionsfrei, zuverlässig und lokal.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="wasserstoff">Grüner Wasserstoff</h2>
+    <p>
+      Durch Elektrolyse von Wasser mit Strom aus erneuerbaren Quellen kann Wasserstoff CO₂-neutral produziert werden. Er dient als Speicher und sauberer Treibstoff für Industrie und Verkehr. Wasser ist dabei die zentrale Ressource – sie muss nachhaltig verfügbar bleiben.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="gewaesserschutz">Gewässerschutz & Renaturierung</h2>
+    <p>
+      Naturnahe Flüsse, Auen und Feuchtgebiete helfen beim Klimaschutz und stärken die Artenvielfalt. Durch Renaturierung und bessere Wasserführung lassen sich Hochwasserrisiken reduzieren und die Umweltqualität steigern.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="versorgung">Trinkwasser sichern</h2>
+    <p>
+      Klimawandel und zunehmende Trockenheit fordern eine moderne Wasserinfrastruktur. Trinkwasserversorgung muss gesichert und modernisiert werden – energieeffizient, gerecht und regional angepasst.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <div class="themenbox" onclick="location.href='bildung.html';">← Zurück zur Übersicht</div>
+  </main>
+
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</body>
+</html>
