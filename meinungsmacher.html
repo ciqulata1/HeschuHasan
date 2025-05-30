@@ -4,13 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Meinungs-Macher - Baden-Württemberg</title>
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --yellow: #ffed00;
@@ -26,7 +20,7 @@
 
     body {
       margin: 0;
-    background-color: var(--white);
+      background-color: var(--white);
       color: var(--black);
       font-family: "Calibri", Candara, Arial, sans-serif;
       font-weight: 400;
@@ -86,14 +80,8 @@
       cursor: pointer;
     }
 
-    nav a:hover,
-    nav a:focus,
     nav a.active {
-      color: var(--cyan);
-      font-weight: 600;
-      text-shadow: none;
-      outline: none;
-      text-decoration: none;
+      text-decoration: underline;
     }
 
     main {
@@ -141,8 +129,6 @@
       font-size: 1.05rem;
       margin-bottom: 0.8rem;
       color: var(--black);
-      word-break: break-word;
-      overflow-wrap: break-word;
     }
 
     .answers label {
@@ -174,28 +160,17 @@
       box-shadow: 0 4px 8px rgba(229, 0, 125, 0.3);
     }
 
-    button[type="submit"]:hover,
-    button[type="submit"]:focus {
-      background-color: #c3006b;
-      outline: none;
-    }
-
     #feedback {
-      text-align: left;
+      text-align: center;
       margin-top: 1.5rem;
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 700;
+      font-size: 1.2rem;
       color: var(--magenta);
       display: none;
-      white-space: pre-line;
-      border: 2px solid var(--cyan);
-      padding: 10px;
-      border-radius: 8px;
-      background-color: #f0faff;
-      max-width: 600px;
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
-      user-select: text;
+      line-height: 1.6;
     }
 
     .back-button {
@@ -214,11 +189,9 @@
       box-shadow: 0 3px 7px rgba(229, 0, 125, 0.4);
     }
 
-    .back-button:hover,
-    .back-button:focus {
+    .back-button:hover {
       background-color: var(--yellow);
       color: var(--black);
-      outline: none;
     }
 
     footer {
@@ -244,40 +217,8 @@
       transition: color 0.3s ease;
     }
 
-    footer .social-links a:hover,
-    footer .social-links a:focus {
+    footer .social-links a:hover {
       color: var(--magenta);
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        gap: 15px;
-        margin-top: 10px;
-      }
-
-      .answers label {
-        display: block;
-        margin: 0.5rem 0;
-      }
-
-      main {
-        padding: 15px 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      button[type="submit"],
-      .back-button {
-        width: 100%;
-        max-width: 100%;
-      }
     }
   </style>
 </head>
@@ -331,41 +272,25 @@
       "Soll ein Tempolimit von 120 km/h auf Autobahnen in Baden-Württemberg eingeführt werden?",
       "Soll in Baden-Württemberg in städtischen und ländlichen Gebieten ein generelles 30-km/h-Tempolimit eingeführt werden, um CO2-Emissionen zu senken?",
       "Soll der Staat mehr in professionelle Sozialarbeit investieren, um Obdachlosen in Härtefällen besser helfen zu können?",
-      "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden (höhere Jahrgangsstufen)?",
+      "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden?",
       "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
-    ];
-
-    // Deine Meinung (Ja oder Nein) zu jeder Frage
-    // Deine Position: Ja bei allen außer den Tempolimits (Fragen 5 und 6)
-    const myOpinions = [
-      "Ja", // Power-to-X
-      "Ja", // Netzausbau
-      "Ja", // Informatik Pflichtfach
-      "Ja", // Justiz Digitalisierung
-      "Ja", // Nahverkehr günstiger
-      "Nein", // Tempolimit 120 km/h
-      "Nein", // 30 km/h innerorts & ländlich
-      "Ja", // Soziale Arbeit
-      "Ja", // Digitale Kompetenzen
-      "Ja"  // Ländlicher Raum
     ];
 
     const answers = ["Ja", "Neutral", "Nein"];
     const quizForm = document.getElementById('quizForm');
     const questionsDiv = document.getElementById('questions');
     const feedback = document.getElementById('feedback');
-    const backButton = document.getElementById('back-to-home');
 
     questions.forEach((question, index) => {
       const questionDiv = document.createElement('div');
       questionDiv.classList.add('question');
       questionDiv.innerHTML = `<p>${index + 1}. ${question}</p>`;
-
+      
       const answersDiv = document.createElement('div');
       answersDiv.classList.add('answers');
 
-      answers.forEach((answer) => {
-        const id = `q${index}_a${answer}`;
+      answers.forEach(answer => {
+        const id = `q${index}_${answer}`;
         const label = document.createElement('label');
         label.htmlFor = id;
         label.innerHTML = `<input type="radio" name="q${index}" id="${id}" value="${answer}" required /> ${answer}`;
@@ -382,51 +307,32 @@
       feedback.textContent = '';
 
       const formData = new FormData(quizForm);
-      let allAnswered = true;
+      let score = 0;
 
       for (let i = 0; i < questions.length; i++) {
-        if (!formData.has(`q${i}`)) {
-          allAnswered = false;
-          break;
+        const answer = formData.get(`q${i}`);
+        if (!answer) {
+          feedback.style.display = 'block';
+          feedback.style.color = 'var(--magenta)';
+          feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
+          return;
         }
+        if (answer === 'Ja') score++;
       }
 
-      if (!allAnswered) {
-        feedback.style.color = 'var(--magenta)';
-        feedback.style.display = 'block';
-        feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
-        return;
-      }
-
-      // Feedback je Frage sammeln
-      let feedbackMessages = [];
-
-      for (let i = 0; i < questions.length; i++) {
-        const userAnswer = formData.get(`q${i}`);
-        const myAnswer = myOpinions[i];
-
-        if (userAnswer === myAnswer) {
-          feedbackMessages.push(
-            `${i + 1}. Sie stimmen mit mir überein. Ich würde mich sehr freuen, Sie einmal bei einem Bürgeraustausch zu treffen, damit wir uns direkt austauschen können.`
-          );
-        } else if (userAnswer === "Neutral") {
-          feedbackMessages.push(
-            `${i + 1}. Sie sind neutral geblieben. Heutzutage ist es wichtig, eine starke Meinung zu haben, um nicht im Treibsand der Unsicherheiten zu versinken.`
-          );
-        } else {
-          feedbackMessages.push(
-            `${i + 1}. Sie denken wohl ganz anders als ich. Lassen Sie sich gerne von meiner Meinung überzeugen und erkunden Sie meine Website.`
-          );
-        }
-      }
-
-      feedback.style.color = 'var(--cyan)';
+      const percentage = Math.round((score / questions.length) * 100);
       feedback.style.display = 'block';
-      feedback.textContent = feedbackMessages.join('\n\n');
-      window.scrollTo({ top: feedback.offsetTop - 20, behavior: 'smooth' });
+
+      if (percentage > 50) {
+        feedback.innerHTML = `Sie stimmen mit mir in <strong>${percentage}%</strong> der Fragen überein. Ich würde mich freuen, Sie bei einem Bürgeraustausch kennenzulernen – damit wir uns direkt austauschen können.<br><br>Haben Sie Anregungen? Nutzen Sie gerne das Kontaktformular auf der Startseite.`;
+      } else if (percentage < 50) {
+        feedback.innerHTML = `Sie stimmen in nur <strong>${percentage}%</strong> mit meinen Positionen überein. Das überrascht mich, aber vielleicht kann ich Sie mit guten Argumenten auf meiner Seite überzeugen! Schauen Sie sich gerne auf meiner Website um und geben Sie mir Rückmeldung über das Kontaktformular.`;
+      } else {
+        feedback.innerHTML = `Sie sind relativ neutral, was diese wichtigen Themen angeht. In einer Zeit, in der Unwissenheit wie Treibsand sein kann, empfehle ich Ihnen, mir auf Instagram zu folgen, um bei aktuellen politischen Entwicklungen nichts zu verpassen. Anregungen sind jederzeit willkommen!`;
+      }
     });
 
-    backButton.addEventListener('click', () => {
+    document.getElementById('back-to-home').addEventListener('click', () => {
       window.location.href = 'index.html';
     });
   });
