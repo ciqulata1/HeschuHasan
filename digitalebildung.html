@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Digitale Bildung – Heschu Hasan</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     :root {
@@ -154,6 +154,7 @@
         align-items: flex-start;
         padding: 15px 20px;
       }
+
       nav a {
         margin-left: 0;
         margin-right: 15px;
@@ -182,33 +183,69 @@
   </header>
 
   <main>
-    <h2>Digitale Bildung</h2>
+    <div id="themen">
+      <div class="themenbox" onclick="location.href='#digitale-infrastruktur';" role="button" tabindex="0">
+        🌐 Digitale Infrastruktur
+      </div>
 
-    <p>
-      Digitale Bildung ist kein Zukunftsthema mehr – sie ist Gegenwart. Schulen und Bildungseinrichtungen müssen Kinder und Jugendliche heute auf eine Welt vorbereiten, die ohne digitale Kompetenzen nicht mehr denkbar ist.
-    </p>
+      <div class="themenbox" onclick="location.href='#medienkompetenz';" role="button" tabindex="0">
+        🧠 Medienkompetenz
+      </div>
 
-    <p>
-      Ich setze mich dafür ein, dass digitale Ausstattung endlich überall Realität wird – flächendeckendes WLAN, moderne Endgeräte, Schulungen für Lehrkräfte und altersgerechte Medienbildung gehören zur Grundausstattung einer zukunftsfähigen Bildungspolitik.
-    </p>
+      <div class="themenbox" onclick="location.href='#e-learning';" role="button" tabindex="0">
+        💻 E-Learning & Blended Learning
+      </div>
 
-    <p>
-      Dabei geht es nicht nur um Technik, sondern um pädagogische Konzepte: Wie lernen Kinder verantwortungsvoll mit Informationen, sozialen Netzwerken und Künstlicher Intelligenz umzugehen? Wie stärken wir ihre Medienkompetenz statt sie mit Technik zu überfordern?
-    </p>
+      <div class="themenbox" onclick="location.href='#datenschutz';" role="button" tabindex="0">
+        🔐 Datenschutz & Sicherheit
+      </div>
 
-    <p>
-      Bildung muss die digitale Lebenswelt der Kinder und Jugendlichen ernst nehmen – und sie aktiv mitgestalten. Freiburg verdient Schulen, die im 21. Jahrhundert ankommen – mit smarten Lösungen, aber vor allem mit Herz und Verstand.
-    </p>
-
-    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
-      ← Zurück zur Übersicht
+      <div class="themenbox" onclick="location.href='#barrierefreiheit';" role="button" tabindex="0">
+        ♿ Digitale Barrierefreiheit
+      </div>
     </div>
+
+    <h2 id="digitale-infrastruktur">Digitale Infrastruktur: Grundlage für moderne Bildung</h2>
+    <p>
+      Schulen in Baden-Württemberg brauchen dringend ein Update: Glasfaser, WLAN, moderne Endgeräte – flächendeckend und zuverlässig. In Freiburg-Ost wissen wir: Bildung braucht Zukunftstechnologie. Ich setze mich für einen Digitalpakt 2.0 ein, mit dem der Bund gemeinsam mit Ländern und Kommunen endlich die nötige Ausstattung sicherstellt.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="medienkompetenz">Medienkompetenz: Digitales Denken fördern</h2>
+    <p>
+      Digitale Bildung bedeutet nicht nur Technik – sondern vor allem Kompetenz. Kinder und Jugendliche müssen lernen, kritisch mit digitalen Inhalten umzugehen. Ich fordere verbindliche Lehrpläne für Medienbildung in allen Klassenstufen – von Fake News bis KI-Ethik.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="e-learning">E-Learning und Blended Learning: Flexibilität für alle</h2>
+    <p>
+      Präsenzunterricht ist wichtig – aber digitale Lernformen erweitern Chancen. Ich setze mich für Lernplattformen ein, die individuelles Lernen möglich machen, und für pädagogisch sinnvolle Konzepte wie den Flipped Classroom. Lehrkräfte müssen dafür gezielt geschult und entlastet werden.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="datenschutz">Datenschutz und Sicherheit: Vertrauen schaffen</h2>
+    <p>
+      Datenschutz darf kein Hinderungsgrund für Digitalisierung sein – aber er muss gewährleistet sein. Schülerdaten gehören geschützt. Ich fordere sichere, datenschutzkonforme Plattformen, klare Zuständigkeiten und praxisnahe Unterstützung für Schulen in Baden-Württemberg.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="barrierefreiheit">Digitale Barrierefreiheit: Chancengleichheit sicherstellen</h2>
+    <p>
+      Digitale Bildung muss für alle zugänglich sein – unabhängig von Behinderung, Herkunft oder Vorwissen. Ich mache mich stark für barrierefreie Lernplattformen, inklusive Designs und einfache Sprache. In Freiburg-Ost soll kein Kind zurückgelassen werden – weder analog noch digital.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <div class="themenbox" onclick="location.href='bildung.html';">← Zurück zur Bildungsübersicht</div>
   </main>
 
   <footer>
     <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links" aria-label="Soziale Medien">
+    <div class="social-links">
       <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
       </a>
