@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Schulfinanzierung – Heschu Hasan</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
+    main {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+    }
+
+    .themenbox {
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .themenbox:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
+
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html" class="active">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Themenübersicht mit ID als Anker -->
+    <div id="themen">
+      <div
+        class="themenbox"
+        onclick="location.href='#finanzierung';"
+        role="button"
+        tabindex="0"
+        onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#finanzierung';"
+      >
+        💶 Faire und nachhaltige Schulfinanzierung
+      </div>
+
+      <div
+        class="themenbox"
+        onclick="location.href='#investitionen';"
+        role="button"
+        tabindex="0"
+        onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#investitionen';"
+      >
+        🏫 Investitionen in moderne Schulen
+      </div>
+
+      <div
+        class="themenbox"
+        onclick="location.href='#federalismus';"
+        role="button"
+        tabindex="0"
+        onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#federalismus';"
+      >
+        🤝 Kooperation zwischen Bund und Ländern
+      </div>
+    </div>
+
+    <!-- Inhalte mit Anker-Zielen -->
+
+    <h2 id="finanzierung">Faire und nachhaltige Schulfinanzierung</h2>
+    <p>
+      Bildung braucht eine verlässliche und langfristige Finanzierung. Nur so können Schulen gut ausgestattet und Lehrkräfte angemessen bezahlt werden. Es ist wichtig, dass die Mittel gerecht verteilt werden, damit kein Bereich zu kurz kommt und alle Kinder die gleichen Chancen erhalten.
+    </p>
+    <p>
+      Zwar stellt die Bundesregierung große Mittel bereit, doch es ist verständlich, dass es unterschiedliche Meinungen über die Priorisierung gibt. Wichtig ist, dass die Finanzierung transparent und zielgerichtet eingesetzt wird, um nachhaltige Verbesserungen zu erzielen.
+    </p>
+
+    <div
+      class="themenbox"
+      onclick="location.href='#themen';"
+      role="button"
+      tabindex="0"
+      onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';"
+    >
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="investitionen">Investitionen in moderne Schulen</h2>
+    <p>
+      Viele Schulen sind inzwischen mit moderner Technik ausgestattet – das war vor Jahren noch undenkbar. Dennoch darf Technik nicht zum Selbstzweck werden. Investitionen sollten gezielt und wirkungsvoll eingesetzt werden, um den Unterricht zu verbessern und die Lernbedingungen zu optimieren.
+    </p>
+    <p>
+      Es ist auch wichtig, weitere Bereiche wie Gebäudesanierung und Pädagogik zu berücksichtigen, damit Schülerinnen und Schüler bestmöglich gefördert werden können.
+    </p>
+
+    <div
+      class="themenbox"
+      onclick="location.href='#themen';"
+      role="button"
+      tabindex="0"
+      onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';"
+    >
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="federalismus">Kooperation zwischen Bund und Ländern</h2>
+    <p>
+      Bildung ist in Deutschland Ländersache, doch eine stärkere Zusammenarbeit mit dem Bund ist notwendig, um die Herausforderungen der Zukunft zu meistern. Eine klare Aufgabenteilung und Kooperation können dazu beitragen, die Bildungsqualität bundesweit zu verbessern.
+    </p>
+    <p>
+      Die Diskussionen über die Verteilung der Mittel zeigen, dass Transparenz und Dialog zwischen allen Beteiligten essenziell sind.
+    </p>
+
+    <div
+      class="themenbox"
+      onclick="location.href='#themen';"
+      role="button"
+      tabindex="0"
+      onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';"
+    >
+      ← Zurück zu den Themen
+    </div>
+
+    <!-- Gesamtrückkehr zur Bildung-Übersicht -->
+    <div
+      class="themenbox"
+      onclick="location.href='bildung.html';"
+      role="button"
+      tabindex="0"
+      onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';"
+    >
+      ← Zurück zur Übersicht
+    </div>
+  </main>
+
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a
+        href="https://instagram.com/heschuhasan"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+        ><i class="fab fa-instagram"></i
+      ></a>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</body>
+</html>
