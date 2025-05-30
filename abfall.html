@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abfall & Recycling – Heschu Hasan</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      hyphens: auto;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active, nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
+    main {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+    }
+
+    .themenbox {
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .themenbox:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
+
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-links a:hover {
+      color: var(--magenta);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="umwelt.html" class="active">Umwelt</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="themen">
+      <div class="themenbox" onclick="location.href='#kreislauf';">♻️ Kreislaufwirtschaft verbessern</div>
+      <div class="themenbox" onclick="location.href='#muellvermeidung';">🚫 Müllvermeidung & Plastikreduzierung</div>
+      <div class="themenbox" onclick="location.href='#digitalisierung';">📱 Digitale & automatisierte Müllentsorgung</div>
+      <div class="themenbox" onclick="location.href='#streikrecht';">⚖️ Streikrecht in der Abfallentsorgung</div>
+    </div>
+
+    <h2 id="kreislauf">Kreislaufwirtschaft verbessern</h2>
+    <p>
+      Wir wollen weg vom linearen Wegwerfmodell – hin zu einer echten Kreislaufwirtschaft. Produkte sollen wiederverwendet, repariert und recycelt werden. Dazu braucht es neue Regeln für Design, Verpackung und Rücknahmeverpflichtungen.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="muellvermeidung">Müllvermeidung & Plastikreduzierung</h2>
+    <p>
+      Plastikverpackungen überfluten unseren Alltag. Das ist nicht nur ökologisch bedenklich, sondern auch sozial belastend. Wir setzen uns für verbindliche Reduktionsziele, Verpackungssteuern und klare Vorgaben für Mehrwegsysteme ein.
+    </p>
+    <p>
+      Müllvermeidung fängt im Kleinen an: Jeder Haushalt soll eigene Tonnen erhalten, auch in Mietwohnungen. Niemand sollte gezwungen sein, Müll anderer zu lagern oder sich Einblick in private Abfälle gefallen zu lassen. Persönliche Daten gehören geschützt – auch im Müll.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="digitalisierung">Digitale & automatisierte Müllentsorgung</h2>
+    <p>
+      Wir denken Müllentsorgung neu: Smarte Systeme mit Sensoren können erkennen, ob Tonnen korrekt befüllt sind – und ablehnen, wenn falsch sortiert wurde. Langfristig wollen wir Müllabfuhr automatisieren, analog zur Altkleider- oder Elektroschrottsammlung.
+    </p>
+    <p>
+      Ziel ist eine moderne, datenschutzkonforme und dezentrale Abfallwirtschaft, die Eigenverantwortung und Effizienz verbindet.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <h2 id="streikrecht">Streikrecht in der Abfallentsorgung</h2>
+    <p>
+      Das Streikrecht ist ein wichtiges Grundrecht. In besonders kritischen Bereichen wie der Abfallentsorgung braucht es jedoch klare Regeln, um übermäßige Belastungen der Allgemeinheit zu verhindern.
+    </p>
+    <p>
+      Wir fordern verpflichtende Schlichtungen vor Streiks, transparente Ankündigungsfristen und die Sicherstellung eines Notbetriebs, um Entsorgung und Hygiene aufrechtzuerhalten.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+    <div class="themenbox" onclick="location.href='umwelt.html';">← Zurück zur Übersicht</div>
+  </main>
+
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</body>
+</html>
