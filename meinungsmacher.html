@@ -53,12 +53,13 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      color: var(--yellow);
     }
 
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: var(--cyan);
+      color: var(--yellow);
       margin: 0;
     }
 
@@ -66,6 +67,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      color: var(--yellow);
     }
 
     header .logo-wrapper img {
@@ -85,13 +87,27 @@
       font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--black);
+      color: var(--yellow);
+      text-shadow: 0 0 3px var(--magenta);
     }
 
     nav a.active,
     nav a:hover {
       color: var(--magenta);
       font-weight: 700;
+      text-shadow: none;
+    }
+
+    nav a.active {
+      position: relative;
+      -webkit-text-stroke: 1px var(--magenta);
+      text-stroke: 1px var(--magenta);
+      text-shadow:
+        -1px -1px 0 var(--magenta),
+        1px -1px 0 var(--magenta),
+        -1px 1px 0 var(--magenta),
+        1px 1px 0 var(--magenta);
+      color: var(--yellow);
     }
 
     main {
@@ -267,7 +283,7 @@
 
 <header>
   <div class="logo-wrapper">
-<img src="IMG_2310.png" alt="Heschu Hasan" />
+    <img src="IMG_2310.png" alt="Heschu Hasan" />
     <h1>HESCHU HASAN</h1>
   </div>
   <nav>
@@ -317,72 +333,68 @@
       "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
     ];
 
-    const hasanPositions = [
-      "ja", "ja", "ja", "ja", "ja", "nein", "nein", "ja", "ja", "ja"
-    ];
+    const answers = ["Ja", "Nein"];
 
-    const questionContainer = document.getElementById("questions");
-
-    questions.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.innerHTML = `
-        <p><strong>${i + 1}. ${q}</strong></p>
-        <div class="answers" role="radiogroup" aria-labelledby="q${i}-label">
-          <label><input type="radio" name="q${i}" id="q${i}-ja" value="ja" required /> Ja</label>
-          <label><input type="radio" name="q${i}" id="q${i}-neutral" value="neutral" /> Neutral</label>
-          <label><input type="radio" name="q${i}" id="q${i}-nein" value="nein" /> Nein</label>
-        </div>`;
-      questionContainer.appendChild(div);
-    });
-
-    const form = document.getElementById('quizForm');
+    const quizForm = document.getElementById('quizForm');
+    const questionsDiv = document.getElementById('questions');
     const feedback = document.getElementById('feedback');
+    const backButton = document.getElementById('back-to-home');
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
+    questions.forEach((question, index) => {
+      const questionDiv = document.createElement('div');
+      questionDiv.classList.add('question');
+      questionDiv.innerHTML = `<p>${index + 1}. ${question}</p>`;
+      
+      const answersDiv = document.createElement('div');
+      answersDiv.classList.add('answers');
 
-      const formData = new FormData(this);
-      let matchCount = 0;
-      const total = questions.length;
+      answers.forEach((answer) => {
+        const id = `q${index}_a${answer}`;
+        const label = document.createElement('label');
+        label.htmlFor = id;
+        label.innerHTML = `<input type="radio" name="q${index}" id="${id}" value="${answer}" required /> ${answer}`;
+        answersDiv.appendChild(label);
+      });
 
-      for (let i = 0; i < total; i++) {
-        const answer = formData.get(`q${i}`);
-        if (!answer) {
-          feedback.style.display = 'block';
-          feedback.textContent = `Bitte beantworten Sie alle Fragen.`;
-          feedback.style.color = 'red';
-          return;
-        }
-        if (answer === hasanPositions[i]) {
-          matchCount++;
-        }
-      }
-
-      const percentage = Math.round((matchCount / total) * 100);
-
-      feedback.style.display = 'block';
-      feedback.style.color = 'var(--magenta)';
-      feedback.innerHTML = `
-        <p>Sie stimmen mit <strong>${matchCount} von ${total}</strong> Positionen von Heschu Hasan überein.</p>
-        <p><strong>Übereinstimmung: ${percentage}%</strong></p>
-      `;
-
-      try {
-        const result = {
-          timestamp: new Date().toISOString(),
-          matchCount,
-          total,
-          percentage
-        };
-        localStorage.setItem('meinungsMacherErgebnis', JSON.stringify(result));
-      } catch (e) {
-        console.warn("Speichern im lokalen Speicher ist fehlgeschlagen.", e);
-      }
+      questionDiv.appendChild(answersDiv);
+      questionsDiv.appendChild(questionDiv);
     });
 
-    document.getElementById('back-to-home').addEventListener('click', () => {
-      window.location.href = "index.html";
+    quizForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      feedback.style.display = 'none';
+      feedback.textContent = '';
+
+      const formData = new FormData(quizForm);
+      let allAnswered = true;
+
+      for (let i = 0; i < questions.length; i++) {
+        if (!formData.has(`q${i}`)) {
+          allAnswered = false;
+          break;
+        }
+      }
+
+      if (!allAnswered) {
+        feedback.style.color = 'var(--magenta)';
+        feedback.style.display = 'block';
+        feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
+        return;
+      }
+
+      // Beispiel-Auswertung (kann angepasst werden)
+      let score = 0;
+      for (let i = 0; i < questions.length; i++) {
+        if (formData.get(`q${i}`) === "Ja") score++;
+      }
+
+      feedback.style.color = 'var(--cyan)';
+      feedback.style.display = 'block';
+      feedback.textContent = `Vielen Dank! Sie haben ${score} von ${questions.length} Fragen mit "Ja" beantwortet.`;
+    });
+
+    backButton.addEventListener('click', () => {
+      window.location.href = 'index.html';
     });
   });
 </script>
