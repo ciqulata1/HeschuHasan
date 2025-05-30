@@ -275,20 +275,19 @@
       "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden?",
       "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
     ];
-       const myOpinions = [
-      "Ja", // Power-to-X
-      "Ja", // Netzausbau
-      "Ja", // Informatik Pflichtfach
-      "Ja", // Justiz Digitalisierung
-      "Ja", // Nahverkehr günstiger
-      "Nein", // Tempolimit 120 km/h
-      "Nein", // 30 km/h innerorts & ländlich
-      "Ja", // Soziale Arbeit
-      "Ja", // Digitale Kompetenzen
-      "Ja"  // Ländlicher Raum
-    ];
 
-    
+    const myOpinions = [
+      "Ja",    // Power-to-X
+      "Ja",    // Netzausbau
+      "Ja",    // Informatik
+      "Ja",    // Justiz
+      "Ja",    // Nahverkehr
+      "Nein",  // Tempolimit Autobahn
+      "Nein",  // Tempolimit 30 km/h
+      "Ja",    // Soziale Arbeit
+      "Ja",    // Digitale Kompetenzen
+      "Ja"     // Ländlicher Raum
+    ];
 
     const answers = ["Ja", "Neutral", "Nein"];
     const quizForm = document.getElementById('quizForm');
@@ -331,7 +330,7 @@
           feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
           return;
         }
-        if (answer === 'Ja') score++;
+        if (answer === myOpinions[i]) score++;
       }
 
       const percentage = Math.round((score / questions.length) * 100);
