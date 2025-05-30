@@ -102,9 +102,6 @@
       padding: 10px 20px;
       display: inline-block;
       border-radius: 8px;
-      background-color: transparent;
-      box-sizing: border-box;
-      user-select: none;
     }
 
     main h3 {
@@ -277,16 +274,8 @@
     ];
 
     const myOpinions = [
-      "Ja",    // Power-to-X
-      "Ja",    // Netzausbau
-      "Ja",    // Informatik
-      "Ja",    // Justiz
-      "Ja",    // Nahverkehr
-      "Nein",  // Tempolimit Autobahn
-      "Nein",  // Tempolimit 30 km/h
-      "Ja",    // Soziale Arbeit
-      "Ja",    // Digitale Kompetenzen
-      "Ja"     // Ländlicher Raum
+      "Ja", "Ja", "Ja", "Ja", "Ja",
+      "Nein", "Nein", "Ja", "Ja", "Ja"
     ];
 
     const answers = ["Ja", "Neutral", "Nein"];
@@ -298,7 +287,7 @@
       const questionDiv = document.createElement('div');
       questionDiv.classList.add('question');
       questionDiv.innerHTML = `<p>${index + 1}. ${question}</p>`;
-      
+
       const answersDiv = document.createElement('div');
       answersDiv.classList.add('answers');
 
@@ -326,11 +315,14 @@
         const answer = formData.get(`q${i}`);
         if (!answer) {
           feedback.style.display = 'block';
-          feedback.style.color = 'var(--magenta)';
           feedback.textContent = 'Bitte beantworten Sie alle Fragen.';
           return;
         }
-        if (answer === myOpinions[i]) score++;
+
+        const userAnswer = answer.trim().toLowerCase();
+        const correctAnswer = myOpinions[i].trim().toLowerCase();
+
+        if (userAnswer === correctAnswer) score++;
       }
 
       const percentage = Math.round((score / questions.length) * 100);
