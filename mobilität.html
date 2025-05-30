@@ -100,6 +100,15 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
+    
+    main h3 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
     main p {
       font-size: 1.1rem;
@@ -120,10 +129,12 @@
       user-select: none;
     }
 
-    .themenbox:hover {
+    .themenbox:hover,
+    .themenbox:focus {
       background-color: var(--magenta);
       color: var(--white);
       border-color: var(--magenta);
+      outline: none;
     }
 
     footer {
@@ -211,6 +222,9 @@
     <p>
       Gerade in Zeiten von Krieg und Unsicherheiten ist ein stärkerer Austausch und Zusammenhalt zwischen den Ländern wichtig, statt sich zu distanzieren. Wir sind alle aufeinander angewiesen.
     </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">
+      ← Zurück zu den Themen
+    </div>
 
     <h3 id="tempolimit">🚗 Kein generelles Tempolimit</h3>
     <p>
@@ -219,16 +233,18 @@
     <p>
       30er-Zonen flächendeckend einzuführen, halte ich für falsch. Das mindert die Freude am Autofahren erheblich.
     </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">
+      ← Zurück zu den Themen
+    </div>
 
     <h3 id="fahrschule">🎓 Führerschein & Digitalisierung</h3>
     <p>
       Wir wollen den Führerschein und die Berufskraftfahrerqualifikation günstiger und zugänglicher machen. Digitale Theorieunterrichte, mehr Prüfer und weniger Bürokratie sollen Wartezeiten reduzieren.
     </p>
     <p>
-      Das begleitete Fahren soll bereits ab 16 Jahren möglich sein, um frühere Fahrpraxis und somit mehr Verkehrssicherheit zu gewährleisten. Diskriminierende Zwangstests für Senioren lehnen wir ab.
+      Außerdem sollte beim Nahverkehr umgedacht werden: Statt nur auf große Starkstromleitungen zu setzen, braucht es flexiblere und schnellere Lösungen, um Verkehrsprobleme pragmatisch zu lösen – denn die Bauzeiten bei großen Infrastrukturprojekten sind oft zu lang.
     </p>
-
-    <div class="themenbox" onclick="location.href='umwelt.html';" role="button" tabindex="0">
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">
       ← Zurück zu den Themen
     </div>
   </main>
