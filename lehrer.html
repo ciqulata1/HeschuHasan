@@ -1,1 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lehrerbildung & Fortbildung – Heschu Hasan</title>
 
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      hyphens: auto;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      word-wrap: break-word;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
+    main {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+    }
+
+    .themenbox {
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .themenbox:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
+
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html" class="active">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="themen">
+      <div class="themenbox" onclick="location.href='#ausbildung';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#ausbildung';">
+        🎓 Mehr über Lehrer-Ausbildung
+      </div>
+
+      <div class="themenbox" onclick="location.href='#fortbildung';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#fortbildung';">
+        📘 Fortbildung & neue Kompetenzen
+      </div>
+
+      <div class="themenbox" onclick="location.href='#qualitaet';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#qualitaet';">
+        🌟 Qualität sichern und steigern
+      </div>
+    </div>
+
+    <h2 id="ausbildung">Ausbildung modernisieren</h2>
+    <p>
+      Eine praxisnahe und zukunftsfähige Lehrkräftebildung ist die Grundlage für ein starkes Bildungssystem. In Baden-Württemberg, einem Bildungsland mit großer Tradition, müssen wir neue Wege gehen. Wir Freie Demokraten setzen uns für ein duales Lehramtsstudium ein, das Theorie und Praxis besser verzahnt – auch mit Blick auf Digitalisierung und Vielfalt im Klassenzimmer.
+    </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="fortbildung">Fortbildung stärken</h2>
+    <p>
+      Lehrkräfte brauchen regelmäßige, verpflichtende und praxisnahe Fortbildungen – insbesondere zu digitalen und inklusiven Lernmethoden. In Baden-Württemberg wollen wir die bestehenden Fortbildungsangebote besser vernetzen und ausbauen. Die Teilnahme muss durch Arbeitszeitmodelle erleichtert und durch digitale Angebote attraktiver gemacht werden.
+    </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="qualitaet">Qualität nachhaltig sichern</h2>
+    <p>
+      Qualität beginnt bei der Ausbildung – und endet nicht mit dem Referendariat. Wir wollen regelmäßige Evaluationen, Feedback-Systeme und mehr pädagogische Freiheit für Lehrkräfte. In Freiburg und ganz Baden-Württemberg sollen Schulen echte Kompetenzzentren sein – mit klaren Standards, aber auch mit Raum für Innovation.
+    </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
+      ← Zurück zur Übersicht
+    </div>
+  </main>
+
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
