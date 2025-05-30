@@ -46,15 +46,52 @@
     }
 
     header {
-      background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      color: var(--yellow);
-    }
+  background-color: var(--white);
+  border-bottom: 2px solid var(--cyan);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: var(--cyan);
+}
+
+header nav a {
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cyan);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header nav a:hover,
+header nav a:focus {
+  /* Kein Farbwechsel beim Hover oder Fokus */
+  color: var(--cyan);
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+main h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+
+  color: var(--yellow);
+  border: 3px solid var(--magenta);
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 8px;
+  background-color: transparent;
+  box-sizing: border-box;
+  user-select: none;
+}
 
     header h1 {
       font-weight: 700;
@@ -116,15 +153,6 @@
       margin: 2rem auto 3rem auto;
     }
 
-    main h2 {
-      font-weight: 700;
-      font-size: 1.8rem;
-      margin-bottom: 0.3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      text-align: center;
-      color: var(--cyan);
-    }
 
     main h3 {
       font-weight: 600;
