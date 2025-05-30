@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sport, Gesundheit & Pflege – Heschu Hasan</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      hyphens: auto;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      hyphens: auto;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
+    main {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+      hyphens: auto;
+    }
+
+    .themenbox {
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .themenbox:hover,
+    .themenbox:focus {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+      outline: none;
+    }
+
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Themenübersicht -->
+    <div id="themen">
+      <div class="themenbox" onclick="location.href='#sport';" role="button" tabindex="0" 
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#sport';">
+        🤸‍♂️ Sport als gesellschaftliches Projekt
+      </div>
+
+      <div class="themenbox" onclick="location.href='#freiwilligendienst';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#freiwilligendienst';">
+        🙋‍♀️ Für mehr Anreize im Freiwilligendienst
+      </div>
+
+      <div class="themenbox" onclick="location.href='#gesundheitspflege';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#gesundheitspflege';">
+        🏥 Beste Gesundheit und Pflege für die Zukunft sichern
+      </div>
+
+      <div class="themenbox" onclick="location.href='#ambulanteversorgung';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#ambulanteversorgung';">
+        🚑 Ob Land oder Stadt – Gesundheitsversorgung überall sichern
+      </div>
+
+      <div class="themenbox" onclick="location.href='#innovation';" role="button" tabindex="0"
+           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#innovation';">
+        💡 Innovationen fördern – Deutschland als Medizin-Standort stärken
+      </div>
+    </div>
+
+    <!-- Inhalte -->
+    <h2 id="sport">Sport als gesellschaftliches Projekt</h2>
+    <p>
+      Sport ist mehr als nur Bewegung – er hält gesund, verbindet Menschen und hilft, Pflegebedürftigkeit vorzubeugen. Um diese Potenziale zu heben, wollen wir neben einer generellen Stärkung des Ehrenamts insbesondere das Engagement der Babyboomer-Generation gezielt einbinden. Mit ihrer Erfahrung und Zeit können sie Sportangebote für Kinder, Jugendliche und Senioren ausbauen und die Vereinsarbeit beleben.
+    </p>
+    <p>
+      Außerdem stärken wir die Zusammenarbeit zwischen Vereinen, Schulen, Unternehmen und sozialen Einrichtungen, um möglichst viele Menschen zu erreichen. Sport bringt Menschen zusammen, unabhängig von Herkunft oder Fähigkeiten.
+    </p>
+    <p>
+      Die Bundesjugendspiele mit individuellen Leistungsanreizen halten wir aufrecht und ergänzen sie um die Möglichkeit, dort das Deutsche Sportabzeichen zu erwerben. So motivieren wir leistungsstarke Kinder und Bewegungsbenachteiligte gleichermaßen und fördern Leistung und Teilhabe bei jungen Menschen.
+    </p>
+    <p>
+      Sportgroßveranstaltungen wie Olympische und Paralympische Spiele wollen wir wieder nach Deutschland holen – vorausgesetzt, sie entsprechen ökologischen, ökonomischen und humanitären Standards sowie den traditionellen Werten des Sports. Solche Events zeigen, wie Sport verbindet und Werte wie Inklusion und Fairness sichtbar macht.
+    </p>
+    <p>
+      So stärken wir die Rolle des Sports bei Integration und Gewaltprävention und fördern Spitzensport mit klaren Zielen und effizienten Strukturen. Wir setzen uns zudem dafür ein, dass eSports als gemeinnützig anerkannt wird.
+    </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="freiwilligendienst">Für mehr Anreize im Freiwilligendienst</h2>
+    <p>
+      Wir Freie Demokraten sehen eine allgemeine Dienstpflicht, ein sogenanntes Gesellschaftsjahr und verwandte Konzepte als einen schweren Freiheitseingriff. Einen solchen Pflichtdienst lehnen wir deshalb entschieden ab.
+    </p>
+    <p>
+      Wir setzen stattdessen auf attraktive und berufsvorbereitende Freiwilligendienste.
+    </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="gesundheitspflege">Beste Gesundheit und Pflege für die Zukunft sichern</h2>
+    <p>
+      Zu einem freien und selbstbestimmten Leben gehört auch die bestmögliche Gesundheits- und pflegerische Versorgung bei stabilen Beiträgen. Wir Freie Demokraten wollen die Gesundheitsversorgung patientenzentriert gestalten.
+    </p>
+    <p>
+      Wir bekennen uns zur Selbstverwaltung und stärken die Freien Berufe. Unnötige Bürokratie im Gesundheitswesen wollen wir abbauen und die Digitalisierung weiter vorantreiben.
+    </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="ambulanteversorgung">Ob Land oder Stadt – Gesundheitsversorgung überall sichern</h2>
+    <p>
+      Als Freie Demokraten setzen wir uns dafür ein, dass alle Menschen in Deutschland Zugang zu einer wohnortnahen und qualitativ hochwertigen Versorgung haben – im ländlichen Raum und in der Stadt.
+    </p>
+    <p>
+      In der ambulanten Versorgung setzen wir uns für ein Primärarztsystem ein: Haus- und Kinderärzte sollten die erste Anlaufstelle für Patientinnen und Patienten sein.
+    </p>
+    <p>
+      Zu einer Stärkung der flächendeckenden ambulanten Versorgung gehört für uns auch, dass die ungekürzte Vergütung aller Gesundheitsberufe leistungsgerecht erfolgen muss.
+    </p>
+    <p>
+      In der Krankenhausversorgung wollen wir spezialisierte und damit bessere Angebote vorhalten, die Kostenentwicklung bremsen und zugleich Ärzte und Pflegekräfte entlasten. Auch müssen Krankenhäuser, Ärzte und der Rettungsdienst mit einer Notfallreform besser vernetzt, integriert und koordiniert werden.
+    </p>
+    <p>
+      Wir wollen künstliche Sektorenbarrieren zwischen dem ambulanten und dem stationären Versorgungsbereich konsequent abbauen und die Verzahnung und Vernetzung aller Versorgungsbereiche weiterentwickeln. Wir bekennen uns zu den Freien Berufen im Gesundheitswesen. Diese müssen in medizinischen Fragen autonom und frei von Weisungen Dritter entscheiden können. Die Therapiefreiheit der Behandlung ohne Budgetierungszwang kommt den Patientinnen und Patienten zugute.
+    </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="innovation">Innovationen fördern – Deutschland als Standort für Medizin stärken</h2>
+    <p>
+      Wir Freie Demokraten setzen uns dafür ein, dass Patientinnen und Patienten in Deutschland frühzeitig Zugang zu nutzbringenden und innovativen Arzneimitteln erhalten. Dafür wollen wir den Produktions- und Forschungsstandort Deutschland stärken.
+    </p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
+      ← Zurück zu den Themen
+    </div>
+
+    <!-- Gesamtrückkehr zur Startseite oder Bildung -->
+    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" 
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
+      ← Zurück zur Bildungs-Übersicht
+    </div>
+  </main>
+
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
