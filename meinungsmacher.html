@@ -28,7 +28,7 @@
       margin: 0;
       background-color: var(--white);
       color: var(--black);
-      font-family: "Calibri",Candara, Arial, sans-serif;
+      font-family: "Calibri", Candara, Arial, sans-serif;
       font-weight: 400;
       line-height: 1.6;
     }
@@ -39,64 +39,15 @@
       font-weight: 600;
     }
 
-    a:hover,
-    a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
-
     header {
-  background-color: var(--white);
-  border-bottom: 2px solid var(--cyan);
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  color: var(--yellow);
-}
-
-header nav a {
-  font-weight: 600;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--cyan);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-header nav a:focus {
-  /* Kein Farbwechsel beim Hover oder Fokus */
-  color: var(--cyan);
-  outline: none;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-main h2 {
-  font-weight: 700;
-  font-size: 1.8rem;
-  margin-bottom: 0.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-align: center;
-
-  color: var(--yellow);
-  border: 3px solid var(--magenta);
-  padding: 10px 20px;
-  display: inline-block;
-  border-radius: 8px;
-  background-color: transparent;
-  box-sizing: border-box;
-  user-select: none;
-}
-
-    header h1 {
-      font-weight: 700;
-      font-size: 1.8rem;
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
       color: var(--yellow);
-      margin: 0;
     }
 
     header .logo-wrapper {
@@ -111,6 +62,13 @@ main h2 {
       width: auto;
     }
 
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--yellow);
+      margin: 0;
+    }
+
     nav {
       display: flex;
       gap: 25px;
@@ -123,27 +81,19 @@ main h2 {
       font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--yellow);
-      text-shadow: 0 0 3px var(--magenta);
+      color: var(--cyan);
+      text-decoration: none;
+      cursor: pointer;
     }
 
-    nav a.active,
-    nav a:hover {
-      color: var(--magenta);
-      font-weight: 700;
-      text-shadow: none;
-    }
-
+    nav a:hover,
+    nav a:focus,
     nav a.active {
-      position: relative;
-      -webkit-text-stroke: 1px var(--magenta);
-      text-stroke: 1px var(--magenta);
-      text-shadow:
-        -1px -1px 0 var(--magenta),
-        1px -1px 0 var(--magenta),
-        -1px 1px 0 var(--magenta),
-        1px 1px 0 var(--magenta);
-      color: var(--yellow);
+      color: var(--cyan);
+      font-weight: 600;
+      text-shadow: none;
+      outline: none;
+      text-decoration: none;
     }
 
     main {
@@ -152,6 +102,22 @@ main h2 {
       margin: 2rem auto 3rem auto;
     }
 
+    main h2 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: center;
+      color: var(--yellow);
+      border: 3px solid var(--magenta);
+      padding: 10px 20px;
+      display: inline-block;
+      border-radius: 8px;
+      background-color: transparent;
+      box-sizing: border-box;
+      user-select: none;
+    }
 
     main h3 {
       font-weight: 600;
@@ -361,7 +327,6 @@ main h2 {
     ];
 
     const answers = ["Ja", "Nein"];
-
     const quizForm = document.getElementById('quizForm');
     const questionsDiv = document.getElementById('questions');
     const feedback = document.getElementById('feedback');
@@ -409,7 +374,6 @@ main h2 {
         return;
       }
 
-      // Beispiel-Auswertung (kann angepasst werden)
       let score = 0;
       for (let i = 0; i < questions.length; i++) {
         if (formData.get(`q${i}`) === "Ja") score++;
