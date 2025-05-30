@@ -26,7 +26,7 @@
 
     body {
       margin: 0;
-      background-color: var(--white);
+    background-color: var(--white);
       color: var(--black);
       font-family: "Calibri", Candara, Arial, sans-serif;
       font-weight: 400;
@@ -181,12 +181,21 @@
     }
 
     #feedback {
-      text-align: center;
+      text-align: left;
       margin-top: 1.5rem;
-      font-weight: 700;
-      font-size: 1.2rem;
+      font-weight: 600;
+      font-size: 1rem;
       color: var(--magenta);
       display: none;
+      white-space: pre-line;
+      border: 2px solid var(--cyan);
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f0faff;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: text;
     }
 
     .back-button {
@@ -322,11 +331,26 @@
       "Soll ein Tempolimit von 120 km/h auf Autobahnen in Baden-Württemberg eingeführt werden?",
       "Soll in Baden-Württemberg in städtischen und ländlichen Gebieten ein generelles 30-km/h-Tempolimit eingeführt werden, um CO2-Emissionen zu senken?",
       "Soll der Staat mehr in professionelle Sozialarbeit investieren, um Obdachlosen in Härtefällen besser helfen zu können?",
-      "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden (Höhere Jahrgangsstufen)?",
+      "Soll die Schulpflicht in Baden-Württemberg um verpflichtende digitale Kompetenzen erweitert werden (höhere Jahrgangsstufen)?",
       "Soll der ländliche Raum in Baden-Württemberg durch bessere Digitalisierung und Infrastrukturprojekte stärker gefördert werden?"
     ];
 
-    const answers = ["Ja", "Nein"];
+    // Deine Meinung (Ja oder Nein) zu jeder Frage
+    // Deine Position: Ja bei allen außer den Tempolimits (Fragen 5 und 6)
+    const myOpinions = [
+      "Ja", // Power-to-X
+      "Ja", // Netzausbau
+      "Ja", // Informatik Pflichtfach
+      "Ja", // Justiz Digitalisierung
+      "Ja", // Nahverkehr günstiger
+      "Nein", // Tempolimit 120 km/h
+      "Nein", // 30 km/h innerorts & ländlich
+      "Ja", // Soziale Arbeit
+      "Ja", // Digitale Kompetenzen
+      "Ja"  // Ländlicher Raum
+    ];
+
+    const answers = ["Ja", "Neutral", "Nein"];
     const quizForm = document.getElementById('quizForm');
     const questionsDiv = document.getElementById('questions');
     const feedback = document.getElementById('feedback');
@@ -336,7 +360,7 @@
       const questionDiv = document.createElement('div');
       questionDiv.classList.add('question');
       questionDiv.innerHTML = `<p>${index + 1}. ${question}</p>`;
-      
+
       const answersDiv = document.createElement('div');
       answersDiv.classList.add('answers');
 
@@ -374,14 +398,32 @@
         return;
       }
 
-      let score = 0;
+      // Feedback je Frage sammeln
+      let feedbackMessages = [];
+
       for (let i = 0; i < questions.length; i++) {
-        if (formData.get(`q${i}`) === "Ja") score++;
+        const userAnswer = formData.get(`q${i}`);
+        const myAnswer = myOpinions[i];
+
+        if (userAnswer === myAnswer) {
+          feedbackMessages.push(
+            `${i + 1}. Sie stimmen mit mir überein. Ich würde mich sehr freuen, Sie einmal bei einem Bürgeraustausch zu treffen, damit wir uns direkt austauschen können.`
+          );
+        } else if (userAnswer === "Neutral") {
+          feedbackMessages.push(
+            `${i + 1}. Sie sind neutral geblieben. Heutzutage ist es wichtig, eine starke Meinung zu haben, um nicht im Treibsand der Unsicherheiten zu versinken.`
+          );
+        } else {
+          feedbackMessages.push(
+            `${i + 1}. Sie denken wohl ganz anders als ich. Lassen Sie sich gerne von meiner Meinung überzeugen und erkunden Sie meine Website.`
+          );
+        }
       }
 
       feedback.style.color = 'var(--cyan)';
       feedback.style.display = 'block';
-      feedback.textContent = `Vielen Dank! Sie haben ${score} von ${questions.length} Fragen mit "Ja" beantwortet.`;
+      feedback.textContent = feedbackMessages.join('\n\n');
+      window.scrollTo({ top: feedback.offsetTop - 20, behavior: 'smooth' });
     });
 
     backButton.addEventListener('click', () => {
