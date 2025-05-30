@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naturschutz & Artenvielfalt – Heschu Hasan</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
+    main {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+    }
+
+    .themenbox {
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .themenbox:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
+
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html" class="active">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Naturschutz & Artenvielfalt</h2>
+
+    <div id="themen">
+      <div class="themenbox" onclick="location.href='#artenvielfalt';" role="button" tabindex="0">
+        🌿 Artenvielfalt erhalten
+      </div>
+      <div class="themenbox" onclick="location.href='#klimaschutz';" role="button" tabindex="0">
+        ☀️ Klimawandel ernst nehmen
+      </div>
+      <div class="themenbox" onclick="location.href='#fonds';" role="button" tabindex="0">
+        💶 Naturschutz-Fonds statt Flächen-Klein-Klein
+      </div>
+    </div>
+
+    <h3 id="artenvielfalt">🌿 Artenvielfalt erhalten</h3>
+    <p>
+      Der Schutz ganzer Popu­latio­nen und Lebens­räume muss Priorität haben – statt büro­kra­ti­scher Einzel­fall­prü­fungen. Ich möchte groß­flä­chige, ver­bun­dene Schutz­ge­biete schaffen, die echten Effekt bringen. Arten sterben nicht, weil irgendwo eine Eidechse umge­siedelt wird, sondern weil Lebens­räume verloren gehen. 
+    </p>
+    <p>
+      Als FDP-Kandi­datin stehe ich hinter einem prakti­schen Natur­schutz – aber mit Verstand und Effizienz. Kleinteilige Flächenaufteilung hilft weder Tieren noch der Natur. Wir müssen gezielt handeln, nicht symbolisch.
+    </p>
+
+    <h3 id="klimaschutz">☀️ Klimawandel ernst nehmen</h3>
+    <p>
+      Der Klima­wandel ist real – und wir spüren ihn jeden Tag. Ich selbst hatte zuletzt starke Kopf­schmerzen nach nur wenigen Minuten Sonnen­ein­strah­lung. Die Sonne brennt intensiver, die Natur leidet sichtbar. Ich möchte, dass wir diese Erfah­rungen ernst nehmen und in der Politik reflektieren.
+    </p>
+    <p>
+      Viele Menschen glauben noch immer nicht, wie ernst die Lage ist. Deshalb ist mir Storytel­ling wichtig – um persön­liche Erleb­nisse einzu­binden und anderen greifbar zu machen, was auf dem Spiel steht.
+    </p>
+
+    <h3 id="fonds">💶 Naturschutz-Fonds statt Flächen-Klein-Klein</h3>
+    <p>
+      Ich setze mich dafür ein, dass statt vieler einzelner Aus­gleichs­flä­chen lieber in einen zentralen Natur­schutz­fonds gezahlt wird. Das schafft Planungssicherheit für Unter­nehmen – und echte Wir­kung für die Natur.
+    </p>
+    <p>
+      Experten können mit den Mitteln ziel­ge­richtet große Schutz­maß­nahmen umsetzen. So schützen wir Bio­di­ver­sität besser, ohne unnö­tige Blockaden.
+    </p>
+
+    <div class="themenbox" onclick="location.href='umwelt.html';" role="button" tabindex="0">
+      ← Zurück zu den Themen
+    </div>
+  </main>
+
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</body>
+</html>
