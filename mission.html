@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bildung - Heschu Hasan</title>
+  <title>Biografie & Mission – Heschu Hasan</title>
 
   <link
     rel="stylesheet"
@@ -26,21 +26,25 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
       font-weight: 400;
       line-height: 1.5;
-      color: var(--cyan);
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.7) 100%);
+      opacity: 0;
+      transition: opacity 1s ease;
+      hyphens: auto;
     }
 
     a {
       color: var(--cyan);
       text-decoration: none;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
     a:hover,
     a:focus {
@@ -55,7 +59,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
     }
 
     header h1 {
@@ -71,6 +74,8 @@
       font-weight: 600;
       font-size: 1rem;
       margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     nav a.active,
@@ -80,14 +85,13 @@
     }
 
     main {
-      padding: 20px 20px;
+      padding: 20px 40px;
+      max-width: 900px;
       margin: 0 auto;
-      width: 100%;
-      max-width: 1200px;
     }
 
     main h2 {
-      color: var(--black);
+      color: var(--cyan);
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 20px;
@@ -95,69 +99,40 @@
       letter-spacing: 0.1em;
     }
 
-    main h3 {
-      color: var(--cyan);
-      font-weight: 600;
-      font-size: 1.25rem;
-      margin-bottom: 20px;
-    }
-
     main p {
-      font-weight: 300;
       font-size: 1.1rem;
-      max-width: 700px;
+      margin-bottom: 1.25rem;
+      color: var(--black);
     }
 
-    .bildung-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 40px;
-    }
-
-    .box {
-      width: 100%;
-      max-width: 300px;
-      border: 2px solid var(--cyan);
-      background-color: rgba(255, 255, 255, 0.85);
-      color: var(--cyan);
-      padding: 20px;
-      border-radius: 5px;
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      font-weight: 300;
-      font-size: 1.1rem;
-      user-select: none;
-      display: block;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      overflow: hidden;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 1;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
-    .box:hover {
-      border-color: var(--magenta);
-    }
-
-    .box:focus,
-    .box.selected {
+    .themenbox {
       background-color: var(--magenta);
+      border: 2px solid var(--magenta);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
       color: var(--turquoise);
-      outline: none;
-      border-color: var(--magenta);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
     }
 
-    .box h3 {
-      margin-top: 0;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .themenbox:hover {
+      background-color: var(--turquoise);
+      color: var(--magenta);
+      border-color: var(--turquoise);
+    }
+
+    .themenbox p {
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      hyphens: auto;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      margin: 0;
     }
 
     footer {
@@ -165,13 +140,15 @@
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
+      font-weight: 500;
     }
 
     footer h3 {
-      margin: 0 0 15px;
-      font-weight: 700;
+      font-size: 1.2rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
     }
 
     footer .social-links a {
@@ -184,14 +161,7 @@
     footer .social-links a:hover,
     footer .social-links a:focus {
       color: var(--magenta);
-    }
-
-    img.section-image {
-      max-width: 100%;
-      height: auto;
-      margin: 20px 0;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      outline: none;
     }
 
     @media (max-width: 768px) {
@@ -200,18 +170,18 @@
         align-items: flex-start;
         padding: 15px 20px;
       }
-
       nav a {
         margin-left: 0;
         margin-right: 15px;
       }
-
-      .bildung-boxes {
-        flex-direction: column;
-        align-items: center;
-      }
     }
   </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
 </head>
 
 <body>
@@ -219,90 +189,104 @@
     <h1>HESCHU HASAN</h1>
     <nav>
       <a href="index.html">Startseite</a>
-      <a href="bildung.html" class="active">Bildung</a>
+      <a href="bildung.html">Bildung</a>
       <a href="umwelt.html">Umwelt</a>
       <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="biografie.html" class="active">Biografie</a>
       <a href="impressum.html">Impressum</a>
     </nav>
   </header>
 
-  <main>
-    <h2 id="meine-mission">Meine Mission</h2>
-    <ul>
-      <li><a href="#flucht-und-wurzeln">Flucht &amp; Wurzeln</a></li>
-      <li><a href="#integration-und-schule">Integration &amp; Schule</a></li>
-      <li><a href="#freiburg-und-gesundheit">Freiburg &amp; Gesundheit</a></li>
-      <li><a href="#hobbys-und-inspiration">Hobbys &amp; Inspiration</a></li>
-      <li><a href="#politik-und-engagement">Politisches Engagement</a></li>
-      <li><a href="#freiheit-und-familie">Freiheit &amp; Familie</a></li>
-    </ul>
+  <main id="top">
 
-    <section id="flucht-und-wurzeln">
-      <h3>Flucht &amp; Wurzeln</h3>
-      <img src="IMG_2219.jpeg" alt="Bild zu Flucht und Wurzeln" class="section-image" />
-      <p>
-        Hier erzähle ich ausführlich über meine Fluchtgeschichte und meine Wurzeln. Wie alles begann, welche Herausforderungen ich erleben musste und wie diese Erfahrungen mich geprägt haben. Die Herkunft ist ein wichtiger Teil meiner Identität.
-      </p>
-      <p>
-        <a href="#meine-mission">Zurück zu den Themen</a>
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#herkunft';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#herkunft';">
+      🌍 Herkunft & Ankunft in Deutschland
+    </div>
 
-    <section id="integration-und-schule">
-      <h3>Integration &amp; Schule</h3>
-      <p>
-        Bildung und Integration sind für mich eng verbunden. In der Schule habe ich viel erlebt, gelernt und auch Herausforderungen gemeistert. Ich setze mich dafür ein, dass Integration als Chance gesehen wird und Bildung für alle zugänglich ist.
-      </p>
-      <p>
-        <a href="#meine-mission">Zurück zu den Themen</a>
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#leben';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#leben';">
+      🏡 Leben & Integration in Freiburg
+    </div>
 
-    <section id="freiburg-und-gesundheit">
-      <h3>Freiburg &amp; Gesundheit</h3>
-      <p>
-        Freiburg ist meine Heimatstadt, die ich sehr schätze. Gesundheit und Wohlbefinden sind wichtige Aspekte in meinem Leben. Ich unterstütze Initiativen, die gesunde Lebensweisen fördern und den sozialen Zusammenhalt stärken.
-      </p>
-      <p>
-        <a href="#meine-mission">Zurück zu den Themen</a>
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#politische-motivation';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#politische-motivation';">
+      🗳️ Politische Motivation & Werte
+    </div>
 
-    <section id="hobbys-und-inspiration">
-      <h3>Hobbys &amp; Inspiration</h3>
-      <p>
-        Meine Hobbys geben mir Kraft und Inspiration. Ob Musik, Sport oder Lesen – all das hilft mir, ausgeglichen zu bleiben und neue Energie zu tanken.
-      </p>
-      <p>
-        <a href="#meine-mission">Zurück zu den Themen</a>
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#hobbys';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#hobbys';">
+      🎨 Hobbys & Inspiration
+    </div>
 
-    <section id="politik-und-engagement">
-      <h3>Politisches Engagement</h3>
-      <p>
-        Ich engagiere mich politisch, um Veränderungen zu bewirken und Menschen eine Stimme zu geben. Mein Ziel ist es, mehr Gerechtigkeit und Teilhabe zu erreichen.
-      </p>
-      <p>
-        <a href="#meine-mission">Zurück zu den Themen</a>
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#familie';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#familie';">
+      👨‍👩‍👧‍👦 Familie & Kindheitserfahrungen
+    </div>
 
-    <section id="freiheit-und-familie">
-      <h3>Freiheit &amp; Familie</h3>
-      <p>
-        Freiheit bedeutet für mich, mein Leben selbstbestimmt zu gestalten. Familie ist mein Rückhalt und gibt mir Kraft, meine Visionen zu verfolgen.
-      </p>
-      <p>
-        <a href="#meine-mission">Zurück zu den Themen</a>
-      </p>
-    </section>
+    <div class="themenbox" onclick="location.href='#fdp-grundsatz';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#fdp-grundsatz';">
+      💡 Warum FDP? Meine Werte
+    </div>
+
+    <h2 id="herkunft">🌍 Herkunft & Ankunft in Deutschland</h2>
+    <p>
+      Ich wurde 1989 im Irak geboren und bin 1996 mit meiner Familie nach Deutschland geflohen. Wir kamen damals nach Bayern, wo ich seitdem aufgewachsen bin. Dieser Neubeginn war für uns alle eine große Herausforderung, aber auch eine Chance. Deutschland hat uns Sicherheit und Perspektiven gegeben, die wir dringend brauchten.
+    </p>
+    <p>
+      Als Kind habe ich keine Diskriminierung erlebt, sondern wurde von Anfang an gleich behandelt. Das hat mir sehr geholfen, mich zu integrieren und meine Stärken zu entfalten. Ich bin heute 35 Jahre alt und sehe mich als Teil der vielfältigen Gesellschaft, die Deutschland ausmacht.
+    </p>
+
+    <h2 id="leben">🏡 Leben & Integration in Freiburg</h2>
+    <p>
+      2024 bin ich aus beruflichen Gründen nach Baden-Württemberg gezogen und habe mir meinen Traum erfüllt, in Freiburg zu leben. Die Stadt ist für mich ein besonderer Ort – mit ihrem milden Klima, das für meine Gesundheit wichtig ist, da ich unter Sonnenmangel leide. Freiburg bietet eine wunderschöne Natur, eine lebendige Gemeinschaft und viele Möglichkeiten für sportliche Aktivitäten.
+    </p>
+    <p>
+      Besonders das Joggen in und um Freiburg hat mir geholfen, meine Gedanken zu ordnen und mich hier wohlzufühlen. Die Inspiration, die ich aus dem Schwarzwald schöpfe, hat auch meine kreative Seite geweckt – ich schreibe Gedichte und lasse mich von der Natur und den Menschen inspirieren.
+    </p>
+
+    <h2 id="politische-motivation">🗳️ Politische Motivation & Werte</h2>
+    <p>
+      Ich habe mich schon früh für Politik interessiert. Mit den Bundestagswahlen 2021 und dem Engagement von Christian Lindner als Vorbild wurde mein Wunsch stärker, selbst politisch aktiv zu werden. Für mich ist klar: Deutschland braucht eine starke liberale Mitte, die Freiheit schützt und Extremismus entgegenwirkt.
+    </p>
+    <p>
+      Meine Mission für Freiburg ist es, eine offene, nachhaltige und gerechte Stadt zu gestalten. Bildung, Umweltschutz und Bürgerrechte stehen für mich an erster Stelle. Ich will Politik machen, die für alle da ist – ohne ideologische Scheuklappen und mit echtem Respekt vor den Menschen.
+    </p>
+
+    <h2 id="hobbys">🎨 Hobbys & Inspiration</h2>
+    <p>
+      Meine Hobbys sind vielfältig, aber ich pflege sie mit viel Leidenschaft. Neben dem Joggen gehören dazu das Schreiben von Gedichten, das ich seit Jahren praktiziere, und die Natur. Freiburg bietet mir den perfekten Rahmen, um mich kreativ und sportlich zu entfalten. Diese Balance ist mir sehr wichtig, um meinen Charakter treu zu bleiben.
+    </p>
+
+    <h2 id="familie">👨‍👩‍👧‍👦 Familie & Kindheitserfahrungen</h2>
+    <p>
+      Meine Familie und meine Kindheitserfahrungen prägen mich sehr. Ich bin unter dem Schatten des Zweiten Golfkriegs und der politischen Unsicherheiten im Irak aufgewachsen, was meine Sicht auf Freiheit und Sicherheit nachhaltig beeinflusst hat. Meine Eltern haben mir Werte vermittelt, die mir heute helfen, mich politisch für andere einzusetzen.
+    </p>
+    <p>
+      Schule war für mich in Kurdistan sehr schwierig, aber Deutschland hat mir mit seinem weniger hierarchischen und weniger leistungsorientierten Schulsystem die Chance gegeben, meine Stärken zu entwickeln und erfolgreich zu sein.
+    </p>
+
+    <h2 id="fdp-grundsatz">💡 Warum FDP? Meine Werte</h2>
+    <p>
+      Ein besonders wichtiger Grund für meinen Beitritt zur FDP ist der Einsatz für Familien und Kinder. Ich bin der festen Überzeugung, dass Kinderkriegen nicht am Geldbeutel scheitern darf. Jede Familie soll so viele Kinder bekommen können, wie sie möchte – ohne finanzielle Hürden.
+    </p>
+    <p>
+      Andere Parteien wie die CDU mit Friedrich Merz vertreten hier eine ganz andere Sicht, die ich nicht teile. Für mich steht fest: Die FDP ist die Partei, die Freiheit und Familien unterstützt – das entspricht meinen Werten und meinem Engagement.
+    </p>
+
+    <!-- Zurück zum Seitenanfang -->
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ↑ Zurück nach oben
+    </div>
+
   </main>
 
   <footer>
-    <h3>Treffen Sie mich auf den sozialen Medien.</h3>
-    <div class="social-links" role="navigation" aria-label="Soziale Medien">
-      <a href="https://instagram.com/hasan" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
       </a>
     </div>
