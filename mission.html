@@ -104,33 +104,32 @@
       letter-spacing: 0.08em;
     }
 
-    .zurueck-box {
-      background-color: var(-yellow);
-      border: none;
-      border-radius: 8px;
-      padding: 14px 24px;
-      margin: 30px auto;
-      text-align: center;
-      color: var(--white);
-      font-weight: 600;
-      font-size: 1.05rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: fit-content;
-      user-select: none;
-      display: inline-block;
-    }
+  .zurueck-box {
+  background-color: var(--yellow);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  margin: 30px auto;
+  text-align: center;
+  color: var(--magenta); /* Schrift in Pink/Magenta */
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: fit-content;
+  user-select: none;
+  display: inline-block;
+}
 
-    .zurueck-box:hover {
-      background-color: var(--turqoise);
-      color: var(--black);
-    }
+.zurueck-box:hover {
+  background-color: var(--turquoise);
+  color: var(--black);
+}
 
-    .zurueck-box:active {
-      background-color: var(--magenta);
-      color: var(--white);
-    }
-
+.zurueck-box:active {
+  background-color: var(--magenta);
+  color: var(--white);
+}
     .themenbox {
       background-color: var(--magenta);
       border-radius: 8px;
