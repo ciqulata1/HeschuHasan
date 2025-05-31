@@ -5,214 +5,283 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Biografie – Heschu Hasan</title>
 
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
-  <!-- Externe CSS-Datei -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="wrapper">
-    <header>
-      <nav>
-        <button class="burger" aria-label="Menü öffnen">&#9776;</button>
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
 
-        <!-- Desktop Menü -->
-        <ul class="nav-list">
-          <li><a href="#" data-page="index.html">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html" class="active">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-        </ul>
+    * {
+      box-sizing: border-box;
+    }
 
-        <!-- Mobile Menü -->
-        <ul class="nav-list-burger">
-          <li><a href="#" data-page="index.html">Startseite</a></li>
-          <li><a href="#" data-page="umwelt.html">Umwelt</a></li>
-          <li><a href="#" data-page="bildung.html">Bildung</a></li>
-          <li><a href="#" data-page="biografie.html" class="active">Biografie</a></li>
-          <li><a href="#" data-page="wahlprogramm.html">Wahlprogramm</a></li>
-        </ul>
-      </nav>
-    </header>
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <main id="content">
-      <section>
-        <h1>Biografie</h1>
+    body {
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      hyphens: auto;
+    }
 
-        <section>
-  <h2>Über mich</h2>
-  <div class="biografie-image-wrapper" style="float:right; margin-left:20px; max-width:300px;">
-    <img src="IMG_1604.jpeg" alt="Portrait von Heschu Hasan" class="biografie-image" />
-    <p class="bildunterschrift">Foto: Daniel Karreis 2025</p>
-  </div>
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
 
-  <p>Ich bin Heschu Hasan, 35 Jahre alt, Direktkandidatin für den Landtag Baden-Württemberg. Geboren in der autonomen Region Kurdistan, lebe ich seit 1996 in Deutschland und bin deutsche Staatsbürgerin. Ich bin studierte Wirtschaftswissenschaftlerin mit technischem Hintergrund und politischem Herzen – geprägt von Lebensrealität, nicht von Karriereplanung.</p>
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  <p>Mein Vater wurde schwer verletzt – in einem politischen System, das Menschlichkeit kaum kannte. Diese Erfahrung begleitet mich bis heute. Sie hat mir früh gezeigt, wie fragil Sicherheit ist. Und wie tief die Wunden sind, wenn Mitgefühl fehlt.</p>
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
 
-  <p>Deutschland ist ein wohlhabendes Land. Aber Barmherzigkeit, echtes Zuhören, gegenseitige Fürsorge – das ist nicht immer selbstverständlich. Viele geben ihr Bestes, jeden Tag. Und doch erleben zu viele Menschen, dass ihr Schmerz unsichtbar bleibt. Ich glaube: Politik beginnt genau da, wo Menschen sich gesehen fühlen. Und genau deshalb bin ich hier.</p>
-</section>
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
-<section>
-  <h2>Bildung und Kultur</h2>
-  <p>Ich hatte Kunst-Leistungskurs und Englisch-Leistungskurs – beides nicht zufällig. Ich liebe Sprachen. Ich liebe Kunst. Sprache schafft Verbindung, Kunst gibt Raum für das, was nicht gesagt werden kann. Beides hat mich geprägt und mir geholfen, mich in dieser Welt zu orientieren – intellektuell, emotional und gesellschaftlich.</p>
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
 
-  <p>Mich begeistert die Tiefe des Expressionismus, die Leichtigkeit des Impressionismus, die Sehnsucht der Romantik – und genauso die Provokation der Pop-Art von Andy Warhol. Ein Selbstporträt im Warhol-Stil habe ich schon im Kunst-LK gezeichnet – aus dem Wunsch, Identität sichtbar zu machen, auf eine andere Art. Ich denke oft daran, auch heute ein neues Porträt im Stil von Warhol zu gestalten – vielleicht mit Hilfe von KI. Denn auch das ist Teil unserer Zeit: Kreativität durch Technologie erweitern.</p>
+    main {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-  <p>Für mich ist Kultur nicht Dekoration. Kultur ist Erdung. Sie hält uns verbunden – mit unserer Geschichte, unserer Umwelt, mit anderen Menschen. Ohne Kultur fehlt Barmherzigkeit. Und ohne Barmherzigkeit verlieren wir, was uns menschlich macht.</p>
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
 
-  <div class="biografie-image-wrapper" style="float:right; margin-left:20px; max-width:300px;">
-    <img src="IMG_1343.jpeg" alt="Heschu Hasan beim Newroz-Fest in traditioneller kurdischer Kleidung" class="biografie-image" />
-    <p class="bildunterschrift">Foto: Teilnehmer Newroz-Fest, März 2025</p>
-  </div>
-</section>
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+    }
 
-<section>
-  <h2>Politisches Engagement</h2>
-  <p>Seit 2016 habe ich einen Abschluss in Wirtschaftswissenschaften. Mein Studium in International Information Systems setze ich fort, weil ich überzeugt bin: Ohne digitale Kompetenz gibt es keine soziale Gerechtigkeit – und keinen Klimaschutz. Digitalisierung ist kein Ziel. Sie ist ein Werkzeug, um Bildung und Umwelt überhaupt möglich zu machen.</p>
+    .themenbox {
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-  <p>Ich stehe für drei Dinge: <strong>Bildung, Umwelt und einen bürgernahen Staat.</strong> Nicht als Schlagworte – sondern als Grundlage für ein gelingendes Leben. Denn ohne Bildung keine Chancengerechtigkeit. Ohne Umwelt keinen Lebensraum. Und ohne Bürgernähe keinen gesellschaftlichen Zusammenhalt.</p>
+    .themenbox:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
 
-  <p>Politik macht mir Freude. Richtig große Freude. Und sie wurde in mir entfacht durch die Führungspersönlichkeiten der FDP – durch Christian Lindner, Bettina Stark-Watzinger und viele andere, die mir gezeigt haben: Deine Stimme zählt. Deine Geschichte hat Gewicht. In Bad Krozingen habe ich das erste Mal erlebt, wie es ist, wenn Menschen zuhören – nicht, weil sie müssen, sondern weil sie wollen.</p>
+    .themenbox p {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      hyphens: auto;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
 
-  <p>Als die FDP aus dem Bundestag gefallen ist, hat mich das tief getroffen. Nicht, weil es um Macht ging – sondern weil ich wusste, wie viel Mut, Fachwissen und Klarheit verloren zu gehen drohten. Das hat in mir den Entschluss reifen lassen: Ich engagiere mich. Ich trete an. Das ist der liberale Spirit, der mich durch und durch durchdrungen hat. Für Lösungen. Für Mitgefühl. Für Politik, die nicht über die Menschen hinweggeht, sondern auf Augenhöhe mit ihnen arbeitet.</p>
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
 
-  <p>Ich jogge. Ich schreibe Gedichte. Ich baue meine eigene Website. Nicht, weil ich muss, sondern weil ich glaube: Wer sich weiterentwickelt, bleibt lebendig. Und wer lebendig bleibt, kann etwas bewegen.</p>
-   <p>Ich bin keine Berufspolitikerin. Ich bin eine Frau mit Haltung, Geschichte – und Hoffnung. Und ich gebe mein Bestes. Jeden Tag. Für ein Land, das zuhört. Und für eine Zukunft, die verbindet.</p>
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
 
-<section>
-  <h2>Berufliche Erfahrungen</h2>
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
 
-  <div class="biografie-image-wrapper" style="float:right; margin-left:20px; max-width:300px;">
-    <img src="IMG_2130.jpeg" alt="Heschu Hasan bei der Arbeit in der Verwaltung" class="biografie-image" />
-  </div>
-  <p>
-    In den letzten Jahren habe ich in verschiedenen Bereichen gearbeitet – im Vertrieb, im Customer Relationship Management (CRM) und auch in der öffentlichen Verwaltung. Ich kenne die Anforderungen von Kund:innen genauso wie die Abläufe in Behörden. Besonders prägend war meine Zeit beim Freistaat Bayern im Amt für Asyl und Rückführungen. Dort habe ich in der IT mitgewirkt – und dabei gesehen, wie wichtig gute Organisation, klare Kommunikation und digitale Prozesse für faire Verfahren sind.
-  </p>
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
 
-  <p>
-    Was mich antreibt, ist nicht nur die Frage: Wie kann man Systeme effizienter machen? Sondern: Wie können sie menschenfreundlicher werden? Diese Perspektive bringe ich mit – aus der Praxis, für die Politik.
-  </p>
-
-  <section>
-  <h2>Freiheit erleben – unterwegs in Europa</h2>
-
-  <div class="biografie-image-wrapper" style="float:right; margin-left:20px; max-width:300px;">
-  <img src="IMG_2132.jpeg" alt="Heschu Hasan mit der Europaflagge" class="biografie-image" />
-  <p class="bildunterschrift">
-    Foto: Privat<br />
-    Quelle der Europaflagge: <a href="https://www.sylt-flagge.de/c/flaggen-fahnen/weltfrieden" target="_blank" rel="noopener noreferrer">sylt-flagge.de</a>
-  </p>
-</div>
-  <p>
-    Für mich bedeutet Freiheit nicht nur politisches Engagement, sondern auch kulturelle Offenheit. Ich reise gerne – nach Frankreich, in die Schweiz und darüber hinaus. Diese Orte geben mir Kraft, Inspiration und ein Gefühl von Zugehörigkeit.
-  </p>
-
-  <p>
-    In Frankreich – wo auf vielen Gebäuden „Liberté, Égalité, Fraternité“ steht – spüre ich eine Verbindung zu den Grundwerten, die auch mich in meinem politischen Denken prägen. Genau dieser Leitsatz bestärkt mich darin, in der FDP aktiv zu sein – für eine Politik der Freiheit und der Verantwortung.
-  </p>
-
-  <p>
-    In Basel habe ich kürzlich eine Kirche besucht – ein Ort der Stille, der Geschichte und des Nachdenkens. Solche Momente sind mir wichtig. Sie zeigen mir, wie wertvoll kulturelle Vielfalt und religiöse Toleranz in Europa sind.
-  </p>
-
-    <section>
-
-  <h2>Verbunden mit Europa – und besonders mit Frankreich</h2>
-
-      
-  <p>
-    Reisen bedeutet für mich: neue Perspektiven einnehmen, offen bleiben, zuhören. Besonders Frankreich liegt mir am Herzen. Ich war dort schon oft, wurde einmal in die Botschaft eingeladen – und habe tiefe Verbundenheit gespürt. 
-  </p>
-
-  <p>
-    Innerhalb meines Studiums hatte ich mehrfach die Chance, durch Stipendien an französischen Grandes Écoles zu studieren. Diese Zeit hat mein Weltbild erweitert – und meine Begeisterung für Bildung, Europa und interkulturellen Austausch noch vertieft.
-  </p>
-
-  <p>
-    Ich sehe viele Parallelen zwischen meinen Überzeugungen und den Werten der Freien Demokraten – gerade im europäischen Kontext. Die deutsch-französische Freundschaft ist für mich nicht nur Geschichte, sondern gelebte Gegenwart. Ich glaube: Diese Beziehung braucht Pflege, Respekt und Vertrauen – genau das, wofür die FDP steht. Und genau darum setze ich mich dafür ein, dass Europa weiter zusammenwächst – mit gegenseitiger Achtung als Fundament.
-  </p>
-
-  <p>
-    Auch die Schweiz hat mir kulturell viel gegeben – besonders Orte wie Basel, mit ihrer Offenheit und spirituellen Tiefe. Dort habe ich eine Kirche besucht, die mir Ruhe und neue Kraft gegeben hat. Solche Erfahrungen prägen mich – als Mensch und als Politikerin.
-  </p>
-
-  <div class="bildreihe">
-  <div class="biografie-image-wrapper">
-    <img src="IMG_9350.jpeg" alt="Heschu Hasan in Frankreich" class="biografie-image" />
-  </div>
-
-  <div class="biografie-image-wrapper">
-    <img src="IMG_9881.jpeg" alt="Heschu Hasan in Frankreich" class="biografie-image" />
-  </div>
-
-  <div class="biografie-image-wrapper">
-    <img src="IMG_8861.jpeg" alt="Heschu Hasan in einer Kirche in Basel" class="biografie-image" />
-  </div>
-</div>
-</section>
-
-
-</section>
-<script>
-      // Burger-Menü Toggle
-      const burger = document.querySelector('.burger');
-      const navBurger = document.querySelector('.nav-list-burger');
-
-      burger.addEventListener('click', () => {
-        navBurger.classList.toggle('active');
-      });
-
-      // Dynamisches Nachladen der Seiten (Navigation)
-      function setupNavigation() {
-        const navLinksDesktop = document.querySelectorAll('nav ul.nav-list a');
-        const navLinksMobile = document.querySelectorAll('nav ul.nav-list-burger a');
-
-        function loadPage(e) {
-          e.preventDefault();
-          const page = this.getAttribute('data-page');
-          if (!page) return;
-
-          fetch(page)
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, 'text/html');
-              const newContent = doc.querySelector('main')?.innerHTML || "<p>Fehler beim Laden.</p>";
-              document.getElementById('content').innerHTML = newContent;
-
-              // Menü schließen bei mobile
-              navBurger.classList.remove('active');
-
-              // Aktiven Menüpunkt synchron setzen
-              navLinksDesktop.forEach(a => a.classList.remove('active'));
-              navLinksMobile.forEach(a => a.classList.remove('active'));
-
-              navLinksDesktop.forEach(a => {
-                if (a.getAttribute('data-page') === page) a.classList.add('active');
-              });
-              navLinksMobile.forEach(a => {
-                if (a.getAttribute('data-page') === page) a.classList.add('active');
-              });
-            })
-            .catch(err => {
-              console.error('Fehler beim Laden:', err);
-              document.getElementById('content').innerHTML = "<p>Seite konnte nicht geladen werden.</p>";
-            });
-        }
-
-        navLinksDesktop.forEach(link => link.addEventListener('click', loadPage));
-        navLinksMobile.forEach(link => link.addEventListener('click', loadPage));
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
       }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
 
-      setupNavigation();
-    </script>
-  </div>
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="biografie.html" class="active">Biografie</a>
+      <a href="justiz.html">Justiz</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Themenboxen -->
+    <div class="themenbox" onclick="location.href='#herkunft';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#herkunft';">
+      🌍 Herkunft & Werte
+    </div>
+
+    <div class="themenbox" onclick="location.href='#freiburg';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#freiburg';">
+      🌳 Warum Freiburg?
+    </div>
+
+    <div class="themenbox" onclick="location.href='#hobbys';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#hobbys';">
+      🏃 Meine Hobbys
+    </div>
+
+    <div class="themenbox" onclick="location.href='#politik';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#politik';">
+      🗳️ Mein Weg in die Politik
+    </div>
+
+    <!-- Biografie-Inhalte -->
+    <h2 id="herkunft">Herkunft & Werte</h2>
+    <p>
+      Ich bin 1996 mit meiner Familie aus dem Irak nach Deutschland geflohen – auf der Suche nach Sicherheit, Freiheit und Zukunft. In Bayern fanden wir unsere neue Heimat. Die Erlebnisse im Zweiten Golfkrieg und die Repressionen unter dem Baath-Regime haben mich tief geprägt.
+    </p>
+    <p>
+      Trotz allem war ich als Kind ein lebensfroher Mensch, der sich über die kleinen Dinge freuen konnte – und das wurde in Deutschland auch gesehen und wertgeschätzt. In Deutschland habe ich gelernt, dass Leistung und Individualität im Einklang stehen können und dass jeder seinen eigenen Weg finden darf.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="freiburg">Warum Freiburg?</h2>
+    <p>
+      2024 bin ich aus beruflichen Gründen nach Baden-Württemberg gezogen – aber mein Herz hatte schon lange für Freiburg geschlagen. Das Klima hier tut meiner Gesundheit gut, denn ich leide unter starkem Sonnenmangel, was in Bayern und meiner Herkunftsregion kaum ausgeglichen wurde.
+    </p>
+    <p>
+      In Freiburg habe ich sofort gespürt, wie sehr diese Stadt einen zur Ruhe und zu sich selbst finden lässt. Die Offenheit der Menschen, die Natur und der Schwarzwald – all das hat mir das Gefühl gegeben, angekommen zu sein.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="hobbys">Meine Hobbys</h2>
+    <p>
+      Ich bin gerne draußen unterwegs. Joggen und Bewegung im Grünen sind für mich mehr als Sport – sie sind Ausgleich und Inspiration zugleich. Besonders die Natur rund um Freiburg hat meine Leidenschaft für das Schreiben von Gedichten neu entfacht.
+    </p>
+    <p>
+      Diese Stadt gibt mir Kraft, regt mich zum Nachdenken an und hilft mir, meiner Kreativität Raum zu geben. Sie lässt mich frei atmen – sowohl körperlich als auch geistig.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="politik">Mein Weg in die Politik</h2>
+    <p>
+      Politik habe ich lange beobachtet – bis mir klar wurde: Ich mache längst selbst Politik, mit jedem Standpunkt, den ich vertrete. Als Jugendliche hat mich Christian Lindner inspiriert, mich für politische Fragen zu interessieren. Seine klare Haltung und sein Einsatz für Bürgerrechte haben mich motiviert.
+    </p>
+    <p>
+      Die FDP war für mich die logische Wahl, nicht nur, weil sie für Freiheit steht, sondern auch, weil sie soziale Verantwortung mit Eigenverantwortung verbindet. Besonders wichtig ist mir: Kinderkriegen darf nicht vom Geldbeutel abhängen. Jeder soll seine Familienplanung frei gestalten können – unabhängig vom Einkommen.
+    </p>
+    <p>
+      Gerade in Zeiten wachsender Extreme braucht unser Land eine starke liberale Mitte – eine, die nicht nur Balance hält, sondern auch Leidenschaft für Freiheit entfacht.
+    </p>
+
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+  </main>
+
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
 </body>
 </html>
