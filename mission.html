@@ -106,6 +106,33 @@ main p {
       letter-spacing: 0.1em;
     }
 
+    .zurueck-box {
+  background-color: var(--turquoise);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin: 30px auto;
+  text-align: center;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+  user-select: none;
+  text-decoration: none; /* Kein Unterstrich */
+}
+
+.zurueck-box:hover {
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+.zurueck-box:active {
+  background-color: var(--magenta);
+  color: var(--white);
+}
+
     .themenbox {
       background-color: var(--magenta);
       border: 2px solid var(--magenta);
@@ -284,16 +311,27 @@ main p {
   <p>
     Als Kind habe ich keine Diskriminierung erlebt außerhalb der Schule, sondern wurde von Anfang an gleich behandelt. Es gab Lehrer, die mich unterstützt haben und denen ich bis heute mehr als dankbar bin, aber es gab auch Lehrer, die viel zu meinem harten Aufstieg ungewollt beigetragen haben. Ich bin ein Phönix, der durch die inneren Tode stärker wiedergeboren wird. Zuweilen Tag für Tag. Das hat mir sehr geholfen, mich zu integrieren und meine Stärken zu entfalten. Ich bin heute 35 Jahre alt und sehe mich als Teil der vielfältigen Gesellschaft, die Deutschland ausmacht.
   </p>
-  <p><a href="#top" style="color: var(--cyan); font-weight: 600; text-decoration: underline;">← Zurück zu den Themen</a></p>
 
-  <h2 id="leben">🏡 Leben & Integration in Freiburg</h2>
+  <div class="zurueck-box" onclick="location.href='#top';" role="button" tabindex="0"
+     onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+  🔙 Zurück zu den Themen
+</div>
+<h2 id="leben">🏡 Leben & Integration in Freiburg</h2>
   <p>
     2024 bin ich aus beruflichen Gründen nach Baden-Württemberg gezogen und habe mir meinen Traum erfüllt, in Freiburg zu leben. Die Stadt ist für mich ein besonderer Ort – mit ihrem milden Klima, das für meine Gesundheit wichtig ist, da ich unter Sonnenmangel leide. Freiburg bietet eine wunderschöne Natur, eine lebendige Gemeinschaft und viele Möglichkeiten für sportliche Aktivitäten.
   </p>
+
+  <div class="zurueck-box" onclick="location.href='#top';" role="button" tabindex="0"
+     onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+  🔙 Zurück zu den Themen
+</div>
   <p>
     Besonders das Joggen in und um Freiburg hat mir geholfen, meine Gedanken zu ordnen und mich hier wohlzufühlen. Die Inspiration, die ich aus dem Schwarzwald schöpfe, hat auch meine kreative Seite geweckt – ich schreibe Gedichte und lasse mich von der Natur und den Menschen inspirieren.
   </p>
-  <p><a href="#top" style="color: var(--cyan); font-weight: 600; text-decoration: underline;">← Zurück zu den Themen</a></p>
+<div class="zurueck-box" onclick="location.href='#top';" role="button" tabindex="0"
+     onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+  🔙 Zurück zu den Themen
+</div>
 
   <h2 id="politische-motivation">🗳️ Politische Motivation & Werte</h2>
   <p>
@@ -302,13 +340,19 @@ main p {
   <p>
     Meine Mission für Freiburg ist es, eine offene, nachhaltige und gerechte Stadt zu gestalten. Bildung, Umweltschutz und Bürgerrechte stehen für mich an erster Stelle. Ich will Politik machen, die für alle da ist – ohne ideologische Scheuklappen und mit echtem Respekt vor den Menschen.
   </p>
-  <p><a href="#top" style="color: var(--cyan); font-weight: 600; text-decoration: underline;">← Zurück zu den Themen</a></p>
+<div class="zurueck-box" onclick="location.href='#top';" role="button" tabindex="0"
+     onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+  🔙 Zurück zu den Themen
+</div>
 
   <h2 id="hobbys">🎨 Hobbys & Inspiration</h2>
   <p>
     Meine Hobbys sind vielfältig, aber ich pflege sie mit viel Leidenschaft. Neben dem Joggen gehören dazu das Schreiben von Gedichten, das ich seit Jahren praktiziere, und die Natur. Freiburg bietet mir den perfekten Rahmen, um mich kreativ und sportlich zu entfalten. Diese Balance ist mir sehr wichtig, um meinen Charakter treu zu bleiben.
   </p>
-  <p><a href="#top" style="color: var(--cyan); font-weight: 600; text-decoration: underline;">← Zurück zu den Themen</a></p>
+<div class="zurueck-box" onclick="location.href='#top';" role="button" tabindex="0"
+     onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+  🔙 Zurück zu den Themen
+</div>
 
   <h2 id="familie">👨‍👩‍👧‍👦 Familie & Kindheitserfahrungen</h2>
   <p>
@@ -317,7 +361,10 @@ main p {
   <p>
     Schule war für mich in Kurdistan sehr schwierig, aber Deutschland hat mir mit seinem weniger hierarchischen und weniger leistungsorientierten Schulsystem die Chance gegeben, meine Stärken zu entwickeln und erfolgreich zu sein.
   </p>
-  <p><a href="#top" style="color: var(--cyan); font-weight: 600; text-decoration: underline;">← Zurück zu den Themen</a></p>
+<div class="zurueck-box" onclick="location.href='#top';" role="button" tabindex="0"
+     onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+  🔙 Zurück zu den Themen
+</div>
 
   <h2 id="fdp-grundsatz">💡 Warum FDP? Meine Werte</h2>
   <p>
@@ -326,7 +373,10 @@ main p {
   <p>
     Andere Parteien wie die CDU mit Friedrich Merz vertreten hier eine ganz andere Sicht, die ich nicht teile. Für mich steht fest: Die FDP ist die Partei, die Freiheit und Familien unterstützt – das entspricht meinen Werten und meinem Engagement.
   </p>
-  <p><a href="#top" style="color: var(--cyan); font-weight: 600; text-decoration: underline;">← Zurück zu den Themen</a></p>
+<div class="zurueck-box" onclick="location.href='#top';" role="button" tabindex="0"
+     onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+  🔙 Zurück zu den Themen
+</div>
 
 </main>
   
