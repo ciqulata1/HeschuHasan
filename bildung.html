@@ -1,330 +1,286 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Bildung - Heschu Hasan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biografie – Heschu Hasan</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <style>
+    :root {
+      --magenta: #e5007d;
+      --turquoise: #00abae;
+      --white: #ffffff;
+      --black: #000000;
+      --yellow: #f2c94c; /* warme Gelbton als Akzent */
+    }
 
-<style>
-  :root {
-    --yellow: #ffed00;
-    --magenta: #e5007d;
-    --cyan: #009ee3;
-    --turquoise: #00abae;
-    --black: #000000;
-    --white: #ffffff;
-  }
+    body {
+      margin: 0;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.5;
+      padding: 20px 40px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    background-color: var(--white);
-    position: relative;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-    color: var(--cyan);
-  }
-
-  /* Weißer halbtransparenter Mantel über ganze Seite */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-color: rgba(255, 255, 255, 0.85);
-    z-index: -1;
-  }
-
-  a {
-    color: var(--cyan);
-    text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  a:hover,
-  a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-
-  header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--cyan);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    z-index: 10;
-    position: relative;
-  }
-
-  header h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--cyan);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  nav a {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-left: 25px;
-  }
-
-  nav a.active,
-  nav a:hover {
-    color: var(--magenta);
-    font-weight: 700;
-  }
-
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 20px;
-    position: relative;
-    z-index: 1;
-    background-image: url('IMG_2308.png');
-    background-repeat: repeat-y;
-    background-position: center top;
-    background-size: contain;
-    background-attachment: scroll;
-  }
-
-  main h2 {
-    color: var(--black);
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    position: relative;
-    z-index: 2;
-  }
-
-  main h3 {
-    color: var(--cyan);
-    font-weight: 600;
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 2;
-  }
-
-  main p {
-    font-weight: 300;
-    font-size: 1.1rem;
-    max-width: 700px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .bildung-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 40px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .box {
-    width: 100%;
-    max-width: 300px;
-    border: 2px solid var(--cyan);
-    background-color: var(--white);
-    color: var(--cyan);
-    padding: 20px;
-    border-radius: 5px;
-    font-weight: 300;
-    font-size: 1.1rem;
-    user-select: none;
-    display: block;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    overflow: hidden;
-    box-sizing: border-box;
-
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-
-    position: relative;
-    z-index: 2;
-  }
-
-  .box p {
-    font-weight: 300;
-    font-size: 1.1rem;
-    hyphens: auto;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
-
-  .box:hover {
-    border-color: var(--magenta);
-  }
-
-  .box:focus,
-  .box.selected {
-    background-color: var(--magenta);
-    color: var(--turquoise);
-    outline: none;
-    border-color: var(--magenta);
-  }
-
-  .box.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .box h3 {
-    margin-top: 0;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  footer {
-    background-color: var(--cyan);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    z-index: 10;
-    position: relative;
-  }
-
-  footer h3 {
-    margin: 0 0 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  footer .social-links a {
-    color: var(--white);
-    font-size: 30px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-
-  footer .social-links a:hover,
-  footer .social-links a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-
-  @media (max-width: 768px) {
     header {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 15px 20px;
-    }
-
-    nav a {
-      margin-left: 0;
-      margin-right: 15px;
-    }
-
-    .bildung-boxes {
-      flex-direction: column;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      border-bottom: 3px solid var(--yellow);
+      padding-bottom: 10px;
     }
-  }
-</style>
+
+    header h1 {
+      color: var(--turquoise);
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0;
+      flex: 1 1 300px;
+      text-shadow: 1px 1px 0 var(--yellow);
+    }
+
+    header img {
+      max-height: 120px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      margin-left: 20px;
+      border: 4px solid var(--yellow);
+      box-shadow: 0 0 8px var(--yellow);
+    }
+
+    nav {
+      margin-bottom: 40px;
+      border: 2px solid var(--magenta);
+      border-radius: 10px;
+      background-color: var(--white);
+      padding: 15px 25px;
+    }
+
+    nav h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: var(--magenta);
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    nav ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    nav ul li {
+      border: 2px solid var(--magenta);
+      border-radius: 8px;
+      padding: 8px 14px;
+      background-color: var(--white);
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    nav ul li:hover,
+    nav ul li:focus {
+      background-color: var(--magenta);
+      color: var(--white);
+      outline: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    main {
+      flex-grow: 1;
+    }
+
+    section.thema {
+      border: 2px solid var(--magenta);
+      border-radius: 12px;
+      padding: 18px 28px;
+      margin-bottom: 10px;
+      color: var(--turquoise);
+      background-color: #fef7fb;
+    }
+
+    section.thema h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--magenta);
+      text-shadow: 0 0 2px var(--yellow);
+    }
+
+    section.thema p {
+      font-weight: 300;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+      line-height: 1.6;
+      white-space: pre-line;
+      color: var(--black);
+    }
+
+    .zurueck {
+      border: 2px solid var(--turquoise);
+      background-color: var(--white);
+      color: var(--turquoise);
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin: 20px 0 40px;
+      font-weight: 600;
+      cursor: pointer;
+      width: fit-content;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .zurueck:hover,
+    .zurueck:focus {
+      background-color: var(--turquoise);
+      color: var(--white);
+      border-color: var(--turquoise);
+      outline: none;
+    }
+
+    footer {
+      border-top: 3px solid var(--yellow);
+      margin-top: 40px;
+      padding: 15px 0;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--yellow);
+      background-color: #222; /* dunkler Hintergrund für Footer */
+      box-shadow: inset 0 0 10px var(--yellow);
+    }
+
+    footer a {
+      color: var(--yellow);
+      text-decoration: none;
+      border-bottom: 1px solid var(--yellow);
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    footer a:hover,
+    footer a:focus {
+      color: var(--magenta);
+      border-color: var(--magenta);
+      outline: none;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      header img {
+        margin: 20px 0 0 0;
+        max-height: 90px;
+        border: 3px solid var(--yellow);
+        box-shadow: 0 0 6px var(--yellow);
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        width: 100%;
+      }
+
+      footer {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header id="top">
+    <h1>Biografie – Heschu Hasan</h1>
+    <img src="https://via.placeholder.com/150x150.png?text=Porträt+Heschu+Hasan" alt="Porträt von Heschu Hasan" />
+  </header>
 
-<header>
-  <h1>HESCHU HASAN</h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html" class="active">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
+  <nav aria-label="Themenübersicht">
+    <h2>Themen</h2>
+    <ul>
+      <li><a href="#flucht-herkunft">Flucht & Herkunft</a></li>
+      <li><a href="#hobbys-inspiration">Hobbys & Inspiration</a></li>
+      <li><a href="#politische-motivation">Politische Motivation</a></li>
+      <li><a href="#schulzeit-integration">Schulzeit & Integration</a></li>
+      <li><a href="#familiengeschichte-motivation">Familiengeschichte & Motivation</a></li>
+      <li><a href="#familien-kinder">Familien & Kinder</a></li>
+    </ul>
   </nav>
-</header>
 
-<main>
-  <h2>Meine Bildungsthemen</h2>
-  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+  <main>
+    <section id="flucht-herkunft" class="thema" tabindex="0" aria-label="Flucht und Herkunft">
+      <h3>Flucht & Herkunft</h3>
+      <p>Ich bin 1989 geboren, 1996 mit meiner Familie aus dem Irak geflohen und in Bayern aufgewachsen. Die Flucht war eine prägende Erfahrung, die mich lehrte, wie wichtig Freiheit und Sicherheit sind. In Bayern fand ich ein neues Zuhause und konnte meine Schulzeit erfolgreich absolvieren. 2024 bin ich aus beruflichen Gründen nach Freiburg gezogen, weil ich schon immer die Stadt und ihr Klima schätzte – das mildere Wetter hier ist ideal für meine Gesundheit und mein Wohlbefinden.</p>
+    </section>
+    <a href="#top" class="zurueck" role="button" tabindex="0">← Zurück zu den Themen</a>
 
-   <div class="bildung-boxes" role="list">
-      <a href="kindlich.html" class="box" role="listitem" tabindex="0">
-        <h3>Frühkindliche Bildung</h3>
-        <p>Förderung frühzeitiger Bildung und Entwicklungsmöglichkeiten.</p>
-      </a>
-      <a href="digitalebildung.html" class="box" role="listitem" tabindex="0">
-        <h3>Digitale Bildung</h3>
-        <p>Integration moderner Technologien in den Schulalltag.</p>
-      </a>
-      <a href="fortbildung.html" class="box" role="listitem" tabindex="0">
-        <h3>Lehrerbildung & Fortbildung</h3>
-        <p>Qualitätssteigerung durch bessere Ausbildung und Weiterbildung.</p>
-      </a>
-      <a href="schulfinanzierung.html" class="box" role="listitem" tabindex="0">
-        <h3>Schulfinanzierung</h3>
-        <p>Faire und nachhaltige Finanzierung der Bildungseinrichtungen.</p>
-      </a>
-      <a href="inklusion.html" class="box" role="listitem" tabindex="0">
-        <h3>Inklusion & Chancengleichheit</h3>
-        <p>Bildung für alle, unabhängig von Herkunft und Fähigkeiten.</p>
-      </a>
-    </div>
+    <section id="hobbys-inspiration" class="thema" tabindex="0" aria-label="Hobbys und Inspiration">
+      <h3>Hobbys & Inspiration</h3>
+      <p>Freiburg bietet mir viel Raum für Sport und Natur: Ich jogge regelmäßig, was mir hilft, fit und gesund zu bleiben. Die Wälder des Schwarzwaldes sind für mich eine große Quelle der Inspiration – hier finde ich Ruhe und Kraft, die sich auch in meinen Gedichten widerspiegeln. Diese Verbindung zur Natur unterstützt mich dabei, meinen Charakter zu stärken und meinen eigenen Weg zu gehen, sowohl persönlich als auch beruflich.</p>
+    </section>
+    <a href="#top" class="zurueck" role="button" tabindex="0">← Zurück zu den Themen</a>
+
+    <section id="politische-motivation" class="thema" tabindex="0" aria-label="Politische Motivation">
+      <h3>Politische Motivation</h3>
+      <p>Politik hat mich schon früh fasziniert. Inspiriert durch Persönlichkeiten wie Christian Lindner habe ich mich entschieden, selbst aktiv zu werden. Mein Ziel ist es, eine liberale Mitte zu stärken, die Freiheit und Bürgerrechte schützt und Extremismus konsequent entgegenwirkt. Für mich steht die Förderung von Chancengleichheit und gesellschaftlichem Zusammenhalt im Mittelpunkt meines politischen Engagements.</p>
+    </section>
+    <a href="#top" class="zurueck" role="button" tabindex="0">← Zurück zu den Themen</a>
+
+    <section id="schulzeit-integration" class="thema" tabindex="0" aria-label="Schulzeit und Integration">
+      <h3>Schulzeit & Integration</h3>
+      <p>In Deutschland habe ich mich von Anfang an willkommen gefühlt. Die klaren Strukturen und das vertrauensvolle Umfeld in der Schule halfen mir, mein Bestes zu geben und mich zu integrieren. Besonders schätze ich die Wertschätzung für individuelle Wege und Talente – eine Stärke, die ich in meinem Leben immer wieder als Grundlage für Erfolg erlebt habe.</p>
+    </section>
+    <a href="#top" class="zurueck" role="button" tabindex="0">← Zurück zu den Themen</a>
+
+    <section id="familiengeschichte-motivation" class="thema" tabindex="0" aria-label="Familiengeschichte und Motivation">
+      <h3>Familiengeschichte & Motivation</h3>
+      <p>Meine Familie und ich haben die Schrecken des Zweiten Golfkriegs und die Angst unter dem Baath-Regime erlebt. Diese Erfahrungen prägen mich tief und machen mir bewusst, wie wertvoll Freiheit, Sicherheit und Demokratie sind. Diese Werte motivieren mich, mich politisch zu engagieren und für eine Gesellschaft einzutreten, in der niemand in Angst leben muss.</p>
+    </section>
+    <a href="#top" class="zurueck" role="button" tabindex="0">← Zurück zu den Themen</a>
+
+    <section id="familien-kinder" class="thema" tabindex="0" aria-label="Familien und Kinder">
+      <h3>Familien & Kinder</h3>
+      <p>Ein Kernanliegen für mich ist, dass Kinderkriegen nicht am Geld scheitern darf. Jede Familie soll frei und selbstbestimmt planen können, ohne finanzielle Sorgen. Die FDP steht für diese Freiheit und für eine Politik, die Familien stärkt – anders als andere Parteien, die Kindergeld kürzen wollen. Für mich ist Familienförderung ein wichtiger Baustein einer solidarischen Gesellschaft.</p>
+    </section>
+    <a href="#top" class="zurueck" role="button" tabindex="0">← Zurück zu den Themen</a>
   </main>
 
-<footer>
-  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-</footer>
-
-<script>
-  document.querySelectorAll('.box').forEach(box => {
-    box.addEventListener('click', () => {
-      document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
-      box.classList.add('selected');
-    });
-    box.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        box.click();
-      }
-    });
-  });
-
-  const boxes = document.querySelectorAll('.box');
-
-  function checkBoxes() {
-    const triggerBottom = window.innerHeight * 0.85;
-    boxes.forEach(box => {
-      const boxTop = box.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
-        box.classList.add('show');
-      } else {
-        box.classList.remove('show');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', checkBoxes);
-  checkBoxes();
-</script>
-
-<script src="https://kit.fontawesome.com/a2e0e6cfd4.js" crossorigin="anonymous"></script>
-
+  <footer>
+    <p>Treffen Sie mich auf den sozialen Medien: <a href="https://www.instagram.com/heschuhasan" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+  </footer>
 </body>
 </html>
