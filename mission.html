@@ -1,235 +1,306 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Meine Mission für Freiburg – Heschu Hasan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biografie – Heschu Hasan</title>
 
-<!-- FontAwesome CDN für Icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-
-<style>
-  :root {
-    --yellow: #ffed00;
-    --magenta: #e5007d;
-    --cyan: #009ee3;
-    --turquoise: #00abae;
-    --black: #000000;
-    --white: #ffffff;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  /* mission.html: Fließtext schwarz in Calibri */
-   body {
-    margin: 0;
-    background-color: var(--white);
-    color: #000000; /* Schwarz statt Cyan */
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-
-    opacity: 0; /* Für smooth fade-in */
-    transition: opacity 1s ease;
-  }
-
-  a {
-    color: var(--cyan);
-    text-decoration: none;
-  }
-  a:hover,
-  a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-
-  header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--cyan);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--cyan);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  nav a {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-left: 25px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  nav a.active,
-  nav a:hover {
-    color: var(--magenta);
-    font-weight: 700;
-  }
-
-  body {
-  margin: 0;
-  background-color: var(--white);
-  color: #000000; /* Fließtext schwarz */
-  font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-
-  opacity: 0; /* Für smooth fade-in */
-  transition: opacity 1s ease;
-}
-
-main h2 {
-  color: var(--cyan); /* Überschrift cyan */
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-
-  main {
-    padding: 20px 40px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  main h2 {
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  main p {
-    font-weight: 300;
-    font-size: 1.1rem;
-    margin-bottom: 1.25rem;
-  }
-  .mission-image {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 5px;
-  border: 4px solid #ffed00; /* leuchtendes Gelb */
-  box-shadow: 0 0 15px 3px rgba(255, 237, 0, 0.5); /* leichter Glow */
-  border-radius: 6px;
-  background-color: #fff; /* Weiß für Kontrast */
-  text-align: center;
-}
-
-.mission-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 4px;
-}
-
-.photo-credit {
-  font-size: 0.8rem;
-  color: #666;
-  margin-top: 6px;
-  font-style: italic;
-}
-
-  footer {
-    background-color: var(--cyan);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    font-weight: 500;
-  }
- footer h3 {
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 15px;
-      font-weight: 700;
+  <style>
+    :root {
+      --magenta: #e5007d;
+      --turquoise: #00abae;
+      --white: #ffffff;
+      --black: #000000;
+      --yellow: #f2c94c; /* warme Gelbton als Akzent */
     }
-  footer .social-links a {
-    color: var(--white);
-    font-size: 30px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-  footer .social-links a:hover,
-  footer .social-links a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
 
-  @media (max-width: 768px) {
-    header {
+    body {
+      margin: 0;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.5;
+      padding: 20px 40px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      padding: 15px 20px;
+      min-height: 100vh;
     }
-    nav a {
-      margin-left: 0;
-      margin-right: 15px;
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      border-bottom: 3px solid var(--yellow);
+      padding-bottom: 10px;
     }
-  }
-</style>
 
-<script>
-  window.addEventListener('load', () => {
-    document.body.style.opacity = '1';
-  });
-</script>
+    header h1 {
+      color: var(--turquoise);
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0;
+      flex: 1 1 300px;
+      text-shadow: 1px 1px 0 var(--yellow);
+    }
 
+    header img {
+      max-height: 120px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      margin-left: 20px;
+      border: 4px solid var(--yellow);
+      box-shadow: 0 0 8px var(--yellow);
+    }
+
+    nav {
+      margin-bottom: 40px;
+      border: 2px solid var(--magenta);
+      border-radius: 10px;
+      background-color: var(--white);
+      padding: 15px 25px;
+    }
+
+    nav h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: var(--magenta);
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    nav ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    nav ul li {
+      border: 2px solid var(--magenta);
+      border-radius: 8px;
+      padding: 8px 14px;
+      background-color: var(--white);
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    nav ul li:hover,
+    nav ul li:focus {
+      background-color: var(--magenta);
+      color: var(--white);
+      outline: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    main {
+      flex-grow: 1;
+    }
+
+    section.thema {
+      border: 2px solid var(--magenta);
+      border-radius: 12px;
+      padding: 18px 28px;
+      margin-bottom: 10px;
+      color: var(--turquoise);
+      background-color: #fef7fb;
+    }
+
+    section.thema h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--magenta);
+      text-shadow: 0 0 2px var(--yellow);
+    }
+
+    section.thema p {
+      font-weight: 300;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+      line-height: 1.6;
+      white-space: pre-line;
+      color: var(--black);
+    }
+
+    .zurueck {
+      border: 2px solid var(--turquoise);
+      background-color: var(--white);
+      color: var(--turquoise);
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin: 20px 0 40px;
+      font-weight: 600;
+      cursor: pointer;
+      width: fit-content;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .zurueck:hover,
+    .zurueck:focus {
+      background-color: var(--turquoise);
+      color: var(--white);
+      border-color: var(--turquoise);
+      outline: none;
+    }
+
+    footer {
+      border-top: 3px solid var(--yellow);
+      margin-top: 40px;
+      padding: 15px 0;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--yellow);
+      background-color: #222; /* dunkler Hintergrund für Footer */
+      box-shadow: inset 0 0 10px var(--yellow);
+    }
+
+    footer a {
+      color: var(--yellow);
+      text-decoration: none;
+      border-bottom: 1px solid var(--yellow);
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    footer a:hover,
+    footer a:focus {
+      color: var(--magenta);
+      border-color: var(--magenta);
+      outline: none;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      header img {
+        margin: 20px 0 0 0;
+        max-height: 90px;
+        border: 3px solid var(--yellow);
+        box-shadow: 0 0 6px var(--yellow);
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        width: 100%;
+      }
+
+      footer {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header id="top">
+    <h1>Biografie – Heschu Hasan</h1>
+    <img src="https://via.placeholder.com/150x150.png?text=Porträt+Heschu+Hasan" alt="Porträt von Heschu Hasan" />
+  </header>
 
-<header>
-  <h1>HESCHU HASAN</h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="mission.html" class="active">Meine Mission</a>
-    <a href="impressum.html">Impressum</a>
+  <nav aria-label="Themenübersicht">
+    <h2>Themen</h2>
+  <ul>
+  <li><a href="#meine-mission">Meine Mission</a></li>
+  <li><a href="#flucht-und-wurzeln">Flucht & Wurzeln</a></li>
+  <li><a href="#integration-und-schule">Integration & Schule</a></li>
+  <li><a href="#freiburg-und-gesundheit">Freiburg & Gesundheit</a></li>
+  <li><a href="#hobbys-und-inspiration">Hobbys & Inspiration</a></li>
+  <li><a href="#politik-und-engagement">Politisches Engagement</a></li>
+  <li><a href="#freiheit-und-familie">Freiheit & Familie</a></li>
+</ul>
   </nav>
-</header>
 
-  <div class="mission-image">
-  <img src="IMG_2219.jpeg" alt="Foto von Heschu Hasan, Mai 2025" />
-  <p class="photo-credit">Foto: Heschu Hasan, Mai 2025</p>
-</div>
+  <main>
+  <section id="meine-mission" class="thema" tabindex="0" aria-label="Meine Mission für Freiburg">
+    <h3>Meine Mission für Freiburg</h3>
+    <p>Als Wahlkreiskandidatin der FDP für Freiburg-Ost (Wahlkreis 46) setze ich mich mit voller Kraft für die Zukunft unserer Stadt ein.  
+    Bildung, Umweltschutz und die Förderung von Freiheit und Bürgerrechten sind meine zentralen Anliegen. Ich strebe eine offene, moderne Politik an, die die Bedürfnisse aller Menschen in Freiburg berücksichtigt.  
+    Gemeinsam mit Ihnen möchte ich Freiburg nachhaltiger, gerechter und innovativer gestalten.</p>
+  </section>
+  <a href="#top" class="zurueck">← Zurück zu den Themen</a>
 
-<main>
-  <h2>Meine Mission für Freiburg</h2>
-  <p>
-   Als Wahlkreiskandidatin der FDP für Freiburg-Ost (Wahlkreis 46) setze ich mich mit voller Kraft für die Zukunft unserer Stadt ein.
-  </p>
-  <p>
-    Bildung, Umweltschutz und die Förderung von Freiheit und Bürgerrechten sind meine zentralen Anliegen. Ich strebe eine offene, moderne Politik an, die die Bedürfnisse aller Menschen in Freiburg berücksichtigt.
-  </p>
-  <p>
-    Gemeinsam mit Ihnen möchte ich Freiburg nachhaltiger, gerechter und innovativer gestalten.
-  </p>
+  <section id="flucht-und-wurzeln" class="thema" tabindex="0" aria-label="Flucht und Wurzeln">
+    <h3>Flucht & Wurzeln</h3>
+    <p>Ich bin 1989 im Irak geboren und 1996 mit meiner Familie vor dem Baath-Regime und dem Zweiten Golfkrieg geflohen. In Bayern fanden wir ein sicheres Zuhause – dafür bin ich bis heute dankbar. Die Freiheit und Sicherheit, die ich hier erleben durfte, prägen mein politisches Denken tief.  
+    Die Erfahrungen meiner Familie mit Krieg und Unterdrückung haben mich gelehrt, wie kostbar Demokratie und Grundrechte sind.</p>
+  </section>
+  <a href="#top" class="zurueck">← Zurück zu den Themen</a>
+
+  <section id="integration-und-schule" class="thema" tabindex="0" aria-label="Integration und Schule">
+    <h3>Integration & Schule</h3>
+    <p>In Deutschland wurde ich als Kind nie ausgegrenzt – im Gegenteil: Ich wurde gesehen, gehört und gefördert. Besonders in der Schule habe ich erfahren, wie sehr individuelle Wege geschätzt werden.  
+    Anders als in meiner Herkunftsregion war hier Leistung nicht alles – auch kleine Fortschritte wurden anerkannt. Diese Haltung hat mich gestärkt und mir geholfen, meinen Weg zu finden.  
+    In Kurdistan war Schule für mich kaum auszuhalten – in Deutschland konnte ich aufblühen.</p>
+  </section>
+  <a href="#top" class="zurueck">← Zurück zu den Themen</a>
+
+  <section id="freiburg-und-gesundheit" class="thema" tabindex="0" aria-label="Freiburg und Gesundheit">
+    <h3>Freiburg & Gesundheit</h3>
+    <p>2024 bin ich aus beruflichen Gründen nach Freiburg gezogen – aber es war schon lange mein Wunsch.  
+    Freiburg ist für mich nicht nur ein wunderschöner Ort, sondern auch ideal für meine Gesundheit. Als jemand, der aus einem Land mit extremer Hitze kommt, tut mir das milde Klima hier besonders gut.  
+    Die Menschen in Freiburg sind offen, aber nicht aufdringlich – ich fühle mich hier wirklich angekommen.</p>
+  </section>
+  <a href="#top" class="zurueck">← Zurück zu den Themen</a>
+
+  <section id="hobbys-und-inspiration" class="thema" tabindex="0" aria-label="Hobbys und Inspiration">
+    <h3>Hobbys & Inspiration</h3>
+    <p>Ich bewege mich gern und liebe es zu joggen – körperliche Bewegung ist für mich nicht nur Sport, sondern Lebensfreude.  
+    Der Schwarzwald und die Natur rund um Freiburg geben mir Kraft und Inspiration. Viele meiner Gedichte entstehen aus dieser Verbindung zur Natur.  
+    Wer hier lebt, kann sich selbst treu bleiben – das habe ich selbst erfahren und bin dafür sehr dankbar.</p>
+  </section>
+  <a href="#top" class="zurueck">← Zurück zu den Themen</a>
+
+  <section id="politik-und-engagement" class="thema" tabindex="0" aria-label="Politisches Engagement">
+    <h3>Politisches Engagement</h3>
+    <p>Politik hat mich schon als Jugendliche fasziniert – vor allem durch Christian Lindner, der mich inspirierte, eine eigene Haltung zu entwickeln.  
+    Ich habe gemerkt: Ich beobachte Politik nicht nur, ich gestalte sie mit. Meine Meinung spiegelt sich in vielen aktuellen Debatten wider – das motiviert mich, Verantwortung zu übernehmen.  
+    Gerade jetzt braucht Deutschland eine starke liberale Stimme, um den Extremen entgegenzuwirken und das Gleichgewicht zu bewahren.</p>
+  </section>
+  <a href="#top" class="zurueck">← Zurück zu den Themen</a>
+
+  <section id="freiheit-und-familie" class="thema" tabindex="0" aria-label="Freiheit und Familie">
+    <h3>Freiheit & Familie</h3>
+    <p>Ich bin der festen Überzeugung: Kinderkriegen darf keine Frage des Einkommens sein.  
+    Jede Familie soll frei und selbstbestimmt entscheiden können – ohne finanzielle Hürden. Während andere Parteien wie die CDU beim Kindergeld sparen wollen, steht die FDP für echte Familienförderung.  
+    Freiheit bedeutet auch, das Leben nach den eigenen Werten gestalten zu können – das ist mein politisches Ziel.</p>
+  </section>
+  <a href="#top" class="zurueck">← Zurück zu den Themen</a>
 </main>
 
-<footer>
-  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-  <div class="social-links" aria-label="Soziale Medien">
-    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-</footer>
-
+  <footer>
+    <p>Treffen Sie mich auf den sozialen Medien: <a href="https://www.instagram.com/heschuhasan" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+  </footer>
 </body>
 </html>
