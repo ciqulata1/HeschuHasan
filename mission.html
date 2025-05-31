@@ -163,6 +163,32 @@
       outline: none;
     }
 
+    .profile-image-container {
+  width: 180px;
+  margin: 0 auto 30px auto;
+  border: 4px solid var(--yellow);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-radius 0.3s ease;
+  cursor: pointer;
+  outline-offset: 3px;
+}
+
+.profile-image-container:hover,
+.profile-image-container:focus {
+  border-radius: 50%;
+  outline: none;
+}
+
+.profile-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+  user-select: none;
+  pointer-events: none;
+}
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -196,6 +222,21 @@
       <a href="impressum.html">Impressum</a>
     </nav>
   </header>
+
+  <main id="top">
+
+  <div class="profile-image-container" tabindex="0" aria-label="Selfie von Heschu Hasan bei Run4Europe, Mai 2025">
+    <img
+      src="IMG_2219.jpeg"
+      alt="Selfie von Heschu Hasan bei Run4Europe, Mai 2025"
+      class="profile-image"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Weiterer Inhalt deiner Mission-Seite -->
+
+</main>
 
   
     <div class="themenbox" onclick="location.href='#herkunft';" role="button" tabindex="0"
