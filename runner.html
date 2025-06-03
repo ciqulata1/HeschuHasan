@@ -14,14 +14,17 @@
       flex-direction: column;
       min-height: 100vh;
     }
-    header {
+    header, footer {
       background-color: #009ee3;
       color: #fff;
       padding: 20px 10px;
       text-align: center;
       font-weight: bold;
-      font-size: 1.5rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    footer {
+      margin-top: auto;
+      font-size: 0.9rem;
     }
     main {
       flex: 1;
@@ -51,32 +54,42 @@
       margin-bottom: 30px;
     }
     button {
+      border: none;
+      padding: 12px 30px;
       font-family: Calibri, sans-serif;
       font-weight: bold;
+      font-size: 1rem;
       border-radius: 5px;
-      border: none;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      user-select: none;
     }
-    button#jumpBtn {
+    #jumpBtn {
       background-color: #009ee3;
       color: #fff;
-      padding: 12px 30px;
-      font-size: 1.1rem;
+      min-width: 140px;
     }
-    button#jumpBtn:active {
+    #jumpBtn:active {
       background-color: #ffed00;
       color: #000;
     }
-    button#homeBtn {
+    #homeBtn {
       background-color: #e5007d;
       color: #fff;
-      padding: 12px 24px;
-      font-size: 1rem;
       min-width: 160px;
     }
-    button#homeBtn:hover {
+    #homeBtn:hover {
       background-color: #c00066;
+    }
+    .arrowBtn {
+      background-color: #009ee3;
+      color: #fff;
+      font-size: 1.5rem;
+      width: 60px;
+      height: 50px;
+    }
+    .arrowBtn:active {
+      background-color: #ffed00;
+      color: #000;
     }
     #arrowButtons {
       display: flex;
@@ -84,36 +97,12 @@
       gap: 40px;
       margin-top: 20px;
     }
-    button.arrowBtn {
-      background-color: #009ee3;
-      color: #fff;
-      padding: 12px 28px;
-      font-size: 1.5rem;
-      width: 60px;
-      height: 50px;
-    }
-    button.arrowBtn:active {
-      background-color: #ffed00;
-      color: #000;
-    }
-    footer {
-      background-color: #009ee3;
-      color: #fff;
-      padding: 15px 10px;
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: auto;
-    }
     @media (max-width: 480px) {
-      main {
-        padding: 15px 10px;
+      canvas {
+        width: 100% !important;
+        height: auto !important;
       }
-      button#jumpBtn, button#homeBtn {
-        width: 80vw;
-        max-width: 300px;
-        font-size: 1.2rem;
-      }
-      button.arrowBtn {
+      .arrowBtn {
         width: 80px;
         height: 60px;
         font-size: 2rem;
@@ -122,57 +111,54 @@
   </style>
 </head>
 <body>
-  <header>Wahlkampf Runner – Heschu Hasan Digital</header>
-
+  <header>
+    Wahlkampf Runner – Heschu Hasan Digital
+  </header>
   <main>
     <h2>Spielen Sie jetzt: Wahlkampf Runner – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
-    <div id="introText" style="margin-top: 20px; font-size: 1.2rem;">🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!</div>
+    <div style="margin-top: 20px; font-size: 1.2rem;">
+      🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
+    </div>
     <canvas id="gameCanvas" width="700" height="250"></canvas>
-
     <div id="buttonsContainer">
       <button id="jumpBtn">⤴ Springen</button>
-      <button class="arrowBtn" id="leftBtn">◀</button>
-      <button class="arrowBtn" id="rightBtn">▶</button>
-      <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
       <div id="arrowButtons">
-        <button id="restartBtn" style="display:none; background-color:#009ee3; color:#fff; padding:12px 30px;">Nochmal spielen</button>
+        <button class="arrowBtn" id="leftBtn">◀</button>
+        <button class="arrowBtn" id="rightBtn">▶</button>
       </div>
+      <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
+      <button id="restartBtn" style="display:none; background-color:#009ee3; color:#fff;">Nochmal spielen</button>
     </div>
   </main>
-
-  <footer>© 2025 Wahlkampf Runner – Heschu Hasan Digital</footer>
+  <footer>
+    © 2025 Wahlkampf Runner – Heschu Hasan Digital
+  </footer>
 
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
 
-    const player = {
-      x: 50, y: 190, width: 30, height: 40,
-      color: "#ffed00", vy: 0, gravity: 1.5, jumping: false
-    };
-
+    const player = { x: 50, y: 190, width: 30, height: 40, color: "#ffed00", vy: 0, gravity: 1.5, jumping: false };
     let score = 0;
-    const coins = [];
-    const coinSize = 20;
-    let coinTimer = 0;
-    const coinInterval = 100;
+    const coins = [], coinSize = 20;
+    let coinTimer = 0, coinInterval = 100;
 
     const obstacles = [];
-    const obstacleWidth = 30;
-    const obstacleHeight = 40;
-    let obstacleTimer = 0;
-    const obstacleInterval = 140;
+    let obstacleTimer = 0, obstacleInterval = 140;
+
+    const obstacleTypes = [
+      { text: "📄 Formulare", color: "#b22222" },
+      { text: "⌛ Wartezeit", color: "#d2691e" },
+      { text: "🏢 Amt", color: "#006400" },
+      { text: "❌ Bürokratie", color: "#8b0000" }
+    ];
 
     const keys = {};
-    document.addEventListener("keydown", e => {
-      keys[e.key] = true;
-      if (e.key === " " || e.key === "ArrowUp") jump();
-    });
+    document.addEventListener("keydown", e => { keys[e.key] = true; if (e.key === " " || e.key === "ArrowUp") jump(); });
     document.addEventListener("keyup", e => keys[e.key] = false);
 
     const leftBtn = document.getElementById("leftBtn");
     const rightBtn = document.getElementById("rightBtn");
-
     leftBtn.addEventListener("mousedown", () => keys["ArrowLeft"] = true);
     leftBtn.addEventListener("mouseup", () => keys["ArrowLeft"] = false);
     rightBtn.addEventListener("mousedown", () => keys["ArrowRight"] = true);
@@ -187,15 +173,15 @@
       }
     }
 
-    document.getElementById("jumpBtn").addEventListener("click", () => {
-      jump();
-    });
+    document.getElementById("jumpBtn").addEventListener("click", () => jump());
 
     function updatePlayer() {
       if (keys["ArrowLeft"]) player.x = Math.max(0, player.x - 8);
       if (keys["ArrowRight"]) player.x = Math.min(canvas.width - player.width, player.x + 8);
+
       player.vy += player.gravity;
       player.y += player.vy;
+
       if (player.y > 190) {
         player.y = 190;
         player.vy = 0;
@@ -203,33 +189,13 @@
       }
     }
 
-    const obstacleTypes = [
-      { text: "📄 Formulare", color: "#b22222" },
-      { text: "⌛ Wartezeit", color: "#d2691e" },
-      { text: "🏢 Amt", color: "#006400" },
-      { text: "❌ Bürokratie", color: "#8b0000" }
-    ];
-
     function generateObstacle() {
       const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
-      obstacles.push({
-        x: canvas.width,
-        y: 190,
-        width: obstacleWidth,
-        height: obstacleHeight,
-        text: type.text,
-        color: type.color
-      });
+      obstacles.push({ x: canvas.width, y: 190, width: 30, height: 40, text: type.text, color: type.color });
     }
 
     function generateCoin() {
-      coins.push({
-        x: canvas.width + 20,
-        y: 140 + Math.random() * 40,
-        width: coinSize,
-        height: coinSize,
-        color: "#ffed00"
-      });
+      coins.push({ x: canvas.width + 20, y: 140 + Math.random() * 40, width: coinSize, height: coinSize, color: "#ffed00" });
     }
 
     function drawPlayer() {
@@ -240,28 +206,9 @@
       ctx.fillRect(player.x + 18, player.y + 8, 6, 6);
       ctx.font = "bold 11px Calibri";
       ctx.fillStyle = "#fff";
-      ctx.fillRect(player.x + 36, player.y - 10, 60, 22);
+      ctx.fillRect(player.x + 36, player.y - 12, 68, 18);
       ctx.fillStyle = "#000";
-      ctx.fillText("Mehr FDP Coins!", player.x + 40, player.y + 6);
-    }
-
-    function drawObstacle(obstacle) {
-      // "Rattenschwanz"
-      const tailLength = 5;
-      const gap = 6;
-      for (let i = 1; i <= tailLength; i++) {
-        ctx.fillStyle = obstacle.color;
-        ctx.fillRect(obstacle.x - i * gap, obstacle.y + obstacle.height / 2 - 1, 4, 4);
-      }
-
-      // Hindernis
-      ctx.fillStyle = obstacle.color;
-      ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-
-      ctx.fillStyle = "#fff";
-      ctx.font = "bold 14px Calibri";
-      ctx.textAlign = "center";
-      ctx.fillText(obstacle.text, obstacle.x + obstacle.width / 2, obstacle.y + 24);
+      ctx.fillText("Mehr FDP Coins!", player.x + 40, player.y + 3);
     }
 
     function drawCoin(coin) {
@@ -271,24 +218,39 @@
       ctx.fill();
     }
 
-    function checkCollision(r1, r2) {
-      return r1.x < r2.x + r2.width &&
-             r1.x + r1.width > r2.x &&
-             r1.y < r2.y + r2.height &&
-             r1.y + r1.height > r2.y;
+    function drawObstacle(obstacle) {
+      // Rattenschwanz aus flatternden Zetteln
+      for (let i = 1; i <= 5; i++) {
+        ctx.fillStyle = "#eaeaea";
+        const yOffset = [-6, -3, 0, 3, 6][i % 5];
+        ctx.fillRect(obstacle.x - i * 10, obstacle.y + 20 + yOffset, 8, 10);
+        ctx.strokeStyle = "#aaa";
+        ctx.strokeRect(obstacle.x - i * 10, obstacle.y + 20 + yOffset, 8, 10);
+      }
+
+      // Hindernis-Block
+      ctx.fillStyle = obstacle.color;
+      ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+
+      // Text oben drüber mit Hintergrund
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(obstacle.x - 5, obstacle.y - 22, obstacle.width + 10, 18);
+      ctx.fillStyle = "#000";
+      ctx.font = "bold 12px Calibri";
+      ctx.textAlign = "center";
+      ctx.fillText(obstacle.text, obstacle.x + obstacle.width / 2, obstacle.y - 8);
+    }
+
+    function checkCollision(a, b) {
+      return a.x < b.x + b.width && a.x + a.width > b.x &&
+             a.y < b.y + b.height && a.y + a.height > b.y;
     }
 
     let gameOver = false;
     const restartBtn = document.getElementById("restartBtn");
-
     restartBtn.addEventListener("click", () => {
-      score = 0;
-      obstacles.length = 0;
-      coins.length = 0;
-      player.x = 50;
-      player.y = 190;
-      player.vy = 0;
-      player.jumping = false;
+      score = 0; obstacles.length = 0; coins.length = 0;
+      Object.assign(player, { x: 50, y: 190, vy: 0, jumping: false });
       gameOver = false;
       restartBtn.style.display = "none";
       requestAnimationFrame(update);
@@ -311,38 +273,26 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       updatePlayer();
 
-      if (++coinTimer > coinInterval) {
-        generateCoin();
-        coinTimer = 0;
-      }
-
-      if (++obstacleTimer > obstacleInterval) {
-        generateObstacle();
-        obstacleTimer = 0;
-      }
+      if (++coinTimer > coinInterval) generateCoin(), coinTimer = 0;
+      if (++obstacleTimer > obstacleInterval) generateObstacle(), obstacleTimer = 0;
 
       coins.forEach((coin, i) => {
         coin.x -= 8;
-        if (coin.x + coin.width < 0) coins.splice(i, 1);
-        else if (checkCollision(player, coin)) {
-          score++;
-          pointSound.play();
-          coins.splice(i, 1);
+        if (coin.x + coin.width < 0) return coins.splice(i, 1);
+        if (checkCollision(player, coin)) {
+          score++; coins.splice(i, 1); pointSound.play();
         }
       });
 
       obstacles.forEach((obs, i) => {
         obs.x -= 9;
-        if (obs.x + obs.width < 0) obstacles.splice(i, 1);
-        else if (checkCollision(player, obs)) gameOver = true;
+        if (obs.x + obs.width < 0) return obstacles.splice(i, 1);
+        if (checkCollision(player, obs)) gameOver = true;
       });
 
       ctx.strokeStyle = "#999";
       ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(0, 230);
-      ctx.lineTo(canvas.width, 230);
-      ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, 230); ctx.lineTo(canvas.width, 230); ctx.stroke();
 
       drawPlayer();
       coins.forEach(drawCoin);
