@@ -314,16 +314,78 @@
 
     // Erzeuge zufällig ein Hindernis
     function createObstacle() {
-      const xPos = canvas.width + Math.random() * 200;
-      obstacles.push({
-        x: xPos,
-        y: groundY,
-        width: obstacleWidth,
-        height: obstacleHeight,
-        color: obstacleColor,
-        icon: "🚫"
-      });
-    }
+  const xPos = canvas.width + Math.random() * 200;
+  const types = ["normal", "sanduhr"];
+  const chosenType = types[Math.floor(Math.random() * types.length)];
+
+  if (chosenType === "normal") {
+    obstacles.push({
+      x: xPos,
+      y: groundY,
+      width: obstacleWidth,
+      height: obstacleHeight,
+      color: obstacleColor,
+      icon: "🚫",
+      type: "normal"
+    });
+  } else if (chosenType === "sanduhr") {
+    // Beispiel: Wartezeit in Sekunden als String
+    const waitTimes = ["3 Sek.", "5 Sek.", "7 Sek."];
+    const waitTime = waitTimes[Math.floor(Math.random() * waitTimes.length)];
+
+    obstacles.push({
+      x: xPos,
+      y: groundY,
+      width: 40,
+      height: 60,
+      type: "sanduhr",
+      waitTime: waitTime
+    });
+  }
+}
+
+    function drawSanduhrObstacle(x, y, width, height, waitTime) {
+  ctx.save();
+
+  // Sanduhr-Kontur
+  ctx.fillStyle = "#e5007d"; // Pink
+  ctx.strokeStyle = "#c00066";
+  ctx.lineWidth = 3;
+
+  ctx.beginPath();
+  ctx.moveTo(x + width/2, y - height);
+  ctx.lineTo(x, y - height/2);
+  ctx.lineTo(x + width/2, y);
+  ctx.lineTo(x + width, y - height/2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  // Sand obere Hälfte gelb
+  ctx.fillStyle = "#ffed00";
+  ctx.beginPath();
+  ctx.moveTo(x + width/4, y - 3*height/4);
+  ctx.lineTo(x + width/2, y - height/2);
+  ctx.lineTo(x + 3*width/4, y - 3*height/4);
+  ctx.closePath();
+  ctx.fill();
+
+  // Sand untere Hälfte gelb
+  ctx.beginPath();
+  ctx.moveTo(x + width/4, y - height/4);
+  ctx.lineTo(x + width/2, y - height/2);
+  ctx.lineTo(x + 3*width/4, y - height/4);
+  ctx.closePath();
+  ctx.fill();
+
+  // Wartezeit-Text oben drüber
+  ctx.fillStyle = "#e5007d";
+  ctx.font = "bold 16px Calibri, sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText(waitTime, x + width / 2, y - height - 10);
+
+  ctx.restore();
+}
 
     // Erzeuge zufällig einen Coin
     function createCoin() {
@@ -476,13 +538,17 @@
 
       // Hindernisse zeichnen (rote Rechtecke mit 🚫)
       obstacles.forEach(obstacle => {
-        ctx.fillStyle = obstacle.color;
-        ctx.font = "28px Arial, sans-serif";
-        ctx.fillText(obstacle.icon, obstacle.x + 6, obstacle.y - obstacle.height + 40);
-        ctx.strokeStyle = obstacle.color;
-        ctx.lineWidth = 3;
-        ctx.strokeRect(obstacle.x, obstacle.y - obstacle.height, obstacle.width, obstacle.height);
-      });
+  if (obstacle.type === "normal") {
+    ctx.fillStyle = obstacle.color;
+    ctx.font = "28px Arial, sans-serif";
+    ctx.fillText(obstacle.icon, obstacle.x + 6, obstacle.y - obstacle.height + 40);
+    ctx.strokeStyle = obstacle.color;
+    ctx.lineWidth = 3;
+    ctx.strokeRect(obstacle.x, obstacle.y - obstacle.height, obstacle.width, obstacle.height);
+  } else if (obstacle.type === "sanduhr") {
+    drawSanduhrObstacle(obstacle.x, obstacle.y, obstacle.width, obstacle.height, obstacle.waitTime);
+  }
+});
 
       // Coins zeichnen (gelbe Kreise mit schwarzem Rand)
       coins.forEach(coin => {
