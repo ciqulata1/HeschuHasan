@@ -270,16 +270,21 @@
       color: var(--white);
     }
 
-    footer {
-  background-color: var(--cyan);
+footer {
+  background-color: var(--cyan); /* schönes FDP-Blau */
   color: var(--white);
-  padding: 30px 40px;
   text-align: center;
+  padding: 30px 20px;
 }
 
 footer h3 {
-  color: var(--white);
   font-size: 1.3rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.social-links {
   margin-bottom: 15px;
 }
 
@@ -287,14 +292,30 @@ footer h3 {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  font-size: 1.2rem;
   color: var(--white);
-  font-size: 1.1rem;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.social-links a i {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-links a:hover {
-  color: var(--yellow);
+  color: var(--yellow); /* beim Hover wird Text gelb */
+}
+
+.social-links a:hover i {
+  color: var(--yellow); /* auch das Icon wird gelb */
+  transform: scale(1.2); /* leicht vergrößert beim Hover */
+}
+
+footer p {
+  font-size: 0.9rem;
+  margin-top: 20px;
+  color: var(--white);
 }
 
     @media (max-width: 768px) {
