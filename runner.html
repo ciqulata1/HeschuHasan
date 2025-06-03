@@ -241,368 +241,405 @@
     <p>© 2025 Wahlkampf Runner – Heschu Hasan Digital</p>
   </footer>
 
-  <script>
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
+ <script>
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
 
-    // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
-    const player = {
-      x: 50,
-      y: 190,
-      radius: 20,
-      color: "#ffed00",
-      vy: 0,
-      gravity: 1.5,
-      jumping: false,
-      width: 40,
-      height: 40
+  // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
+  const player = {
+    x: 50,
+    y: 190,
+    radius: 20,
+    color: "#ffed00",
+    vy: 0,
+    gravity: 1.5,
+    jumping: false,
+    width: 40,
+    height: 40
+  };
+
+  // Spielstatus
+  let score = 0;
+  let gameOver = false;
+
+  // Coins-Array
+  const coins = [];
+  const coinSize = 20;
+  let coinTimer = 0;
+  const coinInterval = 90; // wie oft neue Coins erscheinen
+
+  // Spielfeld Bodenhöhe (y-Wert für Boden)
+  const groundY = 210;
+
+  // Tastenstatus
+  const keys = {
+    left: false,
+    right: false
+  };
+
+  // Game Over Elemente
+  const gameOverText = document.getElementById("gameOverText");
+  const restartBtn = document.getElementById("restartBtn");
+  const jumpBtn = document.getElementById("jumpBtn");
+  const leftBtn = document.getElementById("leftBtn");
+  const rightBtn = document.getElementById("rightBtn");
+
+  // Neue Hindernis-Typen mit Icon, Text und Farbe
+  const obstacleTypes = {
+    wartezeit: {
+      icon: "⏳",
+      text: "Wartezeit",
+      color: "#cc3300"
+    },
+    diskussion: {
+      icon: "💬",
+      text: "Diskussion",
+      color: "#ff5500"
+    },
+    formular: {
+      icon: "📄",
+      text: "Formular",
+      color: "#cc3300"
+    },
+    pruefung: {
+      icon: "❓",
+      text: "Prüfung",
+      color: "#cc0000"
+    },
+    ablehnung: {
+      icon: "✖️",
+      text: "Ablehnung",
+      color: "#cc0000"
+    },
+    unterschrift: {
+      icon: "🖊️",
+      text: "Unterschrift fehlt",
+      color: "#cc0000"
+    }
+  };
+
+  // Spieler-Startposition zurücksetzen
+  function resetPlayer() {
+    player.x = 50;
+    player.y = groundY - player.radius;
+    player.vy = 0;
+    player.jumping = false;
+  }
+
+  // Neues Spiel starten
+  function resetGame() {
+    score = 0;
+    gameOver = false;
+    coins.length = 0;
+    obstacles.length = 0;
+    resetPlayer();
+    gameOverText.style.display = "none";
+    restartBtn.style.display = "none";
+    jumpBtn.disabled = false;
+    leftBtn.disabled = false;
+    rightBtn.disabled = false;
+  }
+
+  // Hindernisse (Hürden) Array
+  const obstacles = [];
+
+  // Erzeuge zufällig ein Hindernis
+  function createObstacle() {
+    const xPos = canvas.width + Math.random() * 200;
+    const types = ["wartezeit", "diskussion", "formular", "pruefung", "ablehnung", "unterschrift", "sanduhr"];
+    const chosenType = types[Math.floor(Math.random() * types.length)];
+
+    if (chosenType === "sanduhr") {
+      const waitTimes = ["3 Sek.", "5 Sek.", "7 Sek."];
+      const waitTime = waitTimes[Math.floor(Math.random() * waitTimes.length)];
+      obstacles.push({
+        x: xPos,
+        y: groundY,
+        width: 40,
+        height: 60,
+        type: "sanduhr",
+        waitTime: waitTime
+      });
+    } else {
+      const o = obstacleTypes[chosenType];
+      obstacles.push({
+        x: xPos,
+        y: groundY,
+        width: 40,
+        height: 60,
+        type: chosenType,
+        icon: o.icon,
+        text: o.text,
+        color: o.color
+      });
+    }
+  }
+
+  function drawSanduhrObstacle(x, y, width, height, waitTime) {
+    ctx.save();
+
+    // Sanduhr-Kontur
+    ctx.fillStyle = "#e5007d"; // Pink
+    ctx.strokeStyle = "#c00066";
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+    ctx.moveTo(x + width/2, y - height);
+    ctx.lineTo(x, y - height/2);
+    ctx.lineTo(x + width/2, y);
+    ctx.lineTo(x + width, y - height/2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // Sand obere Hälfte gelb
+    ctx.fillStyle = "#ffed00";
+    ctx.beginPath();
+    ctx.moveTo(x + width/4, y - 3*height/4);
+    ctx.lineTo(x + width/2, y - height/2);
+    ctx.lineTo(x + 3*width/4, y - 3*height/4);
+    ctx.closePath();
+    ctx.fill();
+
+    // Sand untere Hälfte gelb
+    ctx.beginPath();
+    ctx.moveTo(x + width/4, y - height/4);
+    ctx.lineTo(x + width/2, y - height/2);
+    ctx.lineTo(x + 3*width/4, y - height/4);
+    ctx.closePath();
+    ctx.fill();
+
+    // Wartezeit-Text oben drüber
+    ctx.fillStyle = "#e5007d";
+    ctx.font = "bold 16px Calibri, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(waitTime, x + width / 2, y - height - 10);
+
+    ctx.restore();
+  }
+
+  // Erzeuge zufällig einen Coin
+  function createCoin() {
+    const xPos = canvas.width + Math.random() * 200;
+    const yPos = groundY - 40 - Math.random() * 70;
+    coins.push({
+      x: xPos,
+      y: yPos,
+      width: coinSize,
+      height: coinSize,
+      collected: false
+    });
+  }
+
+  // Kollisionsprüfung zwischen Spieler und Hindernissen
+  function checkCollision(rect) {
+    // Rechteck Spieler (Kreis als Box approximiert)
+    const playerBox = {
+      x: player.x - player.radius,
+      y: player.y - player.radius,
+      width: player.radius * 2,
+      height: player.radius * 2
     };
+    return !(
+      playerBox.x > rect.x + rect.width ||
+      playerBox.x + playerBox.width < rect.x ||
+      playerBox.y > rect.y ||
+      playerBox.y + playerBox.height < rect.y - rect.height
+    );
+  }
 
-    // Spielstatus
-    let score = 0;
-    let gameOver = false;
+  // Spiel beenden, wenn verloren
+  function endGame() {
+    gameOver = true;
+    gameOverText.style.display = "block";
+    restartBtn.style.display = "inline-block";
+    jumpBtn.disabled = true;
+    leftBtn.disabled = true;
+    rightBtn.disabled = true;
+    gameOverText.focus();
+  }
 
-    // Coins-Array
-    const coins = [];
-    const coinSize = 20;
-    let coinTimer = 0;
-    const coinInterval = 90; // wie oft neue Coins erscheinen
+  // Spieler springt
+  function jump() {
+    if (!player.jumping && !gameOver) {
+      player.vy = -22;
+      player.jumping = true;
+    }
+  }
 
-    // Hindernisse (Hürden) – rot mit Ausrufezeichen (🚫)
-    const obstacles = [];
-    const obstacleWidth = 30;
-    const obstacleHeight = 60;
-    const obstacleColor = "#e5007d";
+  // Spieler nach links/rechts bewegen
+  function movePlayer(direction) {
+    if (gameOver) return;
+    if (direction === "left") {
+      player.x -= 10;
+      if (player.x - player.radius < 0) player.x = player.radius;
+    } else if (direction === "right") {
+      player.x += 10;
+      if (player.x + player.radius > canvas.width) player.x = canvas.width - player.radius;
+    }
+  }
 
-    // Spielfeld Bodenhöhe (y-Wert für Boden)
-    const groundY = 210;
+  // Spiel-Update
+  function updateGame() {
+    if (gameOver) return;
 
-    // Tastenstatus
-    const keys = {
-      left: false,
-      right: false
-    };
+    // Spieler Bewegung (Vertikal)
+    player.vy += player.gravity;
+    player.y += player.vy;
 
-    // Game Over Elemente
-    const gameOverText = document.getElementById("gameOverText");
-    const restartBtn = document.getElementById("restartBtn");
-    const jumpBtn = document.getElementById("jumpBtn");
-    const leftBtn = document.getElementById("leftBtn");
-    const rightBtn = document.getElementById("rightBtn");
-
-    // Spieler-Startposition zurücksetzen
-    function resetPlayer() {
-      player.x = 50;
+    // Boden Check
+    if (player.y > groundY - player.radius) {
       player.y = groundY - player.radius;
       player.vy = 0;
       player.jumping = false;
     }
 
-    // Neues Spiel starten
-    function resetGame() {
-      score = 0;
-      gameOver = false;
-      coins.length = 0;
-      obstacles.length = 0;
-      resetPlayer();
-      gameOverText.style.display = "none";
-      restartBtn.style.display = "none";
-      jumpBtn.disabled = false;
-      leftBtn.disabled = false;
-      rightBtn.disabled = false;
+    // Coins generieren
+    coinTimer++;
+    if (coinTimer > coinInterval) {
+      coinTimer = 0;
+      createCoin();
+      if (Math.random() < 0.6) createObstacle(); // 60% Chance, Hindernis erzeugen
     }
 
-    // Erzeuge zufällig ein Hindernis
-    function createObstacle() {
-  const xPos = canvas.width + Math.random() * 200;
-  const types = ["normal", "sanduhr"];
-  const chosenType = types[Math.floor(Math.random() * types.length)];
-
-  if (chosenType === "normal") {
-    obstacles.push({
-      x: xPos,
-      y: groundY,
-      width: obstacleWidth,
-      height: obstacleHeight,
-      color: obstacleColor,
-      icon: "🚫",
-      type: "normal"
-    });
-  } else if (chosenType === "sanduhr") {
-    // Beispiel: Wartezeit in Sekunden als String
-    const waitTimes = ["3 Sek.", "5 Sek.", "7 Sek."];
-    const waitTime = waitTimes[Math.floor(Math.random() * waitTimes.length)];
-
-    obstacles.push({
-      x: xPos,
-      y: groundY,
-      width: 40,
-      height: 60,
-      type: "sanduhr",
-      waitTime: waitTime
-    });
-  }
-}
-
-    function drawSanduhrObstacle(x, y, width, height, waitTime) {
-  ctx.save();
-
-  // Sanduhr-Kontur
-  ctx.fillStyle = "#e5007d"; // Pink
-  ctx.strokeStyle = "#c00066";
-  ctx.lineWidth = 3;
-
-  ctx.beginPath();
-  ctx.moveTo(x + width/2, y - height);
-  ctx.lineTo(x, y - height/2);
-  ctx.lineTo(x + width/2, y);
-  ctx.lineTo(x + width, y - height/2);
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
-
-  // Sand obere Hälfte gelb
-  ctx.fillStyle = "#ffed00";
-  ctx.beginPath();
-  ctx.moveTo(x + width/4, y - 3*height/4);
-  ctx.lineTo(x + width/2, y - height/2);
-  ctx.lineTo(x + 3*width/4, y - 3*height/4);
-  ctx.closePath();
-  ctx.fill();
-
-  // Sand untere Hälfte gelb
-  ctx.beginPath();
-  ctx.moveTo(x + width/4, y - height/4);
-  ctx.lineTo(x + width/2, y - height/2);
-  ctx.lineTo(x + 3*width/4, y - height/4);
-  ctx.closePath();
-  ctx.fill();
-
-  // Wartezeit-Text oben drüber
-  ctx.fillStyle = "#e5007d";
-  ctx.font = "bold 16px Calibri, sans-serif";
-  ctx.textAlign = "center";
-  ctx.fillText(waitTime, x + width / 2, y - height - 10);
-
-  ctx.restore();
-}
-
-    // Erzeuge zufällig einen Coin
-    function createCoin() {
-      const xPos = canvas.width + Math.random() * 200;
-      const yPos = groundY - 40 - Math.random() * 70;
-      coins.push({
-        x: xPos,
-        y: yPos,
-        width: coinSize,
-        height: coinSize,
-        collected: false
-      });
-    }
-
-    // Kollisionsprüfung zwischen Spieler und Hindernissen
-    function checkCollision(rect) {
-      // Rechteck Spieler (Kreis als Box approximiert)
-      const playerBox = {
-        x: player.x - player.radius,
-        y: player.y - player.radius,
-        width: player.radius * 2,
-        height: player.radius * 2
-      };
-      return !(
-        playerBox.x > rect.x + rect.width ||
-        playerBox.x + playerBox.width < rect.x ||
-        playerBox.y > rect.y ||
-        playerBox.y + playerBox.height < rect.y - rect.height
-      );
-    }
-
-    // Spiel beenden, wenn verloren
-    function endGame() {
-      gameOver = true;
-      gameOverText.style.display = "block";
-      restartBtn.style.display = "inline-block";
-      jumpBtn.disabled = true;
-      leftBtn.disabled = true;
-      rightBtn.disabled = true;
-      gameOverText.focus();
-    }
-
-    // Spieler springt
-    function jump() {
-      if (!player.jumping && !gameOver) {
-        player.vy = -22;
-        player.jumping = true;
-      }
-    }
-
-    // Spieler nach links/rechts bewegen
-    function movePlayer(direction) {
-      if (gameOver) return;
-      if (direction === "left") {
-        player.x -= 10;
-        if (player.x - player.radius < 0) player.x = player.radius;
-      } else if (direction === "right") {
-        player.x += 10;
-        if (player.x + player.radius > canvas.width) player.x = canvas.width - player.radius;
-      }
-    }
-
-    // Spiel-Update
-    function updateGame() {
-      if (gameOver) return;
-
-      // Spieler Bewegung (Vertikal)
-      player.vy += player.gravity;
-      player.y += player.vy;
-
-      // Boden Check
-      if (player.y > groundY - player.radius) {
-        player.y = groundY - player.radius;
-        player.vy = 0;
-        player.jumping = false;
-      }
-
-      // Coins generieren
-      coinTimer++;
-      if (coinTimer > coinInterval) {
-        coinTimer = 0;
-        createCoin();
-        if (Math.random() < 0.6) createObstacle(); // 60% Chance, Hindernis zu erzeugen
-      }
-
-      // Coins bewegen und prüfen, ob gesammelt
-      coins.forEach(coin => {
-        coin.x -= 5;
-        if (!coin.collected) {
-          const dx = Math.abs(player.x - (coin.x + coin.width/2));
-          const dy = Math.abs(player.y - (coin.y + coin.height/2));
-          if (dx < player.radius + coin.width/2 && dy < player.radius + coin.height/2) {
-            coin.collected = true;
-            score++;
-          }
+    // Coins bewegen und prüfen, ob gesammelt
+    coins.forEach(coin => {
+      coin.x -= 5;
+      if (!coin.collected) {
+        const dx = Math.abs(player.x - (coin.x + coin.width/2));
+        const dy = Math.abs(player.y - (coin.y + coin.height/2));
+        if (dx < player.radius + coin.width/2 && dy < player.radius + coin.height/2) {
+          coin.collected = true;
+          score++;
         }
-      });
-
-      // Hindernisse bewegen und prüfen, ob getroffen
-      obstacles.forEach(obstacle => {
-        obstacle.x -= 6;
-        if (checkCollision(obstacle)) {
-          endGame();
-        }
-      });
-
-      // Score gewinnen
-      if (score >= 20) {
-        alert("Herzlichen Glückwunsch! Sie haben alle FDP-Coins gesammelt und gewinnen das Spiel!");
-        resetGame();
-      }
-    }
-
-    // Spieler zeichnen (gelber Kreis mit schwarzen Augen)
-    function drawPlayer() {
-      ctx.fillStyle = player.color;
-      ctx.beginPath();
-      ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.closePath();
-
-      // Augen (zwei kleine schwarze Kreise)
-      ctx.fillStyle = "#000";
-      const eyeRadius = 4;
-      ctx.beginPath();
-      ctx.arc(player.x - 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
-      ctx.arc(player.x + 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.closePath();
-
-      // Lächeln (ein Bogen)
-      ctx.strokeStyle = "#000";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(player.x, player.y + 2, 10, 0, Math.PI);
-      ctx.stroke();
-      ctx.closePath();
-    }
-
-    // Spiel zeichnen
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Boden zeichnen
-      ctx.fillStyle = "#009ee3";
-      ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
-
-      // Spieler zeichnen
-      drawPlayer();
-
-      // Hindernisse zeichnen (rote Rechtecke mit 🚫)
-      obstacles.forEach(obstacle => {
-  if (obstacle.type === "normal") {
-    ctx.fillStyle = obstacle.color;
-    ctx.font = "28px Arial, sans-serif";
-    ctx.fillText(obstacle.icon, obstacle.x + 6, obstacle.y - obstacle.height + 40);
-    ctx.strokeStyle = obstacle.color;
-    ctx.lineWidth = 3;
-    ctx.strokeRect(obstacle.x, obstacle.y - obstacle.height, obstacle.width, obstacle.height);
-  } else if (obstacle.type === "sanduhr") {
-    drawSanduhrObstacle(obstacle.x, obstacle.y, obstacle.width, obstacle.height, obstacle.waitTime);
-  }
-});
-
-      // Coins zeichnen (gelbe Kreise mit schwarzem Rand)
-      coins.forEach(coin => {
-        if (!coin.collected) {
-          ctx.fillStyle = "#ffed00";
-          ctx.beginPath();
-          ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.strokeStyle = "#000";
-          ctx.lineWidth = 2;
-          ctx.stroke();
-          ctx.closePath();
-        }
-      });
-
-      // Score anzeigen
-      ctx.fillStyle = "#009ee3";
-      ctx.font = "bold 22px Calibri, sans-serif";
-      ctx.fillText("FDP-Coins: " + score + " / 20", 10, 30);
-    }
-
-    // Haupt-Loop
-    function gameLoop() {
-      updateGame();
-      draw();
-      if (!gameOver) {
-        requestAnimationFrame(gameLoop);
-      }
-    }
-
-    // Event-Listener für Tastatur
-    window.addEventListener("keydown", e => {
-      if (gameOver) return;
-      if (e.code === "ArrowLeft") {
-        movePlayer("left");
-      } else if (e.code === "ArrowRight") {
-        movePlayer("right");
-      } else if (e.code === "Space" || e.code === "ArrowUp") {
-        jump();
       }
     });
 
-    // Button Klicks
-    jumpBtn.addEventListener("click", jump);
-    leftBtn.addEventListener("click", () => movePlayer("left"));
-    rightBtn.addEventListener("click", () => movePlayer("right"));
-    restartBtn.addEventListener("click", () => {
+    // Hindernisse bewegen und prüfen, ob getroffen
+    obstacles.forEach(obstacle => {
+      obstacle.x -= 6;
+      if (checkCollision(obstacle)) {
+        endGame();
+      }
+    });
+
+    // Score gewinnen
+    if (score >= 20) {
+      alert("Herzlichen Glückwunsch! Sie haben alle FDP-Coins gesammelt und gewinnen das Spiel!");
       resetGame();
-      gameLoop();
+    }
+  }
+
+  // Spieler zeichnen (gelber Kreis mit schwarzen Augen)
+  function drawPlayer() {
+    ctx.fillStyle = player.color;
+    ctx.beginPath();
+    ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.closePath();
+
+    // Augen (zwei kleine schwarze Kreise)
+    ctx.fillStyle = "#000";
+    const eyeRadius = 4;
+    ctx.beginPath();
+    ctx.arc(player.x - 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
+    ctx.arc(player.x + 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.closePath();
+
+    // Lächeln (ein Bogen)
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(player.x, player.y + 2, 10, 0, Math.PI);
+    ctx.stroke();
+    ctx.closePath();
+  }
+
+  // Spiel zeichnen
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Boden zeichnen
+    ctx.fillStyle = "#009ee3";
+    ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
+
+    // Spieler zeichnen
+    drawPlayer();
+
+    // Hindernisse zeichnen
+    obstacles.forEach(obstacle => {
+      if (obstacle.type === "sanduhr") {
+        drawSanduhrObstacle(obstacle.x, obstacle.y, obstacle.width, obstacle.height, obstacle.waitTime);
+      } else {
+        ctx.fillStyle = obstacle.color;
+        ctx.strokeStyle = obstacle.color;
+        ctx.lineWidth = 3;
+        ctx.strokeRect(obstacle.x, obstacle.y - obstacle.height, obstacle.width, obstacle.height);
+
+        ctx.font = "28px Arial, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(obstacle.icon, obstacle.x + obstacle.width / 2, obstacle.y - obstacle.height + 40);
+
+        ctx.font = "bold 14px Calibri, sans-serif";
+        ctx.fillText(obstacle.text, obstacle.x + obstacle.width / 2, obstacle.y - obstacle.height + 60);
+      }
     });
 
-    // Start
+    // Coins zeichnen
+    coins.forEach(coin => {
+      if (!coin.collected) {
+        ctx.fillStyle = "#ffed00";
+        ctx.beginPath();
+        ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.closePath();
+      }
+    });
+
+    // Score anzeigen
+    ctx.fillStyle = "#009ee3";
+    ctx.font = "bold 22px Calibri, sans-serif";
+    ctx.fillText("FDP-Coins: " + score + " / 20", 10, 30);
+  }
+
+  // Haupt-Loop
+  function gameLoop() {
+    updateGame();
+    draw();
+    if (!gameOver) {
+      requestAnimationFrame(gameLoop);
+    }
+  }
+
+  // Event-Listener für Tastatur
+  window.addEventListener("keydown", e => {
+    if (gameOver) return;
+    if (e.code === "ArrowLeft") {
+      movePlayer("left");
+    } else if (e.code === "ArrowRight") {
+      movePlayer("right");
+    } else if (e.code === "Space" || e.code === "ArrowUp") {
+      jump();
+    }
+  });
+
+  // Button Klicks
+  jumpBtn.addEventListener("click", jump);
+  leftBtn.addEventListener("click", () => movePlayer("left"));
+  rightBtn.addEventListener("click", () => movePlayer("right"));
+  restartBtn.addEventListener("click", () => {
     resetGame();
     gameLoop();
-  </script>
+  });
+
+  // Start
+  resetGame();
+  gameLoop();
+</script> 
 </body>
 </html>
+
