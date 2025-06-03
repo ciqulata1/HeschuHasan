@@ -480,7 +480,7 @@
   // Spieler springt
   function jump() {
     if (!player.jumping && !gameOver) {
-      player.vy = -30;
+      player.vy = -28;
       player.jumping = true;
     }
   }
@@ -502,7 +502,10 @@
     if (gameOver) return;
 
     // Spieler Bewegung (Vertikal)
-    player.vy += player.gravity;
+player.gravity = 1.8; // beim Setup
+
+// und später im Loop
+player.vy += player.gravity;
     player.y += player.vy;
 
 const groundLevel = groundY - player.radius;
