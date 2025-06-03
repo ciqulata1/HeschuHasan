@@ -505,7 +505,7 @@
     player.vy += player.gravity;
     player.y += player.vy;
 
-    //const groundLevel = groundY - player.radius;
+const groundLevel = groundY - player.radius;
 if (player.y >= groundLevel) {
   player.y = groundLevel;
   player.vy = 0;
