@@ -247,6 +247,9 @@ button.arrowBtn:active {
       🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
     </div>
     <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
+    <div id="startScreen" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <button id="startBtn" style="font-size: 1.5rem; padding: 10px 20px;">Spiel starten</button>
+</div>
 
     <div id="buttonsContainer" role="region" aria-label="Spielsteuerung">
       <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
@@ -667,14 +670,16 @@ window.addEventListener("keydown", e => {
 
   });
 
+const startBtn = document.getElementById("startBtn");
+const startScreen = document.getElementById("startScreen");
+
 let gameOver = false;
 
 function resetGame() {
   gameOver = false;
   score = 0;
-  // ggf. Positionen zurücksetzen etc.
   hideGameOverBox();
-  // Wichtig: keine Schleife hier starten!
+  // Weitere Reset-Logik
 }
 
 function gameLoop() {
@@ -685,9 +690,17 @@ function gameLoop() {
   }
 }
 
+// Spiel startet erst, wenn auf Start gedrückt wird
+startBtn.addEventListener("click", () => {
+  resetGame();
+  startScreen.style.display = "none";  // Startscreen verstecken
+  gameLoop();  // Spiel starten
+});
+
+// Restart-Button, falls du einen hast
 restartBtn.addEventListener("click", () => {
-  resetGame();      // setze Status zurück
-  gameLoop();       // starte EINMALIG neu
+  resetGame();
+  gameLoop();
 });
 
 </script>
