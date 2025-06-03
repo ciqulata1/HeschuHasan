@@ -519,6 +519,10 @@ footer .social-links a:focus {
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
+
+  <div id="burger" class="burger">
+  <i class="fas fa-bars"></i>
+</div>
   <!-- Mobile Navigation -->
   <div class="mobile-nav" id="mobile-nav">
     <a href="index.html">Startseite</a>
@@ -658,11 +662,13 @@ navLinks.forEach(link => {
   }
 });
   const burger = document.getElementById("burger");
-      const mobileNav = document.getElementById("mobile-nav");
+const mobileNav = document.getElementById("mobile-nav");
 
-      burger.addEventListener("click", () => {
-        mobileNav.classList.toggle("show");
-      });
+if (burger && mobileNav) {
+  burger.addEventListener("click", () => {
+    mobileNav.classList.toggle("show");
+  });
+}
 
       const navLinks = document.querySelectorAll("nav a");
       navLinks.forEach(link => {
