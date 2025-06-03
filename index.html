@@ -1,495 +1,430 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<title>Heschu Hasan - Wahlkreiskandidatin Freiburg - Ost - Wahlkreis 46</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <title>Heschu Hasan – Wahlkreiskandidatin Freiburg-Ost</title>
 
-<!-- FontAwesome CDN für Icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+  <!-- FontAwesome für Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<style>
-  :root {
-    --yellow: #ffed00;
-    --magenta: #e5007d;
-    --cyan: #009ee3;
-    --turquoise: #00abae;
-    --black: #000000;
-    --white: #ffffff;
-  }
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
 
-  * {
-    box-sizing: border-box;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  body {
-    margin: 0;
-    background-color: var(--white);
-    color: var(--black);
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    opacity: 0;
-    transition: opacity 1s ease;
-    height: 100%;
-  }
+    body {
+      margin: 0;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--black);
+      background-color: var(--white);
+      opacity: 0;
+      transition: opacity 1s ease;
+      position: relative;
+      min-height: 100vh;
+    }
 
-  a {
-    color: var(--cyan);
-    text-decoration: none;
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  a:hover,
-  a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url("IMG_2206.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      z-index: -1;
+      opacity: 1;
+    }
 
-header {
-  position: relative;         /* damit z-index wirkt */
-  z-index: 10;                /* höher als das Hintergrundbild */
-  background-color: var(--white);
-  border-bottom: 2px solid var(--cyan);
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
-/* Wrapper für Überschrift und Logo */
-header > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-header h1 {
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: var(--cyan);
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-#fdp-logo {
-  margin-top: 8px;
-  max-height: 40px;
-  transition: opacity 1s ease, transform 1s ease;
-  opacity: 0;
-  transform: translateY(-20px);
-}
-nav a {
-  font-weight: 600;
-  font-size: 1rem;
-  margin-left: 25px;
-}
-nav a.active,
-nav a:hover {
-  color: var(--magenta);
-  font-weight: 700;
-}
+    a:hover, a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
 
-main {
-  padding: 20px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
+    header {
+      z-index: 10;
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
 
-/* ========= BURGER-MENÜ ========== */
-.burger-menu {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: var(--white);
-  border: 2px solid var(--cyan);
-  border-radius: 6px;
-  padding: 10px 12px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 158, 227, 0.25);
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  transition: background-color 0.3s ease;
-}
+    header > div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-/* Burger Menü */
-.burger {
-  display: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  color: var(--cyan);
-}
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
 
-.mobile-nav {
-  display: none;
-  flex-direction: column;
-  background-color: var(--white);
-  position: sticky;
-  top: 72px;
-  z-index: 999;
-  border-top: 1px solid var(--cyan);
-}
+    #fdp-logo {
+      margin-top: 8px;
+      max-height: 40px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
 
-.mobile-nav a {
-  padding: 15px 20px;
-  border-bottom: 1px solid var(--cyan);
-}
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+    }
 
-.mobile-nav a:hover {
-  background-color: var(--magenta);
-  color: var(--white);
-}
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
 
-@media (max-width: 768px) {
-  nav {
-    display: none;
-  }
-  .burger {
-    display: block;
-  }
-  .mobile-nav {
-    display: none;
-  }
-  .mobile-nav.show {
-    display: flex;
-  }
-}
+    .burger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--cyan);
+    }
 
-main {
-  padding: 20px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: var(--white);
+      position: sticky;
+      top: 72px;
+      z-index: 999;
+      border-top: 1px solid var(--cyan);
+    }
 
-main h2 {
-  color: var(--black);
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
+    .mobile-nav a {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--cyan);
+    }
 
-main h3 {
-  color: var(--cyan);
-  font-weight: 600;
-  font-size: 1.25rem;
-  margin-bottom: 20px;
-}
+    .mobile-nav a:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+    }
 
-main p {
-  font-weight: 300;
-  font-size: 1.1rem;
-  max-width: 700px;
-}
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
 
-/* main::before {
-content: "";
-position: absolute;
-top: 120px;
-right: 40px;
-width: 300px;
-height: 450px;
-background-image: url("IMG_1604.jpeg");
-background-size: cover;
-background-position: center;
-opacity: 0.08; /* dezent im Hintergrund */
-/* z-index: 0;
-border-radius: 10px;
-box-shadow: 0 0 12px rgba(0, 158, 227, 0.25);
-pointer-events: none;
+      .burger {
+        display: block;
+      }
 
-} */
+      .mobile-nav.show {
+        display: flex;
+      }
+    }
 
-.topics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-top: 40px;
-}
-.topic-box {
-  flex: 1 1 280px;
-  border: 2px solid var(--cyan);
-  background-color: var(--white);
-  color: var(--cyan);
-  padding: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  user-select: none;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.topic-box:hover,
-.topic-box:focus {
-  border-color: var(--magenta);
-  background-color: var(--magenta);
-  color: var(--yellow);
-  outline: none;
-}
-.topic-box.active {
-  background-color: var(--white);
-  color: var(--black);
-  font-weight: bold;
-}
+    main {
+      padding: 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-.topic-box p {
-  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-  font-weight: 300;
-  font-size: 1.1rem;
-  hyphens: auto;
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
+    main h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--black);
+    }
 
-.subtopics {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    main h3 {
+      color: var(--cyan);
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
 
-.subtopics p {
-  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-  font-weight: 300;
-  font-size: 1.1rem;
-  hyphens: auto;
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
+    main p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      font-weight: 300;
+    }
 
-.subtopics a {
-  background-color: var(--white);
-  color: var(--yellow);
-  border: 2px solid var(--turquoise);
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  user-select: none;
-  display: block;
-  width: fit-content;
-}
-.subtopics a:hover,
-.subtopics a:focus {
-  background-color: var(--magenta);
-  color: var(--white);
-  border-color: var(--magenta);
-  outline: none;
-}
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 40px;
+    }
 
-.mission-box {
-  margin-top: 60px;
-}
+    .topic-box {
+      flex: 1 1 280px;
+      border: 2px solid var(--cyan);
+      background-color: var(--white);
+      color: var(--cyan);
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      user-select: none;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.mission-box h2 {
-  font-weight: 700;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-.mission-box p {
-  font-weight: 400;
-  font-size: 1.1rem
-/* Header */
+    .topic-box:hover,
+    .topic-box:focus {
+      background-color: var(--magenta);
+      border-color: var(--magenta);
+      color: var(--yellow);
+    }
 
-</style>
+    .subtopics {
+      margin-top: 15px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .subtopics a {
+      background-color: var(--white);
+      color: var(--yellow);
+      border: 2px solid var(--turquoise);
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      display: block;
+      width: fit-content;
+    }
+
+    .subtopics a:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
+
+    .mission-box {
+      margin-top: 60px;
+    }
+
+    .mission-box p {
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    form {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 600px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      border: 1px solid var(--cyan);
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: var(--cyan);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: var(--magenta);
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      background-color: var(--white);
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    footer .social-links i {
+      font-size: 1.5rem;
+      color: var(--magenta);
+      margin-right: 8px;
+    }
+
+    footer p {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div>
+      <h1>HESCHU HASAN</h1>
+      <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" />
+    </div>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+    <div class="burger" id="burger">
+      <i class="fa fa-bars"></i>
+    </div>
+  </header>
 
-<header>
-  <div>
-    <h1>HESCHU HASAN</h1>
-    <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" />
-  </div>
-  <nav>
+  <div class="mobile-nav" id="mobile-nav">
     <a href="index.html">Startseite</a>
     <a href="bildung.html">Bildung</a>
     <a href="umwelt.html">Umwelt</a>
     <a href="meinungsmacher.html">Meinungs-Macher</a>
     <a href="impressum.html">Impressum</a>
-  </nav>
-</header>
+  </div>
 
-<div class="mobile-nav" id="mobile-nav">
-  <a href="index.html">Startseite</a>
-  <a href="bildung.html">Bildung</a>
-  <a href="umwelt.html">Umwelt</a>
-  <a href="meinungsmacher.html">Meinungs-Macher</a>
-  <a href="impressum.html">Impressum</a>
-</div>
+  <main>
+    <h2>Meine Themen</h2>
+    <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
 
-<div class="bg-overlay"></div>
-
-<main>
-  <img src="IMG_2206.jpeg" alt="Hintergrundbild" />
-
-  <h2>Meine Themen</h2>
-  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
-
-  <div class="topics" role="list">
-    <a href="bildung.html" class="topic-box" role="listitem" tabindex="0">Bildung</a>
-    <a href="umwelt.html" class="topic-box" role="listitem" tabindex="0">Umwelt</a>
-
-    <div
-      class="topic-box"
-      role="region"
-      aria-expanded="false"
-      tabindex="0"
-      id="verwaltung-box"
-      aria-label="Verwaltung mit Unterthemen"
-      aria-controls="verwaltung-subtopics"
-    >
-      Verwaltung
-      <div class="subtopics" id="verwaltung-subtopics" role="list" aria-label="Unterthemen Verwaltung">
-        <a href="justiz.html" role="listitem" tabindex="-1">Justiz</a>
+    <div class="topics">
+      <a href="bildung.html" class="topic-box">Bildung</a>
+      <a href="umwelt.html" class="topic-box">Umwelt</a>
+      <div class="topic-box" id="verwaltung-box" aria-expanded="false" tabindex="0" aria-controls="verwaltung-subtopics">
+        Verwaltung
+        <div class="subtopics" id="verwaltung-subtopics">
+          <a href="justiz.html">Justiz</a>
+        </div>
       </div>
+      <a href="meinungsmacher.html" class="topic-box">Meinungs-Macher</a>
     </div>
 
-    <a href="meinungsmacher.html" class="topic-box" role="listitem" tabindex="0">Meinungs-Macher</a>
-  </div>
+    <section class="mission-box">
+      <h2>Meine Mission für Freiburg</h2>
+      <p>
+        Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP für Freiburg-Ost (Wahlkreis 46).
+        Für Freiburg setze ich mich für Bildung, Umwelt, Justiz und gute Verwaltung ein.
+      </p>
+      <a href="mission.html">Mehr erfahren &raquo;</a>
+    </section>
 
-  <section class="mission-box" aria-labelledby="mission-title">
-    <h2 id="mission-title">Meine Mission für Freiburg</h2>
-    <p>
-      Ich bin Heschu Hasan, Ihre Direktkandidatin der FDP und Wahlkreiskandidatin für Freiburg-Ost (Wahlkreis 46).
-      Für Freiburg setze ich mich für Bildung, Umwelt, Justiz und gute Verwaltung ein.
-    </p>
-    <a href="mission.html" class="btn-link" aria-label="Mehr über Meine Mission für Freiburg erfahren">Mehr erfahren &raquo;</a>
-  </section>
+    <h2>Kontaktformular</h2>
+    <form action="https://formsubmit.co/heschuhasan@gmail.com" method="POST">
+      <label for="email">Email-Adresse:</label>
+      <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
 
-  <h2>KONTAKTFORMULAR</h2>
-  <form action="https://formsubmit.co/heschuhasan@gmail.com" method="POST">
-    <label for="email">Email-Adresse:</label>
-    <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
-    
-    <label for="message">Nachricht:</label>
-    <textarea id="message" name="message" rows="5" placeholder="Schreiben Sie Ihre Nachricht hier..." required></textarea>
-    
-    <label>
-      <input type="checkbox" name="datenschutz" required />
-      Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
-    </label><br />
-    
-    <input type="hidden" name="_captcha" value="false" />
-    <input type="text" name="_honey" style="display:none" />
-    <button type="submit">Absenden</button>
-  </form>
-</main>
+      <label for="message">Nachricht:</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Schreiben Sie Ihre Nachricht hier..."></textarea>
 
-<footer>
-  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-      <p>Alle Rechte vorbehalten. Heschu Hasan - FDP Freiburg - Ost (Breisgau-Hochschwarzwald) 2025</p>
-    </a>
-  </div>
-</footer>
+      <label>
+        <input type="checkbox" name="datenschutz" required />
+        Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
+      </label>
 
-<script src="script.js"></script>
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="_honey" style="display:none" />
+      <button type="submit">Absenden</button>
+    </form>
+  </main>
 
-</body>
-</html>
+  <footer>
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <p>Alle Rechte vorbehalten. Heschu Hasan – FDP Freiburg-Ost (Breisgau-Hochschwarzwald) 2025</p>
+    </div>
+  </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Body langsam einblenden
-  document.body.style.opacity = "1";
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.style.opacity = "1";
 
-  // Verwaltung-Unterthemen ein-/ausklappen
-  const verwaltungBox = document.getElementById("verwaltung-box");
-  const subtopics = document.getElementById("verwaltung-subtopics");
+      const verwaltungBox = document.getElementById("verwaltung-box");
+      const subtopics = document.getElementById("verwaltung-subtopics");
 
-  verwaltungBox.addEventListener("click", () => {
-    const expanded = verwaltungBox.getAttribute("aria-expanded") === "true";
-    verwaltungBox.setAttribute("aria-expanded", !expanded);
-    if (expanded) {
+      verwaltungBox.addEventListener("click", () => {
+        const expanded = verwaltungBox.getAttribute("aria-expanded") === "true";
+        verwaltungBox.setAttribute("aria-expanded", !expanded);
+        subtopics.style.display = expanded ? "none" : "flex";
+      });
+
+      verwaltungBox.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          verwaltungBox.click();
+        }
+      });
+
       subtopics.style.display = "none";
-    } else {
-      subtopics.style.display = "flex";
-    }
-  });
 
-  // Initial Unterthemen verstecken
-  subtopics.style.display = "none";
+      const fdpLogo = document.getElementById("fdp-logo");
+      setTimeout(() => {
+        if (fdpLogo) {
+          fdpLogo.style.opacity = "1";
+          fdpLogo.style.transform = "translateY(0)";
+        }
+      }, 1000);
 
-  // Tastaturzugänglichkeit: Enter / Space toggelt Unterthemen
-  verwaltungBox.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      verwaltungBox.click();
-    }
-  });
+      const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add("active");
+        }
+      });
 
-  // Animation FDP-Logo nach 1 Sekunde
-  setTimeout(() => {
-    const fdpLogo = document.getElementById("fdp-logo");
-    if (fdpLogo) {
-      fdpLogo.style.opacity = "1";
-      fdpLogo.style.transform = "translateY(0)";
-    }
-  }, 1000);
-
-  // Aktive Navigation automatisch hervorheben
-  const navLinks = document.querySelectorAll("nav a");
-  navLinks.forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add("active");
-    }
-  });
-});
-
-// Scroll-Event für Overlay-Transparenz
-window.addEventListener('scroll', () => {
-  const overlay = document.querySelector('.bg-overlay');
-  const scrollTop = window.scrollY;
-
-  if (scrollTop > 200) {
-    overlay.style.opacity = '0.05'; // noch dezenter beim Scrollen
-  } else {
-    overlay.style.opacity = '0.08'; // sichtbar am Anfang
-  }
-});
-
-// Burger-Menü öffnen/schließen
-const burger = document.getElementById("burger");
-const mobileNav = document.getElementById("mobile-nav");
-
-burger.addEventListener("click", () => {
-  mobileNav.classList.toggle("show");
-});
-
-// Aktive Navigation erneut (duplikat, kannst optional entfernen)
-const navLinks = document.querySelectorAll("nav a");
-navLinks.forEach(link => {
-  if (link.href === window.location.href) {
-    link.classList.add("active");
-  }
-});
-</script>
-
+      const burger = document.getElementById("burger");
+      const mobileNav = document.getElementById("mobile-nav");
+      burger.addEventListener("click", () => {
+        mobileNav.classList.toggle("show");
+      });
+    });
+  </script>
 </body>
 </html>
