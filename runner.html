@@ -45,69 +45,76 @@
       height: auto;
     }
 
-    /* Buttons Container */
+    /* Buttons Container jetzt vertikal */
     #buttonsContainer {
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
       margin-bottom: 30px;
     }
 
-    /* Allgemeine Button Styles */
-    button {
+    button#jumpBtn {
+      background-color: #009ee3;
+      color: #fff;
       border: none;
+      padding: 12px 30px;
       font-family: Calibri, sans-serif;
       font-weight: bold;
+      font-size: 1.1rem;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.1s ease;
       user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    /* Springen Button */
-    button#jumpBtn {
-      background-color: #009ee3;
-      color: #fff;
-      padding: 12px 30px;
-      font-size: 1.1rem;
       min-width: 140px;
     }
-    button#jumpBtn:active,
-    button#jumpBtn.pressed {
+    button#jumpBtn:active {
       background-color: #ffed00;
       color: #000;
       transform: scale(0.95);
     }
 
-    /* Home Button */
     button#homeBtn {
       background-color: #e5007d;
       color: #fff;
+      border: none;
       padding: 12px 24px;
+      font-family: Calibri, sans-serif;
+      font-weight: bold;
       font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
       min-width: 160px;
     }
     button#homeBtn:hover {
       background-color: #c00066;
     }
 
-    /* Pfeiltasten */
-    .arrowBtn {
+    /* Pfeiltasten Container */
+    #arrowButtons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    button.arrowBtn {
       background-color: #009ee3;
       color: #fff;
-      width: 50px;
-      height: 50px;
-      font-size: 24px;
+      border: none;
+      padding: 12px 28px;
+      font-family: Calibri, sans-serif;
+      font-weight: bold;
+      font-size: 1.5rem;
       border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease;
       user-select: none;
+      width: 60px;
+      height: 50px;
+      line-height: 1;
     }
-    .arrowBtn:active,
-    .arrowBtn.pressed {
+    button.arrowBtn:active {
       background-color: #ffed00;
       color: #000;
       transform: scale(0.95);
@@ -149,7 +156,7 @@
         padding: 15px 10px;
       }
       #buttonsContainer {
-        gap: 20px;
+        gap: 15px;
       }
       button#jumpBtn, button#homeBtn {
         width: 80vw;
@@ -157,14 +164,17 @@
         font-size: 1.2rem;
         min-width: auto;
       }
+      #arrowButtons {
+        gap: 20px;
+      }
+      button.arrowBtn {
+        width: 80px;
+        height: 60px;
+        font-size: 2rem;
+      }
       canvas {
         width: 100% !important;
         height: auto !important;
-      }
-      /* Pfeiltasten für mobile Ansicht */
-      #arrowButtons {
-        justify-content: center;
-        gap: 15px;
       }
     }
   </style>
@@ -178,16 +188,14 @@
     <h2>Spielen Sie jetzt: Wahlkampf Runner – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
     <canvas id="gameCanvas" width="700" height="250"></canvas>
 
-    <div id="arrowButtons" style="display:flex; justify-content:center; gap:40px; margin-bottom:40px;">
-      <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
-      <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
-    </div>
-
     <div id="buttonsContainer">
       <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
       <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
+      <div id="arrowButtons">
+        <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
+        <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
+      </div>
     </div>
-
   </main>
 
   <footer>
@@ -228,91 +236,27 @@
 
     // Steuerung
     const keys = {};
-
-    // Links-Rechts Bewegung (wenn benötigt, aktuell nur Beispiel, da Spieler an X=50 fixiert)
-    function moveLeft() {
-      player.x = Math.max(0, player.x - 10);
-    }
-    function moveRight() {
-      player.x = Math.min(canvas.width - player.width, player.x + 10);
-    }
-
     document.addEventListener("keydown", e => {
       keys[e.key] = true;
-      if (e.key === " " || e.key === "ArrowUp") {
+      if(e.key === " " || e.key === "ArrowUp"){
         jump();
-      } else if (e.key === "ArrowLeft") {
-        moveLeft();
-        pressArrowBtn("leftBtn");
-      } else if (e.key === "ArrowRight") {
-        moveRight();
-        pressArrowBtn("rightBtn");
       }
     });
+    document.addEventListener("keyup", e => keys[e.key] = false);
 
-    document.addEventListener("keyup", e => {
-      keys[e.key] = false;
-      if (e.key === "ArrowLeft") releaseArrowBtn("leftBtn");
-      if (e.key === "ArrowRight") releaseArrowBtn("rightBtn");
-    });
-
-    // Button-Elemente
-    const jumpBtn = document.getElementById("jumpBtn");
+    // Pfeil-Buttons (links/rechts) Events
     const leftBtn = document.getElementById("leftBtn");
     const rightBtn = document.getElementById("rightBtn");
 
-    // Pfeil-Button Events
-    leftBtn.addEventListener("mousedown", () => {
-      moveLeft();
-      pressArrowBtn("leftBtn");
-    });
-    leftBtn.addEventListener("mouseup", () => releaseArrowBtn("leftBtn"));
-    leftBtn.addEventListener("mouseleave", () => releaseArrowBtn("leftBtn"));
-    leftBtn.addEventListener("touchstart", e => {
-      e.preventDefault();
-      moveLeft();
-      pressArrowBtn("leftBtn");
-    });
-    leftBtn.addEventListener("touchend", () => releaseArrowBtn("leftBtn"));
+    leftBtn.addEventListener("mousedown", () => keys["ArrowLeft"] = true);
+    leftBtn.addEventListener("mouseup", () => keys["ArrowLeft"] = false);
+    leftBtn.addEventListener("touchstart", e => { e.preventDefault(); keys["ArrowLeft"] = true; });
+    leftBtn.addEventListener("touchend", e => { e.preventDefault(); keys["ArrowLeft"] = false; });
 
-    rightBtn.addEventListener("mousedown", () => {
-      moveRight();
-      pressArrowBtn("rightBtn");
-    });
-    rightBtn.addEventListener("mouseup", () => releaseArrowBtn("rightBtn"));
-    rightBtn.addEventListener("mouseleave", () => releaseArrowBtn("rightBtn"));
-    rightBtn.addEventListener("touchstart", e => {
-      e.preventDefault();
-      moveRight();
-      pressArrowBtn("rightBtn");
-    });
-    rightBtn.addEventListener("touchend", () => releaseArrowBtn("rightBtn"));
-
-    // Jump Button Events
-    jumpBtn.addEventListener("click", () => {
-      pressJumpBtn();
-      jump();
-      setTimeout(releaseJumpBtn, 150);
-    });
-    jumpBtn.addEventListener("touchstart", e => {
-      e.preventDefault();
-      pressJumpBtn();
-      jump();
-      setTimeout(releaseJumpBtn, 150);
-    });
-
-    function pressJumpBtn() {
-      jumpBtn.classList.add("pressed");
-    }
-    function releaseJumpBtn() {
-      jumpBtn.classList.remove("pressed");
-    }
-    function pressArrowBtn(id) {
-      document.getElementById(id).classList.add("pressed");
-    }
-    function releaseArrowBtn(id) {
-      document.getElementById(id).classList.remove("pressed");
-    }
+    rightBtn.addEventListener("mousedown", () => keys["ArrowRight"] = true);
+    rightBtn.addEventListener("mouseup", () => keys["ArrowRight"] = false);
+    rightBtn.addEventListener("touchstart", e => { e.preventDefault(); keys["ArrowRight"] = true; });
+    rightBtn.addEventListener("touchend", e => { e.preventDefault(); keys["ArrowRight"] = false; });
 
     // Punkt-Sound
     const pointSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_28599f5d83.mp3?filename=video-game-coin-133125.mp3");
@@ -325,180 +269,271 @@
       }
     }
 
-    // Spieler zeichnen
-    function drawPlayer() {
-      ctx.fillStyle = player.color;
-      ctx.fillRect(player.x, player.y, player.width, player.height);
-      // Augen
-      ctx.fillStyle = "#f7e98e";
-      ctx.fillRect(player.x + 5, player.y + 10, 6, 6);
-      ctx.fillRect(player.x + 19, player.y + 10, 6, 6);
-      // Mund als Smiley (schwarzer Humor)
-      ctx.beginPath();
-      ctx.strokeStyle = "black";
-      ctx.lineWidth = 2;
-      ctx.moveTo(player.x + 8, player.y + 30);
-      ctx.lineTo(player.x + 22, player.y + 30);
-      ctx.stroke();
-    }
+    // Jump Button Event
+    const jumpBtn = document.getElementById("jumpBtn");
+    jumpBtn.addEventListener("click", () => {
+      jumpBtn.style.backgroundColor = "#ffed00";
+      jumpBtn.style.color = "#000";
+      jump();
+      setTimeout(() => {
+        jumpBtn.style.backgroundColor = "#009ee3";
+        jumpBtn.style.color = "#fff";
+      }, 200);
+    });
 
-    // Hindernisse generieren
-    function createObstacle() {
-      const types = [
-        {color: "#e5007d", text: "Bürokratie", height: 40},
-        {color: "#000", text: "Ämter", height: 50},
-        {color: "#444", text: "Formulare", height: 35},
-        {color: "#666", text: "Wartezeit", height: 45}
-      ];
-      const type = types[Math.floor(Math.random() * types.length)];
-      return {
-        x: canvas.width,
-        y: 230 - type.height,
-        width: obstacleWidth,
-        height: type.height,
-        color: type.color,
-        text: type.text
-      };
-    }
+    // Spieler-Update
+    function updatePlayer() {
+      // Bewegung links/rechts
+      if (keys["ArrowLeft"]) {
+        player.x -= 8;
+        if (player.x < 0) player.x = 0;
+      }
+      if (keys["ArrowRight"]) {
+        player.x += 8;
+        if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+      }
 
-    // Hindernis zeichnen
-    function drawObstacle(obs) {
-      ctx.fillStyle = obs.color;
-      ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
-      ctx.fillStyle = "white";
-      ctx.font = "10px Calibri";
-      ctx.textAlign = "center";
-      ctx.fillText(obs.text, obs.x + obs.width / 2, obs.y + obs.height / 2 + 3);
-    }
-
-    // Coins erzeugen
-    function createCoin() {
-      return {
-        x: canvas.width,
-        y: Math.random() * 150 + 40,
-        size: coinSize,
-        color: "#ffed00"
-      };
-    }
-
-    // Coin zeichnen
-    function drawCoin(coin) {
-      ctx.fillStyle = coin.color;
-      ctx.beginPath();
-      ctx.arc(coin.x, coin.y, coin.size / 2, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.strokeStyle = "#c9b300";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-      ctx.fillStyle = "#c9b300";
-      ctx.font = "bold 14px Calibri";
-      ctx.textAlign = "center";
-      ctx.fillText("FDP", coin.x, coin.y + 5);
-    }
-
-    // Kollision prüfen
-    function isColliding(rect1, rect2) {
-      return (
-        rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.width > rect2.x &&
-        rect1.y < rect2.y + rect2.height &&
-        rect1.y + rect1.height > rect2.y
-      );
-    }
-
-    // Game Over
-    let gameOver = false;
-    function endGame() {
-      alert("Oh nein! Verloren! Sie sollten Heschu Hasan wählen, damit sie die Bürokratiehürden für Sie beseitigen kann.");
-      document.location.reload();
-    }
-
-    // Spiel-Loop
-    function gameLoop() {
-      if (gameOver) return;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Spieler-Physik
+      // Schwerkraft & springen
       player.vy += player.gravity;
       player.y += player.vy;
+
+      // Boden-Kollision
       if (player.y > 190) {
         player.y = 190;
         player.vy = 0;
         player.jumping = false;
       }
+    }
 
-      drawPlayer();
+    // Hindernisse erzeugen mit Texten & Farben & Icons
+    const obstacleTypes = [
+      { text: "📄 Formulare", color: "#b22222" },
+      { text: "⌛ Wartezeit", color: "#d2691e" },
+      { text: "🏢 Amt", color: "#006400" },
+      { text: "❌ Bürokratie", color: "#8b0000" }
+    ];
 
-      // Coins generieren
+    // Hindernis generieren
+    function generateObstacle() {
+      const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+      obstacles.push({
+        x: canvas.width,
+        y: 190,
+        width: obstacleWidth,
+        height: obstacleHeight,
+        text: type.text,
+        color: type.color
+      });
+    }
+
+    // Coins erzeugen
+    function generateCoin() {
+      coins.push({
+        x: canvas.width + 20,
+        y: 140 + Math.random() * 40,
+        width: coinSize,
+        height: coinSize,
+        color: "#ffed00"
+      });
+    }
+
+    // Runde Rechteck-Zeichner (für Sprechblase)
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      if (typeof stroke === 'undefined') {
+        stroke = true;
+      }
+      if (typeof radius === 'undefined') {
+        radius = 5;
+      }
+      if (typeof radius === 'number') {
+        radius = {tl: radius, tr: radius, br: radius, bl: radius};
+      } else {
+        var defaultRadius = {tl: 0, tr: 0, br: 0, bl: 0};
+        for (var side in defaultRadius) {
+          radius[side] = radius[side] || defaultRadius[side];
+        }
+      }
+      ctx.beginPath();
+      ctx.moveTo(x + radius.tl, y);
+      ctx.lineTo(x + width - radius.tr, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+      ctx.lineTo(x + width, y + height - radius.br);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
+      ctx.lineTo(x + radius.bl, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+      ctx.lineTo(x, y + radius.tl);
+      ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    // Hindernis mit Sprechblase zeichnen
+    function drawObstacle(obs) {
+      // Hindernis Block
+      ctx.fillStyle = obs.color;
+      ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+
+      // Sprechblase über dem Hindernis
+      const bubbleWidth = 90;
+      const bubbleHeight = 32;
+      const bubbleX = obs.x + obs.width / 2 - bubbleWidth / 2;
+      const bubbleY = obs.y - bubbleHeight - 15;
+      const radius = 10;
+
+      // Sprechblase weiß mit farbigen Rand
+      ctx.fillStyle = "white";
+      ctx.strokeStyle = obs.color;
+      ctx.lineWidth = 2;
+      roundRect(ctx, bubbleX, bubbleY, bubbleWidth, bubbleHeight, radius, true, true);
+
+      // Pfeil unten Mitte
+      ctx.beginPath();
+      ctx.moveTo(obs.x + obs.width / 2 - 8, obs.y);
+      ctx.lineTo(obs.x + obs.width / 2 + 8, obs.y);
+      ctx.lineTo(obs.x + obs.width / 2, obs.y + 14);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Text zentriert, fett und größer
+      ctx.fillStyle = obs.color;
+      ctx.font = "bold 16px Calibri";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(obs.text, bubbleX + bubbleWidth / 2, bubbleY + bubbleHeight / 2);
+    }
+
+    // Coin zeichnen (gelber Kreis)
+    function drawCoin(coin) {
+      ctx.beginPath();
+      ctx.fillStyle = coin.color;
+      ctx.shadowColor = "#c8b900";
+      ctx.shadowBlur = 8;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+
+      // Münz-Details (kleine Striche)
+      ctx.strokeStyle = "#9f9000";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 3, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    // Spieler zeichnen (gelber Block mit Auge)
+    function drawPlayer() {
+      ctx.fillStyle = player.color;
+      ctx.fillRect(player.x, player.y, player.width, player.height);
+      // Auge
+      ctx.fillStyle = "#000";
+      ctx.beginPath();
+      ctx.arc(player.x + player.width / 3, player.y + player.height / 3, 5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Kollision Spieler mit Hindernis
+    function checkCollision(rect1, rect2) {
+      return rect1.x < rect2.x + rect2.width &&
+             rect1.x + rect1.width > rect2.x &&
+             rect1.y < rect2.y + rect2.height &&
+             rect1.y + rect1.height > rect2.y;
+    }
+
+    // Game Over Flag
+    let gameOver = false;
+
+    // Haupt-Update Loop
+    function update() {
+      if (gameOver) {
+        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 40px Calibri";
+        ctx.textAlign = "center";
+        ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2 - 20);
+        ctx.font = "bold 20px Calibri";
+        ctx.fillText("Score: " + score, canvas.width / 2, canvas.height / 2 + 20);
+        return;
+      }
+
+      // Hintergrund löschen
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      updatePlayer();
+
+      // Coins erzeugen
       coinTimer++;
       if (coinTimer > coinInterval) {
-        coins.push(createCoin());
+        generateCoin();
         coinTimer = 0;
       }
 
-      // Coins bewegen und zeichnen
+      // Hindernisse erzeugen
+      obstacleTimer++;
+      if (obstacleTimer > obstacleInterval) {
+        generateObstacle();
+        obstacleTimer = 0;
+      }
+
+      // Coins bewegen & prüfen
       for (let i = coins.length - 1; i >= 0; i--) {
-        coins[i].x -= 5;
-        if (coins[i].x + coins[i].size < 0) {
+        coins[i].x -= 8;
+        if (coins[i].x + coins[i].width < 0) {
           coins.splice(i, 1);
           continue;
         }
 
-        // Sammeln prüfen
-        const coinRect = {x: coins[i].x - coins[i].size / 2, y: coins[i].y - coins[i].size / 2, width: coins[i].size, height: coins[i].size};
-        const playerRect = {x: player.x, y: player.y, width: player.width, height: player.height};
-        if (isColliding(playerRect, coinRect)) {
+        // Kollision mit Spieler
+        if (checkCollision(player, coins[i])) {
           score++;
-          pointSound.currentTime = 0;
-          pointSound.play();
           coins.splice(i, 1);
-        } else {
-          drawCoin(coins[i]);
+          pointSound.play();
         }
       }
 
-      // Hindernisse generieren
-      obstacleTimer++;
-      if (obstacleTimer > obstacleInterval) {
-        obstacles.push(createObstacle());
-        obstacleTimer = 0;
-      }
-
-      // Hindernisse bewegen und zeichnen
+      // Hindernisse bewegen & prüfen
       for (let i = obstacles.length - 1; i >= 0; i--) {
-        obstacles[i].x -= 8;
+        obstacles[i].x -= 9;
         if (obstacles[i].x + obstacles[i].width < 0) {
           obstacles.splice(i, 1);
           continue;
         }
 
-        drawObstacle(obstacles[i]);
-
-        // Kollision prüfen
-        if (
-          player.x < obstacles[i].x + obstacles[i].width &&
-          player.x + player.width > obstacles[i].x &&
-          player.y < obstacles[i].y + obstacles[i].height &&
-          player.y + player.height > obstacles[i].y
-        ) {
+        // Kollision mit Spieler = Game Over
+        if (checkCollision(player, obstacles[i])) {
           gameOver = true;
-          endGame();
-          return;
         }
       }
 
-      // Punktestand anzeigen
+      // Bodenlinie
+      ctx.strokeStyle = "#999";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, 230);
+      ctx.lineTo(canvas.width, 230);
+      ctx.stroke();
+
+      // Zeichnen
+      drawPlayer();
+      coins.forEach(drawCoin);
+      obstacles.forEach(drawObstacle);
+
+      // Score anzeigen
       ctx.fillStyle = "#009ee3";
-      ctx.font = "bold 20px Calibri";
+      ctx.font = "bold 22px Calibri";
       ctx.textAlign = "left";
       ctx.fillText("FDP-Coins: " + score, 10, 30);
 
-      requestAnimationFrame(gameLoop);
+      requestAnimationFrame(update);
     }
 
-    // Start Game Loop
-    gameLoop();
+    update();
   </script>
 </body>
 </html>
