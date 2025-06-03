@@ -644,16 +644,19 @@
 
   // Event-Listener für Tastatur
   window.addEventListener("keydown", e => {
-    if (gameOver) return;
-    if (e.code === "ArrowLeft") {
-      movePlayer("left");
-    } else if (e.code === "ArrowRight") {
-      movePlayer("right");
-    } else if (e.code === "Space" || e.code === "ArrowUp") {
-      jump();
-    }
-  });
+  if (gameOver) return;
 
+  if (e.code === "ArrowLeft") {
+    e.preventDefault();
+    movePlayer("left");
+  } else if (e.code === "ArrowRight") {
+    e.preventDefault();
+    movePlayer("right");
+  } else if (e.code === "Space" || e.code === "ArrowUp") {
+    e.preventDefault();
+    jump();
+  }
+});
   // Button Klicks
   jumpBtn.addEventListener("click", jump);
   leftBtn.addEventListener("click", () => movePlayer("left"));
