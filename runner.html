@@ -39,22 +39,23 @@
       color: #009ee3;
     }
 
-    p.instructions {
+    .instructions {
       font-size: 1rem;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      margin: 10px auto 20px;
+      max-width: 600px;
     }
 
     canvas {
       border: 2px solid #009ee3;
       background: #fff;
-      display: block;
+      display: none;
       margin: 20px auto;
       max-width: 100%;
     }
 
-    .controls {
-      margin: 20px 0;
+    .controls, .game-buttons {
+      display: none;
+      margin-top: 10px;
     }
 
     .jump-button {
@@ -80,7 +81,6 @@
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 10px;
     }
 
     .home-button {
@@ -101,6 +101,23 @@
       background-color: #c00066;
     }
 
+    .start-button {
+      background-color: #009ee3;
+      color: #fff;
+      border: none;
+      padding: 16px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .start-button:hover {
+      background-color: #007bb3;
+    }
+
     footer {
       background-color: #009ee3;
       color: #fff;
@@ -114,7 +131,6 @@
       color: #fff;
       text-decoration: none;
       font-weight: bold;
-      margin-left: 5px;
     }
 
     footer a:hover {
@@ -142,12 +158,14 @@
 
   <main>
     <h2>🎮 Spiele jetzt: Wahlkampf Runner</h2>
-    <p class="instructions">Sammle FDP-Coins 💰 und überspringe Hindernisse der Bürokratie!<br>
-    Tipp: Springe mit dem Button oder der Pfeiltaste nach oben.</p>
+    <p class="instructions">Sammle FDP-Coins 💰 und überspringe Hindernisse der Bürokratie, vergessliche WählerInnen und Anträge auf Papier!<br>
+    Nutze Pfeiltasten oder Buttons auf dem Handy – und viel Spaß!</p>
+
+    <button class="start-button" id="startBtn">🚀 Spiel starten</button>
 
     <canvas id="gameCanvas" width="700" height="250"></canvas>
 
-    <div class="controls">
+    <div class="controls game-buttons">
       <div class="button-row">
         <button class="jump-button" id="leftBtn">⬅ Links</button>
         <button class="jump-button" id="jumpBtn">⤴ Springen</button>
@@ -170,6 +188,13 @@
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
+
+    const startBtn = document.getElementById("startBtn");
+    const jumpBtn = document.getElementById("jumpBtn");
+    const leftBtn = document.getElementById("leftBtn");
+    const rightBtn = document.getElementById("rightBtn");
+
+    let gameStarted = false;
 
     const player = {
       x: 50,
@@ -195,9 +220,10 @@
     const obstacleInterval = 140;
 
     const keys = {};
-
     document.addEventListener("keydown", e => keys[e.key] = true);
     document.addEventListener("keyup", e => keys[e.key] = false);
+
+    const pointSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_28599f5d83.mp3?filename=video-game-coin-133125.mp3");
 
     function jump() {
       if (!player.jumping) {
@@ -206,13 +232,11 @@
       }
     }
 
-    document.getElementById("jumpBtn").addEventListener("click", jump);
-    document.getElementById("leftBtn").addEventListener("touchstart", () => keys["ArrowLeft"] = true);
-    document.getElementById("leftBtn").addEventListener("touchend", () => keys["ArrowLeft"] = false);
-    document.getElementById("rightBtn").addEventListener("touchstart", () => keys["ArrowRight"] = true);
-    document.getElementById("rightBtn").addEventListener("touchend", () => keys["ArrowRight"] = false);
-
-    const pointSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_28599f5d83.mp3?filename=video-game-coin-133125.mp3");
+    jumpBtn.addEventListener("click", jump);
+    leftBtn.addEventListener("touchstart", () => keys["ArrowLeft"] = true);
+    leftBtn.addEventListener("touchend", () => keys["ArrowLeft"] = false);
+    rightBtn.addEventListener("touchstart", () => keys["ArrowRight"] = true);
+    rightBtn.addEventListener("touchend", () => keys["ArrowRight"] = false);
 
     function drawPlayer() {
       ctx.fillStyle = player.color;
@@ -225,10 +249,101 @@
     }
 
     function gameLoop() {
+      if (!gameStarted) return;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       if (keys["ArrowRight"]) player.x += 5;
       if (keys["ArrowLeft"]) player.x -= 5;
+      if ((keys[" "] || keys["ArrowUp"]) && !player.jumping) jump();
+
+      player.vy += player.gravity;
+      player.y += player.vy;
+
+      if (player.y >= 190) {
+        player.y = 190;
+        player.vy = 0;
+        player.jumping = false;
+      }
 
       if (player.x < 0) player.x = 0;
-      if (player.x + player.width > canvas.width) player.x =
+      if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+
+      drawPlayer();
+
+      coinTimer++;
+      if (coinTimer >= coinInterval) {
+        coinTimer = 0;
+        coins.push({ x: canvas.width, y: 190 + Math.random() * -80, collected: false });
+      }
+
+      for (let i = coins.length - 1; i >= 0; i--) {
+        const coin = coins[i];
+        coin.x -= 5;
+
+        if (!coin.collected &&
+            coin.x < player.x + player.width &&
+            coin.x + coinSize > player.x &&
+            coin.y < player.y + player.height &&
+            coin.y + coinSize > player.y) {
+          score++;
+          coin.collected = true;
+          pointSound.play();
+        }
+
+        if (!coin.collected) {
+          ctx.fillStyle = "#ffed00";
+          ctx.beginPath();
+          ctx.arc(coin.x, coin.y, coinSize / 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        if (coin.x + coinSize < 0) coins.splice(i, 1);
+      }
+
+      obstacleTimer++;
+      if (obstacleTimer >= obstacleInterval) {
+        obstacleTimer = 0;
+        const types = ["§", "❌", "🧾", "📄", "🙈"];
+        const type = types[Math.floor(Math.random() * types.length)];
+        obstacles.push({ x: canvas.width, y: 190 - obstacleHeight, symbol: type });
+      }
+
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+        const obs = obstacles[i];
+        obs.x -= 5;
+
+        if (
+          player.x < obs.x + obstacleWidth &&
+          player.x + player.width > obs.x &&
+          player.y + player.height > obs.y
+        ) {
+          alert("Oh nein! Die Bürokratie hat dich gestoppt 😬\nDeine Punkte: " + score);
+          document.location.reload();
+          return;
+        }
+
+        ctx.fillStyle = "#e5007d";
+        ctx.fillRect(obs.x, obs.y, obstacleWidth, obstacleHeight);
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 20px Arial";
+        ctx.fillText(obs.symbol, obs.x + 5, obs.y + 28);
+      }
+
+      ctx.fillStyle = "#000";
+      ctx.font = "bold 18px Arial";
+      ctx.fillText("Punkte: " + score, 10, 30);
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    startBtn.addEventListener("click", () => {
+      gameStarted = true;
+      startBtn.style.display = "none";
+      canvas.style.display = "block";
+      document.querySelector(".game-buttons").style.display = "block";
+      gameLoop();
+    });
+  </script>
+</body>
+</html>
