@@ -41,18 +41,29 @@
       margin: 0 auto;
       width: 100%;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     h2 {
       margin-top: 60px;
       color: #009ee3;
+      max-width: 700px;
+    }
+
+    p.instructions {
+      max-width: 700px;
+      margin-top: 15px;
+      font-size: 1rem;
+      color: #333;
     }
 
     canvas {
       border: 2px solid #009ee3;
       background: #fff;
       display: block;
-      margin: 20px auto;
+      margin: 20px auto 40px;
       max-width: 100%;
       height: auto;
     }
@@ -67,8 +78,9 @@
       font-size: 1rem;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 50px; /* Mehr Abstand nach oben */
       transition: background-color 0.3s ease;
+      align-self: center;
     }
 
     button#homeBtn:hover {
@@ -83,6 +95,10 @@
       font-size: 0.9rem;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
       margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
 
     footer p {
@@ -94,12 +110,20 @@
       text-decoration: none;
       font-weight: bold;
       font-family: Calibri, sans-serif;
-      display: inline-block;
-      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1rem;
     }
 
     footer a:hover {
       text-decoration: underline;
+    }
+
+    footer a svg {
+      height: 20px;
+      width: 20px;
+      fill: white;
     }
   </style>
 </head>
@@ -115,7 +139,7 @@
 
   <main>
     <h2>Spiele jetzt: Wahlkampf Runner – Sammle FDP-Coins und spring Bürokratie-Hürden!</h2>
-    <p>Benutze die Pfeiltasten ← und → zum Laufen und ↑ oder Leertaste zum Springen. Sammle so viele FDP-Coins wie möglich und weiche den bürokratischen Hürden aus!</p>
+    <p class="instructions">Benutze die Pfeiltasten ← und → zum Laufen und ↑ oder Leertaste zum Springen. Sammle so viele FDP-Coins wie möglich und weiche den bürokratischen Hürden aus!</p>
     <canvas id="gameCanvas" width="700" height="250"></canvas>
 
     <button id="homeBtn" onclick="location.href='index.html'">⬅ Zurück zur Startseite</button>
@@ -124,7 +148,13 @@
   <footer>
     <p>© 2025 Wahlkampf Runner – Heschu Hasan Digital</p>
     <p>Treffen Sie mich auf den Sozialen Medien:</p>
-    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram Profil">Instagram</a>
+    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram Profil">
+      <!-- Instagram SVG Icon -->
+      <svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24">
+        <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm4.25 3.75a4 4 0 110 8 4 4 0 010-8zm0 1.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm4.75-.88a1 1 0 110 2 1 1 0 010-2z"/>
+      </svg>
+      Instagram
+    </a>
   </footer>
 
   <script>
