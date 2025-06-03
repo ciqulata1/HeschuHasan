@@ -268,9 +268,15 @@
 
   
    // Spieler erstellen aus der Klasse
-const player = new Player();
-player.radius = 25;
-player.color = "#ffed00";
+const player = {
+  x: 70,
+  y: groundY - 25,
+  radius: 25,
+  vy: 0,
+  gravity: 0.8,
+  jumping: false,
+  color: "#ffed00"
+};
    
    // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
   
