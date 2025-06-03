@@ -645,15 +645,20 @@
 
   // Event-Listener für Tastatur
   window.addEventListener("keydown", e => {
-    if (gameOver) return;
-    if (e.code === "ArrowLeft") {
-      movePlayer("left");
-    } else if (e.code === "ArrowRight") {
-      movePlayer("right");
-    } else if (e.code === "Space" || e.code === "ArrowUp") {
-      jump();
-    }
-  });
+  if (["ArrowLeft", "ArrowRight", "Space", "ArrowUp"].includes(e.code)) {
+    e.preventDefault(); // verhindert Scrollen der Seite
+  }
+
+  if (gameOver) return;
+
+  if (e.code === "ArrowLeft") {
+    movePlayer("left");
+  } else if (e.code === "ArrowRight") {
+    movePlayer("right");
+  } else if (e.code === "Space" || e.code === "ArrowUp") {
+    jump();
+  }
+});
 
   // Button Klicks
   jumpBtn.addEventListener("click", jump);
