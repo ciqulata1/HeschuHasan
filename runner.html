@@ -531,7 +531,7 @@ const player = new Player();
     if (coinTimer > coinInterval) {
       coinTimer = 0;
       createCoin();
-      if (Math.random() < 0.9) createObstacle();
+      if (Math.random() < 0.7) createObstacle();
     }
 
     coins.forEach(coin => {
