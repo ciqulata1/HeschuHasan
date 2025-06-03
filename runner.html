@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wahlkampf Runner – FDP Coins sammeln</title>
+  <style>
+    body {
+      font-family: Calibri, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #009ee3;
+      color: #fff;
+      padding: 20px 10px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 60px;
+      color: #009ee3;
+    }
+
+    canvas {
+      border: 2px solid #009ee3;
+      background: #fff;
+      display: block;
+      margin: 20px auto;
+    }
+
+    button#homeBtn {
+      background-color: #e5007d;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-family: Calibri, sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button#homeBtn:hover {
+      background-color: #c00066;
+    }
+
+    footer {
+      background-color: #009ee3;
+      color: #fff;
+      padding: 15px 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+      margin-top: auto;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: Calibri, sans-serif;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Wahlkampf Runner – FDP Digital
+  </header>
+
+  <main>
+    <h2>Spiele jetzt: Wahlkampf Runner – Sammle FDP-Coins und spring Bürokratie-Hürden!</h2>
+    <canvas id="gameCanvas" width="700" height="250"></canvas>
+
+    <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
+  </main>
+
+  <footer>
+    <p>© 2025 Wahlkampf Runner – Heschu Hasan Digital</p>
+    <p>Treffen Sie mich auf den Sozialen Medien:</p>
+    <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram Profil">
+  
+    </a>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Spieler
+    const player = {
+      x: 50,
+      y: 190,
+      width: 30,
+      height: 40,
+      color: "#ffed00",
+      vy: 0,
+      gravity: 1.5,
+      jumping: false
+    };
+
+    // Punkte
+    let score = 0;
+
+    // Coins
+    const coins = [];
+    const coinSize = 20;
+    let coinTimer = 0;
+    const coinInterval = 100;
+
+    // Hindernisse (Bürokratieordner)
+    const obstacles = [];
+    const obstacleWidth = 30;
+    const obstacleHeight = 40;
+    let obstacleTimer = 0;
+    const obstacleInterval = 140;
+
+    // Steuerung
+    const keys = {};
+    document.addEventListener("keydown", e => keys[e.key] = true);
+    document.addEventListener("keyup", e => keys[e.key] = false);
+
+    // Punkt-Sound
+    const pointSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_28599f5d83.mp3?filename=video-game-coin-133125.mp3");
+
+    function drawPlayer() {
+      // Körper gelb
+      ctx.fillStyle = player.color;
+      ctx.fillRect(player.x, player.y, player.width, player.height);
+      // Kopf (blond)
+      ctx.fillStyle = "#f7e98e";
+      ctx.fillRect(player.x + 5, player.y - 20, 20, 20);
+      // Schuhe schwarz
+      ctx.fillStyle = "#000";
+      ctx.fillRect(player.x, player.y + player.height, 10, 5);
+      ctx.fillRect(player.x + 20, player.y + player.height, 10, 5);
+    }
+
+    function gameLoop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Bewegung
+      if (keys["ArrowRight"]) player.x += 5;
+      if (keys["ArrowLeft"]) player.x -= 5;
+
+      // Grenzen
+      if (player.x < 0) player.x = 0;
+      if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+
+      // Springen
+      if ((keys[" "] || keys["ArrowUp"]) && !player.jumping) {
+        player.vy = -18;
+        player.jumping = true;
+      }
+
+      player.vy += player.gravity;
+      player.y += player.vy;
+
+      // Boden-Kollision
+      if (player.y >= 190) {
+        player.y = 190;
+        player.vy = 0;
+        player.jumping = false;
+      }
+
+      drawPlayer();
+
+      // Coins spawnen
+      coinTimer++;
+      if (coinTimer >= coinInterval) {
+        coinTimer = 0;
+        coins.push({ x: canvas.width, y: 190 + Math.random() * -80, collected: false });
+      }
+
+      // Coins bewegen und Kollision prüfen
+      for (let i = coins.length - 1; i >= 0; i--) {
+        const coin = coins[i];
+        coin.x -= 5;
+
+        if (!coin.collected &&
+            coin.x < player.x + player.width &&
+            coin.x + coinSize > player.x &&
+            coin.y < player.y + player.height &&
+            coin.y + coinSize > player.y) {
+          score++;
+          coin.collected = true;
+          pointSound.play();
+        }
+
+        // Coin zeichnen
+        if (!coin.collected) {
+          ctx.fillStyle = "#ffed00";
+          ctx.beginPath();
+          ctx.arc(coin.x, coin.y, coinSize / 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Coins löschen, wenn raus aus Canvas
+        if (coin.x + coinSize < 0) coins.splice(i, 1);
+      }
+
+      // Hindernisse spawnen
+      obstacleTimer++;
+      if (obstacleTimer >= obstacleInterval) {
+        obstacleTimer = 0;
+        obstacles.push({ x: canvas.width, y: 190 - obstacleHeight });
+      }
+
+      // Hindernisse bewegen und Kollision prüfen
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+        const obs = obstacles[i];
+        obs.x -= 5;
+
+        // Kollision
+        if (
+          player.x < obs.x + obstacleWidth &&
+          player.x + player.width > obs.x &&
+          player.y + player.height > obs.y
+        ) {
+          alert("Oh nein! Heschu wurde von der Bürokratie gestoppt! Deine Punkte: " + score);
+          document.location.reload();
+          return;
+        }
+
+        // Hindernis zeichnen (rot)
+        ctx.fillStyle = "#e5007d";
+        ctx.fillRect(obs.x, obs.y, obstacleWidth, obstacleHeight);
+
+        // Hindernis Symbol (z.B. ein Stempel)
+        ctx.fillStyle = "#fff";
+        ctx.font = "bold 20px Arial";
+        ctx.fillText("§", obs.x + 7, obs.y + 28);
+      }
+
+      // Punkteanzeige
+      ctx.fillStyle = "#000";
+      ctx.font = "bold 18px Arial";
+      ctx.fillText("Punkte: " + score, 10, 30);
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    gameLoop();
+  </script>
+</body>
+</html>
