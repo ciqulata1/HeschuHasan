@@ -271,7 +271,7 @@
     radius: 20,
     color: "#ffed00",
     vy: 0,
-    gravity: 1.5,
+    gravity: 1,
     jumping: false,
     width: 40,
     height: 40
@@ -518,7 +518,7 @@
     if (coinTimer > coinInterval) {
       coinTimer = 0;
       createCoin();
-      if (Math.random() < 0.2) createObstacle(); // 60% Chance, Hindernis erzeugen
+      if (Math.random() < 0.1) createObstacle(); // 60% Chance, Hindernis erzeugen
     }
 
     // Coins bewegen und prüfen, ob gesammelt
