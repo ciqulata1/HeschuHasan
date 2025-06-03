@@ -260,7 +260,9 @@
 </footer>
 
  <script>
-  const canvas = document.getElementById("gameCanvas");
+
+   // Soundeffekte (einfacher Piepton als Data-URL)
+ const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
 
   // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
@@ -468,22 +470,24 @@
 
   // Spiel beenden, wenn verloren
   function endGame() {
-    gameOver = true;
-    gameOverText.style.display = "block";
-    restartBtn.style.display = "inline-block";
-    jumpBtn.disabled = true;
-    leftBtn.disabled = true;
-    rightBtn.disabled = true;
-    gameOverText.focus();
-  }
+  gameOver = true;
+  gameOverText.style.display = "block";
+  restartBtn.style.display = "inline-block";
+  jumpBtn.disabled = true;
+  leftBtn.disabled = true;
+  rightBtn.disabled = true;
+  gameOverText.focus();
+  gameOverSound.play();
+}
 
   // Spieler springt
   function jump() {
-    if (!player.jumping && !gameOver) {
-      player.vy = -26;
-      player.jumping = true;
-    }
+  if (!player.jumping && !gameOver) {
+    player.vy = -26;
+    player.jumping = true;
+    jumpSound.play();
   }
+}
 
   // Spieler nach links/rechts bewegen
   function movePlayer(direction) {
