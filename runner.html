@@ -13,6 +13,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      user-select: none;
     }
     header {
       background-color: #009ee3;
@@ -30,6 +31,7 @@
       margin: 0 auto;
       width: 100%;
       text-align: center;
+      position: relative;
     }
     h2 {
       margin-top: 60px;
@@ -43,7 +45,6 @@
       max-width: 100%;
       height: auto;
     }
-
     #buttonsContainer {
       display: flex;
       flex-direction: column;
@@ -51,41 +52,42 @@
       gap: 15px;
       margin-bottom: 30px;
     }
-
-    button {
-      font-family: Calibri, sans-serif;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      user-select: none;
-    }
-
     button#jumpBtn {
       background-color: #009ee3;
       color: #fff;
-      padding: 14px 36px;
-      font-size: 1.2rem;
+      border: none;
+      padding: 12px 30px;
+      font-family: Calibri, sans-serif;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
       transition: background-color 0.3s ease, transform 0.1s ease;
+      min-width: 140px;
+      user-select: none;
     }
     button#jumpBtn:active {
       background-color: #ffed00;
       color: #000;
       transform: scale(0.95);
     }
-
     button#homeBtn {
       background-color: #e5007d;
       color: #fff;
+      border: none;
       padding: 12px 24px;
+      font-family: Calibri, sans-serif;
+      font-weight: bold;
       font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
       min-width: 160px;
+      user-select: none;
     }
     button#homeBtn:hover {
       background-color: #c00066;
     }
-
     #arrowButtons {
       display: flex;
       justify-content: center;
@@ -95,66 +97,144 @@
     button.arrowBtn {
       background-color: #009ee3;
       color: #fff;
+      border: none;
       padding: 12px 28px;
+      font-family: Calibri, sans-serif;
+      font-weight: bold;
       font-size: 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease;
       width: 60px;
       height: 50px;
+      line-height: 1;
+      user-select: none;
     }
     button.arrowBtn:active {
       background-color: #ffed00;
       color: #000;
       transform: scale(0.95);
     }
-
+    #restartBtn {
+      display: none;
+      background:#009ee3;
+      color:#fff;
+      padding:12px 30px;
+      margin-top:20px;
+      font-family: Calibri, sans-serif;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+      border: none;
+    }
+    #restartBtn:hover {
+      background-color: #007bbf;
+    }
+    #gameOverText {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border: 3px solid #e5007d;
+      border-radius: 12px;
+      color: #e5007d;
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: none;
+      max-width: 90%;
+      text-align: center;
+      user-select: none;
+      z-index: 10;
+      font-family: Calibri, sans-serif;
+      line-height: 1.4;
+    }
     footer {
       background-color: #009ee3;
       color: #fff;
       padding: 15px 10px;
       text-align: center;
       font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
       margin-top: auto;
+      font-family: Calibri, sans-serif;
+      user-select: none;
     }
-
+    footer p {
+      margin: 4px 0;
+      font-weight: normal;
+    }
     footer a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-family: Calibri, sans-serif;
     }
-
+    footer a:hover {
+      text-decoration: underline;
+    }
     @media (max-width: 480px) {
-      button#jumpBtn, button#homeBtn {
+      main {
+        padding: 15px 10px;
+      }
+      #buttonsContainer {
+        gap: 15px;
+      }
+      button#jumpBtn, button#homeBtn, #restartBtn {
         width: 80vw;
         max-width: 300px;
         font-size: 1.2rem;
+        min-width: auto;
+      }
+      #arrowButtons {
+        gap: 20px;
       }
       button.arrowBtn {
-        width: 60px;
-        height: 50px;
-        font-size: 1.5rem;
+        width: 80px;
+        height: 60px;
+        font-size: 2rem;
+      }
+      canvas {
+        width: 100% !important;
+        height: auto !important;
       }
     }
   </style>
 </head>
 <body>
-  <header>Wahlkampf Runner – Heschu Hasan Digital</header>
-  <main>
-    <h2>Spielen Sie jetzt: FDP-Coins sammeln und Hürden überspringen!</h2>
-    <div style="margin-top: 20px; font-size: 1.2rem;">
-      🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins!
-    </div>
-    <canvas id="gameCanvas" width="700" height="250"></canvas>
+  <header>
+    Wahlkampf Runner – Heschu Hasan Digital
+  </header>
 
-    <div id="buttonsContainer">
-      <button id="jumpBtn">⤴ Springen</button>
+  <main>
+    <h2>Spielen Sie jetzt: Wahlkampf Runner – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
+    <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #333;">
+      🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
+    </div>
+    <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
+
+    <div id="buttonsContainer" role="region" aria-label="Spielsteuerung">
+      <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
       <div id="arrowButtons">
-        <button class="arrowBtn" id="leftBtn">◀</button>
-        <button class="arrowBtn" id="rightBtn">▶</button>
+        <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
+        <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
       </div>
-<div>
-  <button id="restartBtn">Nochmal spielen.</button>
-  <button id="homeBtn">Zurück zur Startseite</button>
-</div>
-    
+      <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
+      <button id="restartBtn" aria-label="Nochmal spielen">Nochmal spielen</button>
+    </div>
+
+    <div id="gameOverText" role="alert" aria-live="assertive" tabindex="0">
+      <p>Oh nein! Verloren.</p>
+      <p>Sie sollten unbedingt <strong>Heschu Hasan</strong> wählen, um die Bürokratie zu besiegen!</p>
+    </div>
   </main>
 
   <footer>
@@ -165,231 +245,298 @@
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
 
+    // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
     const player = {
       x: 50,
       y: 190,
-      width: 30,
-      height: 40,
+      radius: 20,
       color: "#ffed00",
       vy: 0,
       gravity: 1.5,
-      jumping: false
+      jumping: false,
+      width: 40,
+      height: 40
     };
 
+    // Spielstatus
     let score = 0;
-    const coins = [];
-    const obstacles = [];
-
     let gameOver = false;
+
+    // Coins-Array
+    const coins = [];
+    const coinSize = 20;
     let coinTimer = 0;
-    let obstacleTimer = 0;
+    const coinInterval = 90; // wie oft neue Coins erscheinen
 
-    const coinSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_28599f5d83.mp3");
+    // Hindernisse (Hürden) – rot mit Ausrufezeichen (🚫)
+    const obstacles = [];
+    const obstacleWidth = 30;
+    const obstacleHeight = 60;
+    const obstacleColor = "#e5007d";
 
-    const obstacleTypes = [
-      { text: "📄 Formulare", color: "#b22222" },
-      { text: "⌛ Wartezeit", color: "#d2691e" },
-      { text: "🏢 Amt", color: "#006400" },
-      { text: "❌ Bürokratie", color: "#8b0000" }
-    ];
+    // Spielfeld Bodenhöhe (y-Wert für Boden)
+    const groundY = 210;
 
-    const keys = {};
+    // Tastenstatus
+    const keys = {
+      left: false,
+      right: false
+    };
 
-    document.addEventListener("keydown", e => {
-      keys[e.key] = true;
-      if (e.key === " " || e.key === "ArrowUp") jump();
-    });
-
-    document.addEventListener("keyup", e => keys[e.key] = false);
-
-    document.getElementById("leftBtn").addEventListener("mousedown", () => keys["ArrowLeft"] = true);
-    document.getElementById("leftBtn").addEventListener("mouseup", () => keys["ArrowLeft"] = false);
-    document.getElementById("rightBtn").addEventListener("mousedown", () => keys["ArrowRight"] = true);
-    document.getElementById("rightBtn").addEventListener("mouseup", () => keys["ArrowRight"] = false);
-
-    // Mobile support
-    document.getElementById("leftBtn").addEventListener("touchstart", e => { e.preventDefault(); keys["ArrowLeft"] = true; });
-    document.getElementById("leftBtn").addEventListener("touchend", e => { e.preventDefault(); keys["ArrowLeft"] = false; });
-    document.getElementById("rightBtn").addEventListener("touchstart", e => { e.preventDefault(); keys["ArrowRight"] = true; });
-    document.getElementById("rightBtn").addEventListener("touchend", e => { e.preventDefault(); keys["ArrowRight"] = false; });
-
+    // Game Over Elemente
+    const gameOverText = document.getElementById("gameOverText");
+    const restartBtn = document.getElementById("restartBtn");
     const jumpBtn = document.getElementById("jumpBtn");
-    jumpBtn.addEventListener("click", jump);
-    jumpBtn.addEventListener("touchstart", e => {
-      e.preventDefault();
-      jump();
-    });
+    const leftBtn = document.getElementById("leftBtn");
+    const rightBtn = document.getElementById("rightBtn");
 
+    // Spieler-Startposition zurücksetzen
+    function resetPlayer() {
+      player.x = 50;
+      player.y = groundY - player.radius;
+      player.vy = 0;
+      player.jumping = false;
+    }
+
+    // Neues Spiel starten
+    function resetGame() {
+      score = 0;
+      gameOver = false;
+      coins.length = 0;
+      obstacles.length = 0;
+      resetPlayer();
+      gameOverText.style.display = "none";
+      restartBtn.style.display = "none";
+      jumpBtn.disabled = false;
+      leftBtn.disabled = false;
+      rightBtn.disabled = false;
+    }
+
+    // Erzeuge zufällig ein Hindernis
+    function createObstacle() {
+      const xPos = canvas.width + Math.random() * 200;
+      obstacles.push({
+        x: xPos,
+        y: groundY,
+        width: obstacleWidth,
+        height: obstacleHeight,
+        color: obstacleColor,
+        icon: "🚫"
+      });
+    }
+
+    // Erzeuge zufällig einen Coin
+    function createCoin() {
+      const xPos = canvas.width + Math.random() * 200;
+      const yPos = groundY - 40 - Math.random() * 70;
+      coins.push({
+        x: xPos,
+        y: yPos,
+        width: coinSize,
+        height: coinSize,
+        collected: false
+      });
+    }
+
+    // Kollisionsprüfung zwischen Spieler und Hindernissen
+    function checkCollision(rect) {
+      // Rechteck Spieler (Kreis als Box approximiert)
+      const playerBox = {
+        x: player.x - player.radius,
+        y: player.y - player.radius,
+        width: player.radius * 2,
+        height: player.radius * 2
+      };
+      return !(
+        playerBox.x > rect.x + rect.width ||
+        playerBox.x + playerBox.width < rect.x ||
+        playerBox.y > rect.y ||
+        playerBox.y + playerBox.height < rect.y - rect.height
+      );
+    }
+
+    // Spiel beenden, wenn verloren
+    function endGame() {
+      gameOver = true;
+      gameOverText.style.display = "block";
+      restartBtn.style.display = "inline-block";
+      jumpBtn.disabled = true;
+      leftBtn.disabled = true;
+      rightBtn.disabled = true;
+      gameOverText.focus();
+    }
+
+    // Spieler springt
     function jump() {
-      if (!player.jumping) {
-        player.vy = -26;
+      if (!player.jumping && !gameOver) {
+        player.vy = -22;
         player.jumping = true;
       }
     }
 
-    function updatePlayer() {
-      if (keys["ArrowLeft"]) player.x = Math.max(0, player.x - 8);
-      if (keys["ArrowRight"]) player.x = Math.min(canvas.width - player.width, player.x + 8);
+    // Spieler nach links/rechts bewegen
+    function movePlayer(direction) {
+      if (gameOver) return;
+      if (direction === "left") {
+        player.x -= 10;
+        if (player.x - player.radius < 0) player.x = player.radius;
+      } else if (direction === "right") {
+        player.x += 10;
+        if (player.x + player.radius > canvas.width) player.x = canvas.width - player.radius;
+      }
+    }
+
+    // Spiel-Update
+    function updateGame() {
+      if (gameOver) return;
+
+      // Spieler Bewegung (Vertikal)
       player.vy += player.gravity;
       player.y += player.vy;
-      if (player.y > 190) {
-        player.y = 190;
+
+      // Boden Check
+      if (player.y > groundY - player.radius) {
+        player.y = groundY - player.radius;
         player.vy = 0;
         player.jumping = false;
       }
-    }
 
-    function generateObstacle() {
-      const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
-      obstacles.push({
-        x: canvas.width,
-        y: 190,
-        width: 30,
-        height: 40,
-        text: type.text,
-        color: type.color
+      // Coins generieren
+      coinTimer++;
+      if (coinTimer > coinInterval) {
+        coinTimer = 0;
+        createCoin();
+        if (Math.random() < 0.6) createObstacle(); // 60% Chance, Hindernis zu erzeugen
+      }
+
+      // Coins bewegen und prüfen, ob gesammelt
+      coins.forEach(coin => {
+        coin.x -= 5;
+        if (!coin.collected) {
+          const dx = Math.abs(player.x - (coin.x + coin.width/2));
+          const dy = Math.abs(player.y - (coin.y + coin.height/2));
+          if (dx < player.radius + coin.width/2 && dy < player.radius + coin.height/2) {
+            coin.collected = true;
+            score++;
+          }
+        }
       });
-    }
 
-    function generateCoin() {
-      coins.push({
-        x: canvas.width + 20,
-        y: 140 + Math.random() * 40,
-        width: 20,
-        height: 20,
-        color: "#ffed00"
+      // Hindernisse bewegen und prüfen, ob getroffen
+      obstacles.forEach(obstacle => {
+        obstacle.x -= 6;
+        if (checkCollision(obstacle)) {
+          endGame();
+        }
       });
+
+      // Score gewinnen
+      if (score >= 20) {
+        alert("Herzlichen Glückwunsch! Sie haben alle FDP-Coins gesammelt und gewinnen das Spiel!");
+        resetGame();
+      }
     }
 
+    // Spieler zeichnen (gelber Kreis mit schwarzen Augen)
     function drawPlayer() {
       ctx.fillStyle = player.color;
-      ctx.fillRect(player.x, player.y, player.width, player.height);
-
-      // Gesicht
-      ctx.fillStyle = "#000";
-      ctx.fillRect(player.x + 6, player.y + 8, 5, 5);
-      ctx.fillRect(player.x + 18, player.y + 8, 5, 5);
-
-      // Sprechblase mit "Rattenschwanz"
-      const bubbleX = player.x + 40;
-      const bubbleY = player.y - 30;
-
       ctx.beginPath();
-      ctx.moveTo(bubbleX, bubbleY);
-      ctx.lineTo(bubbleX + 60, bubbleY);
-      ctx.lineTo(bubbleX + 60, bubbleY + 20);
-      ctx.lineTo(bubbleX + 15, bubbleY + 20);
-      ctx.lineTo(bubbleX + 5, bubbleY + 30);
-      ctx.lineTo(bubbleX + 10, bubbleY + 20);
-      ctx.lineTo(bubbleX, bubbleY + 20);
+      ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+      ctx.fill();
       ctx.closePath();
-      ctx.fillStyle = "#fff";
-      ctx.fill();
-      ctx.strokeStyle = "#000";
-      ctx.stroke();
 
+      // Augen (zwei kleine schwarze Kreise)
       ctx.fillStyle = "#000";
-      ctx.font = "10px Calibri";
-      ctx.fillText("Mehr FDP Coins!", bubbleX + 5, bubbleY + 14);
-    }
-
-    function drawObstacle(o) {
-      ctx.fillStyle = o.color;
-      ctx.fillRect(o.x, o.y, o.width, o.height);
-      ctx.fillStyle = "#fff";
-      ctx.font = "10px Calibri";
-      ctx.textAlign = "center";
-      ctx.fillText(o.text, o.x + o.width/2, o.y + 28);
-    }
-
-    function drawCoin(c) {
+      const eyeRadius = 4;
       ctx.beginPath();
-      ctx.arc(c.x + c.width / 2, c.y + c.height / 2, c.width / 2, 0, Math.PI * 2);
-      ctx.fillStyle = c.color;
+      ctx.arc(player.x - 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
+      ctx.arc(player.x + 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
       ctx.fill();
+      ctx.closePath();
+
+      // Lächeln (ein Bogen)
+      ctx.strokeStyle = "#000";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(player.x, player.y + 2, 10, 0, Math.PI);
+      ctx.stroke();
+      ctx.closePath();
     }
 
-    function checkCollision(a, b) {
-      return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
+    // Spiel zeichnen
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Boden zeichnen
+      ctx.fillStyle = "#009ee3";
+      ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
+
+      // Spieler zeichnen
+      drawPlayer();
+
+      // Hindernisse zeichnen (rote Rechtecke mit 🚫)
+      obstacles.forEach(obstacle => {
+        ctx.fillStyle = obstacle.color;
+        ctx.font = "28px Arial, sans-serif";
+        ctx.fillText(obstacle.icon, obstacle.x + 6, obstacle.y - obstacle.height + 40);
+        ctx.strokeStyle = obstacle.color;
+        ctx.lineWidth = 3;
+        ctx.strokeRect(obstacle.x, obstacle.y - obstacle.height, obstacle.width, obstacle.height);
+      });
+
+      // Coins zeichnen (gelbe Kreise mit schwarzem Rand)
+      coins.forEach(coin => {
+        if (!coin.collected) {
+          ctx.fillStyle = "#ffed00";
+          ctx.beginPath();
+          ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = "#000";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.closePath();
+        }
+      });
+
+      // Score anzeigen
+      ctx.fillStyle = "#009ee3";
+      ctx.font = "bold 22px Calibri, sans-serif";
+      ctx.fillText("FDP-Coins: " + score + " / 20", 10, 30);
     }
 
-    const restartBtn = document.getElementById("restartBtn");
-    restartBtn.addEventListener("click", () => {
-      score = 0;
-      obstacles.length = 0;
-      coins.length = 0;
-      gameOver = false;
-      player.x = 50;
-      player.y = 190;
-      player.vy = 0;
-      player.jumping = false;
-      restartBtn.style.display = "none";
-      requestAnimationFrame(update);
+    // Haupt-Loop
+    function gameLoop() {
+      updateGame();
+      draw();
+      if (!gameOver) {
+        requestAnimationFrame(gameLoop);
+      }
+    }
+
+    // Event-Listener für Tastatur
+    window.addEventListener("keydown", e => {
+      if (gameOver) return;
+      if (e.code === "ArrowLeft") {
+        movePlayer("left");
+      } else if (e.code === "ArrowRight") {
+        movePlayer("right");
+      } else if (e.code === "Space" || e.code === "ArrowUp") {
+        jump();
+      }
     });
 
-    function update() {
-      if (gameOver) {
-        ctx.fillStyle = "rgba(0,0,0,0.6)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#fff";
-        ctx.font = "30px Calibri";
-        ctx.textAlign = "center";
-        ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2 - 10);
-        ctx.fillText("Score: " + score, canvas.width / 2, canvas.height / 2 + 20);
-        restartBtn.style.display = "inline-block";
-        return;
-      }
+    // Button Klicks
+    jumpBtn.addEventListener("click", jump);
+    leftBtn.addEventListener("click", () => movePlayer("left"));
+    rightBtn.addEventListener("click", () => movePlayer("right"));
+    restartBtn.addEventListener("click", () => {
+      resetGame();
+      gameLoop();
+    });
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      updatePlayer();
-
-      if (++coinTimer > 100) {
-        generateCoin();
-        coinTimer = 0;
-      }
-
-      if (++obstacleTimer > 120) {
-        generateObstacle();
-        obstacleTimer = 0;
-      }
-
-      for (let i = coins.length - 1; i >= 0; i--) {
-        coins[i].x -= 7;
-        if (checkCollision(player, coins[i])) {
-          score++;
-          coinSound.play();
-          coins.splice(i, 1);
-        } else if (coins[i].x < -20) {
-          coins.splice(i, 1);
-        }
-      }
-
-      for (let i = obstacles.length - 1; i >= 0; i--) {
-        obstacles[i].x -= 8;
-        if (checkCollision(player, obstacles[i])) gameOver = true;
-        else if (obstacles[i].x < -30) obstacles.splice(i, 1);
-      }
-
-      ctx.beginPath();
-      ctx.moveTo(0, 230);
-      ctx.lineTo(canvas.width, 230);
-      ctx.strokeStyle = "#888";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      drawPlayer();
-      coins.forEach(drawCoin);
-      obstacles.forEach(drawObstacle);
-
-      ctx.fillStyle = "#009ee3";
-      ctx.font = "bold 20px Calibri";
-      ctx.textAlign = "left";
-      ctx.fillText("FDP-Coins: " + score, 10, 30);
-
-      requestAnimationFrame(update);
-    }
-
-    update();
+    // Start
+    resetGame();
+    gameLoop();
   </script>
 </body>
 </html>
