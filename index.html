@@ -106,6 +106,73 @@ header {
     z-index: 1;
   }
 
+  /* ========= BURGER-MENÜ ========== */
+.burger-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--white);
+  border: 2px solid var(--cyan);
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 158, 227, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Burger Menü */
+    .burger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--cyan);
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: var(--white);
+      position: sticky;
+      top: 72px;
+      z-index: 999;
+      border-top: 1px solid var(--cyan);
+    }
+
+    .mobile-nav a {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--cyan);
+    }
+
+    .mobile-nav a:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .burger {
+        display: block;
+      }
+      .mobile-nav {
+        display: none;
+      }
+      .mobile-nav.show {
+        display: flex;
+      }
+    }
+
+    main {
+      padding: 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
   main h2 {
     color: var(--black);
     font-weight: 700;
@@ -452,7 +519,18 @@ footer .social-links a:focus {
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="impressum.html">Impressum</a>
+  </div>
+  
 <div class="bg-overlay"></div>
+
+  
 <main>
 
   <h2>Meine Themen</h2>
@@ -578,6 +656,19 @@ navLinks.forEach(link => {
     overlay.style.opacity = '0.08'; // sichtbar am Anfang
   }
 });
+  const burger = document.getElementById("burger");
+      const mobileNav = document.getElementById("mobile-nav");
+
+      burger.addEventListener("click", () => {
+        mobileNav.classList.toggle("show");
+      });
+
+      const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add("active");
+        }
+      });
   
 </script>
 
