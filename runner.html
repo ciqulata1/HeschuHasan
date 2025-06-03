@@ -267,17 +267,32 @@
   const ctx = canvas.getContext("2d");
 
   // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
-  const player = {
-    x: 50,
-    y: 150,
-    radius: 20,
-    color: "#ffed00",
-    vy: 0,
-    gravity: 1,
-    jumping: false,
-    width: 40,
-    height: 40
-  };
+  class Player {
+  constructor() {
+    this.x = 50;
+    this.y = 200;
+    this.width = 50;
+    this.height = 50;
+    this.velocityY = 0;
+    this.jumpStrength = -10;
+    this.gravity = 0.5;
+  }
+
+  update() {
+    this.velocityY += this.gravity;
+    this.y += this.velocityY;
+
+    // Bodenbegrenzung (optional)
+    if (this.y > canvas.height - this.height) {
+      this.y = canvas.height - this.height;
+      this.velocityY = 0;
+    }
+  }
+
+  jump() {
+    this.velocityY = this.jumpStrength;
+  }
+}
 
   // Spielstatus
   let score = 0;
