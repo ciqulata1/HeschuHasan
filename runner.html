@@ -492,10 +492,10 @@
   function movePlayer(direction) {
     if (gameOver) return;
     if (direction === "left") {
-      player.x -= 10;
+      player.x -= 15;
       if (player.x - player.radius < 0) player.x = player.radius;
     } else if (direction === "right") {
-      player.x += 10;
+      player.x += 15;
       if (player.x + player.radius > canvas.width) player.x = canvas.width - player.radius;
     }
   }
@@ -520,7 +520,7 @@
     if (coinTimer > coinInterval) {
       coinTimer = 0;
       createCoin();
-      if (Math.random() < 0.1) createObstacle(); // 60% Chance, Hindernis erzeugen
+      if (Math.random() < 0.9) createObstacle(); // 60% Chance, Hindernis erzeugen
     }
 
     // Coins bewegen und prüfen, ob gesammelt
