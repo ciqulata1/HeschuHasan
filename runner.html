@@ -645,10 +645,6 @@ const player = new Player();
     }
   }
 
-  window.addEventListener("keydown", e => {
-    if (["ArrowLeft", "ArrowRight", "Space", "ArrowUp"].includes(e.code)) {
-      e.preventDefault();
-    }
 
     if (gameOver) return;
 
