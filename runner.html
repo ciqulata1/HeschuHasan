@@ -643,19 +643,26 @@
   }
 
   // Event-Listener für Tastatur
-  window.addEventListener("keydown", e => {
-  if (gameOver) return;
+  // Tastenstatus-Objekt (bereits vorhanden, hier nochmal zur Sicherheit)
+const keys = {
+  left: false,
+  right: false,
+  up: false
+};
 
-  if (e.code === "ArrowLeft") {
-    e.preventDefault();
-    movePlayer("left");
-  } else if (e.code === "ArrowRight") {
-    e.preventDefault();
-    movePlayer("right");
-  } else if (e.code === "Space" || e.code === "ArrowUp") {
-    e.preventDefault();
-    jump();
-  }
+// EventListener für keydown - setze Taste auf true
+window.addEventListener("keydown", (e) => {
+  if (gameOver) return;
+  if (e.code === "ArrowLeft") keys.left = true;
+  if (e.code === "ArrowRight") keys.right = true;
+  if (e.code === "Space" || e.code === "ArrowUp") keys.up = true;
+});
+
+// EventListener für keyup - setze Taste auf false
+window.addEventListener("keyup", (e) => {
+  if (e.code === "ArrowLeft") keys.left = false;
+  if (e.code === "ArrowRight") keys.right = false;
+  if (e.code === "Space" || e.code === "ArrowUp") keys.up = false;
 });
   // Button Klicks
   jumpBtn.addEventListener("click", jump);
