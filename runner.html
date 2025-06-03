@@ -35,38 +35,38 @@
     }
 
     h2 {
-      margin-top: 20px;
+      margin-top: 40px;
       color: #009ee3;
     }
 
-    .canvas-container {
-      position: relative;
-      width: 100%;
-      max-width: 700px;
-      margin: 20px auto;
+    p.instructions {
+      font-size: 1rem;
+      margin-top: 10px;
+      margin-bottom: 20px;
     }
 
     canvas {
-      width: 100%;
-      height: auto;
       border: 2px solid #009ee3;
       background: #fff;
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
     }
 
     .controls {
-      margin-top: 20px;
+      margin: 20px 0;
     }
 
     .jump-button {
       background-color: #009ee3;
       color: #fff;
       border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 14px 24px;
       font-family: Calibri, sans-serif;
       font-weight: bold;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
@@ -75,20 +75,29 @@
       color: #000;
     }
 
-    .back-button {
-      margin-top: 40px;
-      display: inline-block;
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .home-button {
       background-color: #e5007d;
       color: #fff;
+      border: none;
       padding: 12px 24px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
       font-family: Calibri, sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 40px;
       transition: background-color 0.3s ease;
     }
 
-    .back-button:hover {
+    .home-button:hover {
       background-color: #c00066;
     }
 
@@ -101,62 +110,67 @@
       box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
     }
 
-    footer p {
-      margin: 4px 0;
-    }
-
     footer a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
-      font-family: Calibri, sans-serif;
-      display: inline-block;
-      margin: 4px;
+      margin-left: 5px;
     }
 
     footer a:hover {
       text-decoration: underline;
     }
 
-    footer .icon {
+    .social-icon {
       width: 24px;
-      height: 24px;
       vertical-align: middle;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 480px) {
+      .jump-button {
+        font-size: 1.1rem;
+        padding: 16px 20px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    Wahlkampf Runner – Heschu Hasan Digital
+    Wahlkampf Runner – FDP Digital
   </header>
 
   <main>
-    <h2>Spiele jetzt: Wahlkampf Runner – Sammle FDP-Coins und spring über Bürokratie und Unwissen!</h2>
+    <h2>🎮 Spiele jetzt: Wahlkampf Runner</h2>
+    <p class="instructions">Sammle FDP-Coins 💰 und überspringe Hindernisse der Bürokratie!<br>
+    Tipp: Springe mit dem Button oder der Pfeiltaste nach oben.</p>
 
-    <div class="canvas-container">
-      <canvas id="gameCanvas" width="700" height="250"></canvas>
-    </div>
+    <canvas id="gameCanvas" width="700" height="250"></canvas>
 
     <div class="controls">
-      <button class="jump-button" onclick="jump()">⤴ Springen</button>
+      <div class="button-row">
+        <button class="jump-button" id="leftBtn">⬅ Links</button>
+        <button class="jump-button" id="jumpBtn">⤴ Springen</button>
+        <button class="jump-button" id="rightBtn">➡ Rechts</button>
+      </div>
     </div>
 
-    <a href="index.html" class="back-button">⬅ Zurück zur Startseite</a>
+    <button class="home-button" onclick="location.href='index.html'">⬅ Zurück zur Startseite</button>
   </main>
 
   <footer>
     <p>© 2025 Wahlkampf Runner – Heschu Hasan Digital</p>
-    <p>Treffen Sie mich auf den Sozialen Medien:</p>
-    <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram">
-      <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
-    </a>
+    <p>Treffen Sie mich auf sozialen Medien:
+      <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-icon" />
+      </a>
+    </p>
   </footer>
 
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
 
-    // Spieler
     const player = {
       x: 50,
       y: 190,
@@ -164,7 +178,7 @@
       height: 40,
       color: "#ffed00",
       vy: 0,
-      gravity: 1.4,
+      gravity: 1.5,
       jumping: false
     };
 
@@ -178,20 +192,27 @@
     const obstacleWidth = 30;
     const obstacleHeight = 40;
     let obstacleTimer = 0;
-    const obstacleInterval = 120;
+    const obstacleInterval = 140;
 
     const keys = {};
+
     document.addEventListener("keydown", e => keys[e.key] = true);
     document.addEventListener("keyup", e => keys[e.key] = false);
 
-    const pointSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_28599f5d83.mp3?filename=video-game-coin-133125.mp3");
-
     function jump() {
       if (!player.jumping) {
-        player.vy = -20;
+        player.vy = -18;
         player.jumping = true;
       }
     }
+
+    document.getElementById("jumpBtn").addEventListener("click", jump);
+    document.getElementById("leftBtn").addEventListener("touchstart", () => keys["ArrowLeft"] = true);
+    document.getElementById("leftBtn").addEventListener("touchend", () => keys["ArrowLeft"] = false);
+    document.getElementById("rightBtn").addEventListener("touchstart", () => keys["ArrowRight"] = true);
+    document.getElementById("rightBtn").addEventListener("touchend", () => keys["ArrowRight"] = false);
+
+    const pointSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_28599f5d83.mp3?filename=video-game-coin-133125.mp3");
 
     function drawPlayer() {
       ctx.fillStyle = player.color;
@@ -206,103 +227,8 @@
     function gameLoop() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      if ((keys[" "] || keys["ArrowUp"]) && !player.jumping) {
-        jump();
-      }
-
       if (keys["ArrowRight"]) player.x += 5;
       if (keys["ArrowLeft"]) player.x -= 5;
 
-      player.vy += player.gravity;
-      player.y += player.vy;
-
-      if (player.y >= 190) {
-        player.y = 190;
-        player.vy = 0;
-        player.jumping = false;
-      }
-
       if (player.x < 0) player.x = 0;
-      if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
-
-      drawPlayer();
-
-      // Coins
-      coinTimer++;
-      if (coinTimer >= coinInterval) {
-        coinTimer = 0;
-        coins.push({ x: canvas.width, y: 190 + Math.random() * -80, collected: false });
-      }
-
-      for (let i = coins.length - 1; i >= 0; i--) {
-        const coin = coins[i];
-        coin.x -= 5;
-
-        if (!coin.collected &&
-            coin.x < player.x + player.width &&
-            coin.x + coinSize > player.x &&
-            coin.y < player.y + player.height &&
-            coin.y + coinSize > player.y) {
-          score++;
-          coin.collected = true;
-          pointSound.play();
-        }
-
-        if (!coin.collected) {
-          ctx.fillStyle = "#ffed00";
-          ctx.beginPath();
-          ctx.arc(coin.x, coin.y, coinSize / 2, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        if (coin.x + coinSize < 0) coins.splice(i, 1);
-      }
-
-      // Hindernisse
-      obstacleTimer++;
-      if (obstacleTimer >= obstacleInterval) {
-        obstacleTimer = 0;
-        const types = ["§", "?"];
-        const symbol = types[Math.floor(Math.random() * types.length)];
-        obstacles.push({ x: canvas.width, y: 190 - obstacleHeight, type: symbol });
-      }
-
-      for (let i = obstacles.length - 1; i >= 0; i--) {
-        const obs = obstacles[i];
-        obs.x -= 5;
-
-        if (
-          player.x < obs.x + obstacleWidth &&
-          player.x + player.width > obs.x &&
-          player.y + player.height > obs.y
-        ) {
-          alert("Oh nein! Heschu wurde gestoppt – von der Bürokratie oder uninformierten WählerInnen! Punkte: " + score);
-          document.location.reload();
-          return;
-        }
-
-        ctx.fillStyle = "#e5007d";
-        ctx.fillRect(obs.x, obs.y, obstacleWidth, obstacleHeight);
-
-        ctx.fillStyle = "#fff";
-        ctx.font = "bold 22px Arial";
-        ctx.fillText(obs.type, obs.x + 7, obs.y + 28);
-      }
-
-      ctx.fillStyle = "#000";
-      ctx.font = "bold 18px Arial";
-      ctx.fillText("Punkte: " + score, 10, 30);
-
-      requestAnimationFrame(gameLoop);
-    }
-
-    gameLoop();
-
-    // Optional: responsive canvas height if needed
-    window.addEventListener("resize", () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetWidth / 2.8;
-    });
-  </script>
-</body>
-</html>
+      if (player.x + player.width > canvas.width) player.x =
