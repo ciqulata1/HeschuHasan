@@ -266,8 +266,16 @@
   const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
 
-  // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
-  class Player {
+  
+   // Spieler erstellen aus der Klasse
+const player = new Player();
+player.radius = 25;
+player.color = "#ffed00";
+   
+   // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
+  
+   
+   class Player {
   constructor() {
     this.x = 50;
     this.y = 200;
