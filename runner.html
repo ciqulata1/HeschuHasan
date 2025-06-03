@@ -505,13 +505,14 @@
     player.vy += player.gravity;
     player.y += player.vy;
 
-    // Boden Check
-    if (player.y > groundY - player.radius) {
-      player.y = groundY - player.radius;
-      player.vy = 0;
-      player.jumping = false;
-    }
-
+    //const groundLevel = groundY - player.radius;
+if (player.y >= groundLevel) {
+  player.y = groundLevel;
+  player.vy = 0;
+  if (player.jumping) {
+    player.jumping = false;
+  }
+}
     // Coins generieren
     coinTimer++;
     if (coinTimer > coinInterval) {
