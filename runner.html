@@ -262,113 +262,72 @@
   <p>&copy; 2025 Heschu Hasan 👾 Digital – FDP-Wahlkreiskandidatin</p>
 </footer>
 
- <script>
+<script>
   const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
 
-  
-   // Spieler erstellen aus der Klasse
-const player = {
-  x: 70,
-  y: groundY - 25,
-  radius: 25,
-  vy: 0,
-  gravity: 0.8,
-  jumping: false,
-  color: "#ffed00"
-};
-   
-   // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
-  
-   
-   class Player {
-  constructor() {
-    this.x = 50;
-    this.y = 200;
-    this.width = 50;
-    this.height = 50;
-    this.velocityY = 0;
-    this.jumpStrength = -10;
-    this.gravity = 0.5;
-  }
-
-  update() {
-    this.velocityY += this.gravity;
-    this.y += this.velocityY;
-
-    // Bodenbegrenzung (optional)
-    if (this.y > canvas.height - this.height) {
-      this.y = canvas.height - this.height;
+  class Player {
+    constructor() {
+      this.x = 50;
+      this.y = 200;
+      this.width = 50;
+      this.height = 50;
       this.velocityY = 0;
+      this.jumpStrength = -10;
+      this.gravity = 0.5;
+    }
+
+    update() {
+      this.velocityY += this.gravity;
+      this.y += this.velocityY;
+
+      if (this.y > canvas.height - this.height) {
+        this.y = canvas.height - this.height;
+        this.velocityY = 0;
+      }
+    }
+
+    jump() {
+      this.velocityY = this.jumpStrength;
     }
   }
 
-  jump() {
-    this.velocityY = this.jumpStrength;
-  }
-}
+  const player = new Player();
+  player.radius = 25;
+  player.color = "#ffed00";
+  player.vy = 0;
+  player.jumping = false;
 
-  // Spielstatus
   let score = 0;
   let gameOver = false;
 
-  // Coins-Array
   const coins = [];
   const coinSize = 20;
   let coinTimer = 0;
-  const coinInterval = 90; // wie oft neue Coins erscheinen
+  const coinInterval = 90;
 
-  // Spielfeld Bodenhöhe (y-Wert für Boden)
   const groundY = 210;
 
-  // Tastenstatus
   const keys = {
     left: false,
     right: false
   };
 
-  // Game Over Elemente
   const gameOverText = document.getElementById("gameOverText");
   const restartBtn = document.getElementById("restartBtn");
   const jumpBtn = document.getElementById("jumpBtn");
   const leftBtn = document.getElementById("leftBtn");
   const rightBtn = document.getElementById("rightBtn");
 
-  // Neue Hindernis-Typen mit Icon, Text und Farbe
   const obstacleTypes = {
-    wartezeit: {
-      icon: "⏳",
-      text: "Wartezeit",
-      color: "#cc3300"
-    },
-    diskussion: {
-      icon: "💬",
-      text: "Diskussion",
-      color: "#ff5500"
-    },
-    formular: {
-      icon: "📄",
-      text: "Formular",
-      color: "#cc3300"
-    },
-    pruefung: {
-      icon: "❓",
-      text: "Prüfung",
-      color: "#cc0000"
-    },
-    ablehnung: {
-      icon: "✖️",
-      text: "Ablehnung",
-      color: "#cc0000"
-    },
-    unterschrift: {
-      icon: "🖊️",
-      text: "Unterschrift fehlt",
-      color: "#cc0000"
-    }
+    wartezeit: { icon: "⏳", text: "Wartezeit", color: "#cc3300" },
+    diskussion: { icon: "💬", text: "Diskussion", color: "#ff5500" },
+    formular: { icon: "📄", text: "Formular", color: "#cc3300" },
+    pruefung: { icon: "❓", text: "Prüfung", color: "#cc0000" },
+    ablehnung: { icon: "✖️", text: "Ablehnung", color: "#cc0000" },
+    unterschrift: { icon: "🖊️", text: "Unterschrift fehlt", color: "#cc0000" }
   };
 
-  // Spieler-Startposition zurücksetzen
   function resetPlayer() {
     player.x = 70;
     player.y = groundY - player.radius;
@@ -376,7 +335,6 @@ const player = {
     player.jumping = false;
   }
 
-  // Neues Spiel starten
   function resetGame() {
     score = 0;
     gameOver = false;
@@ -390,10 +348,8 @@ const player = {
     rightBtn.disabled = false;
   }
 
-  // Hindernisse (Hürden) Array
   const obstacles = [];
 
-  // Erzeuge zufällig ein Hindernis
   function createObstacle() {
     const xPos = canvas.width + Math.random() * 200;
     const types = ["wartezeit", "diskussion", "formular", "pruefung", "ablehnung", "unterschrift", "sanduhr"];
@@ -427,39 +383,34 @@ const player = {
 
   function drawSanduhrObstacle(x, y, width, height, waitTime) {
     ctx.save();
-
-    // Sanduhr-Kontur
-    ctx.fillStyle = "#e5007d"; // Pink
+    ctx.fillStyle = "#e5007d";
     ctx.strokeStyle = "#c00066";
     ctx.lineWidth = 3;
 
     ctx.beginPath();
-    ctx.moveTo(x + width/2, y - height);
-    ctx.lineTo(x, y - height/2);
-    ctx.lineTo(x + width/2, y);
-    ctx.lineTo(x + width, y - height/2);
+    ctx.moveTo(x + width / 2, y - height);
+    ctx.lineTo(x, y - height / 2);
+    ctx.lineTo(x + width / 2, y);
+    ctx.lineTo(x + width, y - height / 2);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
 
-    // Sand obere Hälfte gelb
     ctx.fillStyle = "#ffed00";
     ctx.beginPath();
-    ctx.moveTo(x + width/4, y - 3*height/4);
-    ctx.lineTo(x + width/2, y - height/2);
-    ctx.lineTo(x + 3*width/4, y - 3*height/4);
+    ctx.moveTo(x + width / 4, y - 3 * height / 4);
+    ctx.lineTo(x + width / 2, y - height / 2);
+    ctx.lineTo(x + 3 * width / 4, y - 3 * height / 4);
     ctx.closePath();
     ctx.fill();
 
-    // Sand untere Hälfte gelb
     ctx.beginPath();
-    ctx.moveTo(x + width/4, y - height/4);
-    ctx.lineTo(x + width/2, y - height/2);
-    ctx.lineTo(x + 3*width/4, y - height/4);
+    ctx.moveTo(x + width / 4, y - height / 4);
+    ctx.lineTo(x + width / 2, y - height / 2);
+    ctx.lineTo(x + 3 * width / 4, y - height / 4);
     ctx.closePath();
     ctx.fill();
 
-    // Wartezeit-Text oben drüber
     ctx.fillStyle = "#e5007d";
     ctx.font = "bold 16px Calibri, sans-serif";
     ctx.textAlign = "center";
@@ -468,7 +419,6 @@ const player = {
     ctx.restore();
   }
 
-  // Erzeuge zufällig einen Coin
   function createCoin() {
     const xPos = canvas.width + Math.random() * 200;
     const yPos = groundY - 40 - Math.random() * 70;
@@ -481,9 +431,7 @@ const player = {
     });
   }
 
-  // Kollisionsprüfung zwischen Spieler und Hindernissen
   function checkCollision(rect) {
-    // Rechteck Spieler (Kreis als Box approximiert)
     const playerBox = {
       x: player.x - player.radius,
       y: player.y - player.radius,
@@ -498,7 +446,6 @@ const player = {
     );
   }
 
-  // Spiel beenden, wenn verloren
   function endGame() {
     gameOver = true;
     gameOverText.style.display = "block";
@@ -509,7 +456,6 @@ const player = {
     gameOverText.focus();
   }
 
-  // Spieler springt
   function jump() {
     if (!player.jumping && !gameOver) {
       player.vy = -18;
@@ -517,7 +463,6 @@ const player = {
     }
   }
 
-  // Spieler nach links/rechts bewegen
   function movePlayer(direction) {
     if (gameOver) return;
     if (direction === "left") {
@@ -529,43 +474,37 @@ const player = {
     }
   }
 
-  // Spiel-Update
   function updateGame() {
     if (gameOver) return;
 
-    // Spieler Bewegung (Vertikal)
     player.vy += player.gravity;
     player.y += player.vy;
 
-    // Boden Check
     if (player.y > groundY - player.radius) {
       player.y = groundY - player.radius;
       player.vy = 0;
       player.jumping = false;
     }
 
-    // Coins generieren
     coinTimer++;
     if (coinTimer > coinInterval) {
       coinTimer = 0;
       createCoin();
-      if (Math.random() < 0.9) createObstacle(); // 60% Chance, Hindernis erzeugen
+      if (Math.random() < 0.9) createObstacle();
     }
 
-    // Coins bewegen und prüfen, ob gesammelt
     coins.forEach(coin => {
       coin.x -= 5;
       if (!coin.collected) {
-        const dx = Math.abs(player.x - (coin.x + coin.width/2));
-        const dy = Math.abs(player.y - (coin.y + coin.height/2));
-        if (dx < player.radius + coin.width/2 && dy < player.radius + coin.height/2) {
+        const dx = Math.abs(player.x - (coin.x + coin.width / 2));
+        const dy = Math.abs(player.y - (coin.y + coin.height / 2));
+        if (dx < player.radius + coin.width / 2 && dy < player.radius + coin.height / 2) {
           coin.collected = true;
           score++;
         }
       }
     });
 
-    // Hindernisse bewegen und prüfen, ob getroffen
     obstacles.forEach(obstacle => {
       obstacle.x -= 6;
       if (checkCollision(obstacle)) {
@@ -573,23 +512,21 @@ const player = {
       }
     });
 
-    // Score gewinnen
     if (score >= 20) {
       alert(
-  "Sie haben alle FDP-Coins gesammelt.\n\n" +
-  "Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:\n" +
-  "- z. B. durch Gespräche am Wahlkampfstand,\n" +
-  "- Nachfragen auf Veranstaltungen,\n" +
-  "- oder durch regelmäßigen Besuch auf meiner Seite oder meinem Instagram.\n\n" +
-  "Wer sich informiert und einbringt, kann Hürden verstehen – und überwinden.\n\n" +
-  "Vielen Dank für Ihr Interesse!\n\n" +
-  "— Ihre Heschu Hasan"
-);
+        "Sie haben alle FDP-Coins gesammelt.\n\n" +
+        "Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:\n" +
+        "- z. B. durch Gespräche am Wahlkampfstand,\n" +
+        "- Nachfragen auf Veranstaltungen,\n" +
+        "- oder durch regelmäßigen Besuch auf meiner Seite oder meinem Instagram.\n\n" +
+        "Wer sich informiert und einbringt, kann Hürden verstehen – und überwinden.\n\n" +
+        "Vielen Dank für Ihr Interesse!\n\n" +
+        "— Ihre Heschu Hasan"
+      );
       resetGame();
     }
   }
 
-  // Spieler zeichnen (gelber Kreis mit schwarzen Augen)
   function drawPlayer() {
     ctx.fillStyle = player.color;
     ctx.beginPath();
@@ -597,7 +534,6 @@ const player = {
     ctx.fill();
     ctx.closePath();
 
-    // Augen (zwei kleine schwarze Kreise)
     ctx.fillStyle = "#000";
     const eyeRadius = 4;
     ctx.beginPath();
@@ -606,7 +542,6 @@ const player = {
     ctx.fill();
     ctx.closePath();
 
-    // Lächeln (ein Bogen)
     ctx.strokeStyle = "#000";
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -615,18 +550,14 @@ const player = {
     ctx.closePath();
   }
 
-  // Spiel zeichnen
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Boden zeichnen
     ctx.fillStyle = "#009ee3";
     ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
 
-    // Spieler zeichnen
     drawPlayer();
 
-    // Hindernisse zeichnen
     obstacles.forEach(obstacle => {
       if (obstacle.type === "sanduhr") {
         drawSanduhrObstacle(obstacle.x, obstacle.y, obstacle.width, obstacle.height, obstacle.waitTime);
@@ -645,7 +576,6 @@ const player = {
       }
     });
 
-    // Coins zeichnen
     coins.forEach(coin => {
       if (!coin.collected) {
         ctx.fillStyle = "#ffed00";
@@ -659,13 +589,11 @@ const player = {
       }
     });
 
-    // Score anzeigen
     ctx.fillStyle = "#009ee3";
     ctx.font = "bold 22px Calibri, sans-serif";
     ctx.fillText("FDP-Coins: " + score + " / 20", 10, 30);
   }
 
-  // Haupt-Loop
   function gameLoop() {
     updateGame();
     draw();
@@ -674,24 +602,22 @@ const player = {
     }
   }
 
-  // Event-Listener für Tastatur
   window.addEventListener("keydown", e => {
-  if (["ArrowLeft", "ArrowRight", "Space", "ArrowUp"].includes(e.code)) {
-    e.preventDefault(); // verhindert Scrollen der Seite
-  }
+    if (["ArrowLeft", "ArrowRight", "Space", "ArrowUp"].includes(e.code)) {
+      e.preventDefault();
+    }
 
-  if (gameOver) return;
+    if (gameOver) return;
 
-  if (e.code === "ArrowLeft") {
-    movePlayer("left");
-  } else if (e.code === "ArrowRight") {
-    movePlayer("right");
-  } else if (e.code === "Space" || e.code === "ArrowUp") {
-    jump();
-  }
-});
+    if (e.code === "ArrowLeft") {
+      movePlayer("left");
+    } else if (e.code === "ArrowRight") {
+      movePlayer("right");
+    } else if (e.code === "Space" || e.code === "ArrowUp") {
+      jump();
+    }
+  });
 
-  // Button Klicks
   jumpBtn.addEventListener("click", jump);
   leftBtn.addEventListener("click", () => movePlayer("left"));
   rightBtn.addEventListener("click", () => movePlayer("right"));
@@ -700,9 +626,6 @@ const player = {
     gameLoop();
   });
 
-  // Start
   resetGame();
   gameLoop();
-</script> 
-</body>
-</html>
+</script>
