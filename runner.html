@@ -45,7 +45,7 @@
       height: auto;
     }
 
-    /* Buttons */
+    /* Buttons Container */
     #buttonsContainer {
       display: flex;
       justify-content: center;
@@ -54,41 +54,63 @@
       margin-bottom: 30px;
     }
 
-    button#jumpBtn {
-      background-color: #009ee3;
-      color: #fff;
+    /* Allgemeine Button Styles */
+    button {
       border: none;
-      padding: 12px 30px;
       font-family: Calibri, sans-serif;
       font-weight: bold;
-      font-size: 1.1rem;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.1s ease;
       user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* Springen Button */
+    button#jumpBtn {
+      background-color: #009ee3;
+      color: #fff;
+      padding: 12px 30px;
+      font-size: 1.1rem;
       min-width: 140px;
     }
-    button#jumpBtn:active {
+    button#jumpBtn:active,
+    button#jumpBtn.pressed {
       background-color: #ffed00;
       color: #000;
       transform: scale(0.95);
     }
 
+    /* Home Button */
     button#homeBtn {
       background-color: #e5007d;
       color: #fff;
-      border: none;
       padding: 12px 24px;
-      font-family: Calibri, sans-serif;
-      font-weight: bold;
       font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
       min-width: 160px;
     }
     button#homeBtn:hover {
       background-color: #c00066;
+    }
+
+    /* Pfeiltasten */
+    .arrowBtn {
+      background-color: #009ee3;
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      border-radius: 5px;
+      user-select: none;
+    }
+    .arrowBtn:active,
+    .arrowBtn.pressed {
+      background-color: #ffed00;
+      color: #000;
+      transform: scale(0.95);
     }
 
     /* Footer */
@@ -139,6 +161,11 @@
         width: 100% !important;
         height: auto !important;
       }
+      /* Pfeiltasten für mobile Ansicht */
+      #arrowButtons {
+        justify-content: center;
+        gap: 15px;
+      }
     }
   </style>
 </head>
@@ -148,22 +175,22 @@
   </header>
 
   <main>
-    <h2>Spielen Siw jetzt: Wahlkampf Runner – Sammlen Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
+    <h2>Spielen Sie jetzt: Wahlkampf Runner – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
     <canvas id="gameCanvas" width="700" height="250"></canvas>
 
     <div id="buttonsContainer">
       <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
       <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
     </div>
+
+    <div id="arrowButtons" style="display:flex; justify-content:center; gap:40px; margin-bottom:40px;">
+      <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
+      <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
+    </div>
   </main>
 
   <footer>
- 
-      
-    </a>
-    
-
-     <p>© 2025 Wahlkampf Runner – Heschu Hasan Digital</p>
+    <p>© 2025 Wahlkampf Runner – Heschu Hasan Digital</p>
   </footer>
 
   <script>
@@ -200,13 +227,91 @@
 
     // Steuerung
     const keys = {};
+
+    // Links-Rechts Bewegung (wenn benötigt, aktuell nur Beispiel, da Spieler an X=50 fixiert)
+    function moveLeft() {
+      player.x = Math.max(0, player.x - 10);
+    }
+    function moveRight() {
+      player.x = Math.min(canvas.width - player.width, player.x + 10);
+    }
+
     document.addEventListener("keydown", e => {
       keys[e.key] = true;
-      if(e.key === " " || e.key === "ArrowUp"){
+      if (e.key === " " || e.key === "ArrowUp") {
         jump();
+      } else if (e.key === "ArrowLeft") {
+        moveLeft();
+        pressArrowBtn("leftBtn");
+      } else if (e.key === "ArrowRight") {
+        moveRight();
+        pressArrowBtn("rightBtn");
       }
     });
-    document.addEventListener("keyup", e => keys[e.key] = false);
+
+    document.addEventListener("keyup", e => {
+      keys[e.key] = false;
+      if (e.key === "ArrowLeft") releaseArrowBtn("leftBtn");
+      if (e.key === "ArrowRight") releaseArrowBtn("rightBtn");
+    });
+
+    // Button-Elemente
+    const jumpBtn = document.getElementById("jumpBtn");
+    const leftBtn = document.getElementById("leftBtn");
+    const rightBtn = document.getElementById("rightBtn");
+
+    // Pfeil-Button Events
+    leftBtn.addEventListener("mousedown", () => {
+      moveLeft();
+      pressArrowBtn("leftBtn");
+    });
+    leftBtn.addEventListener("mouseup", () => releaseArrowBtn("leftBtn"));
+    leftBtn.addEventListener("mouseleave", () => releaseArrowBtn("leftBtn"));
+    leftBtn.addEventListener("touchstart", e => {
+      e.preventDefault();
+      moveLeft();
+      pressArrowBtn("leftBtn");
+    });
+    leftBtn.addEventListener("touchend", () => releaseArrowBtn("leftBtn"));
+
+    rightBtn.addEventListener("mousedown", () => {
+      moveRight();
+      pressArrowBtn("rightBtn");
+    });
+    rightBtn.addEventListener("mouseup", () => releaseArrowBtn("rightBtn"));
+    rightBtn.addEventListener("mouseleave", () => releaseArrowBtn("rightBtn"));
+    rightBtn.addEventListener("touchstart", e => {
+      e.preventDefault();
+      moveRight();
+      pressArrowBtn("rightBtn");
+    });
+    rightBtn.addEventListener("touchend", () => releaseArrowBtn("rightBtn"));
+
+    // Jump Button Events
+    jumpBtn.addEventListener("click", () => {
+      pressJumpBtn();
+      jump();
+      setTimeout(releaseJumpBtn, 150);
+    });
+    jumpBtn.addEventListener("touchstart", e => {
+      e.preventDefault();
+      pressJumpBtn();
+      jump();
+      setTimeout(releaseJumpBtn, 150);
+    });
+
+    function pressJumpBtn() {
+      jumpBtn.classList.add("pressed");
+    }
+    function releaseJumpBtn() {
+      jumpBtn.classList.remove("pressed");
+    }
+    function pressArrowBtn(id) {
+      document.getElementById(id).classList.add("pressed");
+    }
+    function releaseArrowBtn(id) {
+      document.getElementById(id).classList.remove("pressed");
+    }
 
     // Punkt-Sound
     const pointSound = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_28599f5d83.mp3?filename=video-game-coin-133125.mp3");
@@ -218,27 +323,6 @@
         player.jumping = true;
       }
     }
-
-    // Button Referenz & Event
-    const jumpBtn = document.getElementById("jumpBtn");
-    jumpBtn.addEventListener("click", () => {
-      jumpBtn.style.backgroundColor = "#ffed00";
-      jumpBtn.style.color = "#000";
-      jump();
-      setTimeout(() => {
-        jumpBtn.style.backgroundColor = "#009ee3";
-        jumpBtn.style.color = "#fff";
-      }, 150);
-    });
-    jumpBtn.addEventListener("touchstart", () => {
-      jumpBtn.style.backgroundColor = "#ffed00";
-      jumpBtn.style.color = "#000";
-      jump();
-      setTimeout(() => {
-        jumpBtn.style.backgroundColor = "#009ee3";
-        jumpBtn.style.color = "#fff";
-      }, 150);
-    });
 
     // Spieler zeichnen
     function drawPlayer() {
@@ -321,11 +405,20 @@
       );
     }
 
-    // Update Funktion
-    function update() {
+    // Game Over
+    let gameOver = false;
+    function endGame() {
+      alert("Oh nein! Verloren! Sie sollten Heschu Hasan wählen, damit sie die Bürokratiehürden für Sie beseitigen kann.");
+      document.location.reload();
+    }
+
+    // Spiel-Loop
+    function gameLoop() {
+      if (gameOver) return;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Spieler Physik
+      // Spieler-Physik
       player.vy += player.gravity;
       player.y += player.vy;
       if (player.y > 190) {
@@ -342,25 +435,26 @@
         coins.push(createCoin());
         coinTimer = 0;
       }
+
       // Coins bewegen und zeichnen
       for (let i = coins.length - 1; i >= 0; i--) {
-        const c = coins[i];
-        c.x -= 5;
-
-        // Collision mit Spieler
-        const coinRect = {x: c.x - c.size / 2, y: c.y - c.size / 2, width: c.size, height: c.size};
-        if (isColliding(player, coinRect)) {
+        coins[i].x -= 5;
+        if (coins[i].x + coins[i].size < 0) {
           coins.splice(i, 1);
+          continue;
+        }
+
+        // Sammeln prüfen
+        const coinRect = {x: coins[i].x - coins[i].size / 2, y: coins[i].y - coins[i].size / 2, width: coins[i].size, height: coins[i].size};
+        const playerRect = {x: player.x, y: player.y, width: player.width, height: player.height};
+        if (isColliding(playerRect, coinRect)) {
           score++;
           pointSound.currentTime = 0;
           pointSound.play();
-          continue;
-        }
-        if (c.x + c.size < 0) {
           coins.splice(i, 1);
-          continue;
+        } else {
+          drawCoin(coins[i]);
         }
-        drawCoin(c);
       }
 
       // Hindernisse generieren
@@ -372,32 +466,38 @@
 
       // Hindernisse bewegen und zeichnen
       for (let i = obstacles.length - 1; i >= 0; i--) {
-        const o = obstacles[i];
-        o.x -= 7;
-
-        if (isColliding(player, o)) {
-          // Game Over
-          alert("Verloren! Heschu Hasan hat die Bürokratie-Hürde nicht geschafft. Sie sollten sie wählen damit sie die Hürden für Sie beseitigen kann!\nDeine Punktzahl: " + score);
-          document.location.reload();
-          return;
-        }
-        if (o.x + o.width < 0) {
+        obstacles[i].x -= 8;
+        if (obstacles[i].x + obstacles[i].width < 0) {
           obstacles.splice(i, 1);
           continue;
         }
-        drawObstacle(o);
+
+        drawObstacle(obstacles[i]);
+
+        // Kollision prüfen
+        if (
+          player.x < obstacles[i].x + obstacles[i].width &&
+          player.x + player.width > obstacles[i].x &&
+          player.y < obstacles[i].y + obstacles[i].height &&
+          player.y + player.height > obstacles[i].y
+        ) {
+          gameOver = true;
+          endGame();
+          return;
+        }
       }
 
-      // Score anzeigen
+      // Punktestand anzeigen
       ctx.fillStyle = "#009ee3";
-      ctx.font = "bold 22px Calibri";
-      ctx.textAlign = "right";
-      ctx.fillText("FDP-Coins: " + score, canvas.width - 20, 40);
+      ctx.font = "bold 20px Calibri";
+      ctx.textAlign = "left";
+      ctx.fillText("FDP-Coins: " + score, 10, 30);
 
-      requestAnimationFrame(update);
+      requestAnimationFrame(gameLoop);
     }
 
-    update();
+    // Start Game Loop
+    gameLoop();
   </script>
 </body>
 </html>
