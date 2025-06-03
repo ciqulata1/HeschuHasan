@@ -66,47 +66,47 @@ header {
   justify-content: space-between;
 }
 
-  /* Wrapper für Überschrift und Logo */
-  header > div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  header h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--cyan);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-  #fdp-logo {
-    margin-top: 8px;
-    max-height: 40px;
-    transition: opacity 1s ease, transform 1s ease;
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  nav a {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-left: 25px;
-  }
-  nav a.active,
-  nav a:hover {
-    color: var(--magenta);
-    font-weight: 700;
-  }
+/* Wrapper für Überschrift und Logo */
+header > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+header h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--cyan);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+#fdp-logo {
+  margin-top: 8px;
+  max-height: 40px;
+  transition: opacity 1s ease, transform 1s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+nav a {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-left: 25px;
+}
+nav a.active,
+nav a:hover {
+  color: var(--magenta);
+  font-weight: 700;
+}
 
-  main {
-    padding: 20px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
+main {
+  padding: 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
 
-  /* ========= BURGER-MENÜ ========== */
+/* ========= BURGER-MENÜ ========== */
 .burger-menu {
   position: fixed;
   top: 20px;
@@ -125,381 +125,194 @@ header {
 }
 
 /* Burger Menü */
-    .burger {
-      display: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: var(--cyan);
-    }
-
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      background-color: var(--white);
-      position: sticky;
-      top: 72px;
-      z-index: 999;
-      border-top: 1px solid var(--cyan);
-    }
-
-    .mobile-nav a {
-      padding: 15px 20px;
-      border-bottom: 1px solid var(--cyan);
-    }
-
-    .mobile-nav a:hover {
-      background-color: var(--magenta);
-      color: var(--white);
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-      .burger {
-        display: block;
-      }
-      .mobile-nav {
-        display: none;
-      }
-      .mobile-nav.show {
-        display: flex;
-      }
-    }
-
-    main {
-      padding: 20px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-  main h2 {
-    color: var(--black);
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  main h3 {
-    color: var(--cyan);
-    font-weight: 600;
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-  }
-
-  main p {
-    font-weight: 300;
-    font-size: 1.1rem;
-    max-width: 700px;
-  }
-
-  /*main::before {
-  content: "";
-  position: absolute;
-  top: 120px;
-  right: 40px;
-  width: 300px;
-  height: 450px;
-  background-image: url("IMG_1604.jpeg");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.08; /* dezent im Hintergrund */
- /* z-index: 0;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 158, 227, 0.25);
-  pointer-events: none;
-
-  } */
-
-  .topics {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin-top: 40px;
-  }
-  .topic-box {
-    flex: 1 1 280px;
-    border: 2px solid var(--cyan);
-    background-color: var(--white);
-    color: var(--cyan);
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    user-select: none;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .topic-box:hover,
-  .topic-box:focus {
-    border-color: var(--magenta);
-    background-color: var(--magenta);
-    color: var(--yellow);
-    outline: none;
-  }
-  .topic-box.active {
-    background-color: var(--white);
-    color: var(--black);
-    font-weight: bold;
-  }
-
-  .topic-box p {
-  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-  font-weight: 300;
-  font-size: 1.1rem;
-  hyphens: auto;
-  word-break: break-word;
-  overflow-wrap: break-word;
+.burger {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--cyan);
 }
 
-  .subtopics {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .subtopics p {
-  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-  font-weight: 300;
-  font-size: 1.1rem;
-  hyphens: auto;
-  word-break: break-word;
-  overflow-wrap: break-word;
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background-color: var(--white);
+  position: sticky;
+  top: 72px;
+  z-index: 999;
+  border-top: 1px solid var(--cyan);
 }
 
-  .subtopics a {
-    background-color: var(--white);
-    color: var(--yellow);
-    border: 2px solid var(--turquoise);
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    user-select: none;
+.mobile-nav a {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--cyan);
+}
+
+.mobile-nav a:hover {
+  background-color: var(--magenta);
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+  .burger {
     display: block;
-    width: fit-content;
   }
-  .subtopics a:hover,
-  .subtopics a:focus {
-    background-color: var(--magenta);
-    color: var(--white);
-    border-color: var(--magenta);
-    outline: none;
+  .mobile-nav {
+    display: none;
   }
-
-  .mission-box {
-    margin-top: 60px;
+  .mobile-nav.show {
+    display: flex;
   }
-
-  .mission-box h2 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .mission-box p {
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-
-  .btn-link {
-    display: inline-block;
-    margin-top: 15px;
-    font-weight: 700;
-    color: var(--magenta);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-  }
-  .btn-link:hover,
-  .btn-link:focus {
-    color: var(--cyan);
-    text-decoration: underline;
-    outline: none;
-  }
-
-  form {
-    max-width: 500px;
-    margin-top: 50px;
-    color: var(--cyan);
-  }
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  input,
-  textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid var(--cyan);
-    border-radius: 5px;
-    font-size: 1rem;
-    color: var(--black);
-  }
-  input:focus,
-  textarea:focus {
-    border-color: var(--magenta);
-    outline: none;
-    box-shadow: 0 0 6px var(--magenta);
-  }
-
-  button {
-    background-color: var(--magenta);
-    color: var(--turquoise);
-    border: none;
-    padding: 12px 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  button:hover,
-  button:focus {
-    background-color: var(--cyan);
-    color: var(--white);
-    outline: none;
-  }
-
-footer {
-  background-color: var(--cyan); /* weißer Hintergrund */
-  color: var(--white);             /* weißer Text */
-  position: relative;              /* für Overlay */
-  z-index: 10;                    /* über Hintergrund */
-  padding: 20px;
-  text-align: center;             /* Text & Icons zentrieren */
-  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-  user-select: none;              /* Text nicht markierbar */
 }
 
-footer h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
+main {
+  padding: 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main h2 {
+  color: var(--black);
   font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--dark);             /* dunkle Überschrift */
 }
 
-footer p {
-  font-size: 0.9rem;
+main h3 {
+  color: var(--cyan);
   font-weight: 600;
-  margin: 0;
-  padding: 5px 0;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+main p {
+  font-weight: 300;
+  font-size: 1.1rem;
+  max-width: 700px;
+}
+
+/* main::before {
+content: "";
+position: absolute;
+top: 120px;
+right: 40px;
+width: 300px;
+height: 450px;
+background-image: url("IMG_1604.jpeg");
+background-size: cover;
+background-position: center;
+opacity: 0.08; /* dezent im Hintergrund */
+/* z-index: 0;
+border-radius: 10px;
+box-shadow: 0 0 12px rgba(0, 158, 227, 0.25);
+pointer-events: none;
+
+} */
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 40px;
+}
+.topic-box {
+  flex: 1 1 280px;
+  border: 2px solid var(--cyan);
+  background-color: var(--white);
+  color: var(--cyan);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  user-select: none;
+  text-align: center;
+  text-transform: uppercase;
   letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topic-box:hover,
+.topic-box:focus {
+  border-color: var(--magenta);
+  background-color: var(--magenta);
+  color: var(--yellow);
+  outline: none;
+}
+.topic-box.active {
+  background-color: var(--white);
+  color: var(--black);
+  font-weight: bold;
 }
 
-footer .social-links {
-  margin: 15px 0;
+.topic-box p {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  hyphens: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
-footer .social-links a {
-  color: var(--white);             /* Standard Cyan */
-  font-size: 30px;
-  margin: 0 15px;
-  transition: color 0.3s ease;
-  display: inline-block;
-  vertical-align: middle;
+.subtopics {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-footer .social-links a:hover,
-footer .social-links a:focus {
-  color: var(--magenta);          /* Hover Pink */
+.subtopics p {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  hyphens: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.subtopics a {
+  background-color: var(--white);
+  color: var(--yellow);
+  border: 2px solid var(--turquoise);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  display: block;
+  width: fit-content;
+}
+.subtopics a:hover,
+.subtopics a:focus {
+  background-color: var(--magenta);
+  color: var(--white);
+  border-color: var(--magenta);
   outline: none;
 }
 
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 15px 20px;
-    }
-    nav a {
-      margin-left: 0;
-      margin-right: 15px;
-    }
-    .topics {
-      flex-direction: column;
-    }
-  }
-
-  /* Sticky-Bild, das beim Scrollen mitläuft */
-.sticky-image {
-  position: sticky;
-  top: 120px;
-  float: right;
-  margin-left: 30px;
-  max-width: 250px;
-  z-index: 1000;
-}
-.sticky-image img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 158, 227, 0.5);
+.mission-box {
+  margin-top: 60px;
 }
 
-/* Optional: Auf kleineren Bildschirmen ausblenden */
-@media (max-width: 768px) {
-  .sticky-image {
-    display: none;
-  }
+.mission-box h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
-
-
-/* Ein Overlay, um die Transparenz zu steuern (Wasserzeichen) */
-.main-with-bg::before {
-  content: "";
-  position: top 10% center; /* fixed, damit es beim scrollen bleibt */
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('IMG_2206.jpeg');
-  background-position: center 8%% center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 1; /* Start sichtbar */
-  pointer-events: none; /* Nicht anklickbar */
-  z-index: -1; /* hinter allem */
-  transition: opacity 1s ease;
-}
-
-/* Hintergrund Overlay */
-.bg-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.7;  /* Bild-Transparenz, gerne anpassen */
-  overflow: hidden;
-}
-
-.bg-overlay img {
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;      /* gesamtes Bild sichtbar, ohne Verzerrung */
-  object-position: top center;
-  pointer-events: none;
-  user-select: none;
-}
-
+.mission-box p {
+  font-weight: 400;
+  font-size: 1.1rem
 /* Header */
 
 </style>
@@ -520,28 +333,21 @@ footer .social-links a:focus {
   </nav>
 </header>
 
-  <div id="burger" class="burger">
-  <i class="fas fa-bars"></i>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Startseite</a>
+  <a href="bildung.html">Bildung</a>
+  <a href="umwelt.html">Umwelt</a>
+  <a href="meinungsmacher.html">Meinungs-Macher</a>
+  <a href="impressum.html">Impressum</a>
 </div>
-  <!-- Mobile Navigation -->
-  <div class="mobile-nav" id="mobile-nav">
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
-  </div>
-  
+
 <div class="bg-overlay"></div>
 
-  
 <main>
   <img src="IMG_2206.jpeg" alt="Hintergrundbild" />
 
   <h2>Meine Themen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
-  <!-- Füge das hier NACH <main> ein, aber VOR </main> -->
-
 
   <div class="topics" role="list">
     <a href="bildung.html" class="topic-box" role="listitem" tabindex="0">Bildung</a>
@@ -575,23 +381,22 @@ footer .social-links a:focus {
   </section>
 
   <h2>KONTAKTFORMULAR</h2>
- <form action="https://formsubmit.co/heschuhasan@gmail.com" method="POST">
-  <label for="email">Email-Adresse:</label>
-  <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
-  
-  <label for="message">Nachricht:</label>
-  <textarea id="message" name="message" rows="5" placeholder="Schreiben Sie Ihre Nachricht hier..." required></textarea>
-  
-  <label>
-    <input type="checkbox" name="datenschutz" required />
-    Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
-  </label><br />
-  
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="text" name="_honey" style="display:none">
-   <button type="submit">Absenden</button>
-</form>
-
+  <form action="https://formsubmit.co/heschuhasan@gmail.com" method="POST">
+    <label for="email">Email-Adresse:</label>
+    <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
+    
+    <label for="message">Nachricht:</label>
+    <textarea id="message" name="message" rows="5" placeholder="Schreiben Sie Ihre Nachricht hier..." required></textarea>
+    
+    <label>
+      <input type="checkbox" name="datenschutz" required />
+      Ich habe die <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
+    </label><br />
+    
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="text" name="_honey" style="display:none" />
+    <button type="submit">Absenden</button>
+  </form>
 </main>
 
 <footer>
@@ -604,54 +409,61 @@ footer .social-links a:focus {
   </div>
 </footer>
 
+<script src="script.js"></script>
+
+</body>
+</html>
+
 <script>
-  // Wenn das DOM vollständig geladen ist
-  document.addEventListener("DOMContentLoaded", () => {
-    // Body langsam einblenden
-    document.body.style.opacity = "1";
+document.addEventListener("DOMContentLoaded", () => {
+  // Body langsam einblenden
+  document.body.style.opacity = "1";
 
-    // Verwaltung-Unterthemen ein-/ausklappen
-    const verwaltungBox = document.getElementById("verwaltung-box");
-    const subtopics = document.getElementById("verwaltung-subtopics");
+  // Verwaltung-Unterthemen ein-/ausklappen
+  const verwaltungBox = document.getElementById("verwaltung-box");
+  const subtopics = document.getElementById("verwaltung-subtopics");
 
-    verwaltungBox.addEventListener("click", () => {
-      const expanded = verwaltungBox.getAttribute("aria-expanded") === "true";
-      verwaltungBox.setAttribute("aria-expanded", !expanded);
-      if (expanded) {
-        subtopics.style.display = "none";
-      } else {
-        subtopics.style.display = "flex";
-      }
-    });
-
-    // Initial Unterthemen verstecken
-    subtopics.style.display = "none";
-
-    // Tastaturzugänglichkeit: Enter / Space toggelt Unterthemen
-    verwaltungBox.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        verwaltungBox.click();
-      }
-    });
-
-    // Animation FDP-Logo nach 1 Sekunde
-    setTimeout(() => {
-      const fdpLogo = document.getElementById("fdp-logo");
-      if (fdpLogo) {
-        fdpLogo.style.opacity = "1";
-        fdpLogo.style.transform = "translateY(0)";
-      }
-    }, 1000);
+  verwaltungBox.addEventListener("click", () => {
+    const expanded = verwaltungBox.getAttribute("aria-expanded") === "true";
+    verwaltungBox.setAttribute("aria-expanded", !expanded);
+    if (expanded) {
+      subtopics.style.display = "none";
+    } else {
+      subtopics.style.display = "flex";
+    }
   });
-// Aktive Navigation automatisch hervorheben
-const navLinks = document.querySelectorAll("nav a");
-navLinks.forEach(link => {
-  if (link.href === window.location.href) {
-    link.classList.add("active");
-  }
+
+  // Initial Unterthemen verstecken
+  subtopics.style.display = "none";
+
+  // Tastaturzugänglichkeit: Enter / Space toggelt Unterthemen
+  verwaltungBox.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      verwaltungBox.click();
+    }
+  });
+
+  // Animation FDP-Logo nach 1 Sekunde
+  setTimeout(() => {
+    const fdpLogo = document.getElementById("fdp-logo");
+    if (fdpLogo) {
+      fdpLogo.style.opacity = "1";
+      fdpLogo.style.transform = "translateY(0)";
+    }
+  }, 1000);
+
+  // Aktive Navigation automatisch hervorheben
+  const navLinks = document.querySelectorAll("nav a");
+  navLinks.forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add("active");
+    }
+  });
 });
-  window.addEventListener('scroll', () => {
+
+// Scroll-Event für Overlay-Transparenz
+window.addEventListener('scroll', () => {
   const overlay = document.querySelector('.bg-overlay');
   const scrollTop = window.scrollY;
 
@@ -661,22 +473,22 @@ navLinks.forEach(link => {
     overlay.style.opacity = '0.08'; // sichtbar am Anfang
   }
 });
-  const burger = document.getElementById("burger");
+
+// Burger-Menü öffnen/schließen
+const burger = document.getElementById("burger");
 const mobileNav = document.getElementById("mobile-nav");
 
-if (burger && mobileNav) {
-  burger.addEventListener("click", () => {
-    mobileNav.classList.toggle("show");
-  });
-}
+burger.addEventListener("click", () => {
+  mobileNav.classList.toggle("show");
+});
 
-      const navLinks = document.querySelectorAll("nav a");
-      navLinks.forEach(link => {
-        if (link.href === window.location.href) {
-          link.classList.add("active");
-        }
-      });
-  
+// Aktive Navigation erneut (duplikat, kannst optional entfernen)
+const navLinks = document.querySelectorAll("nav a");
+navLinks.forEach(link => {
+  if (link.href === window.location.href) {
+    link.classList.add("active");
+  }
+});
 </script>
 
 </body>
