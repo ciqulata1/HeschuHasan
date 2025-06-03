@@ -260,9 +260,7 @@
 </footer>
 
  <script>
-
-   // Soundeffekte (einfacher Piepton als Data-URL)
- const canvas = document.getElementById("gameCanvas");
+  const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
 
   // Spieler-Objekt mit selbsterklärender Figur (gelber Kreis mit Augen)
@@ -452,46 +450,40 @@
   }
 
   // Kollisionsprüfung zwischen Spieler und Hindernissen
- function checkCollision(rect) {
-  const playerBox = {
-    x: player.x - player.radius,
-    y: player.y - player.radius,
-    width: player.radius * 2,
-    height: player.radius * 2
-  };
-  // Hindernis Rechteck: x, y = Bodenlinie, Höhe nach oben = y - height
-  // Da dein y im Canvas von oben nach unten wächst, ist das Hindernis rechteck:
-  // x, y - height (oben), width, height
-
-  // Deshalb die Prüfung:
-  return !(
-    playerBox.x > rect.x + rect.width ||
-    playerBox.x + playerBox.width < rect.x ||
-    playerBox.y > rect.y ||  // Spieler unten über Hindernis oben?
-    playerBox.y + playerBox.height < rect.y - rect.height // Spieler oben unter Hindernis unten?
-  );
-}
+  function checkCollision(rect) {
+    // Rechteck Spieler (Kreis als Box approximiert)
+    const playerBox = {
+      x: player.x - player.radius,
+      y: player.y - player.radius,
+      width: player.radius * 2,
+      height: player.radius * 2
+    };
+    return !(
+      playerBox.x > rect.x + rect.width ||
+      playerBox.x + playerBox.width < rect.x ||
+      playerBox.y > rect.y ||
+      playerBox.y + playerBox.height < rect.y - rect.height
+    );
+  }
 
   // Spiel beenden, wenn verloren
   function endGame() {
-  gameOver = true;
-  gameOverText.style.display = "block";
-  restartBtn.style.display = "inline-block";
-  jumpBtn.disabled = true;
-  leftBtn.disabled = true;
-  rightBtn.disabled = true;
-  gameOverText.focus();
-  gameOverSound.play();
-}
+    gameOver = true;
+    gameOverText.style.display = "block";
+    restartBtn.style.display = "inline-block";
+    jumpBtn.disabled = true;
+    leftBtn.disabled = true;
+    rightBtn.disabled = true;
+    gameOverText.focus();
+  }
 
   // Spieler springt
   function jump() {
-  if (!player.jumping && !gameOver) {
-    player.vy = -26;
-    player.jumping = true;
-    jumpSound.play();
+    if (!player.jumping && !gameOver) {
+      player.vy = -22;
+      player.jumping = true;
+    }
   }
-}
 
   // Spieler nach links/rechts bewegen
   function movePlayer(direction) {
@@ -510,20 +502,16 @@
     if (gameOver) return;
 
     // Spieler Bewegung (Vertikal)
-player.gravity = 1.8; // beim Setup
-
-// und später im Loop
-player.vy += player.gravity;
+    player.vy += player.gravity;
     player.y += player.vy;
 
-const groundLevel = groundY - player.radius;
-if (player.y >= groundLevel) {
-  player.y = groundLevel;
-  player.vy = 0;
-  if (player.jumping) {
-    player.jumping = false;
-  }
-}
+    // Boden Check
+    if (player.y > groundY - player.radius) {
+      player.y = groundY - player.radius;
+      player.vy = 0;
+      player.jumping = false;
+    }
+
     // Coins generieren
     coinTimer++;
     if (coinTimer > coinInterval) {
@@ -681,3 +669,5 @@ if (player.y >= groundLevel) {
 </script> 
 </body>
 </html>
+
+
