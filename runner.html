@@ -667,6 +667,29 @@ window.addEventListener("keydown", e => {
 
   });
 
+let gameOver = false;
+
+function resetGame() {
+  gameOver = false;
+  score = 0;
+  // ggf. Positionen zurücksetzen etc.
+  hideGameOverBox();
+  // Wichtig: keine Schleife hier starten!
+}
+
+function gameLoop() {
+  updateGame();
+  draw();
+  if (!gameOver) {
+    requestAnimationFrame(gameLoop);
+  }
+}
+
+restartBtn.addEventListener("click", () => {
+  resetGame();      // setze Status zurück
+  gameLoop();       // starte EINMALIG neu
+});
+
 </script>
 </body>
 </html>
