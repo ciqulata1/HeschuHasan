@@ -452,21 +452,25 @@
   }
 
   // Kollisionsprüfung zwischen Spieler und Hindernissen
-  function checkCollision(rect) {
-    // Rechteck Spieler (Kreis als Box approximiert)
-    const playerBox = {
-      x: player.x - player.radius,
-      y: player.y - player.radius,
-      width: player.radius * 2,
-      height: player.radius * 2
-    };
-    return !(
-      playerBox.x > rect.x + rect.width ||
-      playerBox.x + playerBox.width < rect.x ||
-      playerBox.y > rect.y ||
-      playerBox.y + playerBox.height < rect.y - rect.height
-    );
-  }
+ function checkCollision(rect) {
+  const playerBox = {
+    x: player.x - player.radius,
+    y: player.y - player.radius,
+    width: player.radius * 2,
+    height: player.radius * 2
+  };
+  // Hindernis Rechteck: x, y = Bodenlinie, Höhe nach oben = y - height
+  // Da dein y im Canvas von oben nach unten wächst, ist das Hindernis rechteck:
+  // x, y - height (oben), width, height
+
+  // Deshalb die Prüfung:
+  return !(
+    playerBox.x > rect.x + rect.width ||
+    playerBox.x + playerBox.width < rect.x ||
+    playerBox.y > rect.y ||  // Spieler unten über Hindernis oben?
+    playerBox.y + playerBox.height < rect.y - rect.height // Spieler oben unter Hindernis unten?
+  );
+}
 
   // Spiel beenden, wenn verloren
   function endGame() {
