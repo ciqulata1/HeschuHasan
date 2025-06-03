@@ -273,32 +273,63 @@
   const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
 
-  class Player {
-    constructor() {
-      this.x = 50;
-      this.y = 200;
-      this.width = 50;
-      this.height = 50;
-      this.velocityY = 0;
-      this.jumpStrength = -10;
-      this.gravity = 0.5;
-    }
+  // Spieler-Klasse anpassen
+class Player {
+  constructor() {
+    this.x = 50;
+    this.y = 200;
+    this.radius = 25;
+    this.color = "#ffed00";
+    this.vy = 0;
+    this.jumping = false;
+    this.jumpStrength = -22;  // stärkerer Sprung
+    this.gravity = 0.35;      // geringere Schwerkraft = leichterer Fall
+  }
 
-    update() {
-      this.velocityY += this.gravity;
-      this.y += this.velocityY;
+  update() {
+    this.vy += this.gravity;
+    this.y += this.vy;
 
-      if (this.y > canvas.height - this.height) {
-        this.y = canvas.height - this.height;
-        this.velocityY = 0;
-      }
-    }
-
-    jump() {
-      this.velocityY = this.jumpStrength;
+    if (this.y > groundY - this.radius) {
+      this.y = groundY - this.radius;
+      this.vy = 0;
+      this.jumping = false;
     }
   }
 
+  jump() {
+    if (!this.jumping) {
+      this.vy = this.jumpStrength;
+      this.jumping = true;
+    }
+  }
+}
+
+const player = new Player();
+
+// Variablen für Spielstart
+let gameStarted = false;
+
+// Klick-Listener auf die Seite, um Spiel zu starten
+window.addEventListener("click", () => {
+  if (!gameStarted) {
+    gameStarted = true;
+    resetGame();
+    gameLoop();
+  }
+});
+
+// Überschreibe die Jump-Funktion, damit Spieler schneller hüpft
+function jump() {
+  if (!player.jumping && !gameOver && gameStarted) {
+    player.jump();
+  }
+}
+
+// … (der Rest deines Codes bleibt gleich) …
+
+// Entferne den direkten Aufruf von resetGame() und gameLoop() am Script-Ende
+// Stattdessen wird das Spiel durch Klick gestartet!
   const player = new Player();
   player.radius = 25;
   player.color = "#ffed00";
