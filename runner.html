@@ -152,34 +152,45 @@
       font-family: Calibri, sans-serif;
       line-height: 1.4;
     }
-    footer {
-      background-color: #009ee3;
-      color: #fff;
-      padding: 15px 10px;
-      text-align: center;
-      font-size: 0.9rem;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
-      margin-top: auto;
-      font-family: Calibri, sans-serif;
-      user-select: none;
-    }
-    footer p {
-      margin: 4px 0;
-      font-weight: normal;
-    }
-    footer a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      font-family: Calibri, sans-serif;
-    }
-    footer a:hover {
-      text-decoration: underline;
+    .custom-footer {
+  background-color: #009ee3;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  font-family: Calibri, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-footer p {
+  margin: 10px 0;
+}
+
+.custom-footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.custom-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .custom-footer {
+    font-size: 15px;
+    padding: 20px 10px;
+  }
+
+  .custom-footer a {
+    display: block;
+    margin: 6px 0;
+  }
+}
     }
     @media (max-width: 480px) {
       main {
