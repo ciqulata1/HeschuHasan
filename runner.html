@@ -196,6 +196,9 @@
   
       <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
       <div id="arrowButtons">
+        <button id="restartBtn" style="display:none; background-color:#009ee3; color:#fff; padding:12px 30px; font-weight:bold; border:none; border-radius:5px; cursor:pointer; font-family:Calibri, sans-serif; margin-top:20px;">
+  Nochmal spielen
+</button>
     </div>
     </div>
   </main>
@@ -464,6 +467,21 @@
         return;
       }
 
+      if (gameOver) {
+  ctx.fillStyle = "rgba(0,0,0,0.7)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#fff";
+  ctx.font = "bold 40px Calibri";
+  ctx.textAlign = "center";
+  ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2 - 20);
+  ctx.font = "bold 20px Calibri";
+  ctx.fillText("Score: " + score, canvas.width / 2, canvas.height / 2 + 20);
+
+  // Button anzeigen
+  restartBtn.style.display = "inline-block";
+  return;
+}
+
       // Hintergrund löschen
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -498,6 +516,22 @@
           pointSound.play();
         }
       }
+
+      const restartBtn = document.getElementById("restartBtn");
+
+restartBtn.addEventListener("click", () => {
+  // Spiel zurücksetzen
+  score = 0;
+  obstacles.length = 0;
+  coins.length = 0;
+  player.x = 50;
+  player.y = 190;
+  player.vy = 0;
+  player.jumping = false;
+  gameOver = false;
+  restartBtn.style.display = "none";
+  update();
+});
 
       // Hindernisse bewegen & prüfen
       for (let i = obstacles.length - 1; i >= 0; i--) {
