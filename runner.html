@@ -355,15 +355,17 @@
         ctx.fillText('😀', player.x + 2, player.y + player.height - 10);
       }
 
-      function drawObstacles() {
+    function drawObstacles() {
   obstacles.forEach(obs => {
     ctx.font = '12px Arial';
     ctx.fillStyle = 'black';  // besser sichtbar
     ctx.textAlign = 'center';
-    ctx.fillText(obs.name, obs.x + obs.width / 2, obs.y - 5);  // Text etwas oberhalb des Hindernisses
+    ctx.textBaseline = 'bottom';  // Text oberhalb der Hindernisse
+    ctx.fillText(obs.name, obs.x + obs.width / 2, obs.y - 5);
 
     ctx.font = '40px Arial';
-    ctx.fillText(obs.emoji, obs.x, obs.y + obs.height);
+    ctx.textBaseline = 'alphabetic'; // Standard für Emojis
+    ctx.fillText(obs.emoji, obs.x + obs.width / 2, obs.y + obs.height); 
   });
 }
 
