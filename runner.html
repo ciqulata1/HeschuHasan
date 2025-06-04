@@ -294,11 +294,18 @@ class Player {
     this.x = 50;
     this.y = 200;
     this.radius = 25;
-    this.color = "#ffed00";
     this.vy = 0;
     this.jumping = false;
-    this.jumpStrength = -25;  // stärkerer Sprung
-    this.gravity = 0.6;      // geringere Schwerkraft = leichterer Fall
+    this.jumpStrength = -25;
+    this.gravity = 0.6;
+
+    this.image = new Image();
+    this.image.src = "images/IMG_2350.png"; // Pfad zum Bild
+    this.imageLoaded = false;
+
+    this.image.onload = () => {
+      this.imageLoaded = true;
+    };
   }
 
   update() {
@@ -318,8 +325,20 @@ class Player {
       this.jumping = true;
     }
   }
-}
 
+  draw(ctx) {
+    if (this.imageLoaded) {
+      ctx.drawImage(this.image, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
+    } else {
+      // Platzhalter falls Bild nicht geladen ist
+      ctx.fillStyle = "#ffed00";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.closePath();
+    }
+  }
+}
 // Variablen für Spielstart
 const startScreen = document.getElementById("startScreen");
 
@@ -339,12 +358,9 @@ function jump() {
   }
 }
 
-const player = new Player();
-  player.radius = 25;
-  player.color = "#ffed00";
-  player.vy = 0;
-  player.jumping = false;
-
+function drawPlayer() {
+  player.draw(ctx);
+}
   let score = 0;
   let gameOver = false;
 
