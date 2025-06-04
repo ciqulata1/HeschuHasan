@@ -274,8 +274,8 @@
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
   const startBtn = document.getElementById('startBtn');
-  startButton.addEventListener('click', () => {
-  startButton.style.display = 'none';  // Button ausblenden
+  startBtn.addEventListener('click', () => {
+  startBtn.style.display = 'none';  // Button ausblenden
   gameLoop();  // Spiel starten, z.B. deinen Game-Loop aufrufen
 });
   const jumpBtn = document.getElementById('jumpBtn');
