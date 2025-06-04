@@ -287,17 +287,20 @@
   const GRAVITY = 0.8;
   const FLOOR_Y = canvas.height - 40;
 
-  const player = {
-    x: 50,
-    y: FLOOR_Y,
-    width: 30,
-    height: 30,
-    color: '#ffed00',
-    velocityY: 0,
-    isJumping: false,
-    shadowOffset: 6,
-    speedX: 7,
-  };
+   const playerImg = new Image();
+      playerImg.src = "IMG_2350.png";
+
+      const player = {
+        x: 50,
+        y: 300,
+        width: 50,
+        height: 50,
+        dy: 0,
+        gravity: 0.5,
+        jumpForce: -10,
+        onGround: true,
+      };
+
 
   let coins = [];
   let obstacles = [];
