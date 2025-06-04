@@ -346,7 +346,7 @@ player.image.src = 'IMG_2350.png';  // Pfad zum Bild setzen
   }
 
   // Initialize obstacles for current level
-  function initObstacles(num) {
+  function OBSTACLES_LIST(num) {
     obstacles = [];
     for (let i = 0; i < num; i++) {
       let obsX = canvas.width + i * 400 + randomInt(100, 250);
@@ -544,6 +544,7 @@ player.image.src = 'IMG_2350.png';  // Pfad zum Bild setzen
     score = 0;
     level = 1;
     gameSpeed = 3;
+
     player.x = 50;
     player.y = FLOOR_Y;
     player.isJumping = false;
