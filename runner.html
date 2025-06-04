@@ -263,7 +263,7 @@
 </footer>
 
   // Audio Setup
-  <script>
+<script>
 (() => {
   'use strict';
 
@@ -274,6 +274,7 @@
 
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
+  // … hier folgt dein restlicher Code
   const startBtn = document.getElementById('startBtn');
   const jumpBtn = document.getElementById('jumpBtn');
   const leftBtn = document.getElementById('leftBtn');
@@ -649,7 +650,8 @@
       moveRight();
     }
   });
-})();
+})(); // ← schließt das IIFE (Immediately Invoked Function Expression)
 </script>
+
 </body>
 </html>
