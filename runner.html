@@ -286,7 +286,7 @@ button.arrowBtn:active {
 
 <script>
   const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d");
 
 const jumpBtn = document.getElementById("jumpBtn");
 const leftBtn = document.getElementById("leftBtn");
@@ -628,14 +628,7 @@ restartBtn.addEventListener("click", () => {
   restartBtn.style.display = "none";
   gameOverText.style.display = "none";
 });
-startBtn.addEventListener("click", () => {
-  if (!gameStarted) {
-    gameStarted = true;
-    startScreen.style.display = "none";
-    resetGame();
-    gameLoop();
-  }
-});
+
 
 // Game Loop etc. unverändert
 
@@ -661,28 +654,6 @@ startBtn.addEventListener("click", () => {
     }
   }
 
-  function drawPlayer() {
-    ctx.fillStyle = player.color;
-    ctx.beginPath();
-    ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.closePath();
-
-    ctx.fillStyle = "#000";
-    const eyeRadius = 4;
-    ctx.beginPath();
-    ctx.arc(player.x - 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
-    ctx.arc(player.x + 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.closePath();
-
-    ctx.strokeStyle = "#000";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.arc(player.x, player.y + 2, 10, 0, Math.PI);
-    ctx.stroke();
-    ctx.closePath();
-  }
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -750,16 +721,10 @@ startBtn.addEventListener("click", () => {
   }
 });
 
-jumpBtn.addEventListener("click", () => jump());
-leftBtn.addEventListener("click", () => movePlayer("left"));
-rightBtn.addEventListener("click", () => movePlayer("right"));
-restartBtn.addEventListener("click", () => {
-  resetGame();
-  gameLoop();
-});
+
 
 // Verhindere mehrfaches Starten
-let gameStarted = false;
+
 startBtn.addEventListener("click", () => {
   if (!gameStarted) {
     gameStarted = true;
