@@ -263,18 +263,16 @@
 </footer>
 
   // Audio Setup
-<script>
+  <script>
 (() => {
   'use strict';
 
-  // Audio Setup
   const soundJump = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
   const soundCoin = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
   const soundGameOver = new Audio('https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg');
 
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
-  // … hier folgt dein restlicher Code
   const startBtn = document.getElementById('startBtn');
   const jumpBtn = document.getElementById('jumpBtn');
   const leftBtn = document.getElementById('leftBtn');
@@ -286,11 +284,9 @@
   const introText = document.getElementById('introText');
   const startScreen = document.getElementById('startScreen');
 
-  // Game Constants
   const GRAVITY = 0.8;
   const FLOOR_Y = canvas.height - 40;
 
-  // Player object
   const player = {
     x: 50,
     y: FLOOR_Y,
@@ -303,7 +299,6 @@
     speedX: 7,
   };
 
-  // Game variables
   let coins = [];
   let obstacles = [];
   let score = 0;
@@ -312,26 +307,23 @@
   let level = 1;
   const maxLevel = 3;
 
-  // Obstacles list with emojis and descriptions
   const OBSTACLES_LIST = [
     {emoji:'🗂️', desc:'Aktenberge'},
     {emoji:'⏳', desc:'Zeitdruck'},
-    {emoji:'🧾', desc:'Formulare'},
+    {emoji:'📟', desc:'Formulare'},
     {emoji:'📞', desc:'Endlose Telefonate'},
     {emoji:'📋', desc:'Protokolle'},
     {emoji:'👨‍💼', desc:'Bürokraten'},
     {emoji:'💼', desc:'Meetings'},
     {emoji:'📆', desc:'Überfüllter Kalender'},
     {emoji:'😰', desc:'Stress'},
-    {emoji:'🕵️‍♂️', desc:'Kontrolle'},
+    {emoji:'👵️', desc:'Kontrolle'},
   ];
 
-  // Utility function: random integer inclusive
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // Initialize coins for current level
   function initCoins(num) {
     coins = [];
     for (let i = 0; i < num; i++) {
@@ -341,7 +333,6 @@
     }
   }
 
-  // Initialize obstacles for current level
   function initObstacles(num) {
     obstacles = [];
     for (let i = 0; i < num; i++) {
@@ -352,9 +343,7 @@
     }
   }
 
-  // Draw player with shadow, eyes, and smile
   function drawPlayer() {
-    // Shadow
     ctx.beginPath();
     ctx.ellipse(
       player.x + player.width / 2 + player.shadowOffset,
@@ -368,18 +357,17 @@
     ctx.fillStyle = 'rgba(0,0,0,0.2)';
     ctx.fill();
 
-    // Player circle
     ctx.beginPath();
     ctx.fillStyle = player.color;
     ctx.arc(player.x + player.width / 2, player.y + player.height / 2, player.width / 2, 0, Math.PI * 2);
     ctx.fill();
 
-    // Eyes
     ctx.beginPath();
     ctx.fillStyle = 'black';
     ctx.arc(player.x + player.width / 3, player.y + player.height / 3, 3, 0, Math.PI * 2);
     ctx.arc(player.x + 2 * player.width / 3, player.y + player.height / 3, 3, 0, Math.PI * 2);
     ctx.fill();
+  }
 
     // Smile
     ctx.beginPath();
