@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Wahlkampf Runner – FDP Coins sammeln</title>
+<title>Wahlkampf Jumper – FDP Coins sammeln</title>
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <style>
@@ -223,11 +223,11 @@
 </head>
 <body>
 <header>
-  Wahlkampf Runner – Heschu Hasan 👾 Digital
+  Wahlkampf Jumper – Heschu Hasan 👾 Digital
 </header>
 
 <main>
-  <h2>Spielen Sie jetzt: Wahlkampf Runner – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
+  <h2>Spielen Sie jetzt: Wahlkampf Jumper – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
   <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #333;">
     🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
   </div>
@@ -300,7 +300,7 @@
         height: 50,
         dy: 0,
         gravity: 0.8,
-        jumpPower: -15,
+        jumpPower: -25,
         onGround: true,
         color: '#00baff'
       };
@@ -346,14 +346,17 @@
       }
 
       function drawObstacles() {
-        obstacles.forEach(obs => {
-          ctx.font = '40px Arial';
-          ctx.fillText(obs.emoji, obs.x, obs.y + obs.height);
-          ctx.font = '12px Arial';
-          ctx.fillStyle = 'white';
-          ctx.fillText(obs.name, obs.x, obs.y + obs.height + 15);
-        });
-      }
+  obstacles.forEach(obs => {
+    ctx.font = '12px Arial';
+    ctx.fillStyle = 'black';  // besser sichtbar
+    ctx.textAlign = 'center';
+    ctx.fillText(obs.name, obs.x + obs.width / 2, obs.y - 5);  // Text etwas oberhalb des Hindernisses
+
+    ctx.font = '40px Arial';
+    ctx.fillText(obs.emoji, obs.x, obs.y + obs.height);
+  });
+}
+
 
       function drawCoins() {
         coins.forEach(coin => {
