@@ -591,101 +591,136 @@ const player = new Player();
     let victoryShown = false;
 
 function gameLoop() {
+  if (gameOver) return;  // Spiel stoppen bei Game Over
 
-    obstacles.forEach(obstacle => {
-      obstacle.x -= 12;
-      if (checkCollision(obstacle)) {
-        endGame();
+  // Spieler-Update (Schwerkraft, Position)
+  player.vy += player.gravity;
+  player.y += player.vy;
+  if (player.y > groundY - player.radius) {
+    player.y = groundY - player.radius;
+    player.vy = 0;
+    player.jumping = false;
+  }
+
+  // Münzen und Hindernisse erzeugen
+  coinTimer++;
+  if (coinTimer > coinInterval) {
+    coinTimer = 0;
+    createCoin();
+    if (Math.random() < 0.6) createObstacle();
+  }
+
+  // Münzen bewegen & einsammeln
+  coins.forEach((coin, index) => {
+    coin.x -= 5;
+    if (!coin.collected) {
+      const dx = Math.abs(player.x - (coin.x + coin.width / 2));
+      const dy = Math.abs(player.y - (coin.y + coin.height / 2));
+      if (dx < player.radius + coin.width / 2 && dy < player.radius + coin.height / 2) {
+        coin.collected = true;
+        score++;
       }
-    });
-if (score >= 20) {
-  gameOver = true;
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(50, 100, canvas.width - 100, 300);
+    }
+  });
+  // Münzen entfernen, die links raus sind oder eingesammelt
+  while (coins.length > 0 && (coins[0].x + coinSize < 0 || coins[0].collected)) {
+    coins.shift();
+  }
 
-  ctx.fillStyle = "#000000";
-  ctx.font = "18px Arial";
-  ctx.fillText("🎉 Sie haben alle FDP-Coins gesammelt! 🎉", 70, 140);
-  ctx.fillText("Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:", 70, 170);
-  ctx.fillText("- Gespräche am Wahlkampfstand", 70, 200);
-  ctx.fillText("- Fragen auf Veranstaltungen", 70, 230);
-  ctx.fillText("- Besuche auf meiner Website / Instagram", 70, 260);
-  ctx.fillText("Danke für Ihr Interesse! — Ihre Heschu Hasan", 70, 310);
-}
-    
-  function drawPlayer() {
-    ctx.fillStyle = player.color;
-    ctx.beginPath();
-    ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.closePath();
+  // Hindernisse bewegen & Kollision prüfen
+  for (let i = 0; i < obstacles.length; i++) {
+    const obstacle = obstacles[i];
+    obstacle.x -= 12;
+    if (checkCollision(obstacle)) {
+      endGame();
+      break;
+    }
+  }
+  // Hindernisse entfernen, die links raus sind
+  while (obstacles.length > 0 && obstacles[0].x + obstacles[0].width < 0) {
+    obstacles.shift();
+  }
+
+  // Zeichnen
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Boden zeichnen
+  ctx.fillStyle = "#009ee3";
+  ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
+
+  // Spieler zeichnen
+  drawPlayer();
+
+  // Münzen zeichnen
+  coins.forEach(coin => {
+    if (!coin.collected) {
+      ctx.fillStyle = "#ffed00";
+      ctx.beginPath();
+      ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.closePath();
+      // Münz-Symbol hinzufügen (optional)
+      ctx.fillStyle = "#333";
+      ctx.font = "bold 16px Calibri, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("₣", coin.x + coin.width / 2, coin.y + coin.height / 2 + 6);
+    }
+  });
+
+  // Hindernisse zeichnen
+  obstacles.forEach(obstacle => {
+    if (obstacle.type === "sanduhr") {
+      drawSanduhrObstacle(obstacle.x, obstacle.y, obstacle.width, obstacle.height, obstacle.waitTime);
+    } else {
+      ctx.fillStyle = obstacle.color;
+      ctx.strokeStyle = obstacle.color;
+      ctx.lineWidth = 3;
+      ctx.strokeRect(obstacle.x, obstacle.y - obstacle.height, obstacle.width, obstacle.height);
+
+      ctx.font = "28px Calibri, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(obstacle.icon, obstacle.x + obstacle.width / 2, obstacle.y - obstacle.height / 4);
+    }
+  });
+
+  // Score anzeigen
+  ctx.fillStyle = "#000";
+  ctx.font = "20px Calibri, sans-serif";
+  ctx.textAlign = "left";
+  ctx.fillText(`FDP-Coins: ${score} / 20`, 10, 30);
+
+  // Gewinnbedingung prüfen
+  if (score >= 20) {
+    gameOver = true;
+    // Halbtransparenten Overlay
+    ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = "#000";
-    const eyeRadius = 4;
-    ctx.beginPath();
-    ctx.arc(player.x - 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
-    ctx.arc(player.x + 7, player.y - 5, eyeRadius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.closePath();
-
-    ctx.strokeStyle = "#000";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.arc(player.x, player.y + 2, 10, 0, Math.PI);
-    ctx.stroke();
-    ctx.closePath();
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#009ee3";
-    ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
-
-    drawPlayer();
-
-    obstacles.forEach(obstacle => {
-      if (obstacle.type === "sanduhr") {
-        drawSanduhrObstacle(obstacle.x, obstacle.y, obstacle.width, obstacle.height, obstacle.waitTime);
-      } else {
-        ctx.fillStyle = obstacle.color;
-        ctx.strokeStyle = obstacle.color;
-        ctx.lineWidth = 3;
-        ctx.strokeRect(obstacle.x, obstacle.y - obstacle.height, obstacle.width, obstacle.height);
-
-        ctx.font = "28px Arial, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(obstacle.icon, obstacle.x + obstacle.width / 2, obstacle.y - obstacle.height + 40);
-
-        ctx.font = "bold 14px Calibri, sans-serif";
-        ctx.fillText(obstacle.text, obstacle.x + obstacle.width / 2, obstacle.y - obstacle.height + 60);
-      }
+    ctx.font = "18px Calibri, sans-serif";
+    ctx.textAlign = "center";
+    const lines = [
+      "🎉 Sie haben alle FDP-Coins gesammelt! 🎉",
+      "Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:",
+      "- Gespräche am Wahlkampfstand",
+      "- Fragen auf Veranstaltungen",
+      "- Besuche auf meiner Website / Instagram",
+      "Danke für Ihr Interesse! — Ihre Heschu Hasan"
+    ];
+    lines.forEach((line, i) => {
+      ctx.fillText(line, canvas.width / 2, 100 + i * 30);
     });
 
-    coins.forEach(coin => {
-      if (!coin.collected) {
-        ctx.fillStyle = "#ffed00";
-        ctx.beginPath();
-        ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = "#000";
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        ctx.closePath();
-      }
-    });
+    restartBtn.style.display = "inline-block";
+    jumpBtn.disabled = true;
+    leftBtn.disabled = true;
+    rightBtn.disabled = true;
 
-    ctx.fillStyle = "#009ee3";
-    ctx.font = "bold 22px Calibri, sans-serif";
-    ctx.fillText("FDP-Coins: " + score + " / 20", 10, 30);
+    return;  // Spiel pausieren, keine weitere Animation
   }
 
-  function gameLoop() {
-    updateGame();
-    draw();
-    if (!gameOver) {
-      requestAnimationFrame(gameLoop);
-    }
+  requestAnimationFrame(gameLoop);
+}
   }window.addEventListener("keydown", e => {
   if (["ArrowLeft", "ArrowRight", "Space", "ArrowUp"].includes(e.code)) {
     e.preventDefault();
