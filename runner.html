@@ -1,745 +1,656 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wahlkampf Runner – FDP Coins sammeln</title>
-  <style>
-    body {
-      font-family: Calibri, sans-serif;
-      background-color: #f0f8ff;
-      color: #333;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      user-select: none;
-    }
-    header {
-      background-color: #009ee3;
-      color: #fff;
-      padding: 20px 10px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.5rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wahlkampf Runner – FDP Coins sammeln</title>
+<style>
+  body {
+    font-family: Calibri, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    user-select: none;
+  }
+  header {
+    background-color: #009ee3;
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  main {
+    flex: 1;
+    padding: 20px;
+    max-width: 760px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+  h2 {
+    margin-top: 60px;
+    color: #009ee3;
+  }
+  canvas {
+    border: 2px solid #009ee3;
+    background: #fff;
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+  }
+  #buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  button#jumpBtn {
+    background-color: #009ee3;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    min-width: 140px;
+    user-select: none;
+  }
+  button#jumpBtn:active {
+    background-color: #ffed00;
+    color: #000;
+    transform: scale(0.95);
+  }
+  button#homeBtn {
+    background-color: #e5007d;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 160px;
+    user-select: none;
+  }
+  button#homeBtn:hover {
+    background-color: #c00066;
+  }
+  #arrowButtons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  button.arrowBtn {
+    background-color: #009ee3;  /* hellblau */
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    width: 100px;
+    height: 50px;
+    line-height: 1;
+    user-select: none;
+  }
+  button.arrowBtn:active {
+    background-color: #ffed00; /* gelb beim Klicken */
+    color: #000;
+    transform: scale(0.95);
+  }
+  #restartBtn {
+    display: none;
+    background:#009ee3;
+    color:#fff;
+    padding:12px 30px;
+    margin-top:10px;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+  }
+  #restartBtn:hover {
+    background-color: #007bbf;
+  }
+  #gameOverText {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100vw;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px 0;
+    border-top: 3px solid #e5007d;
+    border-bottom: 3px solid #e5007d;
+    color: #e5007d;
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: none;
+    user-select: none;
+    z-index: 10;
+    font-family: Calibri, sans-serif;
+    line-height: 1.4;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  #gameOverText p {
+    margin: 0;
+    max-width: 100%;
+  }
+  .footer {
+    background-color: #009ee3;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .footer p {
+    margin: 10px 0;
+  }
+  .footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    display: inline-block;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 480px) {
     main {
-      flex: 1;
-      padding: 20px;
-      max-width: 760px;
-      margin: 0 auto;
-      width: 100%;
-      text-align: center;
-      position: relative;
-    }
-    h2 {
-      margin-top: 60px;
-      color: #009ee3;
-    }
-    canvas {
-      border: 2px solid #009ee3;
-      background: #fff;
-      display: block;
-      margin: 20px auto;
-      max-width: 100%;
-      height: auto;
+      padding: 15px 10px;
     }
     #buttonsContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       gap: 15px;
-      margin-bottom: 30px;
     }
-    button#jumpBtn {
-      background-color: #009ee3;
-      color: #fff;
-      border: none;
-      padding: 12px 30px;
-      font-family: Calibri, sans-serif;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.1s ease;
-      min-width: 140px;
-      user-select: none;
-    }
-    button#jumpBtn:active {
-      background-color: #ffed00;
-      color: #000;
-      transform: scale(0.95);
-    }
-    button#homeBtn {
-      background-color: #e5007d;
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      font-family: Calibri, sans-serif;
-      font-weight: bold;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      min-width: 160px;
-      user-select: none;
-    }
-    button#homeBtn:hover {
-      background-color: #c00066;
+    button#jumpBtn, button#homeBtn, #restartBtn {
+      width: 80vw;
+      max-width: 300px;
+      font-size: 1.2rem;
+      min-width: auto;
     }
     #arrowButtons {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 20px;
+      gap: 20px;
     }
     button.arrowBtn {
-  background-color: #009ee3;  /* hellblau */
-  color: #fff;
-  border: none;
-  padding: 12px 28px;
-  font-family: Calibri, sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  width: 100px;
-  height: 50px;
-  line-height: 1;
-  user-select: none;
-}
-
-button.arrowBtn:active {
-  background-color: #ffed00; /* gelb beim Klicken */
-  color: #000;
-  transform: scale(0.95);
-}
-    #restartBtn {
-      display: none;
-      background:#009ee3;
-      color:#fff;
-      padding:12px 30px;
-      margin-top:10px;
-      font-family: Calibri, sans-serif;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      user-select: none;
-      border: none;
+      width: 80px;
+      height: 60px;
+      font-size: 2rem;
     }
-    #restartBtn:hover {
-      background-color: #007bbf;
+    canvas {
+      width: 700px;
+      height: 250px;
+      display: block;
     }
-#gameOverText {
-  position: fixed;            /* bleibt auf dem Bildschirm sichtbar */
-  top: 50%;
-  left: 0;                    /* Start ganz links */
-  transform: translateY(-50%);/* nur vertikal zentrieren */
-  width: 100vw;               /* 100% der Viewport-Breite */
-  background: rgba(255, 255, 255, 0.95);
-  padding: 30px 0;            /* oben/unten Abstand, kein links/rechts */
-  border-top: 3px solid #e5007d;
-  border-bottom: 3px solid #e5007d;
-  color: #e5007d;
-  font-size: 1.8rem;
-  font-weight: bold;
-  display: none;
-  user-select: none;
-  z-index: 10;
-  font-family: Calibri, sans-serif;
-  line-height: 1.4;
-  text-align: center;         /* zentriert den Text */
-  box-sizing: border-box;     /* padding wird zur Gesamtbreite gezählt */
-}
-
-#gameOverText .textRow {
-  display: none;
-  flex-direction: row;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap; /* falls zu eng auf kleinen Bildschirmen */
-}
-
-#gameOverText p {
-  margin: 0;
-  max-width: 100%;
-}
-    .footer {
-  background-color: #009ee3;
-  color: white;
-  text-align: center;
-  padding: 30px 20px;
-  font-family: Calibri, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.footer p {
-  margin: 10px 0;
-}
-
-.footer a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 10px;
-  display: inline-block;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 480px) {
-  .footer {
-    font-size: 15px;
-    padding: 20px 10px;
   }
-
-  .footer a {
-    display: block;
-    margin: 6px 0;
-  }
-}
-    }
-    @media (max-width: 480px) {
-      main {
-        padding: 15px 10px;
-      }
-      #buttonsContainer {
-        gap: 15px;
-      }
-      button#jumpBtn, button#homeBtn, #restartBtn {
-        width: 80vw;
-        max-width: 300px;
-        font-size: 1.2rem;
-        min-width: auto;
-      }
-      #arrowButtons {
-        gap: 20px;
-      }
-      button.arrowBtn {
-        width: 80px;
-        height: 60px;
-        font-size: 2rem;
-      }
-      canvas {
-  width: 700px; /* oder 100% – aber nicht beides */
-  height: 250px;
-  display: block;
-}
-    }
-  </style>
+</style>
 </head>
 <body>
-  <header>
-    Wahlkampf Runner – Heschu Hasan 👾 Digital
-  </header>
+<header>
+  Wahlkampf Runner – Heschu Hasan 👾 Digital
+</header>
 
-  <main>
-    <h2>Spielen Sie jetzt: Wahlkampf Runner – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
-    <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #333;">
-      🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
+<main>
+  <h2>Spielen Sie jetzt: Wahlkampf Runner – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
+  <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #333;">
+    🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
+  </div>
+  <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
+  <div id="startScreen" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <button id="startBtn" style="font-size: 1.5rem; padding: 10px 20px;">Spiel starten</button>
+  </div>
+
+  <div id="buttonsContainer" role="region" aria-label="Spielsteuerung">
+    <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
+    <div id="arrowButtons">
+      <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
+      <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
     </div>
-    <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
-    <div id="startScreen" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-  <button id="startBtn" style="font-size: 1.5rem; padding: 10px 20px;">Spiel starten</button>
-</div>
 
-    <div id="buttonsContainer" role="region" aria-label="Spielsteuerung">
-      <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
-      <div id="arrowButtons">
-        <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
-        <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
-      </div>
-
-      <div>
-     <button id="restartBtn" aria-label="Nochmal spielen">Nochmal spielen</button>
-    
+    <div>
+      <button id="restartBtn" aria-label="Nochmal spielen">Nochmal spielen</button>
       <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
     </div>
-
-    <div id="gameOverText" role="alert" aria-live="assertive" tabindex="0">
-  <div>
-    <p>Oh nein! Verloren.</p>
-    <p>Sie sollten unbedingt <strong>Heschu Hasan</strong> wählen, um die Bürokratie zu besiegen!</p>
   </div>
-</div>
-  </main>
 
-  <footer style="background-color: #009ee3; color: white; text-align: center; padding: 20px 15px; font-size: 14px;">
-  <p>Diese Simulation ersetzt keine politische Beratung.</p>
+  <div id="levelInfo" style="font-size:1.1rem; color:#009ee3; margin-bottom:15px; font-weight:bold;"></div>
+
+  <div id="gameOverText" role="alert" aria-live="assertive" tabindex="0">
+    <div>
+      <p>Oh nein! Verloren.</p>
+      <p>Sie sollten unbedingt <a href="index.html" style="color:#e5007d; text-decoration:underline;">zur Startseite</a> zurückkehren und es nochmal versuchen.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>© 2025 Heschu Hasan</p>
   <p>
-    Kontakt:
-    <a href="heschu.hasan@fdp-freiburg.de" style="color: white; text-decoration: underline;">heschu.hasan@fdp-freiburg.de</a> |
-    Instagram:
-    <a href="https://instagram.com/heschuhasan" target="_blank" style="color: white; text-decoration: underline;">@heschuhasan</a>
+    <a href="index.html">Startseite</a> | 
+    <a href="impressum.html">Impressum</a>
   </p>
-  <p>&copy; 2025 Heschu Hasan 👾 Digital – FDP-Wahlkreiskandidatin</p>
 </footer>
 
 <script>
-  const canvas = document.getElementById("gameCanvas");
-  const ctx = canvas.getContext("2d");
+(() => {
+  'use strict';
 
-const jumpBtn = document.getElementById("jumpBtn");
-const leftBtn = document.getElementById("leftBtn");
-const rightBtn = document.getElementById("rightBtn");
-const restartBtn = document.getElementById("restartBtn");
-const gameOverText = document.getElementById("gameOverText");
-const startScreen = document.getElementById("startScreen");
-const startBtn = document.getElementById("startBtn");
-// Player-Klasse
-const player = new Player();
+  // Audio Setup
+  const soundJump = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
+  const soundCoin = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
+  const soundGameOver = new Audio('https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg');
 
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  const startBtn = document.getElementById('startBtn');
+  const jumpBtn = document.getElementById('jumpBtn');
+  const leftBtn = document.getElementById('leftBtn');
+  const rightBtn = document.getElementById('rightBtn');
+  const restartBtn = document.getElementById('restartBtn');
+  const homeBtn = document.getElementById('homeBtn');
+  const gameOverText = document.getElementById('gameOverText');
+  const levelInfo = document.getElementById('levelInfo');
+  const introText = document.getElementById('introText');
+  const startScreen = document.getElementById('startScreen');
 
+  // Game Constants
+  const GRAVITY = 0.8;
+  const FLOOR_Y = canvas.height - 40;
 
-jumpBtn.addEventListener("click", () => {
-  jump();
-});
-leftBtn.addEventListener("click", () => {
-  movePlayer("left");
-});
-rightBtn.addEventListener("click", () => {
-  movePlayer("right");
-});
-restartBtn.addEventListener("click", () => {
-  resetGame();
-  gameLoop();
-  restartBtn.style.display = "none";
-  gameOverText.style.display = "none";
-});
+  // Player object
+  const player = {
+    x: 50,
+    y: FLOOR_Y,
+    width: 30,
+    height: 30,
+    color: '#ffed00',
+    velocityY: 0,
+    isJumping: false,
+    shadowOffset: 6,
+    speedX: 7
+  };
 
-function gameLoop() {
-  updateGame();
-  draw();
-  if (!gameOver) {
-    requestAnimationFrame(gameLoop);
-  }
-}
-
-  // Spieler-Klasse anpassen
-class Player {
-  constructor() {
-    this.x = 50;
-    this.y = 200;
-    this.radius = 25;
-    this.vy = 0;
-    this.jumping = false;
-    this.jumpStrength = -25;
-    this.gravity = 0.6;
-
-    this.image = new Image();
-    this.image.src = "IMG_2350.png"; // Pfad zum Bild
-    this.imageLoaded = false;
-
-    this.image.onload = () => {
-      this.imageLoaded = true;
-
-      // Player-Klasse
-const player = new Player();
-    };
-  }
-
-  update() {
-    this.vy += this.gravity;
-    this.y += this.vy;
-
-    if (this.y > groundY - this.radius) {
-      this.y = groundY - this.radius;
-      this.vy = 0;
-      this.jumping = false;
-    }
-  }
-
-  jump() {
-    if (!this.jumping) {
-      this.vy = this.jumpStrength;
-      this.jumping = true;
-    }
-  }
-
-  draw(ctx) {
-    if (this.imageLoaded) {
-      ctx.drawImage(this.image, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
-    } else {
-      // Platzhalter falls Bild nicht geladen ist
-      ctx.fillStyle = "#ffed00";
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.closePath();
-    }
-  }
-}
-// Variablen für Spielstart
-const startScreen = document.getElementById("startScreen");
-
-window.addEventListener("click", () => {
-  if (!gameStarted) {
-    gameStarted = true;
-    startScreen.style.display = "none";  // Startbildschirm verstecken
-    resetGame();
-    gameLoop();
-  }
-});
-
-// Überschreibe die Jump-Funktion, damit Spieler schneller hüpft
-function jump() {
-  if (!player.jumping && !gameOver && gameStarted) {
-    player.jump();
-  }
-}
-
-function drawPlayer() {
-  player.draw(ctx);
-}
+  // Game variables
+  let coins = [];
+  let obstacles = [];
   let score = 0;
-  let gameOver = false;
+  let gameSpeed = 3;
+  let isGameRunning = false;
+  let level = 1;
+  const maxLevel = 5;
 
-  const coins = [];
-  const coinSize = 20;
-  let coinTimer = 0;
-  const coinInterval = 90;
+  // Coin image (animated as rotating circle)
+  // Obstacles have different icons: bureaucrat, clock, paperwork (unicode symbols)
+  const obstacleSymbols = ['📋', '⏳', '👨‍💼'];
 
-  const groundY = 210;
-
-  const keys = {
-    left: false,
-    right: false
-  };
-
-  const gameOverText = document.getElementById("gameOverText");
-  const restartBtn = document.getElementById("restartBtn");
-  const jumpBtn = document.getElementById("jumpBtn");
-  const leftBtn = document.getElementById("leftBtn");
-  const rightBtn = document.getElementById("rightBtn");
-
-  const obstacleTypes = {
-    wartezeit: { icon: "⏳", text: "Wartezeit", color: "#cc3300" },
-    diskussion: { icon: "💬", text: "Diskussion", color: "#ff5500" },
-    formular: { icon: "📄", text: "Formular", color: "#cc3300" },
-    pruefung: { icon: "❓", text: "Prüfung", color: "#cc0000" },
-    ablehnung: { icon: "✖️", text: "Ablehnung", color: "#cc0000" },
-    unterschrift: { icon: "🖊️", text: "Unterschrift fehlt", color: "#cc0000" }
-  };
-
-  function resetPlayer() {
-    player.x = 70;
-    player.y = groundY - player.radius;
-    player.vy = 0;
-    player.jumping = false;
+  // Utility functions
+  function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  function resetGame() {
-    score = 0;
-    gameOver = false;
-    coins.length = 0;
-    obstacles.length = 0;
-    resetPlayer();
-    gameOverText.style.display = "none";
-    restartBtn.style.display = "none";
-    jumpBtn.disabled = false;
-    leftBtn.disabled = false;
-    rightBtn.disabled = false;
-  }
-
-  const obstacles = [];
-
-  function createObstacle() {
-    const xPos = canvas.width + Math.random() * 200;
-    const types = ["wartezeit", "diskussion", "formular", "pruefung", "ablehnung", "unterschrift", "sanduhr"];
-    const chosenType = types[Math.floor(Math.random() * types.length)];
-
-    if (chosenType === "sanduhr") {
-      const waitTimes = ["30 Jahre", "10 Monate", "20 Wochen"];
-      const waitTime = waitTimes[Math.floor(Math.random() * waitTimes.length)];
-      obstacles.push({
-        x: xPos,
-        y: groundY,
-        width: 40,
-        height: 60,
-        type: "sanduhr",
-        waitTime: waitTime
-      });
-    } else {
-      const o = obstacleTypes[chosenType];
-      obstacles.push({
-        x: xPos,
-        y: groundY,
-        width: 40,
-        height: 60,
-        type: chosenType,
-        icon: o.icon,
-        text: o.text,
-        color: o.color
-      });
+  // Initialize coins for current level
+  function initCoins(num) {
+    coins = [];
+    for (let i = 0; i < num; i++) {
+      let coinX = canvas.width + i * 300 + randomInt(100, 200);
+      let coinY = FLOOR_Y - randomInt(80, 150);
+      coins.push({ x: coinX, y: coinY, radius: 12, rotation: 0 });
     }
   }
 
-  const startBtn = document.getElementById("startBtn");
-startBtn.addEventListener("click", () => {
-  if (!gameStarted) {
-    gameStarted = true;
-    startScreen.style.display = "none";
-    resetGame();
-    gameLoop();
+  // Initialize obstacles for current level
+  function initObstacles(num) {
+    obstacles = [];
+    for (let i = 0; i < num; i++) {
+      let obsX = canvas.width + i * 400 + randomInt(100, 250);
+      let symbol = obstacleSymbols[randomInt(0, obstacleSymbols.length - 1)];
+      obstacles.push({ x: obsX, y: FLOOR_Y - 20, width: 30, height: 40, symbol });
+    }
   }
-});
 
-  function drawSanduhrObstacle(x, y, width, height, waitTime) {
-    ctx.save();
-    ctx.fillStyle = "#e5007d";
-    ctx.strokeStyle = "#c00066";
-    ctx.lineWidth = 3;
-
+  // Draw player with shadow
+  function drawPlayer() {
+    // Shadow
     ctx.beginPath();
-    ctx.moveTo(x + width / 2, y - height);
-    ctx.lineTo(x, y - height / 2);
-    ctx.lineTo(x + width / 2, y);
-    ctx.lineTo(x + width, y - height / 2);
-    ctx.closePath();
+    ctx.ellipse(
+      player.x + player.width/2 + player.shadowOffset,
+      FLOOR_Y + player.height - 4,
+      player.width / 1.5,
+      8,
+      0,
+      0,
+      2 * Math.PI
+    );
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
     ctx.fill();
+
+    // Player circle
+    ctx.beginPath();
+    ctx.fillStyle = player.color;
+    ctx.arc(player.x + player.width/2, player.y + player.height/2, player.width/2, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Augen (two black circles)
+    ctx.beginPath();
+    ctx.fillStyle = 'black';
+    ctx.arc(player.x + player.width/3, player.y + player.height/3, 3, 0, Math.PI * 2);
+    ctx.arc(player.x + 2*player.width/3, player.y + player.height/3, 3, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Mund (Lächeln)
+    ctx.beginPath();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.arc(player.x + player.width/2, player.y + 2*player.height/3, 7, 0, Math.PI, false);
+    ctx.stroke();
+  }
+
+  // Draw coin (rotating)
+  function drawCoin(coin) {
+    coin.rotation += 0.05;
+    ctx.save();
+    ctx.translate(coin.x, coin.y);
+    ctx.rotate(coin.rotation);
+    ctx.fillStyle = '#ffcc00';
+    ctx.beginPath();
+    ctx.ellipse(0, 0, coin.radius, coin.radius * 0.7, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Münzrand
+    ctx.strokeStyle = '#b8860b';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, coin.radius, coin.radius * 0.7, 0, 0, Math.PI * 2);
     ctx.stroke();
 
-    ctx.fillStyle = "#ffed00";
-    ctx.beginPath();
-    ctx.moveTo(x + width / 4, y - 3 * height / 4);
-    ctx.lineTo(x + width / 2, y - height / 2);
-    ctx.lineTo(x + 3 * width / 4, y - 3 * height / 4);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.moveTo(x + width / 4, y - height / 4);
-    ctx.lineTo(x + width / 2, y - height / 2);
-    ctx.lineTo(x + 3 * width / 4, y - height / 4);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.fillStyle = "#e5007d";
-    ctx.font = "bold 16px Calibri, sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText(waitTime, x + width / 2, y - height - 10);
-
+    // Inschrift "FDP"
+    ctx.fillStyle = '#e5007d';
+    ctx.font = 'bold 10px Calibri, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('FDP', 0, 0);
     ctx.restore();
   }
 
-  function createCoin() {
-    const xPos = canvas.width + Math.random() * 200;
-    const yPos = groundY - 40 - Math.random() * 70;
-    coins.push({
-      x: xPos,
-      y: yPos,
-      width: coinSize,
-      height: coinSize,
-      collected: false
-    });
+  // Draw obstacle
+  function drawObstacle(obstacle) {
+    ctx.font = '30px serif';
+    ctx.fillText(obstacle.symbol, obstacle.x, obstacle.y + obstacle.height);
   }
 
-  function checkCollision(rect) {
-    const playerBox = {
-      x: player.x - player.radius,
-      y: player.y - player.radius,
-      width: player.radius * 2,
-      height: player.radius * 2
-    };
-    return !(
-      playerBox.x > rect.x + rect.width ||
-      playerBox.x + playerBox.width < rect.x ||
-      playerBox.y > rect.y ||
-      playerBox.y + playerBox.height < rect.y - rect.height
+  // Draw floor line
+  function drawFloor() {
+    ctx.beginPath();
+    ctx.strokeStyle = '#e5007d';
+    ctx.lineWidth = 3;
+    ctx.moveTo(0, FLOOR_Y + player.height);
+    ctx.lineTo(canvas.width, FLOOR_Y + player.height);
+    ctx.stroke();
+  }
+
+  // Clear canvas
+  function clear() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Collision detection
+  function isColliding(rect1, rect2) {
+    return (
+      rect1.x < rect2.x + rect2.width &&
+      rect1.x + rect1.width > rect2.x &&
+      rect1.y < rect2.y + rect2.height &&
+      rect1.y + rect1.height > rect2.y
     );
   }
 
-  function endGame() {
-    gameOver = true;
-    gameOverText.style.display = "block";
-    restartBtn.style.display = "inline-block";
-    jumpBtn.disabled = true;
-    leftBtn.disabled = true;
-    rightBtn.disabled = true;
-    gameOverText.focus();
+  // Collision player-circle and coin-circle (simple)
+  function circleRectCollision(circle, rect) {
+    const distX = Math.abs(circle.x - (rect.x + rect.width / 2));
+    const distY = Math.abs(circle.y - (rect.y + rect.height / 2));
+
+    if (distX > (rect.width / 2 + circle.radius)) { return false; }
+    if (distY > (rect.height / 2 + circle.radius)) { return false; }
+
+    if (distX <= (rect.width / 2)) { return true; }
+    if (distY <= (rect.height / 2)) { return true; }
+
+    const dx = distX - rect.width / 2;
+    const dy = distY - rect.height / 2;
+    return (dx * dx + dy * dy <= (circle.radius * circle.radius));
   }
 
-  function jump() {
-    if (!player.jumping && !gameOver) {
-      player.vy = -12;
-      player.jumping = true;
-    }
-  }
+  // Game loop variables
+  let animationId;
 
-  function movePlayer(direction) {
-    if (gameOver) return;
-    if (direction === "left") {
-      player.x -= 15;
-      if (player.x - player.radius < 0) player.x = player.radius;
-    } else if (direction === "right") {
-      player.x += 15;
-      if (player.x + player.radius > canvas.width) player.x = canvas.width - player.radius;
-    }
-  }
+  // Game loop
+  function gameLoop() {
+    clear();
+    drawFloor();
 
-  function updateGame() {
-    if (gameOver) return;
+    // Update player
+    if (player.isJumping) {
+      player.velocityY += GRAVITY;
+      player.y += player.velocityY;
 
-    player.vy += player.gravity;
-    player.y += player.vy;
-
-    if (player.y > groundY - player.radius) {
-      player.y = groundY - player.radius;
-      player.vy = 0;
-      player.jumping = false;
-    }
-
-    coinTimer++;
-    if (coinTimer > coinInterval) {
-      coinTimer = 0;
-      createCoin();
-      if (Math.random() < 0.6)createObstacle();
-    }
-
-    coins.forEach(coin => {
-      coin.x -= 5;
-      if (!coin.collected) {
-        const dx = Math.abs(player.x - (coin.x + coin.width / 2));
-        const dy = Math.abs(player.y - (coin.y + coin.height / 2));
-        if (dx < player.radius + coin.width / 2 && dy < player.radius + coin.height / 2) {
-          coin.collected = true;
-          score++;
-        }
+      if (player.y >= FLOOR_Y) {
+        player.y = FLOOR_Y;
+        player.isJumping = false;
+        player.velocityY = 0;
       }
-    });
-
-    
-// Event-Listener binden
-jumpBtn.addEventListener("click", jump);
-leftBtn.addEventListener("click", () => movePlayer("left"));
-rightBtn.addEventListener("click", () => movePlayer("right"));
-restartBtn.addEventListener("click", () => {
-  resetGame();
-  gameLoop();
-  restartBtn.style.display = "none";
-  gameOverText.style.display = "none";
-});
-
-
-// Game Loop etc. unverändert
-
-    obstacles.forEach(obstacle => {
-      obstacle.x -= 8;
-      if (checkCollision(obstacle)) {
-        endGame();
-      }
-    });
-
-    if (score >= 20) {
-      alert(
-        "Sie haben alle FDP-Coins gesammelt.\n\n" +
-        "Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:\n" +
-        "- z. B. durch Gespräche am Wahlkampfstand,\n" +
-        "- Nachfragen auf Veranstaltungen,\n" +
-        "- oder durch regelmäßigen Besuch auf meiner Seite oder meinem Instagram.\n\n" +
-        "Wer sich informiert und einbringt, kann Hürden verstehen – und überwinden.\n\n" +
-        "Vielen Dank für Ihr Interesse!\n\n" +
-        "— Ihre Heschu Hasan"
-      );
-      resetGame();
     }
-  }
-
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#009ee3";
-    ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
 
     drawPlayer();
 
-    obstacles.forEach(obstacle => {
-      if (obstacle.type === "sanduhr") {
-        drawSanduhrObstacle(obstacle.x, obstacle.y, obstacle.width, obstacle.height, obstacle.waitTime);
-      } else {
-        ctx.fillStyle = obstacle.color;
-        ctx.strokeStyle = obstacle.color;
-        ctx.lineWidth = 3;
-        ctx.strokeRect(obstacle.x, obstacle.y - obstacle.height, obstacle.width, obstacle.height);
+    // Move coins left, check collection
+    for (let i = coins.length -1; i >= 0; i--) {
+      let coin = coins[i];
+      coin.x -= gameSpeed;
 
-        ctx.font = "28px Arial, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(obstacle.icon, obstacle.x + obstacle.width / 2, obstacle.y - obstacle.height + 40);
+      drawCoin(coin);
 
-        ctx.font = "bold 14px Calibri, sans-serif";
-        ctx.fillText(obstacle.text, obstacle.x + obstacle.width / 2, obstacle.y - obstacle.height + 60);
+      // Check collision with player (circle-rect)
+      let playerRect = { x: player.x, y: player.y, width: player.width, height: player.height };
+      if (circleRectCollision(coin, playerRect)) {
+        coins.splice(i, 1);
+        score++;
+        soundCoin.play();
+      } else if (coin.x + coin.radius < 0) {
+        coins.splice(i, 1);
       }
-    });
-
-    coins.forEach(coin => {
-      if (!coin.collected) {
-        ctx.fillStyle = "#ffed00";
-        ctx.beginPath();
-        ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = "#000";
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        ctx.closePath();
-      }
-    });
-
-    ctx.fillStyle = "#009ee3";
-    ctx.font = "bold 22px Calibri, sans-serif";
-    ctx.fillText("FDP-Coins: " + score + " / 20", 10, 30);
-  }
-
-  function gameLoop() {
-    updateGame();
-    draw();
-    if (!gameOver) {
-      requestAnimationFrame(gameLoop);
     }
-  }window.addEventListener("keydown", e => {
-  if (["ArrowLeft", "ArrowRight", "Space", "ArrowUp"].includes(e.code)) {
-    e.preventDefault();
+
+    // Move obstacles left, check collision
+    for (let i = obstacles.length -1; i >= 0; i--) {
+      let obs = obstacles[i];
+      obs.x -= gameSpeed;
+
+      drawObstacle(obs);
+
+      let playerRect = { x: player.x, y: player.y, width: player.width, height: player.height };
+      let obsRect = { x: obs.x, y: obs.y, width: obs.width, height: obs.height };
+
+      if (isColliding(playerRect, obsRect)) {
+        // Game over
+        soundGameOver.play();
+        endGame();
+        return;
+      } else if (obs.x + obs.width < 0) {
+        obstacles.splice(i, 1);
+      }
+    }
+
+    // Level complete?
+    if (score >= 20 * level) {
+      levelUp();
+      return;
+    }
+
+    animationId = requestAnimationFrame(gameLoop);
   }
 
-  if (gameOver || !gameStarted) return;
+  // Start game
+  function startGame() {
+    isGameRunning = true;
+    startScreen.style.display = 'none';
+    gameOverText.style.display = 'none';
+    restartBtn.style.display = 'none';
+    score = 0;
+    level = 1;
+    gameSpeed = 3;
+    player.x = 50;
+    player.y = FLOOR_Y;
+    player.isJumping = false;
+    player.velocityY = 0;
 
-  if (e.code === "ArrowLeft") {
-    movePlayer("left");
-  } else if (e.code === "ArrowRight") {
-    movePlayer("right");
-  } else if (e.code === "Space" || e.code === "ArrowUp") {
-    jump();
-  }
-});
-
-
-
-// Verhindere mehrfaches Starten
-
-startBtn.addEventListener("click", () => {
-  if (!gameStarted) {
-    gameStarted = true;
-    startScreen.style.display = "none";
-    resetGame();
+    initCoins(20);
+    initObstacles(3);
+    updateLevelInfo();
     gameLoop();
   }
-});
 
-  window.addEventListener("keydown", e => {
-  if (e.code === "ArrowLeft") movePlayer("left");
-  if (e.code === "ArrowRight") movePlayer("right");
-  if (e.code === "Space") jump();
-});
+  // Restart game
+  function restartGame() {
+    isGameRunning = true;
+    gameOverText.style.display = 'none';
+    restartBtn.style.display = 'none';
+    score = 0;
+    level = 1;
+    gameSpeed = 3;
+    player.x = 50;
+    player.y = FLOOR_Y;
+    player.isJumping = false;
+    player.velocityY = 0;
 
+    initCoins(20);
+    initObstacles(3);
+    updateLevelInfo();
+    gameLoop();
+  }
+
+  // End game
+  function endGame() {
+    isGameRunning = false;
+    cancelAnimationFrame(animationId);
+    gameOverText.style.display = 'block';
+    restartBtn.style.display = 'inline-block';
+    levelInfo.textContent = '';
+    introText.textContent = "🎯 Sie haben das Spiel verloren. Versuchen Sie es nochmal!";
+    restartBtn.focus();
+  }
+
+  // Level up
+  function levelUp() {
+    isGameRunning = false;
+    cancelAnimationFrame(animationId);
+    if(level >= maxLevel){
+      // Gewonnen!
+      alert("Herzlichen Glückwunsch! Sie haben das Spiel gewonnen!");
+      restartBtn.style.display = 'inline-block';
+      introText.textContent = "🎉 Sie haben alle 5 Levels erfolgreich abgeschlossen!";
+      return;
+    }
+    level++;
+    gameSpeed += 1;
+    coins = [];
+    obstacles = [];
+    player.x = 50;
+    player.y = FLOOR_Y;
+    player.isJumping = false;
+    player.velocityY = 0;
+    score = 0;
+    introText.textContent = `🎯 Level ${level}: Noch mehr Bürokratie-Hürden!`;
+    updateLevelInfo();
+    initCoins(20 * level);
+    initObstacles(2 + level);
+    setTimeout(() => {
+      isGameRunning = true;
+      gameLoop();
+    }, 1500);
+  }
+
+  function updateLevelInfo() {
+    levelInfo.textContent = `Level: ${level} - Gesammelte FDP-Coins: ${score} / ${20 * level}`;
+  }
+
+  // Jump player
+  function jump() {
+    if (!isGameRunning) return;
+    if (!player.isJumping) {
+      player.isJumping = true;
+      player.velocityY = -14;
+      soundJump.play();
+    }
+  }
+
+  // Left and right move
+  function moveLeft() {
+    if (!isGameRunning) return;
+    player.x -= player.speedX;
+    if (player.x < 0) player.x = 0;
+  }
+  function moveRight() {
+    if (!isGameRunning) return;
+    player.x += player.speedX;
+    if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+  }
+
+  // Event listeners
+  startBtn.addEventListener('click', startGame);
+  jumpBtn.addEventListener('click', jump);
+  leftBtn.addEventListener('click', moveLeft);
+  rightBtn.addEventListener('click', moveRight);
+  restartBtn.addEventListener('click', restartGame);
+
+  // Keyboard controls
+  window.addEventListener('keydown', e => {
+    if (!isGameRunning) return;
+    if (e.code === 'Space' || e.code === 'ArrowUp') {
+      e.preventDefault();
+      jump();
+    } else if (e.code === 'ArrowLeft') {
+      e.preventDefault();
+      moveLeft();
+    } else if (e.code === 'ArrowRight') {
+      e.preventDefault();
+      moveRight();
+    }
+  });
+
+  // Accessibility focus trap for game over message
+  gameOverText.addEventListener('keydown', e => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      restartBtn.focus();
+    }
+  });
+
+})();
 </script>
+
 </body>
 </html>
