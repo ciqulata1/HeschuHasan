@@ -351,7 +351,7 @@ const player = new Player();
   const coins = [];
   const coinSize = 20;
   let coinTimer = 0;
-  const coinInterval = 90;
+  const coinInterval = 120;
 
   const groundY = 210;
 
@@ -513,10 +513,10 @@ const player = new Player();
   function movePlayer(direction) {
     if (gameOver) return;
     if (direction === "left") {
-      player.x -= 15;
+      player.x -= 20;
       if (player.x - player.radius < 0) player.x = player.radius;
     } else if (direction === "right") {
-      player.x += 15;
+      player.x += 20;
       if (player.x + player.radius > canvas.width) player.x = canvas.width - player.radius;
     }
   }
@@ -552,28 +552,31 @@ const player = new Player();
       }
     });
 
+    let victoryShown = false;
+
+function gameLoop() {
+
     obstacles.forEach(obstacle => {
-      obstacle.x -= 8;
+      obstacle.x -= 12;
       if (checkCollision(obstacle)) {
         endGame();
       }
     });
+if (score >= 20) {
+  gameOver = true;
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(50, 100, canvas.width - 100, 300);
 
-    if (score >= 20) {
-      alert(
-        "Sie haben alle FDP-Coins gesammelt.\n\n" +
-        "Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:\n" +
-        "- z. B. durch Gespräche am Wahlkampfstand,\n" +
-        "- Nachfragen auf Veranstaltungen,\n" +
-        "- oder durch regelmäßigen Besuch auf meiner Seite oder meinem Instagram.\n\n" +
-        "Wer sich informiert und einbringt, kann Hürden verstehen – und überwinden.\n\n" +
-        "Vielen Dank für Ihr Interesse!\n\n" +
-        "— Ihre Heschu Hasan"
-      );
-      resetGame();
-    }
-  }
-
+  ctx.fillStyle = "#000000";
+  ctx.font = "18px Arial";
+  ctx.fillText("🎉 Sie haben alle FDP-Coins gesammelt! 🎉", 70, 140);
+  ctx.fillText("Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:", 70, 170);
+  ctx.fillText("- Gespräche am Wahlkampfstand", 70, 200);
+  ctx.fillText("- Fragen auf Veranstaltungen", 70, 230);
+  ctx.fillText("- Besuche auf meiner Website / Instagram", 70, 260);
+  ctx.fillText("Danke für Ihr Interesse! — Ihre Heschu Hasan", 70, 310);
+}
+    
   function drawPlayer() {
     ctx.fillStyle = player.color;
     ctx.beginPath();
