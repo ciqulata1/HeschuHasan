@@ -297,11 +297,10 @@ const startScreen = document.getElementById("startScreen");
 const startBtn = document.getElementById("startBtn");
 
 let gameStarted = false;
-let gameOver = false;
-let score = 0;
-
 // Player-Klasse
 const player = new Player();
+
+
 
 jumpBtn.addEventListener("click", () => {
   jump();
@@ -344,6 +343,9 @@ class Player {
 
     this.image.onload = () => {
       this.imageLoaded = true;
+
+      // Player-Klasse
+const player = new Player();
     };
   }
 
