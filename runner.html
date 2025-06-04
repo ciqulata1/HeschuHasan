@@ -384,7 +384,7 @@
       }
 
       // Aktualisieren
-   function update() {
+ function update() {
   player.dy += player.gravity;
   player.y += player.dy;
 
@@ -397,6 +397,41 @@
     player.onGround = false;
   }
 
+  // Hindernisse & Münzen bewegen
+  obstacles.forEach((obs, i) => {
+    obs.x -= obs.speed;
+    if (obs.x + obs.width < 0) obstacles.splice(i, 1);
+  });
+
+  coins.forEach((coin, i) => {
+    coin.x -= coin.speed;
+    if (coin.x + coin.width < 0) coins.splice(i, 1);
+  });
+
+  // Kollision mit Münzen
+  coins.forEach((coin, i) => {
+    if (
+      player.x < coin.x + coin.width &&
+      player.x + player.width > coin.x &&
+      player.y < coin.y + coin.height &&
+      player.y + player.height > coin.y
+    ) {
+      coins.splice(i, 1);
+      score += 10;
+    }
+  });
+
+  // Kollision mit Hindernissen
+  obstacles.forEach(obs => {
+    if (
+      player.x < obs.x + obs.width &&
+      player.x + player.width > obs.x &&
+      player.y < obs.y + obs.height &&
+      player.y + player.height > obs.y
+    ) {
+      endGame();
+    }
+  });
 }
 
 
