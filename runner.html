@@ -310,7 +310,7 @@
   let gameSpeed = 3;
   let isGameRunning = false;
   let level = 1;
-  const maxLevel = 5;
+  const maxLevel = 3;
 
   // Obstacles list with emojis and descriptions
   const OBSTACLES_LIST = [
@@ -524,15 +524,23 @@
     }
 
     // Level complete?
-    if (score >= 20 * level) {
-      levelUp();
-      return;
+    function levelUp() {
+  level++;
+  coinCount = 0;
+  coinsCollected = 0;
+  gameSpeed += 1;
+
+  // ⬇️ Coins & Hindernisse für das neue Level generieren
+  initCoins(20 + level * 5);
+  initObstacles(3 + level * 2);
+  
+  updateLevelInfo();
+
+  introText.textContent = `🎯 Level ${level}: Mehr Coins, mehr Hindernisse – bleiben Sie dran! Sehr gute Politik muss man sich durch Initiative verdienen`;
+animationId = requestAnimationFrame(gameLoop);
+    
     }
-
-    updateLevelInfo();
-    animationId = requestAnimationFrame(gameLoop);
-  }
-
+  
   // Start game
   function startGame() {
     isGameRunning = true;
