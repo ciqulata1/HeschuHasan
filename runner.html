@@ -508,13 +508,15 @@
         frameCount = 0;
         obstacles = [];
         coins = [];
-        player.y = height - 10;
+        player.x = 50;
+        player.y = height - player.height;
         player.dy = 0;
         player.onGround = true;
 
         startScreen.style.display = 'none';
-        controls.style.display = 'block';
+        controls.style.display = 'flex';
         gameOverText.style.display = 'none';
+        scoreDisplay.textContent = 'Punkte: 0';
 
         gameLoop();
       }
@@ -522,8 +524,12 @@
       // Game Over
       function endGame() {
         gameRunning = false;
-        controls.style.display = 'none';
         gameOverText.style.display = 'block';
+        gameOverText.focus();
+         restartBtn.style.display = 'inline-block';
+        jumpBtn.disabled = true;
+        leftBtn.disabled = true;
+        rightBtn.disabled = true;
       }
 
       // Sprung-Funktion
@@ -536,16 +542,69 @@
 
       // Event Listener
       startBtn.addEventListener('click', startGame);
-      restartBtn.addEventListener('click', startGame);
-      jumpBtn.addEventListener('click', jump);
-    window.addEventListener('keydown', (e) => {
-  if (e.code === 'Space' || e.code === 'ArrowUp') {
-    if (player.onGround) {
-      player.dy = player.jumpPower;
-      player.onGround = false;
-    }
-  }
-});
+      restartBtn.addEventListener('click', ('click', () => {
+        restartBtn.style.display = 'none';
+        jumpBtn.disabled = false;
+        leftBtn.disabled = false;
+        rightBtn.disabled = false;
+        startGame();
+      });
+    
+      jumpBtn.addEventListener('click',  () => {
+        restartBtn.style.display = 'none';
+        jumpBtn.disabled = false;
+        leftBtn.disabled = false;
+        rightBtn.disabled = false;
+        startGame();
+      });
+
+      // Springen Button
+      jumpBtn.addEventListener('click', () => {
+        if (!gameRunning) return;
+        if (player.onGround) {
+          player.dy = player.jumpPower;
+          player.onGround = false;
+        }
+      });
+     // Pfeiltasten Buttons
+      const leftBtn = document.getElementById('leftBtn');
+      const rightBtn = document.getElementById('rightBtn');
+     leftBtn.addEventListener('click', () => {
+        if (!gameRunning) return;
+        player.x = Math.max(0, player.x - 20);
+      });
+
+      rightBtn.addEventListener('click', () => {
+        if (!gameRunning) return;
+        player.x = Math.min(width - player.width, player.x + 20);
+      });
+
+      // Start Button
+      startBtn.addEventListener('click', () => {
+        startGame();
+      });
+    
+       // Tastatur-Steuerung (optional)
+      window.addEventListener('keydown', e => {
+        if (!gameRunning) return;
+        switch(e.key) {
+          case 'ArrowUp':
+          case ' ':
+            if (player.onGround) {
+              player.dy = player.jumpPower;
+              player.onGround = false;
+            }
+            break;
+          case 'ArrowLeft':
+            player.x = Math.max(0, player.x - 20);
+            break;
+          case 'ArrowRight':
+            player.x = Math.min(width - player.width, player.x + 20);
+            break;
+        }
+      });
+
+ 
     })();
   </script>
 </body>
