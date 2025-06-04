@@ -280,276 +280,172 @@
   <p>Diese Simulation ersetzt keine politische Beratung.</p>
 </footer>
   <script>
-   (() => {
-  const canvas = document.getElementById('gameCanvas');
-  const ctx = canvas.getContext('2d');
-  const startBtn = document.getElementById('startBtn');
-  const restartBtn = document.getElementById('restartBtn');
-  const jumpBtn = document.getElementById('jumpBtn');
-  const leftBtn = document.getElementById('leftBtn');
-  const rightBtn = document.getElementById('rightBtn');
-  const controls = document.getElementById('buttonsContainer');
-  const startScreen = document.getElementById('startScreen');
-  const gameOverText = document.getElementById('gameOverText');
-  const scoreDisplay = document.getElementById('score');
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
-  const width = canvas.width;
-  const height = canvas.height;
+const width = canvas.width;
+const height = canvas.height;
 
-  let gameRunning = false;
-  let score = 0;
-  let frameCount = 0;
+let gameOver = false;
+let score = 0;
 
-  // Spieler-Objekt
-  const player = {
-    x: 50,
+const player = {
+  x: 50,
+  y: height - 70,
+  width: 40,
+  height: 40,
+  dy: 0,
+  gravity: 0.7,
+  jumpForce: -12,
+  grounded: true
+};
+
+const coins = [];
+const obstacles = [];
+
+const coinEmoji = '🪙';
+const obstacleEmojis = ['🏛️', '📄', '🚫', '🔒', '⚠️'];
+
+function createCoin() {
+  coins.push({
+    x: width,
+    y: height - 60,
+    width: 30,
+    height: 30,
+    speed: 6
+  });
+}
+
+function createObstacle() {
+  obstacles.push({
+    x: width,
     y: height - 60,
     width: 40,
-    height: 50,
-    dy: 0,
-    gravity: 0.8,
-    jumpPower: -15,
-    onGround: true,
-    color: '#00baff'
-  };
+    height: 40,
+    speed: 6,
+    type: Math.floor(Math.random() * obstacleEmojis.length)
+  });
+}
 
-  // Hindernisse & Münzen
-  let obstacles = [];
-  let coins = [];
+function drawPlayer() {
+  ctx.font = '40px Arial';
+  ctx.fillText('🧑‍💼', player.x, player.y + player.height);
+}
 
-  const obstacleEmojis = ['🗂️','⏳','📟','📞','📋','👨‍💼','💼','📆','😰','👵️'];
-  const obstacleNames = ['Aktenberge','Wartezeiten','Formularenterror','Endlose Gespräche','Protokolle','Bürokraten','Meetings','Genehmigungsjahrhunderte','Inkompetenz','Kontrollzwang'];
+function drawCoins() {
+  coins.forEach(coin => {
+    ctx.font = '30px Arial';
+    ctx.fillText(coinEmoji, coin.x, coin.y + 30);
+  });
+}
 
-  // Funktionen zum Erzeugen
-  function createObstacle() {
-    const index = Math.floor(Math.random() * obstacleEmojis.length);
-    obstacles.push({
-      x: width + 30,
-      y: height - 60,
-      width: 40,
-      height: 40,
-      emoji: obstacleEmojis[index],
-      name: obstacleNames[index],
-      speed: 5
-    });
-  }
+function drawObstacles() {
+  obstacles.forEach(obs => {
+    ctx.font = '30px Arial';
+    ctx.fillText(obstacleEmojis[obs.type], obs.x, obs.y + 30);
+  });
+}
 
-  function createCoin() {
-    coins.push({
-      x: width + 30,
-      y: height - 90,
-      width: 30,
-      height: 30,
-      color: 'yellow',
-      speed: 5
-    });
-  }
+function updatePlayer() {
+  player.dy += player.gravity;
+  player.y += player.dy;
 
-  // Zeichnen
-  function drawPlayer() {
-    ctx.fillStyle = player.color;
-    ctx.fillRect(player.x, player.y, player.width, player.height);
-    ctx.font = '40px Arial';
-    ctx.fillText('😀', player.x + 2, player.y + player.height - 10);
-  }
-
-  function drawObstacles() {
-    obstacles.forEach(obs => {
-      ctx.font = '12px Arial';
-      ctx.fillStyle = 'black';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'bottom';
-      ctx.fillText(obs.name, obs.x + obs.width / 2, obs.y - 5);
-
-      ctx.font = '40px Arial';
-      ctx.textBaseline = 'alphabetic';
-      ctx.fillText(obs.emoji, obs.x + obs.width / 2, obs.y + obs.height);
-    });
-  }
-
-  function drawCoins() {
-    coins.forEach(coin => {
-      ctx.fillStyle = coin.color;
-      ctx.beginPath();
-      ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = 'purple';
-      ctx.font = 'bold 14px Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText('FDP', coin.x + coin.width/2, coin.y + coin.height/2 + 5);
-    });
-  }
-
-  // Update-Funktion
-  function update() {
-    if (!gameRunning) return;
-
-    frameCount++;
-
-    // Spieler-Gravitation & Bewegung
-    player.dy += player.gravity;
-    player.y += player.dy;
-
-    if (player.y + player.height >= height) {
-      player.y = height - player.height;
-      player.dy = 0;
-      player.onGround = true;
-    } else {
-      player.onGround = false;
-    }
-
-    // Hindernisse & Münzen bewegen
-    obstacles.forEach((obs, i) => {
-      obs.x -= obs.speed;
-      if (obs.x + obs.width < 0) obstacles.splice(i, 1);
-    });
-
-    coins.forEach((coin, i) => {
-      coin.x -= coin.speed;
-      if (coin.x + coin.width < 0) coins.splice(i, 1);
-    });
-
-    // Kollision mit Münzen
-    coins.forEach((coin, i) => {
-      if (
-        player.x < coin.x + coin.width &&
-        player.x + player.width > coin.x &&
-        player.y < coin.y + coin.height &&
-        player.y + player.height > coin.y
-      ) {
-        coins.splice(i, 1);
-        score += 10;
-        scoreDisplay.textContent = Punkte: ${score / 10};
-
-        if (score >= 200) {
-          gameRunning = false;
-          alert(Glückwunsch! Sie haben 20 FDP-Coins gesammelt und gewonnen!
-Damit haben Sie Motivation gesammelt mich bis zum Stichtag an Wahlständen anzusprechen!
-Nur Mut, ich nehme Sie mental in die Freiheit der Liberalen mit!);
-
-          restartBtn.style.display = 'inline-block';
-          jumpBtn.disabled = true;
-          leftBtn.disabled = true;
-          rightBtn.disabled = true;
-          controls.style.display = 'none';
-          startScreen.style.display = 'block';
-        }
-      }
-    });
-
-    // Kollision mit Hindernissen
-    obstacles.forEach(obs => {
-      if (
-        player.x < obs.x + obs.width &&
-        player.x + player.width > obs.x &&
-        player.y < obs.y + obs.height &&
-        player.y + player.height > obs.y
-      ) {
-        endGame();
-      }
-    });
-  }
-
-  // Zeichnen der Szene
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    drawPlayer();
-    drawObstacles();
-    drawCoins();
-  }
-
-  // Haupt-Spielschleife
-  function gameLoop() {
-    if (!gameRunning) return;
-    update();
-    draw();
-
-    // alle 90 Frames ein Hindernis oder Münze erzeugen (ca. alle 1,5 Sekunden)
-    if (frameCount % 90 === 0) {
-      if (Math.random() < 0.6) {
-        createObstacle();
-      } else {
-        createCoin();
-      }
-    }
-
-    requestAnimationFrame(gameLoop);
-  }
-
-  // Spieler springt
-  function jump() {
-    if (player.onGround && gameRunning) {
-      player.dy = player.jumpPower;
-      player.onGround = false;
-    }
-  }
-
-  // Linke und rechte Bewegung (optional, bewegt Spieler horizontal)
-  function moveLeft() {
-    if (gameRunning && player.x > 0) player.x -= 15;
-  }
-  function moveRight() {
-    if (gameRunning && player.x + player.width < width) player.x += 15;
-  }
-
-  // Spiel starten
-  function startGame() {
-    score = 0;
-    frameCount = 0;
-    obstacles = [];
-    coins = [];
-    player.x = 50;
-    player.y = height - player.height;
+  if (player.y + player.height > height - 10) {
+    player.y = height - 10 - player.height;
     player.dy = 0;
-    gameRunning = true;
-
-    scoreDisplay.textContent = Punkte: 0;
-    restartBtn.style.display = 'none';
-    jumpBtn.disabled = false;
-    leftBtn.disabled = false;
-    rightBtn.disabled = false;
-    controls.style.display = 'flex';
-    startScreen.style.display = 'none';
-    gameOverText.style.display = 'none';
-
-    gameLoop();
+    player.grounded = true;
+  } else {
+    player.grounded = false;
   }
+}
 
-  // Spiel beenden
-  function endGame() {
-    gameRunning = false;
-    gameOverText.style.display = 'block';
-    restartBtn.style.display = 'inline-block';
-    jumpBtn.disabled = true;
-    leftBtn.disabled = true;
-    rightBtn.disabled = true;
-    controls.style.display = 'none';
-    startScreen.style.display = 'block';
-  }
-
-  // Event-Listener
-  startBtn.addEventListener('click', startGame);
-  restartBtn.addEventListener('click', startGame);
-  jumpBtn.addEventListener('click', jump);
-  leftBtn.addEventListener('click', moveLeft);
-  rightBtn.addEventListener('click', moveRight);
-
-  // Tastatur-Steuerung
-  window.addEventListener('keydown', (e) => {
-    if (!gameRunning) return;
-    if (e.code === 'Space') {
-      e.preventDefault();
-      jump();
+function updateCoins() {
+  coins.forEach((coin, index) => {
+    coin.x -= coin.speed;
+    if (coin.x + coin.width < 0) {
+      coins.splice(index, 1);
     }
-    if (e.code === 'ArrowLeft') {
-      moveLeft();
-    }
-    if (e.code === 'ArrowRight') {
-      moveRight();
+    if (collision(player, coin)) {
+      score++;
+      coins.splice(index, 1);
     }
   });
-})();
+}
 
- </script>
+function updateObstacles() {
+  obstacles.forEach((obs, index) => {
+    obs.x -= obs.speed;
+    if (obs.x + obs.width < 0) {
+      obstacles.splice(index, 1);
+    }
+    if (collision(player, obs)) {
+      gameOver = true;
+    }
+  });
+}
+
+function collision(a, b) {
+  return a.x < b.x + b.width &&
+         a.x + a.width > b.x &&
+         a.y < b.y + b.height &&
+         a.y + a.height > b.y;
+}
+
+let frameCount = 0;
+
+function gameLoop() {
+  if (gameOver) {
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = 'red';
+    ctx.font = '30px Arial';
+    ctx.fillText('Game Over! Bürokratische Hürden haben dich gestoppt.', 30, height / 2);
+    document.getElementById('congrats').textContent = '';
+    return;
+  }
+
+  ctx.clearRect(0, 0, width, height);
+
+  drawPlayer();
+  drawCoins();
+  drawObstacles();
+
+  updatePlayer();
+  updateCoins();
+  updateObstacles();
+
+  frameCount++;
+
+  // Alle 150 Frames ein Coin erzeugen
+  if (frameCount % 150 === 0) {
+    createCoin();
+  }
+  // Alle 200 Frames ein Hindernis erzeugen
+  if (frameCount % 200 === 0) {
+    createObstacle();
+  }
+
+  // Glückwunsch anzeigen, wenn 10 Coins gesammelt
+  if (score >= 10) {
+    document.getElementById('congrats').textContent = 
+      "Herzlichen Glückwunsch! Du hast 10 FDP-Coins gesammelt und dich erfolgreich durch die bürokratischen Hürden gekämpft!";
+    gameOver = true;
+  } else {
+    ctx.fillStyle = 'black';
+    ctx.font = '20px Arial';
+    ctx.fillText(`FDP-Coins: ${score}`, 10, 30);
+  }
+
+  requestAnimationFrame(gameLoop);
+}
+
+window.addEventListener('keydown', e => {
+  if ((e.code === 'Space' || e.code === 'ArrowUp') && player.grounded) {
+    player.dy = player.jumpForce;
+  }
+});
+
+gameLoop();
+</script>
+
 </body>
 </html>
