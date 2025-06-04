@@ -484,6 +484,16 @@ function drawPlayer() {
     }
   }
 
+  const startBtn = document.getElementById("startBtn");
+startBtn.addEventListener("click", () => {
+  if (!gameStarted) {
+    gameStarted = true;
+    startScreen.style.display = "none";
+    resetGame();
+    gameLoop();
+  }
+});
+
   function drawSanduhrObstacle(x, y, width, height, waitTime) {
     ctx.save();
     ctx.fillStyle = "#e5007d";
@@ -758,6 +768,12 @@ startBtn.addEventListener("click", () => {
     resetGame();
     gameLoop();
   }
+});
+
+  window.addEventListener("keydown", e => {
+  if (e.code === "ArrowLeft") movePlayer("left");
+  if (e.code === "ArrowRight") movePlayer("right");
+  if (e.code === "Space") jump();
 });
 
 </script>
