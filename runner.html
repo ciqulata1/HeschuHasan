@@ -581,9 +581,9 @@
     isGameRunning = false;
     cancelAnimationFrame(animationId);
     gameOverText.style.display = 'block';
-    gameOverText.textContent = `Spiel vorbei! Ihre Punkte: ${score}`;
+    gameOverText.textContent = `Spiel vorbei! Deine Punkte: ${score}`;
     restartBtn.style.display = 'inline-block';
-    introText.textContent = "😵 Bürokratie hat Sie erwischt! Versuchen Sie es gerne nochmal!";
+    introText.textContent = "😵 Bürokratie hat dich erwischt! Versuch es nochmal!";
   }
 
   // Level up
@@ -594,31 +594,17 @@
       isGameRunning = false;
       cancelAnimationFrame(animationId);
       gameOverText.style.display = 'block';
-      gameOverText.textContent = `Glückwunsch! Sie haben alle Level geschafft mit ${score} Punkten! 🎉`;
+      gameOverText.textContent = `Glückwunsch! Du hast alle Level geschafft mit ${score} Punkten! 🎉`;
       restartBtn.style.display = 'inline-block';
-      introText.textContent = introText.textContent = `🏆 "Sie haben alle FDP-Coins gesammelt.
-
-Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:
-- z. B. durch Gespräche am Wahlkampfstand,
-- Nachfragen auf Veranstaltungen,
-- oder durch regelmäßigen Besuch auf meiner Seite oder meinem Instagram.
-
-Wer sich informiert und einbringt, kann Hürden verstehen – und überwinden.
-
-Vielen Dank für Ihr Interesse!
-
-— Ihre Heschu Hasan"`;
-
-
-
-
-    
+      introText.textContent = "🏆 Du bist Bürokratie-Champion!";
+      return;
+    }
     // Increase difficulty
     gameSpeed += 1;
     initCoins(20 + level * 5);
     initObstacles(3 + level);
 
-    introText.textContent = `🎯 Level ${level}: Sammlen Sie FDP-Coins und vermeiden Sie mehr Bürokratie-Hürden durch Eigeninitiative!`;
+    introText.textContent = `🎯 Level ${level}: Sammle FDP-Coins und vermeide mehr Bürokratie-Hürden!`;
 
     updateLevelInfo();
     gameLoop();
@@ -682,3 +668,218 @@ Vielen Dank für Ihr Interesse!
 })();
 </script>
 
+let obstacles = [];
+let coins = [];
+
+let level = 1;
+const maxLevel = 5;
+
+let score = 0;
+let isGameRunning = false;
+
+let obstacleTimer = 0;
+let coinTimer = 0;
+const obstacleInterval = 1500; // ms
+const coinInterval = 2000;     // ms
+
+// --- Steuerung ---
+window.addEventListener('keydown', e => {
+  if ((e.code === 'Space' || e.code === 'ArrowUp') && !player.jumping && isGameRunning) {
+    player.dy = jumpPower;
+    player.jumping = true;
+    soundJump.play();
+  }
+});
+
+// --- Helferfunktionen ---
+function rectsCollide(r1, r2) {
+  return !(r2.x > r1.x + r1.width ||
+           r2.x + r2.width < r1.x ||
+           r2.y > r1.y + r1.height ||
+           r2.y + r2.height < r1.y);
+}
+
+// --- Spielstart ---
+function startGame() {
+  level = 1;
+  score = 0;
+  player.x = 50;
+  player.y = groundY;
+  player.dy = 0;
+  player.jumping = false;
+  obstacles = [];
+  coins = [];
+  obstacleTimer = 0;
+  coinTimer = 0;
+  isGameRunning = true;
+
+  gameOverText.style.display = 'none';
+  restartBtn.style.display = 'none';
+  introText.textContent = '';
+
+  requestAnimationFrame(gameLoop);
+}
+
+// --- Spiel-Loop ---
+let lastTime = 0;
+
+function gameLoop(timestamp = 0) {
+  if (!isGameRunning) return;
+
+  const deltaTime = timestamp - lastTime;
+  lastTime = timestamp;
+
+  // Hintergrund löschen
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Boden zeichnen
+  ctx.fillStyle = '#228833';
+  ctx.fillRect(0, groundY + 50, canvas.width, canvas.height - groundY - 50);
+
+  // Spieler Physik
+  player.dy += gravity;
+  player.y += player.dy;
+
+  if (player.y > groundY) {
+    player.y = groundY;
+    player.dy = 0;
+    player.jumping = false;
+  }
+
+  // Spieler zeichnen (Bild)
+  ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
+
+  // Hindernisse generieren
+  obstacleTimer += deltaTime;
+  if (obstacleTimer > obstacleInterval) {
+    obstacleTimer = 0;
+    let height = 40 + Math.random() * 30;
+    obstacles.push({
+      x: canvas.width,
+      y: groundY + 50 - height,
+      width: 20,
+      height: height,
+      speed: 5 + level // schneller mit Level
+    });
+  }
+
+  // Hindernisse bewegen & zeichnen
+  ctx.fillStyle = '#aa2222';
+  for (let i = obstacles.length - 1; i >= 0; i--) {
+    let ob = obstacles[i];
+    ob.x -= ob.speed;
+    ctx.fillRect(ob.x, ob.y, ob.width, ob.height);
+
+    // Kollisionsprüfung Spieler - Hindernis
+    if (rectsCollide(player, ob)) {
+      endGame(false);
+      return;
+    }
+
+    // Entferne Hindernis wenn es links raus ist
+    if (ob.x + ob.width < 0) {
+      obstacles.splice(i, 1);
+    }
+  }
+
+  // Coins generieren
+  coinTimer += deltaTime;
+  if (coinTimer > coinInterval) {
+    coinTimer = 0;
+    let coinY = groundY + 50 - 80 - Math.random() * 40;
+    coins.push({
+      x: canvas.width,
+      y: coinY,
+      width: 25,
+      height: 25,
+      speed: 5 + level
+    });
+  }
+
+  // Coins bewegen & zeichnen (gelbe Kreise)
+  ctx.fillStyle = 'gold';
+  ctx.beginPath();
+  for (let i = coins.length - 1; i >= 0; i--) {
+    let coin = coins[i];
+    coin.x -= coin.speed;
+    ctx.beginPath();
+    ctx.arc(coin.x + coin.width/2, coin.y + coin.height/2, 12, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Kollisionsprüfung Spieler - Coin
+    if (rectsCollide(player, coin)) {
+      coins.splice(i, 1);
+      score++;
+      soundCoin.play();
+
+      // Level Up alle 3 Coins
+      if (score % 3 === 0) {
+        levelUp();
+      }
+    }
+
+    // Entferne Münze wenn aus dem Bild
+    if (coin.x + coin.width < 0) {
+      coins.splice(i, 1);
+    }
+  }
+
+  // Statusanzeige
+  ctx.fillStyle = '#003366';
+  ctx.font = '18px Arial';
+  ctx.fillText(`Level: ${level}`, 10, 25);
+  ctx.fillText(`Coins: ${score}`, 10, 50);
+
+  if (level > maxLevel) {
+    endGame(true);
+    return;
+  }
+
+  // Nächster Frame
+  requestAnimationFrame(gameLoop);
+}
+
+function levelUp() {
+  level++;
+}
+
+function endGame(won) {
+  isGameRunning = false;
+  soundGameOver.play();
+
+  if (won) {
+    gameOverText.style.whiteSpace = 'pre-wrap';
+    gameOverText.textContent =
+      "Sie haben alle FDP-Coins gesammelt.\n\n" +
+      "Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:\n" +
+      "- z. B. durch Gespräche am Wahlkampfstand,\n" +
+      "- Nachfragen auf Veranstaltungen,\n" +
+      "- oder durch regelmäßigen Besuch auf meiner Seite oder meinem Instagram.\n\n" +
+      "Wer sich informiert und sich engagiert, kann Hürden verstehen – und überwinden.\n\n" +
+      "Vielen Dank für Ihr Interesse!\n\n" +
+      "— Ihre Heschu Hasan";
+
+    introText.textContent = "Bürokratie ist passé, wenn Sie mit Ihrem Engagement mich, Ihre Verwandten und Bekannten weiterempfehlen.";
+  } else {
+    gameOverText.style.whiteSpace = 'normal';
+    gameOverText.textContent = "Oh nein, Sie haben ein Hindernis getroffen!\n\nVersuchen Sie es bitte erneut.";
+    introText.textContent = "";
+  }
+
+  gameOverText.style.display = 'block';
+  restartBtn.style.display = 'inline-block';
+}
+
+// Restart-Button Event
+restartBtn.addEventListener('click', () => {
+  startGame();
+});
+
+// Lade Spielerbild, dann starten
+playerImg.onload = () => {
+  startGame();
+};
+</script>
+
+</body>
+</html>
