@@ -372,15 +372,21 @@
       }
 
       // Aktualisieren
-      function update() {
-        // Spieler Bewegung (Sprung)
-        player.dy += player.gravity;
-        player.y += player.dy;
-        if (player.y + player.height > height - 10) {
-          player.y = height - 60 - player.height;
-          player.dy = 0;
-          player.onGround = true;
-        }
+   function update() {
+  player.dy += player.gravity;
+  player.y += player.dy;
+
+  // Boden-Kollision direkt prüfen
+  if (player.y + player.height >= height) {
+    player.y = height - player.height;
+    player.dy = 0;
+    player.onGround = true;
+  } else {
+    player.onGround = false;
+  }
+
+}
+
 
         // Hindernisse & Münzen bewegen
         obstacles.forEach((obs, i) => {
@@ -485,11 +491,14 @@
       startBtn.addEventListener('click', startGame);
       restartBtn.addEventListener('click', startGame);
       jumpBtn.addEventListener('click', jump);
-      window.addEventListener('keydown', e => {
-        if (e.code === 'Space' || e.code === 'ArrowUp') {
-          jump();
-        }
-      });
+    window.addEventListener('keydown', (e) => {
+  if (e.code === 'Space' || e.code === 'ArrowUp') {
+    if (player.onGround) {
+      player.dy = player.jumpPower;
+      player.onGround = false;
+    }
+  }
+});
     })();
   </script>
 </body>
