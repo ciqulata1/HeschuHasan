@@ -294,20 +294,6 @@
   const GRAVITY = 0.8;
   const FLOOR_Y = canvas.height - 40;
 
-   const playerImg = new Image();
-      playerImg.src = "IMG_2350.png";
-
-      const player = {
-        x: 50,
-        y: 300,
-        width: 50,
-        height: 50,
-        dy: 0,
-        gravity: 0.5,
-        jumpForce: -10,
-        onGround: true,
-      };
-
 
   let coins = [];
   let obstacles = [];
@@ -616,7 +602,11 @@
   });
 })(); // ← schließt das IIFE (Immediately Invoked Function Expression)
 </script>
-   <model-viewer src="IMG_2350.gltf" alt="3D Modell" auto-rotate camera-controls style="width: 600px; height: 400px;">
-    </model-viewer>
+  <model-viewer src="IMG_2350.gltf" 
+              alt="3D-Modell Spieler" 
+              auto-rotate 
+              camera-controls 
+              style="width: 300px; height: 300px;">
+</model-viewer>
 </body>
 </html>
