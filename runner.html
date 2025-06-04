@@ -320,12 +320,12 @@ class Player {
 }
 
 // Variablen für Spielstart
-let gameStarted = false;
+const startScreen = document.getElementById("startScreen");
 
-// Klick-Listener auf die Seite, um Spiel zu starten
 window.addEventListener("click", () => {
   if (!gameStarted) {
     gameStarted = true;
+    startScreen.style.display = "none";  // Startbildschirm verstecken
     resetGame();
     gameLoop();
   }
