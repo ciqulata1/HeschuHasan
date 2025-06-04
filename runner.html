@@ -403,7 +403,22 @@
       obs.x -= obs.speed;
       if (obs.x + obs.width < 0) obstacles.splice(i, 1);
     });
+startBtn.addEventListener('click', startGame);
+  restartBtn.addEventListener('click', startGame);
 
+  jumpBtn.addEventListener('click', () => {
+    if (player.onGround) {
+      player.dy = player.jumpPower;
+    }
+  });
+
+  leftBtn.addEventListener('click', () => {
+    player.x -= 20;
+  });
+
+  rightBtn.addEventListener('click', () => {
+    player.x += 20;
+  });
     coins.forEach((coin, i) => {
       coin.x -= coin.speed;
       if (coin.x + coin.width < 0) coins.splice(i, 1);
@@ -477,7 +492,7 @@ Nur Mut, ich nehme Sie mental in die Freiheit der Liberalen mit!`);
 
   // Haupt-Spielschleife
   function gameLoop() {
-    if (!gameRunning) return;
+    if (!gameRunning) requestAnimationFrame(gameLoop);
     update();
     draw();
 
@@ -489,9 +504,11 @@ Nur Mut, ich nehme Sie mental in die Freiheit der Liberalen mit!`);
         createCoin();
       }
     }
-
+    {
     requestAnimationFrame(gameLoop);
   }
+if (frameCount % 90 === 0) createObstacle();
+if (frameCount % 150 === 0) createCoin();
 
   // Spieler springt
   function jump() {
@@ -522,12 +539,20 @@ Nur Mut, ich nehme Sie mental in die Freiheit der Liberalen mit!`);
 
     scoreDisplay.textContent = `Punkte: 0`;
     restartBtn.style.display = 'none';
+      gameOverText.style.display = 'none';
+    startScreen.style.display = 'none';
+  controls.style.display = 'flex';
+    
     jumpBtn.disabled = false;
     leftBtn.disabled = false;
     rightBtn.disabled = false;
     controls.style.display = 'flex';
     startScreen.style.display = 'none';
     gameOverText.style.display = 'none';
+     score = 0;
+  player.x = 50;
+  player.y = height - 60;
+  player.dy = 0;
 
     gameLoop();
   }
