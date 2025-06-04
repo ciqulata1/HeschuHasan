@@ -417,7 +417,17 @@
       player.y + player.height > coin.y
     ) {
       coins.splice(i, 1);
-      score += 10;
+   if(score >= 200) {
+  gameRunning = false;
+  alert('Glückwunsch! Sie haben 20 FDP-Coins gesammelt und gewonnen!');
+  restartBtn.style.display = 'inline-block';
+  jumpBtn.disabled = true;
+  leftBtn.disabled = true;
+  rightBtn.disabled = true;
+  controls.style.display = 'none';
+  startScreen.style.display = 'block';
+}
+
     }
   });
 
@@ -539,18 +549,13 @@
           player.onGround = false;
         }
       }
-
+jumpBtn.addEventListener('click', () => {
+  if (!gameRunning) return;
+  jump();
+});
       // Event Listener
       startBtn.addEventListener('click', startGame);
-      restartBtn.addEventListener('click', ('click', () => {
-        restartBtn.style.display = 'none';
-        jumpBtn.disabled = false;
-        leftBtn.disabled = false;
-        rightBtn.disabled = false;
-        startGame();
-      });
-    
-      jumpBtn.addEventListener('click',  () => {
+      restartBtn.addEventListener('click', () => {
         restartBtn.style.display = 'none';
         jumpBtn.disabled = false;
         leftBtn.disabled = false;
@@ -579,10 +584,6 @@
         player.x = Math.min(width - player.width, player.x + 20);
       });
 
-      // Start Button
-      startBtn.addEventListener('click', () => {
-        startGame();
-      });
     
        // Tastatur-Steuerung (optional)
       window.addEventListener('keydown', e => {
