@@ -572,7 +572,7 @@
     initCoins(20);
     initObstacles(3);
     updateLevelInfo();
-    introText.textContent = "🎯 Level 1: Sammle FDP-Coins und vermeide Bürokratie-Hürden!";
+    introText.textContent = "🎯 Level 1: Sammlen Sie FDP-Coins und vermeiden Sie Bürokratie-Hürden durch Lerneffekte!";
     gameLoop();
   }
 
@@ -581,9 +581,9 @@
     isGameRunning = false;
     cancelAnimationFrame(animationId);
     gameOverText.style.display = 'block';
-    gameOverText.textContent = `Spiel vorbei! Deine Punkte: ${score}`;
+    gameOverText.textContent = `Spiel vorbei! Ihre Punkte: ${score}`;
     restartBtn.style.display = 'inline-block';
-    introText.textContent = "😵 Bürokratie hat dich erwischt! Versuch es nochmal!";
+    introText.textContent = "😵 Bürokratie hat Sie erwischt! Versuchen Sie es noch einmal!";
   }
 
   // Level up
@@ -594,9 +594,9 @@
       isGameRunning = false;
       cancelAnimationFrame(animationId);
       gameOverText.style.display = 'block';
-      gameOverText.textContent = `Glückwunsch! Du hast alle Level geschafft mit ${score} Punkten! 🎉`;
+      gameOverText.textContent = `Glückwunsch! Sie haben alle Level geschafft mit ${score} Punkten! 🎉`;
       restartBtn.style.display = 'inline-block';
-      introText.textContent = "🏆 Du bist Bürokratie-Champion!";
+      introText.textContent = "🏆 Sie sind ein Bürokratie-Champion! Damit es so bleibt, wählen Sie Heschu Hasan";
       return;
     }
     // Increase difficulty
