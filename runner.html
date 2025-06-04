@@ -581,9 +581,9 @@
     isGameRunning = false;
     cancelAnimationFrame(animationId);
     gameOverText.style.display = 'block';
-    gameOverText.textContent = `Spiel vorbei! Deine Punkte: ${score}`;
+    gameOverText.textContent = `Spiel vorbei! Ihre Punkte: ${score}`;
     restartBtn.style.display = 'inline-block';
-    introText.textContent = "😵 Bürokratie hat dich erwischt! Versuch es nochmal!";
+    introText.textContent = "😵 Bürokratie hat Sie erwischt! Versuchen Sie es gerne nochmal!";
   }
 
   // Level up
@@ -594,11 +594,25 @@
       isGameRunning = false;
       cancelAnimationFrame(animationId);
       gameOverText.style.display = 'block';
-      gameOverText.textContent = `Glückwunsch! Du hast alle Level geschafft mit ${score} Punkten! 🎉`;
+      gameOverText.textContent = `Glückwunsch! Sie haben alle Level geschafft mit ${score} Punkten! 🎉`;
       restartBtn.style.display = 'inline-block';
-      introText.textContent = "🏆 Du bist Bürokratie-Champion!";
-      return;
-    }
+      introText.textContent = introText.textContent = `🏆 "Sie haben alle FDP-Coins gesammelt.
+
+Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:
+- z. B. durch Gespräche am Wahlkampfstand,
+- Nachfragen auf Veranstaltungen,
+- oder durch regelmäßigen Besuch auf meiner Seite oder meinem Instagram.
+
+Wer sich informiert und einbringt, kann Hürden verstehen – und überwinden.
+
+Vielen Dank für Ihr Interesse!
+
+— Ihre Heschu Hasan"`;
+
+
+
+
+    
     // Increase difficulty
     gameSpeed += 1;
     initCoins(20 + level * 5);
