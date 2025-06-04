@@ -284,16 +284,20 @@
 
   // Player object
   const player = {
-    x: 50,
-    y: FLOOR_Y,
-    width: 30,
-    height: 30,
-    color: '#ffed00',
-    velocityY: 0,
-    isJumping: false,
-    shadowOffset: 6,
-    speedX: 7
-  };
+  x: 50,
+  y: FLOOR_Y,
+  width: 30,
+  height: 30,
+  color: '#ffed00',
+  velocityY: 0,
+  isJumping: false,
+  shadowOffset: 6,
+  speedX: 7,
+  image: new Image()  // Bildobjekt anlegen
+};
+
+player.image.src = 'IMG_2350.png';  // Pfad zum Bild setzen
+
 
   // Game variables
   let coins = [];
@@ -306,7 +310,19 @@
 
   // Coin image (animated as rotating circle)
   // Obstacles have different icons: bureaucrat, clock, paperwork (unicode symbols)
-  const obstacleSymbols = ['📋', '⏳', '👨‍💼'];
+   const OBSTACLES_LIST = [
+    {emoji:'🗂️', desc:'Aktenberge'},
+    {emoji:'⏳', desc:'Zeitdruck'},
+    {emoji:'🧾', desc:'Formulare'},
+    {emoji:'📞', desc:'Endlose Telefonate'},
+    {emoji:'📋', desc:'Protokolle'},
+    {emoji:'👨‍💼', desc:'Bürokraten'},
+    {emoji:'💼', desc:'Meetings'},
+    {emoji:'📆', desc:'Überfüllter Kalender'},
+    {emoji:'😰', desc:'Stress'},
+    {emoji:'🕵️‍♂️', desc:'Kontrolle'},
+  ];
+
 
   // Utility functions
   function randomInt(min, max) {
