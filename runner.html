@@ -346,39 +346,6 @@
     }
   }
 
-  function drawPlayer() {
-    ctx.beginPath();
-    ctx.ellipse(
-      player.x + player.width / 2 + player.shadowOffset,
-      FLOOR_Y + player.height - 4,
-      player.width / 1.5,
-      8,
-      0,
-      0,
-      2 * Math.PI
-    );
-    ctx.fillStyle = 'rgba(0,0,0,0.2)';
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.fillStyle = player.color;
-    ctx.arc(player.x + player.width / 2, player.y + player.height / 2, player.width / 2, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.fillStyle = 'black';
-    ctx.arc(player.x + player.width / 3, player.y + player.height / 3, 3, 0, Math.PI * 2);
-    ctx.arc(player.x + 2 * player.width / 3, player.y + player.height / 3, 3, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-    // Smile
-    ctx.beginPath();
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 2;
-    ctx.arc(player.x + player.width / 2, player.y + 2 * player.height / 3, 7, 0, Math.PI, false);
-    ctx.stroke();
-  }
 
   // Draw coin (rotating ellipse with "FDP" text)
   function drawCoin(coin) {
