@@ -374,7 +374,7 @@
         player.dy += player.gravity;
         player.y += player.dy;
         if (player.y + player.height > height - 10) {
-          player.y = height - 10 - player.height;
+          player.y = height - 60 - player.height;
           player.dy = 0;
           player.onGround = true;
         }
