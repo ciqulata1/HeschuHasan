@@ -407,7 +407,24 @@
     coins.forEach((coin, i) => {
       coin.x -= coin.speed;
       if (coin.x + coin.width < 0) coins.splice(i, 1);
-    });
+      if (
+    player.x < coin.x + coin.width &&
+    player.x + player.width > coin.x &&
+    player.y < coin.y + coin.height &&
+    player.y + player.height > coin.y
+  ) {
+    coins.splice(i, 1);
+    score++;
+    scoreDisplay.textContent = 'Punkte: ' + score;
+    if (score >= 20) {
+      gameOverText.style.display = 'block';
+      gameOverText.innerHTML = `<p>🎉 Sieg!</p><p>Sie haben 20 FDP-Coins gesammelt!</p>`;
+      stopGame();
+    }
+  }
+});
+
+    
 
     // Kollision mit Münzen
     coins.forEach((coin, i) => {
