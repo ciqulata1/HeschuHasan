@@ -280,69 +280,94 @@
   <p>Diese Simulation ersetzt keine politische Beratung.</p>
 </footer>
   <script>
+<!-- Füge dies am Ende deiner HTML-Datei, vor dem schließenden </body> ein: -->
+<script>
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+const scoreDisplay = document.getElementById('score');
+const congrats = document.createElement('div');
+congrats.id = 'congrats';
+congrats.style.color = 'green';
+congrats.style.fontWeight = 'bold';
+congrats.style.marginTop = '20px';
+document.querySelector('main').appendChild(congrats);
 
-const width = canvas.width;
-const height = canvas.height;
+// Audio
+const bgMusic = new Audio('https://cdn.pixabay.com/audio/2023/03/28/audio_715bb2824e.mp3');
+bgMusic.loop = true;
+bgMusic.volume = 0.3;
 
+const coinSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_b1d9b82678.mp3');
+const powerUpSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_c5f37b63d4.mp3');
+const hitSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_f8373c41d5.mp3');
+
+let gameStarted = false;
 let gameOver = false;
 let score = 0;
+let level = 1;
+let timeLeft = 60;
 
 const player = {
   x: 50,
-  y: height - 70,
+  y: canvas.height - 70,
   width: 40,
   height: 40,
   dy: 0,
-  gravity: 0.7,
-  jumpForce: -12,
-  grounded: true
+  gravity: 0.8,
+  jumpForce: -14,
+  grounded: true,
+  powerUp: false,
+  speedBoost: 1
 };
 
 const coins = [];
 const obstacles = [];
+const powerUps = [];
 
-const coinEmoji = '🪙';
-const obstacleEmojis = ['🏛️', '📄', '🚫', '🔒', '⚠️'];
-
-function createCoin() {
-  coins.push({
-    x: width,
-    y: height - 60,
-    width: 30,
-    height: 30,
-    speed: 6
-  });
-}
-
-function createObstacle() {
-  obstacles.push({
-    x: width,
-    y: height - 60,
-    width: 40,
-    height: 40,
-    speed: 6,
-    type: Math.floor(Math.random() * obstacleEmojis.length)
-  });
-}
+const obstacleData = [
+  { icon: '🏛️', label: 'Genehmigung' },
+  { icon: '📄', label: 'Formular' },
+  { icon: '🚫', label: 'Verbot' },
+  { icon: '🔒', label: 'Zugang gesperrt' },
+  { icon: '⚠️', label: 'Warnung' }
+];
 
 function drawPlayer() {
-  ctx.font = '40px Arial';
+  ctx.font = '38px Arial';
   ctx.fillText('🧑‍💼', player.x, player.y + player.height);
 }
 
-function drawCoins() {
-  coins.forEach(coin => {
-    ctx.font = '30px Arial';
-    ctx.fillText(coinEmoji, coin.x, coin.y + 30);
+function drawItems(arr, fontSize = 30) {
+  arr.forEach(item => {
+    ctx.font = `${fontSize}px Arial`;
+    ctx.fillText(item.icon, item.x, item.y + item.height);
+    if (item.label) {
+      ctx.font = "14px Calibri";
+      ctx.fillStyle = '#000';
+      ctx.fillText(item.label, item.x - 10, item.y);
+    }
   });
 }
 
-function drawObstacles() {
-  obstacles.forEach(obs => {
-    ctx.font = '30px Arial';
-    ctx.fillText(obstacleEmojis[obs.type], obs.x, obs.y + 30);
+function createCoin() {
+  coins.push({ x: canvas.width, y: canvas.height - 60, width: 30, height: 30, icon: '🪙', speed: 6 });
+}
+
+function createObstacle() {
+  const rand = Math.floor(Math.random() * obstacleData.length);
+  const { icon, label } = obstacleData[rand];
+  obstacles.push({ x: canvas.width, y: canvas.height - 60, width: 40, height: 40, icon, label, speed: 6 });
+}
+
+function createPowerUp() {
+  powerUps.push({ x: canvas.width, y: canvas.height - 80, width: 35, height: 35, icon: '⚡', speed: 6 });
+}
+
+function updateItems(arr, callback) {
+  arr.forEach((item, index) => {
+    item.x -= item.speed * player.speedBoost;
+    if (item.x + item.width < 0) arr.splice(index, 1);
+    if (callback) callback(item, index);
   });
 }
 
@@ -350,38 +375,13 @@ function updatePlayer() {
   player.dy += player.gravity;
   player.y += player.dy;
 
-  if (player.y + player.height > height - 10) {
-    player.y = height - 10 - player.height;
+  if (player.y + player.height >= canvas.height - 10) {
+    player.y = canvas.height - 10 - player.height;
     player.dy = 0;
     player.grounded = true;
   } else {
     player.grounded = false;
   }
-}
-
-function updateCoins() {
-  coins.forEach((coin, index) => {
-    coin.x -= coin.speed;
-    if (coin.x + coin.width < 0) {
-      coins.splice(index, 1);
-    }
-    if (collision(player, coin)) {
-      score++;
-      coins.splice(index, 1);
-    }
-  });
-}
-
-function updateObstacles() {
-  obstacles.forEach((obs, index) => {
-    obs.x -= obs.speed;
-    if (obs.x + obs.width < 0) {
-      obstacles.splice(index, 1);
-    }
-    if (collision(player, obs)) {
-      gameOver = true;
-    }
-  });
 }
 
 function collision(a, b) {
@@ -391,60 +391,115 @@ function collision(a, b) {
          a.y + a.height > b.y;
 }
 
-let frameCount = 0;
+function updateScore() {
+  scoreDisplay.textContent = `Punkte: ${score}`;
+  if (score >= 20 && !gameOver) {
+    gameOver = true;
+    congrats.textContent = '🎉 Glückwunsch! Sie haben alle Coins gesammelt und die Hürden mental überwunden! Jetzt geht es ans Eingemachte: Wählen Sie mich und der Liberalismus findet auch bei Ihnen neue Horizonte!';
+    bgMusic.pause();
+  }
+}
+
+function updateTimer() {
+  if (gameOver || !gameStarted) return;
+  timeLeft--;
+  if (timeLeft <= 0) {
+    gameOver = true;
+    congrats.textContent = '⏱️ Zeit abgelaufen! Versuche es nochmal.';
+    bgMusic.pause();
+  }
+}
 
 function gameLoop() {
-  if (gameOver) {
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = 'red';
-    ctx.font = '30px Arial';
-    ctx.fillText('Game Over! Bürokratische Hürden haben dich gestoppt.', 30, height / 2);
-    document.getElementById('congrats').textContent = '';
-    return;
-  }
+  if (!gameStarted) return;
+  if (gameOver) return;
 
-  ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   drawPlayer();
-  drawCoins();
-  drawObstacles();
+  drawItems(coins);
+  drawItems(obstacles);
+  drawItems(powerUps, 32);
 
   updatePlayer();
-  updateCoins();
-  updateObstacles();
 
-  frameCount++;
+  updateItems(coins, (coin, i) => {
+    if (collision(player, coin)) {
+      coins.splice(i, 1);
+      score += 1;
+      coinSound.play();
+    }
+  });
 
-  // Alle 150 Frames ein Coin erzeugen
-  if (frameCount % 150 === 0) {
-    createCoin();
+  updateItems(obstacles, (obs, i) => {
+    if (collision(player, obs)) {
+      gameOver = true;
+      hitSound.play();
+      congrats.textContent = '😵 Sie wurdest von der Bürokratie zerknirscht!';
+      bgMusic.pause();
+    }
+  });
+
+  updateItems(powerUps, (pu, i) => {
+    if (collision(player, pu)) {
+      powerUps.splice(i, 1);
+      player.speedBoost = 1.5;
+      powerUpSound.play();
+      setTimeout(() => player.speedBoost = 1, 5000);
+    }
+  });
+
+  if (frame % 150 === 0) createCoin();
+  if (frame % 210 === 0) createObstacle();
+  if (frame % 800 === 0) createPowerUp();
+
+  if (frame % 500 === 0) {
+    level++;
+    congrats.textContent = `🔥 Level ${level} erreicht!`;
+    setTimeout(() => congrats.textContent = '', 2000);
   }
-  // Alle 200 Frames ein Hindernis erzeugen
-  if (frameCount % 200 === 0) {
-    createObstacle();
-  }
 
-  // Glückwunsch anzeigen, wenn 10 Coins gesammelt
-  if (score >= 10) {
-    document.getElementById('congrats').textContent = 
-      "Herzlichen Glückwunsch! Du hast 10 FDP-Coins gesammelt und dich erfolgreich durch die bürokratischen Hürden gekämpft!";
-    gameOver = true;
-  } else {
-    ctx.fillStyle = 'black';
-    ctx.font = '20px Arial';
-    ctx.fillText(`FDP-Coins: ${score}`, 10, 30);
-  }
+  updateScore();
 
-  requestAnimationFrame(gameLoop);
+  ctx.fillStyle = 'black';
+  ctx.font = '16px Calibri';
+  ctx.fillText(`Level: ${level}`, canvas.width - 100, 30);
+  ctx.fillText(`Zeit: ${timeLeft}s`, canvas.width - 100, 50);
+
+  frame++;
+  if (!gameOver) requestAnimationFrame(gameLoop);
 }
+
+let frame = 0;
+setInterval(updateTimer, 1000);
+
+document.getElementById('startBtn').addEventListener('click', () => {
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('buttonsContainer').style.display = 'block';
+  gameStarted = true;
+  bgMusic.play();
+  gameLoop();
+});
+
+document.getElementById('jumpBtn').addEventListener('click', () => {
+  if (player.grounded) player.dy = player.jumpForce;
+});
+
+document.getElementById('leftBtn').addEventListener('click', () => {
+  if (player.x > 0) player.x -= 20;
+});
+
+document.getElementById('rightBtn').addEventListener('click', () => {
+  if (player.x + player.width < canvas.width) player.x += 20;
+});
 
 window.addEventListener('keydown', e => {
   if ((e.code === 'Space' || e.code === 'ArrowUp') && player.grounded) {
     player.dy = player.jumpForce;
   }
+  if (e.code === 'ArrowLeft') player.x -= 20;
+  if (e.code === 'ArrowRight') player.x += 20;
 });
-
-gameLoop();
 </script>
 
 </body>
