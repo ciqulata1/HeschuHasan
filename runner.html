@@ -294,14 +294,14 @@
   const GRAVITY = 0.8;
   const FLOOR_Y = canvas.height - 40;
 
-  const player3d = document.getElementById('player3d');
+  const player3D = document.getElementById('player3D');
 
 function updatePlayer3D() {
   // Beispiel: Player horizontal verschieben je nach x-Koordinate
-  player3d.style.left = player.x + 'px';
+  player3D.style.left = player.x + 'px';
 
   // Animation springend: z.B. y-Position in CSS
-  player3d.style.bottom = (player.y + 60) + 'px';
+  player3D.style.bottom = (player.y + 60) + 'px';
 }
 
 
@@ -425,7 +425,7 @@ function updatePlayer3D() {
   }
 
   // Update player position with gravity and floor check
- function updatePlayer() {
+ function updatePlayer3D() {
   if (player.isJumping) {
     player.dy += GRAVITY;
     player.y += player.dy;
