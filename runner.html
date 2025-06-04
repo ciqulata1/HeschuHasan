@@ -286,7 +286,21 @@ button.arrowBtn:active {
 
 <script>
   const canvas = document.getElementById("gameCanvas");
-  const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
+
+const jumpBtn = document.getElementById("jumpBtn");
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
+const restartBtn = document.getElementById("restartBtn");
+const gameOverText = document.getElementById("gameOverText");
+const startScreen = document.getElementById("startScreen");
+const startBtn = document.getElementById("startBtn");
+
+let gameStarted = false;
+let gameOver = false;
+let score = 0;
+
+// Player-Klasse
 let gameStarted = false;
 const player = new Player();
 
@@ -593,6 +607,28 @@ function drawPlayer() {
         }
       }
     });
+
+    
+// Event-Listener binden
+jumpBtn.addEventListener("click", jump);
+leftBtn.addEventListener("click", () => movePlayer("left"));
+rightBtn.addEventListener("click", () => movePlayer("right"));
+restartBtn.addEventListener("click", () => {
+  resetGame();
+  gameLoop();
+  restartBtn.style.display = "none";
+  gameOverText.style.display = "none";
+});
+startBtn.addEventListener("click", () => {
+  if (!gameStarted) {
+    gameStarted = true;
+    startScreen.style.display = "none";
+    resetGame();
+    gameLoop();
+  }
+});
+
+// Game Loop etc. unverändert
 
     obstacles.forEach(obstacle => {
       obstacle.x -= 8;
