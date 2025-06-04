@@ -287,6 +287,32 @@ button.arrowBtn:active {
 <script>
   const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
+let gameStarted = false;
+const player = new Player();
+
+jumpBtn.addEventListener("click", () => {
+  jump();
+});
+leftBtn.addEventListener("click", () => {
+  movePlayer("left");
+});
+rightBtn.addEventListener("click", () => {
+  movePlayer("right");
+});
+restartBtn.addEventListener("click", () => {
+  resetGame();
+  gameLoop();
+  restartBtn.style.display = "none";
+  gameOverText.style.display = "none";
+});
+
+function gameLoop() {
+  updateGame();
+  draw();
+  if (!gameOver) {
+    requestAnimationFrame(gameLoop);
+  }
+}
 
   // Spieler-Klasse anpassen
 class Player {
