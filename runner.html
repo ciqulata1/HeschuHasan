@@ -267,6 +267,11 @@
   'use strict';
 
   // Audio Setup
+  <script>
+(() => {
+  'use strict';
+
+  // Audio Setup
   const soundJump = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
   const soundCoin = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
   const soundGameOver = new Audio('https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg');
@@ -299,9 +304,7 @@
     isJumping: false,
     shadowOffset: 6,
     speedX: 7,
-    image: new Image()
   };
-  player.image.src = 'IMG_2350.png';
 
   // Game variables
   let coins = [];
@@ -326,7 +329,7 @@
     {emoji:'🕵️‍♂️', desc:'Kontrolle'},
   ];
 
-  // Utility function
+  // Utility function: random integer inclusive
   function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -352,7 +355,7 @@
     }
   }
 
-  // Draw player with shadow
+  // Draw player with shadow, eyes, and smile
   function drawPlayer() {
     // Shadow
     ctx.beginPath();
@@ -389,7 +392,7 @@
     ctx.stroke();
   }
 
-  // Draw coin (rotating)
+  // Draw coin (rotating ellipse with "FDP" text)
   function drawCoin(coin) {
     coin.rotation += 0.05;
     ctx.save();
@@ -416,7 +419,7 @@
     ctx.restore();
   }
 
-  // Draw obstacle
+  // Draw obstacle emoji
   function drawObstacle(obstacle) {
     ctx.font = '30px serif';
     ctx.fillText(obstacle.symbol, obstacle.x, obstacle.y + obstacle.height);
@@ -463,15 +466,8 @@
     return (dx * dx + dy * dy <= (circle.radius * circle.radius));
   }
 
-  // Game loop variables
-  let animationId;
-
-  // Game loop
-  function gameLoop() {
-    clear();
-    drawFloor();
-
-    // Update player
+  // Update player position with gravity and floor check
+  function updatePlayer() {
     if (player.isJumping) {
       player.velocityY += GRAVITY;
       player.y += player.velocityY;
@@ -482,412 +478,182 @@
         player.velocityY = 0;
       }
     }
+  }
 
-    drawPlayer();
-
-    // Move coins left, check collection
-    for (let i = coins.length - 1; i >= 0; i--) {
-      let coin = coins[i];
+  // Update coins and obstacles positions
+  function updateObjects() {
+    coins.forEach(coin => {
       coin.x -= gameSpeed;
+    });
 
-      drawCoin(coin);
+    obstacles.forEach(obs => {
+      obs.x -= gameSpeed;
+    });
 
-      // Check collision with player (circle-rect)
-      let playerRect = { x: player.x, y: player.y, width: player.width, height: player.height };
-      if (circleRectCollision(coin, playerRect)) {
-        coins.splice(i, 1);
+    // Remove coins and obstacles that are off screen
+    coins = coins.filter(c => c.x + c.radius > 0);
+    obstacles = obstacles.filter(o => o.x + o.width > 0);
+  }
+
+  // Check for collisions with coins and obstacles
+  function checkCollisions() {
+    // Check coins collection
+    coins = coins.filter(coin => {
+      if (circleRectCollision(coin, player)) {
         score++;
         soundCoin.play();
-      } else if (coin.x + coin.radius < 0) {
-        coins.splice(i, 1);
+        updateLevelInfo();
+        return false; // Remove coin
       }
-    }
+      return true;
+    });
 
-    // Move obstacles left, check collision
-    for (let i = obstacles.length - 1; i >= 0; i--) {
-      let obs = obstacles[i];
-      obs.x -= gameSpeed;
-
-      drawObstacle(obs);
-
-      let playerRect = { x: player.x, y: player.y, width: player.width, height: player.height };
-      let obsRect = { x: obs.x, y: obs.y, width: obs.width, height: obs.height };
-
-      if (isColliding(playerRect, obsRect)) {
-        // Game over
-        soundGameOver.play();
+    // Check obstacle collisions
+    for (let obs of obstacles) {
+      if (isColliding(player, obs)) {
         endGame();
-        return;
-      } else if (obs.x + obs.width < 0) {
-        obstacles.splice(i, 1);
+        break;
       }
     }
-
-    // Level complete?
-    function levelUp() {
-  level++;
-  coinCount = 0;
-  coinsCollected = 0;
-  gameSpeed += 1;
-
-  // ⬇️ Coins & Hindernisse für das neue Level generieren
-  initCoins(20 + level * 5);
-  initObstacles(3 + level * 2);
-  
-  updateLevelInfo();
-
-  introText.textContent = `🎯 Level ${level}: Mehr Coins, mehr Hindernisse – bleiben Sie dran! Sehr gute Politik muss man sich durch Initiative verdienen`;
-animationId = requestAnimationFrame(gameLoop);
-    
-    }
-  
-  // Start game
-  function startGame() {
-    isGameRunning = true;
-    startScreen.style.display = 'none';
-    gameOverText.style.display = 'none';
-    restartBtn.style.display = 'none';
-    score = 0;
-    level = 1;
-    gameSpeed = 3;
-
-    player.x = 50;
-    player.y = FLOOR_Y;
-    player.isJumping = false;
-    player.velocityY = 0;
-
-    initCoins(20);
-    initObstacles(3);
-    updateLevelInfo();
-    introText.textContent = "🎯 Level 1: Sammlen Sie FDP-Coins und vermeiden Sie Bürokratie-Hürden!";
-    gameLoop();
   }
 
-  // Restart game
-  function restartGame() {
-    isGameRunning = true;
-    gameOverText.style.display = 'none';
-    restartBtn.style.display = 'none';
-
-    score = 0;
-    level = 1;
-    gameSpeed = 3;
-    player.x = 50;
-    player.y = FLOOR_Y;
-    player.isJumping = false;
-    player.velocityY = 0;
-
-    initCoins(20);
-    initObstacles(3);
-    updateLevelInfo();
-    introText.textContent = "🎯 Level 1: Sammlen Sie FDP-Coins und vermeiden Sie Bürokratie-Hürden durch Lerneffekte!";
-    gameLoop();
-  }
-
-  // End game
-  function endGame() {
-    isGameRunning = false;
-    cancelAnimationFrame(animationId);
-    gameOverText.style.display = 'block';
-    gameOverText.textContent = `Spiel vorbei! Ihre Punkte: ${score}`;
-    restartBtn.style.display = 'inline-block';
-    introText.textContent = "😵 Bürokratie hat Sie erwischt! Versuchen Sie es noch einmal!";
-  }
-
-  // Level up
-  function levelUp() {
-    level++;
-    if (level > maxLevel) {
-      // Game won
-      isGameRunning = false;
-      cancelAnimationFrame(animationId);
-      gameOverText.style.display = 'block';
-      gameOverText.textContent = `Glückwunsch! Sie haben alle Level geschafft mit ${score} Punkten! 🎉`;
-      restartBtn.style.display = 'inline-block';
-      introText.textContent = "🏆 Sie sind ein Bürokratie-Champion! Damit es so bleibt, wählen Sie Heschu Hasan";
-      return;
-    }
-    // Increase difficulty
-    gameSpeed += 1;
-    initCoins(20 + level * 5);
-    initObstacles(3 + level);
-
-    introText.textContent = `🎯 Level ${level}: Sammle FDP-Coins und vermeide mehr Bürokratie-Hürden!`;
-
-    updateLevelInfo();
-    gameLoop();
-  }
-
-  // Update Level and Score display
+  // Update Level info text
   function updateLevelInfo() {
     levelInfo.textContent = `Level: ${level} | Punkte: ${score}`;
   }
 
-  // Jump action
+  // Increase difficulty and level after certain score
+  function checkLevelUp() {
+    if (level < maxLevel) {
+      if (score >= level * 5) {
+        level++;
+        gameSpeed += 1;
+        initCoins(6 + level * 2);
+        initObstacles(3 + level);
+        updateLevelInfo();
+      }
+    }
+  }
+
+  // Draw all game elements
+  function draw() {
+    clear();
+    drawFloor();
+    drawPlayer();
+    coins.forEach(drawCoin);
+    obstacles.forEach(drawObstacle);
+  }
+
+  // Game loop
+  function gameLoop() {
+    if (!isGameRunning) return;
+    updatePlayer();
+    updateObjects();
+    checkCollisions();
+    checkLevelUp();
+    draw();
+    requestAnimationFrame(gameLoop);
+  }
+
+  // Start the game
+  function startGame() {
+    score = 0;
+    level = 1;
+    gameSpeed = 3;
+    player.x = 50;
+    player.y = FLOOR_Y;
+    player.velocityY = 0;
+    player.isJumping = false;
+    isGameRunning = true;
+    initCoins(8);
+    initObstacles(3);
+    updateLevelInfo();
+    gameOverText.classList.add('hidden');
+    startScreen.classList.add('hidden');
+    restartBtn.classList.add('hidden');
+    homeBtn.classList.add('hidden');
+    jumpBtn.disabled = false;
+    leftBtn.disabled = false;
+    rightBtn.disabled = false;
+    gameLoop();
+  }
+
+  // End the game
+  function endGame() {
+    isGameRunning = false;
+    gameOverText.textContent = `Game Over! Deine Punktzahl: ${score}`;
+    gameOverText.classList.remove('hidden');
+    restartBtn.classList.remove('hidden');
+    homeBtn.classList.remove('hidden');
+    jumpBtn.disabled = true;
+    leftBtn.disabled = true;
+    rightBtn.disabled = true;
+    soundGameOver.play();
+  }
+
+  // Handle jump action
   function jump() {
     if (!player.isJumping) {
-      player.velocityY = -20;
+      player.velocityY = -15;
       player.isJumping = true;
       soundJump.play();
     }
   }
 
-  // Move player left/right with boundary checks
+  // Move player left (but not off canvas)
   function moveLeft() {
     player.x -= player.speedX;
     if (player.x < 0) player.x = 0;
   }
+
+  // Move player right (but not off canvas)
   function moveRight() {
     player.x += player.speedX;
-    if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+    if (player.x + player.width > canvas.width) {
+      player.x = canvas.width - player.width;
+    }
   }
 
-  // Event listeners
-  startBtn.addEventListener('click', startGame);
-  restartBtn.addEventListener('click', restartGame);
-  jumpBtn.addEventListener('click', () => { if (isGameRunning) jump(); });
-  leftBtn.addEventListener('click', () => { if (isGameRunning) moveLeft(); });
-  rightBtn.addEventListener('click', () => { if (isGameRunning) moveRight(); });
+  // Event Listeners for Buttons
+  startBtn.addEventListener('click', () => {
+    startGame();
+  });
+
+  restartBtn.addEventListener('click', () => {
+    startGame();
+  });
+
   homeBtn.addEventListener('click', () => {
+    // Reload page to show start screen
     location.reload();
   });
 
-  // Keyboard controls
-  document.addEventListener('keydown', e => {
-    if (!isGameRunning) return;
-
-    switch (e.code) {
-      case 'ArrowLeft':
-      case 'KeyA':
-        moveLeft();
-        break;
-      case 'ArrowRight':
-      case 'KeyD':
-        moveRight();
-        break;
-      case 'Space':
-      case 'ArrowUp':
-      case 'KeyW':
-        jump();
-        break;
-    }
+  jumpBtn.addEventListener('click', () => {
+    if (isGameRunning) jump();
   });
 
+  leftBtn.addEventListener('click', () => {
+    if (isGameRunning) moveLeft();
+  });
+
+  rightBtn.addEventListener('click', () => {
+    if (isGameRunning) moveRight();
+  });
+
+  // Keyboard Controls (optional)
+  window.addEventListener('keydown', e => {
+    if (!isGameRunning) return;
+    if (e.code === 'Space' || e.code === 'ArrowUp') {
+      jump();
+    }
+    if (e.code === 'ArrowLeft') {
+      moveLeft();
+    }
+    if (e.code === 'ArrowRight') {
+      moveRight();
+    }
+  });
 })();
 </script>
-
-let obstacles = [];
-let coins = [];
-
-let level = 1;
-const maxLevel = 5;
-
-let score = 0;
-let isGameRunning = false;
-
-let obstacleTimer = 0;
-let coinTimer = 0;
-const obstacleInterval = 1500; // ms
-const coinInterval = 2000;     // ms
-
-// --- Steuerung ---
-window.addEventListener('keydown', e => {
-  if ((e.code === 'Space' || e.code === 'ArrowUp') && !player.jumping && isGameRunning) {
-    player.dy = jumpPower;
-    player.jumping = true;
-    soundJump.play();
-  }
-});
-
-// --- Helferfunktionen ---
-function rectsCollide(r1, r2) {
-  return !(r2.x > r1.x + r1.width ||
-           r2.x + r2.width < r1.x ||
-           r2.y > r1.y + r1.height ||
-           r2.y + r2.height < r1.y);
-}
-
-// --- Spielstart ---
-function startGame() {
-  level = 1;
-  score = 0;
-  player.x = 50;
-  player.y = groundY;
-  player.dy = 0;
-  player.jumping = false;
-  obstacles = [];
-  coins = [];
-  obstacleTimer = 0;
-  coinTimer = 0;
-  isGameRunning = true;
-
-  gameOverText.style.display = 'none';
-  restartBtn.style.display = 'none';
-  introText.textContent = '';
-
-  requestAnimationFrame(gameLoop);
-}
-
-// --- Spiel-Loop ---
-let lastTime = 0;
-
-function gameLoop(timestamp = 0) {
-  if (!isGameRunning) return;
-
-  const deltaTime = timestamp - lastTime;
-  lastTime = timestamp;
-
-  // Hintergrund löschen
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Boden zeichnen
-  ctx.fillStyle = '#228833';
-  ctx.fillRect(0, groundY + 50, canvas.width, canvas.height - groundY - 50);
-
-  // Spieler Physik
-  player.dy += gravity;
-  player.y += player.dy;
-
-  if (player.y > groundY) {
-    player.y = groundY;
-    player.dy = 0;
-    player.jumping = false;
-  }
-
-  // Spieler zeichnen (Bild)
-  ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
-
-  // Hindernisse generieren
-  obstacleTimer += deltaTime;
-  if (obstacleTimer > obstacleInterval) {
-    obstacleTimer = 0;
-    let height = 40 + Math.random() * 30;
-    obstacles.push({
-      x: canvas.width,
-      y: groundY + 50 - height,
-      width: 20,
-      height: height,
-      speed: 5 + level // schneller mit Level
-    });
-  }
-
-  // Hindernisse bewegen & zeichnen
-  ctx.fillStyle = '#aa2222';
-  for (let i = obstacles.length - 1; i >= 0; i--) {
-    let ob = obstacles[i];
-    ob.x -= ob.speed;
-    ctx.fillRect(ob.x, ob.y, ob.width, ob.height);
-
-    // Kollisionsprüfung Spieler - Hindernis
-    if (rectsCollide(player, ob)) {
-      endGame(false);
-      return;
-    }
-
-    // Entferne Hindernis wenn es links raus ist
-    if (ob.x + ob.width < 0) {
-      obstacles.splice(i, 1);
-    }
-  }
-
-  // Coins generieren
-  coinTimer += deltaTime;
-  if (coinTimer > coinInterval) {
-    coinTimer = 0;
-    let coinY = groundY + 50 - 80 - Math.random() * 40;
-    coins.push({
-      x: canvas.width,
-      y: coinY,
-      width: 25,
-      height: 25,
-      speed: 5 + level
-    });
-  }
-
-  // Coins bewegen & zeichnen (gelbe Kreise)
-  ctx.fillStyle = 'gold';
-  ctx.beginPath();
-  for (let i = coins.length - 1; i >= 0; i--) {
-    let coin = coins[i];
-    coin.x -= coin.speed;
-    ctx.beginPath();
-    ctx.arc(coin.x + coin.width/2, coin.y + coin.height/2, 12, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Kollisionsprüfung Spieler - Coin
-    if (rectsCollide(player, coin)) {
-      coins.splice(i, 1);
-      score++;
-      soundCoin.play();
-
-      // Level Up alle 3 Coins
-      if (score % 3 === 0) {
-        levelUp();
-      }
-    }
-
-    // Entferne Münze wenn aus dem Bild
-    if (coin.x + coin.width < 0) {
-      coins.splice(i, 1);
-    }
-  }
-
-  // Statusanzeige
-  ctx.fillStyle = '#003366';
-  ctx.font = '18px Arial';
-  ctx.fillText(`Level: ${level}`, 10, 25);
-  ctx.fillText(`Coins: ${score}`, 10, 50);
-
-  if (level > maxLevel) {
-    endGame(true);
-    return;
-  }
-
-  // Nächster Frame
-  requestAnimationFrame(gameLoop);
-}
-
-function levelUp() {
-  level++;
-}
-
-function endGame(won) {
-  isGameRunning = false;
-  soundGameOver.play();
-
-  if (won) {
-    gameOverText.style.whiteSpace = 'pre-wrap';
-    gameOverText.textContent =
-      "Sie haben alle FDP-Coins gesammelt.\n\n" +
-      "Jeder Coin steht für eine Möglichkeit, mit mir direkt in Kontakt zu treten:\n" +
-      "- z. B. durch Gespräche am Wahlkampfstand,\n" +
-      "- Nachfragen auf Veranstaltungen,\n" +
-      "- oder durch regelmäßigen Besuch auf meiner Seite oder meinem Instagram.\n\n" +
-      "Wer sich informiert und sich engagiert, kann Hürden verstehen – und überwinden.\n\n" +
-      "Vielen Dank für Ihr Interesse!\n\n" +
-      "— Ihre Heschu Hasan";
-
-    introText.textContent = "Bürokratie ist passé, wenn Sie mit Ihrem Engagement mich, Ihre Verwandten und Bekannten weiterempfehlen.";
-  } else {
-    gameOverText.style.whiteSpace = 'normal';
-    gameOverText.textContent = "Oh nein, Sie haben ein Hindernis getroffen!\n\nVersuchen Sie es bitte erneut.";
-    introText.textContent = "";
-  }
-
-  gameOverText.style.display = 'block';
-  restartBtn.style.display = 'inline-block';
-}
-
-// Restart-Button Event
-restartBtn.addEventListener('click', () => {
-  startGame();
-});
-
-// Lade Spielerbild, dann starten
-playerImg.onload = () => {
-  startGame();
-};
-</script>
-
 </body>
 </html>
