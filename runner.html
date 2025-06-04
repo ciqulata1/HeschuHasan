@@ -422,18 +422,18 @@
   }
 
   // Update player position with gravity and floor check
-  function updatePlayer() {
-    if (player.isJumping) {
-      player.velocityY += GRAVITY;
-      player.y += player.velocityY;
+ function updatePlayer() {
+  if (player.isJumping) {
+    player.dy += GRAVITY;
+    player.y += player.dy;
 
-      if (player.y >= FLOOR_Y) {
-        player.y = FLOOR_Y;
-        player.isJumping = false;
-        player.velocityY = 0;
-      }
+    if (player.y >= FLOOR_Y) {
+      player.y = FLOOR_Y;
+      player.isJumping = false;
+      player.dy = 0;
     }
   }
+}
 
   // Update coins and obstacles positions
   function updateObjects() {
