@@ -236,12 +236,14 @@
     <button id="startBtn" style="font-size: 1.5rem; padding: 10px 20px;">Spiel starten</button>
   </div>
 
-  <div id="buttonsContainer" role="region" aria-label="Spielsteuerung">
+  <div id="buttonsContainer" role="region" aria-label="Spielsteuerung" style="display:none;">
     <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
     <div id="arrowButtons">
       <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
       <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
     </div>
+
+
 
     <div>
        <p id="score">Punkte: 0</p>
@@ -278,7 +280,7 @@
       const startBtn = document.getElementById('startBtn');
       const restartBtn = document.getElementById('restartBtn');
       const jumpBtn = document.getElementById('jumpBtn');
-      const controls = document.getElementById('controls');
+      const controls = document.getElementById('buttonContainer');
       const startScreen = document.getElementById('startScreen');
       const gameOverText = document.getElementById('gameOverText');
       const scoreDisplay = document.getElementById('score');
@@ -450,7 +452,7 @@
         frameCount = 0;
         obstacles = [];
         coins = [];
-        player.y = height - 60;
+        player.y = height - 10;
         player.dy = 0;
         player.onGround = true;
 
