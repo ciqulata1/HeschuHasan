@@ -247,6 +247,9 @@ button.arrowBtn:active {
     <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #333;">
       🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
     </div>
+    <div id="controlsInfo" style="margin-top: 10px; font-size: 1rem; color: #007bbf;">
+  <strong>Steuerung:</strong> Benutzen Sie die <kbd>Leertaste</kbd> oder den Button „⤴ Springen“, sowie die Pfeiltasten <kbd>←</kbd> und <kbd>→</kbd> zum Bewegen.
+</div>
     <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
     <div id="startScreen" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
   <button id="startBtn" style="font-size: 1.5rem; padding: 10px 20px;">Spiel starten</button>
@@ -285,6 +288,39 @@ button.arrowBtn:active {
 </footer>
 
 <script>
+
+  document.addEventListener('keydown', function(event) {
+  switch(event.code) {
+    case 'ArrowLeft':
+      // Spielfigur nach links bewegen
+      movePlayerLeft();
+      break;
+    case 'ArrowRight':
+      // Spielfigur nach rechts bewegen
+      movePlayerRight();
+      break;
+    case 'Space':
+      // Spielfigur springen lassen
+      playerJump();
+      break;
+  }
+});
+
+// Beispiel-Funktionen (bitte an deine Logik anpassen)
+function movePlayerLeft() {
+  console.log('Links bewegen');
+  // Hier Spielfigur x-Koordinate verringern
+}
+
+function movePlayerRight() {
+  console.log('Rechts bewegen');
+  // Hier Spielfigur x-Koordinate erhöhen
+}
+
+function playerJump() {
+  console.log('Springen');
+  // Hier Sprung-Logik ausführen
+}
   const canvas = document.getElementById("gameCanvas");
   const ctx = canvas.getContext("2d");
 
