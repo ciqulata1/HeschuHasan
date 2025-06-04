@@ -244,6 +244,7 @@
     </div>
 
     <div>
+       <p id="score">Punkte: 0</p>
       <button id="restartBtn" aria-label="Nochmal spielen">Nochmal spielen</button>
       <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
     </div>
@@ -257,6 +258,8 @@
       <p>Sie sollten unbedingt <a href="index.html" style="color:#e5007d; text-decoration:underline;">zur Startseite</a> zurückkehren und es nochmal versuchen.</p>
     </div>
   </div>
+ 
+
 </main>
  
 
@@ -265,278 +268,224 @@
   <p>Diese Simulation ersetzt keine politische Beratung.</p>
 </footer>
 
-  // Audio Setup
+  
+  
+  
   <script>
-(() => {
-  'use strict';
+    (() => {
+      const canvas = document.getElementById('gameCanvas');
+      const ctx = canvas.getContext('2d');
+      const startBtn = document.getElementById('startBtn');
+      const restartBtn = document.getElementById('restartBtn');
+      const jumpBtn = document.getElementById('jumpBtn');
+      const controls = document.getElementById('controls');
+      const startScreen = document.getElementById('startScreen');
+      const gameOverText = document.getElementById('gameOverText');
+      const scoreDisplay = document.getElementById('score');
 
-  const soundJump = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
-  const soundCoin = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
-  const soundGameOver = new Audio('https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg');
+      const width = canvas.width;
+      const height = canvas.height;
 
-  const canvas = document.getElementById('gameCanvas');
-  const ctx = canvas.getContext('2d');
-  const startBtn = document.getElementById('startBtn');
-  startBtn.addEventListener('click', () => {
-  startBtn.style.display = 'none';  // Button ausblenden
-  gameLoop();  // Spiel starten, z.B. deinen Game-Loop aufrufen
-});
-  const jumpBtn = document.getElementById('jumpBtn');
-  const leftBtn = document.getElementById('leftBtn');
-  const rightBtn = document.getElementById('rightBtn');
-  const restartBtn = document.getElementById('restartBtn');
-  const homeBtn = document.getElementById('homeBtn');
-  const gameOverText = document.getElementById('gameOverText');
-  const levelInfo = document.getElementById('levelInfo');
-  const introText = document.getElementById('introText');
-  const startScreen = document.getElementById('startScreen');
+      let gameRunning = false;
+      let score = 0;
+      let frameCount = 0;
 
-  const GRAVITY = 0.8;
-  const FLOOR_Y = canvas.height - 40;
-
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    const canvasWidth = canvas.width;
-    const canvasHeight = canvas.height;
-
-    const OBSTACLES_LIST = [
-      {emoji:'🗂️', desc:'Aktenberge'},
-      {emoji:'⏳', desc:'Zeitdruck'},
-      {emoji:'📟', desc:'Formulare'},
-      {emoji:'📞', desc:'Endlose Telefonate'},
-      {emoji:'📋', desc:'Protokolle'},
-      {emoji:'👨‍💼', desc:'Bürokraten'},
-      {emoji:'💼', desc:'Meetings'},
-      {emoji:'📆', desc:'Überfüllter Kalender'},
-      {emoji:'😰', desc:'Stress'},
-      {emoji:'👵️', desc:'Kontrolle'},
-    ];
-
-    let player = {
-      x: 50,
-      y: canvasHeight - 60,
-      width: 40,
-      height: 50,
-      dy: 0,
-      gravity: 0.8,
-      jumpPower: -15,
-      onGround: true,
-      color: '#00baff'
-    };
-
-    let coins = [];
-    let obstacles = [];
-    let gameSpeed = 5;
-    let score = 0;
-    let gameOver = false;
-
-    // Münzen generieren (gelbe Kreise mit FDP in magenta)
-    function createCoin() {
-      let size = 30;
-      let coin = {
-        x: canvasWidth + 50,
-        y: canvasHeight - size - 20,
-        width: size,
-        height: size,
-        color: 'yellow',
-        speed: gameSpeed
+      // Spieler-Objekt
+      const player = {
+        x: 50,
+        y: height - 60,
+        width: 40,
+        height: 50,
+        dy: 0,
+        gravity: 0.8,
+        jumpPower: -15,
+        onGround: true,
+        color: '#00baff'
       };
-      coins.push(coin);
-    }
 
-    // Hindernisse als Emoji + Beschreibung
-    function createObstacle() {
-      const idx = Math.floor(Math.random() * OBSTACLES_LIST.length);
-      const obstacleData = OBSTACLES_LIST[idx];
-      const size = 40;
+      // Hindernisse & Münzen
+      let obstacles = [];
+      let coins = [];
 
-      obstacles.push({
-        x: canvasWidth + 50,
-        y: canvasHeight - size - 20,
-        width: size,
-        height: size,
-        emoji: obstacleData.emoji,
-        desc: obstacleData.desc,
-        speed: gameSpeed
-      });
-    }
+      const obstacleEmojis = ['🗂️','⏳','📟','📞','📋','👨‍💼','💼','📆','😰','👵️'];
+      const obstacleNames = ['Aktenberge','Zeitdruck','Formulare','Telefonate','Protokolle','Bürokraten','Meetings','Kalender','Stress','Kontrolle'];
 
-    function drawPlayer() {
-      ctx.fillStyle = player.color;
-      ctx.fillRect(player.x, player.y, player.width, player.height);
-      // Kopf als Kreis
-      ctx.beginPath();
-      ctx.arc(player.x + player.width/2, player.y, player.width/2, 0, Math.PI * 2);
-      ctx.fillStyle = '#0077cc';
-      ctx.fill();
-    }
-
-    function drawCoins() {
-      coins.forEach(coin => {
-        // gelber Kreis
-        ctx.fillStyle = coin.color;
-        ctx.beginPath();
-        ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
-        ctx.fill();
-        // FDP in magenta
-        ctx.fillStyle = '#d0007f';
-        ctx.font = 'bold 16px Calibri';
-        ctx.textBaseline = 'middle';
-        ctx.textAlign = 'center';
-        ctx.fillText('FDP', coin.x + coin.width / 2, coin.y + coin.height / 2);
-      });
-    }
-
-    function drawObstacles() {
-      obstacles.forEach(obs => {
-        // Emoji
-        ctx.font = `${obs.height}px Arial`;
-        ctx.textBaseline = 'top';
-        ctx.textAlign = 'left';
-        ctx.fillText(obs.emoji, obs.x, obs.y);
-
-        // Beschreibung darunter in kleiner Schrift, weiß mit leichter Transparenz
-        ctx.font = '12px Arial';
-        ctx.fillStyle = 'rgba(255,255,255,0.8)';
-        ctx.fillText(obs.desc, obs.x, obs.y + obs.height + 2);
-      });
-    }
-
-    function updatePositions() {
-      // Spieler Bewegung (Sprung & Gravitation)
-      player.dy += player.gravity;
-      player.y += player.dy;
-
-      if (player.y + player.height > canvasHeight - 20) {
-        player.y = canvasHeight - 20 - player.height;
-        player.dy = 0;
-        player.onGround = true;
+      // Funktionen zum Erzeugen
+      function createObstacle() {
+        const index = Math.floor(Math.random() * obstacleEmojis.length);
+        obstacles.push({
+          x: width + 30,
+          y: height - 60,
+          width: 40,
+          height: 40,
+          emoji: obstacleEmojis[index],
+          name: obstacleNames[index],
+          speed: 5
+        });
       }
 
-      // Münzen bewegen & entfernen wenn aus Sicht
-      coins.forEach((coin, i) => {
-        coin.x -= coin.speed;
-        if (coin.x + coin.width < 0) coins.splice(i, 1);
-      });
+      function createCoin() {
+        coins.push({
+          x: width + 30,
+          y: height - 90,
+          width: 30,
+          height: 30,
+          color: 'yellow',
+          speed: 5
+        });
+      }
 
-      // Hindernisse bewegen & entfernen wenn aus Sicht
-      obstacles.forEach((obs, i) => {
-        obs.x -= obs.speed;
-        if (obs.x + obs.width < 0) obstacles.splice(i, 1);
-      });
-    }
+      // Zeichnen
+      function drawPlayer() {
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+        ctx.font = '40px Arial';
+        ctx.fillText('😀', player.x + 2, player.y + player.height - 10);
+      }
 
-    function checkCollisions() {
-      // Spieler - Münzen
-      coins.forEach((coin, i) => {
-        if (
-          player.x < coin.x + coin.width &&
-          player.x + player.width > coin.x &&
-          player.y < coin.y + coin.height &&
-          player.y + player.height > coin.y
-        ) {
-          coins.splice(i, 1);
-          score += 10;
+      function drawObstacles() {
+        obstacles.forEach(obs => {
+          ctx.font = '40px Arial';
+          ctx.fillText(obs.emoji, obs.x, obs.y + obs.height);
+          ctx.font = '12px Arial';
+          ctx.fillStyle = 'white';
+          ctx.fillText(obs.name, obs.x, obs.y + obs.height + 15);
+        });
+      }
+
+      function drawCoins() {
+        coins.forEach(coin => {
+          ctx.fillStyle = coin.color;
+          ctx.beginPath();
+          ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = 'purple';
+          ctx.font = 'bold 14px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText('FDP', coin.x + coin.width/2, coin.y + coin.height/2 + 5);
+        });
+      }
+
+      // Aktualisieren
+      function update() {
+        // Spieler Bewegung (Sprung)
+        player.dy += player.gravity;
+        player.y += player.dy;
+        if (player.y + player.height > height - 10) {
+          player.y = height - 10 - player.height;
+          player.dy = 0;
+          player.onGround = true;
         }
-      });
 
-      // Spieler - Hindernisse
-      obstacles.forEach(obs => {
-        if (
-          player.x < obs.x + obs.width &&
-          player.x + player.width > obs.x &&
-          player.y < obs.y + obs.height &&
-          player.y + player.height > obs.y
-        ) {
-          gameOver = true;
-        }
-      });
-    }
+        // Hindernisse & Münzen bewegen
+        obstacles.forEach((obs, i) => {
+          obs.x -= obs.speed;
+          if (obs.x + obs.width < 0) obstacles.splice(i,1);
+        });
 
-    function drawScore() {
-      ctx.fillStyle = 'white';
-      ctx.font = '20px Arial';
-      ctx.textAlign = 'left';
-      ctx.fillText('Punkte: ' + score, 10, 30);
-    }
+        coins.forEach((coin, i) => {
+          coin.x -= coin.speed;
+          if (coin.x + coin.width < 0) coins.splice(i,1);
+        });
 
-    // Steuerung: Leertaste zum Springen
-    window.addEventListener('keydown', e => {
-      if (e.code === 'Space' || e.code === 'ArrowUp') {
-        if (player.onGround && !gameOver) {
+        // Kollision mit Münzen
+        coins.forEach((coin, i) => {
+          if (
+            player.x < coin.x + coin.width &&
+            player.x + player.width > coin.x &&
+            player.y < coin.y + coin.height &&
+            player.y + player.height > coin.y
+          ) {
+            coins.splice(i,1);
+            score += 10;
+          }
+        });
+
+        // Kollision mit Hindernissen
+        obstacles.forEach(obs => {
+          if (
+            player.x < obs.x + obs.width &&
+            player.x + player.width > obs.x &&
+            player.y < obs.y + obs.height &&
+            player.y + player.height > obs.y
+          ) {
+            endGame();
+          }
+        });
+      }
+
+      // Bildschirm löschen
+      function clear() {
+        ctx.clearRect(0,0,width,height);
+      }
+
+      // Spiel Loop
+      function gameLoop() {
+        if (!gameRunning) return;
+
+        clear();
+
+        frameCount++;
+
+        // Alle 90 Frames ein Hindernis erzeugen (~3 Sekunden)
+        if (frameCount % 90 === 0) createObstacle();
+        // Alle 150 Frames eine Münze (~5 Sekunden)
+        if (frameCount % 150 === 0) createCoin();
+
+        update();
+
+        drawPlayer();
+        drawObstacles();
+        drawCoins();
+
+        scoreDisplay.textContent = 'Punkte: ' + score;
+
+        requestAnimationFrame(gameLoop);
+      }
+
+      // Starten
+      function startGame() {
+        gameRunning = true;
+        score = 0;
+        frameCount = 0;
+        obstacles = [];
+        coins = [];
+        player.y = height - 60;
+        player.dy = 0;
+        player.onGround = true;
+
+        startScreen.style.display = 'none';
+        controls.style.display = 'block';
+        gameOverText.style.display = 'none';
+
+        gameLoop();
+      }
+
+      // Game Over
+      function endGame() {
+        gameRunning = false;
+        controls.style.display = 'none';
+        gameOverText.style.display = 'block';
+      }
+
+      // Sprung-Funktion
+      function jump() {
+        if (player.onGround) {
           player.dy = player.jumpPower;
           player.onGround = false;
         }
       }
-      if (e.code === 'Enter' && gameOver) {
-        restartGame();
-      }
-    });
 
-    function restartGame() {
-      coins = [];
-      obstacles = [];
-      score = 0;
-      gameSpeed = 5;
-      gameOver = false;
-      player.y = canvasHeight - player.height - 20;
-      player.dy = 0;
-      player.onGround = true;
-    }
-
-    // Spawner für Münzen und Hindernisse
-    let coinSpawnTimer = 0;
-    let obstacleSpawnTimer = 0;
-
-    function gameLoop(timestamp) {
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-      if (!gameOver) {
-        updatePositions();
-        checkCollisions();
-
-        drawPlayer();
-        drawCoins();
-        drawObstacles();
-        drawScore();
-
-        // Münzen spawnen alle ~2 Sekunden
-        coinSpawnTimer += 1;
-        if (coinSpawnTimer > 120) {
-          createCoin();
-          coinSpawnTimer = 0;
+      // Event Listener
+      startBtn.addEventListener('click', startGame);
+      restartBtn.addEventListener('click', startGame);
+      jumpBtn.addEventListener('click', jump);
+      window.addEventListener('keydown', e => {
+        if (e.code === 'Space' || e.code === 'ArrowUp') {
+          jump();
         }
-
-        // Hindernisse spawnen alle ~3 Sekunden
-        obstacleSpawnTimer += 1;
-        if (obstacleSpawnTimer > 180) {
-          createObstacle();
-          obstacleSpawnTimer = 0;
-        }
-
-        // Game Speed steigt langsam
-        if (score > 0 && score % 50 === 0) {
-          gameSpeed += 0.002;
-        }
-      } else {
-        ctx.fillStyle = 'white';
-        ctx.font = '40px Arial';
-        ctx.textAlign = 'center';
-        ctx.fillText('Game Over!', canvasWidth / 2, canvasHeight / 2 - 20);
-        ctx.font = '20px Arial';
-        ctx.fillText('Drücke ENTER zum Neustart', canvasWidth / 2, canvasHeight / 2 + 20);
-      }
-
-      requestAnimationFrame(gameLoop);
-    }
-
-    // Startposition fixieren
-    player.y = canvasHeight - player.height - 20;
-    player.onGround = true;
-
-    // Start Spielschleife
-    requestAnimationFrame(gameLoop);
+      });
+    })();
   </script>
-
 </body>
 </html>
