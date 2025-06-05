@@ -578,17 +578,6 @@ function draw() {
     ctx.fill();
   }
 
-  function drawObstacles() {
-  ctx.font = "30px Calibri"; // Größerer Font für Emoji-Darstellung
-  ctx.textAlign = "left";
-  ctx.textBaseline = "top";
-
-  obstacles.forEach((ob) => {
-    ctx.fillText(ob.emoji, ob.x, ob.y);
-  });
-}
-
-
   // Münzen zeichnen (gelbe Kreise)
   function drawCoins() {
     ctx.fillStyle = "#ffed00";
