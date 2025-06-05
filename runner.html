@@ -374,7 +374,7 @@
     Spiel starten
   </button>
 
- <div style="width: 400px; margin-top: 30px; font-size: 1.1rem; line-height: 0.8;">
+  <div style="width: 400px; margin-top: 30px; font-size: 1.1rem; line-height: 0.8;">
     <p>
       Bürokratie-Black-Box: Ich kann die Emojis im Spiel nicht sehen – aber sie symbolisieren die vielen Hürden der Bürokratie.  
       Diese Hindernisse müssen Bürgerinnen und Bürger mit Mühe überspringen – und dabei ihren Humor bewahren, wie in einem Spiel.
@@ -384,8 +384,14 @@
       Doch eines ist klar: Diese Hindernisse kann nur die Legislative abbauen.
       Deshalb bitte ich Sie, mir Ihr Vertrauen zu schenken und mich am <strong>8. März 2026</strong> in den Landtag von Baden-Württemberg zu wählen.
     </p>
- </div>
-  
+
+    <p>
+      Nur mit klaren politischen Mehrheiten können wir Bildung und Umwelt effizient reformieren –  
+      und unser Land zukunftsfähig und kinderfreundlich gestalten.
+    </p>
+  </div>
+</div>
+
   <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #e5007d;">
     🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
   </div>
@@ -559,11 +565,6 @@ function jump() {
     player.isJumping = true;
   }
 }
-window.addEventListener('keydown', function(event) {
-  if (event.code === 'Space' || event.code === 'ArrowUp') {
-    jump();
-  }
-});
 
   // Eventhandler Button Sprung
   jumpBtn.addEventListener("click", () => {
@@ -599,7 +600,7 @@ function createObstacle() {
   // Wenn es schon Hindernisse gibt, prüfe den Abstand zum letzten
   if (obstacles.length > 0) {
     const lastObstacle = obstacles[obstacles.length - 1];
-    if (lastObstacle.x > WIDTH - 400) {
+    if (lastObstacle.x > WIDTH - 300) {
       // Noch zu nah am rechten Rand, kein neues Hindernis erzeugen
       return;
     }
@@ -636,11 +637,11 @@ function draw() {
 function drawObstacles() {
   obstacles.forEach(obstacle => {
     // Emoji zeichnen
-    ctx.font = '40px Calibri';
+    ctx.font = '30px Calibri';
     ctx.fillText(obstacle.emoji, obstacle.x, obstacle.y);
     
     // Beschriftung darunter zeichnen
-    ctx.font = '20px Calibri';
+    ctx.font = '16px Calibri';
     ctx.fillStyle = 'cyan';  // Farbe der Beschriftung
     ctx.fillText(obstacle.name, obstacle.x, obstacle.y + 30); // 30px unter dem Emoji
   });
@@ -828,7 +829,6 @@ backToHomeBtn.addEventListener("click", () => {
       jump();
     }
   });
-
 </script>
 </body>
 </html>
