@@ -413,11 +413,6 @@ const obstacleData = [
   { icon: '⚠️', label: 'Warnung' }
 ];
 
-// ================== HELPER FUNCTIONS ==================
-function drawPlayer() {
-  ctx.font = '38px Arial';
-  ctx.fillText('🧑‍💼', player.x, player.y + player.height);
-}
 
 function drawItems(arr, fontSize = 30) {
   arr.forEach(item => {
@@ -501,7 +496,7 @@ function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
  const playerImage = new Image();
-playerImage.src = 'assets/player-sprite.webp'; // <-- dein Sprite in WebP-Format
+playerImage.src = 'assets/avfpfg1rs.webp'; // <-- dein Sprite in WebP-Format
 
 let frameIndex = 0;
 let frameTimer = 0;
@@ -510,24 +505,12 @@ const frameHeight = 64;     // Frame-Höhe anpassen
 const totalFrames = 4;      // Anzahl der Frames im Sheet
 const frameSpeed = 5;       // Animationsgeschwindigkeit
 
-function drawPlayer() {
-  if (playerImage.complete) {
-    ctx.drawImage(
-      playerImage,
-      frameIndex * frameWidth, 0,
-      frameWidth, frameHeight,
-      player.x, player.y,
-      player.width, player.height
-    );
-  }
-
   frameTimer++;
   if (frameTimer >= frameSpeed) {
     frameIndex = (frameIndex + 1) % totalFrames;
     frameTimer = 0;
   }
 }
-
 
   updateItems(coins, (coin, i) => {
     if (collision(player, coin)) {
