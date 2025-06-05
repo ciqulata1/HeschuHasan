@@ -376,7 +376,10 @@ const obstacleData = [
   { icon: '🔒', label: 'Zugang gesperrt' },
   { icon: '⚠️', label: 'Warnung' }
 ];
-
+for (let i = 0; i < 20; i++) {
+  const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+  obstacles.push({ x: Math.random() * 700 + 100, y: 360, width: 40, height: 30, ...type });
+}
 
 function drawItems(arr, fontSize = 30) {
   arr.forEach(item => {
