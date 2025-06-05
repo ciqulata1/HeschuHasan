@@ -508,40 +508,48 @@ function endGame() {
       <p>Oh nein! Du bist gegen ein Hindernis gelaufen. Versuche es noch einmal.</p>
       <p><button id="restartButton" style="color:#e5007d; text-decoration:underline; background:none; border:none; cursor:pointer;">Spiel neu starten</button></p>
     </div>`;
-  gameOverText.focus();
+   gameOverText.focus();
 
   document.getElementById('restartButton').addEventListener('click', () => {
-    // hier setzt du Variablen zurück, startest das Spiel neu
     resetGame();
   });
 }
 
 function resetGame() {
   gameRunning = true;
+  score = 0;
+  frameCount = 0;
+  obstacles = [];
+  coins = [];
+  player.y = height - 60 - player.height;
+  player.dy = 0;
+  player.onGround = true;
+
+  startScreen.style.display = 'none';
   controls.style.display = 'block';
   gameOverText.style.display = 'none';
-  // weitere Spielzustände zurücksetzen...
+
+  gameLoop();
 }
 
-  // Springen
-  function jump() {
-    if (player.onGround) {
-      player.dy = player.jumpPower;
-      player.onGround = false;
-    }
+// Springen
+function jump() {
+  if (player.onGround) {
+    player.dy = player.jumpPower;
+    player.onGround = false;
   }
+}
 
-  // Event Listener
-  startBtn.addEventListener('click', startGame);
-  restartBtn.addEventListener('click', startGame);
-  jumpBtn.addEventListener('click', jump);
-  document.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') {
-      e.preventDefault();
-      jump();
-    }
-  });
+// Event Listener
+startBtn.addEventListener('click', startGame);
+restartBtn.addEventListener('click', startGame);
+jumpBtn.addEventListener('click', jump);
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    jump();
+  }
+});
 
-  </script>
-</body>
-</html>
+})();  // <-- hier schließt du die IIFE, falls du sie benutzt hast
+</script>
