@@ -529,29 +529,53 @@ function gameLoop() {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
- const playerImage = new Image();
-playerImage.src = 'avfpfg1rs.webp'; 
+ const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+const playerImage = new Image();
+playerImage.src = 'avfpfg1rs.webp';
+
+const frameWidth = 64;
+const frameHeight = 64;
+const totalFrames = 4;
+const frameSpeed = 5;
 
 let frameIndex = 0;
 let frameTimer = 0;
-const frameWidth = 64;      // Frame-Breite anpassen
-const frameHeight = 64;     // Frame-Höhe anpassen
-const totalFrames = 4;      // Anzahl der Frames im Sheet
-const frameSpeed = 5;       // Animationsgeschwindigkeit
 
+const player = {
+  x: 50,
+  y: 50,
+  width: frameWidth,
+  height: frameHeight
+};
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Animations-Logik
   frameTimer++;
   if (frameTimer >= frameSpeed) {
     frameIndex = (frameIndex + 1) % totalFrames;
     frameTimer = 0;
   }
+
+  // Bild zeichnen
+  ctx.drawImage(
+    playerImage,
+    frameIndex * frameWidth, 0,
+    frameWidth, frameHeight,
+    player.x, player.y,
+    player.width, player.height
+  );
+
+  requestAnimationFrame(animate);
 }
-ctx.drawImage(
-  playerImage,
-  frameIndex * frameWidth, 0,
-  frameWidth, frameHeight,
-  player.x, player.y,
-  player.width, player.height
-);
+
+// Warten bis Bild geladen ist
+playerImage.onload = function() {
+  animate();
+};
 
   updateItems(coins, (coin, i) => {
     if (collision(player, coin)) {
