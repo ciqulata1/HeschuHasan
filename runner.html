@@ -475,9 +475,11 @@
     height: 40,
     velocityY: 0,
     gravity: 1,
-    jumpStrength: 23,
-    isJumping: false,
-    speed: 7,
+    jumpStrength: 22,
+    speed: 10,
+    function jump() {
+  player.velocityY = -player.jumpStrength;
+}
   };
 
   // Hindernisse und Münzen
@@ -502,12 +504,62 @@
   const gameOverText = document.getElementById("gameOverText");
 
   // Funktion: Spieler springt
-  function jump() {
-    if (!player.isJumping) {
-      player.velocityY = -player.jumpStrength;
-      player.isJumping = true;
+function update() {
+  if (!gameRunning) return;
+
+  // 1) Gravitation anwenden:
+  player.velocityY += player.gravity;
+  player.y += player.velocityY;
+
+  // 2) Boden-Kollision:
+  if (player.y + player.height > HEIGHT) {
+    player.y = HEIGHT - player.height;
+    player.velocityY = 0;
+    // (falls du isJumping noch verwendest, hier zurücksetzen)
+  }
+
+  // 3) Objekte bewegen und Kollisionen prüfen:
+  obstacles.forEach((ob, i) => {
+    ob.x -= ob.speed;
+    if (ob.x + ob.width < 0) obstacles.splice(i, 1);
+  });
+
+  coins.forEach((coin, i) => {
+    coin.x -= coin.speed;
+    if (coin.x + coin.width < 0) coins.splice(i, 1);
+  });
+
+  // 4) Spieler ↔ Hindernis Kollision
+  for (let ob of obstacles) {
+    if (
+      player.x < ob.x + ob.width &&
+      player.x + player.width > ob.x &&
+      player.y < ob.y + ob.height &&
+      player.y + player.height > ob.y
+    ) {
+      endGame(false);
+      return;
     }
   }
+
+  // 5) Spieler ↔ Münzen Kollision
+  coins.forEach((coin, i) => {
+    if (
+      player.x < coin.x + coin.width &&
+      player.x + player.width > coin.x &&
+      player.y < coin.y + coin.height &&
+      player.y + player.height > coin.y
+    ) {
+      coins.splice(i, 1);
+      score++;
+      scoreDisplay.textContent = score;
+      progressFill.style.width = (score / 20) * 100 + "%";
+      if (score >= 20) endGame(true);
+    }
+  });
+}
+
+
 
   // Eventhandler Button Sprung
   jumpBtn.addEventListener("click", () => {
