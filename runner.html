@@ -602,6 +602,7 @@ ctx.drawImage(
     setTimeout(() => congrats.textContent = '', 2500);
   }
 
+function gameLoop() {
   // HUD
   ctx.fillStyle = 'black';
   ctx.font = '16px Calibri';
@@ -612,7 +613,8 @@ ctx.drawImage(
 
   frame++;
   requestAnimationFrame(gameLoop);
-}
+}  // <-- hier wird die Funktion geschlossen
+
 
 // ================== EVENTS ==================
 document.getElementById('startBtn').addEventListener('click', () => {
