@@ -330,20 +330,7 @@
 </footer>
 <script>
 // ================== SOUNDS ==================
-const coinSound = new Audio('https://cdn.pixabay.com/audio/2021/09/28/audio_34b1f20a00.mp3');
-
-    const btn = document.getElementById('playSoundBtn');
-
-    btn.addEventListener('click', () => {
-      coinSound.play()
-        .then(() => {
-          console.log('Sound abgespielt!');
-        })
-        .catch(error => {
-          console.error('Fehler beim Abspielen:', error);
-        });
-    });
-// ================== GAME VARIABLES ==================
+============ GAME VARIABLES ==================
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const scoreDisplay = document.getElementById('score');
@@ -728,6 +715,19 @@ window.addEventListener('keydown', e => {
   }
   gameLoop();
 });
+  const coinSound = new Audio('https://cdn.pixabay.com/audio/2021/09/28/audio_34b1f20a00.mp3');
+
+    const btn = document.getElementById('playSoundBtn');
+
+    btn.addEventListener('click', () => {
+      coinSound.play()
+        .then(() => {
+          console.log('Sound abgespielt!');
+        })
+        .catch(error => {
+          console.error('Fehler beim Abspielen:', error);
+        });
+    });
 
 </script>
 </body>
