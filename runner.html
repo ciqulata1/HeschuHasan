@@ -279,8 +279,6 @@
   <p>© 2025 Heschu Hasan 👾 Digital - FDP Wahlkreiskandidatin </p>
   <p>Diese Simulation ersetzt keine politische Beratung.</p>
 </footer>
-  <script>
-<!-- Füge dies am Ende deiner HTML-Datei, vor dem schließenden </body> ein: -->
 <script>
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -300,6 +298,8 @@ bgMusic.volume = 0.3;
 const coinSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_b1d9b82678.mp3');
 const powerUpSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_c5f37b63d4.mp3');
 const hitSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_f8373c41d5.mp3');
+
+  
 
 let gameStarted = false;
 let gameOver = false;
@@ -339,7 +339,7 @@ function drawPlayer() {
 
 function drawItems(arr, fontSize = 30) {
   arr.forEach(item => {
-    ctx.font = `${fontSize}px Arial`;
+    ctx.font = ${fontSize}px Arial;
     ctx.fillText(item.icon, item.x, item.y + item.height);
     if (item.label) {
       ctx.font = "14px Calibri";
@@ -392,7 +392,7 @@ function collision(a, b) {
 }
 
 function updateScore() {
-  scoreDisplay.textContent = `Punkte: ${score}`;
+  scoreDisplay.textContent = Punkte: ${score};
   if (score >= 20 && !gameOver) {
     gameOver = true;
     congrats.textContent = '🎉 Glückwunsch! Sie haben alle Coins gesammelt und die Hürden mental überwunden! Jetzt geht es ans Eingemachte: Wählen Sie mich und der Liberalismus findet auch bei Ihnen neue Horizonte!';
@@ -455,7 +455,7 @@ function gameLoop() {
 
   if (frame % 500 === 0) {
     level++;
-    congrats.textContent = `🔥 Level ${level} erreicht!`;
+    congrats.textContent = 🔥 Level ${level} erreicht!;
     setTimeout(() => congrats.textContent = '', 2000);
   }
 
@@ -463,8 +463,8 @@ function gameLoop() {
 
   ctx.fillStyle = 'black';
   ctx.font = '16px Calibri';
-  ctx.fillText(`Level: ${level}`, canvas.width - 100, 30);
-  ctx.fillText(`Zeit: ${timeLeft}s`, canvas.width - 100, 50);
+  ctx.fillText(Level: ${level}, canvas.width - 100, 30);
+  ctx.fillText(Zeit: ${timeLeft}s, canvas.width - 100, 50);
 
   frame++;
   if (!gameOver) requestAnimationFrame(gameLoop);
