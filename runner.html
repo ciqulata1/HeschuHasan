@@ -554,8 +554,8 @@ function update() {
       coins.splice(i, 1);
       score++;
       scoreDisplay.textContent = score;
-      progressFill.style.width = (score / 20) * 100 + "%";
-      if (score >= 20) endGame(true);
+      progressFill.style.width = (score / 12) * 100 + "%";
+      if (score >= 12) endGame(true);
     }
   });
 }
