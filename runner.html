@@ -597,27 +597,23 @@ const obstacleNames  = ['Aktenberge','Zeitdruck','Formulare','Telefonate','Proto
 
 // 2) Obstacle-Erzeugung
 function createObstacle() {
-  // Wenn es schon Hindernisse gibt, prüfe den Abstand zum letzten
-  if (obstacles.length > 0) {
-    const lastObstacle = obstacles[obstacles.length - 1];
-    if (lastObstacle.x > WIDTH - 200) {
-      // Noch zu nah am rechten Rand, kein neues Hindernis erzeugen
-      return;
-    }
-  }
-
-  // Neues Hindernis erzeugen
   const index = Math.floor(Math.random() * obstacleEmojis.length);
+  // Zufällige Höhe zwischen 30 und 70 Pixel über dem Boden
+  const minHeight = HEIGHT - 70; 
+  const maxHeight = HEIGHT - 30;
+  const yPos = Math.random() * (maxHeight - minHeight) + minHeight;
+
   obstacles.push({
     emoji: obstacleEmojis[index],
     name: obstacleNames[index],
     width: 40,
     height: 40,
     x: WIDTH,
-    y: HEIGHT - 50, // 50px über Boden
+    y: yPos,
     speed: obstacleSpeed + Math.random() * 2
   });
 }
+
 
 
 // 4) Draw-Funktion in gameLoop
