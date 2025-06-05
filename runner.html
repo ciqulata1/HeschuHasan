@@ -499,17 +499,29 @@
   }
 
   // Game Over
-  function endGame() {
-    gameRunning = false;
-    controls.style.display = 'none';
-    gameOverText.style.display = 'block';
-    gameOverText.innerHTML = `
-      <div>
-        <p>Oh nein! Du bist gegen ein Hindernis gelaufen. Versuche es noch einmal.</p>
-        <p><a href="index.html" style="color:#e5007d; text-decoration:underline;">Zur Startseite zurückkehren</a></p>
-      </div>`;
-    gameOverText.focus();
-  }
+function endGame() {
+  gameRunning = false;
+  controls.style.display = 'none';
+  gameOverText.style.display = 'block';
+  gameOverText.innerHTML = `
+    <div>
+      <p>Oh nein! Du bist gegen ein Hindernis gelaufen. Versuche es noch einmal.</p>
+      <p><button id="restartButton" style="color:#e5007d; text-decoration:underline; background:none; border:none; cursor:pointer;">Spiel neu starten</button></p>
+    </div>`;
+  gameOverText.focus();
+
+  document.getElementById('restartButton').addEventListener('click', () => {
+    // hier setzt du Variablen zurück, startest das Spiel neu
+    resetGame();
+  });
+}
+
+function resetGame() {
+  gameRunning = true;
+  controls.style.display = 'block';
+  gameOverText.style.display = 'none';
+  // weitere Spielzustände zurücksetzen...
+}
 
   // Springen
   function jump() {
