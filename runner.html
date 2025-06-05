@@ -330,40 +330,19 @@
 </footer>
 <script>
 // ================== SOUNDS ==================
-function createAudio(srcs) {
-  // srcs ist ein Objekt mit mp3 und ogg URLs
-  const audio = new Audio();
-  if (audio.canPlayType('audio/mpeg')) {
-    audio.src = srcs.mp3;
-  } else if (audio.canPlayType('audio/ogg')) {
-    audio.src = srcs.ogg;
-  } else {
-    console.error("Kein unterstütztes Audioformat gefunden");
-  }
-  return audio;
-}
+const coinSound = new Audio('https://cdn.pixabay.com/audio/2021/09/28/audio_34b1f20a00.mp3');
 
-const coinSound = createAudio({
-  mp3: 'https://cdn.pixabay.com/audio/2021/09/28/audio_34b1f20a00.mp3',
-  ogg: 'https://cdn.pixabay.com/audio/2021/09/28/audio_34b1f20a00.ogg'
-});
-const impactSound = createAudio({
-  mp3: 'https://cdn.pixabay.com/audio/2022/03/20/audio_916f0b06f2.mp3',
-  ogg: 'https://cdn.pixabay.com/audio/2022/03/20/audio_916f0b06f2.ogg'
-});
-const woodFlickSound = createAudio({
-  mp3: 'https://cdn.pixabay.com/audio/2021/08/08/audio_18f0de9e42.mp3',
-  ogg: 'https://cdn.pixabay.com/audio/2021/08/08/audio_18f0de9e42.ogg'
-});
-const clangWobbleSound = createAudio({
-  mp3: 'https://cdn.pixabay.com/audio/2022/03/16/audio_4631360347.mp3',
-  ogg: 'https://cdn.pixabay.com/audio/2022/03/16/audio_4631360347.ogg'
-});
+    const btn = document.getElementById('playSoundBtn');
 
-// Beispiel abspielen
-coinSound.play();
-
-
+    btn.addEventListener('click', () => {
+      coinSound.play()
+        .then(() => {
+          console.log('Sound abgespielt!');
+        })
+        .catch(error => {
+          console.error('Fehler beim Abspielen:', error);
+        });
+    });
 // ================== GAME VARIABLES ==================
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
