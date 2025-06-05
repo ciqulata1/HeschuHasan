@@ -23,6 +23,9 @@
     font-weight: bold;
     font-size: 1.5rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   }
   main {
     flex: 1;
@@ -204,6 +207,10 @@
     font-weight: 500;
     width: 100%;
     box-sizing: border-box;
+
+    display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   }
   .footer p {
     margin: 10px 0;
@@ -624,6 +631,12 @@ function resetGame() {
       jump();
     }
   });
+  @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 </script>
 </body>
 </html>
