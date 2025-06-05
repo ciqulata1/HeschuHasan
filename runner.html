@@ -597,12 +597,22 @@ const obstacleNames  = ['Aktenberge','Zeitdruck','Formulare','Telefonate','Proto
 
 // 2) Obstacle-Erzeugung
 function createObstacle() {
-  const index = Math.floor(Math.random() * obstacleEmojis.length);
+  // Wenn es schon Hindernisse gibt, prüfe den Abstand zum letzten
+  if (obstacles.length > 0) {
+    const lastObstacle = obstacles[obstacles.length - 1];
+    if (lastObstacle.x > WIDTH - 200) {
+      // Noch zu nah am rechten Rand, kein neues Hindernis erzeugen
+      return;
+    }
+  }
+
   // Zufällige Höhe zwischen 30 und 70 Pixel über dem Boden
-  const minHeight = HEIGHT - 70; 
+  const minHeight = HEIGHT - 70;
   const maxHeight = HEIGHT - 30;
   const yPos = Math.random() * (maxHeight - minHeight) + minHeight;
 
+  // Neues Hindernis erzeugen
+  const index = Math.floor(Math.random() * obstacleEmojis.length);
   obstacles.push({
     emoji: obstacleEmojis[index],
     name: obstacleNames[index],
