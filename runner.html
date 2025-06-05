@@ -731,7 +731,7 @@ function drawObstacles() {
         coins.splice(i, 1);
         score += 1;
         scoreDisplay.textContent = score;
-        progressFill.style.width = (score / 20) * 100 + "%";
+        progressFill.style.width = (score / 12) * 100 + "%";
 
         if (score >= 12) {
           endGame(true);
