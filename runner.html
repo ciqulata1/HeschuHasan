@@ -636,10 +636,17 @@ function draw() {
 
 function drawObstacles() {
   obstacles.forEach(obstacle => {
+    // Emoji zeichnen
     ctx.font = '30px Calibri';
     ctx.fillText(obstacle.emoji, obstacle.x, obstacle.y);
+    
+    // Beschriftung darunter zeichnen
+    ctx.font = '16px Calibri';
+    ctx.fillStyle = 'black';  // Farbe der Beschriftung
+    ctx.fillText(obstacle.name, obstacle.x, obstacle.y + 30); // 30px unter dem Emoji
   });
 }
+
 
 
   // Funktion: Münzen erstellen
