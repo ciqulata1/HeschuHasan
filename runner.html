@@ -558,8 +558,12 @@ function update() {
     }
   });
 }
-
-
+function jump() {
+  if (!player.isJumping) {
+    player.velocityY = -player.jumpStrength;
+    player.isJumping = true;
+  }
+}
 
   // Eventhandler Button Sprung
   jumpBtn.addEventListener("click", () => {
