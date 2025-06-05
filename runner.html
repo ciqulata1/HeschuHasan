@@ -511,6 +511,13 @@ const frameSpeed = 5;       // Animationsgeschwindigkeit
     frameTimer = 0;
   }
 }
+ctx.drawImage(
+  playerImage,
+  frameIndex * frameWidth, 0,
+  frameWidth, frameHeight,
+  player.x, player.y,
+  player.width, player.height
+);
 
   updateItems(coins, (coin, i) => {
     if (collision(player, coin)) {
