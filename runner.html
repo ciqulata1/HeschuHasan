@@ -267,12 +267,30 @@
       gap: 20px;
     }
 
+
     footer h3 {
       margin: 0 0 15px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
   }
+    #backToHomeBtn {
+  background-color: #ffed00; /* FDP-Gelb */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+#backToHomeBtn:hover {
+  background-color: #e5d200;
+}
+
     button.arrowBtn {
       width: 80px;
       height: 60px;
@@ -364,6 +382,9 @@
   <button id="restartBtn">Neu starten</button>
 
   <div id="gameOverText" tabindex="0"></div>
+
+  <button id="backToHomeBtn">Zurück zur Startseite</button>
+
 </main>
 
 <footer class="footer">
@@ -653,6 +674,12 @@ function createObstacle() {
       `;
     }
   }
+  const backToHomeBtn = document.getElementById("backToHomeBtn");
+
+backToHomeBtn.addEventListener("click", () => {
+  window.location.href = "index.html"; // oder passe den Link an deine Startseite an
+});
+
 
   // Neustart
   restartBtn.addEventListener("click", startGame);
