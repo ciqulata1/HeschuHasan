@@ -565,6 +565,11 @@ function jump() {
     player.isJumping = true;
   }
 }
+window.addEventListener('keydown', function(event) {
+  if (event.code === 'Space' || event.code === 'ArrowUp') {
+    jump();
+  }
+});
 
   // Eventhandler Button Sprung
   jumpBtn.addEventListener("click", () => {
@@ -637,11 +642,11 @@ function draw() {
 function drawObstacles() {
   obstacles.forEach(obstacle => {
     // Emoji zeichnen
-    ctx.font = '30px Calibri';
+    ctx.font = '40px Calibri';
     ctx.fillText(obstacle.emoji, obstacle.x, obstacle.y);
     
     // Beschriftung darunter zeichnen
-    ctx.font = '16px Calibri';
+    ctx.font = '20px Calibri';
     ctx.fillStyle = 'cyan';  // Farbe der Beschriftung
     ctx.fillText(obstacle.name, obstacle.x, obstacle.y + 30); // 30px unter dem Emoji
   });
