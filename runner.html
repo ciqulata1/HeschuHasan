@@ -229,69 +229,7 @@
       display: block;
     }
   }
-</style>
-</head>
-<body>
-<header>
-  Wahlkampf Jumper – Heschu Hasan 👾 Digital
-</header>
 
-<main>
-  <h2>Spielen Sie jetzt: Wahlkampf Jumper – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
-  <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #333;">
-    🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
-  </div>
-  <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
-  <div id="startScreen" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-    <button id="startBtn" style="font-size: 1.5rem; padding: 10px 20px;">Spiel starten</button>
-  </div>
-
-  <div id="buttonsContainer" role="region" aria-label="Spielsteuerung" style="display:none;">
-    <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
-    <div id="arrowButtons">
-      <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
-      <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
-    </div>
-
-
-
-    <div>
-       <p id="score">Punkte: 0</p>
-      <button id="restartBtn" aria-label="Nochmal spielen">Nochmal spielen</button>
-      <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
-    </div>
-  </div>
-
-  <div id="levelInfo" style="font-size:1.1rem; color:#009ee3; margin-bottom:15px; font-weight:bold;"></div>
-
-  <div id="gameOverText" role="alert" aria-live="assertive" tabindex="0">
-    <div>
-      <p>Oh nein! Verloren.</p>
-      <p>Sie sollten unbedingt <a href="index.html" style="color:#e5007d; text-decoration:underline;">zur Startseite</a> zurückkehren und es nochmal versuchen.</p>
-    </div>
-  </div>
-
-</main>
-
-<footer class="footer">
-  <p>© 2025 Heschu Hasan 👾 Digital - FDP Wahlkreiskandidatin </p>
-  <p>Diese Simulation ersetzt keine politische Beratung.</p>
-</footer>
-<script>
-  
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wahlkampf Jumper</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #e0f7fa, #80deea);
-      overflow: hidden;
-    }
     canvas {
       display: block;
       margin: 0 auto;
@@ -351,20 +289,43 @@
 </head>
 <body>
 <main>
-  <div id="startScreen">
-    <h1>🏃‍♂️ Wahlkampf Jumper</h1>
-    <button id="startBtn">Spiel starten</button>
+  <h2>Spielen Sie jetzt: Wahlkampf Jumper – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
+  <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #333;">
+    🎯 <strong>Ziel:</strong> Sammeln Sie 20 FDP-Coins, um zu gewinnen!
   </div>
-  <div id="score">Punkte: 0</div>
-  <div id="congrats"></div>
-  <canvas id="gameCanvas" width="900" height="500"></canvas>
-  <div id="buttonsContainer" style="display: none;">
-    <button id="leftBtn">⬅️</button>
-    <button id="jumpBtn">⏫</button>
-    <button id="rightBtn">➡️</button>
+  <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
+  <div id="startScreen" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <button id="startBtn" style="font-size: 1.5rem; padding: 10px 20px;">Spiel starten</button>
+  </div>
+
+  <div id="buttonsContainer" role="region" aria-label="Spielsteuerung" style="display:none;">
+    <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
+    <div id="arrowButtons">
+      <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
+      <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
+    </div>
+
+    <div>
+       <p id="score">Punkte: 0</p>
+      <button id="restartBtn" aria-label="Nochmal spielen">Nochmal spielen</button>
+      <button id="homeBtn" onclick="location.href='index.html'">Zurück zur Startseite</button>
+    </div>
+  </div>
+
+  <div id="levelInfo" style="font-size:1.1rem; color:#009ee3; margin-bottom:15px; font-weight:bold;"></div>
+
+  <div id="gameOverText" role="alert" aria-live="assertive" tabindex="0">
+    <div>
+      <p>Oh nein! Verloren.</p>
+      <p>Sie sollten unbedingt <a href="index.html" style="color:#e5007d; text-decoration:underline;">zur Startseite</a> zurückkehren und es nochmal versuchen.</p>
+    </div>
   </div>
 </main>
-
+<footer class="footer">
+  <p>© 2025 Heschu Hasan 👾 Digital - FDP Wahlkreiskandidatin </p>
+  <p>Diese Simulation ersetzt keine politische Beratung.</p>
+</footer>
+<script>
 // ================== SOUNDS ==================
 const bgMusic = new Audio('https://cdn.pixabay.com/audio/2023/03/28/audio_715bb2824e.mp3');
 bgMusic.loop = true;
