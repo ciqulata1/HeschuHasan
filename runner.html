@@ -445,7 +445,7 @@
   const gravity = 0.6;
     const jumpStrength = 12;
     const obstacleSpeed = 2;
-    const obstacleInterval = 1300; // ms zwischen Hindernissen
+    const obstacleInterval = 1500; // ms zwischen Hindernissen
     const coinInterval = 2000; // ms zwischen Münzen
 
 //    const obstacleEmojis = ['🗂️','⏳','📟','📞','📋','👨‍💼','💼','📆','😰','👵️'];
@@ -620,7 +620,7 @@ function draw() {
 
 function drawObstacles() {
   obstacles.forEach(obstacle => {
-    ctx.font = '18px Calibri';
+    ctx.font = '23px Calibri';
     ctx.fillText(obstacle.emoji, obstacle.x, obstacle.y);
   });
 }
@@ -628,7 +628,7 @@ function drawObstacles() {
 
   // Funktion: Münzen erstellen
   function createCoin() {
-    const size = 20;
+    const size = 23;
     const x = WIDTH + Math.random() * 300;
     const y = HEIGHT - 80 - Math.random() * 80;
     coins.push({ x, y, width: size, height: size, speed: 5 });
