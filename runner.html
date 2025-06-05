@@ -270,27 +270,103 @@
       <p>Sie sollten unbedingt <a href="index.html" style="color:#e5007d; text-decoration:underline;">zur Startseite</a> zurückkehren und es nochmal versuchen.</p>
     </div>
   </div>
- 
 
 </main>
- 
 
 <footer class="footer">
   <p>© 2025 Heschu Hasan 👾 Digital - FDP Wahlkreiskandidatin </p>
   <p>Diese Simulation ersetzt keine politische Beratung.</p>
 </footer>
 <script>
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-const scoreDisplay = document.getElementById('score');
-const congrats = document.createElement('div');
-congrats.id = 'congrats';
-congrats.style.color = 'green';
-congrats.style.fontWeight = 'bold';
-congrats.style.marginTop = '20px';
-document.querySelector('main').appendChild(congrats);
+  
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wahlkampf Jumper</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #80deea);
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 3px solid #0288d1;
+    }
+    #buttonsContainer {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #0288d1;
+      color: white;
+      cursor: pointer;
+    }
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #01579b;
+    }
+    #startScreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255,255,255,0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    #startScreen h1 {
+      font-size: 36px;
+      color: #01579b;
+    }
+    #startScreen button {
+      margin-top: 20px;
+    }
+    #congrats {
+      text-align: center;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div id="startScreen">
+    <h1>🏃‍♂️ Wahlkampf Jumper</h1>
+    <button id="startBtn">Spiel starten</button>
+  </div>
+  <div id="score">Punkte: 0</div>
+  <div id="congrats"></div>
+  <canvas id="gameCanvas" width="900" height="500"></canvas>
+  <div id="buttonsContainer" style="display: none;">
+    <button id="leftBtn">⬅️</button>
+    <button id="jumpBtn">⏫</button>
+    <button id="rightBtn">➡️</button>
+  </div>
+</main>
 
-// Audio
+<script>
+// ================== SOUNDS ==================
 const bgMusic = new Audio('https://cdn.pixabay.com/audio/2023/03/28/audio_715bb2824e.mp3');
 bgMusic.loop = true;
 bgMusic.volume = 0.3;
@@ -298,14 +374,21 @@ bgMusic.volume = 0.3;
 const coinSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_b1d9b82678.mp3');
 const powerUpSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_c5f37b63d4.mp3');
 const hitSound = new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_f8373c41d5.mp3');
+const winSound = new Audio('https://cdn.pixabay.com/audio/2022/08/12/audio_bef8aa9c6d.mp3');
+const levelUpSound = new Audio('https://cdn.pixabay.com/audio/2022/03/04/audio_9418c4b3e0.mp3');
 
-  
+// ================== GAME VARIABLES ==================
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const scoreDisplay = document.getElementById('score');
+const congrats = document.getElementById('congrats');
 
+let frame = 0;
 let gameStarted = false;
 let gameOver = false;
 let score = 0;
 let level = 1;
-let timeLeft = 60;
+let timeLeft = 90;
 
 const player = {
   x: 50,
@@ -316,8 +399,7 @@ const player = {
   gravity: 0.8,
   jumpForce: -14,
   grounded: true,
-  powerUp: false,
-  speedBoost: 1
+  speedBoost: 1,
 };
 
 const coins = [];
@@ -332,6 +414,7 @@ const obstacleData = [
   { icon: '⚠️', label: 'Warnung' }
 ];
 
+// ================== HELPER FUNCTIONS ==================
 function drawPlayer() {
   ctx.font = '38px Arial';
   ctx.fillText('🧑‍💼', player.x, player.y + player.height);
@@ -339,7 +422,7 @@ function drawPlayer() {
 
 function drawItems(arr, fontSize = 30) {
   arr.forEach(item => {
-    ctx.font = ${fontSize}px Arial;
+    ctx.font = `${fontSize}px Arial`;
     ctx.fillText(item.icon, item.x, item.y + item.height);
     if (item.label) {
       ctx.font = "14px Calibri";
@@ -356,11 +439,11 @@ function createCoin() {
 function createObstacle() {
   const rand = Math.floor(Math.random() * obstacleData.length);
   const { icon, label } = obstacleData[rand];
-  obstacles.push({ x: canvas.width, y: canvas.height - 60, width: 40, height: 40, icon, label, speed: 6 });
+  obstacles.push({ x: canvas.width, y: canvas.height - 60, width: 40, height: 40, icon, label, speed: 6 + Math.random() * 2 });
 }
 
 function createPowerUp() {
-  powerUps.push({ x: canvas.width, y: canvas.height - 80, width: 35, height: 35, icon: '⚡', speed: 6 });
+  powerUps.push({ x: canvas.width, y: canvas.height - 100, width: 35, height: 35, icon: '⚡', speed: 5 });
 }
 
 function updateItems(arr, callback) {
@@ -374,7 +457,6 @@ function updateItems(arr, callback) {
 function updatePlayer() {
   player.dy += player.gravity;
   player.y += player.dy;
-
   if (player.y + player.height >= canvas.height - 10) {
     player.y = canvas.height - 10 - player.height;
     player.dy = 0;
@@ -392,11 +474,12 @@ function collision(a, b) {
 }
 
 function updateScore() {
-  scoreDisplay.textContent = Punkte: ${score};
+  scoreDisplay.textContent = `Punkte: ${score}`;
   if (score >= 20 && !gameOver) {
     gameOver = true;
-    congrats.textContent = '🎉 Glückwunsch! Sie haben alle Coins gesammelt und die Hürden mental überwunden! Jetzt geht es ans Eingemachte: Wählen Sie mich und der Liberalismus findet auch bei Ihnen neue Horizonte!';
     bgMusic.pause();
+    winSound.play();
+    congrats.innerHTML = '🎉 Glückwunsch! Sie haben 20 Coins gesammelt und alle Hürden gemeistert!<br>Jetzt sind Sie bereit für den Landtag!';
   }
 }
 
@@ -405,14 +488,16 @@ function updateTimer() {
   timeLeft--;
   if (timeLeft <= 0) {
     gameOver = true;
-    congrats.textContent = '⏱️ Zeit abgelaufen! Versuche es nochmal.';
     bgMusic.pause();
+    congrats.textContent = '⏱️ Zeit abgelaufen! Versuche es nochmal.';
   }
 }
 
+setInterval(updateTimer, 1000);
+
+// ================== GAME LOOP ==================
 function gameLoop() {
-  if (!gameStarted) return;
-  if (gameOver) return;
+  if (!gameStarted || gameOver) return;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -426,7 +511,7 @@ function gameLoop() {
   updateItems(coins, (coin, i) => {
     if (collision(player, coin)) {
       coins.splice(i, 1);
-      score += 1;
+      score++;
       coinSound.play();
     }
   });
@@ -434,48 +519,50 @@ function gameLoop() {
   updateItems(obstacles, (obs, i) => {
     if (collision(player, obs)) {
       gameOver = true;
-      hitSound.play();
-      congrats.textContent = '😵 Sie wurdest von der Bürokratie zerknirscht!';
       bgMusic.pause();
+      hitSound.play();
+      congrats.textContent = '💥 Sie wurden von der Bürokratie aufgehalten!';
     }
   });
 
   updateItems(powerUps, (pu, i) => {
     if (collision(player, pu)) {
       powerUps.splice(i, 1);
-      player.speedBoost = 1.5;
+      player.speedBoost = 1.6;
       powerUpSound.play();
       setTimeout(() => player.speedBoost = 1, 5000);
     }
   });
 
-  if (frame % 150 === 0) createCoin();
-  if (frame % 210 === 0) createObstacle();
-  if (frame % 800 === 0) createPowerUp();
+  // Generierung neuer Items
+  if (frame % 130 === 0) createCoin();
+  if (frame % 180 === 0) createObstacle();
+  if (frame % 900 === 0) createPowerUp();
 
-  if (frame % 500 === 0) {
+  // Levelaufstieg
+  if (frame % 600 === 0) {
     level++;
-    congrats.textContent = 🔥 Level ${level} erreicht!;
-    setTimeout(() => congrats.textContent = '', 2000);
+    levelUpSound.play();
+    congrats.textContent = `🔥 Level ${level} erreicht!`;
+    setTimeout(() => congrats.textContent = '', 2500);
   }
+
+  // HUD
+  ctx.fillStyle = 'black';
+  ctx.font = '16px Calibri';
+  ctx.fillText(`Level: ${level}`, canvas.width - 110, 30);
+  ctx.fillText(`Zeit: ${timeLeft}s`, canvas.width - 110, 50);
 
   updateScore();
 
-  ctx.fillStyle = 'black';
-  ctx.font = '16px Calibri';
-  ctx.fillText(Level: ${level}, canvas.width - 100, 30);
-  ctx.fillText(Zeit: ${timeLeft}s, canvas.width - 100, 50);
-
   frame++;
-  if (!gameOver) requestAnimationFrame(gameLoop);
+  requestAnimationFrame(gameLoop);
 }
 
-let frame = 0;
-setInterval(updateTimer, 1000);
-
+// ================== EVENTS ==================
 document.getElementById('startBtn').addEventListener('click', () => {
   document.getElementById('startScreen').style.display = 'none';
-  document.getElementById('buttonsContainer').style.display = 'block';
+  document.getElementById('buttonsContainer').style.display = 'flex';
   gameStarted = true;
   bgMusic.play();
   gameLoop();
@@ -501,6 +588,5 @@ window.addEventListener('keydown', e => {
   if (e.code === 'ArrowRight') player.x += 20;
 });
 </script>
-
 </body>
 </html>
