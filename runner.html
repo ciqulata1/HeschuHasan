@@ -459,19 +459,12 @@ document.getElementById('jumpBtn').addEventListener('click', () => {
 });
 
 
-function createCoin() {
-  coins.push({ x: canvas.width, y: canvas.height - 60, width: 30, height: 30, icon: '🪙', speed: 6 });
-}
-
 function createObstacle() {
   const rand = Math.floor(Math.random() * obstacleData.length);
   const { icon, label } = obstacleData[rand];
   obstacles.push({ x: canvas.width, y: canvas.height - 60, width: 40, height: 40, icon, label, speed: 6 + Math.random() * 2 });
 }
 
-function createPowerUp() {
-  powerUps.push({ x: canvas.width, y: canvas.height - 100, width: 35, height: 35, icon: '⚡', speed: 5 });
-}
 
 function updateItems(arr, callback) {
   arr.forEach((item, index) => {
@@ -538,11 +531,6 @@ const frameSpeed = 5;
 
 let frameIndex = 0;
 let frameTimer = 0;
-
-
-const coins = [];
-const obstacles = [];
-const powerUps = [];
 
 let score = 0;
 let level = 1;
