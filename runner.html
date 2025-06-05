@@ -552,24 +552,6 @@ function createObstacle() {
   });
 }
 
-// 3) Hindernisse zeichnen
-function drawObstacles() {
-  obstacles.forEach(ob => {
-    // Emoji
-    ctx.font = '30px Calibri';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'bottom';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(ob.emoji, ob.x + ob.width / 2, ob.y + ob.height);
-
-    // Name
-    ctx.font = '16px Calibri';
-    ctx.textBaseline = 'top';
-    ctx.fillStyle = '#e5007d';
-    ctx.fillText(ob.name, ob.x + ob.width / 2, ob.y + ob.height + 4);
-  });
-}
-
 // 4) Draw-Funktion in gameLoop
 function draw() {
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
