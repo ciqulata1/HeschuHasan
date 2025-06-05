@@ -52,7 +52,7 @@
     border: 2px solid #009ee3;
     background: #fff;
     display: block;
-    width:100%
+    width:100%;
     margin: 20px auto;
     max-width: 700px;
     max-height: 250px;
@@ -446,6 +446,19 @@
 
         scoreDisplay.textContent = 'Punkte: ' + score;
 
+         if (score >= 20) {
+    // Spiel gewonnen
+    gameRunning = false;
+    controls.style.display = 'none';
+    gameOverText.style.display = 'block';
+    gameOverText.innerHTML = `
+      <div>
+        <p>Herzlichen Glückwunsch! Sie haben 20 FDP-Coins gesammelt und gewonnen! 🎉</p>
+        <p><a href="index.html" style="color:#e5007d; text-decoration:underline;">Zur Startseite zurückkehren</a></p>
+      </div>`;
+    gameOverText.focus();
+    return;
+
         requestAnimationFrame(gameLoop);
       }
 
@@ -492,15 +505,7 @@
         }
       });
     })();
-    if (score >= 20) {
-  gameRunning = false;
-  controls.style.display = 'none';
-  gameOverText.style.display = 'block';
-  gameOverText.innerHTML = `<div>
-    <p>Glückwunsch! Sie haben 20 FDP-Coins gesammelt und gewonnen!</p>
-    <p>Zurück zur <a href="index.html" style="color:#e5007d; text-decoration:underline;">Startseite</a> oder nochmal spielen.</p>
-  </div>`;
-}
+
 const leftBtn = document.getElementById('leftBtn');
 const rightBtn = document.getElementById('rightBtn');
 
