@@ -599,7 +599,7 @@ function createObstacle() {
   // Wenn es schon Hindernisse gibt, prüfe den Abstand zum letzten
   if (obstacles.length > 0) {
     const lastObstacle = obstacles[obstacles.length - 1];
-    if (lastObstacle.x > WIDTH - 300) {
+    if (lastObstacle.x > WIDTH - 400) {
       // Noch zu nah am rechten Rand, kein neues Hindernis erzeugen
       return;
     }
