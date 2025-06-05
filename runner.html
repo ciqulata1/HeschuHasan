@@ -468,19 +468,19 @@
 
 
   // Spieler-Parameter
-  const player = {
-    x: 50,
-    y: HEIGHT - 50,
-    width: 40,
-    height: 40,
-    velocityY: 0,
-    gravity: 1,
-    jumpStrength: 22,
-    speed: 10,
-    function jump() {
-  player.velocityY = -player.jumpStrength;
-}
-  };
+ const player = {
+  x: 50,
+  y: HEIGHT - 50,
+  width: 40,
+  height: 40,
+  velocityY: 0,
+  gravity: 1,
+  jumpStrength: 22,
+  speed: 10,
+  jump() {                  // ✅ Richtige Kurzschreibweise für Methoden in Objekten
+    this.velocityY = -this.jumpStrength;
+  }
+};
 
   // Hindernisse und Münzen
   let obstacles = [];
