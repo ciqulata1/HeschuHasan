@@ -125,6 +125,23 @@
     gap: 40px;
     margin-top: 20px;
   }
+  .emoji-list {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  font-size: 1.2rem;
+  color: #e5007d; /* pink */
+}
+
+.emoji-list div {
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
   button.arrowBtn {
     background-color: #009ee3;  /* hellblau */
     color: #fff;
@@ -164,26 +181,29 @@
     background-color: #007bbf;
   }
   #gameOverText {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100vw;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px 0;
-    border-top: 3px solid #e5007d;
-    border-bottom: 3px solid #e5007d;
-    color: #e5007d;
-    font-size: 1.8rem;
-    font-weight: bold;
-    display: none;
-    user-select: none;
-    z-index: 10;
-    font-family: Calibri, sans-serif;
-    line-height: 1.4;
-    text-align: center;
-    box-sizing: border-box;
-  }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 600px;
+  background: #000; /* schwarze Box */
+  padding: 30px;
+  border: 3px solid #ffed00; /* gelbe Umrandung */
+  color: #ffffff; /* weißer Text */
+  font-size: 1.8rem;
+  font-weight: bold;
+  display: none;
+  user-select: none;
+  z-index: 10;
+  font-family: 'Courier New', monospace; /* Retro-Stil */
+  line-height: 1.5;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px #e5007d; /* pinker Glow */
+  border-radius: 12px;
+}
+
   #gameOverText p {
     margin: 0;
     max-width: 100%;
@@ -669,6 +689,12 @@ function createObstacle() {
         🎉 <strong>Herzlichen Glückwunsch!</strong> Sie haben 20 FDP-Coins gesammelt und gewonnen! 🎉
       `;
     } else {
+      let emojiListHtml = '<div class="emoji-list">';
+     for (let i = 0; i < obstacleEmojis.length; i++) {
+  emojiListHtml += `<div><span>${obstacleEmojis[i]}</span> <strong>${obstacleNames[i]}</strong></div>`;
+}
+emojiListHtml += '</div>';
+
       gameOverText.innerHTML = `
         ❌ <strong>Oh nein!</strong> Sie haben ein Hindernis getroffen und verloren. Versuchen Sie es noch einmal.
       `;
