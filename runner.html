@@ -532,18 +532,50 @@
   }
 
   // Funktion: Hindernisse erstellen (z.B. "Formulare")
-function createObstacle() {
-  const width = 40;
-  const height = 40;
-  const x = WIDTH;
-  const y = HEIGHT - height;
-  const speed = 5 + Math.random() * 2;
-  const index = Math.floor(Math.random() * obstacleEmojis.length);
-  const emoji = obstacleEmojis[index];
-  const name = obstacleNames[index];
+// 1) Arrays
+const obstacleEmojis = ['🗂️','⏳','📟','📞','📋','👨‍💼','💼','📆','😰','👵️'];
+const obstacleNames  = ['Aktenberge','Zeitdruck','Formulare','Telefonate','Protokolle','Bürokraten','Meetings','Kalender','Stress','Kontrolle'];
 
-  obstacles.push({ x, y, width, height, speed, emoji, name });
+// 2) Obstacle-Erzeugung
+function createObstacle() {
+  const index = Math.floor(Math.random() * obstacleEmojis.length);
+  obstacles.push({
+    emoji: obstacleEmojis[index],
+    name: obstacleNames[index],
+    width: 40,
+    height: 40,
+    x: WIDTH,
+    y: HEIGHT - 50,                       // 50px über Boden
+    speed: obstacleSpeed + Math.random() * 2
+  });
 }
+
+// 3) Hindernisse zeichnen
+function drawObstacles() {
+  obstacles.forEach(ob => {
+    // Emoji
+    ctx.font = '30px Calibri';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(ob.emoji, ob.x + ob.width / 2, ob.y + ob.height);
+
+    // Name
+    ctx.font = '16px Calibri';
+    ctx.textBaseline = 'top';
+    ctx.fillStyle = '#e5007d';
+    ctx.fillText(ob.name, ob.x + ob.width / 2, ob.y + ob.height + 4);
+  });
+}
+
+// 4) Draw-Funktion in gameLoop
+function draw() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+  drawPlayer();
+  drawObstacles();   // ← muss hier stehen, damit Hindernisse (Emoji + Name) gerendert werden
+  drawCoins();
+}
+
 
 
   // Funktion: Münzen erstellen
