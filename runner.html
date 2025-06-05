@@ -587,6 +587,30 @@ window.addEventListener('keydown', e => {
   if (e.code === 'ArrowLeft') player.x -= 20;
   if (e.code === 'ArrowRight') player.x += 20;
 });
+  document.getElementById('startBtn').addEventListener('click', () => {
+  if(gameStarted) return;
+  gameStarted = true;
+  gameOver = false;
+  score = 0;
+  lives = 3;
+  level = 1;
+  timeLeft = 60;
+  obstacles = [];
+  coins = [];
+  powerUps = [];
+  frame = 0;
+  messageDisplay.textContent = 'Spiel gestartet! Viel Erfolg!';
+  try {
+    bgMusic.play().catch(err => {
+      console.log('Audio konnte nicht starten:', err);
+      messageDisplay.textContent = 'Audio-Problem: ' + err.message;
+    });
+  } catch(e) {
+    console.log('Audio Fehler:', e);
+  }
+  gameLoop();
+});
+
 </script>
 </body>
 </html>
