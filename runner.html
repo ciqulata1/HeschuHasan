@@ -377,7 +377,7 @@ const obstacleData = [
   { icon: '⚠️', label: 'Warnung' }
 ];
 for (let i = 0; i < 20; i++) {
-  const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+  const type = obstacleData[Math.floor(Math.random() * obstacleData.length)];
   obstacles.push({ x: Math.random() * 700 + 100, y: 360, width: 40, height: 30, ...type });
 }
 
