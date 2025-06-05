@@ -733,7 +733,7 @@ function drawObstacles() {
         scoreDisplay.textContent = score;
         progressFill.style.width = (score / 20) * 100 + "%";
 
-        if (score >= 20) {
+        if (score >= 12) {
           endGame(true);
         }
       }
@@ -789,7 +789,7 @@ function drawObstacles() {
 
   if (won) {
     gameOverText.innerHTML = `
-      🎉 <strong>Herzlichen Glückwunsch!</strong> Sie haben 20 FDP-Coins gesammelt und gewonnen! 🎉
+      🎉 <strong>Herzlichen Glückwunsch! Gewinnen kann so dynamisch sein: wie meine Politik!</strong> Sie haben 20 FDP-Coins gesammelt und gewonnen! 🎉
     `;
   } else {
     // Emoji-Liste bauen
