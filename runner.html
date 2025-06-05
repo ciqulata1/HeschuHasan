@@ -394,7 +394,7 @@
 
     const obstacleEmojis = ['🗂️','⏳','📟','📞','📋','👨‍💼','💼','📆','😰','👵️'];
     const obstacleNames = ['Aktenberge','Zeitdruck','Formulare','Telefonate','Protokolle','Bürokraten','Meetings','Kalender','Stress','Kontrolle'];
-function resetGame() {
+    function resetGame() {
       player.y = canvas.height - player.height;
       player.velocityY = 0;
       player.onGround = true;
@@ -479,13 +479,19 @@ function resetGame() {
   }
 
   // Funktion: Hindernisse erstellen (z.B. "Formulare")
-  function createObstacle() {
-    const width = 20 + Math.random() * 40;
-    const height = 20 + Math.random() * 30;
-    const x = WIDTH;
-    const y = HEIGHT - height;
-    obstacles.push({ x, y, width, height, speed: 5 + Math.random() * 2 });
-  }
+function createObstacle() {
+  const width = 40;
+  const height = 40;
+  const x = WIDTH;
+  const y = HEIGHT - height;
+  const speed = 5 + Math.random() * 2;
+  const index = Math.floor(Math.random() * obstacleEmojis.length);
+  const emoji = obstacleEmojis[index];
+  const name = obstacleNames[index];
+
+  obstacles.push({ x, y, width, height, speed, emoji, name });
+}
+
 
   // Funktion: Münzen erstellen
   function createCoin() {
@@ -503,13 +509,16 @@ function resetGame() {
     ctx.fill();
   }
 
-  // Hindernisse zeichnen (dunkelgraue Rechtecke)
   function drawObstacles() {
-    ctx.fillStyle = "#555";
-    obstacles.forEach((ob) => {
-      ctx.fillRect(ob.x, ob.y, ob.width, ob.height);
-    });
-  }
+  ctx.font = "30px Calibri"; // Größerer Font für Emoji-Darstellung
+  ctx.textAlign = "left";
+  ctx.textBaseline = "top";
+
+  obstacles.forEach((ob) => {
+    ctx.fillText(ob.emoji, ob.x, ob.y);
+  });
+}
+
 
   // Münzen zeichnen (gelbe Kreise)
   function drawCoins() {
