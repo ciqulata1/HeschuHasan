@@ -704,30 +704,32 @@ function draw() {
     gameLoop();
   }
 
-  // Spiel beenden mit Gewinn oder Verlust
-  function endGame(won) {
-    gameRunning = false;
-    buttonsContainer.style.display = "none";
-    restartBtn.style.display = "inline-block";
-    gameOverText.style.display = "block";
-    gameOverText.focus();
+ function endGame(won) {
+  gameRunning = false;
+  buttonsContainer.style.display = "none";
+  restartBtn.style.display = "inline-block";
+  gameOverText.style.display = "block";
+  gameOverText.focus();
 
-    if (won) {
-      gameOverText.innerHTML = `
-        🎉 <strong>Herzlichen Glückwunsch!</strong> Sie haben 20 FDP-Coins gesammelt und gewonnen! 🎉
-      `;
-    } else {
-      let emojiListHtml = '<div class="emoji-list">';
-     for (let i = 0; i < obstacleEmojis.length; i++) {
-  emojiListHtml += `<div><span>${obstacleEmojis[i]}</span> <strong>${obstacleNames[i]}</strong></div>`;
-}
-emojiListHtml += '</div>';
-
-      gameOverText.innerHTML = `
-        ❌ <strong>Oh nein!</strong> Sie haben ein Hindernis getroffen und verloren. Versuchen Sie es noch einmal.
-      `;
+  if (won) {
+    gameOverText.innerHTML = `
+      🎉 <strong>Herzlichen Glückwunsch!</strong> Sie haben 20 FDP-Coins gesammelt und gewonnen! 🎉
+    `;
+  } else {
+    // Emoji-Liste bauen
+    let emojiListHtml = '<div class="emoji-list">';
+    for (let i = 0; i < obstacleEmojis.length; i++) {
+      emojiListHtml += `<div><span>${obstacleEmojis[i]}</span> <strong>${obstacleNames[i]}</strong></div>`;
     }
+    emojiListHtml += '</div>';
+
+    // Text + Emoji-Liste anzeigen
+    gameOverText.innerHTML = `
+      ❌ <strong>Oh nein!</strong> Sie haben ein Hindernis getroffen und verloren. Versuchen Sie es noch einmal.
+      ${emojiListHtml}
+    `;
   }
+}
   const backToHomeBtn = document.getElementById("backToHomeBtn");
 
 backToHomeBtn.addEventListener("click", () => {
