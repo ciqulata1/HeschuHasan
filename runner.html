@@ -607,6 +607,7 @@ function createObstacle() {
     speed: obstacleSpeed + Math.random() * 2
   });
 }
+  
 
 // 4) Draw-Funktion in gameLoop
 function draw() {
@@ -616,6 +617,12 @@ function draw() {
   drawCoins();
 }
 
+function drawObstacles() {
+  obstacles.forEach(obstacle => {
+    ctx.font = '28px Calibri';
+    ctx.fillText(obstacle.emoji, obstacle.x, obstacle.y);
+  });
+}
 
 
   // Funktion: Münzen erstellen
