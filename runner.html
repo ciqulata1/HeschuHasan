@@ -215,14 +215,29 @@ background-color: var(--white);
     margin: 10px 0;
   }
   .footer a {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
     font-weight: bold;
     margin: 0 10px;
     display: inline-block;
+    text-align: center;
   }
   .footer a:hover {
     text-decoration: underline;
+  }
+
+  
+  footer .social-links a {
+    color: var(--white);
+    font-size: 30px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: var(--magenta);
+    outline: none;
   }
   @media (max-width: 480px) {
     main {
@@ -240,6 +255,13 @@ background-color: var(--white);
     #arrowButtons {
       gap: 20px;
     }
+
+    footer h3 {
+      margin: 0 0 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+  }
     button.arrowBtn {
       width: 80px;
       height: 60px;
@@ -334,15 +356,14 @@ background-color: var(--white);
 </main>
 
 <footer class="footer">
-  <p> ©️ Heschu Hasan – Wahlkampf Jumper 2025 | FDP Coins sammeln</p>
-  <p>
-    <a href="https://fdp.de">Für mehr Informationen über die FDP</a> |
-    <a href="https://heschu-hasan-fdp.de/impressum.html">Impressum</a> |
-    <a href="https://heschu-hasan-fdp.de/index.html">Startseite</a> |
-    
-      
-    <p>Diese Simulation ersetzt keine politische Beratung</p>
-  </p>
+  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links">
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  <h3>©️ Heschu Hasan – Wahlkampf Jumper 2025 | FDP Coins sammeln</h3>
+  <h3>Diese Simulation ersetzt keine politische Beratung</h3>
 </footer>
 
 <script>
