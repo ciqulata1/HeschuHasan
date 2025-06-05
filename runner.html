@@ -581,7 +581,8 @@ document.getElementById('startBtn').addEventListener('click', () => {
 });
 
 document.getElementById('jumpBtn').addEventListener('click', () => {
-  if (player.grounded) player.dy = player.jumpForce;
+  if (player.grounded) { player.dy = player.jumpForce; player.grounded=false;
+}
 });
 
 document.getElementById('leftBtn').addEventListener('click', () => {
@@ -591,6 +592,61 @@ document.getElementById('leftBtn').addEventListener('click', () => {
 document.getElementById('rightBtn').addEventListener('click', () => {
   if (player.x + player.width < canvas.width) player.x += 20;
 });
+  function gameLoop() {
+  if (gameOver) return;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  updatePlayer();
+
+  updateItems(coins, coin => {
+    if (collision(player, coin)) {
+      coinSound.play();
+      score++;
+      coins.splice(coins.indexOf(coin), 1);
+      updateScore();
+    }
+  });
+
+  updateItems(obstacles, obstacle => {
+    if (collision(player, obstacle)) {
+      hitSound.play();
+      gameOver = true;
+      document.getElementById('gameOverText').style.display = 'block';
+    }
+  });
+
+  updateItems(powerUps, power => {
+    if (collision(player, power)) {
+      powerUpSound.play();
+      player.speedBoost = 1.5;
+      setTimeout(() => player.speedBoost = 1, 5000);
+      powerUps.splice(powerUps.indexOf(power), 1);
+    }
+  });
+
+  drawItems(coins);
+  drawItems(obstacles);
+  drawItems(powerUps);
+  drawPlayer();
+
+  frame++;
+  if (frame % 100 === 0) createCoin();
+  if (frame % 150 === 0) createObstacle();
+  if (frame % 500 === 0) createPowerUp();
+
+  requestAnimationFrame(gameLoop);
+}
+
+  
+document.getElementById('startBtn').addEventListener('click', () => {
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('buttonsContainer').style.display = 'flex';
+  bgMusic.play();
+  gameStarted = true;
+  gameLoop();
+});
+
+
 
 window.addEventListener('keydown', e => {
   if ((e.code === 'Space' || e.code === 'ArrowUp') && player.grounded) {
@@ -599,6 +655,7 @@ window.addEventListener('keydown', e => {
   if (e.code === 'ArrowLeft') player.x -= 20;
   if (e.code === 'ArrowRight') player.x += 20;
 });
+  
   document.getElementById('startBtn').addEventListener('click', () => {
   if(gameStarted) return;
   gameStarted = true;
