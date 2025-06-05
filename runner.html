@@ -385,10 +385,86 @@ function drawItems(arr, fontSize = 30) {
     if (item.label) {
       ctx.font = "14px Calibri";
       ctx.fillStyle = '#000';
-      ctx.fillText(item.label, item.x - 10, item.y);
+      ctx.fillText(item.label, item.x - 10, item.y + item.height + 16);
     }
   });
 }
+
+function spawnCoin() {
+  coins.push({
+    x: canvas.width + Math.random() * 300,
+    y: canvas.height - 70,
+    width: 30,
+    height: 30,
+    icon: '🪙'
+  });
+}
+
+function update() {
+  frame++;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Player Bewegung
+  player.y += player.dy;
+  player.dy += player.gravity;
+  if (player.y > canvas.height - player.height - 30) {
+    player.y = canvas.height - player.height - 30;
+    player.grounded = true;
+    player.dy = 0;
+  }
+
+  // Coins bewegen
+  coins.forEach(c => c.x -= 5 * player.speedBoost);
+  drawItems(coins);
+
+  // Player zeichnen
+  ctx.fillStyle = "#009ee3";
+  ctx.fillRect(player.x, player.y, player.width, player.height);
+
+  // Punkte zählen
+  coins.forEach((coin, index) => {
+    if (player.x < coin.x + coin.width &&
+        player.x + player.width > coin.x &&
+        player.y < coin.y + coin.height &&
+        player.y + player.height > coin.y) {
+      score++;
+      coinSound.play();
+      coins.splice(index, 1);
+    }
+  });
+
+  scoreDisplay.innerText = "Punkte: " + score;
+
+  // Siegbedingung
+  if (score >= 20) {
+    winSound.play();
+    alert("🎉 Glückwunsch! Sie haben den Wahlkampf gewonnen!");
+    gameOver = true;
+    cancelAnimationFrame(animationFrameId);
+    return;
+  }
+
+  if (!gameOver) {
+    animationFrameId = requestAnimationFrame(update);
+  }
+}
+
+document.getElementById('startBtn').addEventListener('click', () => {
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('buttonsContainer').style.display = 'flex';
+  gameStarted = true;
+  bgMusic.play();
+  spawnCoin();
+  update();
+});
+
+document.getElementById('jumpBtn').addEventListener('click', () => {
+  if (player.grounded) {
+    player.dy = player.jumpForce;
+    player.grounded = false;
+  }
+});
+
 
 function createCoin() {
   coins.push({ x: canvas.width, y: canvas.height - 60, width: 30, height: 30, icon: '🪙', speed: 6 });
