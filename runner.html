@@ -52,9 +52,10 @@
     border: 2px solid #009ee3;
     background: #fff;
     display: block;
+    width:100%
     margin: 20px auto;
-    max-width: 100%;
-    height: auto;
+    max-width: 700px;
+    max-height: 250px;
   }
   #buttonsContainer {
     display: flex;
@@ -470,7 +471,7 @@
       function endGame() {
         gameRunning = false;
         controls.style.display = 'none';
-        gameOverText.style.display = 'block';
+        gameOverText.focus();
       }
 
       // Sprung-Funktion
@@ -491,6 +492,26 @@
         }
       });
     })();
+    if (score >= 20) {
+  gameRunning = false;
+  controls.style.display = 'none';
+  gameOverText.style.display = 'block';
+  gameOverText.innerHTML = `<div>
+    <p>Glückwunsch! Sie haben 20 FDP-Coins gesammelt und gewonnen!</p>
+    <p>Zurück zur <a href="index.html" style="color:#e5007d; text-decoration:underline;">Startseite</a> oder nochmal spielen.</p>
+  </div>`;
+}
+const leftBtn = document.getElementById('leftBtn');
+const rightBtn = document.getElementById('rightBtn');
+
+leftBtn.addEventListener('click', () => {
+  player.x = Math.max(0, player.x - 20);
+});
+
+rightBtn.addEventListener('click', () => {
+  player.x = Math.min(width - player.width, player.x + 20);
+});
+
   </script>
 </body>
 </html>
