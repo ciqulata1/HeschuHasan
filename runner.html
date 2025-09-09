@@ -249,7 +249,7 @@ const WIDTH = canvas.width;
 const HEIGHT = canvas.height;
 
 const player = { x:50, y:HEIGHT-50, width:40, height:40, velocityY:0, gravity:1, jumpStrength:22, speed:10, isJumping:false };
-let obstacles=[], coins=[], score=0, gameRunning=false;
+let obstacles=[], coins=[], score=0, gameRunning=false, frameCount=0;
 
 const startBtn=document.getElementById("startBtn"),
       restartBtn=document.getElementById("restartBtn"),
@@ -313,6 +313,7 @@ function drawCoins(){
 
 function update(){
   if(!gameRunning) return;
+  frameCount++;
   player.velocityY+=player.gravity;
   player.y+=player.velocityY;
   if(player.y+player.height>HEIGHT){player.y=HEIGHT-player.height; player.velocityY=0; player.isJumping=false;}
@@ -334,8 +335,9 @@ function update(){
     }
   });
   
-  if(Math.random()<0.02) createObstacle();
-  if(Math.random()<0.01) createCoin();
+  // Hindernisse und Coins seltener erstellen
+  if(frameCount % 90 === 0) createObstacle();
+  if(frameCount % 150 === 0) createCoin();
 }
 
 function draw(){ctx.clearRect(0,0,WIDTH,HEIGHT); drawPlayer(); drawObstacles(); drawCoins();}
@@ -343,7 +345,7 @@ function gameLoop(){if(!gameRunning) return; update(); draw(); requestAnimationF
 
 function startGame(){
   score=0; scoreDisplay.textContent=score; progressFill.style.width="0%";
-  obstacles=[]; coins=[];
+  obstacles=[]; coins=[]; frameCount=0;
   player.x=50; player.y=HEIGHT-player.height; player.velocityY=0; player.isJumping=false;
   gameRunning=true;
   startScreen.style.display="none";
