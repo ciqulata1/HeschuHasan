@@ -2,39 +2,30 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Digitale Bildung – Heschu Hasan</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     :root {
-      --white: #ffffff;
-      --black: #000000;
       --magenta: #e5007d;
+      --black: #000000;
+      --white: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       background-color: var(--white);
       color: var(--black);
       font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    a {
-      color: var(--magenta);
-      text-decoration: none;
-    }
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-      outline: none;
-    }
+    a { color: var(--magenta); text-decoration: none; }
+    a:hover, a:focus { text-decoration: underline; }
 
     header {
       background-color: var(--white);
@@ -46,20 +37,17 @@
       flex-wrap: wrap;
     }
 
-    #fdp-logo {
-      height: 50px;
-      margin-right: 15px;
-    }
+    #fdp-logo { max-height: 50px; margin-right: 10px; }
 
     header h1 {
+      display: flex;
+      align-items: center;
       font-weight: 700;
       font-size: 1.8rem;
       color: var(--magenta);
+      margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin: 0;
-      display: flex;
-      align-items: center;
     }
 
     nav a {
@@ -68,49 +56,66 @@
       margin-left: 20px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      color: var(--black);
     }
 
     nav a.active,
-    nav a:hover {
-      font-weight: 700;
-      color: var(--magenta);
-    }
+    nav a:hover { color: var(--magenta); font-weight: 700; }
 
     main {
+      padding: 30px 5%;
       max-width: 900px;
-      margin: 20px auto;
-      padding: 0 20px;
+      margin: 0 auto;
     }
 
     main h2 {
       color: var(--magenta);
       font-weight: 700;
       font-size: 2rem;
-      margin-bottom: 15px;
+      margin: 40px 0 20px;
       text-transform: uppercase;
     }
 
-    main p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
+    p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; }
 
     .themenbox {
-      border: 2px solid var(--magenta);
+      background-color: var(--magenta);
+      color: var(--white);
       border-radius: 8px;
-      padding: 16px 20px;
-      margin-bottom: 15px;
+      padding: 14px 24px;
+      margin: 15px 0;
       text-align: center;
       font-weight: 600;
-      color: var(--magenta);
+      font-size: 1.05rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      user-select: none;
     }
 
     .themenbox:hover {
+      background-color: var(--white);
+      color: var(--magenta);
+      border: 2px solid var(--magenta);
+    }
+
+    .zurueck-box {
       background-color: var(--magenta);
       color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .zurueck-box:hover {
+      background-color: var(--white);
+      color: var(--magenta);
+      border: 2px solid var(--magenta);
     }
 
     footer {
@@ -119,105 +124,85 @@
       text-align: center;
       padding: 30px 20px;
       font-weight: 500;
+      margin-top: 40px;
     }
 
-    footer h3 {
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
+    footer h3 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 15px; }
 
     footer .social-links a {
       color: var(--white);
       font-size: 30px;
       margin: 0 15px;
       transition: color 0.3s ease;
+      text-decoration: none;
     }
 
-    footer .social-links a:hover,
-    footer .social-links a:focus {
-      color: var(--black);
-      outline: none;
-    }
+    footer .social-links a:hover { color: var(--magenta); }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav a {
-        margin-left: 0;
-        margin-right: 15px;
-      }
-      header h1 {
-        margin-top: 10px;
-      }
+      header { padding: 15px 20px; }
+      nav { margin-top: 10px; }
+      nav a { margin: 5px 10px 0 0; }
+      main { padding: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>
-      HESCHU HASAN<img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" />
-    </h1>
-    <nav>
-      <a href="index.html">Startseite</a>
-      <a href="bildung.html" class="active">Bildung</a>
-      <a href="umwelt.html">Umwelt</a>
-      <a href="meinungsmacher.html">Meinungs-Macher</a>
-      <a href="mission.html">Meine Mission</a>
-      <a href="impressum.html">Impressum</a>
-    </nav>
-  </header>
+<header>
+  <h1>
+    <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" />
+    HESCHU HASAN
+  </h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html" class="active">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="mission.html">Meine Mission</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
 
-  <main>
-    <div id="themen">
-      <div class="themenbox" onclick="location.href='#digitale-infrastruktur';" role="button" tabindex="0">
-        🌐 Digitale Infrastruktur
-      </div>
-      <div class="themenbox" onclick="location.href='#medienkompetenz';" role="button" tabindex="0">
-        🧠 Medienkompetenz
-      </div>
-      <div class="themenbox" onclick="location.href='#e-learning';" role="button" tabindex="0">
-        💻 E-Learning & Blended Learning
-      </div>
-      <div class="themenbox" onclick="location.href='#datenschutz';" role="button" tabindex="0">
-        🔐 Datenschutz & Sicherheit
-      </div>
-      <div class="themenbox" onclick="location.href='#barrierefreiheit';" role="button" tabindex="0">
-        ♿ Digitale Barrierefreiheit
-      </div>
-    </div>
+<main id="top">
 
-    <h2 id="digitale-infrastruktur">Digitale Infrastruktur</h2>
-    <p>Schulen brauchen Glasfaser, WLAN und moderne Endgeräte. Bildung braucht Zukunftstechnologie. Digitalpakt 2.0 ist notwendig, um Ausstattung sicherzustellen.</p>
+  <div id="themen">
+    <div class="themenbox" onclick="location.href='#digitale-infrastruktur';">🌐 Digitale Infrastruktur</div>
+    <div class="themenbox" onclick="location.href='#medienkompetenz';">🧠 Medienkompetenz</div>
+    <div class="themenbox" onclick="location.href='#e-learning';">💻 E-Learning & Blended Learning</div>
+    <div class="themenbox" onclick="location.href='#datenschutz';">🔐 Datenschutz & Sicherheit</div>
+    <div class="themenbox" onclick="location.href='#barrierefreiheit';">♿ Digitale Barrierefreiheit</div>
+  </div>
 
-    <h2 id="medienkompetenz">Medienkompetenz</h2>
-    <p>Kinder und Jugendliche müssen lernen, kritisch mit digitalen Inhalten umzugehen. Lehrpläne für Medienbildung in allen Klassenstufen sind wichtig.</p>
+  <h2 id="digitale-infrastruktur">Digitale Infrastruktur: Grundlage für moderne Bildung</h2>
+  <p>Schulen in Baden-Württemberg brauchen dringend ein Update: Glasfaser, WLAN, moderne Endgeräte – flächendeckend und zuverlässig...</p>
+  <div class="zurueck-box" onclick="location.href='#themen';">← Zurück zu den Themen</div>
 
-    <h2 id="e-learning">E-Learning & Blended Learning</h2>
-    <p>Digitale Lernplattformen ermöglichen individuelles Lernen. Konzepte wie Flipped Classroom unterstützen Lehrkräfte und Schüler gleichermaßen.</p>
+  <h2 id="medienkompetenz">Medienkompetenz: Digitales Denken fördern</h2>
+  <p>Kinder und Jugendliche müssen lernen, kritisch mit digitalen Inhalten umzugehen...</p>
+  <div class="zurueck-box" onclick="location.href='#themen';">← Zurück zu den Themen</div>
 
-    <h2 id="datenschutz">Datenschutz & Sicherheit</h2>
-    <p>Schülerdaten müssen geschützt werden. Sichere, datenschutzkonforme Plattformen und klare Zuständigkeiten sind erforderlich.</p>
+  <h2 id="e-learning">E-Learning & Blended Learning: Flexibilität für alle</h2>
+  <p>Digitale Lernformen erweitern Chancen. Lernplattformen müssen individuell anpassbar und pädagogisch sinnvoll sein...</p>
+  <div class="zurueck-box" onclick="location.href='#themen';">← Zurück zu den Themen</div>
 
-    <h2 id="barrierefreiheit">Digitale Barrierefreiheit</h2>
-    <p>Digitale Bildung muss für alle zugänglich sein – inklusive Designs und einfache Sprache sichern Chancengleichheit.</p>
-  </main>
+  <h2 id="datenschutz">Datenschutz & Sicherheit: Vertrauen schaffen</h2>
+  <p>Datenschutz darf kein Hinderungsgrund für Digitalisierung sein. Schülerdaten müssen geschützt werden...</p>
+  <div class="zurueck-box" onclick="location.href='#themen';">← Zurück zu den Themen</div>
 
-  <footer>
-    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links">
-      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-      <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
-  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
-  </footer>
+  <h2 id="barrierefreiheit">Digitale Barrierefreiheit: Chancengleichheit sicherstellen</h2>
+  <p>Digitale Bildung muss für alle zugänglich sein, unabhängig von Behinderung, Herkunft oder Vorwissen...</p>
+  <div class="zurueck-box" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+
+</main>
+
+<footer>
+  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+  <div class="social-links">
+    <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  </div>
+  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+</footer>
 
 </body>
 </html>
