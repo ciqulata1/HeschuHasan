@@ -6,16 +6,10 @@
   <title>Datenschutzerklärung – Heschu Hasan</title>
   <style>
     :root {
-      --yellow: #ffed00;
       --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
-      --primary-color: var(--cyan);
-      --accent-color: var(--magenta);
-      --bg-color: var(--white);
-      --text-color: #333333;
+      --turquoise: #00abae; /* für ausgewählte Elemente */
     }
 
     * {
@@ -26,19 +20,17 @@
 
     body {
       font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      padding: 20px;
+      background-color: var(--white);
+      color: var(--black);
       line-height: 1.6;
+      padding: 20px;
     }
 
     a {
-      color: var(--primary-color);
+      color: var(--magenta);
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
+    a:hover { text-decoration: underline; }
 
     .container {
       max-width: 900px;
@@ -46,27 +38,17 @@
     }
 
     h1, h2 {
-      color: var(--accent-color);
+      color: var(--magenta);
       margin-bottom: 10px;
     }
+    h1 { font-size: 2em; margin-top: 40px; }
+    h2 { font-size: 1.5em; margin-top: 30px; }
 
-    h1 {
-      font-size: 2em;
-      margin-top: 40px;
-    }
-
-    h2 {
-      font-size: 1.5em;
-      margin-top: 30px;
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
+    p { margin-bottom: 20px; }
 
     header {
-      background-color: var(--bg-color);
-      border-bottom: 2px solid var(--cyan);
+      background-color: var(--white);
+      border-bottom: 2px solid var(--magenta);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -75,7 +57,7 @@
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: var(--cyan);
+      color: var(--magenta);
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
@@ -83,7 +65,7 @@
       font-weight: 600;
       font-size: 1rem;
       margin-left: 25px;
-      color: var(--cyan);
+      color: var(--black);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -96,7 +78,7 @@
     }
 
     footer {
-      background-color: var(--cyan);
+      background-color: var(--magenta);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
@@ -116,10 +98,7 @@
       transition: color 0.3s ease;
     }
     footer .social-links a:hover,
-    footer .social-links a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
+    footer .social-links a:focus { color: var(--white); outline: none; }
     .social-text {
       margin-top: 10px;
       font-weight: 600;
@@ -127,7 +106,7 @@
     }
 
     button.back-button {
-      background-color: var(--cyan);
+      background-color: var(--magenta);
       color: var(--white);
       border: none;
       padding: 10px 20px;
@@ -138,38 +117,20 @@
       transition: background-color 0.3s ease;
     }
     button.back-button:hover,
-    button.back-button:focus {
-      background-color: var(--magenta);
-      outline: none;
-    }
+    button.back-button:focus { background-color: var(--black); outline: none; }
 
     @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      h1 {
-        font-size: 1.5em;
-      }
-      h2 {
-        font-size: 1.2em;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
-      nav a {
-        margin-left: 0;
-        margin-right: 15px;
-      }
+      body { padding: 10px; }
+      h1 { font-size: 1.5em; }
+      h2 { font-size: 1.2em; }
+      header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
+      nav a { margin-left: 0; margin-right: 15px; }
     }
   </style>
 
-  <!-- FontAwesome CDN für Icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-papb78w6pghPs+KvA9TzRlGxUYvzNUaHTmDqYSV4UKh8XK08AcgP47NlpvKGqOSb/6WhGmcCyL78T8Pi8VlZew=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
@@ -219,7 +180,6 @@
     <p><strong>Stand:</strong> Mai 2025</p>
 
     <button class="back-button" onclick="if(document.referrer) { history.back(); } else { window.location.href='index.html'; }">← Zurück</button>
-
   </main>
 
   <footer>
@@ -230,7 +190,8 @@
       </a>
     </div>
     <p class="social-text">Treffen Sie mich auf den Sozialen Medien</p>
+      <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
   </footer>
-
 </body>
 </html>
