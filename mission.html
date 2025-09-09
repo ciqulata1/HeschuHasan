@@ -43,19 +43,22 @@
       text-decoration: underline;
     }
 
-    header {
-      background-image: url('X_ Titelbild 250910004253.png');
-      background-size: cover;       
-      background-position: center;  
-      background-repeat: no-repeat;
-      background-color: var(--white);
-      border-bottom: 2px solid var(--magenta);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
+ header {
+    background-image: url('X_ Titelbild 250910004253.png');
+    background-size: cover;       /* füllt den Header aus */
+    background-position: center top; /* zeigt den oberen Bereich oder zentriert */
+    background-repeat: no-repeat;
+    height: 200px; /* Höhe des Headers anpassen */
+    position: relative;
+    border-bottom: 2px solid var(--magenta);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    flex-wrap: wrap;
+    color: white; /* Text sichtbar machen */
+}
+
     header::before {
     content: "";
     position: absolute;
