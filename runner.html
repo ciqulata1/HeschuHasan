@@ -22,16 +22,44 @@ body {
   user-select: none;
 }
 header {
-  background-color: var(--magenta);
-  color: var(--white);
-  text-align: center;
-  padding: 30px 20px;
+  background-color: var(--white);
+  border-bottom: 2px solid var(--magenta);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-header h3 {
-  margin: 5px 0;
-  font-weight: 700;
+
+nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--black);
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease, font-weight 0.3s ease;
 }
+
+nav a.active {
+  color: var(--magenta);
+  font-weight: 700;
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--magenta);
+  outline: none;
+}
+
 main {
   flex: 1;
   padding: 20px;
@@ -108,6 +136,37 @@ button.arrowBtn:active { background-color: #c00066; transform: scale(0.95); }
   cursor: pointer;
   border: none;
 }
+/* Game Header Styling */
+#gameHeader {
+  background-color: var(--black); 
+  color: var(--white);             
+  text-align: center;
+  padding: 30px 20px;
+}
+
+#gameHeader h3 {
+  margin: 10px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--magenta);         
+  font-family: Calibri, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+#gameHeader h3:nth-child(2) {
+  font-size: 1.2rem;
+  color: var(--white);            
+  font-weight: 600;
+}
+
+#gameHeader h3:nth-child(3) {
+  font-size: 1rem;
+  color: var(--white);
+  font-weight: 400;
+  font-style: italic;
+}
+
+  
 #restartBtn:hover { background-color: #c00066; }
 #scoreContainer {
   width: 700px;
@@ -170,10 +229,20 @@ button.arrowBtn:active { background-color: #c00066; transform: scale(0.95); }
 </head>
 <body>
 <header>
-  <h3>Wahlkampf-Jumper |F|D|P| Heschu Hasan 👾 Digital</h3>
-  <h3>Wie digital ist Ihre Partei?</h3>
-  <h3>Ich spiele nicht mit Ihrem Vertrauen: ich baue Spiele zum Ergattern Ihres Vertrauens</h3>
-</header>
+    <h1>HESCHU HASAN</h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
+    <section id="gameHeader">
+    <h3>Wahlkampf-Jumper |F|D|P| Heschu Hasan 👾 Digital</h3>
+    <h3>Wie digital ist Ihre Partei?</h3>
+    <h3>Ich spiele nicht mit Ihrem Vertrauen: ich baue Spiele zum Ergattern Ihres Vertrauens</h3>
+  </section>
 <main>
 <h2>Spielen Sie jetzt: Wahlkampf Jumper – Sammeln Sie FDP-Coins!</h2>
 <div id="startScreen">
