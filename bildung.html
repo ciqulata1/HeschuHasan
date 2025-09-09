@@ -96,38 +96,45 @@ main p {
   max-width: 700px;
 }
 
-.bildung-boxes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 40px;
-}
-.box {
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 300px;
-  min-height: 120px;
-  border: 2px solid var(--magenta);
-  background-color: var(--white);
-  color: var(--black);
-  padding: 20px;
-  border-radius: 5px;
-  font-weight: 300;
-  font-size: 1.1rem;
-  user-select: none;
-  display: block;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-.box p { font-weight: 300; font-size: 1.1rem; }
-.box h3 { margin-top: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.  .box {
+    flex: 1 1 260px;
+    max-width: 300px;
+    border: 2px solid var(--magenta);
+    background-color: var(--white);
+    color: var(--black);
+    padding: 20px;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-.box:hover { border-color: var(--magenta); }
-.box:focus, .box.selected { background-color: var(--magenta); color: var(--white); outline: none; border-color: var(--magenta); }
-.box.show { opacity: 1; transform: translateY(0); }
+  .box.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .box:hover {
+    background: var(--magenta);
+    color: var(--white);
+    border-color: var(--magenta);
+  }
+
+  .box h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .box p {
+    font-weight: 400;
+    font-size: 1rem;
+  }
 
 footer {
   background-color: var(--black);
