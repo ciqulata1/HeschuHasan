@@ -28,6 +28,13 @@
       line-height: 1.6;
       background-color: var(--white);
       color: var(--black);
+
+      /* Wasserzeichen als Hintergrundbild für das ganze Body */
+      background-image: url('X_ Titelbild 250910004253.png');
+      background-size: contain;       /* passt sich proportional an */
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.05;                  /* sehr dezentes Wasserzeichen */
     }
 
     a {
@@ -42,38 +49,14 @@
 
     /* ================= Header ================= */
     header {
-      position: relative;
       width: 100%;
-      height: 30vh;              /* Höhe passt sich Viewport an */
-      min-height: 180px;         /* Mindesthöhe */
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       padding: 20px 40px;
       border-bottom: 2px solid var(--magenta);
-      color: white;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('X_ Titelbild 250910004253.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.5;              /* Overlay */
-      z-index: 0;
-    }
-
-    header h1, header nav {
-      position: relative;
-      z-index: 1;
+      color: var(--white);
     }
 
     header h1 {
@@ -245,7 +228,6 @@
         padding: 20px;
       }
     }
-
   </style>
 </head>
 <body>
@@ -315,7 +297,6 @@
       💛 Ihre Spende stärkt meine Unabhängigkeit und liberale Politik
     </div>
   </section>
-
 </main>
 
 <footer>
