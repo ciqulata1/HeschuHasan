@@ -4,11 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Biografie & Mission – Heschu Hasan</title>
-
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --magenta: #e5007d;
@@ -28,13 +24,6 @@
       line-height: 1.6;
       background-color: var(--white);
       color: var(--black);
-
-      /* Wasserzeichen als Hintergrundbild für das ganze Body */
-      background-image: url('X_ Titelbild 250910004253.png');
-      background-size: contain;       /* passt sich proportional an */
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.05;                  /* sehr dezentes Wasserzeichen */
     }
 
     a {
@@ -48,45 +37,49 @@
     }
 
     /* ================= Header ================= */
+    #fdp-logo {
+      margin-left: 10px;
+      max-height: 45px;
+    }
+
     header {
-      width: 100%;
+      background-color: var(--white);
+      border-bottom: 2px solid var(--magenta);
+      padding: 20px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      padding: 20px 40px;
-      border-bottom: 2px solid var(--magenta);
-      color: var(--white);
     }
 
     header h1 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 700;
+      font-size: 1.8rem;
       color: var(--magenta);
+      margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
 
     nav a {
-      font-size: clamp(0.9rem, 2vw, 1rem);
       font-weight: 600;
+      font-size: 1rem;
       margin-left: 20px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--black);
     }
 
-    nav a:hover,
-    nav a.active {
+    nav a.active, nav a:hover {
       color: var(--magenta);
       font-weight: 700;
     }
 
     /* ================= Main ================= */
     main {
+      padding: 30px 5%;
       max-width: 900px;
       margin: 0 auto;
-      padding: 30px 5%;
     }
 
     main h2 {
@@ -106,6 +99,7 @@
 
     p {
       font-size: 1.1rem;
+      line-height: 1.6;
       margin-bottom: 1rem;
     }
 
@@ -150,6 +144,7 @@
 
     /* ================= Profile Images ================= */
     .profile-images {
+      position: relative; /* wichtig für Wasserzeichen */
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -157,7 +152,27 @@
       margin-bottom: 40px;
     }
 
+    /* Wasserzeichen hinter Profilbildern */
+    .profile-images::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background-image: url('Lieberalismus.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.1;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .profile-image-container {
+      position: relative; /* über Wasserzeichen */
+      z-index: 1;
       width: 220px;
       border: 4px solid var(--magenta);
       border-radius: 6px;
@@ -172,6 +187,7 @@
 
     .profile-image {
       width: 100%;
+      height: auto;
       display: block;
     }
 
@@ -204,6 +220,7 @@
       font-size: 30px;
       margin: 0 15px;
       transition: color 0.3s ease;
+      text-decoration: none;
     }
 
     footer .social-links a:hover {
@@ -234,6 +251,7 @@
 
 <header>
   <h1>HESCHU HASAN</h1>
+  <img src="FDP-Logo.png" alt="FDP Logo" id="fdp-logo">
   <nav>
     <a href="index.html">Startseite</a>
     <a href="bildung.html">Bildung</a>
