@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Impressum - Heschu Hasan</title>
 
-  <!-- FontAwesome CDN für Icons -->
+  <!-- FontAwesome für Icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -15,7 +15,6 @@
 
   <style>
     :root {
-      --cyan: #009ee3;
       --magenta: #e5007d;
       --white: #ffffff;
       --black: #000000;
@@ -35,9 +34,9 @@
     }
 
     a {
-      color: var(--cyan);
+      color: var(--black);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
     }
 
     a:hover,
@@ -46,9 +45,10 @@
       outline: none;
     }
 
+    /* === Header === */
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--magenta);
       padding: 20px 40px;
       display: flex;
       flex-wrap: wrap;
@@ -58,7 +58,7 @@
 
     header h1 {
       font-size: 2rem;
-      color: var(--cyan);
+      color: var(--magenta);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       font-weight: 700;
@@ -72,7 +72,7 @@
     }
 
     nav a {
-      color: var(--cyan);
+      color: var(--black);
       text-transform: uppercase;
       font-weight: 600;
       font-size: 0.95rem;
@@ -85,6 +85,7 @@
       font-weight: 700;
     }
 
+    /* === Main Content === */
     main {
       max-width: 900px;
       margin: 40px auto;
@@ -92,7 +93,7 @@
     }
 
     main h2 {
-      color: var(--cyan);
+      color: var(--magenta);
       font-size: 2rem;
       margin-bottom: 20px;
       text-transform: uppercase;
@@ -111,8 +112,9 @@
       font-style: normal;
     }
 
+    /* === Footer === */
     footer {
-      background-color: var(--cyan);
+      background-color: var(--black);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
@@ -126,19 +128,22 @@
       letter-spacing: 0.05em;
       margin-bottom: 15px;
       font-weight: 700;
+      color: var(--magenta);
     }
 
     .social-links a {
       color: var(--white);
       font-size: 28px;
       margin: 0 10px;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .social-links a:hover {
       color: var(--magenta);
+      transform: scale(1.2);
     }
 
+    /* === Responsive === */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -196,7 +201,8 @@
 
     <p><strong>Haftungsausschluss:</strong></p>
     <p>
-      Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+      Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für die Inhalte externer Links. 
+      Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
     </p>
   </main>
 
