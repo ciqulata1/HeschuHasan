@@ -152,23 +152,23 @@
       margin-bottom: 40px;
     }
 
-    /* Wasserzeichen hinter Profilbildern */
-    .profile-images::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 200px;
-      height: 200px;
-      background-image: url('Lieberalismus.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.1;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 0;
-    }
+.profile-images::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px; 
+  height: 400px;
+  background-image: url('Lieberalismus.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.3;     
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 
     .profile-image-container {
       position: relative; /* über Wasserzeichen */
@@ -250,6 +250,7 @@
 <body>
 
 <header>
+   <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo">
   <h1>HESCHU HASAN</h1>
   <img src="FDP-Logo.png" alt="FDP Logo" id="fdp-logo">
   <nav>
