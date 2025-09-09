@@ -2,27 +2,20 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digitale Bildung – Heschu Hasan</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     :root {
-      --yellow: #ffed00;
-      --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
-      --black: #000000;
       --white: #ffffff;
+      --black: #000000;
+      --magenta: #e5007d;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -30,84 +23,86 @@
       background-color: var(--white);
       color: var(--black);
       font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-      font-weight: 400;
-      line-height: 1.5;
-      opacity: 0;
-      transition: opacity 1s ease;
+      line-height: 1.6;
     }
 
     a {
-      color: var(--cyan);
+      color: var(--magenta);
       text-decoration: none;
     }
-
     a:hover,
     a:focus {
-      color: var(--magenta);
+      text-decoration: underline;
       outline: none;
     }
 
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      padding: 20px 40px;
+      border-bottom: 2px solid var(--magenta);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 15px 30px;
+      flex-wrap: wrap;
+    }
+
+    #fdp-logo {
+      height: 50px;
+      margin-right: 15px;
     }
 
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: var(--cyan);
-      margin: 0;
+      color: var(--magenta);
       text-transform: uppercase;
       letter-spacing: 0.06em;
+      margin: 0;
+      display: flex;
+      align-items: center;
     }
 
     nav a {
       font-weight: 600;
       font-size: 1rem;
-      margin-left: 25px;
+      margin-left: 20px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
     nav a.active,
     nav a:hover {
-      color: var(--magenta);
       font-weight: 700;
+      color: var(--magenta);
     }
 
     main {
-      padding: 20px 40px;
       max-width: 900px;
-      margin: 0 auto;
+      margin: 20px auto;
+      padding: 0 20px;
     }
 
     main h2 {
-      color: var(--cyan);
+      color: var(--magenta);
       font-weight: 700;
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
     }
 
     main p {
       font-size: 1.1rem;
-      margin-bottom: 1.25rem;
-      color: var(--black);
+      margin-bottom: 20px;
     }
 
     .themenbox {
-      border: 2px solid var(--turquoise);
+      border: 2px solid var(--magenta);
       border-radius: 8px;
-      padding: 16px 24px;
-      margin-bottom: 20px;
+      padding: 16px 20px;
+      margin-bottom: 15px;
       text-align: center;
       font-weight: 600;
-      color: var(--turquoise);
+      color: var(--magenta);
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
@@ -116,11 +111,10 @@
     .themenbox:hover {
       background-color: var(--magenta);
       color: var(--white);
-      border-color: var(--magenta);
     }
 
     footer {
-      background-color: var(--cyan);
+      background-color: var(--magenta);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
@@ -144,7 +138,7 @@
 
     footer .social-links a:hover,
     footer .social-links a:focus {
-      color: var(--magenta);
+      color: var(--black);
       outline: none;
     }
 
@@ -152,26 +146,23 @@
       header {
         flex-direction: column;
         align-items: flex-start;
-        padding: 15px 20px;
       }
-
       nav a {
         margin-left: 0;
         margin-right: 15px;
       }
+      header h1 {
+        margin-top: 10px;
+      }
     }
   </style>
-
-  <script>
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '1';
-    });
-  </script>
 </head>
-
 <body>
+
   <header>
-    <h1>HESCHU HASAN</h1>
+    <h1>
+      HESCHU HASAN<img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" />
+    </h1>
     <nav>
       <a href="index.html">Startseite</a>
       <a href="bildung.html" class="active">Bildung</a>
@@ -187,60 +178,34 @@
       <div class="themenbox" onclick="location.href='#digitale-infrastruktur';" role="button" tabindex="0">
         🌐 Digitale Infrastruktur
       </div>
-
       <div class="themenbox" onclick="location.href='#medienkompetenz';" role="button" tabindex="0">
         🧠 Medienkompetenz
       </div>
-
       <div class="themenbox" onclick="location.href='#e-learning';" role="button" tabindex="0">
         💻 E-Learning & Blended Learning
       </div>
-
       <div class="themenbox" onclick="location.href='#datenschutz';" role="button" tabindex="0">
         🔐 Datenschutz & Sicherheit
       </div>
-
       <div class="themenbox" onclick="location.href='#barrierefreiheit';" role="button" tabindex="0">
         ♿ Digitale Barrierefreiheit
       </div>
     </div>
 
-    <h2 id="digitale-infrastruktur">Digitale Infrastruktur: Grundlage für moderne Bildung</h2>
-    <p>
-      Schulen in Baden-Württemberg brauchen dringend ein Update: Glasfaser, WLAN, moderne Endgeräte – flächendeckend und zuverlässig. In Freiburg-Ost wissen wir: Bildung braucht Zukunftstechnologie. Ich setze mich für einen Digitalpakt 2.0 ein, mit dem der Bund gemeinsam mit Ländern und Kommunen endlich die nötige Ausstattung sicherstellt.
-    </p>
+    <h2 id="digitale-infrastruktur">Digitale Infrastruktur</h2>
+    <p>Schulen brauchen Glasfaser, WLAN und moderne Endgeräte. Bildung braucht Zukunftstechnologie. Digitalpakt 2.0 ist notwendig, um Ausstattung sicherzustellen.</p>
 
-    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+    <h2 id="medienkompetenz">Medienkompetenz</h2>
+    <p>Kinder und Jugendliche müssen lernen, kritisch mit digitalen Inhalten umzugehen. Lehrpläne für Medienbildung in allen Klassenstufen sind wichtig.</p>
 
-    <h2 id="medienkompetenz">Medienkompetenz: Digitales Denken fördern</h2>
-    <p>
-      Digitale Bildung bedeutet nicht nur Technik – sondern vor allem Kompetenz. Kinder und Jugendliche müssen lernen, kritisch mit digitalen Inhalten umzugehen. Ich fordere verbindliche Lehrpläne für Medienbildung in allen Klassenstufen – von Fake News bis KI-Ethik.
-    </p>
+    <h2 id="e-learning">E-Learning & Blended Learning</h2>
+    <p>Digitale Lernplattformen ermöglichen individuelles Lernen. Konzepte wie Flipped Classroom unterstützen Lehrkräfte und Schüler gleichermaßen.</p>
 
-    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
+    <h2 id="datenschutz">Datenschutz & Sicherheit</h2>
+    <p>Schülerdaten müssen geschützt werden. Sichere, datenschutzkonforme Plattformen und klare Zuständigkeiten sind erforderlich.</p>
 
-    <h2 id="e-learning">E-Learning und Blended Learning: Flexibilität für alle</h2>
-    <p>
-      Präsenzunterricht ist wichtig – aber digitale Lernformen erweitern Chancen. Ich setze mich für Lernplattformen ein, die individuelles Lernen möglich machen, und für pädagogisch sinnvolle Konzepte wie den Flipped Classroom. Lehrkräfte müssen dafür gezielt geschult und entlastet werden.
-    </p>
-
-    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
-
-    <h2 id="datenschutz">Datenschutz und Sicherheit: Vertrauen schaffen</h2>
-    <p>
-      Datenschutz darf kein Hinderungsgrund für Digitalisierung sein – aber er muss gewährleistet sein. Schülerdaten gehören geschützt. Ich fordere sichere, datenschutzkonforme Plattformen, klare Zuständigkeiten und praxisnahe Unterstützung für Schulen in Baden-Württemberg.
-    </p>
-
-    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
-
-    <h2 id="barrierefreiheit">Digitale Barrierefreiheit: Chancengleichheit sicherstellen</h2>
-    <p>
-      Digitale Bildung muss für alle zugänglich sein – unabhängig von Behinderung, Herkunft oder Vorwissen. Ich mache mich stark für barrierefreie Lernplattformen, inklusive Designs und einfache Sprache. In Freiburg-Ost soll kein Kind zurückgelassen werden – weder analog noch digital.
-    </p>
-
-    <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
-
-    <div class="themenbox" onclick="location.href='bildung.html';">← Zurück zur Bildungsübersicht</div>
+    <h2 id="barrierefreiheit">Digitale Barrierefreiheit</h2>
+    <p>Digitale Bildung muss für alle zugänglich sein – inklusive Designs und einfache Sprache sichern Chancengleichheit.</p>
   </main>
 
   <footer>
@@ -250,6 +215,9 @@
         <i class="fab fa-instagram"></i>
       </a>
     </div>
+      <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
   </footer>
+
 </body>
 </html>
