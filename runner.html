@@ -338,7 +338,7 @@ function update(){
   
   // Hindernisse und Coins seltener erstellen
   if(frameCount % 90 === 0) createObstacle();
-  if(frameCount % 150 === 0) createCoin();
+  if(frameCount % 60 === 0) createCoin();
 }
 
 function draw(){ctx.clearRect(0,0,WIDTH,HEIGHT); drawPlayer(); drawObstacles(); drawCoins();}
