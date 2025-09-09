@@ -43,36 +43,38 @@
       text-decoration: underline;
     }
 
- header {
+header {
     background-image: url('X_ Titelbild 250910004253.png');
-    background-size: cover;     
-    background-position: center top; 
+    background-size: cover;       
+    background-position: center 30%; /* wichtiger Bildbereich sichtbar */
     background-repeat: no-repeat;
-    height: 200px; 
+    height: 180px;  /* feste, kleinere Höhe */
     position: relative;
     border-bottom: 2px solid var(--magenta);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 40px;
+    padding: 0 40px; /* oben/unten enger, damit Bild mehr Platz hat */
     flex-wrap: wrap;
-    color: white; 
+    color: white;
 }
 
-    header::before {
+header::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.3); /* leicht dunkler Filter */
+    background-color: rgba(0,0,0,0.4); /* Overlay für bessere Lesbarkeit */
     z-index: 0;
-    }
-    header h1, header nav {
+}
+
+header h1, header nav {
     position: relative;
-    z-index: 1; /* Text über dem Overlay */
-    }
+    z-index: 1;
+}
+
 
 
     header h1 {
