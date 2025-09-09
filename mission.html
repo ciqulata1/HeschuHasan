@@ -206,30 +206,40 @@
     }
 
     footer {
-      background-color: var(--cyan);
-      color: var(--white);
-      text-align: center;
-      padding: 30px 20px;
-      font-weight: 500;
-      margin-top: 60px;
-    }
+  background-color: var(--cyan);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 20px;
+  font-weight: 500;
+  margin-top: 60px;
+  width: 100%;
+  box-sizing: border-box; /* verhindert Layout-Sprünge */
+}
 
-    footer h3 {
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
+footer h3 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
 
-    footer .social-links a {
-      color: var(--white);
-      font-size: 30px;
-      margin: 0 15px;
-      transition: color 0.3s ease;
-    }
+footer .social-links {
+  display: flex;
+  justify-content: center; /* sorgt für saubere Zentrierung */
+  flex-wrap: wrap;         /* bricht bei kleinen Screens um */
+  gap: 20px;               /* moderner Abstand zwischen Icons */
+}
 
-    footer .social-links a:hover {
-      color: var(--magenta);
-    }
+footer .social-links a {
+  color: var(--white);
+  font-size: 30px;
+  transition: color 0.3s ease;
+  text-decoration: none;   /* für saubere Icons ohne Unterstrich */
+}
+
+footer .social-links a:hover {
+  color: var(--magenta);
+}
+
 
     @media (max-width: 768px) {
       header {
