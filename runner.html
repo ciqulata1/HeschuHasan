@@ -1,312 +1,147 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Wahlkampf Bürokratie-Black-BoxJumper – FDP Coins sammeln</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wahlkampf Jumper – FDP Coins sammeln</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  :root {
-  --cyan: #009ee3; /* heller Blau-Ton */
-  --white: #ffffff;
+:root {
   --magenta: #e5007d;
+  --white: #fff;
+  --black: #000;
 }
-  body {
-    font-family: Calibri, sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    user-select: none;
-  }
-  header {
-    background-color: var(--cyan);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    z-index: 10; 
-    position: relative; 
-
-  }
-  header h3 {
-    margin: 0 0 15px;
-    font-weight: 700;
-    text-transform: uppercase; 
-    letter-spacing: 0.1 em; 
-
-  }
-  main {
-    flex: 1;
-    padding: 20px;
-    max-width: 760px;
-    margin: 0 auto;
-    width: 100%;
-    text-align: center;
-    position: relative;
-  }
-
-  #startScreen {
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #aaa;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  h2 {
-    margin-top: 60px;
-    color: #009ee3;
-  }
-
-  /* --------------------------------- */
-/* 1) Canvas komplett schwarz machen */
-/* --------------------------------- */
-#gameCanvas {
-  background-color: #000 !important;            /* reines Schwarz */
-  border: 3px solid #ffed00;         /* gelbe Umrandung (optional) */
-  display: block;
-  margin: 20px auto;                 /* zentriert mit Abstand nach oben/unten */
-  box-shadow: 0 0 10px #e5007d;      /* pinker Glüheffekt rund um den Canvas (optional) */
-}
-
-  canvas {
-    border: 2px solid #009ee3;
-    display: block;
-    width: 100%;
-    max-width: 700px;
-    height: 250px;
-    margin: 20px auto;
-  }
-  #buttonsContainer {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  button#jumpBtn {
-    background-color: #009ee3;
-    color: #fff;
-    border: none;
-    padding: 12px 30px;
-    font-family: Calibri, sans-serif;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    min-width: 140px;
-    user-select: none;
-  }
-  button#jumpBtn:active {
-    background-color: #ffed00;
-    color: #000;
-    transform: scale(0.95);
-  }
-  button#homeBtn {
-    background-color: #e5007d;
-    color: #fff;
-    border: none;
-    padding: 12px 24px;
-    font-family: Calibri, sans-serif;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    min-width: 160px;
-    user-select: none;
-  }
-  button#homeBtn:hover {
-    background-color: #c00066;
-  }
-  #arrowButtons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 20px;
-  }
-  .emoji-list {
-  margin-top: 20px;
+body {
+  margin: 0;
+  font-family: Calibri, sans-serif;
+  background-color: var(--white);
+  color: var(--black);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  font-size: 1.2rem;
-  color: #e5007d; /* pink */
+  flex-direction: column;
+  min-height: 100vh;
+  user-select: none;
 }
-
-.emoji-list div {
-  background: #fff;
-  padding: 8px 12px;
+header {
+  background-color: var(--magenta);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 20px;
+}
+header h3 {
+  margin: 5px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+main {
+  flex: 1;
+  padding: 20px;
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+#startScreen {
+  z-index: 10;
+  background: var(--black);
+  color: var(--magenta);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px var(--magenta);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#startScreen button {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  background-color: var(--magenta);
+  color: var(--white);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
   border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
-
-  button.arrowBtn {
-    background-color: #009ee3;  /* hellblau */
-    color: #fff;
-    border: none;
-    padding: 12px 28px;
-    font-family: Calibri, sans-serif;
-    font-weight: bold;
-    font-size: 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    width: 100px;
-    height: 50px;
-    line-height: 1;
-    user-select: none;
-  }
-  button.arrowBtn:active {
-    background-color: #ffed00; /* gelb beim Klicken */
-    color: #000;
-    transform: scale(0.95);
-  }
-  #restartBtn {
-    display: none;
-    background:#009ee3;
-    color:#fff;
-    padding:12px 30px;
-    margin-top:10px;
-    font-family: Calibri, sans-serif;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    user-select: none;
-    border: none;
-  }
-  #restartBtn:hover {
-    background-color: #007bbf;
-  }
-  #gameOverText {
+#startScreen button:hover { background-color: #c00066; }
+h2 { margin-top: 60px; color: var(--magenta); }
+#gameCanvas {
+  background-color: var(--black);
+  border: 3px solid var(--magenta);
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 0 10px var(--magenta);
+}
+#buttonsContainer { display: none; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 30px; }
+button#jumpBtn {
+  background-color: var(--magenta);
+  color: var(--white);
+  border: none;
+  padding: 12px 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 140px;
+}
+button#jumpBtn:active { background-color: #c00066; transform: scale(0.95); }
+button.arrowBtn {
+  background-color: var(--magenta);
+  color: var(--white);
+  border: none;
+  padding: 12px 28px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.arrowBtn:active { background-color: #c00066; transform: scale(0.95); }
+#restartBtn {
+  display: none;
+  background: var(--magenta);
+  color: var(--white);
+  padding: 12px 30px;
+  margin-top: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+#restartBtn:hover { background-color: #c00066; }
+#scoreContainer {
+  width: 700px;
+  max-width: 100%;
+  margin: 10px auto;
+  font-size: 18px;
+  color: var(--black);
+  text-align: center;
+}
+#progressBar { background: #ddd; border-radius: 10px; width: 100%; height: 20px; margin-top:5px; }
+#progressFill { background: var(--magenta); width:0%; height:100%; border-radius: 10px; transition: width 0.3s ease; }
+#gameOverText {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
   max-width: 600px;
-  background: #000; /* schwarze Box */
+  background: var(--black);
   padding: 30px;
-  border: 3px solid #ffed00; /* gelbe Umrandung */
-  color: #ffffff; /* weißer Text */
+  border: 3px solid var(--magenta);
+  color: var(--white);
   font-size: 1.8rem;
   font-weight: bold;
   display: none;
-  user-select: none;
-  z-index: 10;
-  font-family: 'Courier New', monospace; /* Retro-Stil */
-  line-height: 1.5;
   text-align: center;
-  box-sizing: border-box;
-  box-shadow: 0 0 20px #e5007d; /* pinker Glow */
   border-radius: 12px;
+  box-shadow: 0 0 20px var(--magenta);
+  line-height: 1.5;
 }
-
-  #gameOverText p {
-    margin: 0;
-    max-width: 100%;
-  }
-  #scoreContainer {
-    width: 700px;
-    max-width: 100%;
-    margin: 10px auto;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    color: #333;
-    text-align: center;
-  }
-  #progressBar {
-    background:#ddd;
-    border-radius: 10px;
-    width: 100%;
-    height: 20px;
-    margin-top:5px;
-  }
-  #progressFill {
-    background:#e5007d;
-    width:0%;
-    height:100%;
-    border-radius: 10px;
-    transition: width 0.3s ease;
-  }
-  .footer {
-      background-color: var(--cyan);
-      color: var(--white);
-      text-align: center;
-      padding: 30px 20px;
-      font-weight: 500;
-      margin-top: 60px;
-    }
-
-  .footer p {
-    margin: 10px 0;
-  }
-  .footer a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 10px;
-    display: inline-block;
-    text-align: center;
-  }
-  .footer a:hover {
-    text-decoration: underline;
-  }
-
-  
-  footer .social-links a {
-    color: var(--white);
-    font-size: 30px;
-    margin: 0 15px;
-    transition: color 0.3s ease;
-  }
-
-  footer .social-links a:hover,
-  footer .social-links a:focus {
-    color: var(--magenta);
-    outline: none;
-  }
-  @media (max-width: 480px) {
-    main {
-      padding: 15px 10px;
-    }
-    #buttonsContainer {
-      gap: 15px;
-    }
-    button#jumpBtn, button#restartBtn {
-      width: 80vw;
-      max-width: 300px;
-      font-size: 1.2rem;
-      min-width: auto;
-    }
-    #arrowButtons {
-      gap: 20px;
-    }
-
-
-    footer h3 {
-      margin: 0 0 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-  }
- #backToHomeBtn {
-  background-color: #ffed00;     /* FDP-Gelb */
-  color: #009ee3;                /* Weiß */
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6); /* dunkler Schatten für Kontrast */
+#gameOverText p { margin: 0; }
+#backToHomeBtn {
+  background-color: var(--magenta);
+  color: var(--white);
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -314,31 +149,23 @@
   border-radius: 8px;
   cursor: pointer;
   margin-top: 20px;
-  transition: background-color 0.3s ease;
 }
-
-#backToHomeBtn:hover {
-  background-color: #FFED00;     /* etwas dunkleres Gelb beim Hover */
+#backToHomeBtn:hover { background-color: #c00066; }
+.footer {
+  background-color: var(--magenta);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 20px;
+  font-weight: 500;
+  margin-top: 60px;
 }
-
-
-    button.arrowBtn {
-      width: 80px;
-      height: 60px;
-      font-size: 2rem;
-    }
-    canvas {
-      height: 250px;
-      width: 100%;
-      max-width: 700px;
-      display: block;
-      margin: 20px auto;
-    }
-    #scoreContainer {
-      width: 90vw;
-      font-size: 16px;
-    }
-  }
+.footer a { color: var(--white); text-decoration: none; margin: 0 10px; font-weight: bold; }
+.footer a:hover { text-decoration: underline; color: #fff; }
+@media (max-width: 480px) {
+  button#jumpBtn, button#restartBtn { width: 80vw; font-size: 1.2rem; }
+  button.arrowBtn { width: 80px; height: 60px; font-size: 2rem; }
+  #scoreContainer { width: 90vw; font-size: 16px; }
+}
 </style>
 </head>
 <body>
@@ -347,487 +174,79 @@
   <h3>Wie digital ist Ihre Partei?</h3>
   <h3>Ich spiele nicht mit Ihrem Vertrauen: ich baue Spiele zum Ergattern Ihres Vertrauens</h3>
 </header>
-
 <main>
-  <h2>Spielen Sie jetzt: Wahlkampf Jumper – Sammeln Sie FDP-Coins und lassen Sie die Bürokratie-Hürden hinter sich!</h2>
-<div id="startScreen" style="
-  background-color: #e5007d;
-  color: yellow;
-  font-weight: bold;
-  font-family: Calibri, sans-serif;
-  text-align: center;
-  padding: 30px 20px;
-  margin-top: 100px;
-  border-radius: 12px;
-">
-  <button id="startBtn" style="
-    font-size: 1.5rem;
-    padding: 10px 20px;
-    background-color: yellow;
-    color: #e5007d;
-    border: none;
-    font-family: Calibri, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 8px;
-  ">
-    Spiel starten
-  </button>
-
-  <div style="width: 400px; margin-top: 30px; font-size: 1.1rem; line-height: 0.8;">
-    <p>
-      Bürokratie-Black-Box: Die Hindernisse symbolisieren die vielen Hürden der Bürokratie in Baden-Württemberg.  
-      Diese Hindernisse müssen Bürgerinnen und Bürger mit Mühe überspringen – und dabei ihren Humor bewahren, wie in einem Spiel.
-    </p>
-
-    <p>
-      Doch eines ist klar: Diese Hindernisse kann nur die Legislative abbauen.
-      Deshalb bitte ich Sie, mir Ihr Vertrauen zu schenken und mich am <strong>8. März 2026</strong> in den Landtag von Baden-Württemberg zu wählen.
-    </p>
-
-    <p>
-      Nur mit klaren politischen Mehrheiten können wir Bildung und Umwelt effizient reformieren.
-    </p>
+<h2>Spielen Sie jetzt: Wahlkampf Jumper – Sammeln Sie FDP-Coins!</h2>
+<div id="startScreen">
+  <button id="startBtn">Spiel starten</button>
+  <div style="margin-top:30px; font-size:1.1rem; line-height:1.3;">
+    <p>Bürokratie-Black-Box: Überspringen Sie die Hindernisse der Bürokratie in Baden-Württemberg.</p>
+    <p>Nur mit klaren politischen Mehrheiten können wir Bildung und Umwelt effizient reformieren. Unterstützen Sie mich am 8. März 2026!</p>
   </div>
 </div>
-
-  <div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: #e5007d;">
-    🎯 <strong>Ziel:</strong> Sammeln Sie 12 FDP-Coins, um zu gewinnen!
+<div id="introText" style="margin-top: 20px; font-size: 1.2rem; color: var(--magenta);">
+  🎯 <strong>Ziel:</strong> Sammeln Sie 12 FDP-Coins!
+</div>
+<canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
+<div id="buttonsContainer">
+  <button id="jumpBtn">⤴ Springen</button>
+  <div id="arrowButtons">
+    <button class="arrowBtn" id="leftBtn">◀</button>
+    <button class="arrowBtn" id="rightBtn">▶</button>
   </div>
-  <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
-
-  <div id="buttonsContainer" role="region" aria-label="Spielsteuerung">
-    <button id="jumpBtn" aria-label="Springen Button">⤴ Springen</button>
-    <div id="arrowButtons">
-      <button class="arrowBtn" id="leftBtn" aria-label="Nach links gehen">◀</button>
-      <button class="arrowBtn" id="rightBtn" aria-label="Nach rechts gehen">▶</button>
-    </div>
-  </div>
-
-  <div id="scoreContainer">
-    FDP-Coins: <span id="score">0</span> / 12
-    <div id="progressBar">
-      <div id="progressFill"></div>
-    </div>
-  </div>
-
-  <button id="restartBtn">Neu starten</button>
-
-  <div id="gameOverText" tabindex="0"></div>
-
-  <button id="backToHomeBtn">Zurück zur Startseite</button>
-
+</div>
+<div id="scoreContainer">
+  FDP-Coins: <span id="score">0</span> / 12
+  <div id="progressBar"><div id="progressFill"></div></div>
+</div>
+<button id="restartBtn">Neu starten</button>
+<div id="gameOverText" tabindex="0"></div>
+<button id="backToHomeBtn">Zurück zur Startseite</button>
 </main>
-
 <footer class="footer">
   <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
+  <div class="social-links">
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
   </div>
   <h3>©️ Heschu Hasan – Wahlkampf Jumper 2025 | FDP Coins sammeln</h3>
-  <h3>Diese Simulation ersetzt keine politische Beratung,</h3>
-<h3>sondern soll spielerisch auf das Chaos der Bürokratie aufmerksam machen.</h3>
-
 </footer>
 
 <script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const WIDTH = canvas.width;
+const HEIGHT = canvas.height;
+const player = { x:50, y:HEIGHT-50, width:40, height:40, velocityY:0, gravity:1, jumpStrength:22, speed:10, isJumping:false };
+let obstacles = [], coins = [], score=0, gameRunning=false;
+const startBtn=document.getElementById("startBtn"), restartBtn=document.getElementById("restartBtn"),
+jumpBtn=document.getElementById("jumpBtn"), leftBtn=document.getElementById("leftBtn"),
+rightBtn=document.getElementById("rightBtn"), buttonsContainer=document.getElementById("buttonsContainer"),
+startScreen=document.getElementById("startScreen"), scoreDisplay=document.getElementById("score"),
+progressFill=document.getElementById("progressFill"), gameOverText=document.getElementById("gameOverText");
 
-  const canvas = document.getElementById("gameCanvas");
-  const ctx = canvas.getContext("2d");
+const obstacleEmojis=['🗂️','⏳','🧾','📞','💼','🧟','💰','📜','⚖️','🔍'];
+const obstacleNames=['Aktenlast','Zeitfresser','Formularfluch','Endlose Gespräche','Bürokraten','Budget-Klau','Paragraphen-Dschungel','Sitzungsmarathon','Verwaltungs-Hickhack','Kontrollwahn'];
 
-  // Spielfeldgröße (immer 700x250)
-  const WIDTH = canvas.width;
-  const HEIGHT = canvas.height;
+function jump(){ if(!player.isJumping){player.velocityY=-player.jumpStrength; player.isJumping=true;} }
+function movePlayer(dir){ if(dir==="left"){player.x-=player.speed; if(player.x<0)player.x=0;} else{player.x+=player.speed;if(player.x+player.width>WIDTH)player.x=WIDTH-player.width;} }
+function createObstacle(){const index=Math.floor(Math.random()*obstacleEmojis.length);const yPos=HEIGHT-70+Math.random()*40; obstacles.push({emoji:obstacleEmojis[index], name:obstacleNames[index], width:40, height:40, x:WIDTH, y:yPos, speed:3+Math.random()*2}); }
+function createCoin(){const size=23; const x=WIDTH+Math.random()*300; const y=HEIGHT-80-Math.random()*80; coins.push({x,y,width:size,height:size,speed:5}); }
+function drawPlayer(){ctx.fillStyle="#e5007d"; ctx.beginPath(); ctx.arc(player.x+player.width/2,player.y+player.height/2,player.width/2,0,Math.PI*2); ctx.fill();}
+function drawObstacles(){obstacles.forEach(o=>{ctx.font='30px Calibri'; ctx.fillStyle="#fff"; ctx.fillText(o.emoji,o.x,o.y); ctx.font='16px Calibri'; ctx.fillStyle="#e5007d"; ctx.fillText(o.name,o.x,o.y+30); }); }
+function drawCoins(){ctx.fillStyle="#ffed00"; coins.forEach(c=>{ctx.beginPath(); ctx.arc(c.x+c.width/2,c.y+c.height/2,c.width/2,0,Math.PI*2); ctx.fill(); ctx.strokeStyle="#000"; ctx.lineWidth=2; ctx.stroke(); }); }
 
-  const gravity = 25;
-    const jumpStrength = 30;
-    const obstacleSpeed = 3;
-    const obstacleInterval = 3500; // ms zwischen Hindernissen
-    const coinInterval = 1900; // ms zwischen Münzen
+function update(){if(!gameRunning)return; player.velocityY+=player.gravity; player.y+=player.velocityY; if(player.y+player.height>HEIGHT){player.y=HEIGHT-player.height;player.velocityY=0;player.isJumping=false;} obstacles.forEach((o,i)=>{o.x-=o.speed;if(o.x+o.width<0)obstacles.splice(i,1);}); coins.forEach((c,i)=>{c.x-=c.speed;if(c.x+c.width<0)coins.splice(i,1);}); for(let o of obstacles){if(player.x<o.x+o.width && player.x+player.width>o.x && player.y<o.y+o.height && player.y+player.height>o.y){endGame(false); return;}} coins.forEach((c,i)=>{if(player.x<c.x+c.width && player.x+player.width>c.x && player.y<c.y+c.height && player.y+player.height>c.y){coins.splice(i,1); score+=1; scoreDisplay.textContent=score; progressFill.style.width=(score/12)*100+"%"; if(score>=12) endGame(true);}} if(Math.random()<0.02)createObstacle(); if(Math.random()<0.01)createCoin();}
+function draw(){ctx.clearRect(0,0,WIDTH,HEIGHT); drawPlayer(); drawObstacles(); drawCoins();}
+function gameLoop(){if(!gameRunning)return; update(); draw(); requestAnimationFrame(gameLoop);}
+function startGame(){score=0;scoreDisplay.textContent=score;progressFill.style.width="0%"; obstacles=[];coins=[];player.x=50;player.y=HEIGHT-player.height;player.velocityY=0;player.isJumping=false;gameRunning=true;startScreen.style.display="none";buttonsContainer.style.display="flex";restartBtn.style.display="none";gameOverText.style.display="none"; gameLoop(); }
+function endGame(won){gameRunning=false; buttonsContainer.style.display="none"; restartBtn.style.display="inline-block"; gameOverText.style.display="block"; gameOverText.focus(); if(won){gameOverText.innerHTML=`🎉 <strong>Gewonnen!</strong> Sie haben 12 FDP-Coins gesammelt! 🎉`; } else{gameOverText.innerHTML=`❌ <strong>Verloren!</strong> Sie haben ein Hindernis getroffen.`; } }
 
-//    const obstacleEmojis = ['🗂️','⏳','📟','📞','📋','👨‍💼','💼','📆','😰','👵️'];
-  //  const obstacleNames = ['Aktenberge','Zeitdruck','Formulare','Telefonate','Protokolle','Bürokraten','Meetings','Kalender','Stress','Kontrolle'];
-    function resetGame() {
-      player.y = canvas.height - player.height;
-      player.velocityY = 0;
-     player.onGround = true;
-     obstacles = [];
-      coins = [];
-      score = 0;
-      gameOver = false;
-      lastObstacleTime = 0;
-      lastCoinTime = 0;
-      coinsDisplay.textContent = score;
-      restartBtn.style.display = 'none';
-      jumpBtn.disabled = false;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      requestAnimationFrame(gameLoop);
-    }
-
-
-  // Spieler-Parameter
- const player = {
-  x: 50,
-  y: HEIGHT - 50,
-  width: 40,
-  height: 40,
-  velocityY: 0,
-  gravity: 1,
-  jumpStrength: 22,
-  speed: 10,
-  jump() {                  // ✅ Richtige Kurzschreibweise für Methoden in Objekten
-    this.velocityY = -this.jumpStrength;
-  }
-};
-
-  // Hindernisse und Münzen
-  let obstacles = [];
-  let coins = [];
-
-  // Spielzustand
-  let score = 0;
-  let gameRunning = false;
-  let keysPressed = { left: false, right: false };
-
-  // DOM Elemente
-  const startBtn = document.getElementById("startBtn");
-  const restartBtn = document.getElementById("restartBtn");
-  const jumpBtn = document.getElementById("jumpBtn");
-  const leftBtn = document.getElementById("leftBtn");
-  const rightBtn = document.getElementById("rightBtn");
-  const buttonsContainer = document.getElementById("buttonsContainer");
-  const startScreen = document.getElementById("startScreen");
-  const scoreDisplay = document.getElementById("score");
-  const progressFill = document.getElementById("progressFill");
-  const gameOverText = document.getElementById("gameOverText");
-
-  // Funktion: Spieler springt
-function update() {
-  if (!gameRunning) return;
-
-  // 1) Gravitation anwenden:
-  player.velocityY += player.gravity;
-  player.y += player.velocityY;
-
-  // 2) Boden-Kollision:
-  if (player.y + player.height > HEIGHT) {
-    player.y = HEIGHT - player.height;
-    player.velocityY = 0;
-    // (falls du isJumping noch verwendest, hier zurücksetzen)
-  }
-
-  // 3) Objekte bewegen und Kollisionen prüfen:
-  obstacles.forEach((ob, i) => {
-    ob.x -= ob.speed;
-    if (ob.x + ob.width < 0) obstacles.splice(i, 1);
-  });
-
-  coins.forEach((coin, i) => {
-    coin.x -= coin.speed;
-    if (coin.x + coin.width < 0) coins.splice(i, 1);
-  });
-
-  // 4) Spieler ↔ Hindernis Kollision
-  for (let ob of obstacles) {
-    if (
-      player.x < ob.x + ob.width &&
-      player.x + player.width > ob.x &&
-      player.y < ob.y + ob.height &&
-      player.y + player.height > ob.y
-    ) {
-      endGame(false);
-      return;
-    }
-  }
-
-  // 5) Spieler ↔ Münzen Kollision
-  coins.forEach((coin, i) => {
-    if (
-      player.x < coin.x + coin.width &&
-      player.x + player.width > coin.x &&
-      player.y < coin.y + coin.height &&
-      player.y + player.height > coin.y
-    ) {
-      coins.splice(i, 1);
-      score++;
-      scoreDisplay.textContent = score;
-      progressFill.style.width = (score / 12) * 100 + "%";
-      if (score >= 12) endGame(true);
-    }
-  });
-}
-function jump() {
-  if (!player.isJumping) {
-    player.velocityY = -player.jumpStrength;
-    player.isJumping = true;
-  }
-}
-
-  // Eventhandler Button Sprung
-  jumpBtn.addEventListener("click", () => {
-    if (gameRunning) jump();
-  });
-
-  // Eventhandler Pfeilbuttons
-  leftBtn.addEventListener("click", () => {
-    if (gameRunning) movePlayer("left");
-  });
-  rightBtn.addEventListener("click", () => {
-    if (gameRunning) movePlayer("right");
-  });
-
-  // Funktion: Spieler bewegt sich links/rechts
-  function movePlayer(direction) {
-    if (direction === "left") {
-      player.x -= player.speed;
-      if (player.x < 0) player.x = 0;
-    } else if (direction === "right") {
-      player.x += player.speed;
-      if (player.x + player.width > WIDTH) player.x = WIDTH - player.width;
-    }
-  }
-
-  // Funktion: Hindernisse erstellen (z.B. "Formulare")
-// 1) Arrays
-const obstacleEmojis = ['🗂️🏗️','⏳🐌','🧾👻','📞','🛋️⏱️','🧟','💰🛸','🌳📜','🤹‍♂️⚖️','👁️‍🗨️🔍'];
-const obstacleNames  = ['Aktenlast-Baustelle','Zeitfresser','Formularfluch','Endlose Gespräche','Sitzungsmarathon','Bürokraten','Budget-Klau','Paragraphen-Dschungel','Verwaltungs-Hickhack','Kontrollwahn'];
-
-// 2) Obstacle-Erzeugung
-function createObstacle() {
-  // Wenn es schon Hindernisse gibt, prüfe den Abstand zum letzten
-  if (obstacles.length > 0) {
-    const lastObstacle = obstacles[obstacles.length - 1];
-    if (lastObstacle.x > WIDTH - 300) {
-      // Noch zu nah am rechten Rand, kein neues Hindernis erzeugen
-      return;
-    }
-  }
-
-  // Zufällige Höhe zwischen 30 und 70 Pixel über dem Boden
-  const minHeight = HEIGHT - 70;
-  const maxHeight = HEIGHT - 30;
-  const yPos = Math.random() * (maxHeight - minHeight) + minHeight;
-
-  // Neues Hindernis erzeugen
-  const index = Math.floor(Math.random() * obstacleEmojis.length);
-  obstacles.push({
-    emoji: obstacleEmojis[index],
-    name: obstacleNames[index],
-    width: 40,
-    height: 40,
-    x: WIDTH,
-    y: yPos,
-    speed: obstacleSpeed + Math.random() * 2
-  });
-}
-
-
-
-// 4) Draw-Funktion in gameLoop
-function draw() {
-  ctx.clearRect(0, 0, WIDTH, HEIGHT);
-  drawPlayer();
-  drawObstacles();   // ← muss hier stehen, damit Hindernisse (Emoji + Name) gerendert werden
-  drawCoins();
-}
-
-function drawObstacles() {
-  obstacles.forEach(obstacle => {
-    // Emoji zeichnen
-    ctx.font = '30px Calibri';
-    ctx.fillText(obstacle.emoji, obstacle.x, obstacle.y);
-    
-    // Beschriftung darunter zeichnen
-    ctx.font = '16px Calibri';
-    ctx.fillStyle = 'cyan';  // Farbe der Beschriftung
-    ctx.fillText(obstacle.name, obstacle.x, obstacle.y + 30); // 30px unter dem Emoji
-  });
-}
-
-
-
-  // Funktion: Münzen erstellen
-  function createCoin() {
-    const size = 23;
-    const x = WIDTH + Math.random() * 300;
-    const y = HEIGHT - 80 - Math.random() * 80;
-    coins.push({ x, y, width: size, height: size, speed: 5 });
-  }
-
-  // Spieler zeichnen (ein pinkfarbener Kreis als FDP-Coin-Sammler)
-  function drawPlayer() {
-    ctx.fillStyle = "#e5007d";
-    ctx.beginPath();
-    ctx.arc(player.x + player.width / 2, player.y + player.height / 2, player.width / 2, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  // Münzen zeichnen (gelbe Kreise)
-  function drawCoins() {
-    ctx.fillStyle = "#ffed00";
-    coins.forEach((coin) => {
-      ctx.beginPath();
-      ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
-      ctx.fill();
-      // Schwarzer Rand
-      ctx.strokeStyle = "#000";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-    });
-  }
-
-  // Spiel aktualisieren
-  function update() {
-    if (!gameRunning) return;
-
-    // Spieler Physik
-    player.velocityY += player.gravity;
-    player.y += player.velocityY;
-
-    // Boden-Kollision
-    if (player.y + player.height > HEIGHT) {
-      player.y = HEIGHT - player.height;
-      player.velocityY = 0;
-      player.isJumping = false;
-    }
-
-    // Hindernisse bewegen
-    obstacles.forEach((ob, i) => {
-      ob.x -= ob.speed;
-      if (ob.x + ob.width < 0) obstacles.splice(i, 1);
-    });
-
-    // Münzen bewegen
-    coins.forEach((coin, i) => {
-      coin.x -= coin.speed;
-      if (coin.x + coin.width < 0) coins.splice(i, 1);
-    });
-
-    // Kollision Spieler <-> Hindernisse
-    for (let ob of obstacles) {
-      if (
-        player.x < ob.x + ob.width &&
-        player.x + player.width > ob.x &&
-        player.y < ob.y + ob.height &&
-        player.y + player.height > ob.y
-      ) {
-        // Spielende durch Kollision mit Hindernis
-        endGame(false);
-        return;
-      }
-    }
-
-    // Kollision Spieler <-> Münzen
-    coins.forEach((coin, i) => {
-      if (
-        player.x < coin.x + coin.width &&
-        player.x + player.width > coin.x &&
-        player.y < coin.y + coin.height &&
-        player.y + player.height > coin.y
-      ) {
-        coins.splice(i, 1);
-        score += 1;
-        scoreDisplay.textContent = score;
-        progressFill.style.width = (score / 12) * 100 + "%";
-
-        if (score >= 12) {
-          endGame(true);
-        }
-      }
-    });
-
-    // Münzen und Hindernisse mit bestimmter Wahrscheinlichkeit erzeugen
-    if (Math.random() < 0.02) createObstacle();
-    if (Math.random() < 0.01) createCoin();
-  }
-
-  // Spiel zeichnen
-  function draw() {
-    ctx.clearRect(0, 0, WIDTH, HEIGHT);
-    drawPlayer();
-    drawObstacles();
-    drawCoins();
-  }
-
-  // Hauptspiel-Schleife
-  function gameLoop() {
-    if (!gameRunning) return;
-    update();
-    draw();
-    requestAnimationFrame(gameLoop);
-  }
-
-  // Spiel starten
-  function startGame() {
-    // Reset
-    score = 0;
-    scoreDisplay.textContent = score;
-    progressFill.style.width = "0%";
-    obstacles = [];
-    coins = [];
-    player.x = 50;
-    player.y = HEIGHT - player.height;
-    player.velocityY = 0;
-    player.isJumping = false;
-    gameRunning = true;
-    startScreen.style.display = "none";
-    buttonsContainer.style.display = "flex";
-    restartBtn.style.display = "none";
-    gameOverText.style.display = "none";
-    gameLoop();
-  }
-
- function endGame(won) {
-  gameRunning = false;
-  buttonsContainer.style.display = "none";
-  restartBtn.style.display = "inline-block";
-  gameOverText.style.display = "block";
-  gameOverText.focus();
-
-  if (won) {
-    gameOverText.innerHTML = `
-      🎉 <strong>Herzlichen Glückwunsch! Gewinnen kann so dynamisch sein: wie meine Politik!</strong> Sie haben 20 FDP-Coins gesammelt und gewonnen! 🎉
-    `;
-  } else {
-    // Emoji-Liste bauen
-    let emojiListHtml = '<div class="emoji-list">';
-    for (let i = 0; i < obstacleEmojis.length; i++) {
-      emojiListHtml += `<div><span>${obstacleEmojis[i]}</span> <strong>${obstacleNames[i]}</strong></div>`;
-    }
-    emojiListHtml += '</div>';
-
-    // Text + Emoji-Liste anzeigen
-    gameOverText.innerHTML = `
-      ❌ <strong>Oh nein!</strong> Sie haben ein Hindernis getroffen und verloren. Versuchen Sie es noch einmal.
-    `;
-  }
-}
-  const backToHomeBtn = document.getElementById("backToHomeBtn");
-
-backToHomeBtn.addEventListener("click", () => {
-  window.location.href = "index.html"; // oder passe den Link an deine Startseite an
-});
-
-
-  // Neustart
-  restartBtn.addEventListener("click", startGame);
-
-  // Start-Button
-  startBtn.addEventListener("click", startGame);
-
-  // Steuerung mit Pfeiltasten (optional)
-  window.addEventListener("keydown", (e) => {
-    if (!gameRunning) return;
-    if (e.code === "ArrowLeft") {
-      movePlayer("left");
-    } else if (e.code === "ArrowRight") {
-      movePlayer("right");
-    } else if (e.code === "Space") {
-      jump();
-    }
-  });
+jumpBtn.addEventListener("click",()=>{if(gameRunning)jump();});
+leftBtn.addEventListener("click",()=>{if(gameRunning)movePlayer("left");});
+rightBtn.addEventListener("click",()=>{if(gameRunning)movePlayer("right");});
+restartBtn.addEventListener("click",startGame);
+startBtn.addEventListener("click",startGame);
+window.addEventListener("keydown",(e)=>{if(!gameRunning)return; if(e.code==="ArrowLeft") movePlayer("left"); else if(e.code==="ArrowRight") movePlayer("right"); else if(e.code==="Space") jump(); });
+document.getElementById("backToHomeBtn").addEventListener("click",()=>{window.location.href="index.html";});
 </script>
 </body>
 </html>
