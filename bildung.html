@@ -1,201 +1,145 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Umwelt - Heschu Hasan</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"/>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bildung - Heschu Hasan</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 <style>
-  :root {
-    --magenta: #e5007d;
-    --black: #000000;
-    --white: #ffffff;
-  }
+:root {
+  --magenta: #e5007d;
+  --black: #000000;
+  --white: #ffffff;
+  --turquoise: #00abae; /* für ausgewählte Boxen */
+}
+* { box-sizing: border-box; }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+body {
+  margin: 0;
+  background-color: var(--white);
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+  color: var(--black);
+  position: relative;
+}
 
-  body {
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    background-color: var(--white);
-    color: var(--black);
-    line-height: 1.6;
-    margin: 0;
-  }
+/* Weißer halbtransparenter Mantel */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255,255,255,0.85);
+  z-index: -1;
+}
 
-  a {
-    color: var(--magenta);
-    text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  a:hover,
-  a:focus {
-    color: var(--black);
-    outline: none;
-  }
+a {
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+a:hover, a:focus { color: var(--magenta); outline: none; }
 
-  header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--magenta);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
+header {
+  background-color: var(--white);
+  border-bottom: 2px solid var(--magenta);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  z-index: 10;
+  position: relative;
+}
+header h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--magenta);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 
-  header h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--black);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
+nav a { font-weight: 600; font-size: 1rem; margin-left: 25px; }
+nav a.active, nav a:hover { color: var(--magenta); font-weight: 700; }
 
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
 
-  nav a {
-    font-weight: 600;
-    font-size: 1rem;
-  }
+main h2 {
+  color: var(--black);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+main h3 {
+  color: var(--black);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+main p {
+  color: var(--black);
+  font-weight: 300;
+  font-size: 1.1rem;
+  max-width: 700px;
+}
 
-  nav a.active,
-  nav a:hover {
-    color: var(--magenta);
-    font-weight: 700;
-  }
+.bildung-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
+}
+.box {
+  width: 100%;
+  max-width: 300px;
+  border: 2px solid var(--magenta);
+  background-color: var(--white);
+  color: var(--black);
+  padding: 20px;
+  border-radius: 5px;
+  font-weight: 300;
+  font-size: 1.1rem;
+  user-select: none;
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.box p { font-weight: 300; font-size: 1.1rem; }
+.box h3 { margin-top: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
 
-  main {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
+.box:hover { border-color: var(--magenta); }
+.box:focus, .box.selected { background-color: var(--magenta); color: var(--white); outline: none; border-color: var(--magenta); }
+.box.show { opacity: 1; transform: translateY(0); }
 
-  main h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--magenta);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
+footer {
+  background-color: var(--magenta);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+  z-index: 10;
+}
+footer h3 { margin: 0 0 15px; font-weight: 700; text-transform: uppercase; }
+footer .social-links a { color: var(--white); font-size: 30px; margin: 0 15px; transition: color 0.3s ease; }
+footer .social-links a:hover, footer .social-links a:focus { color: var(--white); outline: none; }
 
-  main h3 {
-    font-size: 1.2rem;
-    color: var(--black);
-    margin-bottom: 20px;
-  }
-
-  .bildung-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 30px;
-    justify-content: center;
-  }
-
-  .box {
-    flex: 1 1 260px;
-    max-width: 300px;
-    border: 2px solid var(--magenta);
-    background-color: var(--white);
-    color: var(--black);
-    padding: 20px;
-    border-radius: 6px;
-    font-size: 1.05rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  .box.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .box:hover {
-    background: var(--magenta);
-    color: var(--white);
-    border-color: var(--magenta);
-  }
-
-  .box h3 {
-    margin-top: 0;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .box p {
-    font-weight: 400;
-    font-size: 1rem;
-  }
-
-  footer {
-    background: var(--black);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 60px;
-  }
-
-  footer h3 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  footer .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 10px;
-  }
-
-  footer .social-links a {
-    font-size: 1.6rem;
-    color: var(--white);
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  footer .social-links a:hover {
-    color: var(--black);
-    transform: scale(1.2);
-  }
-
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px;
-    }
-    nav {
-      margin-top: 10px;
-      gap: 10px;
-    }
-    .bildung-boxes {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+@media (max-width: 768px) {
+  header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
+  nav a { margin-left: 0; margin-right: 15px; }
+  .bildung-boxes { flex-direction: column; align-items: center; }
+}
 </style>
 </head>
 <body>
@@ -204,37 +148,36 @@
   <h1>HESCHU HASAN</h1>
   <nav>
     <a href="index.html">Startseite</a>
-    <a href="bildung.html">Bildung</a>
-    <a href="umwelt.html" class="active">Umwelt</a>
+    <a href="bildung.html" class="active">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
     <a href="meinungsmacher.html">Meinungs-Macher</a>
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
 
 <main>
-  <h2>Meine Umweltthemen</h2>
+  <h2>Meine Bildungsthemen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
-
-  <div class="bildung-boxes">
-    <a href="klimaschutz.html#energiewende" class="box">
-      <h3>Klimaschutz & Energiewende</h3>
-      <p>Förderung nachhaltiger Energien und konsequente CO₂-Reduktion.</p>
+  <div class="bildung-boxes" role="list">
+    <a href="kindlich.html" class="box" role="listitem" tabindex="0">
+      <h3>Frühkindliche Bildung</h3>
+      <p>Förderung frühzeitiger Bildung und Entwicklungsmöglichkeiten.</p>
     </a>
-    <a href="wasserwirtschaft.html" class="box">
-      <h3>Wasserwirtschaft</h3>
-      <p>Effiziente Nutzung und Schutz unserer Wasserressourcen.</p>
+    <a href="digitalebildung.html" class="box" role="listitem" tabindex="0">
+      <h3>Digitale Bildung</h3>
+      <p>Integration moderner Technologien in den Schulalltag.</p>
     </a>
-    <a href="abfallwirtschaft.html" class="box">
-      <h3>Abfall & Recycling</h3>
-      <p>Verbesserung der Kreislaufwirtschaft und Müllvermeidung.</p>
+    <a href="fortbildung.html" class="box" role="listitem" tabindex="0">
+      <h3>Lehrerbildung & Fortbildung</h3>
+      <p>Qualitätssteigerung durch bessere Ausbildung und Weiterbildung.</p>
     </a>
-    <a href="naturschutz.html" class="box">
-      <h3>Naturschutz & Biodiversität</h3>
-      <p>Erhalt von Lebensräumen und Artenvielfalt in unserer Region.</p>
+    <a href="schulfinanzierung.html" class="box" role="listitem" tabindex="0">
+      <h3>Schulfinanzierung</h3>
+      <p>Faire und nachhaltige Finanzierung der Bildungseinrichtungen.</p>
     </a>
-    <a href="mobilitaet.html" class="box">
-      <h3>Mobilität & Verkehr</h3>
-      <p>Förderung umweltfreundlicher Verkehrskonzepte und Infrastruktur.</p>
+    <a href="inklusion.html" class="box" role="listitem" tabindex="0">
+      <h3>Inklusion & Chancengleichheit</h3>
+      <p>Bildung für alle, unabhängig von Herkunft und Fähigkeiten.</p>
     </a>
   </div>
 </main>
@@ -246,40 +189,31 @@
       <i class="fab fa-instagram"></i>
     </a>
   </div>
-  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+   <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
   <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
 </footer>
 
 <script>
-  const boxes = document.querySelectorAll('.box');
-
-  function checkBoxes() {
-    const triggerBottom = window.innerHeight * 0.85;
-    boxes.forEach(box => {
-      const boxTop = box.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
-        box.classList.add('show');
-      } else {
-        box.classList.remove('show');
-      }
-    });
-  }
-
-  boxes.forEach(box => {
-    box.addEventListener('click', () => {
-      boxes.forEach(b => b.classList.remove('selected'));
-      box.classList.add('selected');
-    });
-    box.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        box.click();
-      }
-    });
+document.querySelectorAll('.box').forEach(box => {
+  box.addEventListener('click', () => {
+    document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
+    box.classList.add('selected');
   });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); box.click(); }
+  });
+});
 
-  window.addEventListener('scroll', checkBoxes);
-  checkBoxes();
+const boxes = document.querySelectorAll('.box');
+function checkBoxes() {
+  const triggerBottom = window.innerHeight * 0.85;
+  boxes.forEach(box => {
+    const boxTop = box.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) { box.classList.add('show'); } else { box.classList.remove('show'); }
+  });
+}
+window.addEventListener('scroll', checkBoxes);
+checkBoxes();
 </script>
 
 </body>
