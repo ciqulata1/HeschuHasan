@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Bildung - Heschu Hasan</title>
+<title>Umwelt - Heschu Hasan</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"/>
 
@@ -21,11 +21,11 @@
   }
 
   body {
-    margin: 0;
     font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     background-color: var(--white);
     color: var(--black);
     line-height: 1.6;
+    margin: 0;
   }
 
   a {
@@ -35,7 +35,6 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
-
   a:hover,
   a:focus {
     color: var(--black);
@@ -150,7 +149,7 @@
   }
 
   footer {
-    background: var(--black);
+    background: var(--magenta);
     color: var(--white);
     text-align: center;
     padding: 30px 20px;
@@ -205,37 +204,37 @@
   <h1>HESCHU HASAN</h1>
   <nav>
     <a href="index.html">Startseite</a>
-    <a href="bildung.html" class="active">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html" class="active">Umwelt</a>
     <a href="meinungsmacher.html">Meinungs-Macher</a>
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
 
 <main>
-  <h2>Meine Bildungsthemen</h2>
+  <h2>Meine Umweltthemen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
 
   <div class="bildung-boxes">
-    <a href="kindlich.html" class="box">
-      <h3>Frühkindliche Bildung</h3>
-      <p>Förderung frühzeitiger Bildung und Entwicklungsmöglichkeiten.</p>
+    <a href="klimaschutz.html#energiewende" class="box">
+      <h3>Klimaschutz & Energiewende</h3>
+      <p>Förderung nachhaltiger Energien und konsequente CO₂-Reduktion.</p>
     </a>
-    <a href="digitalebildung.html" class="box">
-      <h3>Digitale Bildung</h3>
-      <p>Integration moderner Technologien in den Schulalltag.</p>
+    <a href="wasserwirtschaft.html" class="box">
+      <h3>Wasserwirtschaft</h3>
+      <p>Effiziente Nutzung und Schutz unserer Wasserressourcen.</p>
     </a>
-    <a href="fortbildung.html" class="box">
-      <h3>Lehrerbildung & Fortbildung</h3>
-      <p>Qualitätssteigerung durch bessere Ausbildung und Weiterbildung.</p>
+    <a href="abfallwirtschaft.html" class="box">
+      <h3>Abfall & Recycling</h3>
+      <p>Verbesserung der Kreislaufwirtschaft und Müllvermeidung.</p>
     </a>
-    <a href="schulfinanzierung.html" class="box">
-      <h3>Schulfinanzierung</h3>
-      <p>Faire und nachhaltige Finanzierung der Bildungseinrichtungen.</p>
+    <a href="naturschutz.html" class="box">
+      <h3>Naturschutz & Biodiversität</h3>
+      <p>Erhalt von Lebensräumen und Artenvielfalt in unserer Region.</p>
     </a>
-    <a href="inklusion.html" class="box">
-      <h3>Inklusion & Chancengleichheit</h3>
-      <p>Bildung für alle, unabhängig von Herkunft und Fähigkeiten.</p>
+    <a href="mobilitaet.html" class="box">
+      <h3>Mobilität & Verkehr</h3>
+      <p>Förderung umweltfreundlicher Verkehrskonzepte und Infrastruktur.</p>
     </a>
   </div>
 </main>
@@ -247,7 +246,7 @@
       <i class="fab fa-instagram"></i>
     </a>
   </div>
-    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
   <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
 </footer>
 
@@ -265,6 +264,19 @@
       }
     });
   }
+
+  boxes.forEach(box => {
+    box.addEventListener('click', () => {
+      boxes.forEach(b => b.classList.remove('selected'));
+      box.classList.add('selected');
+    });
+    box.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        box.click();
+      }
+    });
+  });
 
   window.addEventListener('scroll', checkBoxes);
   checkBoxes();
