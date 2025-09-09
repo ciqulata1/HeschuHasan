@@ -19,16 +19,17 @@
     }
 
     body {
+      margin: 0;
       font-family: "Calibri", Candara, Arial, sans-serif;
       font-weight: 400;
       line-height: 1.6;
       color: var(--black);
       background-image: url('Lieberalismus.png');
+      background-size: contain;        /* das ganze Bild sichtbar */
       background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      background-attachment: fixed;
-      background-color: var(--white);
+      background-position: center center; /* zentriert */
+      background-attachment: fixed;   /* bleibt beim Scrollen */
+      background-color: var(--white); /* fallback */
     }
 
     a {
@@ -38,11 +39,12 @@
 
     a:hover,
     a:focus {
+      text-decoration: underline;
     }
 
     /* ================= Header ================= */
     #fdp-logo {
-      margin-right: 15px;
+      margin-left: 10px;
       max-height: 45px;
     }
 
@@ -52,25 +54,17 @@
       padding: 20px 40px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
 
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
       color: var(--magenta);
+      margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-    }
-
-    nav {
-      margin-left: auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
     }
 
     nav a {
@@ -89,14 +83,11 @@
 
     /* ================= Main ================= */
     main {
+      padding: 30px 5%;
       max-width: 900px;
       margin: 0 auto;
-      padding: 30px 5%;
-      background-color: rgba(255,255,255,0.85);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 20px;
-      margin-bottom: 40px;
+      background-color: rgba(255, 255, 255, 0.85); /* leicht transparente Box für bessere Lesbarkeit */
+      border-radius: 8px;
     }
 
     main h2 {
@@ -116,8 +107,8 @@
 
     p {
       font-size: 1.1rem;
-      margin-bottom: 1rem;
       line-height: 1.6;
+      margin-bottom: 1rem;
     }
 
     .themenbox {
@@ -159,17 +150,8 @@
       border: 2px solid var(--magenta);
     }
 
-
-    .image-caption {
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--black);
-      margin-top: 8px;
-      font-style: italic;
-    }
-        /* ================= Profile Images ================= */
+    /* ================= Profile Images ================= */
     .profile-images {
-      position: relative;
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -177,25 +159,7 @@
       margin-bottom: 40px;
     }
 
-    .profile-images::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 400px;
-      height: 400px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.3;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
     .profile-image-container {
-      position: relative;
-      z-index: 1;
       width: 220px;
       border: 4px solid var(--magenta);
       border-radius: 6px;
@@ -212,6 +176,14 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    .image-caption {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--black);
+      margin-top: 8px;
+      font-style: italic;
     }
 
     /* ================= Footer ================= */
@@ -247,12 +219,15 @@
       header {
         padding: 15px 20px;
       }
+
       nav {
         margin-top: 15px;
       }
+
       nav a {
         margin: 5px 10px 0 0;
       }
+
       main {
         padding: 20px;
       }
@@ -262,26 +237,26 @@
 <body>
 
 <header>
-  <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo">
-  <h1>HESCHU HASAN</h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="mission.html">Meine Mission</a>
-    <a href="impressum.html">Impressum</a>
-  </nav>
+   <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo">
+   <h1>HESCHU HASAN</h1>
+   <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="impressum.html">Impressum</a>
+   </nav>
 </header>
 
 <main>
   <div class="profile-images">
     <div class="profile-image-container">
-      <img src="IMG_2219.jpeg" alt="Selfie bei Run4Europe" class="profile-image">
+      <img src="IMG_2219.jpeg" alt="Selfie von Heschu Hasan bei Run4Europe, Mai 2025" class="profile-image">
       <p class="image-caption">Selfie bei Run4Europe, Mai 2025</p>
     </div>
     <div class="profile-image-container">
-      <img src="9DB5DEE5-8A50-4381-8592-ACD72D5B0A4A.jpeg" alt="Digitaler Wahlkampf" class="profile-image">
+      <img src="9DB5DEE5-8A50-4381-8592-ACD72D5B0A4A.jpeg" alt="Heschu Hasan im digitalen Wahlkampf, März 2026" class="profile-image">
       <p class="image-caption">Digitaler Wahlkampf 2026, Wahlkreis 46</p>
     </div>
   </div>
