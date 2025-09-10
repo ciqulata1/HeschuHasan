@@ -8,11 +8,14 @@
 
   <style>
     :root {
-      --yellow: #ffed00;
       --magenta: #e5007d;
-      --cyan: #009ee3;
       --black: #000000;
       --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      hyphens: auto;
     }
 
     body {
@@ -20,11 +23,15 @@
       background-color: var(--white);
       color: var(--black);
       font-family: "Calibri", Candara, Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
 
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--black);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -33,19 +40,11 @@
     }
 
     header h1 {
-      color: var(--yellow);
+      color: var(--black);
       margin: 0;
       font-size: 1.8rem;
-    }
-
-    .logo-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .logo-wrapper img {
-      height: 80px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
     }
 
     nav {
@@ -60,11 +59,13 @@
       font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--cyan);
+      color: var(--black);
       text-decoration: none;
     }
 
-    nav a.active {
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
       font-weight: 700;
     }
 
@@ -75,12 +76,18 @@
       text-align: center;
     }
 
+    h2 {
+      color: var(--magenta);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
     .info-box {
-      border: 3px solid var(--cyan);
+      border: 2px solid var(--black);
       border-radius: 10px;
       padding: 20px 30px;
-      margin: 0 auto;
-      display: inline-block;
+      margin: 0 auto 30px auto;
       max-width: 600px;
       background-color: var(--white);
       color: var(--black);
@@ -88,22 +95,20 @@
       font-size: 1.1rem;
     }
 
-    h2 {
-      color: var(--yellow);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      border: 3px solid var(--magenta);
-      padding: 10px 20px;
-      display: inline-block;
-      border-radius: 8px;
-    }
-
     footer {
-      background-color: var(--cyan);
+      background-color: var(--black);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
-      font-weight: 600;
+      font-weight: 500;
+    }
+
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      color: var(--magenta);
+      font-weight: 700;
     }
 
     footer .social-links a {
@@ -128,14 +133,17 @@
       }
     }
   </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
 </head>
 <body>
 
 <header>
-  <div class="logo-wrapper">
-    <img src="IMG_2310.png" alt="Heschu Hasan" />
-    <h1>HESCHU HASAN</h1>
-  </div>
+  <h1>HESCHU HASAN</h1>
   <nav>
     <a href="index.html">Startseite</a>
     <a href="bildung.html" class="active">Bildung</a>
@@ -171,6 +179,8 @@
       <i class="fa-brands fa-instagram"></i>
     </a>
   </div>
+  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
 </footer>
 
 </body>
