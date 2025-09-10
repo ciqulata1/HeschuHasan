@@ -92,11 +92,8 @@ main {
 }
 
 .box {
-  flex: 1 1 260px;
-  max-width: 300px;
-  min-height: 140px;
+  background-color: rgba(255, 255, 255, 0.85); /* halbtransparent statt komplett weiß */
   border: 2px solid var(--magenta);
-  background-color: var(--white);
   color: var(--black);
   padding: 20px;
   border-radius: 6px;
@@ -113,13 +110,15 @@ main {
   word-wrap: break-word;
 }
 
+
 .box.show { opacity: 1; transform: translateY(0); }
 
 .box:hover {
-  background-color: var(--magenta);
+  background-color: rgba(229, 0, 125, 0.9); /* Magenta mit Transparenz */
   color: var(--white);
   border-color: var(--magenta);
 }
+
 
 .box h3 {
   margin: 0 0 10px;
