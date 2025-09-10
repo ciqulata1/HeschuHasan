@@ -42,32 +42,28 @@
     outline: none;
   }
 
-  header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--magenta);
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
+header {
+  background-color: var(--white);
+  border-bottom: 2px solid var(--magenta);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  z-index: 10;
+  position: relative;
+}
+header h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--magenta);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 
-  header h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--magenta);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  nav {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
+nav a { font-weight: 600; font-size: 1rem; margin-left: 25px; }
+nav a.active, nav a:hover { color: var(--magenta); font-weight: 700; }
 
   nav a {
     font-weight: 600;
