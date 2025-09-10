@@ -15,13 +15,12 @@
 
 body {
   margin: 0;
-  background-color: var(--white);
-  background-image: url('Vision.png');
-  background-size: cover;
-  background-position: center top;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
   color: var(--black);
   position: relative;
+  background: url('Vision.png') no-repeat center top;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 /* Weißer halbtransparenter Mantel */
@@ -82,16 +81,18 @@ main h2 {
   color: var(--magenta);
   font-weight: 700;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
 main h3 {
   color: var(--black);
   font-weight: 600;
   font-size: 1.25rem;
   margin-bottom: 20px;
 }
+
 main p {
   color: var(--black);
   font-weight: 300;
@@ -99,12 +100,20 @@ main p {
   max-width: 700px;
 }
 
+.spruch {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--magenta);
+  text-align: center;
+  margin: 30px 0 20px;
+}
+
 .bildung-boxes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .box {
@@ -155,13 +164,8 @@ main p {
 }
 
 @media (max-width: 768px) {
-  .bildung-boxes {
-    flex-direction: column;
-    align-items: center;
-  }
-  .box {
-    max-width: 90%; 
-  }
+  .bildung-boxes { flex-direction: column; align-items: center; }
+  .box { max-width: 90%; }
 }
 
 footer {
@@ -175,6 +179,7 @@ footer {
 footer h3 { margin: 0 0 15px; font-weight: 700; text-transform: uppercase; }
 footer .social-links a { color: var(--white); font-size: 30px; margin: 0 15px; transition: color 0.3s ease; }
 footer .social-links a:hover, footer .social-links a:focus { color: var(--white); outline: none; }
+
 </style>
 </head>
 <body>
@@ -193,6 +198,8 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
 <main>
   <h2>Meine Umweltthemen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+  <p class="spruch">Mit Wind, Solar und Power-to-X – Zukunft gestalten, geht wie nix!</p>
+
   <div class="bildung-boxes" role="list">
     <a href="klimaschutz.html" class="box" role="listitem" tabindex="0">
       <h3>Klimaschutz & Energiewende</h3>
