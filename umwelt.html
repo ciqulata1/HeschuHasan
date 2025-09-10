@@ -15,24 +15,30 @@
 
 body {
   margin: 0;
-  background-color: var(--white);
   font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
   color: var(--black);
   position: relative;
+  min-height: 100vh;
+  background-color: var(--white);
 }
 
-/* Wasserzeichen Hintergrund */
+/* Hintergrundbild als Wasserzeichen */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url('Vision.png') no-repeat center center;
+  background-image: url('Vision.png');
   background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0.15;
   z-index: -1;
 }
 
-#fdp-logo { margin-left: 10px; max-height: 45px; }
+#fdp-logo {
+  margin-left: 10px;
+  max-height: 45px;
+}
 
 a {
   color: var(--black);
@@ -66,6 +72,14 @@ header h1 {
 nav a { font-weight: 600; font-size: 1rem; margin-left: 25px; }
 nav a.active, nav a:hover { color: var(--magenta); font-weight: 700; }
 
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
 main h2 {
   color: var(--magenta);
   font-weight: 700;
@@ -87,28 +101,20 @@ main p {
   max-width: 700px;
 }
 
-.spruch {
-  font-weight: 600;
-  font-size: 1.5rem;
-  color: var(--magenta);
-  text-align: center;
-  margin-bottom: 40px;
-}
-
 .bildung-boxes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .box {
-  flex: 1 1 260px;
+  flex: 0 1 260px;
   max-width: 300px;
   min-height: 140px;
   border: 2px solid var(--magenta);
-  background-color: var(--white);
+  background-color: rgba(255,255,255,0.95);
   color: var(--black);
   padding: 20px;
   border-radius: 6px;
@@ -125,7 +131,10 @@ main p {
   word-wrap: break-word;
 }
 
-.box.show { opacity: 1; transform: translateY(0); }
+.box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .box:hover {
   background-color: var(--magenta);
@@ -139,13 +148,32 @@ main p {
   font-size: 1.1rem;
   text-transform: uppercase;
 }
-.box p { font-weight: 400; font-size: 1rem; margin: 0; line-height: 1.4; }
+
+.box p {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .bildung-boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+  .box {
+    max-width: 90%; 
+  }
+}
 
 footer {
   background-color: var(--black);
   color: var(--white);
   text-align: center;
   padding: 30px 20px;
+  position: relative;
+  z-index: 10;
 }
 footer h3 { margin: 0 0 15px; font-weight: 700; text-transform: uppercase; }
 footer .social-links a { color: var(--white); font-size: 30px; margin: 0 15px; transition: color 0.3s ease; }
@@ -154,7 +182,6 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
 @media (max-width: 768px) {
   header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
   nav a { margin-left: 0; margin-right: 15px; }
-  .bildung-boxes { flex-direction: column; align-items: center; }
 }
 </style>
 </head>
@@ -172,31 +199,28 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
 </header>
 
 <main>
-  <p class="spruch">Mit Wind, Solar und Power-to-X – Zukunft gestalten, geht wie nix!</p>
-
   <h2>Meine Umweltthemen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
-
   <div class="bildung-boxes" role="list">
+    <a href="solar.html" class="box" role="listitem" tabindex="0">
+      <h3>Solarenergie</h3>
+      <p>Förderung erneuerbarer Energien durch Solarprojekte.</p>
+    </a>
+    <a href="wind.html" class="box" role="listitem" tabindex="0">
+      <h3>Windkraft</h3>
+      <p>Saubere Energie aus Windkraft für unsere Zukunft.</p>
+    </a>
+    <a href="wasser.html" class="box" role="listitem" tabindex="0">
+      <h3>Wassermanagement</h3>
+      <p>Nachhaltiger Umgang mit Wasserressourcen und Infrastruktur.</p>
+    </a>
+    <a href="energieeffizienz.html" class="box" role="listitem" tabindex="0">
+      <h3>Energieeffizienz</h3>
+      <p>Optimierung von Energieverbrauch und Reduzierung von Emissionen.</p>
+    </a>
     <a href="klimaschutz.html" class="box" role="listitem" tabindex="0">
-      <h3>Klimaschutz & Energiewende</h3>
-      <p>Förderung von Wind-, Solar- & Power-to-X-Technologien.</p>
-    </a>
-    <a href="wasserwirtschaft.html" class="box" role="listitem" tabindex="0">
-      <h3>Wasserwirtschaft</h3>
-      <p>Schutz und effiziente Nutzung unserer Wasserressourcen.</p>
-    </a>
-    <a href="abfall.html" class="box" role="listitem" tabindex="0">
-      <h3>Abfall & Recycling</h3>
-      <p>Nachhaltige Kreislaufwirtschaft und Müllvermeidung.</p>
-    </a>
-    <a href="naturschutz.html" class="box" role="listitem" tabindex="0">
-      <h3>Naturschutz & Biodiversität</h3>
-      <p>Erhalt von Lebensräumen und Artenvielfalt.</p>
-    </a>
-    <a href="mobilitaet.html" class="box" role="listitem" tabindex="0">
-      <h3>Mobilität & Verkehr</h3>
-      <p>Förderung umweltfreundlicher Verkehrskonzepte.</p>
+      <h3>Klimaschutz</h3>
+      <p>Maßnahmen gegen den Klimawandel für unsere Region.</p>
     </a>
   </div>
 </main>
@@ -208,7 +232,7 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
       <i class="fab fa-instagram"></i>
     </a>
   </div>
-  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+   <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
   <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
 </footer>
 
