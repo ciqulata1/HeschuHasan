@@ -57,6 +57,7 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--black);
+      transition: color 0.3s ease;
     }
 
     nav a.active,
@@ -79,8 +80,9 @@
     p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem; }
 
     .themenbox {
-      background-color: var(--white);
-      color: var(--black);
+      background-color: var(--white); /* Standard weiß */
+      color: var(--black);             /* Text schwarz */
+      border: 2px solid var(--black);  /* Umrandung schwarz */
       border-radius: 8px;
       padding: 14px 24px;
       margin: 15px 0;
@@ -92,9 +94,15 @@
     }
 
     .themenbox:hover {
-      background-color: var(--white);
-      color: var(--black);
-      border: 2px solid var(--black);
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
+
+    .themenbox.active {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
     }
 
     .zurueck-box {
@@ -202,7 +210,19 @@
     <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
   </div>
   <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
 </footer>
+
+<script>
+const themenBoxes = document.querySelectorAll('.themenbox');
+
+themenBoxes.forEach(box => {
+  box.addEventListener('click', () => {
+    themenBoxes.forEach(b => b.classList.remove('active'));
+    box.classList.add('active');
+  });
+});
+</script>
 
 </body>
 </html>
