@@ -15,24 +15,30 @@
 
 body {
   margin: 0;
-  background-color: var(--white);
   font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
   color: var(--black);
   position: relative;
+  min-height: 100vh;
+  background-color: var(--white);
 }
 
-/* Weißer halbtransparenter Mantel */
+/* Hintergrundbild als Wasserzeichen */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-color: rgba(255,255,255,0.85);
+  background-image: url('Haltung.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
   z-index: -1;
 }
-     #fdp-logo {
-      margin-left: 10px;
-      max-height: 45px;
-    }
+
+#fdp-logo {
+  margin-left: 10px;
+  max-height: 45px;
+}
 
 a {
   color: var(--black);
@@ -104,11 +110,11 @@ main p {
 }
 
 .box {
-  flex: 1 1 260px;      /* flex-grow, flex-shrink, flex-basis */
-  max-width: 300px;      /* maximale Breite */
-  min-height: 140px;     /* Minimumhöhe für Text */
+  flex: 0 1 260px;
+  max-width: 300px;
+  min-height: 140px;
   border: 2px solid var(--magenta);
-  background-color: var(--white);
+  background-color: rgba(255,255,255,0.95); /* leicht transparent, damit Hintergrund sichtbar bleibt */
   color: var(--black);
   padding: 20px;
   border-radius: 6px;
@@ -118,12 +124,11 @@ main p {
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
-  box-sizing: border-box;       /* wichtig für Padding */
   display: flex;
   flex-direction: column;
-  justify-content: center;      /* Text vertikal zentrieren */
+  justify-content: center;
   align-items: center;
-  word-wrap: break-word;        /* Textumbruch */
+  word-wrap: break-word;
 }
 
 .box.show {
@@ -177,7 +182,6 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
 @media (max-width: 768px) {
   header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
   nav a { margin-left: 0; margin-right: 15px; }
-  .bildung-boxes { flex-direction: column; align-items: center; }
 }
 </style>
 </head>
@@ -200,8 +204,7 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
   <div class="bildung-boxes" role="list">
     <a href="kindlich.html" class="box" role="listitem" tabindex="0">
       <h3>Frühkindliche Bildung</h3>
-      <p>Förderung frühzeitiger Bildung und 
-        Entwicklungsmöglichkeiten.</p>
+      <p>Förderung frühzeitiger Bildung und Entwicklungsmöglichkeiten.</p>
     </a>
     <a href="digitalebildung.html" class="box" role="listitem" tabindex="0">
       <h3>Digitale Bildung</h3>
