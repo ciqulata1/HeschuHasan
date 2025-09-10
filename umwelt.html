@@ -1,317 +1,288 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Umwelt - Heschu Hasan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Umwelt – Heschu Hasan</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"/>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
-<style>
-:root {
-    --magenta: #e5007d;
-    --black: #000000;
-    --white: #ffffff;
-}
+  <style>
+    :root {
+      --yellow: #ffed00;
+      --magenta: #e5007d;
+      --cyan: #009ee3;
+      --turquoise: #00abae;
+      --black: #000000;
+      --white: #ffffff;
+    }
 
-/* Reset & Body */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-    font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-    background-color: var(--white);
-    color: var(--black);
-    line-height: 1.6;
-    margin: 0;
+    html {
+      scroll-behavior: smooth;
+    }
 
-    /* Hintergrundbild */
-    background-image: url('Vision.png');
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: 60% auto;
-    background-attachment: fixed;
-    position: relative;
-}
+    body {
+      margin: 0;
+      background-color: var(--white);
+      background-image: url('Vision.png');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      transition: opacity 1s ease;
+      hyphens: auto;
+    }
 
-/* Overlay für bessere Lesbarkeit */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    pointer-events: none;
-    z-index: 0;
-}
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
 
-/* Header */
-header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--magenta);
-    padding: 20px 40px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--cyan);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.header-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--cyan);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
 
-header h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--magenta);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-}
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 25px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
-#fdp-logo {
-    max-height: 50px;
-    width: auto;
-}
+    nav a.active,
+    nav a:hover {
+      color: var(--magenta);
+      font-weight: 700;
+    }
 
-/* Navigation */
-nav {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+    main {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-nav a {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--black);
-    text-decoration: none;
-    font-size: 1rem;
-}
+    main h2 {
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
 
-nav a.active,
-nav a:hover {
-    color: var(--magenta);
-    font-weight: 700;
-}
+    main p {
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+    }
 
-/* Main Content */
-main {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
-}
+    .themenbox {
+      border: 2px solid var(--turquoise);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--turquoise);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-main h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--magenta);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
+    .themenbox:hover {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+    }
 
-main h3 {
-    font-size: 1.2rem;
-    color: var(--black);
-    margin-bottom: 20px;
-}
+    .themenbox p {
+      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      hyphens: auto;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
 
-/* Boxen */
-.bildung-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 30px;
-    justify-content: center;
-}
+    footer {
+      background-color: var(--cyan);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+    }
 
-.box {
-    flex: 1 1 260px;
-    max-width: 300px;
-    border: 2px solid var(--magenta);
-    background-color: var(--white);
-    color: var(--black);
-    padding: 20px;
-    border-radius: 6px;
-    font-size: 1.05rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-}
+    footer h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
 
-.box.show {
-    opacity: 1;
-    transform: translateY(0);
-}
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
 
-.box:hover {
-    background: var(--magenta);
-    color: var(--white);
-    border-color: var(--magenta);
-}
+    footer .social-links a:hover,
+    footer .social-links a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
 
-.box h3 {
-    margin-top: 0;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.box p {
-    font-weight: 400;
-    font-size: 1rem;
-}
-
-/* Footer */
-footer {
-    background: var(--black);
-    color: var(--white);
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 60px;
-}
-
-footer h3 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-footer .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 10px;
-}
-
-footer .social-links a {
-    font-size: 1.6rem;
-    color: var(--white);
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-footer .social-links a:hover {
-    color: var(--black);
-    transform: scale(1.2);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .header-top {
+    @media (max-width: 768px) {
+      header {
         flex-direction: column;
         align-items: flex-start;
+        padding: 15px 20px;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
     }
 
-    nav {
-        gap: 10px;
+    .hero-spruch {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-left: 5px solid var(--magenta);
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
     }
+  </style>
 
-    .bildung-boxes {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-</style>
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
 </head>
+
 <body>
-
-<header>
-    <div class="header-top">
-        <h1>HESCHU HASAN</h1>
-        <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" />
-    </div>
+  <header>
+    <h1>HESCHU HASAN</h1>
     <nav>
-        <a href="index.html">Startseite</a>
-        <a href="bildung.html">Bildung</a>
-        <a href="umwelt.html" class="active">Umwelt</a>
-        <a href="meinungsmacher.html">Meinungs-Macher</a>
-        <a href="impressum.html">Impressum</a>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html" class="active">Umwelt</a>
+      <a href="meinungsmacher.html">Meinungs-Macher</a>
+      <a href="mission.html">Meine Mission</a>
+      <a href="biografie.html">Biografie</a>
+      <a href="justiz.html">Justiz</a>
+      <a href="impressum.html">Impressum</a>
     </nav>
-</header>
+  </header>
 
-<main>
-    <h2>Meine Umweltthemen</h2>
-    <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
-
-    <div class="bildung-boxes">
-        <a href="klimaschutz.html#energiewende" class="box">
-            <h3>Klimaschutz & Energiewende</h3>
-            <p>Förderung nachhaltiger Energien (Wind, Solar, Power-to-X) und konsequente CO₂-Reduktion.</p>
-        </a>
-        <a href="wasserwirtschaft.html" class="box">
-            <h3>Wasserwirtschaft</h3>
-            <p>Effiziente Nutzung und Schutz unserer Wasserressourcen.</p>
-        </a>
-        <a href="abfallwirtschaft.html" class="box">
-            <h3>Abfall & Recycling</h3>
-            <p>Verbesserung der Kreislaufwirtschaft und Müllvermeidung.</p>
-        </a>
-        <a href="naturschutz.html" class="box">
-            <h3>Naturschutz & Biodiversität</h3>
-            <p>Erhalt von Lebensräumen und Artenvielfalt in unserer Region.</p>
-        </a>
-        <a href="mobilitaet.html" class="box">
-            <h3>Mobilität & Verkehr</h3>
-            <p>Förderung umweltfreundlicher Verkehrskonzepte und Infrastruktur.</p>
-        </a>
+  <main id="top">
+    <div class="hero-spruch">
+      🌬️☀️⚡ Mit Wind, Solar und Power-to-X – Zukunft gestalten, geht wie nix!
     </div>
-</main>
 
-<footer>
+    <!-- Themenboxen -->
+    <div class="themenbox" onclick="location.href='#energiewende';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#energiewende';">
+      ⚡ Klimaschutz & Energiewende
+    </div>
+
+    <div class="themenbox" onclick="location.href='#wasser';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#wasser';">
+      💧 Wasserwirtschaft
+    </div>
+
+    <div class="themenbox" onclick="location.href='#abfall';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#abfall';">
+      🗑️ Abfall & Recycling
+    </div>
+
+    <div class="themenbox" onclick="location.href='#naturschutz';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#naturschutz';">
+      🌳 Naturschutz & Biodiversität
+    </div>
+
+    <div class="themenbox" onclick="location.href='#mobilitaet';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#mobilitaet';">
+      🚗 Mobilität & Verkehr
+    </div>
+
+    <!-- Inhalte -->
+    <h2 id="energiewende">Klimaschutz & Energiewende</h2>
+    <p>Förderung nachhaltiger Energien wie Wind, Solar und Power-to-X-Technologien. Wir gestalten die Energiewende effizient und zukunftsfähig.</p>
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="wasser">Wasserwirtschaft</h2>
+    <p>Effiziente Nutzung und Schutz unserer Wasserressourcen, um nachhaltige Versorgung sicherzustellen.</p>
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="abfall">Abfall & Recycling</h2>
+    <p>Verbesserung der Kreislaufwirtschaft, Müllvermeidung und nachhaltiges Recycling für unsere Umwelt.</p>
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="naturschutz">Naturschutz & Biodiversität</h2>
+    <p>Erhalt von Lebensräumen und Artenvielfalt in unserer Region. Wir schützen Natur und Umwelt für kommende Generationen.</p>
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+
+    <h2 id="mobilitaet">Mobilität & Verkehr</h2>
+    <p>Förderung umweltfreundlicher Verkehrskonzepte, nachhaltiger Infrastruktur und emissionsarmer Mobilität.</p>
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
+  </main>
+
+  <footer>
     <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links">
-        <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
+    <div class="social-links" aria-label="Soziale Medien">
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
     </div>
-    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
-    <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
-</footer>
-
-<script>
-const boxes = document.querySelectorAll('.box');
-
-function checkBoxes() {
-    const triggerBottom = window.innerHeight * 0.85;
-    boxes.forEach(box => {
-        const boxTop = box.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) box.classList.add('show');
-        else box.classList.remove('show');
-    });
-}
-
-boxes.forEach(box => {
-    box.addEventListener('click', () => {
-        boxes.forEach(b => b.classList.remove('selected'));
-        box.classList.add('selected');
-    });
-    box.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            box.click();
-        }
-    });
-});
-
-window.addEventListener('scroll', checkBoxes);
-checkBoxes();
-</script>
-
+  </footer>
 </body>
 </html>
