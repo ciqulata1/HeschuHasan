@@ -1,288 +1,255 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Umwelt – Heschu Hasan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umwelt - Heschu Hasan</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<style>
+:root {
+  --magenta: #e5007d;
+  --black: #000000;
+  --white: #ffffff;
+}
+* { box-sizing: border-box; }
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+body {
+  margin: 0;
+  background-color: var(--white);
+  background-image: url('Vision.png');
+  background-size: cover;
+  background-position: center top;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
+  color: var(--black);
+  position: relative;
+}
 
-  <style>
-    :root {
-      --yellow: #ffed00;
-      --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
-      --black: #000000;
-      --white: #ffffff;
-    }
+/* Weißer halbtransparenter Mantel */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255,255,255,0.85);
+  z-index: -1;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+#fdp-logo {
+  margin-left: 10px;
+  max-height: 45px;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+a {
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+a:hover, a:focus { color: var(--magenta); outline: none; }
 
-    body {
-      margin: 0;
-      background-color: var(--white);
-      background-image: url('Vision.png');
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: cover;
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-      font-weight: 400;
-      line-height: 1.5;
-      opacity: 0;
-      transition: opacity 1s ease;
-      hyphens: auto;
-    }
+header {
+  background-color: var(--white);
+  border-bottom: 2px solid var(--magenta);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  z-index: 10;
+  position: relative;
+}
+header h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--magenta);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 
-    a {
-      color: var(--cyan);
-      text-decoration: none;
-    }
-    a:hover,
-    a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
+nav a { font-weight: 600; font-size: 1rem; margin-left: 25px; }
+nav a.active, nav a:hover { color: var(--magenta); font-weight: 700; }
 
-    header {
-      background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
 
-    header h1 {
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--cyan);
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
+main h2 {
+  color: var(--magenta);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+main h3 {
+  color: var(--black);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+main p {
+  color: var(--black);
+  font-weight: 300;
+  font-size: 1.1rem;
+  max-width: 700px;
+}
 
-    nav a {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-left: 25px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+.bildung-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
+}
 
-    nav a.active,
-    nav a:hover {
-      color: var(--magenta);
-      font-weight: 700;
-    }
+.box {
+  flex: 1 1 260px;
+  max-width: 300px;
+  min-height: 140px;
+  border: 2px solid var(--magenta);
+  background-color: var(--white);
+  color: var(--black);
+  padding: 20px;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word;
+}
 
-    main {
-      padding: 20px 40px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+.box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    main h2 {
-      color: var(--cyan);
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
+.box:hover {
+  background-color: var(--magenta);
+  color: var(--white);
+  border-color: var(--magenta);
+}
 
-    main p {
-      font-size: 1.1rem;
-      margin-bottom: 1.25rem;
-      color: var(--black);
-    }
+.box h3 {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
 
-    .themenbox {
-      border: 2px solid var(--turquoise);
-      border-radius: 8px;
-      padding: 16px 24px;
-      margin-bottom: 20px;
-      text-align: center;
-      font-weight: 600;
-      color: var(--turquoise);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+.box p {
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.4;
+}
 
-    .themenbox:hover {
-      background-color: var(--magenta);
-      color: var(--white);
-      border-color: var(--magenta);
-    }
+@media (max-width: 768px) {
+  .bildung-boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+  .box {
+    max-width: 90%; 
+  }
+}
 
-    .themenbox p {
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      font-weight: 300;
-      font-size: 1.1rem;
-      hyphens: auto;
-      word-break: break-word;
-      overflow-wrap: break-word;
-    }
-
-    footer {
-      background-color: var(--cyan);
-      color: var(--white);
-      text-align: center;
-      padding: 30px 20px;
-      font-weight: 500;
-    }
-
-    footer h3 {
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-
-    footer .social-links a {
-      color: var(--white);
-      font-size: 30px;
-      margin: 0 15px;
-      transition: color 0.3s ease;
-    }
-
-    footer .social-links a:hover,
-    footer .social-links a:focus {
-      color: var(--magenta);
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-      }
-      nav a {
-        margin-left: 0;
-        margin-right: 15px;
-      }
-    }
-
-    .hero-spruch {
-      background-color: rgba(255, 255, 255, 0.7);
-      border-left: 5px solid var(--magenta);
-      padding: 12px 20px;
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-  </style>
-
-  <script>
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '1';
-    });
-  </script>
+footer {
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+  z-index: 10;
+}
+footer h3 { margin: 0 0 15px; font-weight: 700; text-transform: uppercase; }
+footer .social-links a { color: var(--white); font-size: 30px; margin: 0 15px; transition: color 0.3s ease; }
+footer .social-links a:hover, footer .social-links a:focus { color: var(--white); outline: none; }
+</style>
 </head>
-
 <body>
-  <header>
-    <h1>HESCHU HASAN</h1>
-    <nav>
-      <a href="index.html">Startseite</a>
-      <a href="bildung.html">Bildung</a>
-      <a href="umwelt.html" class="active">Umwelt</a>
-      <a href="meinungsmacher.html">Meinungs-Macher</a>
-      <a href="mission.html">Meine Mission</a>
-      <a href="biografie.html">Biografie</a>
-      <a href="justiz.html">Justiz</a>
-      <a href="impressum.html">Impressum</a>
-    </nav>
-  </header>
 
-  <main id="top">
-    <div class="hero-spruch">
-      🌬️☀️⚡ Mit Wind, Solar und Power-to-X – Zukunft gestalten, geht wie nix!
-    </div>
+<header>
+  <h1>HESCHU HASAN<img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" /></h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html" class="active">Umwelt</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
 
-    <!-- Themenboxen -->
-    <div class="themenbox" onclick="location.href='#energiewende';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#energiewende';">
-      ⚡ Klimaschutz & Energiewende
-    </div>
+<main>
+  <h2>Meine Umweltthemen</h2>
+  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+  <div class="bildung-boxes" role="list">
+    <a href="klimaschutz.html" class="box" role="listitem" tabindex="0">
+      <h3>Klimaschutz & Energiewende</h3>
+      <p>Förderung von Wind-, Solar- & Power-to-X-Technologien.</p>
+    </a>
+    <a href="wasserwirtschaft.html" class="box" role="listitem" tabindex="0">
+      <h3>Wasserwirtschaft</h3>
+      <p>Schutz und effiziente Nutzung unserer Wasserressourcen.</p>
+    </a>
+    <a href="abfall.html" class="box" role="listitem" tabindex="0">
+      <h3>Abfall & Recycling</h3>
+      <p>Nachhaltige Kreislaufwirtschaft und Müllvermeidung.</p>
+    </a>
+    <a href="naturschutz.html" class="box" role="listitem" tabindex="0">
+      <h3>Naturschutz & Biodiversität</h3>
+      <p>Erhalt von Lebensräumen und Artenvielfalt.</p>
+    </a>
+    <a href="mobilitaet.html" class="box" role="listitem" tabindex="0">
+      <h3>Mobilität & Verkehr</h3>
+      <p>Förderung umweltfreundlicher Verkehrskonzepte.</p>
+    </a>
+  </div>
+</main>
 
-    <div class="themenbox" onclick="location.href='#wasser';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#wasser';">
-      💧 Wasserwirtschaft
-    </div>
+<footer>
+  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+  <div class="social-links">
+    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
+</footer>
 
-    <div class="themenbox" onclick="location.href='#abfall';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#abfall';">
-      🗑️ Abfall & Recycling
-    </div>
+<script>
+document.querySelectorAll('.box').forEach(box => {
+  box.addEventListener('click', () => {
+    document.querySelectorAll('.box').forEach(b => b.classList.remove('selected'));
+    box.classList.add('selected');
+  });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); box.click(); }
+  });
+});
 
-    <div class="themenbox" onclick="location.href='#naturschutz';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#naturschutz';">
-      🌳 Naturschutz & Biodiversität
-    </div>
+const boxes = document.querySelectorAll('.box');
+function checkBoxes() {
+  const triggerBottom = window.innerHeight * 0.85;
+  boxes.forEach(box => {
+    const boxTop = box.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) { box.classList.add('show'); } else { box.classList.remove('show'); }
+  });
+}
+window.addEventListener('scroll', checkBoxes);
+checkBoxes();
+</script>
 
-    <div class="themenbox" onclick="location.href='#mobilitaet';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#mobilitaet';">
-      🚗 Mobilität & Verkehr
-    </div>
-
-    <!-- Inhalte -->
-    <h2 id="energiewende">Klimaschutz & Energiewende</h2>
-    <p>Förderung nachhaltiger Energien wie Wind, Solar und Power-to-X-Technologien. Wir gestalten die Energiewende effizient und zukunftsfähig.</p>
-    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
-      ← Zurück zu den Themen
-    </div>
-
-    <h2 id="wasser">Wasserwirtschaft</h2>
-    <p>Effiziente Nutzung und Schutz unserer Wasserressourcen, um nachhaltige Versorgung sicherzustellen.</p>
-    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
-      ← Zurück zu den Themen
-    </div>
-
-    <h2 id="abfall">Abfall & Recycling</h2>
-    <p>Verbesserung der Kreislaufwirtschaft, Müllvermeidung und nachhaltiges Recycling für unsere Umwelt.</p>
-    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
-      ← Zurück zu den Themen
-    </div>
-
-    <h2 id="naturschutz">Naturschutz & Biodiversität</h2>
-    <p>Erhalt von Lebensräumen und Artenvielfalt in unserer Region. Wir schützen Natur und Umwelt für kommende Generationen.</p>
-    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
-      ← Zurück zu den Themen
-    </div>
-
-    <h2 id="mobilitaet">Mobilität & Verkehr</h2>
-    <p>Förderung umweltfreundlicher Verkehrskonzepte, nachhaltiger Infrastruktur und emissionsarmer Mobilität.</p>
-    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
-      ← Zurück zu den Themen
-    </div>
-  </main>
-
-  <footer>
-    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links" aria-label="Soziale Medien">
-      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-  </footer>
 </body>
 </html>
