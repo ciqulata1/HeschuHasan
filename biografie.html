@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Biografie – Heschu Hasan</title>
+  <title>Umwelt – Heschu Hasan</title>
 
   <link
     rel="stylesheet"
@@ -33,7 +33,10 @@
     body {
       margin: 0;
       background-color: var(--white);
-      color: var(--black);
+      background-image: url('Vision.png');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
       font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
       font-weight: 400;
       line-height: 1.5;
@@ -172,6 +175,15 @@
         margin-right: 15px;
       }
     }
+
+    .hero-spruch {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-left: 5px solid var(--magenta);
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
   </style>
 
   <script>
@@ -187,88 +199,77 @@
     <nav>
       <a href="index.html">Startseite</a>
       <a href="bildung.html">Bildung</a>
-      <a href="umwelt.html">Umwelt</a>
+      <a href="umwelt.html" class="active">Umwelt</a>
       <a href="meinungsmacher.html">Meinungs-Macher</a>
       <a href="mission.html">Meine Mission</a>
-      <a href="biografie.html" class="active">Biografie</a>
+      <a href="biografie.html">Biografie</a>
       <a href="justiz.html">Justiz</a>
       <a href="impressum.html">Impressum</a>
     </nav>
   </header>
 
   <main id="top">
+    <div class="hero-spruch">
+      🌬️☀️⚡ Mit Wind, Solar und Power-to-X – Zukunft gestalten, geht wie nix!
+    </div>
+
     <!-- Themenboxen -->
-    <div class="themenbox" onclick="location.href='#herkunft';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#herkunft';">
-      🌍 Herkunft & Werte
+    <div class="themenbox" onclick="location.href='#energiewende';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#energiewende';">
+      ⚡ Klimaschutz & Energiewende
     </div>
 
-    <div class="themenbox" onclick="location.href='#freiburg';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#freiburg';">
-      🌳 Warum Freiburg?
+    <div class="themenbox" onclick="location.href='#wasser';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#wasser';">
+      💧 Wasserwirtschaft
     </div>
 
-    <div class="themenbox" onclick="location.href='#hobbys';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#hobbys';">
-      🏃 Meine Hobbys
+    <div class="themenbox" onclick="location.href='#abfall';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#abfall';">
+      🗑️ Abfall & Recycling
     </div>
 
-    <div class="themenbox" onclick="location.href='#politik';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#politik';">
-      🗳️ Mein Weg in die Politik
+    <div class="themenbox" onclick="location.href='#naturschutz';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#naturschutz';">
+      🌳 Naturschutz & Biodiversität
     </div>
 
-    <!-- Biografie-Inhalte -->
-    <h2 id="herkunft">Herkunft & Werte</h2>
-    <p>
-      Ich bin 1996 mit meiner Familie aus dem Irak nach Deutschland geflohen – auf der Suche nach Sicherheit, Freiheit und Zukunft. In Bayern fanden wir unsere neue Heimat. Die Erlebnisse im Zweiten Golfkrieg und die Repressionen unter dem Baath-Regime haben mich tief geprägt.
-    </p>
-    <p>
-      Trotz allem war ich als Kind ein lebensfroher Mensch, der sich über die kleinen Dinge freuen konnte – und das wurde in Deutschland auch gesehen und wertgeschätzt. In Deutschland habe ich gelernt, dass Leistung und Individualität im Einklang stehen können und dass jeder seinen eigenen Weg finden darf.
-    </p>
+    <div class="themenbox" onclick="location.href='#mobilitaet';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#mobilitaet';">
+      🚗 Mobilität & Verkehr
+    </div>
 
+    <!-- Inhalte -->
+    <h2 id="energiewende">Klimaschutz & Energiewende</h2>
+    <p>Förderung nachhaltiger Energien wie Wind, Solar und Power-to-X-Technologien. Wir gestalten die Energiewende effizient und zukunftsfähig.</p>
     <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
       ← Zurück zu den Themen
     </div>
 
-    <h2 id="freiburg">Warum Freiburg?</h2>
-    <p>
-      2024 bin ich aus beruflichen Gründen nach Baden-Württemberg gezogen – aber mein Herz hatte schon lange für Freiburg geschlagen. Das Klima hier tut meiner Gesundheit gut, denn ich leide unter starkem Sonnenmangel, was in Bayern und meiner Herkunftsregion kaum ausgeglichen wurde.
-    </p>
-    <p>
-      In Freiburg habe ich sofort gespürt, wie sehr diese Stadt einen zur Ruhe und zu sich selbst finden lässt. Die Offenheit der Menschen, die Natur und der Schwarzwald – all das hat mir das Gefühl gegeben, angekommen zu sein.
-    </p>
-
+    <h2 id="wasser">Wasserwirtschaft</h2>
+    <p>Effiziente Nutzung und Schutz unserer Wasserressourcen, um nachhaltige Versorgung sicherzustellen.</p>
     <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
       ← Zurück zu den Themen
     </div>
 
-    <h2 id="hobbys">Meine Hobbys</h2>
-    <p>
-      Ich bin gerne draußen unterwegs. Joggen und Bewegung im Grünen sind für mich mehr als Sport – sie sind Ausgleich und Inspiration zugleich. Besonders die Natur rund um Freiburg hat meine Leidenschaft für das Schreiben von Gedichten neu entfacht.
-    </p>
-    <p>
-      Diese Stadt gibt mir Kraft, regt mich zum Nachdenken an und hilft mir, meiner Kreativität Raum zu geben. Sie lässt mich frei atmen – sowohl körperlich als auch geistig.
-    </p>
-
+    <h2 id="abfall">Abfall & Recycling</h2>
+    <p>Verbesserung der Kreislaufwirtschaft, Müllvermeidung und nachhaltiges Recycling für unsere Umwelt.</p>
     <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
       ← Zurück zu den Themen
     </div>
 
-    <h2 id="politik">Mein Weg in die Politik</h2>
-    <p>
-      Politik habe ich lange beobachtet – bis mir klar wurde: Ich mache längst selbst Politik, mit jedem Standpunkt, den ich vertrete. Als Jugendliche hat mich Christian Lindner inspiriert, mich für politische Fragen zu interessieren. Seine klare Haltung und sein Einsatz für Bürgerrechte haben mich motiviert.
-    </p>
-    <p>
-      Die FDP war für mich die logische Wahl, nicht nur, weil sie für Freiheit steht, sondern auch, weil sie soziale Verantwortung mit Eigenverantwortung verbindet. Besonders wichtig ist mir: Kinderkriegen darf nicht vom Geldbeutel abhängen. Jeder soll seine Familienplanung frei gestalten können – unabhängig vom Einkommen.
-    </p>
-    <p>
-      Gerade in Zeiten wachsender Extreme braucht unser Land eine starke liberale Mitte – eine, die nicht nur Balance hält, sondern auch Leidenschaft für Freiheit entfacht.
-    </p>
+    <h2 id="naturschutz">Naturschutz & Biodiversität</h2>
+    <p>Erhalt von Lebensräumen und Artenvielfalt in unserer Region. Wir schützen Natur und Umwelt für kommende Generationen.</p>
+    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
+      ← Zurück zu den Themen
+    </div>
 
+    <h2 id="mobilitaet">Mobilität & Verkehr</h2>
+    <p>Förderung umweltfreundlicher Verkehrskonzepte, nachhaltiger Infrastruktur und emissionsarmer Mobilität.</p>
     <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
          onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
       ← Zurück zu den Themen
