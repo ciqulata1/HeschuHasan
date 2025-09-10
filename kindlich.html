@@ -14,56 +14,51 @@
 
   <style>
     :root {
-      --yellow: #ffed00;
       --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       margin: 0;
-      background-color: var(--white);
-      color: var(--black);
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-family: "Calibri", Candara, Arial, sans-serif;
       font-weight: 400;
-      line-height: 1.5;
-      opacity: 0;
-      transition: opacity 1s ease;
+      line-height: 1.6;
+      color: var(--black);
+      background-color: var(--white);
     }
 
     a {
-      color: var(--cyan);
+      color: var(--magenta);
       text-decoration: none;
     }
+
     a:hover,
     a:focus {
-      color: var(--magenta);
-      outline: none;
+      text-decoration: underline;
     }
 
+    /* ================= Header ================= */
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--magenta);
       padding: 20px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: var(--cyan);
+      color: var(--magenta);
       margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -72,71 +67,74 @@
     nav a {
       font-weight: 600;
       font-size: 1rem;
-      margin-left: 25px;
+      margin-left: 20px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      color: var(--black);
     }
 
-    nav a.active,
-    nav a:hover {
+    nav a.active, nav a:hover {
       color: var(--magenta);
       font-weight: 700;
     }
 
+    /* ================= Main ================= */
     main {
-      padding: 20px 40px;
+      padding: 30px 5%;
       max-width: 900px;
       margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
     }
 
     main h2 {
-      color: var(--cyan);
+      color: var(--magenta);
       font-weight: 700;
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin: 40px 0 20px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
     }
 
     main p {
       font-size: 1.1rem;
-      margin-bottom: 1.25rem;
-      color: var(--black);
+      line-height: 1.6;
+      margin-bottom: 1rem;
     }
 
+    /* ================= Themenboxen ================= */
     .themenbox {
-      border: 2px solid var(--turquoise);
+      background-color: var(--magenta);
+      color: var(--white);
       border-radius: 8px;
-      padding: 16px 24px;
-      margin-bottom: 20px;
+      padding: 14px 24px;
+      margin: 15px 0;
       text-align: center;
       font-weight: 600;
-      color: var(--turquoise);
+      font-size: 1.05rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      user-select: none;
     }
 
     .themenbox:hover {
-      background-color: var(--magenta);
-      color: var(--white);
-      border-color: var(--magenta);
+      background-color: var(--white);
+      color: var(--magenta);
+      border: 2px solid var(--magenta);
     }
 
+    /* ================= Footer ================= */
     footer {
-      background-color: var(--cyan);
+      background-color: var(--black);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
       font-weight: 500;
+      margin-top: 40px;
     }
 
     footer h3 {
       font-size: 1.2rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
       margin-bottom: 15px;
-      font-weight: 700;
     }
 
     footer .social-links a {
@@ -144,32 +142,32 @@
       font-size: 30px;
       margin: 0 15px;
       transition: color 0.3s ease;
+      text-decoration: none;
     }
 
-    footer .social-links a:hover,
-    footer .social-links a:focus {
+    footer .social-links a:hover {
       color: var(--magenta);
-      outline: none;
     }
 
+    /* ================= Responsive ================= */
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        align-items: flex-start;
         padding: 15px 20px;
       }
+
+      nav {
+        margin-top: 15px;
+      }
+
       nav a {
-        margin-left: 0;
-        margin-right: 15px;
+        margin: 5px 10px 0 0;
+      }
+
+      main {
+        padding: 20px;
       }
     }
   </style>
-
-  <script>
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '1';
-    });
-  </script>
 </head>
 
 <body>
@@ -185,87 +183,50 @@
     </nav>
   </header>
 
-  <main>
-    <!-- Themenübersicht mit ID als Anker -->
-    <div id="themen">
-      <div class="themenbox" onclick="location.href='#fruehfoerderung';" role="button" tabindex="0" 
-           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#fruehfoerderung';">
-        📘 Mehr über Frühförderung entdecken
-      </div>
-
-      <div class="themenbox" onclick="location.href='#sprachfoerderung';" role="button" tabindex="0"
-           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#sprachfoerderung';">
-        🗣️ Mehr über Sprachförderung lesen
-      </div>
-
-      <div class="themenbox" onclick="location.href='#elternarbeit';" role="button" tabindex="0"
-           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#elternarbeit';">
-        👪 Mehr über Eltern als Partner erfahren
-      </div>
-    </div>
+  <main id="top">
+    <!-- Themenübersicht -->
+    <div class="themenbox" onclick="location.href='#fruehfoerderung';">📘 Mehr über Frühförderung entdecken</div>
+    <div class="themenbox" onclick="location.href='#sprachfoerderung';">🗣️ Mehr über Sprachförderung lesen</div>
+    <div class="themenbox" onclick="location.href='#elternarbeit';">👪 Mehr über Eltern als Partner erfahren</div>
 
     <!-- Inhalte mit Anker-Zielen -->
     <h2 id="fruehfoerderung">Frühförderung beginnt mit Vertrauen</h2>
+    <p>Bildung ist kein Privileg – sie ist ein Grundrecht. Und sie beginnt nicht erst in der Schule, sondern vom ersten Tag an. Frühkindliche Bildung entscheidet darüber, wie gut Kinder sich später entfalten können – sprachlich, emotional und sozial.</p>
 
-    <p>
-      Bildung ist kein Privileg – sie ist ein Grundrecht. Und sie beginnt nicht erst in der Schule, sondern vom ersten Tag an. Frühkindliche Bildung entscheidet darüber, wie gut Kinder sich später entfalten können – sprachlich, emotional und sozial.
-    </p>
+    <p>Doch viele Kitas stehen unter Druck: zu wenig Personal, zu große Gruppen, zu wenig Zeit für das, was wirklich zählt – die individuelle Förderung. Besonders Kinder mit Migrationshintergrund brauchen mehr als nur Betreuung. Sie brauchen gezielte, liebevolle Sprachförderung. Denn Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein.</p>
 
-    <p>
-      Doch viele Kitas stehen unter Druck: zu wenig Personal, zu große Gruppen, zu wenig Zeit für das, was wirklich zählt – die individuelle Förderung. Besonders Kinder mit Migrationshintergrund brauchen mehr als nur Betreuung. Sie brauchen gezielte, liebevolle Sprachförderung. Denn Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein.
-    </p>
+    <p>Ich setze mich für verpflichtende, altersgerechte Sprachtests ein – aber nur dann, wenn ihnen eine intensive und wertschätzende Förderung vorausgeht. Kein Kind darf stigmatisiert werden – jedes Kind verdient faire Chancen.</p>
 
-    <p>
-      Ich setze mich für verpflichtende, altersgerechte Sprachtests ein – aber nur dann, wenn ihnen eine intensive und wertschätzende Förderung vorausgeht. Kein Kind darf stigmatisiert werden – jedes Kind verdient faire Chancen.
-    </p>
-
-    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
-      ← Zurück zu den Themen
-    </div>
+    <div class="themenbox" onclick="location.href='#top';">← Zurück zu den Themen</div>
 
     <h2 id="sprachfoerderung">Gezielte Sprachförderung</h2>
-    <p>
-      Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein. Kinder, die sprachlich stark gefördert werden, haben deutlich bessere Chancen im Leben – unabhängig von Herkunft oder sozialem Umfeld.
-    </p>
+    <p>Sprache ist der Schlüssel zu Bildung, Teilhabe und Selbstbewusstsein. Kinder, die sprachlich stark gefördert werden, haben deutlich bessere Chancen im Leben – unabhängig von Herkunft oder sozialem Umfeld.</p>
 
-    <p>
-      Sprachförderung muss individuell, alltagsnah und frühzeitig ansetzen. Wir brauchen mehr Fachkräfte mit interkultureller Kompetenz, kleine Gruppen – und vor allem Zeit für Beziehung und Austausch.
-    </p>
+    <p>Sprachförderung muss individuell, alltagsnah und frühzeitig ansetzen. Wir brauchen mehr Fachkräfte mit interkultureller Kompetenz, kleine Gruppen – und vor allem Zeit für Beziehung und Austausch.</p>
 
-    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
-      ← Zurück zu den Themen
-    </div>
+    <div class="themenbox" onclick="location.href='#top';">← Zurück zu den Themen</div>
 
     <h2 id="elternarbeit">Eltern als Bildungspartner</h2>
-    <p>
-      Auch Eltern müssen ernst genommen werden: Ihre Entscheidungen verdienen Respekt. Kitas sind keine Ersatzfamilien, sondern Partner. Gerade alleinerziehende Mütter und Väter brauchen echte Unterstützung – keine Belehrung, sondern Begleitung.
-    </p>
+    <p>Auch Eltern müssen ernst genommen werden: Ihre Entscheidungen verdienen Respekt. Kitas sind keine Ersatzfamilien, sondern Partner. Gerade alleinerziehende Mütter und Väter brauchen echte Unterstützung – keine Belehrung, sondern Begleitung.</p>
 
-    <p>
-      Meine Bildungspolitik basiert auf Freiheit, Verantwortung und Vertrauen – in Familien, in Fachkräfte, in die Fähigkeiten der Kinder. Freiburg verdient Bildung mit Herz – und mit Verstand.
-    </p>
+    <p>Meine Bildungspolitik basiert auf Freiheit, Verantwortung und Vertrauen – in Familien, in Fachkräfte, in die Fähigkeiten der Kinder. Freiburg verdient Bildung mit Herz – und mit Verstand.</p>
 
-    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
-      ← Zurück zu den Themen
-    </div>
+    <div class="themenbox" onclick="location.href='#top';">← Zurück zu den Themen</div>
 
-    <!-- Gesamtrückkehr zur Bildung-Übersicht -->
-    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
-      ← Zurück zur Übersicht
-    </div>
+    <!-- Zurück zur Bildung-Übersicht -->
+    <div class="themenbox" onclick="location.href='bildung.html';">← Zurück zur Übersicht</div>
   </main>
 
   <footer>
     <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links" aria-label="Soziale Medien">
-      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+    <div class="social-links">
+      <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
       </a>
     </div>
+    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+      <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
   </footer>
 </body>
 </html>
