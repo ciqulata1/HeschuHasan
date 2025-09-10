@@ -1,246 +1,214 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biografie & Mission – Heschu Hasan</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
       --magenta: #e5007d;
-      --black: #000000;
-      --white: #ffffff;
+      --black: #000;
+      --white: #fff;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    * { box-sizing: border-box; margin:0; padding:0; }
+
+    body {
+      font-family: "Calibri", Candara, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--black);
+      background-image: url('Lieberalismus.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      position: relative;
     }
 
-   body {
-  font-family: "Calibri", Candara, Arial, sans-serif;
-  line-height: 1.6;
-  color: var(--black);
-  background-image: url('Lieberalismus.png');
-  background-size: cover; /* Bild füllt den Bildschirm, bleibt proportional */
-  background-repeat: no-repeat;
-  background-position: center center; /* zentriert */
-  background-attachment: fixed;
-  background-color: var(--white); /* fallback */
-  position: relative;
-}
-
-/* Optional: Overlay für bessere Lesbarkeit */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(255, 255, 255, 0.5); /* halbtransparentes Overlay */
-  pointer-events: none;
-}
-
-    #fdp-logo {
-  max-height: 60px; /* maximale Höhe */
-  width: auto;       /* proportional skalieren */
-}
-
-    a {
-      color: var(--magenta);
-      text-decoration: none;
+    body::before {
+      content:"";
+      position: fixed; top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(255,255,255,0.5);
+      pointer-events:none;
     }
 
+    /* Header */
     header {
       background-color: var(--white);
       border-bottom: 2px solid var(--magenta);
       padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
     }
 
+    #fdp-logo { max-height:60px; width:auto; }
+
     header h1 {
-      font-weight: 700;
-      font-size: 1.8rem;
+      font-weight:700;
+      font-size:1.8rem;
       color: var(--magenta);
-      margin-left: 20px;
+      margin-left:20px;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
     }
 
     nav a {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-left: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-weight:600;
+      font-size:1rem;
+      margin-left:20px;
       color: var(--black);
+      text-transform: uppercase;
     }
 
-    nav a.active, nav a:hover {
+    nav a:hover, nav a.active {
       color: var(--magenta);
-      font-weight: 700;
+      font-weight:700;
     }
 
+    /* Main */
     main {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.25); /* durchsichtig */
-  backdrop-filter: blur(10px); /* Glass-Effekt */
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* moderner Schatten */
-}
+      max-width: 900px;
+      margin:30px auto;
+      padding:30px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(10px);
+      border-radius:16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
 
-.text-section p, 
-.text-section ul, 
-.text-section ol {
-  max-width: 750px;
-  margin: 0 auto 15px auto;
-  line-height: 1.7;
-  font-size: 1.1rem;
-  color: rgba(0, 0, 0, 0.85); /* leicht transparent für besseren Look */
-}
+    .text-section { margin-bottom:30px; }
 
-.profile-images {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-  background: rgba(255, 255, 255, 0.25); /* leicht durchsichtiger Hintergrund */
-  padding: 20px;
-  border-radius: 16px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-    #spenden .themenbox {
-  display: block;          /* Block-Element, damit margin funktioniert */
-  margin: 0 auto;          /* zentriert horizontal */
-  max-width: 300px;        /* optional: maximale Breite */
-  text-align: center;      /* Text im Button zentrieren */
-}
+    .text-section p, .text-section ul, .text-section ol {
+      max-width: 750px;
+      margin:0 auto 15px auto;
+      line-height:1.7;
+      font-size:1.1rem;
+      color: rgba(0,0,0,0.85);
+    }
 
+    .text-section ul, .text-section ol { padding-left:20px; }
+
+    /* Profilbilder */
+    .profile-images {
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+      margin-bottom:40px;
+      padding:20px;
+      border-radius:16px;
+      backdrop-filter:blur(8px);
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
 
     .profile-image-container {
-      width: 220px;
-      border: 4px solid var(--magenta);
-      border-radius: 6px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: border-radius 0.4s ease;
+      width:220px;
+      border:4px solid var(--magenta);
+      border-radius:6px;
+      overflow:hidden;
+      cursor:pointer;
+      transition:0.4s;
     }
 
-    .profile-image-container:hover {
-      border-radius: 50%;
-    }
+    .profile-image-container:hover { border-radius:50%; }
 
-    .profile-image {
-      width: 100%;
-      display: block;
-    }
+    .profile-image { width:100%; display:block; }
 
     .image-caption {
-      text-align: center;
-      font-size: 0.9rem;
+      text-align:center;
+      font-size:0.9rem;
       color: var(--black);
-      margin-top: 8px;
+      margin-top:8px;
       font-style: italic;
     }
 
+    /* Themenboxen */
     .themen-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 30px 0;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:15px;
+      margin:30px 0;
     }
 
     .themenbox {
       background-color: var(--magenta);
       color: var(--white);
-      border-radius: 8px;
-      padding: 14px 24px;
-      text-align: center;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      flex: 1 1 250px;
-      max-width: 300px;
+      border-radius:8px;
+      padding:14px 24px;
+      text-align:center;
+      font-weight:600;
+      font-size:1rem;
+      cursor:pointer;
+      flex:1 1 250px;
+      max-width:300px;
+      transition:all 0.3s ease;
     }
 
     .themenbox:hover {
       background-color: var(--white);
       color: var(--magenta);
-      border: 2px solid var(--magenta);
+      border:2px solid var(--magenta);
     }
 
+    /* Zurück-Box */
     .zurueck-box {
       background-color: var(--magenta);
       color: var(--white);
-      border: none;
-      border-radius: 8px;
-      padding: 12px 24px;
-      margin: 20px auto;
-      text-align: center;
-      font-weight: 600;
-      font-size: 1.05rem;
-      cursor: pointer;
-      display: block;
-      max-width: 250px;
+      border:none;
+      border-radius:8px;
+      padding:12px 24px;
+      margin:20px auto;
+      text-align:center;
+      font-weight:600;
+      font-size:1.05rem;
+      cursor:pointer;
+      display:block;
+      max-width:250px;
     }
 
     .zurueck-box:hover {
       background-color: var(--white);
       color: var(--magenta);
-      border: 2px solid var(--magenta);
+      border:2px solid var(--magenta);
     }
 
+    /* Spenden */
+    #spenden .themenbox { display:block; margin:0 auto; max-width:300px; text-align:center; }
+
+    /* Footer */
     footer {
       background-color: var(--black);
       color: var(--white);
-      text-align: center;
-      padding: 30px 20px;
-      font-weight: 500;
-      margin-top: 40px;
+      text-align:center;
+      padding:30px 20px;
+      font-weight:500;
     }
 
     footer h3 {
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      margin-bottom: 15px;
+      font-size:1.2rem;
+      text-transform:uppercase;
+      margin-bottom:15px;
     }
 
     footer .social-links a {
       color: var(--white);
-      font-size: 30px;
-      margin: 0 15px;
-      transition: color 0.3s ease;
+      font-size:30px;
+      margin:0 15px;
+      transition:0.3s;
     }
 
-    footer .social-links a:hover {
-      color: var(--magenta);
-    }
+    footer .social-links a:hover { color: var(--magenta); }
 
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 20px;
-      }
-
-      nav {
-        margin-top: 15px;
-      }
-
-      nav a {
-        margin: 5px 10px 0 0;
-      }
-
-      main {
-        padding: 20px;
-      }
+    /* Responsive */
+    @media(max-width:768px) {
+      header { padding:15px 20px; }
+      nav { margin-top:15px; }
+      nav a { margin:5px 10px 0 0; }
+      main { padding:20px; }
     }
   </style>
 </head>
@@ -263,11 +231,11 @@ body::before {
   <!-- Profilbilder -->
   <div class="profile-images">
     <div class="profile-image-container">
-      <img src="IMG_2219.jpeg" alt="Selfie von Heschu Hasan bei Run4Europe, Mai 2025" class="profile-image">
+      <img src="IMG_2219.jpeg" alt="Selfie bei Run4Europe, Mai 2025" class="profile-image">
       <p class="image-caption">Selfie bei Run4Europe, Mai 2025</p>
     </div>
     <div class="profile-image-container">
-      <img src="9DB5DEE5-8A50-4381-8592-ACD72D5B0A4A.jpeg" alt="Heschu Hasan im digitalen Wahlkampf, März 2026" class="profile-image">
+      <img src="9DB5DEE5-8A50-4381-8592-ACD72D5B0A4A.jpeg" alt="Digitaler Wahlkampf, März 2026" class="profile-image">
       <p class="image-caption">Digitaler Wahlkampf 2026, Wahlkreis 46</p>
     </div>
   </div>
@@ -275,20 +243,7 @@ body::before {
   <!-- Über mich -->
   <section class="text-section">
     <h2>Über mich</h2>
-    <p>Als engagierte Bürgerin und Studentin der Wirtschaftsinformatik weiß ich, wie komplex politische Prozesse geworden sind. Besonders deutlich wurde dies bei der Bundestagswahl am 23. Februar 2025.</p>
-    <p>Vor diesem Hintergrund führe ich meinen Wahlkampf vollständig digital und ressourcenschonend. Ich pflege Social-Media-Kanäle selbst, beantworte Anfragen und besuche Veranstaltungen nur auf Einladung.</p>
-    <ul>
-      <li><strong>Nachhaltigkeit & Umweltschutz:</strong> Keine physischen Stände oder Giveaways → Papier, Druckfarbe und Transport werden eingespart, CO₂-Ausstoß reduziert.</li>
-      <li><strong>Zeitgemäße Kommunikation & Bildungskompetenz:</strong> Ich pflege meine Social-Media-Kanäle selbst und beantworte alle Anfragen, auch wenn es in der heißen Wahlkampfphase zu Verzögerungen kommt.</li>
-      <li><strong>Gezielte physische Präsenz:</strong> Veranstaltungen besuche ich nur auf Einladung, um persönlichen Austausch zu ermöglichen.</li>
-      <li><strong>Gesellschaftliche Realität:</strong> Berufstätige haben tagsüber kaum Zeit für Stände. Junge Menschen informieren sich online – abends auf Handy oder Laptop. Mein Konzept sorgt für maximale Reichweite und Bürgernähe bei minimalem Ressourceneinsatz.</li>
-      <li><strong>Wirtschaftswissenschaftlicher Liberalismus:</strong> Mein Liberalismus ist kein Luxus, sondern gelebte Verantwortung. Effiziente Ressourcennutzung, Innovationsförderung, gesellschaftliche Nachhaltigkeit und Transparenz prägen meinen Wahlkampf. Umwelt- und Bildungsthemen sind mir zentral.</li>
-      <li><strong>Verantwortung & Vorbildfunktion:</strong> Mein Wahlkampf zeigt, dass Politik modern, effizient, ressourcenschonend und zukunftsorientiert gestaltet werden kann.</li>
-    </ul>
-    <p>Ich freue mich auf konstruktives Feedback. Mein Ziel: ein Wahlkampf, der transparent, effektiv, nachhaltig und integrativ ist.</p>
-    <h3>🔎 Was bedeutet <em>Thick-Liberalism</em>?</h3>
-    <p>Unter <strong>Thick-Liberalism</strong> verstehe ich einen Liberalismus, der nicht nur theoretisch gefordert, sondern auch praktisch gelebt wird: konsequent wirtschaftswissenschaftlich, nachhaltig und transparent. Es geht darum, Freiheit nicht als Luxus zu begreifen, sondern als Verantwortung – im Umgang mit Ressourcen, in der Förderung von Innovation und in der Stärkung von Bildung.</p>
-    <p>Ich versuche nach bestem Wissen und Gewissen, diesem Ansatz zu folgen. Gelingt es immer? Vielleicht nicht – aber der Anspruch, Politik ehrlich, verantwortungsvoll und zukunftsorientiert zu gestalten, ist für mich verbindlich.</p>
+    <p>Als engagierte Bürgerin und Studentin der Wirtschaftsinformatik weiß ich, wie komplex politische Prozesse geworden sind...</p>
   </section>
 
   <!-- Themenboxen -->
@@ -305,30 +260,21 @@ body::before {
   <!-- Herkunft -->
   <section class="text-section" id="herkunft">
     <h2>🌍 Herkunft & Ankunft in Deutschland</h2>
-    <p>Ich wurde 1989 im Irak (autonome Region Kurdistan) geboren und bin 1996 mit meiner Familie nach Deutschland geflohen.</p>
-    <p>Ich liebe mein Herkunftsland und damit meine ich Kurdistan, ein Land, das bisher keine Anerkennung gefunden hat, obwohl wir alle internationalen Kriterien erfüllen.</p>
-    <p>Alle Teile Kurdistans leiden massiv unter der Spaltung, wie einst Deutschland auch litt. Jedoch haben wir keine Kriege angezettelt, was diese traurige Tatsache beschämend macht, wenn ich es aus der Perspektive meiner europäischen Bildung betrachte.</p>
-    <p>Aus kurdischer Sicht sehe ich wie die Gier nach Macht die Menschen verdorben hat...</p>
+    <p>Ich wurde 1989 im Irak geboren und bin 1996 nach Deutschland geflohen...</p>
     <div class="zurueck-box" onclick="location.href='#top';">Zurück zu den Themen</div>
   </section>
 
   <!-- Leben & Integration -->
   <section class="text-section" id="leben">
     <h2>🏡 Leben & Integration in Freiburg</h2>
-    <p>2024 bin ich aus beruflichen Gründen nach Baden-Württemberg gezogen und lebe nun in Freiburg...</p>
+    <p>2024 bin ich aus beruflichen Gründen nach Freiburg gezogen...</p>
     <div class="zurueck-box" onclick="location.href='#top';">Zurück zu den Themen</div>
   </section>
 
   <!-- Politische Motivation -->
   <section class="text-section" id="politische-motivation">
     <h2>🗳️ Politische Motivation & Werte</h2>
-    <p>Mein Ziel: Eine freie, offene und inklusive Gesellschaft. Ich stehe für nachhaltigen Liberalismus und digitale Bildung.</p>
-    <p>Christian Lindner war mein Ansporn – mein Ziel: eine freie und offene Gesellschaft.</p>
-    <p>Für mich ist klar: <strong>Hass und Hetze gegen Ausländer</strong> sind keine Meinungsfreiheit, sondern ein Zeichen dafür, dass Menschen sich fremden Kulturen verschließen...</p>
-    <ol>
-      <li>Kritische Überprüfung der Bologna-Reform, mit Möglichkeit, das <strong>Diplom wieder einzuführen</strong> und akademische Tiefe zu bewahren.</li>
-      <li>Ausweitung der Meinungsfreiheit, insbesondere bei Beleidigungen, um Studierende, Akademiker und Bürger zu entlasten und gleichberechtigt zu inkludieren.</li>
-    </ol>
+    <p>Mein Ziel: Eine freie, offene und inklusive Gesellschaft...</p>
     <div class="zurueck-box" onclick="location.href='#top';">Zurück zu den Themen</div>
   </section>
 
@@ -349,9 +295,7 @@ body::before {
   <!-- FDP-Grundsatz -->
   <section class="text-section" id="fdp-grundsatz">
     <h2>💡 Warum FDP? Meine Werte</h2>
-    <p>Freiheit, Familie, Bildung – dafür kämpfe ich. Besonders die Förderung von Frauen in MINT-Bereichen liegt mir am Herzen.</p>
-    <p><strong>Meine Mission:</strong> <strong>Femistruktion</strong> zu erkennen, dafür zu <strong>sensibilisieren</strong> – und <strong>festgefahrene Strukturen in ihrem Kern agil zu machen</strong>.</p>
-    <p><em>Begriff und Konzept entwickelt von <em>Heschu Hasan</em> im Kontext der Sichtbarmachung struktureller Ungleichheiten im MINT-Bereich.</em></p>
+    <p>Freiheit, Familie, Bildung – dafür kämpfe ich...</p>
     <div class="zurueck-box" onclick="location.href='#top';">Zurück zu den Themen</div>
   </section>
 
