@@ -15,37 +15,13 @@
 
 body {
   margin: 0;
+  background-color: var(--white);
   font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
   color: var(--black);
   position: relative;
-  background: url('Vision.png') no-repeat center top;
-  background-size: cover;
-  min-height: 100vh;
 }
 
-/* Weißer halbtransparenter Mantel */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-color: rgba(255,255,255,0.85);
-  z-index: -1;
-}
-
-#fdp-logo {
-  margin-left: 10px;
-  max-height: 45px;
-}
-
-a {
-  color: var(--black);
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-a:hover, a:focus { color: var(--magenta); outline: none; }
-
+/* Header */
 header {
   background-color: var(--white);
   border-bottom: 2px solid var(--magenta);
@@ -65,34 +41,57 @@ header h1 {
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
-
+#fdp-logo {
+  margin-left: 10px;
+  max-height: 45px;
+}
 nav a { font-weight: 600; font-size: 1rem; margin-left: 25px; }
 nav a.active, nav a:hover { color: var(--magenta); font-weight: 700; }
 
+/* Hero Bild + Spruch */
+.hero {
+  background: url('Vision.png') no-repeat center center;
+  background-size: contain;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+.spruch {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--magenta);
+  text-align: center;
+  background-color: rgba(255,255,255,0.7);
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+/* Main Inhalte */
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px 40px;
   position: relative;
   z-index: 1;
 }
-
 main h2 {
   color: var(--magenta);
   font-weight: 700;
   font-size: 2rem;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-
 main h3 {
   color: var(--black);
   font-weight: 600;
   font-size: 1.25rem;
   margin-bottom: 20px;
 }
-
 main p {
   color: var(--black);
   font-weight: 300;
@@ -100,14 +99,7 @@ main p {
   max-width: 700px;
 }
 
-.spruch {
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: var(--magenta);
-  text-align: center;
-  margin: 30px 0 20px;
-}
-
+/* Boxen */
 .bildung-boxes {
   display: flex;
   flex-wrap: wrap;
@@ -115,7 +107,6 @@ main p {
   gap: 25px;
   margin-top: 20px;
 }
-
 .box {
   flex: 1 1 260px;
   max-width: 300px;
@@ -137,25 +128,18 @@ main p {
   align-items: center;
   word-wrap: break-word;
 }
-
-.box.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+.box.show { opacity: 1; transform: translateY(0); }
 .box:hover {
   background-color: var(--magenta);
   color: var(--white);
   border-color: var(--magenta);
 }
-
 .box h3 {
   margin: 0 0 10px;
   font-weight: 700;
   font-size: 1.1rem;
   text-transform: uppercase;
 }
-
 .box p {
   font-weight: 400;
   font-size: 1rem;
@@ -163,11 +147,7 @@ main p {
   line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-  .bildung-boxes { flex-direction: column; align-items: center; }
-  .box { max-width: 90%; }
-}
-
+/* Footer */
 footer {
   background-color: var(--black);
   color: var(--white);
@@ -180,6 +160,14 @@ footer h3 { margin: 0 0 15px; font-weight: 700; text-transform: uppercase; }
 footer .social-links a { color: var(--white); font-size: 30px; margin: 0 15px; transition: color 0.3s ease; }
 footer .social-links a:hover, footer .social-links a:focus { color: var(--white); outline: none; }
 
+/* Responsive */
+@media (max-width: 768px) {
+  header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
+  nav a { margin-left: 0; margin-right: 15px; }
+  .bildung-boxes { flex-direction: column; align-items: center; }
+  .hero { height: 300px; }
+  .spruch { font-size: 1.2rem; padding: 8px 16px; }
+}
 </style>
 </head>
 <body>
@@ -196,9 +184,12 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
 </header>
 
 <main>
+  <div class="hero">
+    <p class="spruch">Mit Wind, Solar und Power-to-X – Zukunft gestalten, geht wie nix!</p>
+  </div>
+
   <h2>Meine Umweltthemen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
-  <p class="spruch">Mit Wind, Solar und Power-to-X – Zukunft gestalten, geht wie nix!</p>
 
   <div class="bildung-boxes" role="list">
     <a href="klimaschutz.html" class="box" role="listitem" tabindex="0">
