@@ -14,57 +14,56 @@
 
   <style>
     :root {
-      --yellow: #ffed00;
       --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       margin: 0;
-      background-color: var(--white);
-      color: var(--black);
-      font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+      font-family: "Calibri", Candara, Arial, sans-serif;
       font-weight: 400;
-      line-height: 1.5;
-      opacity: 0;
-      transition: opacity 1s ease;
-      hyphens: auto;
+      line-height: 1.6;
+      color: var(--black);
+      background-image: url('Lieberalismus.png');
+      background-size: contain;        
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-color: var(--white);
     }
 
     a {
-      color: var(--cyan);
+      color: var(--magenta);
       text-decoration: none;
     }
+
     a:hover,
     a:focus {
-      color: var(--magenta);
-      outline: none;
+      text-decoration: underline;
     }
 
+    /* ================= Header ================= */
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--magenta);
       padding: 20px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: var(--cyan);
+      color: var(--magenta);
       margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -73,79 +72,74 @@
     nav a {
       font-weight: 600;
       font-size: 1rem;
-      margin-left: 25px;
+      margin-left: 20px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      color: var(--black);
     }
 
-    nav a.active,
-    nav a:hover {
+    nav a.active, nav a:hover {
       color: var(--magenta);
       font-weight: 700;
     }
 
+    /* ================= Main ================= */
     main {
-      padding: 20px 40px;
+      padding: 30px 5%;
       max-width: 900px;
       margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
     }
 
     main h2 {
-      color: var(--cyan);
+      color: var(--magenta);
       font-weight: 700;
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin: 40px 0 20px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
     }
 
     main p {
       font-size: 1.1rem;
-      margin-bottom: 1.25rem;
-      color: var(--black);
+      line-height: 1.6;
+      margin-bottom: 1rem;
     }
 
+    /* ================= Themenboxen ================= */
     .themenbox {
-      border: 2px solid var(--turquoise);
+      background-color: var(--magenta);
+      color: var(--white);
       border-radius: 8px;
-      padding: 16px 24px;
-      margin-bottom: 20px;
+      padding: 14px 24px;
+      margin: 15px 0;
       text-align: center;
       font-weight: 600;
-      color: var(--turquoise);
+      font-size: 1.05rem;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .themenbox:hover {
-      background-color: var(--magenta);
-      color: var(--white);
-      border-color: var(--magenta);
+      background-color: var(--white);
+      color: var(--magenta);
+      border: 2px solid var(--magenta);
     }
 
-    .themenbox p {
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      font-weight: 300;
-      font-size: 1.1rem;
-      hyphens: auto;
-      word-break: break-word;
-      overflow-wrap: break-word;
-    }
-
+    /* ================= Footer ================= */
     footer {
-      background-color: var(--cyan);
+      background-color: var(--black);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
       font-weight: 500;
+      margin-top: 40px;
     }
 
     footer h3 {
       font-size: 1.2rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
       margin-bottom: 15px;
-      font-weight: 700;
     }
 
     footer .social-links a {
@@ -153,32 +147,32 @@
       font-size: 30px;
       margin: 0 15px;
       transition: color 0.3s ease;
+      text-decoration: none;
     }
 
-    footer .social-links a:hover,
-    footer .social-links a:focus {
+    footer .social-links a:hover {
       color: var(--magenta);
-      outline: none;
     }
 
+    /* ================= Responsive ================= */
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        align-items: flex-start;
         padding: 15px 20px;
       }
+
+      nav {
+        margin-top: 15px;
+      }
+
       nav a {
-        margin-left: 0;
-        margin-right: 15px;
+        margin: 5px 10px 0 0;
+      }
+
+      main {
+        padding: 20px;
       }
     }
   </style>
-
-  <script>
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '1';
-    });
-  </script>
 </head>
 
 <body>
@@ -197,136 +191,43 @@
 
   <main id="top">
     <!-- Themenübersicht -->
-    <div class="themenbox" onclick="location.href='#exekutive';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#exekutive';">
+    <div class="themenbox" onclick="location.href='#exekutive';">
       🚓 Mehr über Exekutive (Polizei) erfahren
     </div>
-
-    <div class="themenbox" onclick="location.href='#judikative';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#judikative';">
+    <div class="themenbox" onclick="location.href='#judikative';">
       🎓 Mehr über Judikative (Gerichte) lesen
     </div>
-
-    <div class="themenbox" onclick="location.href='#legislative';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#legislative';">
+    <div class="themenbox" onclick="location.href='#legislative';">
       📜 Mehr über Legislative (Parlament) entdecken
     </div>
 
-    <!-- Inhalte mit Anker-Zielen -->
+    <!-- Inhalte -->
     <h2 id="exekutive">Exekutive (Polizei)</h2>
-
-    <p>
-      Die Exekutive, insbesondere die Polizei, sorgt für die Umsetzung der Gesetze und den Schutz der Bürger. Ich bin fest davon überzeugt, dass die Polizei in Deutschland dringend modernisiert werden muss. Dazu gehören technische Hilfsmittel wie Taser, die helfen können, kritische Situationen ohne tödliche Gewalt zu entschärfen.
-    </p>
-
-    <p>
-      Angesichts der erschütternden Fälle von Gewalt gegen unschuldige Menschen in NRW und Baden-Württemberg in letzter Zeit ist es mehr als notwendig, dass die Polizei ihre Einsatzmethoden überdenkt. Es darf nicht länger passieren, dass aus Überforderung oder Angst auf die falschen Mittel zurückgegriffen wird. Taser könnten helfen, Leben zu retten.
-    </p>
-
-      <p>Die Landespolizeien fallen in Deutschland in die Zuständigkeit der Bundesländer. Genau hier möchte ich ansetzen: Bei Ausbildung, Ausstattung und Einsatzstandards – damit kritische Situationen deeskaliert werden und Leben geschützt bleibt.</p>
-
-  <p>Aufgrund des hohen Berufsrisikos, der besonderen Bindung an das Grundgesetz und der Notwendigkeit einer strikt staatlichen Aufgabenerfüllung halte ich es für richtig, die Polizei weiterhin im Beamtentum zu belassen. Beim Zoll sehe ich diese Notwendigkeit nicht in gleicher Schärfe. Hier kann geprüft werden, wo Beamtentum erforderlich ist und wo moderne Beschäftigungsformen ausreichen. Auch bei der Bundeswehr ist der Beamten- beziehungsweise Soldatenstatus essenziell – schon aus Gründen der besonderen Verpflichtung und Einsatzbereitschaft.</p>
-
-  <p>Wer in Uniform rechtsextreme Haltungen vertritt oder verbreitet, hat im Staatsdienst keinen Platz. Wird Rechtsextremismus festgestellt, folgt der konsequente Ausschluss aus dem Beamtentum – ohne lebenslange Alimentierung durch Steuergelder.</p>
-
-  <p>Der Staat muss jeden Anschein vermeiden, dass verfassungsfeindliche Positionen in öffentlichen Ämtern geduldet oder gar finanziert werden. Unsere Sicherheitsbehörden leben vom Vertrauen der Bevölkerung; Rechtsextremismus beschädigt dieses Vertrauen massiv.</p>
-
-  <p>Deshalb braucht es strengere Eignungsprüfungen: Einstellungstests und Sicherheitsüberprüfungen müssen so ausgebaut werden, dass extremistisches Gedankengut frühzeitig erkannt wird. Ergänzend dazu sind regelmäßige Fortbildungen zu Deeskalation, Grundrechtekunde und Ethik notwendig – begleitet von unabhängiger Supervision.</p>
-
-  <p>Bei Verdachtsfällen muss ein konsequentes Disziplinarrecht greifen: schnelle und transparente Verfahren bis hin zur Entfernung aus dem Dienst. Moderne Einsatzmittel wie Taser können zusätzlich helfen, kritische Situationen zu entschärfen und tödliche Gewalt zu vermeiden.</p>
-
-  <p>Stärkung unabhängiger Beschwerdestellen und parlamentarischer Kontrolle sichert die Verfassungstreue. Ein handlungsfähiger Rechtsstaat schützt alle – aber nur, wenn seine Organe vorbildlich handeln. Wer Uniform trägt, trägt besondere Verantwortung. Mit klaren Regeln, konsequentem Vorgehen gegen Extremismus und moderner Ausstattung stellen wir sicher: Sicherheit ja, Radikalisierung nein.</p>
-    
-
-    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
-      ← Zurück zu den Themen
-    </div>
+    <p>Die Exekutive, insbesondere die Polizei, sorgt für die Umsetzung der Gesetze und den Schutz der Bürger. ...</p>
+    <div class="themenbox" onclick="location.href='#top';">← Zurück zu den Themen</div>
 
     <h2 id="judikative">Judikative (Gerichte)</h2>
-
-    <p>
-      Die Judikative stellt sicher, dass Recht und Gesetz eingehalten werden, und schützt die Grundrechte der Bürger. Doch gerade hier sehe ich großes Potential für eine digitale Modernisierung. Digitale Verfahren können helfen, Missverständnisse zu vermeiden und den Kontakt zwischen den Prozessbeteiligten zu reduzieren.
-    </p>
-
-    <p>
-      Weniger persönliche Kontakte, aber mehr Transparenz und digitale Dokumentationen können zu schnelleren und faireren Urteilen führen. Dies schützt nicht nur die Beteiligten, sondern stärkt das Vertrauen in die Rechtsprechung.
-    </p>
-    
-    
-<!-- Digiprophet: KI & Blockchain Vision -->
-<p><strong>Digiprophet:</strong> Im Jahr 2040 betreten wir keine Gerichte mehr – wir loggen uns in digitale Gerichtshallen ein.</p>
-
-<p>
-  Richter aus Fleisch und Blut? Selten geworden.<br>
-  Stattdessen: <span style="color:#009ee3; font-weight:bold;">Künstliche Intelligenzen</span>, die auf Millionen von Präzedenzfällen trainiert sind, urteilen schneller, fairer und ohne Ansehen der Person.
-</p>
-
-<p>
-  Keine Aktenberge mehr. Keine Verschleppung von Verfahren.<br>
-  Die Beweise? <span style="color:#009ee3; font-weight:bold;">Fälschungssicher auf der Blockchain</span> gespeichert – jeder Schritt nachvollziehbar, jeder Entscheid transparent.
-</p>
-
-<p>
-  <strong>Vorteile:</strong><br>
-  - Urteile in Sekunden statt in Jahren.<br>
-  - Keine Manipulation durch Beziehungen oder Macht.<br>
-  - Absolute Nachvollziehbarkeit.
-</p>
-
-<p>
-  <strong>Risiken:</strong><br>
-  - Wer programmiert die KI – und mit welchen Werten?<br>
-  - Können Algorithmen wirklich Gerechtigkeit empfinden?<br>
-  - Wird der Mensch am Ende zum bloßen Zuschauer seiner eigenen Justiz?
-</p>
-
-<p>
-  Meine Vision:<br>
-  Eine digitale Justiz, die <span style="color:#009ee3; font-weight:bold;">Mensch und Maschine kombiniert</span>.<br>
-  KI sorgt für Geschwindigkeit und Fairness.<br>
-  Menschen wachen darüber, dass Gerechtigkeit nicht nur logisch, sondern auch <span style="color:#009ee3; font-weight:bold;">menschlich</span> bleibt.
-</p>
-
-<p>
-  2040 ist nicht weit. Die Frage ist: <span style="color:#009ee3; font-weight:bold;">Warten wir – oder fangen wir an, jetzt die Zukunft zu bauen?</span>
-</p>
-<!-- Ende Digiprophet -->
-
-    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
-      ← Zurück zu den Themen
-    </div>
+    <p>Die Judikative stellt sicher, dass Recht und Gesetz eingehalten werden, ...</p>
+    <div class="themenbox" onclick="location.href='#top';">← Zurück zu den Themen</div>
 
     <h2 id="legislative">Legislative (Parlament)</h2>
-
-    <p>
-      Die Legislative ist das Parlament, das die Gesetze macht und kontrolliert. Um das Vertrauen der Bürger zu stärken, muss die Gesetzgebung deutlich transparenter werden. Die Bürger sollen besseren Zugang zu den Gesetzgebungsverfahren erhalten und verstehen können, wie Entscheidungen getroffen werden.
-    </p>
-
-    <p>
-      Mehr Offenheit und digitale Beteiligungsmöglichkeiten sind der Schlüssel, damit Demokratie wirklich lebendig wird. Nur so kann verhindert werden, dass Politik hinter verschlossenen Türen passiert und Entscheidungen für die Bürger nachvollziehbar bleiben.
-    </p>
-
-    <div class="themenbox" onclick="location.href='#top';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#top';">
-      ← Zurück zu den Themen
-    </div>
+    <p>Die Legislative ist das Parlament, das die Gesetze macht und kontrolliert. ...</p>
+    <div class="themenbox" onclick="location.href='#top';">← Zurück zu den Themen</div>
 
     <!-- Zurück zur Startseite -->
-    <div class="themenbox" onclick="location.href='index.html';" role="button" tabindex="0"
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='index.html';">
+    <div class="themenbox" onclick="location.href='index.html';">
       ← Zurück zur Startseite
     </div>
   </main>
 
   <footer>
     <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-    <div class="social-links" aria-label="Soziale Medien">
-      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+    <div class="social-links">
+      <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
       </a>
     </div>
+    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
   </footer>
 </body>
 </html>
