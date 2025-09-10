@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bildung - Heschu Hasan</title>
+<title>Umwelt - Heschu Hasan</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 <style>
 :root {
@@ -16,6 +16,9 @@
 body {
   margin: 0;
   background-color: var(--white);
+  background-image: url('Vision.png');
+  background-size: cover;
+  background-position: center top;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
   color: var(--black);
   position: relative;
@@ -29,10 +32,11 @@ body::before {
   background-color: rgba(255,255,255,0.85);
   z-index: -1;
 }
-     #fdp-logo {
-      margin-left: 10px;
-      max-height: 45px;
-    }
+
+#fdp-logo {
+  margin-left: 10px;
+  max-height: 45px;
+}
 
 a {
   color: var(--black);
@@ -104,9 +108,9 @@ main p {
 }
 
 .box {
-  flex: 1 1 260px;      /* flex-grow, flex-shrink, flex-basis */
-  max-width: 300px;      /* maximale Breite */
-  min-height: 140px;     /* Minimumhöhe für Text */
+  flex: 1 1 260px;
+  max-width: 300px;
+  min-height: 140px;
   border: 2px solid var(--magenta);
   background-color: var(--white);
   color: var(--black);
@@ -118,12 +122,11 @@ main p {
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
-  box-sizing: border-box;       /* wichtig für Padding */
   display: flex;
   flex-direction: column;
-  justify-content: center;      /* Text vertikal zentrieren */
+  justify-content: center;
   align-items: center;
-  word-wrap: break-word;        /* Textumbruch */
+  word-wrap: break-word;
 }
 
 .box.show {
@@ -151,7 +154,6 @@ main p {
   line-height: 1.4;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .bildung-boxes {
     flex-direction: column;
@@ -173,12 +175,6 @@ footer {
 footer h3 { margin: 0 0 15px; font-weight: 700; text-transform: uppercase; }
 footer .social-links a { color: var(--white); font-size: 30px; margin: 0 15px; transition: color 0.3s ease; }
 footer .social-links a:hover, footer .social-links a:focus { color: var(--white); outline: none; }
-
-@media (max-width: 768px) {
-  header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
-  nav a { margin-left: 0; margin-right: 15px; }
-  .bildung-boxes { flex-direction: column; align-items: center; }
-}
 </style>
 </head>
 <body>
@@ -187,37 +183,36 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
   <h1>HESCHU HASAN<img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" /></h1>
   <nav>
     <a href="index.html">Startseite</a>
-    <a href="bildung.html" class="active">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html" class="active">Umwelt</a>
     <a href="meinungsmacher.html">Meinungs-Macher</a>
     <a href="impressum.html">Impressum</a>
   </nav>
 </header>
 
 <main>
-  <h2>Meine Bildungsthemen</h2>
+  <h2>Meine Umweltthemen</h2>
   <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
   <div class="bildung-boxes" role="list">
-    <a href="kindlich.html" class="box" role="listitem" tabindex="0">
-      <h3>Frühkindliche Bildung</h3>
-      <p>Förderung frühzeitiger Bildung und 
-        Entwicklungsmöglichkeiten.</p>
+    <a href="klimaschutz.html" class="box" role="listitem" tabindex="0">
+      <h3>Klimaschutz & Energiewende</h3>
+      <p>Förderung von Wind-, Solar- & Power-to-X-Technologien.</p>
     </a>
-    <a href="digitalebildung.html" class="box" role="listitem" tabindex="0">
-      <h3>Digitale Bildung</h3>
-      <p>Integration moderner Technologien in den Schulalltag.</p>
+    <a href="wasserwirtschaft.html" class="box" role="listitem" tabindex="0">
+      <h3>Wasserwirtschaft</h3>
+      <p>Schutz und effiziente Nutzung unserer Wasserressourcen.</p>
     </a>
-    <a href="lehrer.html" class="box" role="listitem" tabindex="0">
-      <h3>Lehrerbildung & Fortbildung</h3>
-      <p>Qualitätssteigerung durch bessere Ausbildung und Weiterbildung.</p>
+    <a href="abfall.html" class="box" role="listitem" tabindex="0">
+      <h3>Abfall & Recycling</h3>
+      <p>Nachhaltige Kreislaufwirtschaft und Müllvermeidung.</p>
     </a>
-    <a href="schulfinanzierung.html" class="box" role="listitem" tabindex="0">
-      <h3>Schulfinanzierung</h3>
-      <p>Faire und nachhaltige Finanzierung der Bildungseinrichtungen.</p>
+    <a href="naturschutz.html" class="box" role="listitem" tabindex="0">
+      <h3>Naturschutz & Biodiversität</h3>
+      <p>Erhalt von Lebensräumen und Artenvielfalt.</p>
     </a>
-    <a href="inklusion.html" class="box" role="listitem" tabindex="0">
-      <h3>Inklusion & Chancengleichheit</h3>
-      <p>Bildung für alle, unabhängig von Herkunft und Fähigkeiten.</p>
+    <a href="mobilitaet.html" class="box" role="listitem" tabindex="0">
+      <h3>Mobilität & Verkehr</h3>
+      <p>Förderung umweltfreundlicher Verkehrskonzepte.</p>
     </a>
   </div>
 </main>
@@ -229,7 +224,7 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
       <i class="fab fa-instagram"></i>
     </a>
   </div>
-   <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
   <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
 </footer>
 
