@@ -14,10 +14,7 @@
 
   <style>
     :root {
-      --yellow: #ffed00;
       --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
     }
@@ -45,8 +42,9 @@
     }
 
     a {
-      color: var(--cyan);
+      color: var(--black);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
     a:hover,
     a:focus {
@@ -56,7 +54,7 @@
 
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--black);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -66,7 +64,7 @@
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: var(--cyan);
+      color: var(--black);
       margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -93,7 +91,7 @@
     }
 
     main h2 {
-      color: var(--cyan);
+      color: var(--magenta);
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 20px;
@@ -108,26 +106,28 @@
     }
 
     .themenbox {
-      border: 2px solid var(--turquoise);
+      border: 2px solid var(--black);
       border-radius: 8px;
       padding: 16px 24px;
       margin-bottom: 20px;
       text-align: center;
       font-weight: 600;
-      color: var(--turquoise);
+      color: var(--black);
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
     }
 
-    .themenbox:hover {
+    .themenbox:hover,
+    .themenbox:focus {
       background-color: var(--magenta);
       color: var(--white);
       border-color: var(--magenta);
+      outline: none;
     }
 
     footer {
-      background-color: var(--cyan);
+      background-color: var(--black);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
@@ -140,6 +140,7 @@
       letter-spacing: 0.05em;
       margin-bottom: 15px;
       font-weight: 700;
+      color: var(--magenta);
     }
 
     footer .social-links a {
@@ -189,41 +190,20 @@
   </header>
 
   <main>
-    <!-- Themenübersicht mit ID als Anker -->
+    <!-- Themenübersicht -->
     <div id="themen">
-      <div
-        class="themenbox"
-        onclick="location.href='#finanzierung';"
-        role="button"
-        tabindex="0"
-        onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#finanzierung';"
-      >
+      <div class="themenbox" onclick="location.href='#finanzierung';" role="button" tabindex="0">
         💶 Faire und nachhaltige Schulfinanzierung
       </div>
-
-      <div
-        class="themenbox"
-        onclick="location.href='#investitionen';"
-        role="button"
-        tabindex="0"
-        onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#investitionen';"
-      >
+      <div class="themenbox" onclick="location.href='#investitionen';" role="button" tabindex="0">
         🏫 Investitionen in moderne Schulen
       </div>
-
-      <div
-        class="themenbox"
-        onclick="location.href='#federalismus';"
-        role="button"
-        tabindex="0"
-        onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#federalismus';"
-      >
+      <div class="themenbox" onclick="location.href='#federalismus';" role="button" tabindex="0">
         🤝 Kooperation zwischen Bund und Ländern
       </div>
     </div>
 
-    <!-- Inhalte mit Anker-Zielen -->
-
+    <!-- Inhalte -->
     <h2 id="finanzierung">Faire und nachhaltige Schulfinanzierung</h2>
     <p>
       Bildung braucht eine verlässliche und langfristige Finanzierung. Nur so können Schulen gut ausgestattet und Lehrkräfte angemessen bezahlt werden. Es ist wichtig, dass die Mittel gerecht verteilt werden, damit kein Bereich zu kurz kommt und alle Kinder die gleichen Chancen erhalten.
@@ -232,13 +212,7 @@
       Zwar stellt die Bundesregierung große Mittel bereit, doch es ist verständlich, dass es unterschiedliche Meinungen über die Priorisierung gibt. Wichtig ist, dass die Finanzierung transparent und zielgerichtet eingesetzt wird, um nachhaltige Verbesserungen zu erzielen.
     </p>
 
-    <div
-      class="themenbox"
-      onclick="location.href='#themen';"
-      role="button"
-      tabindex="0"
-      onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';"
-    >
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">
       ← Zurück zu den Themen
     </div>
 
@@ -250,13 +224,7 @@
       Es ist auch wichtig, weitere Bereiche wie Gebäudesanierung und Pädagogik zu berücksichtigen, damit Schülerinnen und Schüler bestmöglich gefördert werden können.
     </p>
 
-    <div
-      class="themenbox"
-      onclick="location.href='#themen';"
-      role="button"
-      tabindex="0"
-      onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';"
-    >
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">
       ← Zurück zu den Themen
     </div>
 
@@ -268,24 +236,11 @@
       Die Diskussionen über die Verteilung der Mittel zeigen, dass Transparenz und Dialog zwischen allen Beteiligten essenziell sind.
     </p>
 
-    <div
-      class="themenbox"
-      onclick="location.href='#themen';"
-      role="button"
-      tabindex="0"
-      onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';"
-    >
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">
       ← Zurück zu den Themen
     </div>
 
-    <!-- Gesamtrückkehr zur Bildung-Übersicht -->
-    <div
-      class="themenbox"
-      onclick="location.href='bildung.html';"
-      role="button"
-      tabindex="0"
-      onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';"
-    >
+    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0">
       ← Zurück zur Übersicht
     </div>
   </main>
@@ -293,14 +248,12 @@
   <footer>
     <h3>Treffen Sie mich auf den Sozialen Medien</h3>
     <div class="social-links" aria-label="Soziale Medien">
-      <a
-        href="https://instagram.com/heschuhasan"
-        target="_blank"
-        rel="noopener"
-        aria-label="Instagram"
-        ><i class="fab fa-instagram"></i
-      ></a>
+      <a href="https://instagram.com/heschuhasan" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
     </div>
+    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+    <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
   </footer>
 
   <script>
