@@ -22,12 +22,12 @@ body {
   background-color: var(--white);
 }
 
-/* Hintergrundbild als Wasserzeichen */
+/* Wasserzeichen-Hintergrundbild */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url('UmweltBild.png'); /* hier dein Umwelt-Bild einfügen */
+  background-image: url('Haltung.png'); /* dein Umweltbild */
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -84,7 +84,7 @@ main h2 {
   color: var(--magenta);
   font-weight: 700;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -92,13 +92,15 @@ main h3 {
   color: var(--black);
   font-weight: 600;
   font-size: 1.25rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-main p {
-  color: var(--black);
-  font-weight: 300;
+main p.spruch {
+  font-weight: 400;
   font-size: 1.1rem;
-  max-width: 700px;
+  margin-bottom: 20px;
+  max-width: 800px;
+  text-align: center;
+  font-style: italic;
 }
 
 .umwelt-boxes {
@@ -106,15 +108,15 @@ main p {
   flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .box {
-  flex: 0 1 260px;
+  flex: 1 1 260px;
   max-width: 300px;
   min-height: 140px;
   border: 2px solid var(--magenta);
-  background-color: rgba(255,255,255,0.95);
+  background-color: var(--white);
   color: var(--black);
   padding: 20px;
   border-radius: 6px;
@@ -200,7 +202,7 @@ footer .social-links a:hover, footer .social-links a:focus { color: var(--white)
 
 <main>
   <h2>Meine Umwelt-Themen</h2>
-  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
+  <p class="spruch">Saubere Luft, Wasser klar, Solarenergie macht’s wunderbar!</p>
   <div class="umwelt-boxes" role="list">
     <a href="solar.html" class="box" role="listitem" tabindex="0">
       <h3>Solar & Erneuerbare Energie</h3>
