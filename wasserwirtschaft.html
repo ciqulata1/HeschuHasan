@@ -14,16 +14,14 @@
 
   <style>
     :root {
-      --yellow: #ffed00;
       --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
+      hyphens: auto;
     }
 
     html {
@@ -39,24 +37,22 @@
       line-height: 1.5;
       opacity: 0;
       transition: opacity 1s ease;
-      hyphens: auto;
-      -webkit-hyphens: auto;
-      -ms-hyphens: auto;
     }
 
     a {
-      color: var(--cyan);
+      color: var(--magenta);
       text-decoration: none;
     }
+
     a:hover,
     a:focus {
-      color: var(--magenta);
+      color: var(--black);
       outline: none;
     }
 
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--magenta);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -66,7 +62,7 @@
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: var(--cyan);
+      color: var(--magenta);
       margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -78,6 +74,7 @@
       margin-left: 25px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      color: var(--black);
     }
 
     nav a.active,
@@ -93,12 +90,11 @@
     }
 
     main h2 {
-      color: var(--cyan);
+      color: var(--magenta);
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
     }
 
     main p {
@@ -108,26 +104,28 @@
     }
 
     .themenbox {
-      border: 2px solid var(--turquoise);
+      border: 2px solid var(--magenta);
       border-radius: 8px;
       padding: 16px 24px;
       margin-bottom: 20px;
       text-align: center;
       font-weight: 600;
-      color: var(--turquoise);
+      color: var(--magenta);
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
     }
 
-    .themenbox:hover {
+    .themenbox:hover,
+    .themenbox:focus {
       background-color: var(--magenta);
       color: var(--white);
       border-color: var(--magenta);
+      outline: none;
     }
 
     footer {
-      background-color: var(--cyan);
+      background-color: var(--black);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
@@ -140,6 +138,7 @@
       letter-spacing: 0.05em;
       margin-bottom: 15px;
       font-weight: 700;
+      color: var(--magenta);
     }
 
     footer .social-links a {
@@ -200,28 +199,24 @@
     <p>
       In Bayern wird Wasserkraft traditionell effektiv genutzt, um saubere Energie zu erzeugen. Kleine und große Anlagen leisten einen wichtigen Beitrag zur Energiewende – emissionsfrei, zuverlässig und lokal.
     </p>
-
     <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
 
     <h2 id="wasserstoff">Grüner Wasserstoff</h2>
     <p>
       Durch Elektrolyse von Wasser mit Strom aus erneuerbaren Quellen kann Wasserstoff CO₂-neutral produziert werden. Er dient als Speicher und sauberer Treibstoff für Industrie und Verkehr. Wasser ist dabei die zentrale Ressource – sie muss nachhaltig verfügbar bleiben.
     </p>
-
     <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
 
     <h2 id="gewaesserschutz">Gewässerschutz & Renaturierung</h2>
     <p>
       Naturnahe Flüsse, Auen und Feuchtgebiete helfen beim Klimaschutz und stärken die Artenvielfalt. Durch Renaturierung und bessere Wasserführung lassen sich Hochwasserrisiken reduzieren und die Umweltqualität steigern.
     </p>
-
     <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
 
     <h2 id="versorgung">Trinkwasser sichern</h2>
     <p>
       Klimawandel und zunehmende Trockenheit fordern eine moderne Wasserinfrastruktur. Trinkwasserversorgung muss gesichert und modernisiert werden – energieeffizient, gerecht und regional angepasst.
     </p>
-
     <div class="themenbox" onclick="location.href='#themen';">← Zurück zu den Themen</div>
 
     <div class="themenbox" onclick="location.href='bildung.html';">← Zurück zur Übersicht</div>
@@ -234,12 +229,8 @@
         <i class="fab fa-instagram"></i>
       </a>
     </div>
+    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+    <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
   </footer>
-
-  <script>
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '1';
-    });
-  </script>
 </body>
 </html>
