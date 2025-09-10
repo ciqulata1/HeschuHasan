@@ -20,6 +20,7 @@
     padding: 0;
   }
 
+
 body {
     font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
     background-color: var(--white);
@@ -30,14 +31,14 @@ body {
     /* Hintergrundbild */
     background-image: url('Vision.png');
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain; /* Bild vollständig sichtbar */
-    background-attachment: fixed; /* bleibt beim Scrollen */
+    background-position: center top; /* oben zentriert */
+    background-size: 60% auto; /* Bild kleiner, proportional */
+    background-attachment: fixed;
 
-    /* Optional: Overlay für bessere Lesbarkeit */
     position: relative;
 }
 
+/* Overlay für bessere Lesbarkeit */
 body::before {
     content: "";
     position: fixed;
@@ -45,16 +46,15 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.5); /* halbtransparent, passt Textlesbarkeit an */
-    pointer-events: none; /* Overlay blockiert keine Klicks */
+    background: rgba(255, 255, 255, 0.5); /* halbtransparent */
+    pointer-events: none;
     z-index: 0;
 }
 
-/* Alle Inhalte über Overlay platzieren */
+/* Inhalte über Overlay */
 body > * {
-    position: relative;
-    z-index: 1;
-}
+    position: relativ
+
 
      #fdp-logo {
       margin-left: 10px;
