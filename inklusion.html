@@ -14,21 +14,18 @@
 
   <style>
     :root {
-      --yellow: #ffed00;
       --magenta: #e5007d;
-      --cyan: #009ee3;
-      --turquoise: #00abae;
       --black: #000000;
       --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
+      hyphens: auto;
     }
 
     html {
       scroll-behavior: smooth;
-      hyphens: auto;
     }
 
     body {
@@ -40,14 +37,13 @@
       line-height: 1.5;
       opacity: 0;
       transition: opacity 1s ease;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      hyphens: auto;
+      word-wrap: break-word;
     }
 
     a {
-      color: var(--cyan);
+      color: var(--black);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
     a:hover,
     a:focus {
@@ -57,7 +53,7 @@
 
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--black);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -67,7 +63,7 @@
     header h1 {
       font-weight: 700;
       font-size: 1.8rem;
-      color: var(--cyan);
+      color: var(--black);
       margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -94,7 +90,7 @@
     }
 
     main h2 {
-      color: var(--cyan);
+      color: var(--magenta);
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 20px;
@@ -106,17 +102,16 @@
       font-size: 1.1rem;
       margin-bottom: 1.25rem;
       color: var(--black);
-      hyphens: auto;
     }
 
     .themenbox {
-      border: 2px solid var(--turquoise);
+      border: 2px solid var(--black);
       border-radius: 8px;
       padding: 16px 24px;
       margin-bottom: 20px;
       text-align: center;
       font-weight: 600;
-      color: var(--turquoise);
+      color: var(--black);
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
@@ -131,7 +126,7 @@
     }
 
     footer {
-      background-color: var(--cyan);
+      background-color: var(--black);
       color: var(--white);
       text-align: center;
       padding: 30px 20px;
@@ -144,6 +139,7 @@
       letter-spacing: 0.05em;
       margin-bottom: 15px;
       font-weight: 700;
+      color: var(--magenta);
     }
 
     footer .social-links a {
@@ -195,113 +191,37 @@
   <main>
     <!-- Themenübersicht -->
     <div id="themen">
-      <div class="themenbox" onclick="location.href='#sport';" role="button" tabindex="0" 
-           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#sport';">
-        🤸‍♂️ Sport als gesellschaftliches Projekt
-      </div>
-
-      <div class="themenbox" onclick="location.href='#freiwilligendienst';" role="button" tabindex="0"
-           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#freiwilligendienst';">
-        🙋‍♀️ Für mehr Anreize im Freiwilligendienst
-      </div>
-
-      <div class="themenbox" onclick="location.href='#gesundheitspflege';" role="button" tabindex="0"
-           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#gesundheitspflege';">
-        🏥 Beste Gesundheit und Pflege für die Zukunft sichern
-      </div>
-
-      <div class="themenbox" onclick="location.href='#ambulanteversorgung';" role="button" tabindex="0"
-           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#ambulanteversorgung';">
-        🚑 Ob Land oder Stadt – Gesundheitsversorgung überall sichern
-      </div>
-
-      <div class="themenbox" onclick="location.href='#innovation';" role="button" tabindex="0"
-           onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#innovation';">
-        💡 Innovationen fördern – Deutschland als Medizin-Standort stärken
-      </div>
+      <div class="themenbox" onclick="location.href='#sport';" role="button" tabindex="0">🤸‍♂️ Sport als gesellschaftliches Projekt</div>
+      <div class="themenbox" onclick="location.href='#freiwilligendienst';" role="button" tabindex="0">🙋‍♀️ Für mehr Anreize im Freiwilligendienst</div>
+      <div class="themenbox" onclick="location.href='#gesundheitspflege';" role="button" tabindex="0">🏥 Beste Gesundheit und Pflege für die Zukunft sichern</div>
+      <div class="themenbox" onclick="location.href='#ambulanteversorgung';" role="button" tabindex="0">🚑 Ob Land oder Stadt – Gesundheitsversorgung überall sichern</div>
+      <div class="themenbox" onclick="location.href='#innovation';" role="button" tabindex="0">💡 Innovationen fördern – Deutschland als Medizin-Standort stärken</div>
     </div>
 
     <!-- Inhalte -->
     <h2 id="sport">Sport als gesellschaftliches Projekt</h2>
-    <p>
-      Sport ist mehr als nur Bewegung – er hält gesund, verbindet Menschen und hilft, Pflegebedürftigkeit vorzubeugen. Um diese Potenziale zu heben, wollen wir neben einer generellen Stärkung des Ehrenamts insbesondere das Engagement der Babyboomer-Generation gezielt einbinden. Mit ihrer Erfahrung und Zeit können sie Sportangebote für Kinder, Jugendliche und Senioren ausbauen und die Vereinsarbeit beleben.
-    </p>
-    <p>
-      Außerdem stärken wir die Zusammenarbeit zwischen Vereinen, Schulen, Unternehmen und sozialen Einrichtungen, um möglichst viele Menschen zu erreichen. Sport bringt Menschen zusammen, unabhängig von Herkunft oder Fähigkeiten.
-    </p>
-    <p>
-      Die Bundesjugendspiele mit individuellen Leistungsanreizen halten wir aufrecht und ergänzen sie um die Möglichkeit, dort das Deutsche Sportabzeichen zu erwerben. So motivieren wir leistungsstarke Kinder und Bewegungsbenachteiligte gleichermaßen und fördern Leistung und Teilhabe bei jungen Menschen.
-    </p>
-    <p>
-      Sportgroßveranstaltungen wie Olympische und Paralympische Spiele wollen wir wieder nach Deutschland holen – vorausgesetzt, sie entsprechen ökologischen, ökonomischen und humanitären Standards sowie den traditionellen Werten des Sports. Solche Events zeigen, wie Sport verbindet und Werte wie Inklusion und Fairness sichtbar macht.
-    </p>
-    <p>
-      So stärken wir die Rolle des Sports bei Integration und Gewaltprävention und fördern Spitzensport mit klaren Zielen und effizienten Strukturen. Wir setzen uns zudem dafür ein, dass eSports als gemeinnützig anerkannt wird.
-    </p>
-    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
-      ← Zurück zu den Themen
-    </div>
+    <p>Sport ist mehr als nur Bewegung – er hält gesund, verbindet Menschen und hilft, Pflegebedürftigkeit vorzubeugen. Wir wollen das Ehrenamt stärken und die Erfahrung der älteren Generation gezielt einbinden.</p>
+    <p>Vereine, Schulen, Unternehmen und soziale Einrichtungen sollen eng zusammenarbeiten, damit möglichst viele Menschen teilnehmen können. Bundesjugendspiele und Deutsche Sportabzeichen sollen Leistungsanreize und Teilhabe fördern.</p>
+    <p>Sportgroßveranstaltungen sollen nach Deutschland geholt werden, sofern ökologische, ökonomische und humanitäre Standards eingehalten werden. Auch eSports sollen als gemeinnützig anerkannt werden.</p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">← Zurück zu den Themen</div>
 
     <h2 id="freiwilligendienst">Für mehr Anreize im Freiwilligendienst</h2>
-    <p>
-      Wir Freie Demokraten sehen eine allgemeine Dienstpflicht, ein sogenanntes Gesellschaftsjahr und verwandte Konzepte als einen schweren Freiheitseingriff. Einen solchen Pflichtdienst lehnen wir deshalb entschieden ab.
-    </p>
-    <p>
-      Wir setzen stattdessen auf attraktive und berufsvorbereitende Freiwilligendienste.
-    </p>
-    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
-      ← Zurück zu den Themen
-    </div>
+    <p>Wir lehnen eine allgemeine Pflichtdienstpflicht ab und setzen auf attraktive, berufsvorbereitende Freiwilligendienste.</p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">← Zurück zu den Themen</div>
 
     <h2 id="gesundheitspflege">Beste Gesundheit und Pflege für die Zukunft sichern</h2>
-    <p>
-      Zu einem freien und selbstbestimmten Leben gehört auch die bestmögliche Gesundheits- und pflegerische Versorgung bei stabilen Beiträgen. Wir Freie Demokraten wollen die Gesundheitsversorgung patientenzentriert gestalten.
-    </p>
-    <p>
-      Wir bekennen uns zur Selbstverwaltung und stärken die Freien Berufe. Unnötige Bürokratie im Gesundheitswesen wollen wir abbauen und die Digitalisierung weiter vorantreiben.
-    </p>
-    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
-      ← Zurück zu den Themen
-    </div>
+    <p>Patientenzentrierte Gesundheitsversorgung, Selbstverwaltung der Freien Berufe, Abbau von Bürokratie und Digitalisierung sind unsere zentralen Ziele.</p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">← Zurück zu den Themen</div>
 
     <h2 id="ambulanteversorgung">Ob Land oder Stadt – Gesundheitsversorgung überall sichern</h2>
-    <p>
-      Als Freie Demokraten setzen wir uns dafür ein, dass alle Menschen in Deutschland Zugang zu einer wohnortnahen und qualitativ hochwertigen Versorgung haben – im ländlichen Raum und in der Stadt.
-    </p>
-    <p>
-      In der ambulanten Versorgung setzen wir uns für ein Primärarztsystem ein: Haus- und Kinderärzte sollten die erste Anlaufstelle für Patientinnen und Patienten sein.
-    </p>
-    <p>
-      Zu einer Stärkung der flächendeckenden ambulanten Versorgung gehört für uns auch, dass die ungekürzte Vergütung aller Gesundheitsberufe leistungsgerecht erfolgen muss.
-    </p>
-    <p>
-      In der Krankenhausversorgung wollen wir spezialisierte und damit bessere Angebote vorhalten, die Kostenentwicklung bremsen und zugleich Ärzte und Pflegekräfte entlasten. Auch müssen Krankenhäuser, Ärzte und der Rettungsdienst mit einer Notfallreform besser vernetzt, integriert und koordiniert werden.
-    </p>
-    <p>
-      Wir wollen künstliche Sektorenbarrieren zwischen dem ambulanten und dem stationären Versorgungsbereich konsequent abbauen und die Verzahnung und Vernetzung aller Versorgungsbereiche weiterentwickeln. Wir bekennen uns zu den Freien Berufen im Gesundheitswesen. Diese müssen in medizinischen Fragen autonom und frei von Weisungen Dritter entscheiden können. Die Therapiefreiheit der Behandlung ohne Budgetierungszwang kommt den Patientinnen und Patienten zugute.
-    </p>
-    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
-      ← Zurück zu den Themen
-    </div>
+    <p>Wir setzen uns für Primärärzte, flächendeckende Versorgung, faire Vergütung, Vernetzung von ambulanten und stationären Bereichen und Therapiefreiheit ein.</p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">← Zurück zu den Themen</div>
 
     <h2 id="innovation">Innovationen fördern – Deutschland als Standort für Medizin stärken</h2>
-    <p>
-      Wir Freie Demokraten setzen uns dafür ein, dass Patientinnen und Patienten in Deutschland frühzeitig Zugang zu nutzbringenden und innovativen Arzneimitteln erhalten. Dafür wollen wir den Produktions- und Forschungsstandort Deutschland stärken.
-    </p>
-    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='#themen';">
-      ← Zurück zu den Themen
-    </div>
+    <p>Patientinnen und Patienten sollen frühzeitig Zugang zu innovativen Arzneimitteln erhalten. Produktions- und Forschungsstandorte werden gestärkt.</p>
+    <div class="themenbox" onclick="location.href='#themen';" role="button" tabindex="0">← Zurück zu den Themen</div>
 
-    <!-- Gesamtrückkehr zur Startseite oder Bildung -->
-    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" 
-         onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
-      ← Zurück zur Bildungs-Übersicht
-    </div>
+    <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0">← Zurück zur Bildungs-Übersicht</div>
   </main>
 
   <footer>
@@ -311,6 +231,8 @@
         <i class="fab fa-instagram"></i>
       </a>
     </div>
+    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+    <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
   </footer>
 </body>
 </html>
