@@ -31,7 +31,7 @@
 
     header {
       background-color: var(--white);
-      border-bottom: 2px solid var(--black);
+      border-bottom: 2px solid var(--magenta);
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -40,7 +40,7 @@
     }
 
     header h1 {
-      color: var(--black);
+      color: var(--magenta);
       margin: 0;
       font-size: 1.8rem;
       text-transform: uppercase;
@@ -84,7 +84,7 @@
     }
 
     .info-box {
-      border: 2px solid var(--black);
+      border: 2px solid var(--magenta);
       border-radius: 10px;
       padding: 20px 30px;
       margin: 0 auto 30px auto;
@@ -93,6 +93,27 @@
       color: var(--black);
       font-weight: 500;
       font-size: 1.1rem;
+    }
+
+    .themenbox {
+      border: 2px solid var(--magenta);
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--magenta);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .themenbox:hover,
+    .themenbox:focus {
+      background-color: var(--magenta);
+      color: var(--white);
+      border-color: var(--magenta);
+      outline: none;
     }
 
     footer {
@@ -169,6 +190,11 @@
     <p>
       Sie möchten Impulse geben oder mit mir diskutieren? Dann schreiben Sie mir gerne über das Kontaktformular.
     </p>
+  </div>
+
+  <div class="themenbox" onclick="location.href='bildung.html';" role="button" tabindex="0" 
+       onkeydown="if(event.key==='Enter' || event.key===' ') location.href='bildung.html';">
+    ← Zurück zur Bildungs-Übersicht
   </div>
 </main>
 
