@@ -92,7 +92,7 @@ main {
 }
 
 .box {
-  background-color: rgba(255, 255, 255, 0.85); /* halbtransparent statt komplett weiß */
+  background-color: rgba(255,255,255,0.85); /* halbtransparent */
   border: 2px solid var(--magenta);
   color: var(--black);
   padding: 20px;
@@ -103,12 +103,12 @@ main {
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  max-width: 300px;      /* wie vorher */
+  width: 100%;
+  display: block;        /* nicht flex, damit Höhe sich am Inhalt orientiert */
   word-wrap: break-word;
 }
+
 
 
 .box.show { opacity: 1; transform: translateY(0); }
