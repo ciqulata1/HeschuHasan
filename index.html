@@ -262,49 +262,50 @@
     }
 
   footer {
-  width: 100%;
-  position: relative;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.8); /* bleibt wie gehabt */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background-color: var(--black);
+  color: var(--white);
   text-align: center;
-  padding: 15px 0;
-  border-top: 2px solid var(--magenta);
+  padding: 40px 0;
+  border-top: 3px solid var(--magenta);
   box-sizing: border-box;
+  position: relative;
 }
 
+footer h3 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  letter-spacing: 0.05em;
+  color: var(--white);
+}
 
-    footer h3 {
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-      letter-spacing: 0.05em;
-      color: var(--white);
-    }
+footer .social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 15px;
+}
 
-    footer .social-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 10px;
-    }
+footer .social-links a {
+  font-size: 1.6rem;
+  color: var(--white);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
 
-    footer .social-links a {
-      font-size: 1.6rem;
-      color: var(--white);
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
+footer .social-links a:hover {
+  color: var(--magenta);
+  transform: scale(1.2);
+}
 
-    footer .social-links a:hover {
-      color: var(--black);
-      transform: scale(1.2);
-    }
+footer p {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: var(--white);
+}
 
-    footer p {
-      font-size: 0.9rem;
-      margin-top: 5px;
-    }
 
     :root {
   --yellow: #ffcc00;
