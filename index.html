@@ -298,30 +298,33 @@
       margin-top: 5px;
     }
 
-  .chatcontrol-box {
-    border: 3px solid var(--yellow, #ffcc00);
-    background: var(--white);
-    color: var(--black);
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  }
+.chatcontrol-box {
+  border: 3px solid var(--yellow, #ffcc00) !important;
+  background: var(--white);
+  color: var(--magenta);
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 40px; /* 💡 Abstand zu anderen Themen */
+  padding: 25px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
 
-  .chatcontrol-box:hover {
-    background: var(--cyan, #00ffff);
-    color: var(--magenta);
-    border-color: var(--cyan, #00ffff);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-  }
+.chatcontrol-box:hover {
+  background: var(--cyan, #00ffff);
+  color: var(--magenta);
+  border-color: var(--cyan, #00ffff);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
 
-  .chatcontrol-box:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
+.chatcontrol-box:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
     @media (max-width: 768px) {
       header {
@@ -372,18 +375,13 @@
   </div>
 
 
-  <!-- STOPPT DIE CHATKONTROLLE BOX -->
-<section class="chatcontrol-box">
-  <a href="https://www.fdp.de/stoppt-die-chatkontrolle" target="_blank" rel="noopener">
-    <h2>🛑 Stoppt die Chatkontrolle!</h2>
-    <p>
-      Privatsphäre ist ein <strong>Grundrecht</strong> – in Deutschland und in ganz Europa.  
-      Diese geplante EU-Gesetzgebung verstößt gegen die <strong>deutsche Verfassung</strong>.  
-      Unterstützen Sie unsere Initiative für den Schutz Ihrer digitalen Freiheit.
-    </p>
-    <p><strong>👉 Jetzt mitmachen und Privatsphäre verteidigen!</strong></p>
-  </a>
-</section>
+  <!-- STOPPT DIE CHATKONTROLLE -->
+<a href="https://www.fdp.de/stoppt-die-chatkontrolle" 
+   target="_blank" 
+   rel="noopener" 
+   class="topic-box chatcontrol-box">
+   Stoppt die Chatkontrolle
+</a>
 
   <section class="mission-box">
     <h2>Meine Mission für Freiburg / Breisgau-Hochschwarzwald</h2>
