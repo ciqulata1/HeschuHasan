@@ -437,26 +437,62 @@
 
 
 <form action="submit.php" method="POST">
+  <div id="feedback"></div>
     
-    <label for="email">Email-Adresse:</label>
-    <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
+  <label for="email">Email-Adresse:</label>
+  <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
 
-    <label for="subject">Betreff:</label>
-    <input type="text" id="subject" name="subject" required placeholder="Betreff Ihrer Nachricht" />
+  <label for="subject">Betreff:</label>
+  <input type="text" id="subject" name="subject" required placeholder="Betreff Ihrer Nachricht" />
 
-    <label for="message">Nachricht:</label>
-    <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht..."></textarea>
+  <label for="message">Nachricht:</label>
+  <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht..."></textarea>
 
-    <label>
-      <input type="checkbox" name="datenschutz" required />
-      Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
-    </label>
+  <label>
+    <input type="checkbox" name="datenschutz" required />
+    Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
+  </label>
 
-    <!-- Honeypot für Spamschutz -->
-    <input type="text" name="_honey" style="display:none" />
+  <!-- Honeypot für Spamschutz -->
+  <input type="text" name="_honey" style="display:none" />
 
-    <button type="submit">Absenden</button>
+  <button type="submit">Absenden</button>
 </form>
+
+<script>
+// Feedback aus URL lesen
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get('status');
+  const feedbackDiv = document.getElementById('feedback');
+  
+  if (!status) return;
+
+  let msg = '';
+  let color = 'red';
+
+  switch(status) {
+    case 'ok':
+      msg = 'Vielen Dank! Ihre Nachricht wurde gesendet.';
+      color = 'green';
+      break;
+    case 'missing':
+      msg = 'Bitte füllen Sie alle Felder aus.';
+      break;
+    case 'bademail':
+      msg = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+      break;
+    case 'spam':
+      msg = 'Spam erkannt.';
+      color = 'orange';
+      break;
+    default:
+      msg = 'Fehler beim Senden.';
+  }
+
+  feedbackDiv.innerHTML = `<p style="color:${color}; font-weight:bold;">${msg}</p>`;
+});
+</script>
 
 <footer>
   <h3>Treffen Sie mich auf den Sozialen Medien</h3>
