@@ -303,12 +303,13 @@
   --cyan-fdp: #00aeef; /* offizielles FDP-Cyan */
 }
 
+/* Kampagnenbox */
 .chatcontrol-box {
   background: var(--yellow);
   color: var(--magenta);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   border: 3px solid var(--magenta);
   border-radius: 8px;
   padding: 25px;
@@ -318,9 +319,10 @@
   overflow: hidden;
   box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
   transition: all 0.35s ease;
+  line-height: 1.5;
 }
 
-/* Dezent leuchtender Hintergrund-Effekt */
+/* Leuchteffekt bei Hover */
 .chatcontrol-box::before {
   content: "";
   position: absolute;
@@ -349,11 +351,11 @@
   transform: translateY(-4px) scale(1.03);
 }
 
+/* Klick-Feedback */
 .chatcontrol-box:active {
   transform: translateY(0);
   box-shadow: 0 0 12px rgba(0, 174, 239, 0.5);
 }
-
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -408,7 +410,7 @@
    target="_blank" 
    rel="noopener" 
    class="topic-box chatcontrol-box">
-   Stoppt die Chatkontrolle
+   Stoppt die Chatkontrolle: Jetzt Petition unterschreiben und ungebetene Zuschauer beim Schreiben vermeiden!
 </a>
 
   <section class="mission-box">
