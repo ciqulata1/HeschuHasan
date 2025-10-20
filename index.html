@@ -432,32 +432,25 @@
     <a href="runner.html">🎮 Zum Spiel: Wahlkampf Runner</a>
   </section>
 
-<h2>Kontaktformular</h2>
 
-
-
-<form action="submit.php" method="POST">
-  <div id="feedback"></div>
-    
-  <label for="email">Email-Adresse:</label>
-  <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
-
-  <label for="subject">Betreff:</label>
+  <h2>Kontaktformular</h2>
+  <form action="https://formsubmit.co/heschu.hasan@fdp-freiburg.de" method="POST">
+    <label for="email">Email-Adresse:</label>
+    <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
+ <label for="subject">Betreff:</label>
   <input type="text" id="subject" name="subject" required placeholder="Betreff Ihrer Nachricht" />
+    <label for="message">Nachricht:</label>
+    <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht..."></textarea>
 
-  <label for="message">Nachricht:</label>
-  <textarea id="message" name="message" rows="5" required placeholder="Ihre Nachricht..."></textarea>
+    <label>
+      <input type="checkbox" name="datenschutz" required />
+      Ich habe die <a href="datenschutz.html" class="datenschutz-link" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
+    </label>
 
-  <label>
-    <input type="checkbox" name="datenschutz" required />
-    Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
-  </label>
-
-  <!-- Honeypot für Spamschutz -->
-  <input type="text" name="_honey" style="display:none" />
-
-  <button type="submit">Absenden</button>
-</form>
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="text" name="_honey" style="display:none" />
+    <button type="submit">Absenden</button>
+  </form>
 
 <script>
 // Feedback aus URL lesen
