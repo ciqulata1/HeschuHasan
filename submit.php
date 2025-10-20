@@ -11,8 +11,7 @@ if (
 
 // -------------------- 2) Nur POST verarbeiten --------------------
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    $back = $_SERVER['HTTP_REFERER'] ?? 'kontakt.php';
-    header("Location: $back");
+    echo "Dieses Skript darf nur über das Kontaktformular aufgerufen werden.";
     exit;
 }
 
