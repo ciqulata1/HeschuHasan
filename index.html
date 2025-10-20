@@ -299,44 +299,30 @@
     }
 
     <style>
-.chatcontrol-box {
-  border: 3px solid #ffcc00; /* FDP-Gelb */
-  background-color: #fff8cc;
-  border-radius: 10px;
-  padding: 25px;
-  margin: 50px 0;
-  text-align: center;
-  transition: all 0.3s ease;
-}
+<style>
+  .chatcontrol-box {
+    border: 3px solid var(--yellow, #ffcc00);
+    background: var(--white);
+    color: var(--black);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
 
-.chatcontrol-box a {
-  display: block;
-  color: #000;
-  text-decoration: none;
-}
+  .chatcontrol-box:hover {
+    background: var(--cyan, #00ffff);
+    color: var(--magenta);
+    border-color: var(--cyan, #00ffff);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
 
-.chatcontrol-box h2 {
-  color: #e5007d; /* FDP-Magenta */
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
-}
-
-.chatcontrol-box p {
-  font-size: 1.05rem;
-  line-height: 1.5;
-  margin-bottom: 10px;
-}
-
-.chatcontrol-box:hover {
-  background-color: cyan;
-  border-color: cyan;
-}
-
-.chatcontrol-box:hover h2,
-.chatcontrol-box:hover p {
-  color: #e5007d; /* FDP-Magenta */
-}
+  .chatcontrol-box:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
 
 
     @media (max-width: 768px) {
