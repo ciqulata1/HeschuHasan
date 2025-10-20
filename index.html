@@ -432,8 +432,27 @@
     <a href="runner.html">🎮 Zum Spiel: Wahlkampf Runner</a>
   </section>
 
-  <h2>Kontaktformular</h2>
-  <form action="submit.php" method="POST">
+<h2>Kontaktformular</h2>
+
+<?php
+// Feedbackmeldung anzeigen
+if (!empty($_GET['status'])) {
+    $s = $_GET['status'];
+    if ($s === 'ok') {
+        echo '<p style="color:green; font-weight:bold;">Vielen Dank! Ihre Nachricht wurde gesendet.</p>';
+    } elseif ($s === 'missing') {
+        echo '<p style="color:darkred;">Bitte füllen Sie alle Felder aus.</p>';
+    } elseif ($s === 'bademail') {
+        echo '<p style="color:darkred;">Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>';
+    } elseif ($s === 'spam') {
+        echo '<p style="color:orange;">Spam erkannt.</p>';
+    } else {
+        echo '<p style="color:darkred;">Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.</p>';
+    }
+}
+?>
+
+<form action="submit.php" method="POST">
     
     <label for="email">Email-Adresse:</label>
     <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
@@ -453,8 +472,7 @@
     <input type="text" name="_honey" style="display:none" />
 
     <button type="submit">Absenden</button>
-  </form>
-</main>
+</form>
 
 <footer>
   <h3>Treffen Sie mich auf den Sozialen Medien</h3>
