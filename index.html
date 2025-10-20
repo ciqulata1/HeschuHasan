@@ -298,34 +298,36 @@
       margin-top: 5px;
     }
 
-:root {
+    :root {
   --yellow: #ffcc00;
-  --cyan-fdp: #00aeef; /* offizielles FDP-Cyan */
+  --cyan-fdp: #00aeef;
+  --magenta: #e5007d;
 }
-    .topics {
+
+/* Abstand unterhalb der Themenboxen */
+.topics {
   margin-bottom: 50px;
 }
 
-/* Kampagnenbox */
+/* Kampagnenbox: Stoppt die Chatkontrolle */
 .chatcontrol-box {
   background: var(--yellow);
   color: var(--magenta);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-weight: 700;
   border: 3px solid var(--magenta);
   border-radius: 8px;
   padding: 25px;
-  margin-top: 60px; /* Abstand zu den Themenboxen */
+  margin-top: 60px;
   text-align: center;
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
   transition: all 0.35s ease;
-  line-height: 1.5;
+  line-height: 1.4;
+  font-size: 1rem;
 }
 
-/* Leuchteffekt bei Hover */
+/* Glow-Effekt */
 .chatcontrol-box::before {
   content: "";
   position: absolute;
@@ -345,7 +347,7 @@
   transform: scale(1);
 }
 
-/* Hover-Zustand */
+/* Hover und Klick-Effekte zusammengefasst */
 .chatcontrol-box:hover {
   background: var(--white);
   color: var(--magenta);
@@ -354,11 +356,11 @@
   transform: translateY(-4px) scale(1.03);
 }
 
-/* Klick-Feedback */
 .chatcontrol-box:active {
   transform: translateY(0);
   box-shadow: 0 0 12px rgba(0, 174, 239, 0.5);
 }
+
     @media (max-width: 768px) {
       header {
         flex-direction: column;
