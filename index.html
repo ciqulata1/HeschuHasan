@@ -241,15 +241,41 @@ main {
       max-width: 600px;
     }
 
-    input, textarea {
-      width: 100%;
-      margin-top: 8px;
-      margin-bottom: 20px;
-      padding: 12px;
-      font-size: 1rem;
-      border: 2px solid var(--magenta);
-      border-radius: 5px;
-    }
+    /* Nur die Datenschutz-Checkbox */
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  appearance: none;
+  border: 2px solid var(--magenta);
+  border-radius: 4px;  /* Eckig; für rund: 50% */
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Hover: Gelb */
+input[type="checkbox"]:hover {
+  background-color: #FFD700;
+  border-color: #FFD700;
+}
+
+/* Aktiviert: Magenta mit Häkchen */
+input[type="checkbox"]:checked {
+  background-color: var(--magenta);
+  border-color: var(--magenta);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  position: absolute;
+  top: -2px;
+  left: 4px;
+  color: white;
+  font-size: 18px;
+}
+
 
     button[type="submit"] {
       background: var(--magenta);
