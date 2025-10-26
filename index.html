@@ -327,6 +327,37 @@ input[type="checkbox"]:hover {
   background-color: #FFD700;
   border-color: #FFD700;
 }
+.animated-title {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin: 50px 0 20px 0;
+}
+
+.animated-title span {
+  display: inline-block;
+  animation: bounce 1s ease infinite;
+}
+
+.animated-title span:nth-child(odd) {
+  animation-delay: 0.1s;
+}
+.animated-title span:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Linie zwischen Abschnitten */
+.section-divider {
+  width: 50%;
+  margin: 20px auto 40px auto;
+  border: 0;
+  border-top: 2px solid var(--magenta);
+}
 
 /* Aktiviert: Magenta mit Häkchen */
 input[type="checkbox"]:checked {
@@ -548,8 +579,11 @@ footer p {
     <a href="runner.html">🎮 Zum Spiel: Wahlkampf Runner</a>
   </section>
 
+<hr class="section-divider">
+<h2 class="animated-title">
+  <span>K</span><span>o</span><span>n</span><span>t</span><span>a</span><span>k</span><span>t</span><span>f</span><span>o</span><span>r</span><span>m</span><span>u</span><span>l</span><span>a</span><span>r</span>
+</h2>
 
-<h2>Kontaktformular</h2>
 <form action="https://formsubmit.co/heschu.hasan@fdp-freiburg.de" method="POST" class="contact-box">
   <div class="form-field">
     <input type="email" id="email" name="email" required placeholder="📧 Ihre Emailadresse" autocomplete="email" />
