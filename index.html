@@ -185,6 +185,70 @@ main {
       font-weight: bold;
       text-align: center;
     }
+    .contact-box {
+  max-width: 600px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-box .form-field {
+  background: var(--white);
+  border: 2px solid var(--magenta);
+  border-radius: 8px;
+  padding: 15px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.contact-box .form-field input,
+.contact-box .form-field textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: bold;
+  background: transparent;
+}
+
+.contact-box .form-field input::placeholder,
+.contact-box .form-field textarea::placeholder {
+  color: var(--magenta);
+  font-weight: bold;
+}
+
+.contact-box .form-field:hover {
+  background: var(--magenta);
+  color: var(--white);
+}
+
+.contact-box .form-field:hover input::placeholder,
+.contact-box .form-field:hover textarea::placeholder {
+  color: var(--white);
+}
+
+.contact-box .checkbox-field {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.contact-box button[type="submit"] {
+  background: var(--magenta);
+  color: var(--white);
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-box button[type="submit"]:hover {
+  background: var(--black);
+}
+
 
     .subtopics a:hover {
       background: var(--magenta);
@@ -482,31 +546,25 @@ footer p {
   </section>
 
 
- <h2>Kontaktformular</h2>
-<form action="https://formsubmit.co/heschu.hasan@fdp-freiburg.de" method="POST" class="contact-form">
-  <div class="form-group">
-    <label for="email">Email-Adresse:</label>
-    <input type="email" id="email" name="email" required placeholder="Ihre Emailadresse" autocomplete="email" />
+<h2>Kontaktformular</h2>
+<form action="https://formsubmit.co/heschu.hasan@fdp-freiburg.de" method="POST" class="contact-box">
+  <div class="form-field">
+    <input type="email" id="email" name="email" required placeholder="📧 Ihre Emailadresse" autocomplete="email" />
   </div>
-
-  <div class="form-group">
-    <label for="subject">Betreff:</label>
-    <input type="text" id="subject" name="subject" required placeholder="Betreff Ihrer Nachricht" />
+  <div class="form-field">
+    <input type="text" id="subject" name="subject" required placeholder="✏ Betreff Ihrer Nachricht" />
   </div>
-
-  <div class="form-group">
-    <label for="message">Nachricht:</label>
-    <textarea id="message" name="message" rows="6" required placeholder="Ihre Nachricht..."></textarea>
+  <div class="form-field">
+    <textarea id="message" name="message" rows="5" required placeholder="📝 Ihre Nachricht..."></textarea>
   </div>
-
-  <div class="form-group checkbox-group">
-    <input type="checkbox" id="datenschutz" name="datenschutz" required />
-    <label for="datenschutz">Ich habe die <a href="datenschutz.html" class="datenschutz-link" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.</label>
+  <div class="form-field checkbox-field">
+    <label>
+      <input type="checkbox" name="datenschutz" required />
+      Ich habe die <a href="datenschutz.html" class="datenschutz-link" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
+    </label>
   </div>
-
   <input type="hidden" name="_captcha" value="false" />
   <input type="text" name="_honey" style="display:none" />
-
   <button type="submit">Absenden</button>
 </form>
 
