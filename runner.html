@@ -1,265 +1,505 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wahlkampf Jumper – FDP Coins sammeln</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-:root {
-  --magenta: #e5007d;
-  --white: #fff;
-  --black: #000;
-}
-body {
-  margin: 0;
-  font-family: Calibri, sans-serif;
-  background-color: var(--white);
-  color: var(--black);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  user-select: none;
-}
-header {
-  background-color: var(--white);
-  border-bottom: 2px solid var(--magenta);
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-header h1 {
-  color: var(--magenta);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-#fdp-logo {
-  margin-left: 10px;
-  max-height: 45px;
-}
-nav {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-nav a {
-  color: var(--magenta);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 0.3s ease, font-weight 0.3s ease;
-}
-nav a.active, nav a:hover, nav a:focus {
-  color: #c00066;
-  font-weight: 700;
-  outline: none;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wahlkampf Jumper – FDP Coins sammeln</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --magenta: #e5007d;
+      --white: #fff;
+      --black: #000;
+      --fdp-yellow: #FFEF00; /* FDP-Gelb */
+    }
 
-main { flex: 1; padding: 20px; max-width: 760px; margin: 0 auto; width: 100%; text-align: center; position: relative; }
+    body {
+      margin: 0;
+      font-family: Calibri, sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      user-select: none;
+    }
 
-#gameHeader {
-  background-color: var(--black);
-  color: var(--white);
-  text-align: center;
-  padding: 30px 20px;
-  margin-bottom: 20px;
-}
-#gameHeader h3 { margin: 10px 0; font-weight: 700; text-transform: uppercase; color: var(--magenta); letter-spacing: 0.05em; }
-#gameHeader h3:nth-child(2), #gameHeader h3:nth-child(3) { color: var(--white); font-weight: 600; font-size: 1.2rem; font-style: italic; }
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--magenta);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-#startScreen {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff9e6;
-  border: 3px solid var(--magenta);
-  border-radius: 12px;
-  padding: 30px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 0 20px var(--magenta);
-  text-align: center;
-  z-index: 10;
-}
-#startScreen button {
-  font-size: 1.5rem;
-  padding: 12px 24px;
-  background-color: var(--magenta);
-  color: var(--white);
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 8px;
-  margin-top: 20px;
-}
-#startScreen button:hover { background-color: #c00066; }
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-#gameCanvas {
-  background-color: #fff9e6;
-  border: 3px solid var(--magenta);
-  display: block;
-  margin: 20px auto;
-  box-shadow: 0 0 10px var(--magenta);
-}
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--black);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease, font-weight 0.3s ease;
+    }
 
-#buttonsContainer {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 30px;
-}
+    nav a.active {
+      color: var(--magenta);
+      font-weight: 700;
+    }
 
-button#jumpBtn, button.arrowBtn, #restartBtn {
-  background-color: var(--magenta);
-  color: var(--white);
-  border: none;
-  padding: 12px 28px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  min-width: 140px;
-}
-button#jumpBtn:active, button.arrowBtn:active, #restartBtn:active { background-color: #c00066; transform: scale(0.95); }
+    nav a:hover,
+    nav a:focus {
+      color: var(--magenta);
+      outline: none;
+    }
 
-#scoreContainer {
-  width: 700px;
-  max-width: 100%;
-  margin: 10px auto;
-  font-size: 18px;
-  color: var(--black);
-  text-align: center;
-}
-#progressBar { background: #ddd; border-radius: 10px; width: 100%; height: 20px; margin-top:5px; }
-#progressFill { background: var(--magenta); width:0%; height:100%; border-radius: 10px; transition: width 0.3s ease; }
+    main {
+      flex: 1;
+      padding: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
 
-#gameOverText {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  max-width: 600px;
-  background: var(--black);
-  padding: 30px;
-  border: 3px solid var(--magenta);
-  color: var(--white);
-  font-size: 1.8rem;
-  font-weight: bold;
-  display: none;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 0 20px var(--magenta);
-  line-height: 1.5;
-}
-#gameOverText p { margin: 0; }
+    #gameHeader {
+      background-color: var(--fdp-yellow);
+      color: var(--black);
+      text-align: center;
+      padding: 30px 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px var(--magenta);
+    }
 
-#backToHomeBtn {
-  background-color: var(--magenta);
-  color: var(--white);
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-#backToHomeBtn:hover { background-color: #c00066; }
+    #gameHeader h3 {
+      margin: 10px 0;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--magenta);
+      letter-spacing: 0.05em;
+    }
 
-.footer {
-  background-color: var(--black);
-  color: var(--white);
-  text-align: center;
-  padding: 30px 20px;
-  font-weight: 500;
-  margin-top: 60px;
-}
-.footer a { color: var(--white); text-decoration: none; margin: 0 10px; font-weight: bold; }
-.footer a:hover { text-decoration: underline; color: #fff; }
+    #gameHeader h3:nth-child(2) {
+      font-size: 1.2rem;
+      color: var(--black);
+      font-weight: 600;
+    }
 
-@media (max-width: 480px) {
-  button#jumpBtn, button#restartBtn { width: 80vw; font-size: 1.2rem; }
-  button.arrowBtn { width: 80px; height: 60px; font-size: 2rem; }
-  #scoreContainer { width: 90vw; font-size: 16px; }
-}
-</style>
+    #gameHeader h3:nth-child(3) {
+      font-size: 1rem;
+      color: var(--black);
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    #startScreen {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--white);
+      border: 3px solid var(--magenta);
+      border-radius: 12px;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 20px var(--magenta);
+      text-align: center;
+      z-index: 10;
+    }
+
+    #startScreen button {
+      font-size: 1.5rem;
+      padding: 12px 24px;
+      background-color: var(--magenta);
+      color: var(--white);
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    #startScreen button:hover {
+      background-color: #c00066;
+    }
+
+    #gameCanvas {
+      background-color: var(--black);
+      border: 3px solid var(--magenta);
+      display: block;
+      margin: 20px auto;
+      box-shadow: 0 0 10px var(--magenta);
+    }
+
+    #buttonsContainer {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    button#jumpBtn,
+    button.arrowBtn,
+    #restartBtn {
+      background-color: var(--magenta);
+      color: var(--white);
+      border: none;
+      padding: 12px 28px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      min-width: 140px;
+    }
+
+    button#jumpBtn:active,
+    button.arrowBtn:active,
+    #restartBtn:active {
+      background-color: #c00066;
+      transform: scale(0.95);
+    }
+
+    #scoreContainer {
+      width: 700px;
+      max-width: 100%;
+      margin: 10px auto;
+      font-size: 18px;
+      color: var(--black);
+      text-align: center;
+    }
+
+    #progressBar {
+      background: #ddd;
+      border-radius: 10px;
+      width: 100%;
+      height: 20px;
+      margin-top: 5px;
+    }
+
+    #progressFill {
+      background: var(--magenta);
+      width: 0%;
+      height: 100%;
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    #gameOverText {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      max-width: 600px;
+      background: var(--black);
+      padding: 30px;
+      border: 3px solid var(--magenta);
+      color: var(--white);
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: none;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 0 20px var(--magenta);
+      line-height: 1.5;
+    }
+
+    #gameOverText p {
+      margin: 0;
+    }
+
+    #backToHomeBtn {
+      background-color: var(--magenta);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #backToHomeBtn:hover {
+      background-color: #c00066;
+    }
+
+    .footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+      margin-top: 60px;
+    }
+
+    .footer a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    @media (max-width: 480px) {
+      button#jumpBtn,
+      button#restartBtn {
+        width: 80vw;
+        font-size: 1.2rem;
+      }
+
+      button.arrowBtn {
+        width: 80px;
+        height: 60px;
+        font-size: 2rem;
+      }
+
+      #scoreContainer {
+        width: 90vw;
+        font-size: 16px;
+      }
+    }
+
+    /* Animation für den Titel */
+    .animated-title {
+      display: inline-block;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: var(--black);
+      letter-spacing: 0.1em;
+      animation: bounce 1s ease-in-out infinite;
+    }
+
+    .animated-title span {
+      display: inline-block;
+      animation: bounce 1s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1>HESCHU HASAN<img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" /></h1>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="bildung.html">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="justiz.html">Verwaltung</a>
-    <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
-  </nav>
-</header>
+  <header>
+    <h1>HESCHU HASAN<img src="fdplogo.png" alt="FDP Logo" id="fdp-logo" /></h1>
+    <nav>
+      <a href="index.html">Startseite</a>
+      <a href="bildung.html">Bildung</a>
+      <a href="umwelt.html">Umwelt</a>
+      <a href="justiz.html">Verwaltung</a>
+      <a href="meinungsmacher.html" class="active">Meinungs-Macher</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </header>
 
-<section id="gameHeader">
-  <h3>Wahlkampf-Jumper |F|D|P| Heschu Hasan 👾 Digital</h3>
-  <h3>Wie digital ist Ihre Partei?</h3>
-  <h3>Ich spiele nicht mit Ihrem Vertrauen: ich baue Spiele zum Ergattern Ihres Vertrauens</h3>
-</section>
+  <section id="gameHeader">
+    <h3>Wahlkampf-Jumper |F|D|P| Heschu Hasan 👾 Digital</h3>
+    <h3>Wie digital ist Ihre Partei?</h3>
+    Ich spiele nicht mit Ihrem Vertrauen: ich baue Spiele zum Ergattern Ihres Vertrauens</h3>
+  </section>
 
-<main>
-  <h2>Spielen Sie jetzt: Wahlkampf Jumper – Sammeln Sie FDP-Coins!</h2>
+  <main>
+    <h2>Spielen Sie jetzt: Wahlkampf Jumper – Sammeln Sie FDP-Coins!</h2>
 
-  <div id="startScreen">
-    <div>
-      <p>Bürokratie-Black-Box: Überspringen Sie die Hindernisse der Bürokratie in Baden-Württemberg.</p>
-      <p>Nur mit klaren politischen Mehrheiten können wir Bildung und Umwelt effizient reformieren. Unterstützen Sie mich am 8. März 2026!</p>
-      <button id="startBtn">Spiel starten</button>
+    <div id="startScreen">
+      <div>
+        <p>Bürokratie-Black-Box: Überspringen Sie die Hindernisse der Bürokratie in Baden-Württemberg.</p>
+        <p>Nur mit klaren politischen Mehrheiten können wir Bildung und Umwelt effizient reformieren. Unterstützen Sie mich am 8. März 2026!</p>
+        <button id="startBtn">Spiel starten</button>
+      </div>
     </div>
-  </div>
 
-  <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
+    <canvas id="gameCanvas" width="700" height="250" aria-label="Spielbereich"></canvas>
 
-  <div id="buttonsContainer">
-    <button id="jumpBtn">⤴ Springen</button>
-    <div id="arrowButtons">
-      <button class="arrowBtn" id="leftBtn">◀</button>
-      <button class="arrowBtn" id="rightBtn">▶</button>
+    <div id="buttonsContainer">
+      <button id="jumpBtn">⤴ Springen</button>
+      <div id="arrowButtons">
+        <button class="arrowBtn" id="leftBtn">◀</button>
+        <button class="arrowBtn" id="rightBtn">▶</button>
+      </div>
     </div>
-  </div>
 
-  <div id="scoreContainer">
-    FDP-Coins: <span id="score">0</span> / 12
-    <div id="progressBar"><div id="progressFill"></div></div>
-  </div>
+    <div id="scoreContainer">
+      FDP-Coins: <span id="score">0</span> / 12
+      <div id="progressBar"><div id="progressFill"></div></div>
+    </div>
 
-  <button id="restartBtn">Neu starten</button>
-  <div id="gameOverText" tabindex="0"></div>
-  <button id="backToHomeBtn">Zurück zur Startseite</button>
-</main>
+    <button id="restartBtn">Neu starten</button>
+    <div id="gameOverText" tabindex="0"></div>
+    <button id="backToHomeBtn">Zurück zur Startseite</button>
 
-<footer class="footer">
-  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-  <div class="social-links">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-  </div>
-  <h3>©️ Heschu Hasan – Wahlkampf Jumper 2025 | FDP Coins sammeln</h3>
-  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
-  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
-  <p>Dieses Spiel ersetzt keine politische Beratung und soll lediglich spielerisch auf die Überlastung der Bürokratie aufmerksam machen.</p>
-</footer>
+    <!-- Animierter Kontaktformular-Titel -->
+    <hr class="section-divider">
+    <h2 class="animated-title">
+      <span>K</span><span>o</span><span>n</span><span>t</span><span>a</span><span>k</span><span>t</span><span>f</span><span>o</span><span>r</span><span>m</span><span>u</span><span>l</span><span>a</span><span>r</span>
+    </h2>
+  </main>
 
-<script>
-// Dein bisheriger Spiel- und Steuerungs-JS-Code bleibt unverändert
-</script>
+  <footer class="footer">
+    <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+    <div class="social-links">
+      <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+    <h3>©️ Heschu Hasan – Wahlkampf Jumper 2025 | FDP Coins sammeln</h3>
+    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+    <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
+    <p>Dieses Spiel ersetzt keine politische Beratung und soll lediglich spielerisch auf die Überlastung der Bürokratie aufmerksam machen.</p>
+  </footer>
 
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const WIDTH = canvas.width;
+    const HEIGHT = canvas.height;
+
+    const player = { x:50, y:HEIGHT-50, width:40, height:40, velocityY:0, gravity:1, jumpStrength:30, speed:10, isJumping:false };
+    let obstacles=[], coins=[], score=0, gameRunning=false, frameCount=0;
+
+    const startBtn=document.getElementById("startBtn"),
+          restartBtn=document.getElementById("restartBtn"),
+          jumpBtn=document.getElementById("jumpBtn"),
+          leftBtn=document.getElementById("leftBtn"),
+          rightBtn=document.getElementById("rightBtn"),
+          buttonsContainer=document.getElementById("buttonsContainer"),
+          startScreen=document.getElementById("startScreen"),
+          scoreDisplay=document.getElementById("score"),
+          progressFill=document.getElementById("progressFill"),
+          gameOverText=document.getElementById("gameOverText");
+
+    const obstacleEmojis=['🗂️','⏳','🧾','📞','💼','🧟','💰','📜','⚖️','🔍'];
+    const obstacleNames=['Aktenlast','Zeitfresser','Formularfluch','Endlose Gespräche','Bürokraten','Budget-Klau','Paragraphen-Dschungel','Sitzungsmarathon','Verwaltungs-Hickhack','Kontrollwahn'];
+
+    function jump(){ if(!player.isJumping){player.velocityY=-player.jumpStrength; player.isJumping=true;} }
+    function movePlayer(dir){ if(dir==="left"){player.x=Math.max(0,player.x-player.speed);} else{player.x=Math.min(WIDTH-player.width,player.x+player.speed);} }
+
+    function createObstacle(){
+      const index=Math.floor(Math.random()*obstacleEmojis.length);
+      const yPos=HEIGHT-70+Math.random()*40;
+      obstacles.push({emoji:obstacleEmojis[index], name:obstacleNames[index], width:40, height:40, x:WIDTH, y:yPos, speed:3+Math.random()*2});
+    }
+
+    function createCoin(){
+      const size=23; 
+      const x=WIDTH+Math.random()*300; 
+      const y=HEIGHT-80-Math.random()*80; 
+      coins.push({x,y,width:size,height:size,speed:5});
+    }
+
+    function drawPlayer(){
+      ctx.fillStyle="#e5007d"; 
+      ctx.beginPath(); 
+      ctx.arc(player.x+player.width/2,player.y+player.height/2,player.width/2,0,Math.PI*2); 
+      ctx.fill();
+    }
+
+    function drawObstacles(){
+      obstacles.forEach(o=>{
+        ctx.font='30px Calibri';
+        ctx.fillStyle="#fff";
+        ctx.fillText(o.emoji,o.x,o.y);
+        ctx.font='16px Calibri';
+        ctx.fillStyle="#e5007d";
+        ctx.fillText(o.name,o.x,o.y+30);
+      });
+    }
+
+    function drawCoins(){
+      coins.forEach((c)=>{
+        ctx.fillStyle="#ffed00";
+        ctx.beginPath();
+        ctx.arc(c.x+c.width/2,c.y+c.height/2,c.width/2,0,Math.PI*2);
+        ctx.fill();
+        ctx.strokeStyle="#000";
+        ctx.lineWidth=2;
+        ctx.stroke();
+      });
+    }
+
+    function update(){
+      if(!gameRunning) return;
+      frameCount++;
+      player.velocityY+=player.gravity;
+      player.y+=player.velocityY;
+      if(player.y+player.height>HEIGHT){player.y=HEIGHT-player.height; player.velocityY=0; player.isJumping=false;}
+
+      obstacles.forEach((o,i)=>{o.x-=o.speed; if(o.x+o.width<0) obstacles.splice(i,1);});
+      coins.forEach((c,i)=>{c.x-=c.speed; if(c.x+c.width<0) coins.splice(i,1);});
+
+      for(let o of obstacles){
+        if(player.x<o.x+o.width && player.x+player.width>o.x && player.y<o.y+o.height && player.y+player.height>o.y){
+          endGame(false); return;
+        }
+      }
+
+      coins.forEach((c,i)=>{
+        if(player.x<c.x+c.width && player.x+player.width>c.x && player.y<c.y+c.height && player.y+player.height>c.y){
+          coins.splice(i,1); score++; scoreDisplay.textContent=score;
+          progressFill.style.width=(score/12)*100+"%";
+          if(score>=12) endGame(true);
+        }
+      });
+
+      if(frameCount % 130 === 0) createObstacle();
+      if(frameCount % 40 === 0) createCoin();
+    }
+
+    function draw(){ctx.clearRect(0,0,WIDTH,HEIGHT); drawPlayer(); drawObstacles(); drawCoins();}
+    function gameLoop(){if(!gameRunning) return; update(); draw(); requestAnimationFrame(gameLoop);}
+
+    function startGame(){
+      score=0; scoreDisplay.textContent=score; progressFill.style.width="0%";
+      obstacles=[]; coins=[]; frameCount=0;
+      player.x=50; player.y=HEIGHT-player.height; player.velocityY=0; player.isJumping=false;
+      gameRunning=true;
+      startScreen.style.display="none";
+      buttonsContainer.style.display="flex";
+      restartBtn.style.display="none";
+      gameOverText.style.display="none";
+      gameLoop();
+    }
+
+    function endGame(won){
+      gameRunning=false;
+      buttonsContainer.style.display="none";
+      restartBtn.style.display="inline-block";
+      gameOverText.style.display="block"; gameOverText.focus();
+      if(won) gameOverText.innerHTML=`🎉 <strong>Gewonnen!</strong> Sie haben 12 FDP-Coins gesammelt! 🎉`;
+      else gameOverText.innerHTML=`❌ <strong>Verloren!</strong> Sie haben ein Hindernis getroffen.`;
+    }
+
+    jumpBtn.addEventListener("click",()=>{if(gameRunning) jump();});
+    leftBtn.addEventListener("click",()=>{if(gameRunning) movePlayer("left");});
+    rightBtn.addEventListener("click",()=>{if(gameRunning) movePlayer("right");});
+    restartBtn.addEventListener("click",startGame);
+    startBtn.addEventListener("click",startGame);
+    window.addEventListener("keydown",(e)=>{if(!gameRunning) return; if(e.code==="ArrowLeft") movePlayer("left"); else if(e.code==="ArrowRight") movePlayer("right"); else if(e.code==="Space") jump(); });
+    document.getElementById("backToHomeBtn").addEventListener("click",()=>{window.location.href="index.html";});
+  </script>
 </body>
 </html>
