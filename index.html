@@ -557,16 +557,20 @@ footer p {
   <div class="form-field">
     <textarea id="message" name="message" rows="5" required placeholder="📝 Ihre Nachricht..."></textarea>
   </div>
-  <div class="form-field checkbox-field">
+  
+  <!-- Separate Checkbox Box -->
+  <div class="form-checkbox">
     <label>
       <input type="checkbox" name="datenschutz" required />
       Ich habe die <a href="datenschutz.html" class="datenschutz-link" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
     </label>
   </div>
+
   <input type="hidden" name="_captcha" value="false" />
   <input type="text" name="_honey" style="display:none" />
   <button type="submit">Absenden</button>
 </form>
+
 
 
 <script>
