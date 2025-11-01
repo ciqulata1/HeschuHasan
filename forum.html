@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forum & Fragen – Heschu Hasan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --magenta: #e5007d;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Calibri", Candara, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--black);
+      background-image: url('Li(e)beralismus.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-attachment: fixed;
+      background-color: var(--white);
+    }
+
+    a { color: var(--magenta); text-decoration: none; }
+
+    header {
+      background-color: var(--white);
+      border-bottom: 2px solid var(--magenta);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    #fdp-logo { max-height: 50px; width: auto; }
+
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--magenta);
+      margin-left: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--black);
+    }
+
+    nav a.active, nav a:hover { color: var(--magenta); font-weight: 700; }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    h2 { color: var(--magenta); font-weight: 700; margin-top: 30px; margin-bottom: 15px; text-transform: uppercase; }
+    h3 { color: var(--magenta); font-weight: 600; margin-bottom: 12px; }
+
+    p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 1rem; }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: 2px solid var(--magenta);
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #ff33a5;
+      box-shadow: 0 0 6px rgba(229,0,125,0.4);
+    }
+
+    button {
+      background-color: var(--magenta);
+      color: var(--white);
+      border: none;
+      padding: 12px 20px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff33a5;
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      font-weight: 500;
+      margin-top: 40px;
+    }
+
+    footer h3 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 15px; }
+
+    footer .social-links a {
+      color: var(--white);
+      font-size: 30px;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    footer .social-links a:hover { color: var(--magenta); }
+
+    @media (max-width: 768px) {
+      main { padding: 20px; }
+      nav a { margin: 5px 10px 0 0; }
+      header { padding: 15px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <img src="fdplogo.png" alt="FDP Logo" id="fdp-logo">
+  <h1>HESCHU HASAN</h1>
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="bildung.html">Bildung</a>
+    <a href="umwelt.html">Umwelt</a>
+    <a href="justiz.html">Verwaltung</a>
+    <a href="meinungsmacher.html">Meinungs-Macher</a>
+    <a href="aktuelles.html">Aktuelles</a>
+    <a href="forum.html" class="active">Forum</a>
+    <a href="impressum.html">Impressum</a>
+  </nav>
+</header>
+
+<main>
+  <h2>💬 Forum & Fragen</h2>
+  <p>Hier können Sie mir Fragen stellen, Themen ansprechen oder Ihre Meinung teilen.  
+  Ich freue mich über konstruktive Beiträge – sachlich, respektvoll und lösungsorientiert.</p>
+
+  <form action="https://formspree.io/f/xkgpplqv" method="POST">
+    <label for="name">Ihr Name (optional)</label>
+    <input type="text" id="name" name="name" placeholder="Ihr Name">
+
+    <label for="email">Ihre E-Mail-Adresse (optional, falls Antwort gewünscht)</label>
+    <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse">
+
+    <label for="message">Ihre Nachricht / Frage</label>
+    <textarea id="message" name="message" rows="6" placeholder="Was möchten Sie ansprechen?" required></textarea>
+
+    <button type="submit">Absenden</button>
+  </form>
+
+  <p style="margin-top:20px; font-style:italic;">Ihre Nachricht wird sicher übermittelt.  
+  Nach Prüfung wird sie ggf. auf dieser Seite veröffentlicht oder beantwortet.</p>
+</main>
+
+<footer>
+  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
+  <div class="social-links">
+    <a href="https://instagram.com/heschuhasan" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
+  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
+</footer>
+</body>
+</html>
