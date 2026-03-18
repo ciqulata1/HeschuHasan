@@ -36,6 +36,85 @@
       padding: 0;
 }
 
+.universe-box {
+  position: relative;
+  background: radial-gradient(circle at 20% 30%, #2a2a72, #000000 70%);
+  color: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(100, 150, 255, 0.3);
+}
+
+/* 🌟 Sterne-Effekt */
+.universe-box::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  opacity: 0.3;
+  animation: moveStars 60s linear infinite;
+}
+
+/* 🌌 leichter Glow */
+.universe-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(100,150,255,0.15), transparent 70%);
+  pointer-events: none;
+}
+
+/* ✨ Animation */
+@keyframes moveStars {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(200px, 200px);
+  }
+}
+
+/* 🌠 Titel */
+.universe-box h2 {
+  position: relative;
+  text-align: center;
+  color: #8fd3ff;
+  font-family: Georgia, serif;
+  text-shadow: 0 0 10px rgba(143, 211, 255, 0.8);
+}
+
+/* Text */
+.universe-box p,
+.universe-box li {
+  position: relative;
+  z-index: 1;
+}
+
+/* Liste */
+.lumi-list li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+/* ✨ Hover Effekt */
+.lumi-list li:hover {
+  transform: translateX(5px);
+  text-shadow: 0 0 8px rgba(255,255,255,0.7);
+}
+
+/* ✨ Hashtags Glow */
+.hashtags {
+  text-align: center;
+  color: #7fdcff;
+  text-shadow: 0 0 8px rgba(127,220,255,0.8);
+}
+
+    
 body {
   display: flex;
   flex-direction: column;
@@ -526,6 +605,50 @@ footer p {
 
   <section class="mission-box">
     <h2>Meine Mission für Freiburg / Breisgau-Hochschwarzwald</h2>
+
+<section class="mission-box universe-box">
+  <h2>✨ Lumiliberalismus – Basics, die man erwarten kann</h2>
+
+  <p class="tagline">
+    minimum. kein extra. kein kompromiss.
+  </p>
+
+  <p class="lumi-origin">
+    Ich bin die Begründerin des <strong>Lumiliberalismus</strong>.
+    „Lumi“ steht für Licht und Erleuchtung – für Klarheit, Bewusstsein und den Anspruch,
+    politische Entscheidungen auf Basis von Vernunft, Freiheit und echter Chancengleichheit zu treffen.
+  </p>
+
+  <ul class="lumi-list">
+    <li>🚀 <strong>Chancengleichheit & Bildung</strong> – gleiche Möglichkeiten für alle, freier Zugang zu Wissen</li>
+    <li>🌌 <strong>Individuelle Selbstbestimmung</strong> – dein Leben, deine Regeln</li>
+    <li>💻 <strong>Digitalisierung für alle</strong> – nicht nur für Privilegierte</li>
+    <li>🕊️ <strong>Fortschritt & Frieden</strong> – Kreativität statt Konflikt</li>
+    <li>👨‍👩‍👧 <strong>Familien ohne Eingriffe</strong> – keine Bevormundung</li>
+    <li>🤝 <strong>Keine Diskriminierung</strong> – gegen jede Form, inklusive Kurdophobie (als kurdisch-stämmige Begründerin liegt mir das besonders am Herzen. Kurden finden zu wenig Gehör bei zu viel Leid. Bitte nicht persönlich nehmen :). </li>
+    <li>✨ <strong>Genuss & Universum</strong> – mehr Raum für Wunder, weniger Zerstörung</li>
+  </ul>
+
+  <p class="lumi-note">
+    Diese Punkte sind das absolute Minimum – die Basics, die man erwarten kann.
+  </p>
+
+  <p class="lumi-warning">
+    ⚠️ Ich habe darüber hinaus ein umfassendes politisches Programm entwickelt.
+    Dieses teile ich bewusst nicht öffentlich, da ich mehrfach die Erfahrung gemacht habe,
+    dass Ideen übernommen und von anderen als eigene dargestellt wurden.
+    <br><br>
+    Das kann dazu führen, dass Inhalte ohne die ursprüngliche Intention genutzt werden.
+    Mein Ziel ist es, die Bevölkerung vor solchen Entwicklungen zu schützen.
+    <br><br>
+    Hinweise auf mögliche Kopien nehme ich dankbar entgegen.
+  </p>
+
+  <p class="hashtags">
+    #basicsdiemanerwartenkann #lumiliberalismus #bildung #chancengleichheit #freiheit
+  </p>
+</section>
+    
    <div class="delete-notice">
   <span>⚠️</span><span>🚀</span><span>⚠️</span>
 
