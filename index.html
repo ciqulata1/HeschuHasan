@@ -1,85 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heschu Hasan - FDP Freiburg-Ost</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Heschu Hasan - Lumiliberalismus</title>
 
 <style>
 :root {
-  --magenta: #e5007d;
-  --white: #ffffff;
-  --black: #000000;
-
-  /* 🌌 Galaxy Colors */
   --purple: #c77dff;
   --pink: #ff7ac6;
   --blue: #8fd3ff;
+  --dark: #0a0a1a;
+  --gradient: linear-gradient(135deg, #1a1a40, #000000);
 }
 
-/* Reset */
+/* RESET */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* 🌌 BODY */
+/* BODY */
 body {
-  font-family: Calibri, Candara, "Segoe UI", Arial, sans-serif;
-  background: var(--white);
-  line-height: 1.6;
-  min-height: 100vh;
+  font-family: Calibri, sans-serif;
+  background: var(--dark);
+  color: var(--purple);
   display: flex;
   flex-direction: column;
-
-  /* 🌌 LILA TEXT (clean & lesbar) */
-  color: var(--purple);
-}
-
-/* 🌌 Headings stärker */
-h1, h2 {
-  color: var(--pink);
-}
-
-h3 {
-  color: var(--purple);
-}
-
-/* Links */
-a {
-  color: var(--blue);
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-a:hover {
-  color: var(--pink);
-}
-
-/* 🌌 Hintergrundbild */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url('IMG_4340.jpeg') center/cover no-repeat;
-  opacity: 0.05;
-  z-index: -1;
 }
 
 /* HEADER */
 header {
-  background: white;
-  border-bottom: 2px solid var(--magenta);
-  padding: 20px 40px;
+  background: var(--gradient);
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+header h1 {
+  color: var(--pink);
 }
 
 /* NAV */
@@ -88,477 +49,193 @@ nav {
   gap: 20px;
 }
 
-/* MAIN */
-main {
-  flex: 1;
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
+nav a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* 🌌 TOPIC BOXEN */
-.topic-box {
-  flex: 1 1 260px;
-  background: white;
-  border: 2px solid var(--magenta);
+nav a:hover {
+  color: var(--pink);
+}
+
+/* MAIN */
+main {
+  max-width: 1100px;
+  margin: 40px auto;
   padding: 20px;
-  text-align: center;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: 0.3s;
-  cursor: pointer;
+}
+
+/* HEADINGS */
+h2 {
+  color: var(--pink);
+}
+
+h3 {
   color: var(--purple);
 }
 
+/* TOPIC BOXEN */
+.topics {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.topic-box {
+  flex: 1;
+  padding: 20px;
+  background: var(--gradient);
+  border: 2px solid var(--pink);
+  border-radius: 10px;
+  text-align: center;
+  color: var(--purple);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 .topic-box:hover {
-  background: var(--magenta);
+  background: linear-gradient(135deg, #2a2a72, #000);
+  color: white;
+  box-shadow: 0 0 20px var(--blue);
+}
+
+/* SUBTOPICS */
+.subtopics {
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.subtopics a {
+  border: 1px solid var(--pink);
+  padding: 10px;
+  color: var(--pink);
+}
+
+.subtopics a:hover {
+  background: var(--pink);
   color: white;
 }
 
-/* 🌌 UNIVERSE BOX (Highlight) */
+/* 🌌 UNIVERSE BOX */
 .universe-box {
-  position: relative;
-  background: radial-gradient(circle at 20% 30%, #2a2a72, #000000 70%);
-  color: white;
+  margin-top: 50px;
   padding: 40px;
   border-radius: 20px;
+  background: radial-gradient(circle at top, #2a2a72, #000);
+  color: white;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 0 40px rgba(100,150,255,0.3);
 }
 
-/* Sterne */
-.universe-box::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: url("https://www.transparenttextures.com/patterns/stardust.png");
-  opacity: 0.3;
-  animation: moveStars 60s linear infinite;
-}
-
-/* Glow */
-.universe-box::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, rgba(100,150,255,0.2), transparent);
-}
-
-/* Animation */
-@keyframes moveStars {
-  from { transform: translate(0,0); }
-  to { transform: translate(200px,200px); }
-}
-
-/* Universe Text bleibt WEISS für Lesbarkeit */
 .universe-box h2 {
   color: var(--blue);
   text-align: center;
-  text-shadow: 0 0 10px rgba(143,211,255,0.8);
 }
 
-.universe-box p,
-.universe-box li {
-  color: white;
-  position: relative;
-  z-index: 1;
-}
-
-/* LISTE */
 .lumi-list li {
-  margin-bottom: 10px;
-  transition: 0.2s;
-}
-
-.lumi-list li:hover {
-  transform: translateX(5px);
-}
-
-/* HASHTAGS */
-.hashtags {
-  text-align: center;
-  color: var(--blue);
+  margin: 10px 0;
 }
 
 /* DELETE BOX */
 .delete-notice {
   background: #FFD700;
-  border: 3px solid var(--magenta);
   color: black;
-  padding: 18px;
-  margin: 30px auto;
-  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
   border-radius: 10px;
 }
 
 /* FORM */
-.contact-box .form-field {
-  background: white;
-  border: 2px solid var(--magenta);
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.contact-box .form-field input,
-.contact-box .form-field textarea {
+.contact-box input,
+.contact-box textarea {
   width: 100%;
-  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
   background: transparent;
+  border: 2px solid var(--pink);
   color: var(--purple);
 }
 
-/* BUTTON */
 button {
-  background: var(--magenta);
+  background: var(--pink);
   color: white;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px;
   border: none;
 }
 
 button:hover {
-  background: black;
+  background: var(--blue);
 }
 
 /* FOOTER */
 footer {
-  width: 100%;
-  background: black;
+  margin-top: auto;
+  background: var(--gradient);
   color: white;
   text-align: center;
-  padding: 40px 0;
-  border-top: 3px solid var(--magenta);
+  padding: 30px;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-  }
-
   nav {
-    gap: 10px;
+    flex-wrap: wrap;
   }
 }
 </style>
-
-
 </head>
 
 <body>
 
 <header>
-  <h1>Heschu Hasan </h1>
+  <h1>Heschu Hasan</h1>
   <nav>
-    <a href="index.html" class="active">Startseite</a>
-    <a href="aktuelles.html" class="active">Aktuelles</a>
-    <a href="forum.html"class="active">Forum</a>
-    <a href="bildung.html">Bildung</a>
-    <a href="umwelt.html">Umwelt</a>
-    <a href="justiz.html">Verwaltung</a>
-    <a href="meinungsmacher.html">Meinungs-Macher</a>
-    <a href="impressum.html">Impressum</a>
+    <a href="#">Startseite</a>
+    <a href="#">Aktuelles</a>
+    <a href="#">Forum</a>
+    <a href="#">Bildung</a>
+    <a href="#">Umwelt</a>
   </nav>
 </header>
 
 <main>
-  <h2>Meine Themen</h2>
-  <h3>Klicken Sie eines der Themenfelder an, um mehr zu erfahren.</h3>
 
-  <div class="topics">
-    <a href="bildung.html" class="topic-box">Bildung</a>
-    <a href="umwelt.html" class="topic-box">Umwelt</a>
-    <div class="topic-box" id="verwaltung-box" tabindex="0" role="button" aria-expanded="false">
-      Verwaltung
-      <div class="subtopics" id="verwaltung-subtopics">
-        <a href="justiz.html">Justiz</a>
-      </div>
-    </div>
-    <a href="meinungsmacher.html" class="topic-box">Meinungs-Macher</a>
-  </div>
+<h2>Meine Themen</h2>
 
-  <section class="mission-box">
-    <h2>Meine Sichtweisen, Deine Zukunft - So läuft das hier. </h2>
+<div class="topics">
+  <div class="topic-box">Bildung</div>
+  <div class="topic-box">Umwelt</div>
+  <div class="topic-box">Verwaltung</div>
+</div>
 
-<section class="mission-box universe-box">
-  <h2>✨ Lumiliberalismus – Basics, die man erwarten kann</h2>
+<section class="universe-box">
+  <h2>✨ Lumiliberalismus</h2>
 
-  <p class="tagline">
-    minimum. kein extra. kein kompromiss.
-  </p>
-
-  <p class="lumi-origin">
-    Ich bin die Begründerin des <strong>Lumiliberalismus</strong>.
-    „Lumi“ steht für Licht und Erleuchtung – für Klarheit, Bewusstsein und den Anspruch,
-    politische Entscheidungen auf Basis von Vernunft, Freiheit und echter Chancengleichheit zu treffen.
+  <p>
+    Ich bin die Begründerin des Lumiliberalismus.
+    Lumi steht für Licht und Erleuchtung.
   </p>
 
   <ul class="lumi-list">
-    <li>🚀 <strong>Chancengleichheit & Bildung</strong> – gleiche Möglichkeiten für alle, freier Zugang zu Wissen</li>
-    <li>🌌 <strong>Individuelle Selbstbestimmung</strong> – dein Leben, deine Regeln</li>
-    <li>💻 <strong>Digitalisierung für alle</strong> – nicht nur für Privilegierte</li>
-    <li>🕊️ <strong>Fortschritt & Frieden</strong> – Kreativität statt Konflikt</li>
-    <li>👨‍👩‍👧 <strong>Familien ohne Eingriffe</strong> – keine Bevormundung</li>
-    <li>🤝 <strong>Keine Diskriminierung</strong> – gegen jede Form, inklusive Kurdophobie (als kurdisch-stämmige Begründerin liegt mir das besonders am Herzen. Kurden finden zu wenig Gehör bei zu viel Leid. Bitte nicht persönlich nehmen :). </li>
-    <li>✨ <strong>Genuss & Universum</strong> – mehr Raum für Wunder, weniger Zerstörung</li>
+    <li>Chancengleichheit</li>
+    <li>Selbstbestimmung</li>
+    <li>Digitalisierung</li>
+    <li>Frieden</li>
   </ul>
 
-  <p class="lumi-note">
-    Diese Punkte sind das absolute Minimum – die Basics, die man erwarten kann.
-  </p>
-
-  <p class="lumi-warning">
-    ⚠️ Ich habe darüber hinaus ein umfassendes politisches Programm entwickelt.
-    Dieses teile ich bewusst nicht öffentlich, da ich mehrfach die Erfahrung gemacht habe,
-    dass Ideen übernommen und von anderen als eigene dargestellt wurden.
-    <br><br>
-    Das kann dazu führen, dass Inhalte ohne die ursprüngliche Intention genutzt werden.
-    Mein Ziel ist es, die Bevölkerung vor solchen Entwicklungen zu schützen.
-    <br><br>
-    Hinweise auf mögliche Kopien nehme ich dankbar entgegen.
-  </p>
-
-  <p class="hashtags">
-    #basicsdiemanerwartenkann #lumiliberalismus #bildung #chancengleichheit #freiheit
-  </p>
 </section>
-    
-   <div class="delete-notice">
-  <span>⚠️</span><span>🚀</span><span>⚠️</span>
 
-  Diese Webseite wird <strong>Mitte Mai archiviert und anschließend gelöscht</strong>.
-  <br><br>
-
-  Die Pflege und Aktualisierung einer eigenen Webseite ist sehr zeitintensiv.
-  Künftig werde ich daher verstärkt über meine Social-Media-Kanäle kommunizieren,
-  um schneller und direkter auf aktuelle politische Entwicklungen reagieren zu können.
-
-  <br><br>
-
-  Viele Inhalte dieser Seite sind im Rahmen meines Engagements für die FDP entstanden.
-  Für die Möglichkeit, mich politisch einzubringen und meine Positionen öffentlich
-  darzustellen, bin ich der Partei dankbar.
-
-  <br><br>
-
-  Gleichzeitig haben sich meine politischen Positionen weiterentwickelt.
-  Ich habe mich daher zunehmend politisch emanzipiert und möchte künftig
-  unabhängiger kommunizieren – mit einer Portion
-  <strong>„galaktischer Freiheit“</strong>, die manchmal etwas größer ist
-  als klassische politische Umlaufbahnen.
-
-  <br><br>
-
-  Für aktuelle Beiträge und Austausch erreichen Sie mich daher künftig
-  am besten über meine Social-Media-Kanäle.
-
-  <span>⚠️</span><span>🚀</span><span>⚠️</span>
+<div class="delete-notice">
+  Diese Webseite wird gelöscht.
 </div>
 
-    <section class="mission-box">
-  <h2>Meine Mission für Freiburg / Breisgau-Hochschwarzwald</h2>
-
-  <h3>DIE WAHL IST VORBEI – MEIN FAZIT</h3>
-
-  <p>
-    Bei meiner ersten Landtagswahl habe ich meinen gesamten Wahlkampf vollständig selbst organisiert.
-    Alle Inhalte und Videos – mit Ausnahme eines professionell erstellten Videos – sowie sämtliche
-    digitalen Beiträge habe ich eigenständig erstellt.
-  </p>
-
-  <p>
-    Bewusst habe ich auf klassische Wahlkampfmittel wie Plakate oder Flyer verzichtet.
-    Stattdessen habe ich vollständig auf digitale Information gesetzt – über meine Webseite
-    und Online-Inhalte.
-  </p>
-
-  <p>
-    Wenn man bedenkt, wie viele Ressourcen andere Kampagnen in Plakatierung, Druck und Logistik
-    investieren, zeigt mein Ansatz: <b>Politische Kommunikation kann heute auch digital funktionieren.</b>
-  </p>
-
-  <p>
-    Viele Nächte habe ich mit Programmieren verbracht – obwohl mein Hintergrund eigentlich
-    in Wirtschaftswissenschaften und Literatur liegt. Gerade deshalb war es mir wichtig,
-    diesen digitalen Weg konsequent zu gehen.
-  </p>
-
-  <h3>Dankbarkeit gegenüber meinen Wählerinnen und Wählern</h3>
-
-  <p>
-    Über <b>zweitausend Menschen</b> haben mir ihre Stimme gegeben.
-    Für eine Kandidatin, die zum ersten Mal antritt, ohne große Strukturen,
-    ohne Plakatkampagne und mit einem vollständig selbst organisierten digitalen
-    Wahlkampf bedeutet das mir sehr viel.
-  </p>
-
-  <p>
-    Ich bin vor allem stolz auf meine Wählerinnen und Wähler. Gerade hier in Freiburg
-    und im Breisgau-Hochschwarzwald scheint es viele Menschen zu geben, die sich
-    bewusst online informieren und eigene Entscheidungen treffen.
-  </p>
-
-  <h3>Einordnung des Ergebnisses</h3>
-
-  <p>
-    Man muss auch ehrlich sagen: Meine Partei, die FDP, befindet sich derzeit
-    in einer schwierigen politischen Phase. Deshalb muss man das Ergebnis
-    auch im Kontext der allgemeinen Situation der Partei sehen.
-  </p>
-
-  <p>
-    Umso mehr freut es mich, dass meine persönlichen Stimmen nicht stark
-    vom Ergebnis der Partei abweichen. Das zeigt mir, dass mein Ansatz
-    und meine Inhalte bei vielen Menschen angekommen sind.
-  </p>
-
-  <h3>Themen, die Wirkung gezeigt haben</h3>
-
-  <p>
-    In Podiumsdiskussionen habe ich außerdem bemerkt, dass einige Themen,
-    die ich angesprochen habe – zum Beispiel <b>Technologieoffenheit</b> –
-    später auch von anderen Parteien aufgegriffen wurden.
-  </p>
-
-  <p>
-    Das bestätigt mich darin, dass wir wichtige und relevante Themen
-    in die politische Diskussion eingebracht haben.
-  </p>
-
-  <h3>Mein persönliches Fazit</h3>
-
-  <p>
-    Natürlich hätte ich mir gewünscht, meine Wählerinnen und Wähler
-    im Landtag vertreten zu dürfen. Dass mir der Einzug nicht gelungen ist,
-    bedaure ich sehr – denn sie hätten eine starke Stimme mehr als verdient.
-  </p>
-
-  <p>
-    Gerade in einer Zeit, in der <b>Rechtsradikalismus</b> wieder stärker wird,
-    braucht unsere Demokratie wachsame Institutionen und engagierte Bürgerinnen
-    und Bürger. Polizei und Justiz müssen hier besonders aufmerksam bleiben.
-  </p>
-
-  <p>
-    Am Ende bleibt für mich vor allem eines:
-    <b>Dankbarkeit.</b>
-  </p>
-
-  <p>
-    Der Zuspruch meiner Wählerinnen und Wähler bedeutet mir mehr
-    als jedes Geld und mehr als jede politische Position.
-    Dafür danke ich von Herzen.
-  </p>
-
-
-    <a href="mission.html">Mehr erfahren &raquo;</a>
-  </section>
-
-  <section class="spiel-section">
-    <p>🎯 Nach so viel Inhalt – <strong>Lust auf ein Spiel?</strong></p>
-    <a href="runner.html">🎮 Zum Spiel: Wahlkampf Runner</a>
-  </section>
-
-<hr class="section-divider">
-<h2 class="animated-title">
-  <span>K</span><span>o</span><span>n</span><span>t</span><span>a</span><span>k</span><span>t</span><span>f</span><span>o</span><span>r</span><span>m</span><span>u</span><span>l</span><span>a</span><span>r</span>
-</h2>
-
-<form action="https://formsubmit.co/heschuhasan@proton.me" method="POST" class="contact-box">
-  <div class="form-field">
-    <input type="email" id="email" name="email" required placeholder="📧 Ihre Emailadresse" autocomplete="email" />
-  </div>
-  <div class="form-field">
-    <input type="text" id="subject" name="subject" required placeholder="✏ Betreff Ihrer Nachricht" />
-  </div>
-  <div class="form-field">
-    <textarea id="message" name="message" rows="5" required placeholder="📝 Ihre Nachricht..."></textarea>
-  </div>
-  
-  <!-- Separate Checkbox Box -->
-  <div class="form-checkbox">
-    <label>
-      <input type="checkbox" name="datenschutz" required />
-      Ich habe die <a href="datenschutz.html" class="datenschutz-link" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
-    </label>
-  </div>
-
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="text" name="_honey" style="display:none" />
-  <button type="submit">Absenden</button>
-</form>
-
-
-
-<script>
-// Feedback aus URL lesen
-window.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const status = params.get('status');
-  const feedbackDiv = document.getElementById('feedback');
-  
-  if (!status) return;
-
-  let msg = '';
-  let color = 'red';
-
-  switch(status) {
-    case 'ok':
-      msg = 'Vielen Dank! Ihre Nachricht wurde gesendet.';
-      color = 'green';
-      break;
-    case 'missing':
-      msg = 'Bitte füllen Sie alle Felder aus.';
-      break;
-    case 'bademail':
-      msg = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
-      break;
-    case 'spam':
-      msg = 'Spam erkannt.';
-      color = 'orange';
-      break;
-    default:
-      msg = 'Fehler beim Senden.';
-  }
-
-  feedbackDiv.innerHTML = `<p style="color:${color}; font-weight:bold;">${msg}</p>`;
-});
-</script>
+</main>
 
 <footer>
-  <h3>Treffen Sie mich auf den Sozialen Medien</h3>
-  <div class="social-links" aria-label="Soziale Medien">
-    <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-  <p>© 2026 Heschu Hasan – Alle Rechte vorbehalten</p>
-  <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
-   
+  © 2026 Heschu Hasan
 </footer>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const box = document.getElementById("verwaltung-box");
-    const sub = document.getElementById("verwaltung-subtopics");
-
-    box.addEventListener("click", () => {
-      const isOpen = box.getAttribute("aria-expanded") === "true";
-      box.setAttribute("aria-expanded", !isOpen);
-      sub.style.display = isOpen ? "none" : "flex";
-    });
-
-    box.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        box.click();
-      }
-    });
-  });
-</script>
 
 </body>
 </html>
