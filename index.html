@@ -212,37 +212,74 @@ footer a:hover {
   </div>
 </section>
 
- <form action="https://formsubmit.co/heschuhasan@proton.me" method="POST" class="contact-box" style="max-width:500px; margin:50px auto; padding:30px; background:var(--gradient); border:2px solid var(--pink); border-radius:15px; color:white; display:flex; flex-direction:column; gap:15px;">
+ <form action="https://formsubmit.co/heschuhasan@proton.me" method="POST" class="contact-box" style="
+  max-width:500px;
+  margin:50px auto;
+  padding:30px;
+  background: var(--gradient);
+  border:2px solid var(--pink);
+  border-radius:15px;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  position:relative;
+  z-index:1;
+">
 
   <!-- Name -->
-  <div class="form-field">
-    <input type="text" name="name" placeholder="📝 Ihr Name" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white;">
-  </div>
+  <input type="text" name="name" placeholder="📝 Ihr Name" required style="
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid var(--pink);
+    background: rgba(255,255,255,0.05);
+    color:white;
+  ">
 
   <!-- Email -->
-  <div class="form-field">
-    <input type="email" id="email" name="email" required placeholder="📧 Ihre E-Mail-Adresse" autocomplete="email" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white;">
-  </div>
+  <input type="email" name="email" placeholder="📧 Ihre E-Mail-Adresse" required style="
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid var(--pink);
+    background: rgba(255,255,255,0.05);
+    color:white;
+  ">
 
   <!-- Nachricht -->
-  <div class="form-field">
-    <textarea name="message" placeholder="✏️ Ihre Nachricht" rows="5" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white;"></textarea>
-  </div>
+  <textarea name="message" placeholder="✏️ Ihre Nachricht" rows="5" required style="
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid var(--pink);
+    background: rgba(255,255,255,0.05);
+    color:white;
+  "></textarea>
 
   <!-- Datenschutz Checkbox -->
-  <div class="form-checkbox" style="color:white; font-size:0.9rem;">
-    <label>
-      <input type="checkbox" name="datenschutz" required style="margin-right:8px;" />
-      Ich habe die <a href="datenschutz.html" target="_blank" style="color:var(--blue); text-decoration:underline;">Datenschutzerklärung</a> gelesen und stimme zu.
-    </label>
-  </div>
+  <label style="color:white; font-size:0.9rem; display:flex; align-items:center; gap:8px; cursor:pointer;">
+    <input type="checkbox" name="datenschutz" required style="width:auto; cursor:pointer;">
+    Ich habe die <a href="datenschutzerklaerung.html" target="_blank" style="color:var(--blue); text-decoration:underline;">Datenschutzerklärung</a> gelesen und stimme zu.
+  </label>
 
   <!-- Honeypot & Captcha -->
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="text" name="_honey" style="display:none;" />
+  <input type="hidden" name="_captcha" value="false">
+  <input type="text" name="_honey" style="display:none;">
 
   <!-- Submit Button -->
-  <button type="submit" style="width:100%; padding:14px; border:none; border-radius:10px; background: var(--pink); color:white; font-weight:bold; cursor:pointer; transition:0.3s;">Absenden</button>
+  <button type="submit" style="
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background: var(--pink);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+  ">Absenden</button>
+
 </form>
 
 <div class="delete-notice">
