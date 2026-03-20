@@ -115,13 +115,22 @@ h3 { color: var(--purple); margin-bottom:10px; }
   text-align:center;
 }
 
-/* FOOTER */
 footer {
   margin-top:auto;
   background: var(--gradient);
   color:white;
   text-align:center;
   padding:30px;
+}
+
+footer h3 {
+  color: var(--purple);
+  margin-bottom:10px;
+}
+
+footer a:hover {
+  color: var(--pink);
+  transform: scale(1.2);
 }
 
 /* MOBILE */
@@ -203,6 +212,39 @@ footer {
   </div>
 </section>
 
+  <form action="https://formsubmit.co/heschuhasan@proton.me" method="POST" class="contact-box" style="max-width:500px; margin:50px auto; padding:30px; background:var(--gradient); border:2px solid var(--pink); border-radius:15px; color:white; display:flex; flex-direction:column; gap:15px;">
+  
+  <!-- Name -->
+  <div class="form-field">
+    <input type="text" name="name" placeholder="📝 Ihr Name" required style="padding:10px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white;">
+  </div>
+
+  <!-- Email -->
+  <div class="form-field">
+    <input type="email" id="email" name="email" required placeholder="📧 Ihre E-Mail-Adresse" autocomplete="email" style="padding:10px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white;">
+  </div>
+
+  <!-- Nachricht -->
+  <div class="form-field">
+    <textarea name="message" placeholder="✏️ Ihre Nachricht" rows="5" required style="padding:10px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white;"></textarea>
+  </div>
+
+  <!-- Datenschutz Checkbox -->
+  <div class="form-checkbox" style="color:white; font-size:0.9rem;">
+    <label>
+      <input type="checkbox" name="datenschutz" required style="margin-right:8px;" />
+      Ich habe die <a href="datenschutz.html" target="_blank" style="color:var(--blue); text-decoration:underline;">Datenschutzerklärung</a> gelesen und stimme zu.
+    </label>
+  </div>
+
+  <!-- Honeypot & Captcha -->
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="text" name="_honey" style="display:none;" />
+
+  <!-- Submit Button -->
+  <button type="submit" style="padding:12px; border:none; border-radius:10px; background: var(--pink); color:white; font-weight:bold; cursor:pointer; transition:0.3s;">Absenden</button>
+</form>
+
 <div class="delete-notice">
   ⚠️ Diese Webseite wird archiviert und Mitte Mai gelöscht; eine Folgeseite ist geplant, sofern die Inhalte urheberrechtlich geschützt sind, während ich parallel meine berufliche Weiterentwicklung vorantreibe und auf systematische Hürden auf dem Arbeitsmarkt aufmerksam mache.
 </div>
@@ -210,7 +252,13 @@ footer {
 </main>
 
 <footer>
-  © 2026 Heschu Hasan – Lumiliberalismus
+  <h3>Treffen Sie mich auf Instagram</h3>
+  <div class="social-links" aria-label="Soziale Medien" style="margin:15px 0;">
+    <a href="https://www.instagram.com/ciqulata_cybersafe/" target="_blank" rel="noopener" aria-label="Instagram" style="color:var(--pink); font-size:1.8rem; margin:0 10px; transition:0.3s;">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  <p>© 2026 Heschu Hasan – Alle Rechte vorbehalten</p>
 </footer>
 
 <script>
