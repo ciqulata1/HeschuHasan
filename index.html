@@ -243,7 +243,7 @@ footer a:hover {
   </div>
 </section>
 
- <form action="https://formsubmit.co/heschuhasan@proton.me" method="POST" class="contact-box" style="
+<form action="https://formsubmit.co/heschuhasan@proton.me" method="POST" class="contact-box" style="
   max-width:500px;
   margin:50px auto;
   padding:30px;
@@ -254,10 +254,31 @@ footer a:hover {
   display:flex;
   flex-direction:column;
   gap:15px;
-  position:relative;
-  z-index:1;
 ">
 
+  <!-- Anti-Spam -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="text" name="_honey" style="display:none">
+
+  <!-- Name -->
+  <input type="text" name="name" placeholder="📝 Ihr Name" required>
+
+  <!-- Email -->
+  <input type="email" name="email" placeholder="📧 Ihre E-Mail-Adresse" required>
+
+  <!-- Nachricht -->
+  <textarea name="message" placeholder="✏️ Ihre Nachricht" rows="5" required></textarea>
+
+  <!-- Datenschutz -->
+  <label>
+    <input type="checkbox" name="datenschutz" required>
+    Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu.
+  </label>
+
+  <!-- Submit -->
+  <button type="submit">Absenden</button>
+
+</form>
   <!-- Name -->
   <input type="text" name="name" placeholder="📝 Ihr Name" required style="
     width:100%;
