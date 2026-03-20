@@ -103,6 +103,22 @@ h3 { color: var(--purple); margin-bottom:10px; }
   animation:starsMove 60s linear infinite;
 }
 
+  button.submit-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: var(--pink);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.submit-button:hover {
+  background: var(--purple); /* genau wie beim back-button */
+}
+
 footer {
   background: var(--gradient);
   color:white;
@@ -221,7 +237,7 @@ footer a:hover { color: var(--pink); transform: scale(1.2); }
     Ich habe die <a href="datenschutz.html" target="_blank" style="color:var(--blue); text-decoration:underline;">Datenschutzerklärung</a> gelesen und stimme zu.
   </label>
   <!-- Submit -->
-  <button type="submit" style=" width:100%; padding:14px; border:none; border-radius:10px; background: var(--pink); color:white; font-weight:bold; cursor:pointer; transition:0.3s; ">Absenden</button>
+  <button type="submit" class="submit-button">Absenden</button>
 </form>
 
 <div class="delete-notice">⚠️ Diese Webseite wird archiviert und Mitte Mai gelöscht; eine Folgeseite ist geplant, sofern die Inhalte urheberrechtlich geschützt sind, während ich parallel meine berufliche Weiterentwicklung vorantreibe und auf systematische Hürden auf dem Arbeitsmarkt aufmerksam mache.</div>
