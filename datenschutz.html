@@ -55,18 +55,24 @@
 
     main { flex:1; }
 
-    button.back-button {
-      background: var(--pink);
-      color: var(--white);
-      border:none;
-      padding:10px 20px;
-      font-size:1rem;
-      border-radius:5px;
-      cursor:pointer;
-      margin-top:20px;
-      transition:0.3s;
-    }
-    button.back-button:hover { background: var(--purple); }
+  button.back-button {
+  display: block;            /* zentriert */
+  margin: 30px auto;         /* oben/unten Abstand, automatisch zentriert */
+  width: 250px;              /* breiter Button */
+  padding: 15px 0;           /* vertikales Padding */
+  font-size: 1.2rem;         /* größere Schrift */
+  font-weight: 700;
+  background: var(--pink);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;        /* sicherstellen, dass Text mittig bleibt */
+}
+button.back-button:hover {
+  background: var(--purple);
+}
 
     footer {
       background: var(--gradient);
