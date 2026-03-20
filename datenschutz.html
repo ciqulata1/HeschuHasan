@@ -6,152 +6,104 @@
   <title>Datenschutzerklärung – Heschu Hasan</title>
   <style>
     :root {
-      --magenta: #e5007d;
-      --black: #000000;
+      --magenta: #c77dff;   /* primäre Farbe, passend zum Rest der Seite */
+      --purple: #c77dff;
+      --pink: #ff7ac6;
+      --blue: #8fd3ff;
+      --dark: #0a0a1a;
+      --gradient: linear-gradient(135deg, #1a1a40, #000000);
       --white: #ffffff;
-      --turquoise: #00abae; /* für ausgewählte Elemente */
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
-      font-family: Calibri, Candara, Segoe, "Segoe UI", Arial, sans-serif;
-      background-color: var(--white);
-      color: var(--black);
+      font-family: Calibri, sans-serif;
+      background: var(--dark);
+      color: var(--purple);
       line-height: 1.6;
-      padding: 20px;
-      display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      padding:20px;
     }
 
-    a {
-      color: var(--magenta);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
+    a { color: var(--pink); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--blue); }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .container { max-width:900px; margin:0 auto; }
 
-    h1, h2 {
-      color: var(--magenta);
-      margin-bottom: 10px;
-    }
-    h1 { font-size: 2em; margin-top: 40px; }
-    h2 { font-size: 1.5em; margin-top: 30px; }
+    h1, h2 { color: var(--pink); margin-bottom:10px; }
+    h1 { font-size:2em; margin-top:40px; }
+    h2 { font-size:1.5em; margin-top:30px; }
 
-    p { margin-bottom: 20px; }
+    p, ul { margin-bottom:20px; }
 
     header {
-      background-color: var(--white);
-      border-bottom: 2px solid var(--magenta);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: var(--gradient);
+      padding:20px 40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
     }
 
-    /* Header Text und Logo */
-    header h1 {
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--magenta);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      display: flex;
-      align-items: center;
-    }
+    header h1 { color: var(--pink); font-weight:700; font-size:1.8rem; text-transform:uppercase; letter-spacing:0.06em; display:flex; align-items:center; }
+    #fdp-logo { max-height:40px; width:auto; margin-left:10px; }
 
-    /* Logo-Anpassung */
-    #fdp-logo {
-      max-height: 40px; /* Höhe auf 40px begrenzen */
-      width: auto;       /* Breite automatisch proportional */
-      margin-left: 10px;
-    }
+    nav a { font-weight:600; font-size:1rem; margin-left:25px; color: var(--purple); text-transform:uppercase; letter-spacing:0.05em; }
+    nav a:hover, nav a:focus, nav a.active { color: var(--pink); font-weight:700; outline:none; }
 
-    nav a {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-left: 25px;
-      color: var(--black);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    nav a:hover,
-    nav a:focus,
-    nav a.active {
-      color: var(--magenta);
-      font-weight: 700;
-      outline: none;
-    }
-
-    footer {
-      background-color: var(--black);
-      color: var(--white);
-      text-align: center;
-      padding: 30px 20px;
-      font-weight: 500;
-    }
-    footer h3 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    footer .social-links a {
-      color: var(--white);
-      font-size: 30px;
-      margin: 0 15px;
-      transition: color 0.3s ease;
-    }
-    footer .social-links a:hover,
-    footer .social-links a:focus { color: var(--white); outline: none; }
-    .social-text {
-      margin-top: 10px;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    main {
-  flex: 1;
-    }
+    main { flex:1; }
 
     button.back-button {
-      background-color: var(--magenta);
+      background: var(--pink);
       color: var(--white);
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
+      border:none;
+      padding:10px 20px;
+      font-size:1rem;
+      border-radius:5px;
+      cursor:pointer;
+      margin-top:20px;
+      transition:0.3s;
     }
-    button.back-button:hover,
-    button.back-button:focus { background-color: var(--black); outline: none; }
+    button.back-button:hover { background: var(--purple); }
 
-    @media (max-width: 600px) {
-      body { padding: 10px; }
-      h1 { font-size: 1.5em; }
-      h2 { font-size: 1.2em; }
-      header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
-      nav a { margin-left: 0; margin-right: 15px; }
+    footer {
+      background: var(--gradient);
+      color:white;
+      text-align:center;
+      padding:30px 20px;
+      font-weight:500;
+      margin-top:auto;
+    }
+    footer h3 {
+      margin-top:0;
+      margin-bottom:15px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+      color: var(--pink);
+    }
+    footer .social-links a {
+      color: var(--pink);
+      font-size:30px;
+      margin:0 15px;
+      transition:0.3s;
+    }
+    footer .social-links a:hover { color: var(--blue); }
+
+    footer p, footer .social-text { margin:5px 0; color:white; font-weight:500; }
+    
+    @media (max-width:600px){
+      body { padding:10px; }
+      h1 { font-size:1.5em; }
+      h2 { font-size:1.2em; }
+      header { flex-direction:column; align-items:flex-start; padding:15px 20px; }
+      nav a { margin-left:0; margin-right:15px; }
     }
   </style>
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <header>
@@ -165,6 +117,7 @@
       <a href="justiz.html">Verwaltung</a>
       <a href="meinungsmacher.html">Meinungs-Macher</a>
       <a href="impressum.html" class="active">Impressum</a>
+      <a href="datenschutzerklaerung.html">Datenschutz</a>
     </nav>
   </header>
 
@@ -176,7 +129,7 @@
     <h2>1. Verantwortliche Stelle</h2>
     <p>Verantwortlich für die Verarbeitung Ihrer personenbezogenen Daten auf dieser Website ist:</p>
     <p>
-      FDP Kreisverband Freiburg<br />
+      Heschu Hasan<br />
       E-Mail: <a href="mailto:heschuhasan@proton.me">heschuhasan@proton.me</a>
     </p>
 
@@ -189,7 +142,7 @@
       <li>Zeitpunkt der Absendung</li>
       <li>IP-Adresse des Absenders</li>
     </ul>
-    <p>Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht ohne Ihre ausdrückliche Zustimmung weitergegeben. Die Speicherung erfolgt in einer Datei <strong>submissions.txt</strong> auf dem Server.</p>
+    <p>Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht ohne Ihre ausdrückliche Zustimmung weitergegeben.</p>
 
     <h2>3. Verwendung von Cookies</h2>
     <p>Diese Website verwendet keine Cookies zur Nachverfolgung oder Analyse. Sollte dies zukünftig der Fall sein, wird eine entsprechende Einwilligung eingeholt.</p>
@@ -208,19 +161,19 @@
 
     <p><strong>Stand:</strong> März 2026</p>
 
-<button class="back-button" onclick="window.location.href='index.html';">← Zurück</button>
+    <button class="back-button" onclick="window.location.href='index.html';">← Zurück</button>
   </main>
 
   <footer>
-  
+    <h3>Treffen Sie mich auf Instagram</h3>
     <div class="social-links">
       <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
       </a>
     </div>
-    <p class="social-text">Treffen Sie mich auf den Sozialen Medien</p>
-    <p>© 2025 Heschu Hasan – Alle Rechte vorbehalten</p>
-    <p>Wahlkreiskandidatin – Freiburg-Ost (Wahlkreis 46)</p>
+    <p class="social-text">Folgen Sie mir auf Instagram </p>
+    <p>© 2026 Heschu Hasan – Alle Rechte vorbehalten</p>
+    <p><a href="datenschutz.html" style="color: var(--pink); text-decoration:underline;">Datenschutzerklärung</a></p>
   </footer>
 </body>
 </html>
