@@ -57,21 +57,20 @@ h3 { color: var(--purple); margin-bottom:10px; }
   gap: 20px;
 }
 
-.topic-box-link,
 .topic-box {
   flex: 1 1 calc(50% - 10px); /* 2 Boxen pro Reihe */
-  min-width: 250px;             /* verhindert zu kleine Boxen */
+  min-width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 200px;                /* gleiche Höhe für alle Boxen */
+  height: 200px; /* gleiche Höhe */
+  border:2px solid var(--pink);
+  border-radius:10px;
+  background: var(--gradient);
+  color: var(--purple);
+  cursor: pointer;
   transition: 0.3s;
-}
-
-.topic-box-link:focus .topic-box {
-  box-shadow: 0 0 10px var(--blue);
-  outline: none;
 }
 
 .topic-box:hover {
@@ -81,12 +80,12 @@ h3 { color: var(--purple); margin-bottom:10px; }
 }
 
 @media (max-width: 768px) {
-  .topic-box-link,
   .topic-box {
     flex: 1 1 100%;   /* auf Mobil 1 Box pro Reihe */
-    height: 180px;    /* optional kleinere Höhe */
+    height: 180px;    /* kleinere Höhe */
   }
 }
+
 /* SUBTOPICS */
 .subtopics { display:none; flex-direction:column; margin-top:10px; }
 .subtopics a {
@@ -121,7 +120,7 @@ h3 { color: var(--purple); margin-bottom:10px; }
   animation:starsMove 60s linear infinite;
 }
 
-  button.submit-button {
+button.submit-button {
   width: 100%;
   padding: 14px;
   border: none;
@@ -134,7 +133,7 @@ h3 { color: var(--purple); margin-bottom:10px; }
 }
 
 button.submit-button:hover {
-  background: var(--purple); /* genau wie beim back-button */
+  background: var(--purple);
 }
 
 footer {
@@ -209,10 +208,11 @@ footer a:hover { color: var(--pink); transform: scale(1.2); }
     </div>
   </div>
   <div class="topic-box">Digitalisierung</div>
-<a href="meinungsmacher.html">
-  <div class="topic-box">Meinungs-Macher</div>
-</a>
+  <div class="topic-box" onclick="window.location.href='meinungsmacher.html';">
+    Meinungs-Macher
+  </div>
 </div>
+
 <!-- 🌌 Lumiliberalismus Box -->
 <section class="universe-box">
   <h2>✨ Lumiliberalismus – Basics, die man erwarten kann</h2>
@@ -244,18 +244,13 @@ footer a:hover { color: var(--pink); transform: scale(1.2); }
   <input type="hidden" name="_captcha" value="false">
   <input type="text" name="_honey" style="display:none;">
 
-  <!-- Name -->
   <input type="text" name="name" placeholder="📝 Ihr Name" required style=" width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white; ">
-  <!-- Email -->
   <input type="email" name="email" placeholder="📧 Ihre E-Mail-Adresse" required style=" width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white; ">
-  <!-- Nachricht -->
   <textarea name="message" placeholder="✏️ Ihre Nachricht" rows="5" required style=" width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white; "></textarea>
-  <!-- Datenschutz -->
   <label style="color:white; font-size:0.9rem; display:flex; align-items:center; gap:8px; cursor:pointer;">
     <input type="checkbox" name="datenschutz" required style="width:auto; cursor:pointer;">
     Ich habe die <a href="datenschutz.html" target="_blank" style="color:var(--blue); text-decoration:underline;">Datenschutzerklärung</a> gelesen und stimme zu.
   </label>
-  <!-- Submit -->
   <button type="submit" class="submit-button">Absenden</button>
 </form>
 
