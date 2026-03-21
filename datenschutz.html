@@ -26,6 +26,9 @@
       flex-direction:column;
       min-height:100vh;
       padding:20px;
+
+      /* 🔒 NEU: Text nicht auswählbar */
+      user-select: none;
     }
 
     a { color: var(--pink); text-decoration: none; }
@@ -55,24 +58,24 @@
 
     main { flex:1; }
 
-  button.back-button {
-  display: block;            /* zentriert */
-  margin: 30px auto;         /* oben/unten Abstand, automatisch zentriert */
-  width: 250px;              /* breiter Button */
-  padding: 15px 0;           /* vertikales Padding */
-  font-size: 1.2rem;         /* größere Schrift */
-  font-weight: 700;
-  background: var(--pink);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-  text-align: center;        /* sicherstellen, dass Text mittig bleibt */
-}
-button.back-button:hover {
-  background: var(--purple);
-}
+    button.back-button {
+      display: block;            
+      margin: 30px auto;         
+      width: 250px;              
+      padding: 15px 0;           
+      font-size: 1.2rem;         
+      font-weight: 700;
+      background: var(--pink);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;        
+    }
+    button.back-button:hover {
+      background: var(--purple);
+    }
 
     footer {
       background: var(--gradient);
@@ -106,6 +109,11 @@ button.back-button:hover {
       h2 { font-size:1.2em; }
       header { flex-direction:column; align-items:flex-start; padding:15px 20px; }
       nav a { margin-left:0; margin-right:15px; }
+    }
+
+    /* 🔒 Eingaben weiterhin auswählbar */
+    input, label, button {
+      user-select: auto;
     }
   </style>
 
@@ -182,5 +190,24 @@ button.back-button:hover {
   </p>
 
 </footer>
+
+<!-- 🔒 Copy & Paste, Rechtsklick und Tastenkombinationen blockieren -->
+<script>
+  // Rechtsklick verhindern
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+
+  // Copy + DevTools + Save blockieren
+  document.addEventListener('keydown', function(e) {
+    if (
+      e.ctrlKey &&
+      (e.key === 'c' || e.key === 'u' || e.key === 's')
+    ) {
+      e.preventDefault();
+    }
+  });
+</script>
+
 </body>
 </html>
