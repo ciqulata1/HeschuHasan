@@ -51,35 +51,42 @@ h2 { color: var(--pink); margin-bottom:15px; }
 h3 { color: var(--purple); margin-bottom:10px; }
 
 /* TOPIC BOXEN */
-.topics { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:40px; }
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.topic-box-link,
 .topic-box {
-  flex:1;
-  padding:20px;
-  background: var(--gradient);
-  border:2px solid var(--pink);
-  border-radius:10px;
-  text-align:center;
-  color: var(--purple);
-  cursor:pointer;
-  transition:0.3s;
+  flex: 1 1 calc(50% - 10px); /* 2 Boxen pro Reihe */
+  min-width: 250px;             /* verhindert zu kleine Boxen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 200px;                /* gleiche Höhe für alle Boxen */
+  transition: 0.3s;
 }
-.topic-box-link {
-  display: flex;              /* damit div zentriert bleibt */
-  justify-content: center;    /* horizontal zentrieren */
-  text-decoration: none;      /* Unterstreichung entfernen */
-  outline: none; 
+
+.topic-box-link:focus .topic-box {
+  box-shadow: 0 0 10px var(--blue);
+  outline: none;
 }
-  .topic-box-link:focus .topic-box {
-    box-shadow: 0 0 10px var(--blue); 
-    outline: none; 
-}
-  
+
 .topic-box:hover {
   background: linear-gradient(135deg,#2a2a72,#000);
   color:white;
   box-shadow:0 0 20px var(--blue);
 }
 
+@media (max-width: 768px) {
+  .topic-box-link,
+  .topic-box {
+    flex: 1 1 100%;   /* auf Mobil 1 Box pro Reihe */
+    height: 180px;    /* optional kleinere Höhe */
+  }
+}
 /* SUBTOPICS */
 .subtopics { display:none; flex-direction:column; margin-top:10px; }
 .subtopics a {
