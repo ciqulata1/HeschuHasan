@@ -253,6 +253,20 @@ document.getElementById("quizForm").addEventListener("submit", e=>{
 
   document.getElementById("feedback").innerHTML = message;
 });
+  document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+// Copy + DevTools + Save blockieren
+document.addEventListener('keydown', function(e) {
+  if (
+    e.ctrlKey &&
+    (e.key === 'c' || e.key === 'u' || e.key === 's')
+  ) {
+    e.preventDefault();
+  }
+});
+
 </script>
 
 </body>
