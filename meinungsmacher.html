@@ -107,11 +107,19 @@ p.center {
   margin-bottom:20px;
 }
 
+/* Neue Boxen für Fragen */
 .question {
-  border:2px solid var(--pink);
-  padding:15px;
-  margin-bottom:15px;
-  border-radius:8px;
+  border: 2px solid var(--pink);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05); /* leicht sichtbarer Hintergrund */
+}
+
+.question .question-text {
+  font-weight:700;
+  color: var(--pink);
+  margin-bottom: 10px;
 }
 
 .answers label {
@@ -161,13 +169,15 @@ footer a {
   color: var(--pink);
   font-size:30px;
 }
-    footer .social-links a {
-      color: var(--pink);
-      font-size:30px;
-      margin:0 15px;
-      transition:0.3s;
-    }
-    footer .social-links a:hover { color: var(--blue); }
+
+footer .social-links a {
+  color: var(--pink);
+  font-size:30px;
+  margin:0 15px;
+  transition:0.3s;
+}
+
+footer .social-links a:hover { color: var(--blue); }
 
 /* Skip-Link für Screenreader */
 .skip-link {
@@ -249,16 +259,16 @@ const myOpinions = ["Ja","Ja","Ja","Ja","Ja","Ja","Ja","Ja","Ja","Ja"];
 const container = document.getElementById("questions");
 
 questions.forEach((q,i)=>{
-  const fieldset = document.createElement("fieldset");
-  fieldset.className = "question";
-  fieldset.innerHTML = `
-    <legend>${i+1}. ${q}</legend>
+  const div = document.createElement("div");
+  div.className = "question";
+  div.innerHTML = `
+    <p class="question-text">${i+1}. ${q}</p>
     <div class="answers">
       <label for="q${i}_ja"><input type="radio" id="q${i}_ja" name="q${i}" value="Ja"> Ja</label>
       <label for="q${i}_nein"><input type="radio" id="q${i}_nein" name="q${i}" value="Nein"> Nein</label>
     </div>
   `;
-  container.appendChild(fieldset);
+  container.appendChild(div);
 });
 
 document.getElementById("quizForm").addEventListener("submit", e=>{
