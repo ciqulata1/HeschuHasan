@@ -26,17 +26,19 @@ body {
   display:flex;
   flex-direction:column;
   min-height:100vh;
-  user-select: none; /* 🔒 Text nicht auswählbar */
+  user-select: none;
 }
-/* 🔹 Farbe von Radio-Buttons & Checkboxes */
-input[type="radio"], input[type="checkbox"] {
-  accent-color: var(--pink);
-}
+
+/* Eingaben weiterhin auswählbar */
 input, label, button {
   user-select: auto;
 }
 
-/* Buttons */
+/* 🔹 Radio-Buttons & Checkboxen in Pink */
+input[type="radio"], input[type="checkbox"] {
+  accent-color: var(--pink);
+}
+
 button.back-button {
   display: block;
   margin: 30px auto;
@@ -126,20 +128,6 @@ button:hover {
   background: var(--purple);
 }
 
-/* 🔹 Aktiv-Zustand überall rosa */
-button:active,
-a:active,
-label:active,
-input:active {
-  background: var(--pink) !important;
-  color: var(--white) !important;
-}
-
-/* 🔹 Blaues Tap-Highlight auf Mobilgeräten verhindern */
-a, button, input, label {
-  -webkit-tap-highlight-color: transparent;
-}
-
 #feedback {
   text-align:center;
   font-weight:700;
@@ -191,7 +179,7 @@ footer a {
   <button class="back-button" onclick="window.location.href='index.html';">← Zurück</button>
 </main>
 
-<footer>
+ <footer>
   <h3>Treffen Sie mich auf Instagram</h3>
   <div class="social-links">
     <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -204,6 +192,7 @@ footer a {
   <p style="text-align:center; font-size:12px; opacity:0.6;">
     Inhalte urheberrechtlich geschützt – Weiterverwendung nur mit Genehmigung
   </p>
+
 </footer>
 
 <script>
@@ -281,7 +270,6 @@ document.getElementById("quizForm").addEventListener("submit", e=>{
   document.getElementById("feedback").innerHTML = message;
 });
 
-// 🔒 Rechtsklick verhindern
 document.addEventListener('contextmenu', function(e) {
   e.preventDefault();
 });
@@ -295,6 +283,7 @@ document.addEventListener('keydown', function(e) {
     e.preventDefault();
   }
 });
+
 </script>
 
 </body>
