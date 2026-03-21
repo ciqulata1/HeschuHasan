@@ -67,6 +67,11 @@ h3 { color: var(--purple); margin-bottom:10px; }
   display: flex;              /* damit div zentriert bleibt */
   justify-content: center;    /* horizontal zentrieren */
   text-decoration: none;      /* Unterstreichung entfernen */
+  outline: none; 
+}
+  .topic-box-link:focus .topic-box {
+    box-shadow: 0 0 10px var(--blue); 
+    outline: none; 
 }
   
 .topic-box:hover {
