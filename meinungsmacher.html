@@ -26,6 +26,15 @@ body {
   display:flex;
   flex-direction:column;
   min-height:100vh;
+
+    /* 🔒 NEU */
+  user-select: none;
+}
+
+input, label, button {
+  user-select: auto;
+}
+
 }
 
   button.back-button {
@@ -177,6 +186,12 @@ footer a {
   </div>
   <p class="social-text">Folgen Sie mir auf Instagram</p>
   <p>© 2026 Heschu Hasan – Alle Rechte vorbehalten</p>
+
+  <!-- 🔒 HIER EINFÜGEN -->
+  <p style="text-align:center; font-size:12px; opacity:0.6;">
+    Inhalte urheberrechtlich geschützt – Weiterverwendung nur mit Genehmigung
+  </p>
+
 </footer>
 
 <script>
