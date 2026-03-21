@@ -58,22 +58,26 @@ h3 { color: var(--purple); margin-bottom:10px; }
 }
 
 .topic-box {
-  flex: 1 1 calc(50% - 10px); /* 2 Boxen pro Reihe */
+  flex: 1 1 calc(50% - 10px);
   min-width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 200px; /* gleiche Höhe */
+  height: 200px;
   border:2px solid var(--pink);
   border-radius:10px;
   background: var(--gradient);
   color: var(--purple);
   cursor: pointer;
   transition: 0.3s;
+  user-select: none;
 }
 
-.topic-box:hover {
+/* Hover + active + focus für mobile Reaktion */
+.topic-box:hover,
+.topic-box:active,
+.topic-box:focus {
   background: linear-gradient(135deg,#2a2a72,#000);
   color:white;
   box-shadow:0 0 20px var(--blue);
@@ -81,8 +85,8 @@ h3 { color: var(--purple); margin-bottom:10px; }
 
 @media (max-width: 768px) {
   .topic-box {
-    flex: 1 1 100%;   /* auf Mobil 1 Box pro Reihe */
-    height: 180px;    /* kleinere Höhe */
+    flex: 1 1 100%;
+    height: 180px;
   }
 }
 
@@ -186,9 +190,6 @@ footer p, footer .social-text { margin:5px 0; color:white; font-weight:500; }
 }
 
 footer a:hover { color: var(--pink); transform: scale(1.2); }
-
-/* MOBILE */
-@media(max-width:768px){ nav{flex-wrap:wrap;} }
 </style>
 </head>
 <body>
@@ -239,11 +240,9 @@ footer a:hover { color: var(--pink); transform: scale(1.2); }
   </div>
 </section>
 
-<!-- FORMULAR -->
 <form action="https://formsubmit.co/heschuhasan@proton.me" method="POST" class="contact-box" style=" max-width:500px; margin:50px auto; padding:30px; background: var(--gradient); border:2px solid var(--pink); border-radius:15px; color:white; display:flex; flex-direction:column; gap:15px; position:relative; z-index:1;">
   <input type="hidden" name="_captcha" value="false">
   <input type="text" name="_honey" style="display:none;">
-
   <input type="text" name="name" placeholder="📝 Ihr Name" required style=" width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white; ">
   <input type="email" name="email" placeholder="📧 Ihre E-Mail-Adresse" required style=" width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white; ">
   <textarea name="message" placeholder="✏️ Ihre Nachricht" rows="5" required style=" width:100%; padding:12px; border-radius:8px; border:1px solid var(--pink); background: rgba(255,255,255,0.05); color:white; "></textarea>
@@ -273,6 +272,17 @@ footer a:hover { color: var(--pink); transform: scale(1.2); }
 document.getElementById("verwaltung-box").addEventListener("click", function(){
   const sub = this.querySelector(".subtopics");
   sub.style.display = sub.style.display==="flex"?"none":"flex";
+});
+
+/* Touch-Feedback für mobile Geräte */
+const boxes = document.querySelectorAll('.topic-box');
+boxes.forEach(box => {
+  box.addEventListener('touchstart', () => {
+    box.classList.add('active-touch');
+  });
+  box.addEventListener('touchend', () => {
+    box.classList.remove('active-touch');
+  });
 });
 </script>
 </body>
