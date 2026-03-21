@@ -307,14 +307,16 @@ footer a:hover { color: var(--pink); transform: scale(1.2); }
   </p>
 
 </footer>
-
 <script>
+/* 🔹 Verwaltung Box Toggle */
 document.getElementById("verwaltung-box").addEventListener("click", function(){
   const sub = this.querySelector(".subtopics");
-  sub.style.display = sub.style.display==="flex"?"none":"flex";
+  if(sub) { // Falls Subtopics existieren
+    sub.style.display = sub.style.display==="flex" ? "none" : "flex";
+  }
 });
 
-/* Touch-Feedback für mobile Geräte */
+/* 🔹 Touch-Feedback für mobile Geräte */
 const boxes = document.querySelectorAll('.topic-box');
 boxes.forEach(box => {
   box.addEventListener('touchstart', () => {
@@ -324,6 +326,22 @@ boxes.forEach(box => {
     box.classList.remove('active-touch');
   });
 });
+
+/* 🔒 Schutz vor Copy / Rechtsklick */
+
+// Rechtsklick deaktivieren
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+// Copy + DevTools + Save blockieren (STRG+C / STRG+U / STRG+S)
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+    e.preventDefault();
+    alert("📌 Inhalte sind urheberrechtlich geschützt!");
+  }
+});
+</script>
 </script>
 </body>
 </html>
