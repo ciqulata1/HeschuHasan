@@ -39,6 +39,12 @@ input[type="radio"], input[type="checkbox"] {
   accent-color: var(--pink);
 }
 
+/* Fokus sichtbar für Tastatur */
+input:focus, button:focus, a:focus {
+  outline: 2px dashed var(--pink);
+  outline-offset: 3px;
+}
+
 button.back-button {
   display: block;
   margin: 30px auto;
@@ -134,6 +140,11 @@ button:hover {
   margin-top:20px;
 }
 
+/* Live-Region für Screenreader */
+#feedback[aria-live] {
+  min-height: 50px;
+}
+
 footer {
   background: var(--gradient);
   text-align:center;
@@ -150,12 +161,30 @@ footer a {
   color: var(--pink);
   font-size:30px;
 }
+
+/* Skip-Link für Screenreader */
+.skip-link {
+  position:absolute;
+  top:-40px;
+  left:0;
+  background: var(--pink);
+  color: var(--white);
+  padding:8px;
+  z-index:100;
+  text-decoration:none;
+}
+
+.skip-link:focus {
+  top:10px;
+}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+
+<a href="#maincontent" class="skip-link">Zum Inhalt springen</a>
 
 <header>
   <h1>HESCHU HASAN</h1>
@@ -164,7 +193,7 @@ footer a {
   </nav>
 </header>
 
-<main>
+<main id="maincontent">
   <h2>Meinungs-Macher</h2>
   <p class="center">
     Finden Sie heraus, inwieweit Ihre Werte mit den Prinzipien des LumiLiberalismus übereinstimmen.
@@ -175,11 +204,11 @@ footer a {
     <button type="submit">Auswerten</button>
   </form>
 
-  <div id="feedback"></div>
+  <div id="feedback" role="status" aria-live="polite"></div>
   <button class="back-button" onclick="window.location.href='index.html';">← Zurück</button>
 </main>
 
- <footer>
+<footer>
   <h3>Treffen Sie mich auf Instagram</h3>
   <div class="social-links">
     <a href="https://www.instagram.com/heschuhasan/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -192,7 +221,6 @@ footer a {
   <p style="text-align:center; font-size:12px; opacity:0.6;">
     Inhalte urheberrechtlich geschützt – Weiterverwendung nur mit Genehmigung
   </p>
-
 </footer>
 
 <script>
@@ -214,16 +242,16 @@ const myOpinions = ["Ja","Ja","Ja","Ja","Ja","Ja","Ja","Ja","Ja","Ja"];
 const container = document.getElementById("questions");
 
 questions.forEach((q,i)=>{
-  const div=document.createElement("div");
-  div.className="question";
-  div.innerHTML=`
-    <p>${i+1}. ${q}</p>
+  const fieldset = document.createElement("fieldset");
+  fieldset.className = "question";
+  fieldset.innerHTML = `
+    <legend>${i+1}. ${q}</legend>
     <div class="answers">
-      <label><input type="radio" name="q${i}" value="Ja"> Ja</label>
-      <label><input type="radio" name="q${i}" value="Nein"> Nein</label>
+      <label for="q${i}_ja"><input type="radio" id="q${i}_ja" name="q${i}" value="Ja"> Ja</label>
+      <label for="q${i}_nein"><input type="radio" id="q${i}_nein" name="q${i}" value="Nein"> Nein</label>
     </div>
   `;
-  container.appendChild(div);
+  container.appendChild(fieldset);
 });
 
 document.getElementById("quizForm").addEventListener("submit", e=>{
@@ -270,20 +298,10 @@ document.getElementById("quizForm").addEventListener("submit", e=>{
   document.getElementById("feedback").innerHTML = message;
 });
 
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-});
-
-// Copy + DevTools + Save blockieren
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 document.addEventListener('keydown', function(e) {
-  if (
-    e.ctrlKey &&
-    (e.key === 'c' || e.key === 'u' || e.key === 's')
-  ) {
-    e.preventDefault();
-  }
+  if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) e.preventDefault();
 });
-
 </script>
 
 </body>
